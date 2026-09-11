@@ -1,8 +1,52 @@
 \chapter{Curve}
-\section{Richiami generali}
-\section{Curve parametrizzate in \texorpdfstring{$\mathbb{R}^n$}{R\textasciicircum n}}
-% Qui puoi iniziare a usare i tuoi bellissimi ambienti colorati!
-\begin{definizione}
-Sia $I \subseteq \mathbb{R}$ un intervallo aperto si definisce \textcolor{red}{curva parametrizzata di $\mathbb{R}^n$} 
-ogni applicazion $C: I \to \mathbb{R}^n$ $C^{\infty}$ differenziabile
-\end{definizione}
+    \section{Richiami generali}
+        Nel seguito considereremo lo spazio vettoriale euclideo $\mathbb{R}^n$ munito del prodotto scalare standard
+
+        $\forall x=(x^1,\ldots,x^n),y=(y^1,\ldots,y^n) \in \mathbb{R}^n$ 
+        \[ x \cdot y = \sum_{i=1}^n x^i y^i \]
+        \[ \norm{x} = \sqrt{x \cdot x} = \sqrt{\sum_{i=1}^n (x^i)^2} \]
+        \[d(x,y) = \norm{x-y}= \sqrt{\sum_{i=1}^n (x^i - y^i)^2} \]
+        \begin{definizione}
+        Sia $A \subset R^n$ un insieme aperto e $F: A \to \mathbb{R}^m$ una funzione, si dice che $F$ è
+        \textcolor{red}{differenziabile} in $x_0 \in A$ se $\exists L: \mathbb{R}^n \to \mathbb{R}^m$ applicazione linerare tale che
+        \[ \lim_{x \to x_0} \frac{F(x) - F(x_0) - L(x-x_0)}{\norm{x-x_0}} = 0 \]
+        $L$ se esiste è unica e prende il nome di \textcolor{red}{differenziale di $F$ in $x_0$} e si denota con $L=\left(dF\right)_{x_0}$
+
+        Si dice che $F: A \to \mathbb{R}^m$ è \textcolor{red}{differenziabile} in $A$ se è differenziabile in ogni punto di $A$.
+        \end{definizione}
+        \begin{esempio}
+        Se $L: \mathbb{R}^n \to \mathbb{R}^m$ è un'applicazione lineare allora $L$ è differenziabile e $\left(dL\right)_{x_0}=L$ per ogni $x_0 \in \mathbb{R}^n$
+  
+        Perchè $\displaystyle L(x)-L(x_0)-L(x-x_0)=0 \Rightarrow \lim_{x \to x_0} \frac{L(x)-L(x_0)-L(x-x_0)}{\norm{x-x_0}} = 0$
+        \end{esempio}
+        \begin{esempio}
+        Sia $b \in \mathbb{R}^n$ e $\tau_b: \mathbb{R}^n \to \mathbb{R}^n$ $x \mapsto x+b$ cioè la traslazione di vettore $b$ allora 
+        $\tau_b$ è differenziabile e $\left(d\tau_b\right)_{x_0} = id_{\mathbb{R}^n}$ per ogni $x_0 \in \mathbb{R}^n$
+
+        Perchè $\displaystyle \tau_b(x)-\tau_b(x_0)-id_{\mathbb{R}^n}(x-x_0) =x+b-(x_0+b)-(x-x_0)=0 \Rightarrow$
+        
+        $\displaystyle \Rightarrow \lim_{x \to x_0} \frac{\tau_b(x)-\tau_b(x_0)-id_{\mathbb{R}^n}(x-x_0)}{\norm{x-x_0}} = 0$
+        \end{esempio}
+        \begin{osservazione}
+        La composizione di due applicazioni differenziabili è differenziabile e vale:
+            \begin{equation}
+            \label{eq:composizione_di_applicazioni_differenziabili}
+            \left(d(G \circ F)\right)_{x_0} = \left(dG\right)_{F(x_0)} \circ \left(dF\right)_{x_0}
+            \end{equation}
+        \end{osservazione}
+        \begin{definizione}
+        $R: \mathbb{R}^n \to \mathbb{R}^n$ si dice \textcolor{red}{isometria lineare} (o operatore unitario) se $R$ è lineare e conserva il prodotto scalare cioè
+        \[ \forall x,y \in \mathbb{R}^n \quad R(x) \cdot R(y) = x \cdot y \]
+        o equivalentemente conserva le norme 
+        \[ \forall x \in \mathbb{R}^n \quad \norm{R(x)} = \norm{x} \]
+        \end{definizione}
+        \begin{proposizione}\textcolor{violet}{(vista in Geo 2)}
+
+        $R: \mathbb{R}^n \to \mathbb{R}^n$ è un'isometria lineare $\Leftrightarrow R(0_{\mathbb{R}^n})=0_{\mathbb{R}^n} \quad \forall x,y \in \mathbb{R}^n \quad \norm{R(x)-R(y)}=\norm{x-y}$ 
+        \end{proposizione}
+    \section{Curve parametrizzate in \texorpdfstring{$\mathbb{R}^n$}{R\textasciicircum n}}
+        % Qui puoi iniziare a usare i tuoi bellissimi ambienti colorati!
+        \begin{definizione}
+        Sia $I \subseteq \mathbb{R}$ un intervallo aperto si definisce \textcolor{red}{curva parametrizzata di $\mathbb{R}^n$} 
+        ogni applicazion $C: I \to \mathbb{R}^n$ $C^{\infty}$ differenziabile
+        \end{definizione}
