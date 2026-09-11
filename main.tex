@@ -1,18 +1,200 @@
-\documentclass{book}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath, amssymb, amsthm}
+\documentclass{report}
+\usepackage[T1]{fontenc} 
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage{colortbl}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{tikz-3dplot}
+\usepackage{caption}
+\usepackage{geometry}
+\usepackage{array}
+\usepackage{booktabs}
+\usetikzlibrary{arrows.meta,calc,angles,quotes,intersections,decorations.pathreplacing,decorations.markings,decorations.pathmorphing,patterns.meta,patterns}
+\tdplotsetmaincoords{60}{120}
+\newtheoremstyle{obsstyle}
+  {\topsep}   % spazio sopra
+  {\topsep}   % spazio sotto
+  {\normalfont\color{blue!75!black}} % corpo normale + blu
+  {0pt}       % indentazione (0 = niente rientro)
+  {\bfseries\color{blue!75!black}}    % titolo in grassetto + blu
+  {:}         % punteggiatura dopo il titolo
+  { }         % spazio dopo il titolo
+  {}          % specifiche aggiuntive  
 
+% 2) applico lo stile e dico che si numeri per capitolo
+\theoremstyle{obsstyle}
+\newtheorem{osservazione}{Osservazione}[chapter]
+
+% 3) imposto la forma del numero: <capitolo>.<progressivo>
+\renewcommand{\theosservazione}{\thechapter.\arabic{osservazione}}
+
+\AtBeginEnvironment{proof}{\color{green!60!black}}
+
+\newcommand{\hlc}[2][yellow]{\sethlcolor{#1}\hl{#2}}
+
+\newtheoremstyle{defstyle}
+  {\topsep}   % Spazio sopra
+  {\topsep}   % Spazio sotto
+  {\normalfont}  % Stile del corpo
+  {0pt}       % Indentazione
+  {\bfseries} % Stile della testa
+  {.}         % Punteggiatura dopo la testa
+  { }         % Spazio dopo la testa
+  {}          % Specifiche della testa
+
+% Applicazione dello stile e creazione dell'ambiente definizione
+\theoremstyle{defstyle}
+\newtheorem{definizione}{Definizione}[chapter]
+
+\newtheoremstyle{propstyle}
+  {\topsep}   % Spazio sopra
+  {\topsep}   % Spazio sotto
+  {\normalfont}  % Stile del corpo
+  {0pt}       % Indentazione
+  {\bfseries} % Stile della testa
+  {:}         % Punteggiatura dopo la testa
+  { }         % Spazio dopo la testa
+  {}          % Specifiche della testa
+
+% Applicazione dello stile e creazione dell'ambiente proposizione
+\theoremstyle{propstyle}
+\newtheorem{proposizione}{Proposizione}[chapter]
+
+\newtheoremstyle{lemmastyle}
+  {\topsep}   % Spazio sopra
+  {\topsep}   % Spazio sotto
+  {\normalfont}  % Stile del corpo
+  {0pt}       % Indentazione
+  {\bfseries} % Stile della testa
+  {:}         % Punteggiatura dopo la testa
+  { }         % Spazio dopo la testa
+  {}          % Specifiche della testa
+
+% Applicazione dello stile e creazione dell'ambiente proposizione
+\theoremstyle{lemmastyle}
+\newtheorem{lemma}{Lemma}[chapter]
+
+\newtheoremstyle{esempiostyle}
+  {\topsep}   % Spazio sopra
+  {\topsep}   % Spazio sotto
+  {\normalfont\color{cyan!80!black}}   % Corpo blu chiaro
+  {0pt}       % Indentazione
+  {\bfseries\color{cyan!80!black}}    % Titolo in grassetto blu chiaro
+  {:}         % Punteggiatura dopo il titolo
+  { }         % Spazio dopo il titolo
+  {}          % Specifiche della testa
+
+\theoremstyle{esempiostyle}
+\newtheorem{esempio}{Esempio}[chapter]
+\definecolor{hotpink}{rgb}{0.9, 0.2, 0.7} % Rosa acceso tendente al viola
+\definecolor{amber}{rgb}{1.0, 0.75, 0.0} % Ambra
+
+\newtheoremstyle{teoremarosa} % Nome dello stile
+  {\topsep}   % Spazio sopra
+  {\topsep}   % Spazio sotto
+  {\normalfont}  % Stile del corpo
+  {0pt}       % Indentazione
+  {\bfseries\color{hotpink}} % Stile della testa (grassetto + fucsia)
+  {.}         % Punteggiatura dopo la testa
+  { }         % Spazio dopo la testa
+  {}          % Specifiche della testa
+
+\theoremstyle{teoremarosa}
+\newtheorem{teorema}{Teorema}[chapter]
+
+
+\newtheoremstyle{corollariorosa} % Nome dello stile
+  {\topsep}   % Spazio sopra
+  {\topsep}   % Spazio sotto
+  {\normalfont}  % Stile del corpo
+  {0pt}       % Indentazione
+  {\bfseries\color{hotpink}} % Stile della testa (grassetto + fucsia)
+  {.}         % Punteggiatura dopo la testa
+  { }         % Spazio dopo la testa
+  {}          % Specifiche della testa
+
+\theoremstyle{corollariorosa}
+\newtheorem{corollario}{Corollario}[chapter]
+
+\newtheoremstyle{richiamo} % Nome dello stile
+  {\topsep}   % Spazio sopra
+  {\topsep}   % Spazio sotto
+  {\normalfont\color{violet}}  % Stile del corpo
+  {0pt}       % Indentazione
+  {\bfseries\color{violet}} % Stile della testa (grassetto + fucsia)
+  {.}         % Punteggiatura dopo la testa
+  { }         % Spazio dopo la testa
+  {}          % Specifiche della testa
+
+\theoremstyle{richiamo}
+\newtheorem{richiamo}{Richiamo}[chapter]
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Arg}{arg}
+\title{Introduzione alle \\ Varietà Differenziabili}
+\author{Pierluigi Lepore}
+\date{\today}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\abs}{|}{|}
+
+\usepackage{hyperref}
 \begin{document}
-
+\maketitle
 \tableofcontents
+\chapter*{Prefazione}
+\noindent Queste dispense sono state scritte seguendo il corso di Introduzione alle Varietà Differenziabili tenuto dalla Professoressa Giulia Dileo e Antonio Lotta
+nel 2025/2026 all'università di Bari.\\
+\noindent Sono state scritte a mano e poi rielaborate e digitate in \LaTeX.\\
+\noindent Sono state scritte in modo da essere il più possibile fedeli al corso, tuttavia ci sono alcune precisazioni e aggiunte che ho ritenuto opportuno fare per: chiarezza, completezza e aiutare me stesso 
+e il futuro lettore di questi appunti.\\
+\noindent Come riconoscere queste aggiunte?\\
+\noindent Molto facile ed intuitivo tramite dei colori:
+\begin{itemize}
+  \item Le cose scritte a lezione sono in nero, verde, blu scuro e celeste.
+  \item Le cose che ho aggiunto io sono in viola (anche i richiami sono in viola). 
+\end{itemize}
+Perché ci sono diversi colori?
+\begin{itemize}
+  \item Il nero e il \textcolor{red}{rosso} sono i 2 colori standard per enunciati e definizioni.
+  \item Il \textcolor{green!60!black}{verde} è il colore usato per le \textcolor{green!60!black}{dimostrazioni}.
+  \item Il \textcolor{blue!80!black}{blu scuro} è il colore usato per le \textcolor{blue!80!black}{osservazioni}.
+  \item Il \textcolor{cyan!80!black}{celeste} è il colore usato per gli \textcolor{cyan!80!black}{esempi}.
+  \item Il \textcolor{hotpink}{rosa acceso} è il colore usato per \textcolor{hotpink}{teoremi} e \textcolor{hotpink}{corollari}.
+  \item Il \textcolor{violet}{viola} è il colore usato per le \textcolor{violet}{aggiunte mie} e per i \textcolor{violet}{richiami} e non sarà formale come ciò che è stato scritto a lezione.
+  \item In \textcolor{green!60!black}{dimostrazioni} complicate integro più colori per facilitare la lettura, tuttavia una cosa abbastanza standard che faccio
+  è sottolineare \textcolor{orange}{l'ipotesi} in \textcolor{orange}{arancione}.
+\end{itemize}
+\textbf{Notazioni non standard in questo corso}
+\begin{itemize}
+\item capiremomo cosa andrà
+\item boh
+\end{itemize}
 
-\chapter{Curve}
+\include{Curve}
 % Qui inseriremo gli appunti sulle curve parametrizzate, riferimento di Frenet, ecc.
 
-\chapter{Superfici}
+\include{Superfici}
 % Qui andranno la I e II forma fondamentale, operatore di Weingarten, ecc.
 
-\chapter{Varieta differenziabili}
+\include{Varieta differenziabili}
 % Qui tratteremo spazi tangenti, campi tensoriali e forme differenziabili.
 
 \end{document}
