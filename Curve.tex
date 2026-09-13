@@ -41,9 +41,48 @@
         \[ \forall x \in \mathbb{R}^n \quad \norm{R(x)} = \norm{x} \]
         \end{definizione}
         \begin{proposizione}\textcolor{violet}{(vista in Geo 2)}
+        \label{prop:caratterizzazione_isometria_lineare}
 
-        $R: \mathbb{R}^n \to \mathbb{R}^n$ è un'isometria lineare $\Leftrightarrow R(0_{\mathbb{R}^n})=0_{\mathbb{R}^n} \quad \forall x,y \in \mathbb{R}^n \quad \norm{R(x)-R(y)}=\norm{x-y}$ 
+        $R: \mathbb{R}^n \to \mathbb{R}^n$ è un'isometria lineare $\iff
+        \begin{cases} 
+           R(0_{\mathbb{R}^n})=0_{\mathbb{R}^n} \\
+            \forall x,y \in \mathbb{R}^n \quad \norm{R(x)-R(y)}=\norm{x-y}
+        \end{cases}$
         \end{proposizione}
+        \begin{definizione}
+        $\phi: \mathbb{R}^n \to \mathbb{R}^n$ si dice \textcolor{red}{isometria} se $\forall x,y \in \mathbb{R}^n$ 
+        $\norm{\phi(x)-\phi(y)} = \norm{x-y}$
+        \end{definizione}
+        \begin{proposizione}
+        \label{prop:caratterizzazione_isometria}
+        Sia $\phi: \mathbb{R}^n \to \mathbb{R}^n$ un'isometria allore $\exists \, ! R: \mathbb{R}^n \to \mathbb{R}^n$ isometria lineare e
+        $\exists \, ! b \in \mathbb{R}^n$ tale che $\phi = \tau_b \circ R$ \textcolor{violet}{(cioè $\phi(x) = R(x)+b$)}
+        \end{proposizione}
+        \begin{proof}
+        Supponiamo che $\exists R: \mathbb{R}^n \to \mathbb{R}^n$ isometria lineare e $\exists b \in \mathbb{R}^n$ tale che $\phi = \tau_b \circ R$ 
+
+        $\phi(0_{\mathbb{R}^n}) = \tau_b(R(0_{\mathbb{R}^n})) = \tau_b(0_{\mathbb{R}^n}) = b \Rightarrow b = \phi(0_{\mathbb{R}^n})$
+        
+        Sia $R= \tau_{-b} \circ \phi$ verifichiamo che $R$ è un'isometria lineare, $R$ è isometria in quanto composta di isometrie e inoltre
+
+        $R(0_{\mathbb{R}^n})= \tau_{-b}(\phi(0_{\mathbb{R}^n})) = \tau_{-b}(b) = 0_{\mathbb{R}^n} \overset{\text{prop.} \ref{prop:caratterizzazione_isometria_lineare}}{\Rightarrow} R$ è isometria lineare.
+        \end{proof}
+        \begin{osservazione}
+        Se $\phi: \mathbb{R}^n \to \mathbb{R}^n$ è un'isometria allora $\phi$ è differenziabile e per la
+        
+        proposizione \ref{prop:caratterizzazione_isometria} $\phi= \tau_b \circ R$ 
+        
+        $\Rightarrow \left(d\phi\right)_{x_0} = \left(d \left( \tau_b \circ R \right) \right)_{x_0} \overset{\eqref{eq:composizione_di_applicazioni_differenziabili}}{=} \left(d\tau_b\right)_{R(x_0)} \circ \left(dR\right)_{x_0} = id_{\mathbb{R}^n} \circ R = R$ 
+        \end{osservazione}
+        \begin{definizione}
+        Sia $F:A \to \mathbb{R}^m$ con $A \subseteq \mathbb{R}^n$ aperto si definiscono le \textcolor{red}{funzioni componenti} di $F$ 
+
+        \textcolor{red}{$F^i = \pi^i \circ F : A \to \mathbb{R}^n$} per $i=1,\ldots,m$ dove $\pi^i: \mathbb{R}^m \to \mathbb{R}$ è la proiezione 
+        $i$-esima 
+
+        Se $F$ è differenziabile in $\displaystyle x_0 \in A \overset{\textcolor{violet}{\substack{\text{dim in} \\ \text{analisi 3} }}}{\Rightarrow} \forall i=1,\ldots,m \quad \forall j=1,\ldots,n \quad \exists \frac{\partial F^i}{\partial x_j}(x_0)$ \textcolor{blu}{(le $F^i$ 
+        sono parzialmente differenziabili in $x_0$)}
+        \end{definizione}
     \section{Curve parametrizzate in \texorpdfstring{$\mathbb{R}^n$}{R\textasciicircum n}}
         % Qui puoi iniziare a usare i tuoi bellissimi ambienti colorati!
         \begin{definizione}
