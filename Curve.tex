@@ -74,6 +74,7 @@
         
         $\Rightarrow \left(d\phi\right)_{x_0} = \left(d \left( \tau_b \circ R \right) \right)_{x_0} \overset{\eqref{eq:composizione_di_applicazioni_differenziabili}}{=} \left(d\tau_b\right)_{R(x_0)} \circ \left(dR\right)_{x_0} = id_{\mathbb{R}^n} \circ R = R$ 
         \end{osservazione}
+        \newpage
         \begin{definizione}
         Sia $F:A \to \mathbb{R}^m$ con $A \subseteq \mathbb{R}^n$ aperto si definiscono le \textcolor{red}{funzioni componenti} di $F$ 
 
@@ -82,6 +83,54 @@
 
         Se $F$ è differenziabile in $\displaystyle x_0 \in A \overset{\textcolor{violet}{\substack{\text{dim in} \\ \text{analisi 3} }}}{\Rightarrow} \forall i=1,\ldots,m \quad \forall j=1,\ldots,n \quad \exists \frac{\partial F^i}{\partial x_j}(x_0)$ \textcolor{blu}{(le $F^i$ 
         sono parzialmente differenziabili in $x_0$)}
+        
+        Si definisce \textcolor{red}{matrice Jacobiana di $F$ in $x_0$} la matrice 
+        \[ J_F(x_0) = \begin{pmatrix} \frac{\partial F^1}{\partial x_1}(x_0) & \ldots & \frac{\partial F^1}{\partial x_n}(x_0) \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial F^m}{\partial x_1}(x_0) & \ldots & \frac{\partial F^m}{\partial x_n}(x_0) \end{pmatrix} = \left( \frac{\partial F^i}{\partial x_j}(x_0) \right)_{\substack{1 \leq i \leq m \\ 1 \leq j \leq n}} \in M_{m,n}(\mathbb{R}) \]
+        La matrice $J_F(x_0)$ è la matrice associata a $\left(dF\right)_{x_0}:R^n \to R^m$ rispetto alle basi canoniche di $\mathbb{R}^n$ e $\mathbb{R}^m$ 
+        
+        $\left\{e_j\right\}_{j=1,\ldots,n}$ è la base canonica di $\mathbb{R}^n$ e
+        $\left\{e'_i\right\}_{i=1,\ldots,m}$ è la base canonica di $\mathbb{R}^m$
+        
+        $\displaystyle dF_{x_0}(e_j) = \sum_{i=1}^m \frac{\partial F^i}{\partial x_j}(x_0) e'_i= \begin{pmatrix}
+        \frac{\partial F^1}{\partial x_j}(x_0) \\
+        \vdots \\
+        \frac{\partial F^m}{\partial x_j}(x_0)
+        \end{pmatrix}$
+        
+        Si dice che $F:A \to \mathbb{R}^m$ è \textcolor{red}{differenziabile di classe $C^1$} se ammette derivate parziali in ogni punto di $A$ e 
+        $\displaystyle \frac{\partial F^1}{\partial x_j}:A \to \mathbb{R}$ sono continue.
+
+        Si dice che $F:A \to \mathbb{R}^m$ è \textcolor{red}{differenziabile di classe $C^k$} se ammette derivate parziali continue di ordine $k$ in ogni punto di $A$
+
+        Si dice che $F:A \to \mathbb{R}^m$ è \textcolor{red}{differenziabile di classe $C^\infty$} se è di classe $C^k \quad \forall k \geq 1$ \textcolor{violet}{(in questo corso
+        lavoreremo solo con funzioni di classe $C^\infty$)} una funzione di classe $C^\infty$ è detta anche \textcolor{red}{liscia} o \textcolor{red}{smooth}.
+        \end{definizione}
+    \section{Spazio tangente e fibrato di \texorpdfstring{$\mathbb{R}^n$}{R\textasciicircum n}}
+        \begin{definizione}
+        Sia $p \in \mathbb{R}^n$ definiamo \textcolor{red}{$T_p \mathbb{R}^n := \left\{p\right\} \times \mathbb{R}^n = \left\{x_p=(p,x) \mid x \in \mathbb{R}^n \right\}$}
+        $T_p \mathbb{R}^n$ possiende struttura di spazio vettoriale reale mediante le leggi di composizione
+        \[ x_p + y_p := (p,x) + (p,y) = (p,x+y) \]
+        \[ \alpha x_p := \alpha (p,x) = (p, \alpha x) \quad \alpha \in \mathbb{R}\]
+        In particolare $p_2: T_p \mathbb{R}^n \to \mathbb{R}^n$ $p_2(x_p) = p_2(p,x) = x$ è un isomorfismo di spazi vettoriali.
+
+        $T_p \mathbb{R}^n$ è detto \textcolor{red}{spazio tangente in $p$ a $\mathbb{R}^n$}
+        \end{definizione}
+        \begin{definizione}
+        Sia $A \subset \mathbb{R}^n$ aperto, $F: A \to \mathbb{R}^m$ continua e differenziabile $p \in A$ e $\left(dF\right)_p: \mathbb{R}^n \to \mathbb{R}^m$ mediante $F$
+        e $\left(dF\right)_p$ si può definire l'applicazione 
+        \[ T_p \mathbb{R}^n \to T_{F(p)} \mathbb{R}^m \quad (p,x) \mapsto (F(p), \left(dF\right)_p(x)) \]
+        Tale applicazione sarà denotata ancora con $\left(dF\right)_p$ e denominata \textcolor{red}{differenziale di $F$ in $p$}.
+        \end{definizione}
+        \begin{definizione}
+        Sia $A \subset \mathbb{R}^n$ aperto, poniamo 
+        \[ T A := \bigcup_{p \in A} T_p \mathbb{R}^n \]
+        unione disgiunta degli spazi tangenti a $\mathbb{R}^n$ nei punti di $A$.
+        \begin{align*}
+        X \in T A &\iff \exists ! \, p \in A \text{ tale che } X \in T_p \mathbb{R}^n=\left\{p\right\} \times \mathbb{R}^n  \\
+        &\iff
+        \end{align*}
         \end{definizione}
     \section{Curve parametrizzate in \texorpdfstring{$\mathbb{R}^n$}{R\textasciicircum n}}
         % Qui puoi iniziare a usare i tuoi bellissimi ambienti colorati!
