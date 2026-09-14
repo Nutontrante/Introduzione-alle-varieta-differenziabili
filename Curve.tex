@@ -294,9 +294,28 @@
 
         Sia $[a,b] \subset J$ e verifichiamo che se $\phi$ conserva l'orientazione $\Rightarrow L \left(\beta_{\restriction{[a,b]}}\right)= L\left(\alpha_{\restriction{[\phi(a),\phi(b)]}}\right)$ e
         che se $\phi$ rovescia l'orientazione $\Rightarrow L \left(\beta_{\restriction{[a,b]}}\right)= L\left(\alpha_{\restriction{[\phi(b),\phi(a)]}}\right)$ 
+        
+        Supponiamo ora che $\phi$ conservi l'orientazione
         \begin{align*}
-        L(\beta_{\restriction{[a,b]}}) =& \int_a^b \norm{\dot{\beta}(s)} \, ds = 
+        L(\beta_{\restriction{[a,b]}}) =& \int_a^b \norm{\dot{\beta}(s)} \, ds = \int_a^b \norm{ \phi'(s) \dot{\alpha}(\phi(s))} \, ds \\
+        =& \int_a^b \left|\phi'(s)\right| \, \norm{\dot{\alpha}(\phi(s))} \, ds \overset{\textcolor{blu}{\substack{\text{Supponiamo che} \\ \phi \text{ conservi} \\ \text{l'orientazione}}}}{=} \\
+        =& \int_a^b  \phi'(s) \, \norm{\dot{\alpha}(\phi(s))} \, ds \quad \text{ posto } t=\phi(s) \quad dt= \phi'(s) ds \\
+        =& \int_{\phi(a)}^{\phi(b)} \norm{\dot{\alpha} (t)} \, dt = L\left(\alpha_{\restriction{[\phi(a),\phi(b)]}}\right)
+        \end{align*}
+        Supponiamo ora che $\phi$ rovesci l'orientazione
+        \begin{align*}
+        L(\beta_{\restriction{[a,b]}}) =& \int_a^b \norm{\dot{\beta}(s)} \, ds = \int_a^b \norm{ \phi'(s) \dot{\alpha}(\phi(s))} \, ds \\
+        =& \int_a^b \left|\phi'(s)\right| \, \norm{\dot{\alpha}(\phi(s))} \, ds \overset{\textcolor{blu}{\substack{\text{Supponiamo che} \\ \phi \text{ rovesci} \\ \text{l'orientazione}}}}{=} \\
+        =& - \int_a^b  \phi'(s) \, \norm{\dot{\alpha}(\phi(s))} \, ds \quad \text{ posto } t=\phi(s) \quad dt= \phi'(s) ds \\
+        =& \int_{\phi(b)}^{\phi(a)} \norm{\dot{\alpha} (t)} \, dt = L\left(\alpha_{\restriction{[\phi(b),\phi(a)]}}\right)
         \end{align*}
         \end{proof}
+        \begin{definizione}
+        Una curva parametrizzata $c: I \to \mathbb{R}^n$ si dice \textcolor{red}{parametrizzata per lunghezza d'arco} se \textcolor{red}{$\forall t \in I \quad \norm{\dot{c}(t)}=1$} 
+        \textcolor{blu}{(il vettore tangente in ogni punto è unitario)}
+        \end{definizione}
+        \begin{osservazione}
+        Se $c$ è una curva parametrizzata per lunghezza d'arco $t_0 >0$
+        \end{osservazione}
         
         
