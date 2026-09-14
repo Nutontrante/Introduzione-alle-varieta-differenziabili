@@ -338,7 +338,132 @@
         \end{align*}
         \end{proof}
         \begin{esempio}
-        Siano $v, v_0 \in \mathbb{R}^n$
-        \end{esempio}
+        Siano $v, v_0 \in \mathbb{R}^n$ e $c: \mathbb{R} \to \mathbb{R}^n \quad \forall t \in \mathbb{R} \quad c(t) = v_0 + t v$
         
+        $v_0=\left(v_0^1, \ldots, v_0^n\right) \quad v=\left(v^1, \ldots, v^n\right) \quad c(t)= \left(v_0^1 +tv^1, \ldots, v_0^n +tv^n\right)$
+
+        $\dot{c}(t)=\left(v^1, \ldots, v^n\right)=v$
+
+        $c$ è regolare $\iff v \neq 0$
+
+        Per $v=0$ il supporto di $c$ è $\left\{v_0\right\}$
+
+        Per $v \neq 0$ il supporto di $c$ è la retta passante per $v_0$ di giacitura $<v>$ avente equazioni parametriche:
+        \[ \begin{cases*}
+        x^1 = v_0^1 + t v^1 \\
+        x^2 = v_0^2 + t v^2 \\
+        \vdots \\
+        x^n = v_0^n + t v^n
+        \end{cases*}
+        \text{dove } (v^1, \ldots, v^n) \text{ è la } n\text{-upla dei parametri direttori della retta } \]
+        \end{esempio}
+        \begin{esempio}
+        $c_1: \mathbb{R} \to \mathbb{R}^2 \quad c_1(t) =(t,t)=\underbrace{\left(0,0\right)}_{v_0} + t \underbrace{(1,1)}_{v}$
+        \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+
+        % 1. Disegno gli assi cartesiani (in grigio chiaro per non appesantire)
+        \draw[->, thick, gray!80] (-2.5, 0) -- (2.5, 0) node[right, text=black] {$x$};
+        \draw[->, thick, gray!80] (0, -2.5) -- (0, 2.5) node[above, text=black] {$y$};
+
+        % 2. Disegno la curva c_1(t) = (t,t), che è la bisettrice del I e III quadrante
+        \draw[very thick, teal] (-2.2, -2.2) -- (2.2, 2.2) node[right, xshift=5pt] {$c_1(t)$};
+
+        % 3. Disegno il vettore direzione v = (1,1) in rosso
+        \draw[-{Stealth[length=3mm]}, very thick, red] (0,0) -- (1,1) node[midway, above left] {$v=(1,1)$};
+
+        % 4. Evidenzio il punto iniziale v_0 = (0,0)
+        \fill[black] (0,0) circle (1.5pt) node[below right, yshift=-2pt] {$v_0 = (0,0)$};
+
+        % 5. Aggiungo un paio di punti sulla curva per far capire il parametro t (opzionale ma didattico)
+        \fill[teal] (1,1) circle (1.5pt) node[below right] {$t=1$};
+        \fill[teal] (2,2) circle (1.5pt) node[below right] {$t=2$};
+        \fill[teal] (-1,-1) circle (1.5pt) node[above left] {$t=-1$};
+
+        \end{tikzpicture}
+        \end{center}
+        Il supporto di $c_1$ è la retta passante per $v_0=(0,0)$ e di parametri direttori $v=(1,1)$
+
+        $\dot{c_1}(t)=\left(1,1\right) \neq 0 \Rightarrow c_1 \text{ è regolare}$
+        \end{esempio}
+        \begin{esempio}
+        $c_2: \mathbb{R} \to \mathbb{R}^2 \quad c_2(t) =(t, \left|t\right|)$
+        \begin{center}
+        \begin{tikzpicture}[scale=1.5]
+
+        % 1. Disegno gli assi cartesiani
+        \draw[->, thick, gray!80] (-2.5, 0) -- (2.5, 0) node[right, text=black] {$x$};
+        \draw[->, thick, gray!80] (0, -1) -- (0, 2.5) node[above, text=black] {$y$};
+
+        % 2. Disegno la curva c_2(t) = (t, |t|) a forma di V
+        \draw[very thick, teal] (-2.2, 2.2) -- (0, 0) -- (2.2, 2.2) node[right, xshift=5pt] {$c_2(t)$};
+
+        % 3. Evidenzio il vettore velocità sul ramo sinistro (t < 0)
+        \fill[teal] (-1, 1) circle (1.5pt) node[above left, xshift=-12pt] {$t=-1$};
+        \draw[-{Stealth[length=3mm]}, very thick, red] (-1, 1) -- (0, 0) node[midway, below left] {$\dot{c}_2(-1) = (1,-1)$};
+
+        % 4. Evidenzio il vettore velocità sul ramo destro (t > 0)
+        \fill[teal] (1, 1) circle (1.5pt) node[above left] {$t=1$};
+        \draw[-{Stealth[length=3mm]}, very thick, red] (1, 1) -- (2, 2) node[midway, below right] {$\dot{c}_2(1) = (1,1)$};
+
+        % 5. Evidenzio il punto problematico
+        \fill[black] (0,0) circle (1.5pt) node[below, yshift=-4pt] {$t=0$ (non differenziabile)};
+
+        \end{tikzpicture}
+        \end{center}
+        $c_2$ non è derivabile in $0$ e non è $C^{\infty}$
+        \end{esempio}
+        \begin{esempio}
+        $c_3: \mathbb{R} \to \mathbb{R}^2 \quad c_3(t) =(t^3, t^3)$
+
+        Il supporto di $c_3$ coincide con il supporto di $c_1$ tuttavia $c_3$ non è una parametrizzazione regolare
+        $\dot{c_3}(t)=\left(3t^2,3t^2\right)$ che si annulla in $t=0$
+        \end{esempio}
+        \newpage
+        \begin{esempio}
+        $c_4: \mathbb{R} \to \mathbb{R}^2 \quad c_4(t) =(t^2, t^3)$
+        
+        $\dot{c_4}(t)=\left(2t,3t^2\right)$ che si annulla in $t=0 \Rightarrow c_4$ non è regolare
+        
+        $\supp(c_4)= \left\{\left(x,y\right) \in \mathbb{R}^2 \mid x=t^2 \quad y=t^3\right\} = \left\{(x,y) \in \mathbb{R}^2 \mid \textcolor{blu}{\underbrace{\textcolor{celeste}{x^3 -y^2 = 0}}_{\text{cubica cuspidale}}}\right\}$
+        \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+
+        % 1. Disegno gli assi cartesiani
+        \draw[->, thick, gray!80] (-0.5, 0) -- (3, 0) node[right, text=black] {$x$};
+        \draw[->, thick, gray!80] (0, -2.5) -- (0, 2.5) node[above, text=black] {$y$};
+
+        % 2. Disegno la cubica cuspidale c_4(t) = (t^2, t^3)
+        % Uso il comando plot parametrico nativo di TikZ
+        \draw[very thick, teal, domain=-1.5:1.5, samples=100, variable=\t] 
+            plot ({\t*\t}, {\t*\t*\t}) node[right, xshift=5pt] {$c_4(t)$};
+
+        % 3. Evidenzio i vettori tangenti per t=1 e t=-1
+        % Per t=1, il punto è (1,1) e il vettore velocità è (2,3)
+        \fill[teal] (1, 1) circle (1.5pt) node[right, xshift=2pt] {$t=1$};
+        \draw[-{Stealth[length=3mm]}, very thick, red] (1, 1) -- ++(1, 1.5) node[right] {$\dot{c}_4(1) = (2,3)$};
+
+        % Per t=-1, il punto è (1,-1) e il vettore velocità è (-2,3)
+        \fill[teal] (1, -1) circle (1.5pt) node[right, xshift=2pt] {$t=-1$};
+        \draw[-{Stealth[length=3mm]}, very thick, red] (1, -1) -- ++(-1, 1.5) node[left] {$\dot{c}_4(-1) = (-2,3)$};
+
+        % 4. Evidenzio l'origine dove si perde la regolarità
+        \fill[black] (0,0) circle (1.5pt) node[below left, yshift=-2pt] {$t=0$ (non regolare, $\dot{c}_4=0$)};
+
+        \end{tikzpicture}
+        \end{center}
+        \end{esempio}
+        \begin{esempio}
+        Sia $I \subset \mathbb{R}$ intervallo aperto e $f: I \to \mathbb{R}$ funzione derivabile di classe $C^\infty$ definiamo 
+
+        $c:I \to \mathbb{R}^2 \quad c(t) = (t, f(t))$
+
+        $\dot{c}(t) = (1, f'(t)) \neq (0,0) \Rightarrow c$ è regolare
+
+        Il supporto di $c$ è il grafico di $f \Rightarrow \supp(c) = \graf(f)$
+        
+        $\dot{c}(t) = (1, f'(t)) \neq (0,0)$
+
+        $\norm{\dot{c}(t)} = \sqrt{1 + (f'(t))^2}$
+        \end{esempio}
         
