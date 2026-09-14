@@ -148,5 +148,155 @@
         % Qui puoi iniziare a usare i tuoi bellissimi ambienti colorati!
         \begin{definizione}
         Sia $I \subseteq \mathbb{R}$ un intervallo aperto si definisce \textcolor{red}{curva parametrizzata di $\mathbb{R}^n$} 
-        ogni applicazion $C: I \to \mathbb{R}^n$ $C^{\infty}$ differenziabile
+        ogni applicazione $c: I \to \mathbb{R}^n$ $C^{\infty}$ differenziabile, \textcolor{red}{$t$} si dice \textcolor{red}{parametro} della curva.
+
+        L'insieme \textcolor{red}{$\left\{c(t) \mid t \in I \right\}$} è detto \textcolor{red}{supporto della curva} e sarà denotato con \textcolor{red}{$\supp(c)$}
+
+        Poniamo $\forall t \in I \quad c(t)= (c^1(t),\ldots,c^n(t))$ con $c^i= p^i \circ c: I \to \mathbb{R}$ per $i=1,\ldots,n$ \textcolor{blu}{(funzioni componenti di $c$)}
+        
+        $\dot{c}(t)= (\dot{c^1}(t),\ldots,\dot{c^n}(t))$
+
+        Per $t_0 \in I$ si può considerare l'applicazione lineare $\left(dc\right)_{t_0}: \mathbb{R} \to \mathbb{R}^n$ 
+        \[ \left(dc\right)_{t_0} \textcolor{blu}{\underbrace{\textcolor{black}{(1)}}_{\substack{\text{base} \\ \text{canonica} \\ \text{di } \mathbb{R}}}} = \left(\dot{c^1}(t_0), \ldots, \dot{c^n}(t_0) \right) = \dot{c}(t_0) \] 
+        Si definisce inoltre 
+        \[ \left(dc\right)_{t_0}: T_{t_0} \mathbb{R} \to T_{c(t_0)} \mathbb{R}^n \quad \left(t_0,t\right) \mapsto \left(c(t_0), (dc)_{t_0} (t) \right) \]
+        $\left\{(t_0,1)\right\}$ è base di $T_{t_0} \mathbb{R}$ 
+
+        Si definisce \textcolor{red}{vettore tangente in $t_0$ a $c$} il vettore
+        \[ \textcolor{red}{\left(dc\right)_{t_0} (t_0,1) = \left( c(t_0), (dc)_{t_0}(1) \right) = \left(c(t_0), \dot{c}(t_0) \right)} \]
+        Il vettore tangente in $t_0$ a $c$ può essere denotato con $\dot{c}(t_0)$ \textcolor{violet}{(abuso di notazione)} omettendo il punto di applicazione $c(t_0)$  
         \end{definizione}
+        \begin{definizione}
+        Una curva parametrizzata $c: I \to \mathbb{R}^n$ si dice \textcolor{red}{regolare} se \textcolor{red}{$\forall t \in I \quad \dot{c}(t) \neq 0$}
+        \textcolor{blu}{(Il vettore tangente in ogni punto della curva è non nullo)} 
+        \end{definizione}
+        \begin{definizione}
+        Sia $c: I \to \mathbb{R}^n$ una curva parametrizzata regolare, si definisce \textcolor{red}{campo di vettori lungo $c$} \textcolor{blu}{(o campo vettoriale lungo $c$)}
+        ogni applicazione 
+        
+        \textcolor{red}{$\hat{X}: I \to T \mathbb{R}^n$} tale che $\forall t \in I \quad \hat{X}(t) \in T_{c(t)} \mathbb{R}^n$ cioè $\hat{X}(t) = \left(c(t), \textcolor{blu}{\underbrace{\textcolor{black}{X(t)}}_{\in \mathbb{R}^n}}\right)$ 
+
+        Resta quindi definita una applicazione $X: I \to \mathbb{R}^n$ e se $X$ è differenziabile si dice che $\hat{X}$ è un \textcolor{red}{campo vettoriale differenziabile lungo $c$} 
+        \end{definizione}
+        \begin{osservazione}
+        Sia $c: I \to \mathbb{R}^n$ una curva parametrizzata regolare consideriamo $\hat{c} : I \to T \mathbb{R}^n$ tale che $\forall t \in I \quad \hat{c}(t) = \left(c(t), \dot{c}(t)\right) \in T_{c(t)} \mathbb{R}^n$
+        
+        \textcolor{red}{$\hat{c}$} è campo vettoriale lungo $c$ detto \textcolor{red}{campo vettoriale tangente} 
+        \end{osservazione}
+        \begin{definizione}
+        Siano $\alpha: I \to \mathbb{R}^n$ e $\beta: J \to \mathbb{R}^n$ curve parametrizzate regolari 
+
+        Si dice che $\alpha$ e $\beta$ sono \textcolor{red}{equivalenti} \textcolor{blu}{(a meno di parametrizzazioni)} 
+        se esiste $\phi: I \to J$ diffeomorfismo \textcolor{blu}{(applicazione differenziabile bigettiva con inversa differenziabile)} tale che \textcolor{red}{$\beta = \alpha \circ \phi$}
+        \begin{equation*}
+        \begin{tikzcd}[row sep=large, column sep=large]
+        J \arrow[r, "\phi"] \arrow[rr, bend right, "\beta"'] & I \arrow[r, "\alpha"] & \mathbb{R}^n
+        \end{tikzcd}
+        \end{equation*}
+        Scriveremo che $\beta \sim \alpha$ e $\phi$ è detto cambiamento di parametro
+        \end{definizione}
+        \begin{osservazione}
+        $\phi$ è differenziabile $C^\infty$ e invertibile $\Rightarrow \phi$ è strettamente monotona 
+        
+        $\Rightarrow \left( \forall s \in J \quad \phi'(s) > 0 \right) \lor \left( \forall s \in J \quad \phi'(s) < 0 \right)$
+        \end{osservazione}
+        \begin{definizione}
+        Si dice che 
+
+        \textcolor{red}{$\phi$ conserva l'orientazione} se $\forall s \in J \quad \phi'(s) > 0$ 
+
+        \textcolor{red}{$\phi$ rovescia l'orientazione} se $\forall s \in J \quad \phi'(s) < 0$
+        \end{definizione}
+        \begin{osservazione}
+        Supponiamo $\alpha \sim \beta$ tramite $\alpha : I \to \mathbb{R}^n$ e $\beta: J \to \mathbb{R}^n$ e $\beta = \alpha \circ \phi$ con $\phi: J \to I$ diffeomorfismo
+
+        $\beta = \alpha \circ \phi \Rightarrow \supp (\alpha) = \supp(\beta)$
+        \begin{proof}
+        $\supp(\beta)= \beta(J)= \left(\alpha \circ \phi \right)(J) = \alpha(I)= \supp(\alpha)$
+        \end{proof}
+        $\beta = \alpha \circ \phi \Rightarrow \forall s \in J \quad \dot{\beta}(s) = \phi'(s) \cdot \dot{\alpha}(\phi(s)) $
+        \begin{proof}
+        \begin{align*}
+        \hat{\beta}(s) &= \left( d \beta \right)_s (1) = \left( \alpha \circ \phi \right)_s (1) \overset{\eqref{eq:composizione_di_applicazioni_differenziabili}}{=} \left(d\alpha\right)_{\phi(s)} \circ \left(d\phi\right)_s (1) \\
+        &= \left(d\alpha\right)_{\phi(s)} \left( \phi'(s) \right)  = \left(d\alpha\right)_{\phi(s)} \left( \phi'(s) \cdot 1 \right) = \phi'(s) \cdot \left(d\alpha\right)_{\phi(s)} (1)  \\
+        &= \phi'(s) \cdot \dot{\alpha}(\phi(s)) 
+        \end{align*}
+        \end{proof}
+        \end{osservazione}
+                \begin{center}
+        \begin{tikzpicture}[scale=1.3]
+
+        % 1. Disegno la curva principale in alto (colore teal per richiamare il blu/celeste)
+        \draw[very thick, teal] (-1, 3) .. controls (2, 4.5) and (5, 1.5) .. (7, 3.5);
+
+        % 2. Disegno i due intervalli J e I in basso (i segmenti neri)
+        \draw[thick] (-1.5, 0) -- (0.5, 0);
+        \node at (-0.5, -0.4) {\Large $J$};
+
+        \draw[thick] (3.5, 0) -- (5.5, 0);
+        \node at (4.5, -0.4) {\Large $I$};
+
+        % 3. Disegno il punto s in J e \phi(s) in I
+        \fill[red] (-0.5, 0) circle (1.5pt) node[below left] {$s$};
+        \fill[green!70!black] (4.8, 0) circle (1.5pt) node[below right] {$\phi(s)$};
+
+        % 4. Definisco il punto immagine sulla curva \beta(s) = \alpha(\phi(s))
+        \coordinate (P) at (1.8, 3.4); 
+        \fill[red] (P) circle (1.5pt) node[below left, text=red, yshift=-3pt, xshift=-12pt] {$\beta(s) = \alpha(\phi(s))$};
+
+        % 5. Frecce delle mappe \phi, \beta, \alpha
+        % Mappa \phi (in basso)
+        \draw[->, thick, darkgray] (0.2, -0.8) to[bend right=20] node[midway, below, text=teal] {\Large $\phi$} (3.8, -0.8);
+        % Mappa \beta (da J alla curva)
+        \draw[->, thick, darkgray] (-0.5, 0.3) to[bend left=15] node[midway, above left, text=red] {\large $\beta$} (1.6, 3);
+        % Mappa \alpha (da I alla curva)
+        \draw[->, thick, darkgray] (4.8, 0.3) to[bend right=20] node[midway, right, text=green!70!black] {\large $\alpha$} (2.1, 3);
+
+        % 6. Vettori tangenti (discordi)
+        % Vettore \dot{\alpha} (verde, verso destra)
+        \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (P) -- ++(1.5, -0.4) node[above, yshift=2pt] {$\dot{\alpha}(\phi(s))$};
+        % Vettore \dot{\beta} (rosso, verso sinistra, discorde perché \phi' < 0)
+        \draw[-{Stealth[length=3mm]}, very thick, red] (P) -- ++(-1.1, 0.3) node[above right, xshift=5pt] {$\dot{\beta}(s) = \phi'(s)\dot{\alpha}(\phi(s))$};
+
+        % 7. Testo esplicativo arancione in alto a destra
+        \node[text=orange, align=left] at (5, 4.5) {se $\phi'(s) < 0$ \\ sono discordi};
+        \draw[<-, thick, orange] (4.2, 4.5) to[bend right=15] (3.3, 4);
+        \draw[<-, thick, orange] (5, 4) to[bend left=15] (3.1, 3.5);
+
+        \end{tikzpicture}
+        \end{center}
+        \begin{definizione}
+        La relazione di "equivalenza a meno di parametrizzazione" è una relazione di equivalenza (simmetrica , riflessiva e transitiva) sull'insieme
+        delle curve parametrizzate regolari.
+
+        Ogni classe di equivalenza \textcolor{red}{$\left[ \alpha \right]_{\sim}$} è detta \textcolor{red}{curva non parametrizzata} 
+        \end{definizione}
+        \begin{definizione}
+        Si dice che $2$ curve parametrizzate regolari $\alpha: I \to \mathbb{R}^n$ e $\beta: J \to \mathbb{R}^n$ sono \textcolor{red}{equivalenti con orientazione} se 
+        esiste un cambiamento di parametro $\phi$ che conservi l'orientazione.
+        
+        Scriveremo \textcolor{red}{$\alpha \sim_0 \beta$} e anche questa è una relazione di equivalenza.
+        
+        Ogni classe di equivalenza \textcolor{red}{$\left[\alpha\right]_{\sim_0}$} è detta \textcolor{red}{curva non parametrizzata orientata}
+        \end{definizione}
+        \begin{definizione}
+        Sia $c: I \to \mathbb{R}^n$ curva parametrizzata regolare, sia $[a,b] \subset I$ e si definisce \textcolor{red}{lunghezza dell'arco di curva $c_{\restriction{[a,b]}}$}
+        \begin{equation}
+        \label{eq:lunghezza_arco_di_curva}
+        L \left(c_{\restriction{[a,b]}}\right)= \int_a^b \norm{\dot{c}(t)} \, dt
+        \end{equation}
+        \end{definizione}
+        \begin{proposizione}
+        La lunghezza di un arco di curva è invariante per cambiamento di parametro
+        \end{proposizione}
+        \begin{proof}
+        Siano $\alpha:I \to \mathbb{R}^n \quad \beta : J \to \mathbb{R}^n$ curve parametrizzate regolari equivalenti, sia $\phi : J \to I$ diffeomorfismo tale che $\beta = \alpha \circ \phi$
+
+        Sia $[a,b] \subset J$ e verifichiamo che se $\phi$ conserva l'orientazione $\Rightarrow L \left(\beta_{\restriction{[a,b]}}\right)= L\left(\alpha_{\restriction{[\phi(a),\phi(b)]}}\right)$ e
+        che se $\phi$ rovescia l'orientazione $\Rightarrow L \left(\beta_{\restriction{[a,b]}}\right)= L\left(\alpha_{\restriction{[\phi(b),\phi(a)]}}\right)$ 
+        \begin{align*}
+        L(\beta_{\restriction{[a,b]}}) =& \int_a^b \norm{\dot{\beta}(s)} \, ds = 
+        \end{align*}
+        \end{proof}
+        
+        
