@@ -316,6 +316,26 @@
         \end{definizione}
         \begin{osservazione}
         Se $c$ è una curva parametrizzata per lunghezza d'arco $t_0 >0$
+        \[ L \left(c_{\restriction{[a,t_0]}}\right) = \int_a^{a+t_0} \norm{\dot{c}(t)} \, dt = t_0 \]
         \end{osservazione}
+        \begin{proposizione}
+        Ogni curva parametrizzata regolare ammette una riparametrizzazione per lunghezza d'arco
+        \end{proposizione}
+        \begin{proof}
+        Sia $\alpha : I \to \mathbb{R}^n$ curva regolare sia $t_0 \in I$
+
+        Sia \textcolor{red}{$\displaystyle \psi:I \to R \quad \psi(t)=\int_{t_0}^t \norm{\dot{\alpha}(s)} \, ds$} $\psi$ è continua e derivabile
+        $\psi'(t) = \norm{\dot{\alpha}(t)}>0 \Rightarrow \psi$ è strettamente crescente $\Rightarrow \psi$ è ingettiva
+
+        $\psi: I \to \psi(I)=J$ è bigettiva e $\phi= \psi^{-1}:J \to I$ è diffeomorfismo
+
+        $\displaystyle \forall s \in J \quad \phi'(s) = \frac{1}{\psi'(\phi(s))} = \frac{1}{\norm{\dot{\alpha}(\phi(s))}}>0$
+
+        Sia \textcolor{red}{$\beta = \alpha \circ \phi:J \to \mathbb{R}^n$} verifico che $\beta$ è parametrizzata per lunghezza d'arco
+        \begin{align*}
+        \norm{\dot{\beta}(s)} =& \left|\phi'(s)\right| \, \norm{\dot{\alpha} (\phi(s))} \\
+        =& \phi'(s) \, \norm{\dot{\alpha} (\phi(s))} = \frac{1}{\norm{\dot{\alpha}(\phi(s))}} \, \norm{\dot{\alpha} (\phi(s))} = 1
+        \end{align*}
+        \end{proof}
         
         
