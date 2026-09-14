@@ -641,3 +641,363 @@
         \end{enumerate}
         \end{esempio}
     \section{Curve differenziabili}
+        \begin{definizione}
+        Sia $\mathcal{C} \subseteq \mathbb{R}^n$ e si consideri su $\mathcal{C}$ la topologia indotta dalla topologia euclidea
+        \textcolor{blu}{($U_{\mathcal{C}} \subseteq \mathcal{C}$ è aperto $\iff U_{\mathcal{C}} = U \cap \mathcal{C}$ con $U \subseteq \mathbb{R}^n$ aperto)}
+        
+        Si dice che $\mathcal{C}$ è una \textcolor{red}{curva differenziabile} se $\forall p \in \mathcal{C}$ esiste \textcolor{red}{$\alpha : I_{\alpha} \to U_{\alpha} \subset \mathcal{C} \subset \mathbb{R}^n$ 
+        omeomorfismo} tra $I_{\alpha}$ intervallo aperto di $\mathbb{R}$ e $U_{\alpha}$ aperto di $\mathcal{C}$ tale che $p \in U_{\alpha}$
+
+        $\alpha$ è una curva parametrizzata regolare e $\alpha$ è detta \textcolor{red}{parametrizzazione locale} della curva.
+
+        Si osservi che il supporto della parametrizzazione $\alpha$ è $\alpha(I_{\alpha})=U_{\alpha}$
+
+        Posto $\varphi_{\alpha} := \alpha^{-1} : U_{\alpha} \subset \mathcal{C} \to I_{\alpha} \subset \mathbb{R}$ la coppia 
+        \textcolor{red}{$\left(U_{\alpha}, \varphi_{\alpha}\right)$} è detta \textcolor{red}{carta locale} nel punto $p$ dalla definizione segue che una curva differenziabile 
+        ammette una famiglia di carte locali \textcolor{red}{$\{(U_{\alpha}, \varphi_{\alpha})\}_{\alpha \in A}$} tale che $\displaystyle \mathcal{C}=\bigcup_{\alpha \in A} U_{\alpha}$
+        tale famiglia è detta \textcolor{red}{atlante differenziabile} 
+        \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+
+        % Il trucco: definisco l'equazione della curva in una variabile
+        \def\curva{3.5 + 0.4*sin(\x * 45)}
+
+        % 1. Curva principale C in R^2 (dominio totale)
+        \draw[very thick, teal, domain=-3.5:4.5, samples=100, variable=\x] 
+            plot ({\x}, {\curva}) node[right, font=\Large] {$\mathcal{C} \subset \mathbb{R}^2$};
+
+        % 2. Intorni U_alpha, U_beta e intersezione (stessa funzione, domini ridotti)
+        % U_alpha (arancione semitrasparente)
+        \draw[line width=6pt, orange, opacity=0.4, domain=-1.5:1.2, samples=50, variable=\x] 
+            plot ({\x}, {\curva});
+        \node[orange, above] at (-0.9, 3.4) {\large $U_\alpha$};
+
+        % U_beta (verde semitrasparente)
+        \draw[line width=6pt, green!70!black, opacity=0.4, domain=-0.2:2.8, samples=50, variable=\x] 
+            plot ({\x}, {\curva});
+        \node[green!70!black, above] at (2.2, 3.9) {\large $U_\beta$};
+
+        % Intersezione U_alpha \cap U_beta (rosso netto)
+        \draw[line width=2pt, red, domain=-0.2:1.2, samples=30, variable=\x] 
+            plot ({\x}, {\curva});
+        \node[red, above] at (0.5, 3.8) {\large $U_\alpha \cap U_\beta$};
+
+        % Punto p (piazzato matematicamente sulla curva a x=0.5)
+        \coordinate (P) at (0.5, {3.5 + 0.4*sin(0.5 * 45)});
+        \fill[red] (P) circle (1.5pt) node[below=3pt] {\large $p$};
+
+        % 3. Domini delle carte I_alpha e I_beta
+        \draw[thick, orange] (-2.5, 0) -- (-0.5, 0) node[midway, below] {\large $I_\alpha$};
+        \draw[thick, green!70!black] (1.5, -1) -- (3.5, -1) node[midway, below] {\large $I_\beta$};
+
+        % 4. Frecce per la carta alpha
+        \draw[->, thick, orange] (-1.5, 0.3) to[bend right=15] node[midway, right] {\large $\alpha$} (-0.8, 3.1);
+        \draw[->, thick, darkgray] (-1.3, 3.0) to[bend right=15] node[midway, left] {\large $\varphi_\alpha$} (-2.0, 0.3);
+
+        % 5. Frecce per la carta beta
+        \draw[->, thick, green!70!black] (2.5, -0.7) to[bend left=15] node[midway, left] {\large $\beta$} (1.8, 3.3);
+        \draw[->, thick, darkgray] (2.3, 3.2) to[bend left=15] node[midway, right] {\large $\varphi_\beta$} (3.0, -0.7);
+
+        % 6. Funzione di transizione phi
+        \draw[->, thick, red] (-0.8, -0.7) to[bend right=22] (1.8, -1.6);
+        \node[red, below] at (0.5, -1.6) {\large $\phi = \beta^{-1} \circ \alpha = \varphi_\beta \circ \varphi_\alpha^{-1}$};
+
+        \end{tikzpicture}
+        \end{center}
+        \begin{equation}
+        \alpha^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\alpha \xrightarrow[]{\quad \alpha \quad} U_{\alpha} \cap U_{\beta} \xrightarrow[]{\quad \beta^{-1} \quad} \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\beta
+        \end{equation}
+        \end{definizione}
+        \newpage
+        \begin{proposizione}
+        \label{prop:funzione_di_transizione_curve}
+        Sia $\mathcal{C} \subset \mathbb{R}^n$ curva differenziabile siano $\alpha: I_\alpha \to U_\alpha$ e $\beta: I_\beta \to U_\beta$ due parametrizzazioni 
+        locali di $\mathcal{C}$. Se $U_\alpha \cap U_\beta \neq \emptyset$, allora l'applicazione 
+        
+        $\textcolor{red}{\beta^{-1} \circ \alpha}: \alpha^{-1} \left(U_\alpha \cap U_\beta \right) \to \beta^{-1} \left(U_\alpha \cap U_\beta \right)$ 
+        \textcolor{blu}{$\left(\equiv  \varphi_\beta \circ \varphi_\alpha^{-1} : \varphi_{\alpha} \left(U_\alpha \cap U_\beta \right) \to \varphi_\beta \left(U_\alpha \cap U_\beta \right) \right)$} è 
+        
+        un \textcolor{red}{diffeomorfismo}
+        \end{proposizione}
+        \begin{proof}
+        Sia $t_0 \in \alpha^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\alpha$
+        
+        Verifichiamo che $\beta^{-1} \circ \alpha$ è differenziabile in un introno di $t_0$
+
+        Posto $p = \alpha(t_0) \in U_{\alpha} \cap U_{\beta}$ sia $s_0 = \beta^{-1}(p) \in \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\beta$
+        $\Rightarrow \alpha(t_0)= \beta(s_0)=p$
+
+        Poniamo $\forall s \in I_\beta \quad \beta(s)=\left(x^1(s), \ldots, x^n(s)\right)$ ovvero $x^i(s)=p^i(\beta(s))$ 
+        con $p^i: \mathbb{R}^n \to \mathbb{R}$ proiezione
+
+        $\dot{\beta}(s) = \left(\dot{x}^1(s), \ldots, \dot{x}^n(s)\right)$
+        
+        $\beta$ è regolare $\Rightarrow \dot{\beta}(s_0) \neq 0 \Rightarrow \exists i \in \{1, \ldots, n\}$ tale che $\dot{x}^i(s_0) \neq 0$
+
+        La funzione $s \in \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\beta \mapsto x^i(s)= p_i(\beta(s)) \in \mathbb{R}$ 
+        è differenziabile.
+
+        Per il teorema della funzione inversa $\exists J $ intorno aperto di $s_0 \quad J \subset \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right)$ ed
+        $\exists V$ intorno aperto di $x^i(s_0) = p_i(\beta(s_0)) = p_i(p)$ tale che $p_i \circ \beta: J \to V$ sia un diffeomorfismo.
+
+        $p_i^{-1}(V) \cap \mathcal{C}$ è un aperto di $\mathcal{C}$ che contiene $\beta(s_0)=\alpha(t_0)=p$.
+
+        Per la continuità di $\alpha$ esiste un intervallo aperto $I \subset \alpha^{-1} \left(U_\alpha \cap U_\beta \right)$ tale che
+        $t_0 \in I$
+        
+        $\alpha(I) \subset p_i^{-1}(V) \cap \mathcal{C}$
+        \[ I \xrightarrow[]{\quad p_i \circ \alpha \quad} V \xrightarrow[]{\quad \left(p_i \circ \beta \right)^{-1} \quad} J \]
+        Questa composizione è differenziabile 
+
+        $\forall t \in I \quad \left(p_i \circ \beta \right)^{-1} \left( \left( p_i \circ \alpha \right) (t) \right) = \beta^{-1} \left( \alpha (t) \right)$
+        \textcolor{blu}{(perché $\left(p_i \circ \beta \right) \left( \beta^{-1}(\alpha(t)) \right)) = \left(p_i \circ \alpha \right) (t)$)}
+
+        Pertanto $\beta^{-1} \circ \alpha : I \to J$ è differenziabile.
+
+        Scambiando i ruoli di $\alpha$ e $\beta$ risulta che $\alpha^{-1} \circ \beta$ è differenziabile.
+
+        Pertanto $\beta^{-1} \circ \alpha : \alpha^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \to \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right)$ è diffeomorfismo.
+        \end{proof}
+        \begin{osservazione}
+        Posto $\phi = \beta^{-1} \circ \alpha \quad \alpha = \beta \circ \phi$ con $\phi$ diffeomorfismo quindi le $2$ curve parametrizzate sono equivalenti. 
+        \end{osservazione}
+        \begin{esempio}
+        Sia $c:I \to \mathbb{R}^n$ curva parametrizzata regolare tale che $c:I \to c(I)$ è omeomorfismo.
+        Allora $\mathcal{C}=c(I)$ è una curva differenziabile e un atlante differenziabile è dato da $\{(\mathcal{C}, c^{-1})\}$ con
+        \[ c^{-1}: \mathcal{C}= c(I) \to I \]
+        \end{esempio}
+        \begin{esempio}
+        Sia $f : I \to \mathbb{R}$ applicazione $C^\infty$ differenziabile allora il grafico di $f$ è una curva differenziabile in $\mathbb{R}^2$.
+
+        Infatti $c:I \to \mathbb{R}^2$ definita da $c(t) = (t, f(t))$ è una curva parametrizzata regolare.
+
+        Posto \textcolor{red}{$\mathcal{C}=c(I)=\graf(f)$} $c:I \to \mathcal{C}$ è un omeomorfismo, essendo $t \mapsto \left(t, f(t)\right)$ bigettiva e continua.
+
+        e $c^{-1}: \mathcal{C} \to I \quad \left(t,f(t)\right) \mapsto t$ è continua.
+        \end{esempio}
+        \begin{esempio}
+        $\mathcal{C}= \left\{(x,y) \in \mathbb{R}^2 \mid x^2 +y^2 =1 \right\}$ $\mathcal{C}$ è la circonferenza di centro $(0,0)$ e raggio $1$.
+
+        $\mathcal{C}$ non è grafico di funzione verifichiamo che $\mathcal{C}$ è curva differenziabile.
+        
+        Poniamo $V_1 = \left\{(x,y) \in \mathbb{R}^2 \mid y > 0 \right\}$ e $V_2 = \left\{(x,y) \in \mathbb{R}^2 \mid y < 0 \right\}$ aperti di 
+        $\mathbb{R}^2$. 
+
+        $U_1 = \mathcal{C} \cap V_1$ e $U_2 = \mathcal{C} \cap V_2$ sono aperti di $\mathcal{C}$.
+
+        $U_1$ è la semicirconferenza senza gli estremi $c_1: (-1,1) \to \mathbb{R}^2$ definita da $c_1(t) = (t, \sqrt{1-t^2})$
+        $c_1(-1,1)=U_1$ è il grafico della funzione $f(t)=\sqrt{1-t^2} \quad c_1: (-1,1) \to U_1$ è omeomorfismo 
+        e parametrizzazione regolare di $U_1$.
+
+        $U_2$ è la semicirconferenza senza gli estremi $c_2: (-1,1) \to \mathbb{R}^2$ definita da $c_2(t) = (t, -\sqrt{1-t^2})$
+        $c_2(-1,1)=U_2$ è il grafico della funzione $f(t)=-\sqrt{1-t^2} \quad c_2: (-1,1) \to U_2$ è omeomorfismo 
+        e parametrizzazione regolare di $U_2$.
+        \begin{center}
+        \begin{tikzpicture}[scale=1.7]
+
+        % ==========================================
+        % GRAFICO SINISTRO: U_1 e c_1
+        % ==========================================
+        \begin{scope}[xshift=-2cm]
+            % Aperto V_1 (y > 0) evidenziato in grigio chiarissimo
+            \fill[gray!10] (-1.5, 0) rectangle (1.5, 1.5);
+            \node[gray, right] at (-1.4, 1.3) {$V_1 = \{y > 0\}$};
+
+            % Assi cartesiani
+            \draw[->, thick, gray!80] (-1.6, 0) -- (1.6, 0) node[right, text=black] {$x$};
+            \draw[->, thick, gray!80] (0, -1.5) -- (0, 1.6) node[above, text=black] {$y$};
+
+            % Circonferenza completa C (tratteggiata)
+            \draw[dashed, darkgray] (0,0) circle (1);
+
+            % Supporto di U_1 (semicirconferenza superiore)
+            \draw[very thick, teal, domain=0:180, samples=100] plot ({cos(\x)}, {sin(\x)});
+            \node[teal, above right] at (0.707, 0.707) {\Large $U_1$};
+
+            % Estremi esclusi (-1,0) e (1,0)
+            \filldraw[fill=white, draw=teal, thick] (1,0) circle (1.5pt) node[below right, text=black] {$1$};
+            \filldraw[fill=white, draw=teal, thick] (-1,0) circle (1.5pt) node[below left, text=black] {$-1$};
+
+            % Intervallo di parametrizzazione (-1,1) sull'asse x
+            \draw[line width=4pt, orange, opacity=0.5] (-1,0) -- (1,0);
+            \node[orange, below=2pt] at (-0.5, 0) {\small $t \in (-1,1)$};
+
+            % Mappatura del punto t -> c_1(t)
+            \coordinate (T1) at (0.4, 0);
+            \coordinate (P1) at (0.4, {sqrt(1 - 0.4^2)});
+            \fill[red] (T1) circle (1.5pt) node[below=2pt, text=black] {$t$};
+            \fill[red] (P1) circle (1.5pt) node[above right, text=red, yshift=2pt, xshift=-6pt] {$c_1(t)$};
+            \draw[-, dashed, red, thick] (T1) -- (P1) node[midway, left] {$f(t)$};
+        \end{scope}
+
+        % ==========================================
+        % GRAFICO DESTRO: U_2 e c_2
+        % ==========================================
+        \begin{scope}[xshift=2cm]
+            % Aperto V_2 (y < 0) evidenziato in grigio chiarissimo
+            \fill[gray!10] (-1.5, -1.5) rectangle (1.5, 0);
+            \node[gray, right] at (-1.4, -1.3) {$V_2 = \{y < 0\}$};
+
+            % Assi cartesiani
+            \draw[->, thick, gray!80] (-1.6, 0) -- (1.6, 0) node[right, text=black] {$x$};
+            \draw[->, thick, gray!80] (0, -1.5) -- (0, 1.6) node[above, text=black] {$y$};
+
+            % Circonferenza completa C (tratteggiata)
+            \draw[dashed, darkgray] (0,0) circle (1);
+
+            % Supporto di U_2 (semicirconferenza inferiore)
+            \draw[very thick, teal, domain=180:360, samples=100] plot ({cos(\x)}, {sin(\x)});
+            \node[teal, below right] at (0.707, -0.707) {\Large $U_2$};
+
+            % Estremi esclusi (-1,0) e (1,0)
+            \filldraw[fill=white, draw=teal, thick] (1,0) circle (1.5pt) node[above right, text=black] {$1$};
+            \filldraw[fill=white, draw=teal, thick] (-1,0) circle (1.5pt) node[above left, text=black] {$-1$};
+
+            % Intervallo di parametrizzazione (-1,1) sull'asse x
+            \draw[line width=4pt, orange, opacity=0.5] (-1,0) -- (1,0);
+            \node[orange, above=2pt] at (-0.5, 0) {\small $t \in (-1,1)$};
+
+            % Mappatura del punto t -> c_2(t)
+            \coordinate (T2) at (0.4, 0);
+            \coordinate (P2) at (0.4, {-sqrt(1 - 0.4^2)});
+            \fill[red] (T2) circle (1.5pt) node[above=2pt, text=black] {$t$};
+            \fill[red] (P2) circle (1.5pt) node[below right, text=red, yshift=-2pt, xshift=-6pt] {$c_2(t)$};
+            \draw[-, dashed, red, thick] (T2) -- (P2) node[midway, left] {$f(t)$};
+        \end{scope}
+        \end{tikzpicture}
+        \end{center}
+        $V_3= \left\{ (x,y) \in \mathbb{R}^2 \mid x>0 \right\} \quad U_3 = V_3 \cap \mathcal{C}$ aperto di $\mathcal{C}$
+        $c_3: (-1,1) \to \mathbb{R}^2 \quad c_3(t)=\left(\sqrt{1-t^2}, t\right)$ 
+        $c_3: (-1,1) \to U_3$ è omeomorfismo e parametrizzazione regolare 
+
+        $V_4= \left\{ (x,y) \in \mathbb{R}^2 \mid x<0 \right\} \quad U_4 = V_4 \cap \mathcal{C}$ aperto di $\mathcal{C}$
+        $c_4: (-1,1) \to \mathbb{R}^2 \quad c_4(t)=\left(-\sqrt{1-t^2}, t\right)$ 
+        $c_4: (-1,1) \to U_4$ è omeomorfismo e parametrizzazione regolare 
+        \begin{center}
+        \begin{tikzpicture}[scale=1.7]
+
+        % ==========================================
+        % GRAFICO SINISTRO: U_3 e c_3
+        % ==========================================
+        \begin{scope}[xshift=-2cm]
+            % Aperto V_3 (x > 0) evidenziato in grigio chiarissimo
+            \fill[gray!10] (0, -1.5) rectangle (1.5, 1.5);
+            \node[gray, right] at (0.1, 1.3) {$V_3 = \{x > 0\}$};
+
+            % Assi cartesiani
+            \draw[->, thick, gray!80] (-1.6, 0) -- (1.6, 0) node[right, text=black] {$x$};
+            \draw[->, thick, gray!80] (0, -1.6) -- (0, 1.6) node[above, text=black] {$y$};
+
+            % Circonferenza completa C (tratteggiata)
+            \draw[dashed, darkgray] (0,0) circle (1);
+
+            % Supporto di U_3 (semicirconferenza destra)
+            \draw[very thick, teal, domain=-90:90, samples=100] plot ({cos(\x)}, {sin(\x)});
+            \node[teal, above right] at (0.707, 0.707) {\Large $U_3$};
+
+            % Estremi esclusi (0,1) e (0,-1)
+            \filldraw[fill=white, draw=teal, thick] (0,1) circle (1.5pt) node[above left, text=black] {$1$};
+            \filldraw[fill=white, draw=teal, thick] (0,-1) circle (1.5pt) node[below left, text=black] {$-1$};
+
+            % Intervallo di parametrizzazione (-1,1) sull'asse y
+            \draw[line width=4pt, orange, opacity=0.5] (0,-1) -- (0,1);
+            \node[orange, left=2pt] at (0.1, -0.1) {\small $t \in (-1,1)$};
+
+            % Mappatura del punto t -> c_3(t)
+            \coordinate (T3) at (0, 0.4);
+            \coordinate (P3) at ({sqrt(1 - 0.4^2)}, 0.4);
+            \fill[red] (T3) circle (1.5pt) node[left=2pt, text=black] {$t$};
+            \fill[red] (P3) circle (1.5pt) node[above right, text=red] {$c_3(t)$};
+            \draw[-, dashed, red, thick] (T3) -- (P3) node[midway, below] {$f(t)$};
+        \end{scope}
+
+        % ==========================================
+        % GRAFICO DESTRO: U_4 e c_4
+        % ==========================================
+        \begin{scope}[xshift=2cm]
+            % Aperto V_4 (x < 0) evidenziato in grigio chiarissimo
+            \fill[gray!10] (-1.5, -1.5) rectangle (0, 1.5);
+            \node[gray, left] at (-0.1, 1.3) {$V_4 = \{x < 0\}$};
+
+            % Assi cartesiani
+            \draw[->, thick, gray!80] (-1.6, 0) -- (1.6, 0) node[right, text=black] {$x$};
+            \draw[->, thick, gray!80] (0, -1.6) -- (0, 1.6) node[above, text=black] {$y$};
+
+            % Circonferenza completa C (tratteggiata)
+            \draw[dashed, darkgray] (0,0) circle (1);
+
+            % Supporto di U_4 (semicirconferenza sinistra)
+            \draw[very thick, teal, domain=90:270, samples=100] plot ({cos(\x)}, {sin(\x)});
+            \node[teal, above left] at (-0.707, 0.707) {\Large $U_4$};
+
+            % Estremi esclusi (0,1) e (0,-1)
+            \filldraw[fill=white, draw=teal, thick] (0,1) circle (1.5pt) node[above right, text=black] {$1$};
+            \filldraw[fill=white, draw=teal, thick] (0,-1) circle (1.5pt) node[below right, text=black] {$-1$};
+
+            % Intervallo di parametrizzazione (-1,1) sull'asse y
+            \draw[line width=4pt, orange, opacity=0.5] (0,-1) -- (0,1);
+            \node[orange, right=2pt] at (-0.04, -0.1) {\small $t \in (-1,1)$};
+
+            % Mappatura del punto t -> c_4(t)
+            \coordinate (T4) at (0, 0.4);
+            \coordinate (P4) at ({-sqrt(1 - 0.4^2)}, 0.4);
+            \fill[red] (T4) circle (1.5pt) node[right=2pt, text=black] {$t$};
+            \fill[red] (P4) circle (1.5pt) node[above left, text=red] {$c_4(t)$};
+            \draw[-, dashed, red, thick] (T4) -- (P4) node[midway, below] {$f(t)$};
+        \end{scope}
+        \end{tikzpicture}
+        \end{center}
+        Posto $\varphi_i = c_i^{-1}: U_i \to (-1,1)$ per $i=1,2,3,4$ e $\displaystyle \left\{\left(U_i, \varphi_i\right)\right\}_{i=1,2,3,4}$ è un
+        atlante differenziabile su $\mathcal{C}$ per la proposizione \ref{prop:funzione_di_transizione_curve} segue che per ogni 
+        $i,j \in \{1,2,3,4\}$ con $i \neq j$ tale che $U_i \cap U_j \neq \emptyset$
+        $\varphi_i \circ \varphi_j^{-1}= c_i^{-1} \circ c_j: \varphi_j(U_i \cap U_j) \to \varphi_i(U_i \cap U_j)$ è un diffeomorfismo.
+        \end{esempio}
+    \section{Riferimenti di Frenet}
+        \begin{definizione}
+        Sia $c: I \to \mathbb{R}^n$ una curva parametrizzata si dice \textcolor{red}{$n$-riferimento mobile lungo $c$} una famiglia di applicazioni
+        differenziabili \textcolor{red}{$e_i: I \to \mathbb{R}^n$} per $i=1,\dots,n$ tali che 
+        
+        $\forall t \in I \quad \forall i,j \in \{1,\dots,n\} \quad$ \textcolor{red}{$e_i(t) \cdot e_j(t) = \delta_{ij}$}
+        \textcolor{blu}{(ovvero $\forall t \in I \quad (e_i(t))_{i=1,\dots,n}$ è base ortonormale di $\mathbb{R}^n$)}
+        Identificando $\mathbb{R}^n \equiv T_{c(t)}\mathbb{R}^n \quad \left(e_i(t)\right)_{1 \leq i \leq n}$ può 
+        essere riguardata come una famiglia di campi vettoriali differenziabili lungo $c$ \textcolor{blu}{($e_i(t) \equiv (c(t), e_i(t)) \in T_{c(t)}\mathbb{R}^n$)}.
+        \begin{center}
+        \begin{tikzpicture}[scale=1.5]
+
+        % 1. Intervallo I
+        \draw[thick] (0, 0) -- (1.5, 0);
+        \draw[thick] (0, -0.15) -- (0, 0.15);
+        \draw[thick] (1.5, -0.15) -- (1.5, 0.15);
+        \node[below=4pt] at (0.75, 0) {\Large $I$};
+
+        % 2. Curva parametrizzata in R^2 (supporto)
+        \draw[very thick, teal] (-0.5, 1.2)
+            to[out=80, in=170] (1.2, 2)
+            to[out=-10, in=190] (3.5, 1.5)
+            to[out=10, in=200] (5.5, 2.5)
+            node[right, text=black] {\Large $\mathbb{R}^2$};
+
+        % 3. Mappa c dall'intervallo alla curva
+        \draw[->, thick, teal] (0.8, 0.3) to[bend left=35] node[midway, left] {\large $c$} (1, 1.6);
+
+        % 4. Primo punto c(t) e i suoi vettori ortonormali
+        \coordinate (P1) at (1.2, 2);
+        \fill[green!70!black] (P1) circle (1.5pt) node[below=3pt] {$c(t_1)$};
+        
+        % Vettore e1(t) (verso l'alto a sinistra)
+        \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (P1) -- ++(-0.4, 0.8) node[above left=-2pt] {$e_1(t_1)$};
+        % Vettore e2(t) (verso l'alto a destra)
+        \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (P1) -- ++(0.8, 0.4) node[above right=-2pt] {$e_2(t_1)$};
+
+        % 5. Secondo punto c(t') e i suoi vettori ortonormali
+        \coordinate (P2) at (3.5, 1.5);
+        \fill[green!70!black] (P2) circle (1.5pt) node[below=3pt] {$c(t_2)$};
+        
+        % Vettore e1(t_2) (verso l'alto)
+        \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (P2) -- ++(0.2, 0.8) node[above right=-2pt] {$e_1(t_2)$};
+        % Vettore e2(t_2) (verso destra)
+        \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (P2) -- ++(0.8, -0.2) node[below right=-2pt] {$e_2(t_2)$};
+
+        \end{tikzpicture}
+        \end{center}
+        \end{definizione}
