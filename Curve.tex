@@ -1001,3 +1001,42 @@
         \end{tikzpicture}
         \end{center}
         \end{definizione}
+        \begin{definizione}
+        Un $n$-riferimento mobile lungo $c$ $\left(e_i\right)_{1 \leq i \leq n}$ si dice \textcolor{red}{riferimento di Frenet}
+        se $\forall k \leq n-1 \quad \forall t \in I \quad c^{(k)}(t) \in \langle e_1(t), \dots, e_k(t)\rangle$ \textcolor{blu}{($c^{(k)}$ denota il vettore
+        derivato di $c$ $k$-volte)}
+        \end{definizione}
+        \begin{esempio}
+        $c_I \to \mathbb{R}^2$ $(e_1, e_2)$ riferimento mobile lungo $c$ 
+
+        $(e_1, e_2)$ è un riferimento di Frenet lungo $c \iff \forall t \in I \quad c'(t) \in \langle e_1(t) \rangle$
+        
+        \textcolor{violet}{In altre parole, il primo vettore del riferimento di Frenet è sempre tangente alla curva.}
+        \begin{center}
+        \begin{tikzpicture}[scale=1.5,
+            % Questo stile crea un "timbro" che disegna in automatico i vettori 
+            % e_1 (tangente) ed e_2 (normale) nei punti specificati della curva.
+            frenet/.style={
+                decoration={
+                    markings,
+                    mark=at position #1 with {
+                        % Il vettore rosso e_1 si allinea automaticamente alla tangente
+                        \draw[-{Stealth[length=3mm]}, very thick, red] (0,0) -- (1,0) node[below right, yshift=-2pt] {\large $e_1$};
+                        % Il vettore verde e_2 viene ruotato ortogonalmente
+                        \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (0,0) -- (0,-1.2) node[right] {\large $e_2$};
+                    }
+                },
+                postaction={decorate}
+            }
+        ]
+
+        % Disegno la curva e applico il timbro "frenet" al 20%, 55% e 88% della lunghezza
+        \draw[very thick, teal,
+                frenet=0.20,
+                frenet=0.55,
+                frenet=0.88]
+            (0, 2) to[out=30, in=160] (2.5, 1.8) to[out=-20, in=170] (5, 0.5) to[out=-10, in=200] (7.5, 1.5);
+
+        \end{tikzpicture}
+        \end{center}
+        \end{esempio}

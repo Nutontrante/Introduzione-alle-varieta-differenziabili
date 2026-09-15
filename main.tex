@@ -48,7 +48,15 @@
 
 \newcommand{\hlc}[2][yellow]{\sethlcolor{#1}\hl{#2}}
 
-\pretocmd{\section}{\clearpage}{}{}
+\newbool{primasezione}
+\pretocmd{\chapter}{\booltrue{primasezione}}{}{}
+\pretocmd{\section}{%
+  \ifbool{primasezione}{%
+    \boolfalse{primasezione}% se è la prima dopo il capitolo, non va a capo
+  }{%
+    \clearpage% per tutte le sezioni successive va a pagina nuova
+  }%
+}{}{}
 
 \newtheoremstyle{defstyle}
   {\topsep}   % Spazio sopra
