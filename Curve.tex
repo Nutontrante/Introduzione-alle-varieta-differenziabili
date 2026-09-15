@@ -1274,6 +1274,32 @@
         e_j^1(t) & \cdots & e_j^n(t)
         \end{vmatrix} \overset{\textcolor{violet}{\substack{\text{2 righe} \\ \text{uguali}}}}{=} 0
         \end{align*}
+        $e_n(t) = \left(x_1(t), \dots, x_n(t) \right) \quad e_n(t) \cdot e_n(t) = 1 \Rightarrow x_1^2(t) + \cdots + x_n^2(t) = 1$
+
+        $\displaystyle \Rightarrow \rho(t)^2 \left[ M_1^2(t) + \cdots + M_n^2(t) \right] = 1 \Rightarrow \rho(t) = \pm \dfrac{1}{\quad \sqrt{M_1^2(t) + \cdots + M_n^2(t)} \quad}$
+
+        Si sceglie il segno $+$ o il segno $-$ in modo tale che $\left(e_1(t), \, \dots, \, e_n(t) \right)$ sia concorde con la
+        base ortonormale di $\mathbb{R}^n$ infine per costruzione $e_n(t)$ è differenziabile.
+
+        Verifico l'unicità del riferimento canonico di Frenet siano $\left(e_i\right)_{1 \leq i \leq n}$ e $\left(\overline{e}_i\right)_{1 \leq i \leq n}$ due riferimenti di Frenet 
+        che soddisfano le condizioni \textcolor{black}{1.} e \textcolor{black}{2.}
+
+        Proviamo che $\forall i = 1, \dots, n \quad e_i = \overline{e}_i$
+
+        Per $i=1$ $\langle e_1(t) \rangle = \langle \overline{e}_1(t) \rangle = \langle \dot{c}(t) \rangle$ con $\left(e_1(t)\right)$ e $\left(\overline{e}_1(t)\right)$ basi ortonormali
+        concordemente orientate $\displaystyle \Rightarrow e_1(t) = \overline{e}_1(t) = \frac{\dot{c}(t)}{\|\dot{c}(t)\|}$
+
+        Per $1<j\leq n-1$ supponiamo \textcolor{orange}{$e_k(t) = \overline{e}_k(t) \quad \forall k = 1, \dots, j-1$} e proviamo che $e_j(t) = \overline{e}_j(t)$
+
+        $\left(e_1(t), \, \dots , \, e_j(t)\right) \quad \left(\overline{e}_1(t), \, \dots , \, \overline{e}_j(t)\right)$ sono basi ortonormali concordemente orientate dello stesso
+        sottospazio vettoriale \textcolor{violet}{ di dimensione $j$} la matrice di passaggio è 
+        \[ A = \begin{pmatrix}
+        1 & 0 & \cdots & 0 \\
+        0 & 1 & \cdots & 0 \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & \pm 1
+        \end{pmatrix} \]
+        Poiché le basi sono concordemente orientate, il determinante della matrice di passaggio deve essere $+1$, quindi l'ultimo elemento deve essere $+1$ e quindi $e_j(t) = \overline{e}_j(t)$.
         \end{proof}
         \begin{definizione}
         Una curva parametrizzata che soddisfa l'ipotesi \eqref{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet} si dice \textcolor{red}{
@@ -1282,9 +1308,43 @@
         \begin{osservazione}
         Fortemente regolare $\Rightarrow$ regolare
         \end{osservazione}
-        \begin{proof}
-        Poi ce la facciamo
+        \begin{proof}[Non dimostrato]
+        \mbox{}
+
+        \textcolor{violet}{Sia $c(t)$ una curva fortemente regolare $\iff \dot{c}(t)$ è lin. indip. $\iff c(t) \neq 0 \iff c(t)$ è regolare.}
         \end{proof}
         \begin{definizione}
         Il riferimento univocamente determinato dal teorema \ref{th:esistenza_e_unicita_del_riferimento_canonico_di_Frenet} si chiama \textcolor{red}{riferimento canonico di Frenet}.
         \end{definizione}
+        \newpage
+        \begin{esempio}[Riferimento canonico di Frenet per una curva di $\mathbb{R}^2$]
+        \mbox{}
+
+        Sia $c:I \to \mathbb{R}^2$ curva parametrizzata fortemente regolare, determiniamo il riferimento canonico di Frenet.
+
+        Il riferimento canonico di Frenet $(e_1(t), e_2(t))$ è dato da
+        \begin{enumerate}
+            \item $\displaystyle e_1(t) = \frac{\dot{c}(t)}{\|\dot{c}(t)\|}$
+            \item $e_2(t)$ versore tale che $(e_1(t), e_2(t))$ sia una base ortonormale di $\mathbb{R}^2$ concordemente orientata con la base canonica di $\mathbb{R}^2$
+        \end{enumerate}
+        In generale se $e_1(t)=\left(\alpha(t), \beta(t)\right) \Rightarrow e_2(t) = \left(-\beta(t), \alpha(t)\right)$ infatti
+        \[ \norm{e_2(t)} = \sqrt{(-\beta(t))^2 + (\alpha(t))^2} = \sqrt{\beta(t)^2 + \alpha(t)^2} = \norm{e_1(t)} =1 \]
+        \[ e_2(t) \cdot e_1(t) = (-\beta(t), \alpha(t)) \cdot (\alpha(t), \beta(t)) = -\beta(t)\alpha(t) + \alpha(t)\beta(t) = 0 \]
+        La matrice di passaggio dalla base canonica di $\mathbb{R}^2$ alla base $(e_1(t), e_2(t))$ è
+        \[ A(t) = \begin{pmatrix}
+        \alpha(t) & -\beta(t) \\
+        \beta(t) & \alpha(t)
+        \end{pmatrix} \in O(2) \]
+        Inoltre, poiché $\det(A(t)) = \alpha(t)\alpha(t) - (-\beta(t))\beta(t) = \alpha(t)^2 + \beta(t)^2 = 1 > 0 \Rightarrow A(t) \in SO(2)$
+        \end{esempio}
+        \begin{esempio}
+        Sia $c: \mathbb{R} \to \mathbb{R}^2 \quad c(t) = (a \cos t, a \sin t) \quad a>0$ $c$ è la parametrizzazione della circonferenza di raggio $a$ centrata nell'origine.
+
+        $\dot{c}(t) = (-a \sin t, a \cos t) \quad \norm{\dot{c}(t)} = \sqrt{(-a \sin t)^2 + (a \cos t)^2}  = a$
+
+        $\displaystyle e_1(t) = \frac{\dot{c}(t)}{\|\dot{c}(t)\|} = \frac{1}{a}(-a \sin t, a \cos t) = (-\sin t, \cos t)$
+
+        $e_2(t)= (\,-\cos t, -\sin t\,)$
+
+        Considero $\phi : \mathbb{R} \to \mathbb{R} \quad s \mapsto -s$
+        \end{esempio}
