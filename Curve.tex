@@ -434,6 +434,7 @@
         \[ L \left(c_{\restriction{[a,t_0]}}\right) = \int_a^{a+t_0} \norm{\dot{c}(t)} \, dt = a+t_0 - a = t_0 \]
         \end{osservazione}
         \begin{proposizione}
+        \label{prop:esistenza_riparametrizzazione_lunghezza_arco}
         Ogni curva parametrizzata regolare ammette una riparametrizzazione per lunghezza d'arco \textcolor{blu}{(equivalente)}
         \end{proposizione}
         \begin{proof}
@@ -444,7 +445,8 @@
 
         $\psi: I \to \psi(I)=J$ è bigettiva e $\phi= \psi^{-1}:J \to I$ è diffeomorfismo
 
-        $\displaystyle \forall s \in J \quad \phi'(s) = \frac{1}{\psi'(\phi(s))} = \frac{1}{\norm{\dot{\alpha}(\phi(s))}}>0$
+        $\displaystyle \forall s \in J \quad \phi'(s) \overset{\textcolor{violet}{\substack{\text{derivazione} \\ \text{funzione} \\ \text{inversa}}}}{=} 
+        \frac{1}{\psi'(\phi(s))} = \frac{1}{\norm{\dot{\alpha}(\phi(s))}}>0$
 
         Sia \textcolor{red}{$\beta = \alpha \circ \phi:J \to \mathbb{R}^n$} verifico che $\beta$ è parametrizzata per lunghezza d'arco
         \begin{align*}
@@ -535,6 +537,8 @@
 
         Il supporto di $c_3$ coincide con il supporto di $c_1$ tuttavia $c_3$ non è una parametrizzazione regolare
         $\dot{c_3}(t)=\left(3t^2,3t^2\right)$ che si annulla in $t=0$
+
+        \textcolor{violet}{Questo con $c_1$ mostra che due curve possono avere lo stesso supporto ma una può avere una parametrizzazione regolare mentre l'altra no}
         \end{esempio}
         \newpage
         \begin{esempio}
@@ -565,7 +569,7 @@
         \draw[-{Stealth[length=3mm]}, very thick, red] (1, -1) -- ++(-1, 1.5) node[left] {$\dot{c}_4(-1) = (-2,3)$};
 
         % 4. Evidenzio l'origine dove si perde la regolarità
-        \fill[black] (0,0) circle (1.5pt) node[below left, yshift=-2pt] {$t=0$ (non regolare, $\dot{c}_4=0$)};
+        \fill[black] (0,0) circle (1.5pt) node[below left, yshift=-2pt] {$t=0$ (non regolare)};
 
         \end{tikzpicture}
         \end{center}
@@ -582,7 +586,8 @@
         
         $\dot{c}(t) = (1, f'(t)) \neq (0,0) \quad \norm{\dot{c}(t)} = \sqrt{1 + (f'(t))^2}=1$
 
-        $c$ è parametrizzata per lunghezza d'arco $\iff f'(t)=0 \quad \forall t \in I \iff f$ costante
+        $c$ è parametrizzata per lunghezza d'arco \textcolor{violet}{$\iff \norm{\dot{c}(t)}=1$} $\iff f'(t)=0 \quad \forall t \in I \iff f$ costante
+        \textcolor{violet}{Quindi questo tipo di parametrizzazione non è mai per lunghezza d'arco se $f$ non è costante}
 
         $\ddot{c}(t) = (0, f''(t))$ 
 
@@ -632,8 +637,10 @@
         \end{esempio}
         \newpage
         \begin{esempio}
-        $\alpha: [0,2\pi] \to \mathbb{R}^2 \quad \alpha(t) = (\cos t, \sin t)$
-        $\beta: [0,2\pi] \to \mathbb{R}^2 \quad \beta(t) = (\cos (2t), \sin (2t))$
+        \textcolor{violet}{è possibile che $2$ curve che abbiano lo stesso supporto e che siano regolari non siano equivalenti?
+        non sempre ci vorranno condizioni aggiuntive ecco un controesempio}
+
+        $\alpha: [0,2\pi] \to \mathbb{R}^2 \quad \alpha(t) = (\cos t, \sin t) \quad \beta: [0,2\pi] \to \mathbb{R}^2 \quad \beta(t) = (\cos (2t), \sin (2t))$
 
         $\dot{\alpha}(t) = (-\sin t, \cos t) \quad \norm{\dot{\alpha}(t)} = 1$
 
@@ -644,8 +651,11 @@
         \[ L(\beta) = \int_0^{2\pi} \norm{\dot{\beta}(t)} \, dt = \int_0^{2\pi} 2 \, dt = 4\pi \]
         $\overset{\textcolor{black}{ \text{prop. } \ref{prop:lunghezza_arco_di_curva_invariante}}}{\Rightarrow} \alpha$ e $\beta$ non sono equivalenti \textcolor{blu}{(se lo fossero gli archi di curva considerati avrebbero la stessa lunghezza)}
         \end{esempio}
+        \newpage
         \begin{esempio}
-        $c: \mathbb{R} \to \mathbb{R}^3 \quad c(t)=(a \cos t, a \sin t, bt) \quad a,b \in \mathbb{R}^3 \quad \dot{c}(t) = (-a \sin t, a \cos t, b)$ 
+        $c: \mathbb{R} \to \mathbb{R}^3 \quad c(t)=(a \cos t, a \sin t, bt) \quad a,b \in \mathbb{R} \quad a,b \geq 0$ 
+        
+        $\dot{c}(t) = (-a \sin t, a \cos t, b)$ 
 
         $\norm{\dot{c}(t)} = \sqrt{a^2 \sin^2 t + a^2 \cos^2 t + b^2} = \sqrt{a^2 + b^2} = 0 \iff (a,b) = (0,0)$
         \begin{enumerate}
@@ -672,7 +682,7 @@
                 z = 0
             \end{cases*} \]
             \begin{center}
-            \begin{tikzpicture}[scale=1.5]
+            \begin{tikzpicture}[scale=1.2]
 
             % 1. Assi (finta prospettiva 3D)
             \draw[->, thick, black] (0,0) -- (-1.5, -1.5) node[right, font=\large] {$x$};
@@ -745,7 +755,9 @@
             Verifichiamo che l'angolo $\theta(t)$ che $\dot{c}(t)$ forma con l'asse $z$ è costante
             $\dot{c}(t) = (-a \sin t, a \cos t, b)$ $\displaystyle \cos \theta(t) = \frac{\dot{c}(t) \cdot e_3}{\norm{\dot{c}(t)} \cdot \norm{e_3}} = \frac{b}{\sqrt{a^2 + b^2}}$
 
-            Cerchiamo una parametrizzazione della curva per lunghezza d'arco, consideriamo $\psi: \mathbb{R} \to \mathbb{R}$ definita da 
+            Cerchiamo una parametrizzazione della curva per lunghezza d'arco \textcolor{violet}{(come nella dimostrazione della proposizione \ref{prop:esistenza_riparametrizzazione_lunghezza_arco})} 
+            
+            consideriamo $\psi: \mathbb{R} \to \mathbb{R}$ definita da 
             $\displaystyle \psi(t) = \int_0^t \norm{\dot{c}(r)} \, dr = \int_0^t \sqrt{a^2 + b^2} \, dr = t \sqrt{a^2 + b^2}$
 
             $\displaystyle \phi := \psi^{-1} : \mathbb{R} \to \mathbb{R} \quad \phi(s) = \frac{s}{\sqrt{a^2 + b^2}}$.
@@ -753,7 +765,7 @@
             $\beta = c \circ \phi : \mathbb{R} \to \mathbb{R}^3$
             $\displaystyle \beta(s) = c(\phi(s)) = \left( a \cos\left(\frac{s}{\sqrt{a^2 + b^2}}\right), a\sin\left(\frac{s}{\sqrt{a^2 + b^2}}\right), b \frac{s}{\sqrt{a^2 + b^2}} \right)$
 
-            $\norm{\dot{\beta}(s)} = 1$
+            $\displaystyle \norm{\dot{\beta}(s)} = \textcolor{violet}{ \norm{\dot{c}(\phi(s)) \cdot \phi'(s)} = \norm{\dot{c}(\phi(s))} \cdot \abs{\phi'(s)} = \frac{\sqrt{a^2 + b^2}}{\sqrt{a^2 + b^2}}} = 1$
         \end{enumerate}
         \end{esempio}
     \section{Curve differenziabili}
