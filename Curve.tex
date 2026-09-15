@@ -773,17 +773,19 @@
         Sia $\mathcal{C} \subseteq \mathbb{R}^n$ e si consideri su $\mathcal{C}$ la topologia indotta dalla topologia euclidea
         \textcolor{blu}{($U_{\mathcal{C}} \subseteq \mathcal{C}$ è aperto $\iff U_{\mathcal{C}} = U \cap \mathcal{C}$ con $U \subseteq \mathbb{R}^n$ aperto)}
         
-        Si dice che $\mathcal{C}$ è una \textcolor{red}{curva differenziabile} se $\forall p \in \mathcal{C}$ esiste \textcolor{red}{$\alpha : I_{\alpha} \to U_{\alpha} \subset \mathcal{C} \subset \mathbb{R}^n$ 
-        omeomorfismo} tra $I_{\alpha}$ intervallo aperto di $\mathbb{R}$ e $U_{\alpha}$ aperto di $\mathcal{C}$ tale che $p \in U_{\alpha}$
-
+        Si dice che \textcolor{red}{$\mathcal{C}$} è una \textcolor{red}{curva differenziabile} se \textcolor{red}{$\forall p \in \mathcal{C}$ esiste $\alpha : I_{\alpha} \to U_{\alpha} \subset \mathcal{C} \subset \mathbb{R}^n$ 
+        omeomorfismo} tra $I_{\alpha}$ intervallo aperto di $\mathbb{R}$ e $U_{\alpha}$ aperto di $\mathcal{C}$ tale che $p \in U_{\alpha}$ questa
         $\alpha$ è una curva parametrizzata regolare e $\alpha$ è detta \textcolor{red}{parametrizzazione locale} della curva.
 
         Si osservi che il supporto della parametrizzazione $\alpha$ è $\alpha(I_{\alpha})=U_{\alpha}$
 
-        Posto $\varphi_{\alpha} := \alpha^{-1} : U_{\alpha} \subset \mathcal{C} \to I_{\alpha} \subset \mathbb{R}$ la coppia 
+        Posto \textcolor{red}{$\varphi_{\alpha} := \alpha^{-1}$} $: U_{\alpha} \subset \mathcal{C} \to I_{\alpha} \subset \mathbb{R}$ la coppia 
         \textcolor{red}{$\left(U_{\alpha}, \varphi_{\alpha}\right)$} è detta \textcolor{red}{carta locale} nel punto $p$ dalla definizione segue che una curva differenziabile 
         ammette una famiglia di carte locali \textcolor{red}{$\{(U_{\alpha}, \varphi_{\alpha})\}_{\alpha \in A}$} tale che $\displaystyle \mathcal{C}=\bigcup_{\alpha \in A} U_{\alpha}$
         tale famiglia è detta \textcolor{red}{atlante differenziabile} 
+
+        \textcolor{violet}{Si può osservare che $\mathcal{C}$ è uno spazio topologico localmente euclideo perché ogni punto $p \in \mathcal{C}$ ammette
+        un intorno aperto $U_{\alpha}$ omeomorfo a un intervallo aperto di $\mathbb{R} \Rightarrow \dim \mathcal{C}=1$}
         \begin{center}
         \begin{tikzpicture}[scale=1.2]
 
@@ -850,7 +852,7 @@
         \begin{proof}
         Sia $t_0 \in \alpha^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\alpha$
         
-        Verifichiamo che $\beta^{-1} \circ \alpha$ è differenziabile in un introno di $t_0$
+        Verifichiamo che $\beta^{-1} \circ \alpha$ è differenziabile in un intorno di $t_0$
 
         Posto $p = \alpha(t_0) \in U_{\alpha} \cap U_{\beta}$ sia $s_0 = \beta^{-1}(p) \in \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\beta$
         $\Rightarrow \alpha(t_0)= \beta(s_0)=p$
