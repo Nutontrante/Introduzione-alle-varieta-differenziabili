@@ -162,25 +162,24 @@
         $\forall p \in A \quad \uppi^{-1}(p) = T_p \mathbb{R}^n$ è detta \textcolor{red}{fibra in $p$}
         \end{definizione}
     \section{Curve parametrizzate in \texorpdfstring{$\mathbb{R}^n$}{R\textasciicircum n}}
-        % Qui puoi iniziare a usare i tuoi bellissimi ambienti colorati!
         \begin{definizione}
         Sia $I \subseteq \mathbb{R}$ un intervallo aperto si definisce \textcolor{red}{curva parametrizzata di $\mathbb{R}^n$} 
-        ogni applicazione $c: I \to \mathbb{R}^n$ $C^{\infty}$ differenziabile, \textcolor{red}{$t$} si dice \textcolor{red}{parametro} della curva.
+        ogni applicazione $c: I \to \mathbb{R}^n$ che sia $C^{\infty}$ differenziabile, \textcolor{red}{$t$} si dice \textcolor{red}{parametro} della curva.
 
         L'insieme \textcolor{red}{$\left\{c(t) \mid t \in I \right\}$} è detto \textcolor{red}{supporto della curva} e sarà denotato con \textcolor{red}{$\supp(c)$}
 
         Poniamo $\forall t \in I \quad c(t)= (c^1(t),\ldots,c^n(t))$ con $c^i= p^i \circ c: I \to \mathbb{R}$ per $i=1,\ldots,n$ \textcolor{blu}{(funzioni componenti di $c$)}
         
-        $\dot{c}(t)= (\dot{c^1}(t),\ldots,\dot{c^n}(t))$
+        $\dot{c}(t)= (\dot{c}^1(t),\ldots,\dot{c}^n(t))$
 
         Per $t_0 \in I$ si può considerare l'applicazione lineare $\left(dc\right)_{t_0}: \mathbb{R} \to \mathbb{R}^n$ 
-        \[ \left(dc\right)_{t_0} \textcolor{blu}{\underbrace{\textcolor{black}{(1)}}_{\substack{\text{base} \\ \text{canonica} \\ \text{di } \mathbb{R}}}} = \left(\dot{c^1}(t_0), \ldots, \dot{c^n}(t_0) \right) = \dot{c}(t_0) \] 
-        Si definisce inoltre 
+        \[ \left(dc\right)_{t_0} \textcolor{blu}{\underbrace{\textcolor{black}{(1)}}_{\substack{\text{base} \\ \text{canonica} \\ \text{di } \mathbb{R}}}} \overset{\textcolor{violet}{\substack{\text{unica} \\ \text{colonna} \\ \text{matrice} \\ \text{Jacobiana}}}}{=} \left(\dot{c}^1(t_0), \ldots, \dot{c}^n(t_0) \right) = \dot{c}(t_0) \] 
+        Si definisce inoltre \textcolor{violet}{(per abuso di notazione continuo a denotare come differenziale)}
         \[ \left(dc\right)_{t_0}: T_{t_0} \mathbb{R} \to T_{c(t_0)} \mathbb{R}^n \quad \left(t_0,t\right) \mapsto \left(c(t_0), (dc)_{t_0} (t) \right) \]
         $\left\{(t_0,1)\right\}$ è base di $T_{t_0} \mathbb{R}$ 
 
         Si definisce \textcolor{red}{vettore tangente in $t_0$ a $c$} il vettore
-        \[ \textcolor{red}{\left(dc\right)_{t_0} (t_0,1) = \left( c(t_0), (dc)_{t_0}(1) \right) = \left(c(t_0), \dot{c}(t_0) \right)} \]
+        \[ \textcolor{red}{\left(dc\right)_{t_0} (t_0,1) = \left( c(t_0), (dc)_{t_0}(1) \right) = \left(c(t_0), \dot{c}(t_0) \right)} \, \textcolor{violet}{\equiv \dot{c}(t_0)} \]
         Il vettore tangente in $t_0$ a $c$ può essere denotato con $\dot{c}(t_0)$ \textcolor{violet}{(abuso di notazione)} omettendo il punto di applicazione $c(t_0)$  
         \end{definizione}
         \begin{definizione}
@@ -191,19 +190,114 @@
         Sia $c: I \to \mathbb{R}^n$ una curva parametrizzata regolare, si definisce \textcolor{red}{campo di vettori lungo $c$} \textcolor{blu}{(o campo vettoriale lungo $c$)}
         ogni applicazione 
         
-        \textcolor{red}{$\hat{X}: I \to T \mathbb{R}^n$} tale che $\forall t \in I \quad \hat{X}(t) \in T_{c(t)} \mathbb{R}^n$ cioè $\hat{X}(t) = \left(c(t), \textcolor{blu}{\underbrace{\textcolor{black}{X(t)}}_{\in \mathbb{R}^n}}\right)$ 
+        \textcolor{red}{$\hat{X}: I \to T \mathbb{R}^n$ tale che $\forall t \in I \quad \hat{X}(t) \in T_{c(t)} \mathbb{R}^n$} cioè $\hat{X}(t) = \left(c(t), \textcolor{blu}{\underbrace{\textcolor{black}{X(t)}}_{\in \mathbb{R}^n}}\right)$ 
 
         Resta quindi definita una applicazione $X: I \to \mathbb{R}^n$ e se $X$ è differenziabile si dice che $\hat{X}$ è un \textcolor{red}{campo vettoriale differenziabile lungo $c$} 
+        \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+
+        % 1. Intervallo I e Mappa c
+        \draw[thick] (-3, 0) -- (-1, 0) node[midway, below] {\Large $I$};
+        \draw[->, thick, darkgray] (-2, 0.3) to[bend left=25] node[midway, below, text=red, yshift=-2pt] {\Large $c$} (-0.2, 1.4);
+
+        % 2. Curva principale con "ancore" posizionate matematicamente
+        % TikZ calcola da solo le coordinate P1, P2, P3, P4 esattamente sulla linea
+        \draw[very thick, teal] (0, 1.5) .. controls (1.5, 2.5) and (3, 0) .. (5, 0.5)
+            coordinate[pos=0.25] (P1)
+            coordinate[pos=0.50] (P2)
+            coordinate[pos=0.75] (P3)
+            coordinate[pos=0.95] (P4);
+
+        % 3. Campo vettoriale X(t) (vettori variabili)
+        % Punto 1: c(t)
+        \fill[red] (P1) circle (1.5pt) node[below left, text=red] {\large $c(t)$};
+        \draw[-{Stealth[length=3mm]}, very thick, red] (P1) -- ++(1.5, 0.5) node[above, text=red] {\large $X(t)$};
+
+        % Punto 2
+        \draw[-{Stealth[length=3mm]}, very thick, red] (P2) -- ++(1.2, 0.1);
+
+        % Punto 3
+        \draw[-{Stealth[length=3mm]}, very thick, red] (P3) -- ++(1.0, 0.8);
+
+        % Punto 4
+        \draw[-{Stealth[length=3mm]}, very thick, red] (P4) -- ++(0.3, 1.2);
+
+        \end{tikzpicture}
+        \end{center}
+        Il campo vettoriale può essere anche costante
+        \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+
+        % 1. Stessa curva principale con le stesse ancore matematiche
+        \draw[very thick, teal] (0, 1.5) .. controls (1.5, 2.5) and (3, 0) .. (5, 0.5)
+            coordinate[pos=0.25] (P1)
+            coordinate[pos=0.50] (P2)
+            coordinate[pos=0.75] (P3)
+            coordinate[pos=0.95] (P4);
+
+        % 2. Campo vettoriale COSTANTE
+        \def\vx{0.9}
+        \def\vy{0.5}
+
+        % Punto 1: c(t)
+        \fill[red] (P1) circle (1.5pt) node[below left, text=red] {\large $c(t)$};
+        \draw[-{Stealth[length=3mm]}, very thick, red] (P1) -- ++(\vx, \vy) node[above, text=red, xshift=10pt] {\large $X(t) \equiv v_0$};
+
+        % Altri punti (frecce identiche per definizione di campo costante)
+        \draw[-{Stealth[length=3mm]}, very thick, red] (P2) -- ++(\vx, \vy);
+        \draw[-{Stealth[length=3mm]}, very thick, red] (P3) -- ++(\vx, \vy);
+        \draw[-{Stealth[length=3mm]}, very thick, red] (P4) -- ++(\vx, \vy);
+
+        \end{tikzpicture}
+        \end{center}
         \end{definizione}
         \begin{osservazione}
         Sia $c: I \to \mathbb{R}^n$ una curva parametrizzata regolare consideriamo $\hat{c} : I \to T \mathbb{R}^n$ tale che $\forall t \in I \quad \hat{c}(t) = \left(c(t), \dot{c}(t)\right) \in T_{c(t)} \mathbb{R}^n$
         
-        \textcolor{red}{$\hat{c}$} è campo vettoriale lungo $c$ detto \textcolor{red}{campo vettoriale tangente} 
-        \end{osservazione}
-        \begin{definizione}
-        Siano $\alpha: I \to \mathbb{R}^n$ e $\beta: J \to \mathbb{R}^n$ curve parametrizzate regolari 
+        \textcolor{red}{$\hat{c}$} è campo vettoriale differenziabile lungo $c$ detto \textcolor{red}{campo vettoriale tangente} 
+        \begin{center}
+        \begin{tikzpicture}[scale=1.2,
+            % Definisco lo stile "tangente" che automatizza il disegno
+            tangente/.style={
+                decoration={
+                    markings,
+                    mark=at position #1 with {
+                        % Il puntino rosso sulla curva
+                        \fill[red] (0,0) circle (1.5pt);
+                        % Il vettore derivato \dot{c}(t) che giace sull'asse x locale (tangente)
+                        \draw[-{Stealth[length=3mm]}, very thick, red] (0,0) -- (1.5,0) 
+                            node[above left, text=red, yshift=8pt] {\large $\dot{c}(t)$};
+                    }
+                },
+                postaction={decorate}
+            }
+        ]
 
-        Si dice che $\alpha$ e $\beta$ sono \textcolor{red}{equivalenti} \textcolor{blu}{(a meno di parametrizzazioni)} 
+        % 1. Intervallo I e Mappa c
+        \draw[thick] (-3, 0) -- (-1, 0) node[midway, below] {\Large $I$};
+        \draw[->, thick, darkgray] (-2, 0.3) to[bend left=20] 
+            node[midway, below, text=teal, yshift=-2pt] {\Large $c$} (-0.2, 1.4);
+
+        % 2. Curva principale con i vettori tangenti applicati automaticamente
+        \draw[very thick, teal,
+                tangente=0.25,
+                tangente=0.55,
+                tangente=0.85]
+            (0, 1.5) .. controls (1.5, 2.5) and (3, 0) .. (5, 0.5)
+            % Aggiungo un'ancora al primo punto per etichettare la base
+            coordinate[pos=0.25] (P1);
+
+        % 3. Etichetta per il punto base c(t) (messa solo sul primo per non appesantire il disegno)
+        \node[below left, text=red, yshift=2pt] at (P1) {\large $c(t)$};
+
+        \end{tikzpicture}
+        \end{center}
+        \end{osservazione}
+        \newpage
+        \begin{definizione}
+        Siano $\alpha: I \to \mathbb{R}^n$ e $\beta: J \to \mathbb{R}^n$ curve parametrizzate regolari con $I,J \subset \mathbb{R}$ intervalli aperti
+
+        Si dice che \textcolor{red}{$\alpha$} e \textcolor{red}{$\beta$} sono \textcolor{red}{equivalenti} \textcolor{blu}{(a meno di parametrizzazioni)} 
         se esiste $\phi: I \to J$ diffeomorfismo \textcolor{blu}{(applicazione differenziabile bigettiva con inversa differenziabile)} tale che \textcolor{red}{$\beta = \alpha \circ \phi$}
         \begin{equation*}
         \begin{tikzcd}[row sep=large, column sep=large]
@@ -259,7 +353,7 @@
 
         % 4. Definisco il punto immagine sulla curva \beta(s) = \alpha(\phi(s))
         \coordinate (P) at (1.8, 3.4); 
-        \fill[red] (P) circle (1.5pt) node[below left, text=red, yshift=-3pt, xshift=-12pt] {$\beta(s) = \alpha(\phi(s))$};
+        \fill[red] (P) circle (1.5pt) node[below left, text=teal, yshift=-3pt, xshift=-12pt] {$\beta(s) = \alpha(\phi(s))$};
 
         % 5. Frecce delle mappe \phi, \beta, \alpha
         % Mappa \phi (in basso)
@@ -273,7 +367,7 @@
         % Vettore \dot{\alpha} (verde, verso destra)
         \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (P) -- ++(1.5, -0.4) node[above, yshift=2pt] {$\dot{\alpha}(\phi(s))$};
         % Vettore \dot{\beta} (rosso, verso sinistra, discorde perché \phi' < 0)
-        \draw[-{Stealth[length=3mm]}, very thick, red] (P) -- ++(-1.1, 0.3) node[above right, xshift=5pt] {$\dot{\beta}(s) = \phi'(s)\dot{\alpha}(\phi(s))$};
+        \draw[-{Stealth[length=3mm]}, very thick, red] (P) -- ++(-1.1, 0.3) node[above right, xshift=5pt] {$\dot{\beta}(s) \textcolor{black}{=} \textcolor{orange}{\phi'(s)} \textcolor{green!70!black}{\dot{\alpha}(\phi(s))}$};
 
         % 7. Testo esplicativo arancione in alto a destra
         \node[text=orange, align=left] at (5, 4.5) {se $\phi'(s) < 0$ \\ sono discordi};
@@ -295,7 +389,10 @@
         Scriveremo \textcolor{red}{$\alpha \sim_0 \beta$} e anche questa è una relazione di equivalenza.
         
         Ogni classe di equivalenza \textcolor{red}{$\left[\alpha\right]_{\sim_0}$} è detta \textcolor{red}{curva non parametrizzata orientata}
+
+        \textcolor{violet}{Vedremo delle proprietà invarianti per cambiamento di parametro}
         \end{definizione}
+        \newpage
         \begin{definizione}
         Sia $c: I \to \mathbb{R}^n$ curva parametrizzata regolare, sia $[a,b] \subset I$ e si definisce \textcolor{red}{lunghezza dell'arco di curva $c_{\restriction{[a,b]}}$}
         \begin{equation}
@@ -334,16 +431,16 @@
         \end{definizione}
         \begin{osservazione}
         Se $c$ è una curva parametrizzata per lunghezza d'arco $t_0 >0$
-        \[ L \left(c_{\restriction{[a,t_0]}}\right) = \int_a^{a+t_0} \norm{\dot{c}(t)} \, dt = t_0 \]
+        \[ L \left(c_{\restriction{[a,t_0]}}\right) = \int_a^{a+t_0} \norm{\dot{c}(t)} \, dt = a+t_0 - a = t_0 \]
         \end{osservazione}
         \begin{proposizione}
-        Ogni curva parametrizzata regolare ammette una riparametrizzazione per lunghezza d'arco
+        Ogni curva parametrizzata regolare ammette una riparametrizzazione per lunghezza d'arco \textcolor{blu}{(equivalente)}
         \end{proposizione}
         \begin{proof}
         Sia $\alpha : I \to \mathbb{R}^n$ curva regolare sia $t_0 \in I$
 
         Sia \textcolor{red}{$\displaystyle \psi:I \to R \quad \psi(t)=\int_{t_0}^t \norm{\dot{\alpha}(s)} \, ds$} $\psi$ è continua e derivabile
-        $\psi'(t) = \norm{\dot{\alpha}(t)}>0 \Rightarrow \psi$ è strettamente crescente $\Rightarrow \psi$ è ingettiva
+        $\psi'(t) = \norm{\dot{\alpha}(t)} \overset{\textcolor{orange}{\text{regolarità}}}{>} 0 \Rightarrow \psi$ è strettamente crescente $\Rightarrow \psi$ è ingettiva
 
         $\psi: I \to \psi(I)=J$ è bigettiva e $\phi= \psi^{-1}:J \to I$ è diffeomorfismo
 
@@ -355,6 +452,7 @@
         =& \phi'(s) \, \norm{\dot{\alpha} (\phi(s))} = \frac{1}{\norm{\dot{\alpha}(\phi(s))}} \, \norm{\dot{\alpha} (\phi(s))} = 1
         \end{align*}
         \end{proof}
+        \newpage
         \begin{esempio}
         Siano $v, v_0 \in \mathbb{R}^n$ e $c: \mathbb{R} \to \mathbb{R}^n \quad \forall t \in \mathbb{R} \quad c(t) = v_0 + t v$
         
@@ -404,6 +502,7 @@
 
         $\dot{c_1}(t)=\left(1,1\right) \neq 0 \Rightarrow c_1 \text{ è regolare}$
         \end{esempio}
+        \newpage
         \begin{esempio}
         $c_2: \mathbb{R} \to \mathbb{R}^2 \quad c_2(t) =(t, \left|t\right|)$
         \begin{center}
