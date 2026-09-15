@@ -1241,6 +1241,39 @@
         Si osservi che per costruzione i campi vettoriali $e_1(t), \dots, e_{n-1}(t)$ sono differenziabili \textcolor{violet}{(perchè sono ottenuti da combinazioni lineari differenziabili dei vettori $c^{(1)}(t), \dots, c^{(n-1)}(t)$)}
 
         Devo costruire $e_n(t)=(x_1(t), \dots, x_n(t))$ 
+
+        $\forall j \in \{1, \dots, n-1\} \quad e_j(t) = \left(e_j^1(t), \, \dots, \, e_j^n(t) \right)$
+
+        $\forall j \in \{1, \dots, n-1\} \quad e_j(t) \cdot e_n(t) = 0 \Rightarrow e_j^1(t) x_1(t) + \cdots + e_j^n(t) x_n(t) = 0$
+
+        $(x_1(t), \dots, x_n(t))$ è soluzione del sistema lineare omogeneo di $n-1$ equazioni in $n$ incognite
+        \[ C(t)X(t)= 0 \]
+        \[ C(t) = 
+        \begin{pmatrix}
+        e_1^1(t) & \cdots & e_1^n(t) \\
+        \vdots & \ddots & \vdots \\
+        e_{n-1}^1(t) & \cdots & e_{n-1}^n(t)
+        \end{pmatrix}
+        \]
+        $\rg(C(t)) = n-1$ poichè i vettori $e_1(t), \dots, e_{n-1}(t)$ sono linearmente indipendenti le $\infty^1$ soluzioni tutte 
+        proporzionali alla $n$-upla dei minori di ordine $n-1$ della matrice $C(t)$ presi a segni alterni ovvero
+        \[ \left(x_1(t), \, \dots, \, x_n(t) \right) = \rho \left( M_1(t), \, -M_2(t), \, \dots, \, (-1)^{n-1} M_n(t) \right) \quad \textcolor{violet}{\rho \in \mathbb{R}} \]
+        \textcolor{violet}{dove $M_i(t)$ è il minore di ordine $n-1$ della matrice $C(t)$ ottenuto eliminando la $i$-esima colonna.}
+        \begin{align*}
+        \rho \left[ e_j^1(t) M_1 - e_j^2(t) M_2 + \cdots + (-1)^{n-1} e_j^n(t) M_n \right] 
+        &= \rho \begin{vmatrix}
+        e_1^1(t) & \cdots & e_1^n(t) \\
+        \vdots & \ddots & \vdots \\
+        e_{n-1}^1(t) & \cdots & e_{n-1}^n(t) \\
+        e_j^1(t) & \cdots & e_j^n(t)
+        \end{vmatrix} \\[1ex]
+        &= \rho \begin{vmatrix}
+        &  &  \\
+        & C(t) &  \\
+        &  &  \\
+        e_j^1(t) & \cdots & e_j^n(t)
+        \end{vmatrix} \overset{\textcolor{violet}{\substack{\text{2 righe} \\ \text{uguali}}}}{=} 0
+        \end{align*}
         \end{proof}
         \begin{definizione}
         Una curva parametrizzata che soddisfa l'ipotesi \eqref{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet} si dice \textcolor{red}{
