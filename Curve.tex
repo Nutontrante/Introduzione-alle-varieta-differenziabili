@@ -1184,6 +1184,7 @@
         \end{esempio}
         \newpage
         \begin{teorema} [esistenza e unicità del riferimento canonico di Frenet]
+        \label{th:esistenza_e_unicita_del_riferimento_canonico_di_Frenet}
         Sia $c: I \to \mathbb{R}^n$ una curva parametrizzata tale che 
         \begin{equation}
         \label{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet}
@@ -1198,7 +1199,48 @@
         \end{enumerate}
         \end{teorema}
         \begin{proof}
+        Per costruire i campi vettoriali $e_1(t), \dots, e_{n-1}(t)$ si procede mediante ortogonalizzazione di Gram-Schmidt ai vettori  $\dot{c}(t), \ddot{c}(t), \dots, c^{(n-1)}(t)$.
         
+        Poniamo \textcolor{red}{$\displaystyle e_1(t) = \frac{\dot{c}(t)}{\|\dot{c}(t)\|}$}
+
+        Fisso $1 \leq j \leq n-1$ e suppongo di aver costruito i vettori $e_1(t), \dots, e_{j-1}(t)$ tali che 
+        
+        $\langle \dot{c}(t), \dots, c^{(j-1)}(t) \rangle = \langle e_1(t), \dots, e_{j-1}(t) \rangle$ con basi concordemente orientate.
+        
+        Devo costruire $e_j(t)$
+
+        Pongo $\displaystyle \tilde{e}_j(t) = c^{(j)}(t) - \sum_{r=1}^{j-1} \langle c^{(r)}(t), e_r(t) \rangle e_r(t)$
+        
+        Osservo che $\tilde{e}_j(t) \neq 0$ perché se \textcolor{red}{per assurdo} fosse $\tilde{e}_j(t) = 0$ allora $\displaystyle c^{(j)}(t)= \sum_{r=1}^{j-1} \langle c^{(r)}(t), e_r(t) \rangle e_r(t)$
+        $\Rightarrow c^{(j)}(t) \in \langle e_1(t), \dots, e_{j-1}(t) \rangle=\langle \dot{c}(t), \dots, c^{(j-1)}(t) \rangle$ contro l'ipotesi \eqref{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet}.\label{eq:ip} 
+        
+        Quindi posso definire $\displaystyle e_j(t) = \frac{\tilde{e}_j(t)}{\|\tilde{e}_j(t)\|}$
+
+        Per costruzione $\forall r,s \in \{1, \dots, j\} \quad  e_r(t) \cdot e_s(t) = \delta_{rs}$ e 
+        $\langle \dot{c}(t), \dots, c^{(j)}(t) \rangle = \langle e_1(t), \dots, e_j(t) \rangle$ con $1 \leq j \leq n-1$.
+
+        Verifichiamo che le basi $\langle \dot{c}(t), \dots, c^{(j)}(t) \rangle$ e $\langle e_1(t), \dots, e_j(t) \rangle$ siano effettivamente concordemente orientate.
+        
+        $\displaystyle \dot{c}(t) = \norm{\dot{c}(t)} e_1(t)$
+
+        $\displaystyle c^{(j)}(t)=\norm{\tilde{e}_j(t)} e_j(t) + \sum_{r=1}^{j-1} \left( c^{(r)}(t) \cdot e_r(t) \right) e_r(t)$ 
+        
+        la matrice di passaggio da $\langle e_1(t), \dots, e_j(t) \rangle$ a $\langle \dot{c}(t), \dots, c^{(j)}(t) \rangle$ è:
+
+        \[ A(t) =
+        \begin{pmatrix}
+        \norm{\dot{c}(t)} & * & \cdots & * \\
+        0 & \norm{\tilde{e}_2(t)} & \cdots & * \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & \norm{\tilde{e}_j(t)}
+        \end{pmatrix}
+        \]
+        $A(t)$ è una matrice triangolare superiore $\Rightarrow \det(A(t)) \textcolor{violet}{= \norm{\dot{c}(t)} \norm{\tilde{e}_2(t)} \cdots \norm{\tilde{e}_j(t)}} > 0 \Rightarrow$ 
+        le basi sono concordamente orientate.
+
+        Si osservi che per costruzione i campi vettoriali $e_1(t), \dots, e_{n-1}(t)$ sono differenziabili \textcolor{violet}{(perchè sono ottenuti da combinazioni lineari differenziabili dei vettori $c^{(1)}(t), \dots, c^{(n-1)}(t)$)}
+
+        Devo costruire $e_n(t)=(x_1(t), \dots, x_n(t))$ 
         \end{proof}
         \begin{definizione}
         Una curva parametrizzata che soddisfa l'ipotesi \eqref{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet} si dice \textcolor{red}{
@@ -1210,3 +1252,6 @@
         \begin{proof}
         
         \end{proof}
+        \begin{definizione}
+        Il riferimento univocamente determinato dal teorema \ref{th:esistenza_e_unicita_del_riferimento_canonico_di_Frenet} si chiama \textcolor{red}{riferimento canonico di Frenet}.
+        \end{definizione}
