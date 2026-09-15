@@ -842,7 +842,9 @@
         \begin{proposizione}
         \label{prop:funzione_di_transizione_curve}
         Sia $\mathcal{C} \subset \mathbb{R}^n$ curva differenziabile siano $\alpha: I_\alpha \to U_\alpha$ e $\beta: I_\beta \to U_\beta$ due parametrizzazioni 
-        locali di $\mathcal{C}$. Se $U_\alpha \cap U_\beta \neq \emptyset$, allora l'applicazione 
+        locali di $\mathcal{C}$ 
+        
+        Se $U_\alpha \cap U_\beta \neq \emptyset$, allora l'applicazione 
         
         $\textcolor{red}{\beta^{-1} \circ \alpha}: \alpha^{-1} \left(U_\alpha \cap U_\beta \right) \to \beta^{-1} \left(U_\alpha \cap U_\beta \right)$ 
         \textcolor{blu}{$\left(\equiv  \varphi_\beta \circ \varphi_\alpha^{-1} : \varphi_{\alpha} \left(U_\alpha \cap U_\beta \right) \to \varphi_\beta \left(U_\alpha \cap U_\beta \right) \right)$} è 
@@ -854,7 +856,7 @@
         
         Verifichiamo che $\beta^{-1} \circ \alpha$ è differenziabile in un intorno di $t_0$
 
-        Posto $p = \alpha(t_0) \in U_{\alpha} \cap U_{\beta}$ sia $s_0 = \beta^{-1}(p) \in \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\beta$
+        Posto \textcolor{amber}{$p = \alpha(t_0)$} $\in U_{\alpha} \cap U_{\beta}$ sia \textcolor{amber}{$s_0= \beta^{-1}(p)$} $\in \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\beta$
         $\Rightarrow \alpha(t_0)= \beta(s_0)=p$
 
         Poniamo $\forall s \in I_\beta \quad \beta(s)=\left(x^1(s), \ldots, x^n(s)\right)$ ovvero $x^i(s)=p^i(\beta(s))$ 
@@ -862,35 +864,41 @@
 
         $\dot{\beta}(s) = \left(\dot{x}^1(s), \ldots, \dot{x}^n(s)\right)$
         
-        $\beta$ è regolare $\Rightarrow \dot{\beta}(s_0) \neq 0 \Rightarrow \exists i \in \{1, \ldots, n\}$ tale che $\dot{x}^i(s_0) \neq 0$
+        \textcolor{orange}{$\beta$ è regolare} $\Rightarrow \dot{\beta}(s_0) \neq 0 \Rightarrow \exists i \in \{1, \ldots, n\}$ tale che $\dot{x}^i(s_0) \neq 0$
 
-        La funzione $s \in \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\beta \mapsto x^i(s)= p_i(\beta(s)) \in \mathbb{R}$ 
+        La funzione $s \in \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\beta \mapsto x^i(s)= p^i(\beta(s)) \in \mathbb{R}$ 
         è differenziabile.
 
         Per il teorema della funzione inversa $\exists J $ intorno aperto di $s_0 \quad J \subset \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right)$ ed
-        $\exists V$ intorno aperto di $x^i(s_0) = p_i(\beta(s_0)) = p_i(p)$ tale che $p_i \circ \beta: J \to V$ sia un diffeomorfismo.
+        $\exists V$ intorno aperto di $x^i(s_0) = p^i(\beta(s_0)) = p^i(p)$ tale che \textcolor{celeste}{$p^i \circ \beta: J \to V$ sia un diffeomorfismo}.
 
-        $p_i^{-1}(V) \cap \mathcal{C}$ è un aperto di $\mathcal{C}$ che contiene $\beta(s_0)=\alpha(t_0)=p$.
+        $\textcolor{violet}{\underbrace{\textcolor{verde}{(p^i)^{-1}(V)}}_{\text{aperto in } \mathbb{R}^n}} \cap \mathcal{C}$ è un aperto di $\mathcal{C}$ che contiene $\beta(s_0)=\alpha(t_0)=p$.
 
-        Per la continuità di $\alpha$ esiste un intervallo aperto $I \subset \alpha^{-1} \left(U_\alpha \cap U_\beta \right)$ tale che
+        \textcolor{orange}{Per la continuità di $\alpha$} esiste un intervallo aperto $I \subset \alpha^{-1} \left(U_\alpha \cap U_\beta \right)$ tale che
         $t_0 \in I$
         
-        $\alpha(I) \subset p_i^{-1}(V) \cap \mathcal{C}$
-        \[ I \xrightarrow[]{\quad p_i \circ \alpha \quad} V \xrightarrow[]{\quad \left(p_i \circ \beta \right)^{-1} \quad} J \]
+        $\alpha(I) \subset (p^i)^{-1}(V) \cap \mathcal{C}$ \textcolor{violet}{(Quindi $\left(p^i \circ \alpha \right)(I) \subset V$ )}
+        \[ I \xrightarrow[]{\quad p^i \circ \alpha \quad} V \xrightarrow[]{\quad \left( \textcolor{celeste}{p^i \circ \beta} \right)^{-1} \quad} J \]
         Questa composizione è differenziabile 
 
-        $\forall t \in I \quad \left(p_i \circ \beta \right)^{-1} \left( \left( p_i \circ \alpha \right) (t) \right) = \beta^{-1} \left( \alpha (t) \right)$
-        \textcolor{blu}{(perché $\left(p_i \circ \beta \right) \left( \beta^{-1}(\alpha(t)) \right)) = \left(p_i \circ \alpha \right) (t)$)}
+        \textcolor{violet}{Non possiamo scrivere $\left(p^i \circ \beta \right)^{-1} = \beta^{-1} \circ (p^i)^{-1}$ perché $(p^i)^{-1}$ non è 
+        invertibile valuto però} 
+        
+        \textcolor{violet}{$(p^i \circ \beta)(\beta^{-1}(\alpha(t)))= (p^i \circ \alpha)(t)$ e $\beta$ è invertibile in $I$ essendo un omeomorfismo.}
+
+        $\forall t \in I \quad \left(p^i \circ \beta \right)^{-1} \left( \left( p^i \circ \alpha \right) (t) \right) = \beta^{-1} \left( \alpha (t) \right)$
+        \textcolor{blu}{(perché $\left(p^i \circ \beta \right) \left( \beta^{-1}(\alpha(t)) \right)) = \left(p^i \circ \alpha \right) (t)$)}
 
         Pertanto $\beta^{-1} \circ \alpha : I \to J$ è differenziabile.
 
-        Scambiando i ruoli di $\alpha$ e $\beta$ risulta che $\alpha^{-1} \circ \beta$ è differenziabile.
+        Si potrebbe ripetere la dimostrazione scambiando i ruoli di $\alpha$ e $\beta$ risulta che $\alpha^{-1} \circ \beta$ è differenziabile.
 
         Pertanto $\beta^{-1} \circ \alpha : \alpha^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \to \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right)$ è diffeomorfismo.
         \end{proof}
         \begin{osservazione}
         Posto $\phi = \beta^{-1} \circ \alpha \quad \alpha = \beta \circ \phi$ con $\phi$ diffeomorfismo quindi le $2$ curve parametrizzate sono equivalenti. 
         \end{osservazione}
+        \newpage
         \begin{esempio}
         Sia $c:I \to \mathbb{R}^n$ curva parametrizzata regolare tale che $c:I \to c(I)$ è omeomorfismo.
         Allora $\mathcal{C}=c(I)$ è una curva differenziabile e un atlante differenziabile è dato da $\{(\mathcal{C}, c^{-1})\}$ con
@@ -1081,6 +1089,8 @@
         atlante differenziabile su $\mathcal{C}$ per la proposizione \ref{prop:funzione_di_transizione_curve} segue che per ogni 
         $i,j \in \{1,2,3,4\}$ con $i \neq j$ tale che $U_i \cap U_j \neq \emptyset$
         $\varphi_i \circ \varphi_j^{-1}= c_i^{-1} \circ c_j: \varphi_j(U_i \cap U_j) \to \varphi_i(U_i \cap U_j)$ è un diffeomorfismo.
+
+        \textcolor{violet}{Tramite la proiezione stereografica si potrà trovare un atlante differenziabile con $2$ carte.}
         \end{esempio}
     \section{Riferimenti di Frenet}
         \begin{definizione}
@@ -1133,7 +1143,9 @@
         \end{definizione}
         \begin{definizione}
         Un $n$-riferimento mobile lungo $c$ $\left(e_i\right)_{1 \leq i \leq n}$ si dice \textcolor{red}{riferimento di Frenet}
-        se $\forall k \leq n-1 \quad \forall t \in I \quad c^{(k)}(t) \in \langle e_1(t), \dots, e_k(t)\rangle$ \textcolor{blu}{($c^{(k)}$ denota il vettore
+        se 
+        
+        $\forall k \leq n-1 \quad \forall t \in I \quad c^{(k)}(t) \in \langle e_1(t), \dots, e_k(t)\rangle$ \textcolor{blu}{($c^{(k)}$ denota il vettore
         derivato di $c$ $k$-volte)}
         \end{definizione}
         \begin{esempio}
