@@ -1641,3 +1641,207 @@
         \[ L(e_i(t_0)) = L'(e_i(t_0)) \Rightarrow L = L' \]
         Ma $F(c(t_0)) = \tilde{c}(t_0) = F'(c(t_0)) \overset{\textcolor{violet}{ \substack{\text{prop. isometrie} \\ \text{dirette} }}}{\Rightarrow} F = F'$
         \end{proof}
+        \begin{esempio}
+        Consideriamo le curve $c(t)=(t,-t)$ e $\tilde{c}(t)=(-t,t)$
+        \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+
+        % Assi cartesiani
+        \draw[->, thick, gray!80] (-2.5, 0) -- (2.5, 0) node[right, text=black] {$x$};
+        \draw[->, thick, gray!80] (0, -2.5) -- (0, 2.5) node[above, text=black] {$y$};
+
+        % Curva c(t) = (t, -t) -> retta y = -x
+        \draw[very thick, teal] (-2.2, 2.2) -- (2.2, -2.2) node[below right, text=teal] {$c(t)$};
+
+        % Curva \tilde{c}(t) = (t, t) -> retta y = x
+        \draw[very thick, orange] (-2.2, -2.2) -- (2.2, 2.2) node[above right, text=orange] {$\tilde{c}(t)$};
+
+        \end{tikzpicture}
+        \end{center}
+        $\tilde{c}= F \circ c = G \circ c$ con $F$ diretta e $G$ inversa 
+        $c$ e $\tilde{c}$ sono regolari e hanno curvatura $=0$
+        \end{esempio}
+    \section{Curve piane}
+        In questa sezione consideriamo il caso di curve parametrizzate nel piano $\mathbb{R}^2$ notiamo intanto che richiedere che una tale curva $c \colon I \to \mathbb{R}^2$ sia 
+        fortemente regolare equivale a chiedere semplicemente che sia regolare.
+
+        In tal caso considerato il riferimento canonico di Frenet $\left\{e_1, \, e_2\right\}$ abbiamo 
+        \[ e_1 = \frac{\dot{c}}{\norm{\dot{c}}} \]
+        e posto 
+        \[ e_1(t)=\left( \alpha(t), \, \beta(t) \right) \]
+        o in forma compatta 
+        \[ e_1 = (\alpha, \, \beta) \]
+        le funzioni componenti $\alpha$ e $\beta$ di $e_1$ soddisfano $\alpha^2 + \beta^2 = 1$ identicamente.
+
+        Osserviamo che $e_2$ si ottene immediatamente come 
+        \[ e_2 = (-\beta, \, \alpha) \] 
+        e le equazioni di Frenet di $c$ in forma matriciale sono 
+        \[ \dot{e} = \omega e \textcolor{violet}{\iff 
+        \begin{pmatrix}
+        \dot{e}_1 \\
+        \dot{e}_2
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        0 & \omega_{12} \\
+        -\omega_{12} & 0
+        \end{pmatrix}
+        \begin{pmatrix}
+        e_1 \\
+        e_2
+        \end{pmatrix}} \]
+        vi è una sola funzione di curvatura (detta semplicemente curvatura di $c$) denotata con $k \colon I \to \mathbb{R}$ e in forma 
+        esplicita le equazioni di Frenet si scrivono:
+        \begin{equation}
+        \label{eq:Frenet_per_curve_piane}
+        \begin{cases}
+            \dot{e}_1 = \omega_{12} e_2 = k \norm{\dot{c}} e_2 \\
+            \dot{e}_2 = -\omega_{12} e_1 = - k \norm{\dot{c}} e_1
+        \end{cases}
+        \end{equation}
+        \newpage
+        \begin{proposizione}
+        Sia $c \colon I \to \mathbb{R}^2$ una curva regolare allora:
+        \begin{enumerate}
+            \item $\ddot{c} \cdot e_2 = k \norm{\dot{c}}^2$
+            \item $\displaystyle k(t) = \frac{\det \left( \dot{c}(t) \, \ddot{c}(t) \right)}{ \norm{\dot{c}(t)}^3}$
+        \end{enumerate}
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        \begin{enumerate}
+            \item $\displaystyle e_1 = \frac{\dot{c}}{\norm{\dot{c}}} \Rightarrow \dot{c} = \norm{\dot{c}} e_1$
+            \[ \ddot{c} = \left(\frac{d}{dt} \norm{\dot{c}}\right) e_1 + \norm{\dot{c}} \dot{e}_1  \overset{\eqref{eq:Frenet_per_curve_piane}}{=} \left(\frac{d}{dt} \norm{\dot{c}}\right) e_1 + k \norm{\dot{c}}^2 e_2  \]
+            da qui si ricava la \textcolor{black}{1.} ricordando che $e_1 \cdot e_2 = 0$
+            \item Calcoliamo il determinante 
+            \begin{align*} \det \left( \dot{c} \quad \ddot{c} \right) &= \det \left( \norm{\dot{c}} e_1 \qquad  \left(\frac{d}{dt} \norm{\dot{c}}\right) e_1 + k \norm{\dot{c}}^2 e_2 \right) \textcolor{blu}{\overset{ \det(v \quad v_1+v_2) = \det (v \quad v_1) + \det(v \quad v_2) }{\textcolor{verde}{=}}} \\
+            &= \det \left( \norm{\dot{c}} e_1 \quad \left(\frac{d}{dt} \norm{\dot{c}}\right) e_1 \right) + \det \left( \norm{\dot{c}} e_1 \quad k \norm{\dot{c}}^2 e_2 \right) \\ 
+            &= 0 + \det \left( \norm{\dot{c}} e_1 \quad k \norm{\dot{c}}^2 e_2 \right) \\
+            &= k \norm{\dot{c}}^3 \det(e_1 \quad e_2) = k \norm{\dot{c}}^3
+            \end{align*}
+            da cui si ricava la \textcolor{black}{2.}
+        \end{enumerate}
+        \end{proof}
+        \begin{esempio}
+        Ogni retta del piano è un esempio di curva regolare se $r$ passa per il punto $P_0$ ed è parallela al vettore unitario $v$ una sua parametrizzazione
+        per lunghezza d'arco è data da $c(t) = P_0 + t v$
+        tale curva ha curvatura identicamente nulla perché 
+        
+        $\dot{c}=v \Rightarrow \norm{\dot{c}} = 1$ 
+        
+        $\ddot{c}=0 \Rightarrow k(t)=0$
+        \end{esempio}
+        \begin{esempio}
+        Mostriamo che ogni circonferenza è il supporto di una curva regolare con curvatura costante.
+        Basta considerare a questo scopo il caso di una circonferenza di centro l'origine, e poi effettuare una traslazione, che in quanto isometria diretta
+        conserva la curvatura.
+
+        Sia $\mathcal{C}$ la circonferenza di centro l'origine e raggio $r>0$ e discutiamo le seguenti parametrizzazioni di $\mathcal{C}$:
+        \[ c(t) = \left(r \cos \left(\frac{\varepsilon \, t}{r}\right), \, r \sin \left(\frac{\varepsilon \, t}{r}\right) \right) \quad \text{dove }\varepsilon = \pm 1  \]
+        La curvatura di $\mathcal{C}$ è invariante per traslazioni che sono isometrie dirette
+        \[ \dot{c}(t) = \left(-\varepsilon \sin \left(\frac{\varepsilon \, t}{r}\right), \, \varepsilon \cos \left(\frac{\varepsilon \, t}{r}\right) \right) \]
+        \[ \norm{\dot{c}}^2 = \varepsilon^2 =1 \Rightarrow c \text{ è parametrizzata per lunghezza d'arco} \]
+        Si ha poi
+        \[ \ddot{c}(t) = \left(-\frac{\varepsilon^2}{r} \cos \left(\frac{\varepsilon \, t}{r}\right), \, -\frac{\varepsilon^2}{r} \sin \left(\frac{\varepsilon \, t}{r}\right) \right) = \left(-\frac{1}{r} \cos \left(\frac{\varepsilon \, t}{r}\right), \, -\frac{1}{r} \sin \left(\frac{\varepsilon \, t}{r}\right) \right) \]
+        Dunque 
+        \[ k(t) = \det(\dot{c}(t) \quad \ddot{c}(t)) = \begin{vmatrix}
+            -\varepsilon \sin \left(\dfrac{\varepsilon \, t}{r}\right) & -\dfrac{1}{r} \cos \left(\dfrac{\varepsilon \, t}{r}\right) \\
+            \varepsilon \cos \left(\dfrac{\varepsilon \, t}{r}\right) & -\dfrac{1}{r} \sin \left(\dfrac{\varepsilon \, t}{r}\right)
+        \end{vmatrix} =  \dfrac{\varepsilon}{r} \]
+        $\Rightarrow k(t)$ costante
+        \end{esempio}
+        \newpage
+        Diamo ora un significato geometrico al segno della curvatura di una curva regolare in suo punto, fissato $t_0 \in I$ chiameremo retta tangente alla curva in $t_0$, la retta
+        passante per $c(t_0)$ parallela al vettore tangente $e_1(t_0)$.
+        \begin{proposizione}
+        Sia $c \colon I \to \mathbb{R}^2$ curva regolare con riferimento di Frenet $\{e_1, \, e_2\}$ e si fissi $t_0 \in I$ allora:
+        \begin{enumerate}
+            \item Se $k(t_0) > 0$ esiste un intorno $J \subset I$ di $t_0$ tale che $c(J)$ è interamente contenuto nel semipiano di $\mathbb{R}^2$
+             individuato dalla retta tangente in a $c$ in $t_0$ e verso il quale punta il vettore normale $e_2(t_0)$, ovvero il semipiano individuato dalla stessa retta e contenente 
+             il punto $c(t_0)+e_2(t_0)$
+            \item Se $k(t_0) < 0$ esiste un intorno $J \subset I$ di $t_0$ tale che $c(J)$ è interamente contenuto nel semipiano di $\mathbb{R}^2$
+             individuato dalla retta tangente in a $c$ in $t_0$ e verso il quale punta il vettore normale $-e_2(t_0)$, ovvero il semipiano individuato dalla stessa retta e contenente 
+             il punto $c(t_0)-e_2(t_0)$
+        \end{enumerate}
+        \end{proposizione}
+        \begin{proof}
+        Si osserva che i due semipiani considerati nell'enunciato sono:
+        \[ \Sigma_+ = \{ P \in \mathbb{R}^2 \mid  \left( P - c(t_0) \right) \cdot e_2(t_0) \geq 0 \} \quad \Sigma_- = \{ P \in \mathbb{R}^2 \mid \left( P - c(t_0) \right) \cdot e_2(t_0) \leq 0 \} \]
+        Consideriamo quindi la funzione $f \colon I \to \mathbb{R}$ definita ponendo:
+        \[ f(t) := \left( c(t) - c(t_0) \right) \cdot e_2(t_0) \]
+        ovvero 
+        \[ f = \left(c - c(t_0)\right) \cdot e_2(t_0) \]
+        \textcolor{violet}{Chiaramente $f$ è differenziabile???}
+
+        Abbiamo $f(t_0) =0 \Rightarrow \dot{f} = \dot{c} \cdot e_2(t_0) \Rightarrow \ddot{f} = \ddot{c} \cdot e_2(t_0)$
+
+        Pertanto $f(t_0) = 0 \quad \ddot{f}(t_0) = k(t_0) \norm{\dot{c}(t_0)}^2 $
+
+        Se $k(t_0) > 0 \Rightarrow t_0$ punto di minimo locale per $f \Rightarrow $ \textcolor{violet}{quindi $\exists$ un intorno $J \subset I$ di $t_0$ tale che $f(t) \geq 0$ per ogni $t \in J$}
+        $f(t) \geq 0$ per ogni $t \in J \Rightarrow c(J) \subset \Sigma_+$.
+        \end{proof}
+        \newpage 
+        Diamo infine un'altra interpretazione della curvatura e del suo segno, in termini di variazione del vettore tangente, vogliamo mostrare che è 
+        possibile descrivere mediante una funzione differenziabile l'angolo $\theta (t)$ e che $e_1(t)$ forma con il vettore fisso $\epsilon_1$
+        del riferimento standard, di modo che $k$ si possa correlare alla variazione di tale angolo, al variare di $t$.
+        \begin{proposizione}
+        Data la curva regolare $c \colon I \to \mathbb{R}^2$ con riferimento canonico di Frenet $\{e_1, \, e_2\}$ esiste una funzione differenziabile 
+        $\theta \colon I \to \mathbb{R}$ tale che 
+        \begin{equation}
+        \label{eq:curvatura_piana_in_funzione_angolo_1}
+        e_1(t) = \left( \cos \theta(t), \, \sin \theta(t) \right) \quad \forall t \in I
+        \end{equation}
+        Se $\tilde{\theta}$ è un'altra funzione con le medesime proprietà, allora 
+        \begin{equation}
+        \tilde{\theta} = \theta + 2m\pi, \quad m \in \mathbb{Z}
+        \end{equation}
+        Infine data una tale funzione $\theta$ si ha sempre 
+        \begin{equation}
+        \label{eq:curvatura_piana_in_funzione_angolo_3}
+        \dot{\theta}(t) = k(t) \norm{\dot{c}(t)}
+        \end{equation}
+        \textcolor{blu}{Se $k(t_0)>0$ allora $\theta$ cresce in un intorno di $t_0$ quindi la curva ruota in senso "antiorario" 
+        al crescere di $t$ "verso sinistra"}
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        Cominciamo con l'osservare che date due funzioni differenziabili $\theta$ e $\tilde{\theta}$ per cui 
+        \begin{equation}
+        \label{eq:curvatura_piana_in_funzione_angolo_dim_1}
+        \left( \cos \theta (t), \, \sin \theta (t) \right) = e_1(t) = \left( \cos \tilde{\theta} (t), \, \sin \tilde{\theta} (t) \right)
+        \end{equation}
+        \[ \Rightarrow \forall t \in I \quad \exists m(t) \in \mathbb{Z} \text{ tale che } \tilde{\theta}(t) - \theta(t) = 2m(t)\pi \]
+        $\Rightarrow \frac{1}{2\pi} \left(\tilde{\theta} - \theta \right) \colon I \to \mathbb{R}$ è una funzione a valori in $\mathbb{Z}$ 
+        \textcolor{blu}{(funzione da $I$ connesso in $\mathbb{Z}$ sconnesso)} ed essendo continua deve essere costante 
+        \[ \frac{1}{2 \pi } \left( \tilde{\theta} - \theta \right) (t) \equiv m \quad m \in \mathbb{Z} \]
+        Sia $\theta$ verificante \eqref{eq:curvatura_piana_in_funzione_angolo_dim_1} proviamo che $\dot{\theta} =k \cdot \norm{\dot{c}}$
+
+        dalla \eqref{eq:curvatura_piana_in_funzione_angolo_dim_1} segue che $e_2(t)=\left( -\sin \theta(t), \, \cos \theta(t) \right)$ e differenziando si ha:
+        \[ \dot{e}_1(t) = \left( -\sin \theta(t), \, \cos \theta(t) \right) \dot{\theta}(t) = e_2(t) \dot{\theta}(t) \]
+        e pertanto dalle equazioni di Frenet si ha:
+        \[ \textcolor{violet}{\dot{e}_1(t) = k(t) \norm{\dot{c}(t)} e_2(t)} \]
+        \textcolor{violet}{da cui segue immediatamente che }
+        \[ \dot{\theta}(t) = k(t) \norm{\dot{c}(t)} \]
+        Resta da provare l'esistenza di tali funzioni \textcolor{violet}{$\theta$}
+
+        Fissiamo un punto $t_0 \in I$ e scelgo $\theta(t_0) \in \mathbb{R}$ tale che 
+        \[ e_1(t_0) = \left( \cos \theta(t_0), \, \sin \theta(t_0) \right) \]
+        Pongo \textcolor{red}{$\displaystyle \theta(t) := \theta(t_0) + \int_{t_0}^{t} \omega_{12} (s) \, ds$} $\theta$ è $C^\infty$ e $\theta(t_0)=\theta_0$
+
+        Provo che $\forall t \quad e_1(t) = \left( \cos \theta(t), \, \sin \theta(t) \right)$
+
+        So da \eqref{eq:curvatura_piana_in_funzione_angolo_3} che
+        $\dot{\theta} = \omega_{12}$ supponiamo $ e_1(t) = \left( \alpha (t), \, \beta (t) \right) \quad e_1= \left( \alpha, \beta \right) $
+
+        Pongo \textcolor{red}{$\psi := \left(\cos \theta, \, \sin \theta \right)$} e provo che $\psi = e_1$
+
+        Intanto dalle equazioni di Frenet si ha:
+        \[ \dot{e}_1 = \omega_{12} e_2 = \dot{\theta} \left(- \beta, \, \alpha \right) \]
+        Affermiamo che le funzioni $ \psi \cdot e_1$ e $\psi \cdot e_2$ sono costanti; da qui segue facilmente la tesi, perchè si ricava che:
+        \[ \psi = \left( \psi \cdot e_1 \right) e_1 + \left( \psi \cdot e_2 \right) e_2 = \left( \psi(t_0) \cdot e_1(t_0) \right) e_1 + \left( \psi(t_0) \cdot e_2(t_0) \right) e_2 = 1 e_1 + 0 e_2 = e_1 \]
+        Ora provo che sono effetivamente costanti 
+        \[ \frac{d}{dt} \left( \psi \cdot e_1\right) = \dot{\psi} \cdot e_1 + \psi \cdot \dot{e}_1 = \dot{\theta} \left(- \sin \theta, \, \cos \theta \right) \cdot \left( \alpha, \, \beta \right) + \dot{\theta} \left(\cos \theta, \, \sin \theta \right) \cdot \left( -\beta, \, \alpha \right) = 0 \]
+        Il che mostra che effettivamente $\psi \cdot e_1$ è costante, la verifica per $\psi \cdot e_2$ è simile.
+        \end{proof}
