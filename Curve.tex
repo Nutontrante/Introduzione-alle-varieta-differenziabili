@@ -1346,5 +1346,44 @@
 
         $e_2(t)= (\,-\cos t, -\sin t\,)$
 
-        Considero $\phi : \mathbb{R} \to \mathbb{R} \quad s \mapsto -s$
+        Considero $\phi : \mathbb{R} \to \mathbb{R} \quad s \mapsto -s$ diffeomorfismo 
+        $\displaystyle \tilde{c} = c \circ \phi: \mathbb{R} \to \mathbb{R}$ è un'altra parametrizzazione della circonferenza
+        
+        $\displaystyle \tilde{c}(s) = \left(-a \sin s, -a \cos s\right) \quad \displaystyle \norm{ \, \dot{\tilde{c}}(s) \,} = \sqrt{ \, (-a \cos s)^2 + (a \sin s)^2 \, } = a$
+        
+        $\displaystyle \tilde{e}_1(s) = \frac{\dot{\tilde{c}}(s)}{\norm{\dot{\tilde{c}}(s)}} = \left(- \sin s , - \cos s \right)$
+
+        $\tilde{e}_2(s) = (\cos s, -\sin s)$
         \end{esempio}
+        \newpage
+        \begin{definizione}
+        Sia $c: I \to \mathbb{R}^n$ curva parametrizzata sia $\left(e_i\right)_{1 \leq i \leq n}$ $n$-riferimento mobile lungo $c$
+
+        Poniamo $\forall t \in I \quad \forall i =1, \dots, n \quad$ \textcolor{red}{$\displaystyle \dot{e}_i(t)=\sum_{j=1}^{n} \omega_{ij}(t) e_j(t)$}
+
+        dove $\forall i,j = 1, \dots, n \quad \omega_{ij}(t) = \dot{e}_i(t) \cdot e_j(t)$
+
+        Verifichiamo che $\forall t \in I \quad \forall i,j = 1, \dots, n \quad \omega_{ij}(t) = -\omega_{ji}(t)$ da cui segue che la matrice 
+        
+        $\omega(t) = \left( \omega_{ij}(t) \right)_{1 \leq i,j \leq n}$ è una matrice antisimmetrica.
+        \end{definizione}
+        \begin{proof}
+        $e_i(t) \cdot e_j(t) = \delta_{ij}$ differenziando si ha 
+
+        $\dot{e}_i(t) \cdot e_j(t) + e_i(t) \cdot \dot{e}_j(t) = 0 \quad \forall i,j = 1, \dots, n$
+        da cui segue che $\omega_{ij}(t) + \omega_{ji}(t) = 0$ 
+        
+        $\Rightarrow \omega_{ij}(t) = -\omega_{ji}(t)$
+        \end{proof}
+        \begin{definizione}
+        Le $n$ equazioni 
+        \begin{equation}
+        \label{eq:Frenet}
+        \dot{e}_i(t) = \sum_{j=1}^{n} \omega_{ij}(t) e_j(t), \quad i = 1, \dots, n   
+        \end{equation}
+        si chiamano \textcolor{red}{equazioni di Frenet di $c$ nel riferimento mobile $\left(e_i\right)_{1 \leq i \leq n}$}
+
+        poniamo 
+        \[ e(t) = \begin{pmatrix} \textcolor{blu}{\overbrace{\textcolor{black}{e_1(t)}}^{\substack{\text{prima riga} \\ \text{di } \omega(t)}}} \\ \vdots \\ e_n(t) \end{pmatrix} \in M_{n} (\mathbb{R}) 
+        \qquad \dot{e}_1(t) = \begin{pmatrix} \dot{e}_1(t) \\ \vdots \\ \dot{e}_n(t) \end{pmatrix} \]
+        \end{definizione}
