@@ -1491,7 +1491,8 @@
 
         $\displaystyle \dot{e}_i(t) = \sum_{r=1}^{i} \dot{b}_i^r(t) \textcolor{blu}{\overbrace{\textcolor{verde}{c^{(r)}(t)}}^{\perp e_{i+1}(t)}} + b_i^r(t) c^{(r+1)}(t)$
         \begin{align*}
-        \omega_{i,i+1} (t) &= \dot{e}_i(t) \cdot e_{i+1}(t) = b_i^i(t) c^{(i+1)}(t) \cdot e_{i+1}(t) \\
-        &=
+        \omega_{i,i+1} (t) &= \dot{e}_i(t) \cdot e_{i+1}(t) = b_i^i(t) c^{(i+1)}(t) \cdot e_{i+1}(t) = b_i^i(t) \left(\sum_{r=1}^{i+1} a_{i+1}^r e_r(t)\right) \cdot e_{i+1}(t) \\
+        &= b_i^i (t) \left(\sum_{r=1}^{i+1} a_{i+1}^r \delta_{r,i+1} \right) = b_i^i(t) \, a_{i+1}^{i+1}(t)>0 
         \end{align*}
+        Con $\displaystyle i \leq n-2 \iff i+1 \leq n-1 \Rightarrow k_i(t) = \frac{\omega_{i,i+1}(t)}{\norm{\dot{c}(t)}} >0$ 
         \end{proof}
