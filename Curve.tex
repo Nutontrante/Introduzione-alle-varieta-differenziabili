@@ -1496,3 +1496,148 @@
         \end{align*}
         Con $\displaystyle i \leq n-2 \iff i+1 \leq n-1 \Rightarrow k_i(t) = \frac{\omega_{i,i+1}(t)}{\norm{\dot{c}(t)}} >0$ 
         \end{proof}
+    \section{Curve differenziabili e isometrie}
+        \begin{richiamo}
+        Ci vorebbe un richiamo su isometrie inverse e dirette
+        \end{richiamo}
+        \begin{proposizione}
+        \label{prop:isometrie_dirette_preservano_orientazione}
+        $L \colon \mathbb{R}^n \to \mathbb{R}^n$ è lineare con $\det L >0$ allora se $\mathfrak{B}= \{e_1, \, \dots, \, e_n\}$ è una 
+        base positiva di $\mathbb{R}^n$ \textcolor{blu}{(concordemente orientata con la base canonica di $\mathbb{R}^n$, $\mathfrak{B}_0= \{\varepsilon_1, \, \dots, \, \varepsilon_n\}$)}
+        allora anche $\mathfrak{B}'= \{L(e_1), \, \dots, \, L(e_n)\}$ è una base positiva di $\mathbb{R}^n$
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        \textcolor{orange}{$\mathfrak{B}$ è positiva significa $\det \left( e_1, \, \dots, \, e_n \right) >0$ }
+        \[ \det \left( L \left( e_1 \right), \, \dots, \, L \left( e_n \right) \right) = \det \left( M^{\mathfrak{B}_0}_{\mathfrak{B}}(L) \right) >0 \]
+        \end{proof}
+        \begin{osservazione}
+        Se $L \colon V \to W$ è un isomorfismo tra spazi vettoriali reali e
+        
+        $\mathfrak{B}= \{e_1, \, \dots, \, e_n\} \quad \mathfrak{B}'= \{v_1', \, \dots, \, v_n' \}$ sono concordemente orientate
+        anche $\{L(v_1), \, \dots , \, L(v_n) \}$ e  $\{L(v_1'), \, \dots , \, L(v_n') \}$ sono concordemente orientate.
+        \end{osservazione}
+        \begin{proof}
+        \mbox{}
+        
+        Se $\displaystyle v'_j = \sum_{i=1}^{n} a^i_j v_i \Rightarrow L(v'_j) = \sum_{i=1}^{n} a^i_j L(v_i)$ per cui la matrice del 
+        cambiamento di base è la stessa matrice $\left(a^i_j\right)$ per le due coppie di basi, quindi hanno lo stesso determinante e quindi la stessa orientazione.
+        \end{proof}
+        \newpage
+        Il prossimo risultato mostra che le funzioni di curvatura di una curva parametrizzata di $\mathbb{R}^n$ sono invarianti metrici, cioè non mutano trasformando la curva applicando
+        un'isometria diretta
+        \begin{proposizione}
+        \label{prop:funzioni_di_curvatura_invarianti_metrici} 
+        Siano $c \colon I \to \mathbb{R}^n$ una curva parametrizzata fortemente regolare e $F \colon \mathbb{R}^n \to \mathbb{R}^n$ un'isometria diretta con parte lineare
+        $L \colon \mathbb{R}^n \to \mathbb{R}^n$ allora:
+        \begin{enumerate}
+            \item La curva $\tilde{c} := F \circ c \colon I \to \mathbb{R}^n$ è fortemente regolare.
+            \item Se $\left(e_i\right)_{1 \leq i \leq n}$ è il riferimento canonico di Frenet di $c$ allora $\left(L(e_i)\right)_{1 \leq i \leq n}$ è 
+            il riferimento canonico di Frenet di $\tilde{c}$
+            \item Le funzioni di curvatura di $c$ e di $\tilde{c}$ coincidono.
+        \end{enumerate}
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        \begin{enumerate}
+            \item Basta osservare che $\forall t \in I$ 
+            \[ \dot{\tilde{c}}(t) = d \left(F \circ c\right)_t (1) = \left(dF\right)_{c(t)} \left( \dot{c}(t) \right) \overset{\substack{\text{differenziale} \\ \text{di una funzione} \\ \text{lineare} \\ \text{coincide con} \\ \text{la funzione} }}{=} L \left( \dot{c}(t) \right) \]
+            Da cui segue che 
+            \begin{equation}
+            \label{eq:dimostrazione_funzioni_di_curvatura_invarianti_metrici_1} 
+            \tilde{c}^{(k)}(t) = L \left( c^{(k)}(t) \right) \quad k \geq 1
+            \end{equation}
+
+            Poichè $L$ in quanto isomorfismo conserva la lineare indipendenza dei vettori, segue che
+            
+            $\forall t \in I$ i vettori
+            $\left\{ \dot{\tilde{c}}(t), \, \ddot{\tilde{c}}(t), \, \dots, \, \tilde{c}^{(n)}(t) \right\}$ sono linearmente indipendenti, quindi $\tilde{c}$ è fortemente regolare.
+            \item $\left(e_i\right)_{1 \leq i \leq n}$ riferimento canonico di Frenet di $c$
+            
+            $L \circ e_i \colon I \to \mathbb{R}^n \quad \{L(e_1(t)), \, \dots, \, L(e_n(t))\}$ è base ortonormale di $\mathbb{R}^n$ per ogni $t \in I$ 
+            perché $L$ è ismometria lineare ed è base positiva di $\mathbb{R}^n$ per la proposizione \ref{prop:isometrie_dirette_preservano_orientazione} perché $F$
+            è un'isometria diretta.
+            \[ L \left( \langle \dot{c}(t), \, \dots, \, c^{(k)}(t) \rangle \right) \overset{\eqref{eq:dimostrazione_funzioni_di_curvatura_invarianti_metrici_1}}{=} \langle \dot{\tilde{c}}(t), \, \dots, \, \tilde{c}^{(k)}(t) \rangle \] 
+            $\Rightarrow \left\{L(e_1(t)), \, \dots, \, L(e_k(t)) \right\}$ base di 
+            $\langle \dot{\tilde{c}}(t), \, \dots, \, \tilde{c}^{(k)}(t) \rangle$ è una base concorde con
+            
+            la base $\left( \tilde{\dot{c}}(t), \, \dots, \, \tilde{c}^{(k)}(t) \right)$ quindi $L \circ e_i$ è il riferimento canonico di Frenet di $\tilde{c}$
+            \item Considerate quindi le funzioni di curvatura $k_i \colon I \to \mathbb{R}$ di $c$ e le corrispondenti funzioni di curvatura $\tilde{k}_i \colon I \to \mathbb{R}$ di $\tilde{c}$ 
+            abbiamo, stante la definizione:
+            \[ k_i(t) = \frac{ \omega_{i,i+1}(t) }{ \, \norm{\dot{c}(t)} \,} = \frac{ \dot{e}_i(t) \cdot e_{i+1}(t) }{ \, \norm{\dot{c}(t)} \,}  \]
+            \begin{align*}
+            \tilde{k}_i(t) &= \frac{ \tilde{\omega}_{i,i+1}(t) }{ \, \norm{\dot{\tilde{c}}(t)} \,} = \frac{ \dot{\tilde{e}}_i(t) \cdot \tilde{e}_{i+1}(t) }{ \, \norm{\dot{\tilde{c}}(t)} \,} \overset{\substack{\textcolor{blu}{ \text{Sfruttando la}} \\  \textcolor{blu}{ \text{linearità di } L } \\ \textcolor{blu}{\quad \dot{\tilde{e}}_i = \dot{\widehat{L \circ e_i}} = L \circ \dot{e}_i} \quad}}{=} \frac{ L\left( \dot{\tilde{e}}_i(t) \right) \cdot L \left( e_{i+1}(t) \right) }{ \, \norm{L \left( \dot{c} (t)\right)}  \,} \\
+            &= \frac{ \dot{e}_i(t) \cdot e_{i+1}(t) }{ \, \norm{\dot{c}(t)} \,} = k_i(t)
+            \end{align*}
+        \end{enumerate}
+        \end{proof}
+        Il rilevante risultato mostra che sotto opportune ipotesi una curva è completamente determinata, a meno di isometrie, dalle sue funzioni di curvatura.
+        \begin{teorema}
+        \label{th:curva_univocamente_determinata_a_meno_di_isometrie}
+        Siano $c \colon I \to \mathbb{R}^n$ e $\tilde{c} \colon I \to \mathbb{R}^n$ curve parametrizzare fortemente regolari, tali che:
+        \begin{enumerate}
+            \item $\norm{\dot{c}(t)} = \norm{\dot{\tilde{c}}(t)}$ per ogni $t \in I$.
+            \item $k_i = \tilde{k}_i \quad \forall i=1, \dots, n-1$
+        \end{enumerate}
+        Allora $\exists ! F \colon \mathbb{R}^n \to \mathbb{R}^n$ isometria diretta tale che $\tilde{c} = F \circ c$
+        \end{teorema}
+        \begin{proof}
+        \mbox{}
+
+        Siano $\left(e_i\right)_{1 \leq i \leq n}$ e $\left(\tilde{e}_i\right)_{1 \leq i \leq n}$ i riferimenti canonici di Frenet di $c$ e $\tilde{c}$ rispettivamente.
+
+        Fissiamo $t_0 \in I$ e consideriamo l'unica isometria $F: \mathbb{R}^n \to \mathbb{R}^n$ tale che $F(c(t_0)) = \tilde{c}(t_0)$ e la cui parte lineare è 
+        l'ismoetria lineare $L \colon \mathbb{R}^n \to \mathbb{R}^n$ che trasforma la base ortonormale $\left\{e_1(t_0), \, \dots, \, e_n(t_0) \right\}$ nella base ortonormale
+        $\left\{\tilde{e}_1(t_0), \, \dots, \, \tilde{e}_n(t_0) \right\}$ cioè 
+        \begin{equation}
+        \label{eq:dimmostrazione_curva_univocamente_determinata_a_meno_di_isometrie_1}
+        L(e_i(t_0)) = \tilde{e}_i(t_0), \quad i=1, \dots, n
+        \end{equation}
+        Chiaramente $\det L = 1$ 
+
+        Proviamo che $\tilde{c} = F \circ c$ usando le \textcolor{hotpink}{equazioni di Frenet} \eqref{eq:equazioni_di_Frenet} delle $2$ curve $c$ e $\tilde{c}$
+        \begin{equation}
+        \label{eq:dimmostrazione_curva_univocamente_determinata_a_meno_di_isometrie_2}
+        \dot{e}_i = \sum_{j=1}^{n} \omega_{ij} (t)  e_j(t)  
+        \end{equation}
+        \[ \dot{\tilde{e}}_i = \sum_{j=1}^{n} \tilde{\omega}_{ij} (t)  \tilde{e}_j(t) \]
+        Cominciamo con l'osservare che, in forza delle ipotesi, i coefficienti $\omega_{ij}$ e $\tilde{\omega}_{ij}$ nei due sistemi sono di fatto gli stessi: infatti ricordando
+        che $\omega_{ij}=-\omega_{ji}$ e che $\omega_{ij}=0$ per $j>i+1$ 
+
+        Basta controllare il caso $j=i+1$ e risulta:
+        \[ \tilde{\omega}_{i,i+1} (t) = \norm{\dot{\tilde{c}}(t)} \tilde{k}_i(t) \overset{\textcolor{orange}{ \substack{\text{ipotesi} \\ \text{1. e 2.} \\ \text{ }}}}{=} \norm{\dot{c}(t)} k_i(t) = \omega_{i,i+1} (t)  \] 
+        \begin{equation}
+        \label{eq:dimmostrazione_curva_univocamente_determinata_a_meno_di_isometrie_3}
+        \Rightarrow  \dot{\tilde{e}}_i = \sum_{j=1}^{n} \omega_{ij} (t)  \tilde{e}_j(t)  
+        \end{equation}
+        Applicando $L$ ad \eqref{eq:dimmostrazione_curva_univocamente_determinata_a_meno_di_isometrie_2} e si ottiene
+        \[ L(\dot{e}_i (t) ) =  \sum_{j=1}^{n} \omega_{ij} (t) L(e_j(t))  \]
+        Quindi le funzioni $L \circ e_i$ e $\tilde{e}_i$ soddisfano lo stesso sistema di equazioni differenziali ordinarie del primo ordine poiché
+        esse coincidono per costruzione nel punto $t=t_0$ tali funzioni coincidono su $I$ 
+
+        In particolare $\tilde{e}_1 = L \circ e_1$ da cui 
+        \[ \dot{\tilde{c}}(t) = \norm{\dot{\tilde{c}}(t)} \tilde{e}_1(t) = \norm{\dot{c}(t)} L(e_1(t)) = L(\dot{c}(t)) \]
+        ovvero
+        \[ \dot{\tilde{c}}=L \circ \dot{c} \]
+        A questo punto basta ricostruire la curva $\tilde{c}$ da $\dot{\tilde{c}}$ utilizzando 
+        \textcolor{hotpink}{il teorema fondamentale del calcolo integrale}
+        tenendo conto del fatto che una primitiva di $\dot{\tilde{c}}$ è data da $L \circ c$
+        \begin{align*}
+        \tilde{c}(t) &= \tilde{c}(t_0) + \int_{t_0}^{t} \dot{\tilde{c}}(s) \, ds = \tilde{c}(t_0) + \left( L \circ c \right)(t) - \left( L \circ c \right)(t_0) \\
+        &= F(c(t_0)) + L(c(t)) - L(c(t_0)) = F(c(t_0)) + F(c(t)) - F(c(t_0)) = F(c(t))
+        \end{align*}
+        e resta provato che $\tilde{c} = F \circ c$
+
+        Dobbiamo provare che $F$ è unica 
+
+        Siano $F$ e $F'$ isometrie dirette tali che $F \circ c = \tilde{c} = F' \circ c$ dette $L$ e $L'$ le parti lineari di $F$ e $F'$ so che dalla proposizione 
+        \ref{prop:funzioni_di_curvatura_invarianti_metrici} che le famiglie 
+        $\left(L(e_i)\right)_{1 \leq i \leq n}$ e $\left(L'(e_i)\right)_{1 \leq i \leq n}$ devono coincidere entrambe con il riferimento 
+        canonico di Frenet $\left(\tilde{e}_i\right)_{1 \leq i \leq n}$ di $c$ che è univocamente determinato.
+
+        In particolare fissato $t_0 \in I$
+        \[ L(e_i(t_0)) = L'(e_i(t_0)) \Rightarrow L = L' \]
+        Ma $F(c(t_0)) = \tilde{c}(t_0) = F'(c(t_0)) \overset{\textcolor{violet}{ \substack{\text{prop. isometrie} \\ \text{dirette} }}}{\Rightarrow} F = F'$
+        \end{proof}
