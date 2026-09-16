@@ -1450,12 +1450,48 @@
         
         Per $n \geq 3$ le prime $n-2$ funzioni di curvatura sono \textcolor{red}{positive}, ovvero 
 
-        \textcolor{red}{$\forall i = 1, \dots, n-2 \quad k_i >0$} \textcolor{blu}{($\iff \omega_{i,i+1} > 0$)}
+        \textcolor{red}{$\forall i = 1, \dots, n-2 \quad k_i(t) >0 \quad \forall t \in I$} \textcolor{blu}{($\iff \omega_{i,i+1}(t) > 0 \quad \forall t \in I$)}
         \[ \begin{pmatrix}
-            0 & \omega_{12} & 0 & \cdots & 0 \\
-            -\omega_{12} & 0 & \omega_{23} & \cdots & 0 \\
-            0 & -\omega_{23} & 0 & \cdots & 0 \\
-            \vdots & \vdots & \vdots & \ddots & \vdots \\
-            0 & 0 & 0 & \cdots & 0
-        \end{pmatrix} \]
+            0 & \textcolor{celeste}{\omega_{12}(t)} & \cdots & \cdots & 0 \\
+            -\omega_{12}(t) & 0 & \cdots & \cdots & 0 \\
+            \vdots & \vdots & 0 & \textcolor{celeste}{\omega_{n-2,n-1}(t)} & 0 \\
+            \vdots & \cdots & -\omega_{n-2,n-1}(t) & 0 & \textcolor{celeste}{\omega_{n-1,n}(t)} \\
+            0 & \cdots & \cdots & -\omega_{n-1,n}(t) & 0
+            \end{pmatrix} \quad \textcolor{celeste}{\omega_{i,i+1}(t)> 0} \]
         \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        Bisogna ricordare la costruzione del riferimento canonico di Frenet in particolare 
+        
+        $\forall j \leq n-1 \quad \langle \dot{c}(t), \ddot{c}(t), \dots, c^{(j)}(t) \rangle = \langle e_1(t), \dots, e_j(t) \rangle$
+        e la matrice di passaggio da $\left(e_1(t), \, \dots, \, e_j(t)\right)$ a $ \left(\dot{c}(t), \ddot{c}(t), \dots, c^{(j)}(t)\right)$ è:
+        \[ A(t) =
+        \begin{pmatrix}
+        \norm{\dot{c}(t)} & * & \cdots & * \\
+        0 & \norm{\tilde{e}_2(t)} & \cdots & * \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & \norm{\tilde{e}_j(t)}
+        \end{pmatrix}
+        \]
+        \[ c^{(j)}(t) = \sum_{r=1}^{j} a_j^r (t) e_r(t) \quad a_j^j(t) = \norm{\tilde{e}_j(t)}> 0 \]
+        La matrice di passaggio da $ \left(\dot{c}(t), \ddot{c}(t), \dots, c^{(j)}(t)\right)$ a $\left(e_1(t), \, \dots, \, e_j(t)\right)$ è $A(t)^{-1}=B(t)$
+        \[ B(t) =
+        \begin{pmatrix}
+        \dfrac{1}{\norm{\dot{c}(t)}} & * & \cdots & * \\
+        0 & \dfrac{1}{\norm{\tilde{e}_2(t)}} & \cdots & * \\
+        \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & \cdots & \dfrac{1}{\norm{\tilde{e}_j(t)}}
+        \end{pmatrix}
+        \]
+        \[ e_j(t) = \sum_{r=1}^{j} b_j^r(t) c^{(r)}(t) \]
+        Sia $i \leq n-2$ 
+        
+        $\displaystyle e_i(t) = \sum_{r=1}^{i} b_i^r(t) c^{(r)}(t)$
+
+        $\displaystyle \dot{e}_i(t) = \sum_{r=1}^{i} \dot{b}_i^r(t) \textcolor{blu}{\overbrace{\textcolor{verde}{c^{(r)}(t)}}^{\perp e_{i+1}(t)}} + b_i^r(t) c^{(r+1)}(t)$
+        \begin{align*}
+        \omega_{i,i+1} (t) &= \dot{e}_i(t) \cdot e_{i+1}(t) = b_i^i(t) c^{(i+1)}(t) \cdot e_{i+1}(t) \\
+        &=
+        \end{align*}
+        \end{proof}
