@@ -1357,6 +1357,8 @@
         \end{esempio}
         \newpage
         \begin{definizione}
+        \mbox{}
+
         Sia $c: I \to \mathbb{R}^n$ curva parametrizzata sia $\left(e_i\right)_{1 \leq i \leq n}$ $n$-riferimento mobile lungo $c$
 
         Poniamo $\forall t \in I \quad \forall i =1, \dots, n \quad$ \textcolor{red}{$\displaystyle \dot{e}_i(t)=\sum_{j=1}^{n} \omega_{ij}(t) e_j(t)$}
@@ -1366,7 +1368,6 @@
         Verifichiamo che $\forall t \in I \quad \forall i,j = 1, \dots, n \quad \omega_{ij}(t) = -\omega_{ji}(t)$ da cui segue che la matrice 
         
         $\omega(t) = \left( \omega_{ij}(t) \right)_{1 \leq i,j \leq n}$ è una matrice antisimmetrica.
-        \end{definizione}
         \begin{proof}
         $e_i(t) \cdot e_j(t) = \delta_{ij}$ differenziando si ha 
 
@@ -1375,10 +1376,9 @@
         
         $\Rightarrow \omega_{ij}(t) = -\omega_{ji}(t)$
         \end{proof}
-        \begin{definizione}
         Le $n$ equazioni 
         \begin{equation}
-        \label{eq:Frenet}
+        \label{eq:equazioni_di_Frenet}
         \dot{e}_i(t) = \sum_{j=1}^{n} \omega_{ij}(t) e_j(t), \quad i = 1, \dots, n   
         \end{equation}
         si chiamano \textcolor{red}{equazioni di Frenet di $c$ nel riferimento mobile $\left(e_i\right)_{1 \leq i \leq n}$}
@@ -1386,4 +1386,76 @@
         poniamo 
         \[ e(t) = \begin{pmatrix} \textcolor{blu}{\overbrace{\textcolor{black}{e_1(t)}}^{\substack{\text{prima riga} \\ \text{di } \omega(t)}}} \\ \vdots \\ e_n(t) \end{pmatrix} \in M_{n} (\mathbb{R}) 
         \qquad \dot{e}_1(t) = \begin{pmatrix} \dot{e}_1(t) \\ \vdots \\ \dot{e}_n(t) \end{pmatrix} \]
+        Le equazioni di Frenet \eqref{eq:equazioni_di_Frenet} possono essere riscritte in forma matriciale come
+        \begin{equation}
+        \label{eq:equazioni_di_Frenet_matriciale}
+        \dot{e}(t) = \omega(t) e(t)
+        \end{equation}
         \end{definizione}
+        \begin{osservazione}
+        Sia $\phi :J \to I$ un diffeomorfismo \textcolor{violet}{(cambiamento di parametro)} e poniamo 
+
+        $\tilde{c} = c \circ \phi :J \to I$  \textcolor{violet}{(riparametrizzazione di $c$)}
+
+        Consideriamo \textcolor{red}{$\left(\tilde{e}_i\right)_{1 \leq i \leq n} \quad \tilde{e}_i = e_i \circ \phi : J \to \mathbb{R}^n$} $\quad \tilde{e}_i(s) = e_i(\phi(s)) \quad \forall s \in J$
+
+        $\left(\tilde{e}_i\right)_{1 \leq i \leq n}$ è un $n$-riferimento mobile lungo $\tilde{c}$ e consideriamo le corrispondenti equazioni di Frenet
+
+        \[ \dot{\tilde{e}}_i(s) = \sum_{j=1}^{n} \tilde{\omega}_{ij}(s) \tilde{e}_j(s), \quad i = 1, \dots, n \]
+        Sappiamo che $\dot{\tilde{c}}(s) = \dot{c}(\phi(s)) \phi'(s)$ osserviamo che se $\dot{\tilde{c}}(s) \neq 0$ allora 
+        \[ \qquad \textcolor{red}{\frac{\tilde{\omega}_{ij}(s)}{\norm{\dot{\tilde{c}}(s)}} = \pm \frac{\omega_{ij}(\phi(s))}{\norm{\dot{c}(\phi(s))}}} \qquad \left(+ \text{ se } \phi'(s) > 0 \text{ e } - \text{ se } \phi'(s) < 0 \right) \]
+        \begin{proof}
+        \begin{align*}
+        \frac{\tilde{\omega}_{ij}(s)}{\norm{\dot{\tilde{c}}(s)}} &= \frac{ \dot{\tilde{e_i}}(s) \cdot \tilde{e}_j(s) }{ \, \left|\phi ' (s)\right| \, \norm{\dot{c}(\phi(s))} \, } = \frac{ \phi'(s) \dot{e_i}(\phi(s)) \cdot e_j(\phi(s)) }{ \, \left|\phi ' (s)\right| \, \norm{\dot{c}(\phi(s))} \, } \\
+        &= \textcolor{blu}{\underbrace{ \textcolor{verde}{\frac{\phi'(s)}{|\phi'(s)|}}}_{\pm 1}} \, \frac{\omega_{ij}(\phi(s))}{ \, \norm{\dot{c}(\phi(s))} \,}
+        \end{align*}
+        \end{proof}
+        \end{osservazione}
+        \begin{proposizione}
+        Sia $c: I \to \mathbb{R}^n$ curva fortemente regolare e sia $\left(e_i\right)_{1 \leq i \leq n}$ il riferimento canonico di Frenet allora
+        \textcolor{red}{$\omega_{ij} (t) =0 \quad \forall j > i+1$} ovvero
+        \[ \omega(t) = 
+        \begin{pmatrix}
+        0 & \omega_{12}(t) & 0 & \cdots & 0 \\
+        -\omega_{12}(t) & 0 & \omega_{23}(t) & \cdots & 0 \\
+        0 & -\omega_{23}(t) & 0 & \cdots & 0 \\
+        \vdots & \vdots & \vdots & \ddots & \vdots \\
+        0 & 0 & 0 & \cdots & 0
+        \end{pmatrix} \]
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        $\forall i = 1, \dots, n-1 \quad e_i(t) \in \langle e_1(t), \dots, e_i(t) \rangle = \langle \dot{c}(t), \ddot{c}(t), \dots, c^{(i)}(t) \rangle$
+
+        $\Rightarrow e_i(t)$ è combinazione lineare dei vettori $\dot{c}(t), \ddot{c}(t), \dots, c^{(i)}(t)$
+        \[ e_i(t) = \sum_{r=1}^{i} b_i^r(t) c^{(r)}(t) \]
+        \[ \dot{e}_i(t) = \sum_{r=1}^{i} \left( \dot{b}_i^r(t) c^{(r)}(t) + b_i^r(t) c^{(r+1)}(t) \right) \]
+        $\Rightarrow \dot{e}_i(t)$ è combinazione lineare dei vettori $\dot{c}(t), \ddot{c}(t), \dots, c^{(i+1)}(t)$
+        
+        $\Rightarrow \dot{e}_i(t) \in \langle \dot{c}(t), \ddot{c}(t), \dots, c^{(i+1)}(t) \rangle = \langle e_1(t), e_2(t), \dots, e_{i+1}(t) \rangle $
+
+        Pertanto $\forall j > i+1 \quad e_j(t) \in \langle e_1(t), \dots, e_{i+1}(t) \rangle^\perp \quad \omega_{ij}(t) = \dot{e}_i(t) \cdot e_j(t) = 0$
+        \end{proof}
+        \newpage
+        \begin{definizione}
+        Sia $c : I \to \mathbb{R}^n$ curva parametrizzata fortemente regolare sia $\left(e_i\right)_{1 \leq i \leq n}$ il riferimento canonico di Frenet.
+
+        Si definiscono \textcolor{red}{funzioni di curvatura} di $c$ le $n-1$ funzioni differenziabili date da 
+
+        \[ \textcolor{red}{k_i : I \to \mathbb{R} \quad i = 1, \dots, n-1 \quad \forall t \in I \quad k_i(t) = \frac{\omega_{i,i+1}(t)}{\norm{\dot{c}(t)}} = \frac{\dot{e_i} (t) \cdot e_{i+1}(t)}{\norm{\dot{c}(t)}}} \]
+        \end{definizione}
+        \begin{proposizione}
+        \mbox{}
+        
+        Per $n \geq 3$ le prime $n-2$ funzioni di curvatura sono \textcolor{red}{positive}, ovvero 
+
+        \textcolor{red}{$\forall i = 1, \dots, n-2 \quad k_i >0$} \textcolor{blu}{($\iff \omega_{i,i+1} > 0$)}
+        \[ \begin{pmatrix}
+            0 & \omega_{12} & 0 & \cdots & 0 \\
+            -\omega_{12} & 0 & \omega_{23} & \cdots & 0 \\
+            0 & -\omega_{23} & 0 & \cdots & 0 \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & \cdots & 0
+        \end{pmatrix} \]
+        \end{proposizione}
