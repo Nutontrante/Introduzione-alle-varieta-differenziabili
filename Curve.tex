@@ -1352,6 +1352,8 @@
         \newpage
         \begin{teorema} [esistenza e unicità del riferimento canonico di Frenet]
         \label{th:esistenza_e_unicita_del_riferimento_canonico_di_Frenet}
+        \mbox{}
+
         Sia $c: I \to \mathbb{R}^n$ una curva parametrizzata tale che 
         \begin{equation}
         \label{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet}
@@ -1368,29 +1370,34 @@
         \begin{proof}
         Per costruire i campi vettoriali $e_1(t), \dots, e_{n-1}(t)$ si procede mediante ortogonalizzazione di Gram-Schmidt ai vettori  $\dot{c}(t), \ddot{c}(t), \dots, c^{(n-1)}(t)$.
         
+        \textcolor{violet}{La dimostrazione avviene per induzione proviamo la base induttiva per $j=1$}
+
         Poniamo \textcolor{red}{$\displaystyle e_1(t) = \frac{\dot{c}(t)}{\|\dot{c}(t)\|}$}
 
         Fisso $1 \leq j \leq n-1$ e suppongo di aver costruito i vettori $e_1(t), \dots, e_{j-1}(t)$ tali che 
         
-        $\langle \dot{c}(t), \dots, c^{(j-1)}(t) \rangle = \langle e_1(t), \dots, e_{j-1}(t) \rangle$ con basi concordemente orientate.
+        $\langle \dot{c}(t), \dots, c^{(j-1)}(t) \rangle = \langle e_1(t), \dots, e_{j-1}(t) \rangle$ con basi concordemente orientate \textcolor{violet}{(ipotesi induttiva)}.
         
         Devo costruire $e_j(t)$
 
-        Pongo $\displaystyle \tilde{e}_j(t) = c^{(j)}(t) - \sum_{r=1}^{j-1} \langle c^{(r)}(t), e_r(t) \rangle e_r(t)$
+        Pongo $\displaystyle \tilde{e}_j(t) \overset{\textcolor{violet}{\substack{\text{ortogonalizzazione} \\ \text{di Gram-Schmidt} \\  \tilde{e}_j \text{diventa } \perp \\ \text{ a } e_1, \dots, e_{j-1}}}}{=}
+         c^{(j)}(t) - \sum_{r=1}^{j-1} \left( c^{(j)}(t) \cdot e_r(t) \right) e_r(t)$
         
-        Osservo che $\tilde{e}_j(t) \neq 0$ perché se \textcolor{red}{per assurdo} fosse $\tilde{e}_j(t) = 0$ allora $\displaystyle c^{(j)}(t)= \sum_{r=1}^{j-1} \langle c^{(r)}(t), e_r(t) \rangle e_r(t)$
-        $\Rightarrow c^{(j)}(t) \in \langle e_1(t), \dots, e_{j-1}(t) \rangle=\langle \dot{c}(t), \dots, c^{(j-1)}(t) \rangle$ contro l'ipotesi \eqref{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet}.\label{eq:ip} 
+        Osservo che $\tilde{e}_j(t) \neq 0$ perché se \textcolor{red}{per assurdo} fosse $\tilde{e}_j(t) = 0$ allora $\displaystyle c^{(j)}(t)= \sum_{r=1}^{j-1} \left( c^{(j)}(t) \cdot e_r(t) \right) e_r(t)$
+        $\Rightarrow c^{(j)}(t) \in \langle e_1(t), \dots, e_{j-1}(t) \rangle=\langle \dot{c}(t), \dots, c^{(j-1)}(t) \rangle$ contro l'ipotesi \eqref{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet}
         
-        Quindi posso definire $\displaystyle e_j(t) = \frac{\tilde{e}_j(t)}{\|\tilde{e}_j(t)\|}$
+        Quindi posso definire $\displaystyle e_j(t) = \frac{\tilde{e}_j(t)}{\|\tilde{e}_j(t)\|}$ \textcolor{violet}{(normalizzazione)}
 
         Per costruzione $\forall r,s \in \{1, \dots, j\} \quad  e_r(t) \cdot e_s(t) = \delta_{rs}$ e 
         $\langle \dot{c}(t), \dots, c^{(j)}(t) \rangle = \langle e_1(t), \dots, e_j(t) \rangle$ con $1 \leq j \leq n-1$.
 
-        Verifichiamo che le basi $\langle \dot{c}(t), \dots, c^{(j)}(t) \rangle$ e $\langle e_1(t), \dots, e_j(t) \rangle$ siano effettivamente concordemente orientate.
+        Verifichiamo che le basi $\langle \dot{c}(t), \dots, c^{(j)}(t) \rangle$ e $\langle e_1(t), \dots, e_j(t) \rangle$ siano effettivamente concordemente orientate:
         
         $\displaystyle \dot{c}(t) = \norm{\dot{c}(t)} e_1(t)$
 
-        $\displaystyle c^{(j)}(t)=\norm{\tilde{e}_j(t)} e_j(t) + \sum_{r=1}^{j-1} \left( c^{(r)}(t) \cdot e_r(t) \right) e_r(t)$ 
+        \textcolor{violet}{$\displaystyle \ddot{c}(t) = \norm{\tilde{e}_2(t)} e_2(t) + \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)$}
+
+        $\displaystyle c^{(j)}(t)=\norm{\tilde{e}_j(t)} e_j(t) + \sum_{r=1}^{j-1} \left( c^{(j)}(t) \cdot e_r(t) \right) e_r(t)$ 
         
         la matrice di passaggio da $\langle e_1(t), \dots, e_j(t) \rangle$ a $\langle \dot{c}(t), \dots, c^{(j)}(t) \rangle$ è:
 
@@ -1402,15 +1409,26 @@
         0 & 0 & \cdots & \norm{\tilde{e}_j(t)}
         \end{pmatrix}
         \]
+        \textcolor{violet}{I vari asterischi rappresentano le componenti ottenute dal prodotto scalare dei vettori $c^{(j)}(t)$ con i vettori $e_r(t)$ cioè quelli della sommatoria 
+        ma il loro valore non è utile ai fini della dimostrazione }
+
         $A(t)$ è una matrice triangolare superiore $\Rightarrow \det(A(t)) \textcolor{violet}{= \norm{\dot{c}(t)} \norm{\tilde{e}_2(t)} \cdots \norm{\tilde{e}_j(t)}} > 0 \Rightarrow$ 
         le basi sono concordamente orientate.
 
         Si osservi che per costruzione i campi vettoriali $e_1(t), \dots, e_{n-1}(t)$ sono differenziabili \textcolor{violet}{(perchè sono ottenuti da combinazioni lineari differenziabili dei vettori $c^{(1)}(t), \dots, c^{(n-1)}(t)$)}
 
+        \textcolor{violet}{Ci mancano esattamente due cose per concludere la dimostrazione del Teorema:} 
+        
+        \textcolor{violet}{$(1)$ Costruire l'ultimo vettore $e_n(t)$: non potevamo usare Gram-Schmidt per l'$n$-esimo vettore
+        perché non avevamo garanzie sulla lineare indipendenza di $c^{(n)}(t)$, dobbiamo quindi "fabbricare" a mano un vettore $e_n(t)$ che sia ortogonale a tutti i precedenti, che abbia norma $1$
+        e che chiuda la base orientandola positivamente. $(2)$ Dimostrare l'unicità.}
+
         Devo costruire $e_n(t)=(x_1(t), \dots, x_n(t))$ 
 
         $\forall j \in \{1, \dots, n-1\} \quad e_j(t) = \left(e_j^1(t), \, \dots, \, e_j^n(t) \right)$
 
+        \textcolor{violet}{(Vogliamo che $e_n(t)$ sia ortogonale a tutti i precedenti)} 
+        
         $\forall j \in \{1, \dots, n-1\} \quad e_j(t) \cdot e_n(t) = 0 \Rightarrow e_j^1(t) x_1(t) + \cdots + e_j^n(t) x_n(t) = 0$
 
         $(x_1(t), \dots, x_n(t))$ è soluzione del sistema lineare omogeneo di $n-1$ equazioni in $n$ incognite
