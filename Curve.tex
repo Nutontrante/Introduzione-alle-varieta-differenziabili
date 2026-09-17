@@ -1558,13 +1558,14 @@
 
         Sia $c: I \to \mathbb{R}^n$ curva parametrizzata sia $\left(e_i\right)_{1 \leq i \leq n}$ $n$-riferimento mobile lungo $c$
 
-        Poniamo $\forall t \in I \quad \forall i =1, \dots, n \quad$ \textcolor{red}{$\displaystyle \dot{e}_i(t)=\sum_{j=1}^{n} \omega_{ij}(t) e_j(t)$}
+        \[ \text{Poniamo } \textcolor{red}{\forall t \in I \quad \forall i =1, \dots, n \quad \dot{e}_i(t)=\sum_{j=1}^{n} \omega_{ij}(t) e_j(t)} \]
 
         dove $\forall i,j = 1, \dots, n \quad \omega_{ij}(t) = \dot{e}_i(t) \cdot e_j(t)$
 
         Verifichiamo che $\forall t \in I \quad \forall i,j = 1, \dots, n \quad \omega_{ij}(t) = -\omega_{ji}(t)$ da cui segue che la matrice 
         
-        $\omega(t) = \left( \omega_{ij}(t) \right)_{1 \leq i,j \leq n}$ è una matrice antisimmetrica.
+        $\omega(t) = \left( \omega_{ij}(t) \right)_{1 \leq i,j \leq n}$ è una matrice antisimmetrica 
+        \textcolor{violet}{(fisicamente, ci dice che il tasso con cui $e_1$ "si piega" verso $e_2$ è esattamente l'opposto del tasso con cui $e_2$ "si piega" verso $e_1$)}.
         \begin{proof}
         $e_i(t) \cdot e_j(t) = \delta_{ij}$ differenziando si ha 
 
@@ -1573,6 +1574,7 @@
         
         $\Rightarrow \omega_{ij}(t) = -\omega_{ji}(t)$
         \end{proof}
+
         Le $n$ equazioni 
         \begin{equation}
         \label{eq:equazioni_di_Frenet}
@@ -1601,6 +1603,10 @@
         \[ \dot{\tilde{e}}_i(s) = \sum_{j=1}^{n} \tilde{\omega}_{ij}(s) \tilde{e}_j(s), \quad i = 1, \dots, n \]
         Sappiamo che $\dot{\tilde{c}}(s) = \dot{c}(\phi(s)) \phi'(s)$ osserviamo che se $\dot{\tilde{c}}(s) \neq 0$ allora 
         \[ \qquad \textcolor{red}{\frac{\tilde{\omega}_{ij}(s)}{\norm{\dot{\tilde{c}}(s)}} = \pm \frac{\omega_{ij}(\phi(s))}{\norm{\dot{c}(\phi(s))}}} \qquad \left(+ \text{ se } \phi'(s) > 0 \text{ e } - \text{ se } \phi'(s) < 0 \right) \]
+        \textcolor{violet}{La geometria differenziale studia la forma degli oggetti, non la cinematica.
+         Se tu percorri una pista in bicicletta a $10$ km/h e poi la percorri in auto a $100$ km/h la tua equazione del moto (la cinematica) cambia radicalmente. 
+         Ma la forma della pista (la geometria) è rimasta identica.Dimostrare che le equazioni di Frenet (e quindi le funzioni di curvatura) rimangono le stesse per curve equivalenti significa dimostrare che la curvatura è una proprietà intrinseca dell'oggetto geometrico (la curva non parametrizzata). Non dipende dal "tempo" $t$ che ci metti a percorrerla (la parametrizzazione), ma solo da come è fatta fisicamente nello spazio.  L'unico fattore che cambia è un $\pm 1$ (l'orientazione). Questo succede banalmente perché se percorri la pista al contrario, ciò che prima consideravi una curva a "sinistra", ora diventerà una curva a "destra", ribaltando i segni.
+         Ma il valore assoluto della piegatura della pista è immutato. }
         \begin{proof}
         \begin{align*}
         \frac{\tilde{\omega}_{ij}(s)}{\norm{\dot{\tilde{c}}(s)}} &= \frac{ \dot{\tilde{e_i}}(s) \cdot \tilde{e}_j(s) }{ \, \left|\phi ' (s)\right| \, \norm{\dot{c}(\phi(s))} \, } = \frac{ \phi'(s) \dot{e_i}(\phi(s)) \cdot e_j(\phi(s)) }{ \, \left|\phi ' (s)\right| \, \norm{\dot{c}(\phi(s))} \, } \\
@@ -1620,6 +1626,7 @@
         0 & 0 & 0 & \cdots & 0
         \end{pmatrix} \]
         \end{proposizione}
+        \textcolor{violet}{la matrice $\omega(t)$ è un tipo particolarissimo e strettissimo di matrice a banda: è una matrice tridiagonale antisimmetrica. Ha zeri sulla diagonale principale, e valori non nulli solo sulla riga appena sopra e appena sotto.}
         \begin{proof}
         \mbox{}
 
@@ -1631,6 +1638,10 @@
         $\Rightarrow \dot{e}_i(t)$ è combinazione lineare dei vettori $\dot{c}(t), \ddot{c}(t), \dots, c^{(i+1)}(t)$
         
         $\Rightarrow \dot{e}_i(t) \in \langle \dot{c}(t), \ddot{c}(t), \dots, c^{(i+1)}(t) \rangle = \langle e_1(t), e_2(t), \dots, e_{i+1}(t) \rangle $
+
+        \textcolor{violet}{Poiché la derivata $\dot{e}_i(t)$ si esprime usando al massimo le prime $i+1$ direzioni, e poiché per costruzione
+         il riferimento è ortonormale, ogni vettore con indice successivo ($j > i+1$) risulta strutturalmente ortogonale allo spazio in cui vive
+          $\dot{e}_i(t)$, annullandone il prodotto scalare}    
 
         Pertanto $\forall j > i+1 \quad e_j(t) \in \langle e_1(t), \dots, e_{i+1}(t) \rangle^\perp \quad \omega_{ij}(t) = \dot{e}_i(t) \cdot e_j(t) = 0$
         \end{proof}
@@ -1652,9 +1663,9 @@
             0 & \textcolor{celeste}{\omega_{12}(t)} & \cdots & \cdots & 0 \\
             -\omega_{12}(t) & 0 & \cdots & \cdots & 0 \\
             \vdots & \vdots & 0 & \textcolor{celeste}{\omega_{n-2,n-1}(t)} & 0 \\
-            \vdots & \cdots & -\omega_{n-2,n-1}(t) & 0 & \textcolor{celeste}{\omega_{n-1,n}(t)} \\
+            \vdots & \cdots & -\omega_{n-2,n-1}(t) & 0 & \textcolor{violet}{\underbrace{\textcolor{black}{\omega_{n-1,n}(t)}}_{\substack{\text{qui non posso} \\ \text{dire nulla}}}} \\
             0 & \cdots & \cdots & -\omega_{n-1,n}(t) & 0
-            \end{pmatrix} \quad \textcolor{celeste}{\omega_{i,i+1}(t)> 0} \]
+            \end{pmatrix} \quad \textcolor{celeste}{\omega_{i,i+1}(t)> 0 \quad \forall i = 1, \dots, n-2} \]
         \end{proposizione}
         \begin{proof}
         \mbox{}
