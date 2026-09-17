@@ -1619,14 +1619,98 @@
         Con $\displaystyle i \leq n-2 \iff i+1 \leq n-1 \Rightarrow k_i(t) = \frac{\omega_{i,i+1}(t)}{\norm{\dot{c}(t)}} >0$ 
         \end{proof}
     \section{Curve differenziabili e isometrie}
-        \begin{richiamo}
-        Ci vorebbe un richiamo su isometrie inverse e dirette
+        \begin{richiamo}[Matrice di cambiamento di base]
+        \mbox{}
+
+        Sia $V$ uno spazio vettoriale su $\mathbb{R}$ di dimensione $n$ data una base $\mathfrak{B} = \{e_1, \dots, e_n\}$, per il teorema di esistenza e unicità della rappresentazione, sappiamo che per ogni vettore $v \in V$ esiste un'unica $n$-upla di scalari $(x_1, \dots, x_n) \in \mathbb{R}^n$ tale che:
+        \[
+        v = x_1 e_1 + \dots + x_n e_n = \sum_{i=1}^n x_i e_i
+        \]
+        I coefficienti $x_i$ sono le \textbf{componenti} (o coordinate) di $v$ rispetto a $\mathfrak{B}$.
+
+        Sia ora $\mathfrak{B}' = \{e'_1, \dots, e'_n\}$ un'altra base di $V$, poiché $\mathfrak{B}$ è una base ciascun vettore $e'_j$ della nuova base $\mathfrak{B}'$ può essere espresso in modo unico come combinazione lineare dei vettori della vecchia base $\mathfrak{B}$:
+        \[
+        e'_j = \sum_{i=1}^n a_{ij} e_i \quad \text{per } j = 1, \dots, n
+        \]
+        Si definisce \textbf{matrice di cambiamento di base} (o matrice di passaggio) dalla base $\mathfrak{B}'$ alla base $\mathfrak{B}$, la matrice 
+        \[ M_{\mathfrak{B}}^{\mathfrak{B}'} = (a_{ij}) \in GL(n, \mathbb{R}) \] le cui colonne sono costituite ordinatamente dalle componenti dei vettori della nuova base $\mathfrak{B}'$ rispetto alla vecchia base $\mathfrak{B}$.
+
+        Se indichiamo con $X$ e $X'$ i vettori colonna delle componenti di uno stesso vettore $v \in V$ rispetto, rispettivamente, a $\mathfrak{B}$ e $\mathfrak{B}'$, vale la relazione vettoriale fondamentale:
+        \[
+        X = M_{\mathfrak{B}}^{\mathfrak{B}'} X'
+        \]
+        Poiché la matrice mappa una base in una base, essa ha rango massimo, il suo determinante è non nullo, ed è pertanto invertibile. 
+        
+        La sua matrice inversa $(M_{\mathfrak{B}}^{\mathfrak{B}'})^{-1} = M_{\mathfrak{B}'}^{\mathfrak{B}}$ è la matrice di passaggio dalla base $\mathfrak{B}$ alla base $\mathfrak{B}'$.
         \end{richiamo}
+        \begin{richiamo}[Esempio pratico: Cambiamento di base in $\mathbb{R}^3$]
+        Consideriamo lo spazio vettoriale $\mathbb{R}^3$ e due sue basi.
+        Sia $\mathfrak{B} = \{e_1, e_2, e_3\}$ la base canonica standard, dove:
+        \[
+        e_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \quad e_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \quad e_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
+        \]
+        Sia $\mathfrak{B}' = \{v_1, v_2, v_3\}$ una nuova base formata dai seguenti vettori linearmente indipendenti:
+        \[
+        v_1 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} \quad v_2 = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \quad v_3 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}
+        \]
+        Poiché in questo caso stiamo già esprimendo i vettori della nuova base $\mathfrak{B}'$ in funzione dei vettori della vecchia base $\mathfrak{B}$ (la canonica), la \textbf{matrice di cambiamento di base} $M_{\mathfrak{B}}^{\mathfrak{B}'}$ si ottiene banalmente mettendo in colonna le componenti dei nuovi vettori:
+        \[
+        M_{\mathfrak{B}}^{\mathfrak{B}'} = \begin{pmatrix} 
+        1 & 0 & 1 \\ 
+        1 & 1 & 0 \\ 
+        0 & 1 & 1 
+        \end{pmatrix}
+        \]
+
+        \textbf{Esempio di trasformazione delle coordinate:} \\
+        Prendiamo un vettore $w$ le cui coordinate rispetto alla \textit{nuova} base $\mathfrak{B}'$ sono date dal vettore colonna $X' = (1, -1, 2)^T$. Geometricamente questo significa che la sua unica combinazione lineare possibile è:
+        \[
+        w = 1 \cdot v_1 - 1 \cdot v_2 + 2 \cdot v_3
+        \]
+        Per trovare le coordinate $X$ dello stesso vettore $w$ rispetto alla base "vecchia" $\mathfrak{B}$, utilizziamo la relazione matriciale $X = M_{\mathfrak{B}}^{\mathfrak{B}'} X'$:
+        \[
+        X = \begin{pmatrix} 
+        1 & 0 & 1 \\ 
+        1 & 1 & 0 \\ 
+        0 & 1 & 1 
+        \end{pmatrix} 
+        \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix} = 
+        \begin{pmatrix} 
+        1(1) + 0(-1) + 1(2) \\ 
+        1(1) + 1(-1) + 0(2) \\ 
+        0(1) + 1(-1) + 1(2) 
+        \end{pmatrix} = 
+        \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}
+        \]
+        Quindi, il vettore che nella base $\mathfrak{B}'$ chiamavamo $(1, -1, 2)^T$, nella base canonica $\mathfrak{B}$ si chiama $(3, 0, 1)^T$. 
+
+        Se volessimo fare il percorso inverso (conoscendo le coordinate in $\mathfrak{B}$ e volendo trovare quelle in $\mathfrak{B}'$), basterebbe invertire la matrice: $X' = (M_{\mathfrak{B}}^{\mathfrak{B}'})^{-1} X$.
+        \end{richiamo}
+        \begin{richiamo}[Orientazione di uno spazio vettoriale]
+        \mbox{}
+
+        Sia $V$ uno spazio vettoriale reale di dimensione $n$ due basi ordinate $\mathfrak{B}$ e $\mathfrak{B}_0$ di $V$ si dicono \textcolor{red}{concordi} se
+        la matrice di cambiamento di base $M_{\mathfrak{B}_0}^{\mathfrak{B}}$ (ovvero la matrice di passaggio da $\mathfrak{B}$ a $\mathfrak{B}_0$) ha determinante strettamente positivo:
+        \[
+        \det\left(M_{\mathfrak{B}_0}^{\mathfrak{B}}\right) > 0
+        \]
+        Poiché ogni matrice di cambiamento di base è invertibile (appartiene a $GL(n,\mathbb{R})$), il suo determinante è sempre non nullo. 
+        
+        La concordanza tra basi stabilisce una \textbf{relazione di equivalenza} sull'insieme di tutte le basi di $V$, la quale partiziona questo insieme in esattamente \textbf{due classi di equivalenza}.
+
+        Si definisce \textbf{orientazione} di $V$ la scelta arbitraria di una di queste due classi:
+        \begin{itemize}
+            \item Le basi appartenenti alla classe scelta si dicono \textbf{orientate positivamente} (o concordi con l'orientazione).
+            \item Le basi appartenenti all'altra classe si dicono \textbf{orientate negativamente} (o discordi).
+        \end{itemize}
+        \textit{Nota intuitiva:} In $\mathbb{R}^3$, l'orientazione standard è quella definita dalla base canonica $\{e_1, e_2, e_3\}$. La classe di equivalenza di questa base racchiude tutte le terne di vettori che seguono la "regola della mano destra", mentre l'altra classe racchiude quelle che seguono la "regola della mano sinistra".
+        \end{richiamo}
+        \newpage
         \begin{proposizione}
         \label{prop:isometrie_dirette_preservano_orientazione}
         $L \colon \mathbb{R}^n \to \mathbb{R}^n$ è lineare con $\det L >0$ allora se $\mathfrak{B}= \{e_1, \, \dots, \, e_n\}$ è una 
         base positiva di $\mathbb{R}^n$ \textcolor{blu}{(concordemente orientata con la base canonica di $\mathbb{R}^n$, $\mathfrak{B}_0= \{\varepsilon_1, \, \dots, \, \varepsilon_n\}$)}
-        allora anche $\mathfrak{B}'= \{L(e_1), \, \dots, \, L(e_n)\}$ è una base positiva di $\mathbb{R}^n$
+        allora anche $\mathfrak{B}'= \{L(e_1), \, \dots, \, L(e_n)\}$ è una base positiva di $\mathbb{R}^n$ 
         \end{proposizione}
         \begin{proof}
         \mbox{}
