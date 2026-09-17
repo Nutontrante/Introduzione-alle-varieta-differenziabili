@@ -38,8 +38,8 @@
             \end{equation}
         \end{osservazione}
         \begin{definizione}
-        $R: \mathbb{R}^n \to \mathbb{R}^n$ si dice \textcolor{red}{isometria lineare} (o operatore unitario \textcolor{violet}{in contesti di applicazioni affini e in particolare
-        di isometrie $R$ l'abbiamo chimata parte lineare dell'applicazione affine}) se $R$ è lineare e conserva il prodotto scalare cioè
+        $R: \mathbb{R}^n \to \mathbb{R}^n$ si dice \textcolor{red}{isometria lineare} (o operatore unitario \textcolor{violet}{in contesti più generali di applicazioni affini 
+        $R$ l'abbiamo chiamata parte lineare dell'applicazione affine}) se $R$ è lineare e conserva il prodotto scalare cioè
         \[ \forall x,y \in \mathbb{R}^n \quad R(x) \cdot R(y) = x \cdot y \]
         o equivalentemente conserva le norme 
         \[ \forall x \in \mathbb{R}^n \quad \norm{R(x)} = \norm{x} \]
@@ -107,9 +107,99 @@
         \end{richiamo}
         \begin{richiamo}[Teorema di esistenza e unicità delle affinità]
         \mbox{}
-        
+
         Sia $A_n\left(V, \, \mathbb{K}, \,f \right)$ spazio affine e sia $\left(P_0, \, \dots , \, P_n\right)$ e $\left(P'_0, \, \dots , \, P'_n\right)$ due
         $(n+1)$-uple di punti affinamente indipendenti di $A_n$  allora esiste un'unica affinità $\varphi: A_n \to A_n$ tale che $\varphi(P_i) = P'_i$ per $i=0,\ldots,n$.
+        \end{richiamo}
+        \begin{richiamo}[Equazioni di un'affinità]
+        \mbox{} 
+        
+        Sia $A_n(V, \mathbb{K}, f)$ uno spazio affine e sia $R(O, B)$ un riferimento affine con $O \in A_n$ e $B = \{e_1, \dots, e_n\}$ base di $V$. \\
+        Sia $\varphi: A_n \to A_n$ un'affinità e sia $L: V \to V$ la parte lineare di $\varphi$ (che per definizione è un isomorfismo). \\
+        Sia $A = M_B(L)$ la matrice associata a $L$ rispetto alla base $B$:
+        \[
+        A = (a_{ij}) \in GL(n; \mathbb{K}) \quad \left( \forall j = 1, \dots, n \quad L(e_j) = \sum_{i=1}^n a_{ij} e_i \right)
+        \]
+        Sia $P \in A_n$ supponiamo $P = (x_1, \dots, x_n) \implies \overrightarrow{OP} = x_1 e_1 + \dots + x_n e_n$ \\
+        Sia $\varphi(P) \in A_n$ supponiamo $\varphi(P) = (x'_1, \dots, x'_n) \implies \overrightarrow{O\varphi(P)} = x'_1 e_1 + \dots + x'_n e_n$.\\
+        Sia $O' = \varphi(O)$ supponiamo $O' = (b_1, \dots, b_n) \implies \overrightarrow{OO'} = b_1 e_1 + \dots + b_n e_n$
+
+        Ponendo i vettori colonna:
+        \[
+        X = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \quad X' = \begin{pmatrix} x'_1 \\ \vdots \\ x'_n \end{pmatrix} \quad b = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}
+        \]
+        Allora vale la relazione matriciale:
+        \[
+        \color{red}{X' = AX + b}
+        \]
+        \end{richiamo}
+        \begin{richiamo}
+        Sia $E_n\left(V , \, \mathbb{R}, \, g, \, f \right)$ uno spazio affine euclideo, si definisce \textcolor{red}{isometria} di $E_n$ ogni affinità $\varphi: E_n \to E_n$ 
+        la cui parte lineare $L$ è un'isometria lineare o trasformazione ortogonale o conserva il prodotto scalare di $\left(V,g\right)$ cioè $L \in O(V,g)$.
+
+        Una isometria conserva gli angoli e le distanze.
+        \end{richiamo}
+        \begin{richiamo}[Teorema di esistenza e unicità delle isometrie]
+        \mbox{}
+            
+        Sia $E_n \left(V , \, \mathbb{R}, \, g, \, f \right)$ uno spazio affine euclideo siano $\left(P_0, \, \dots, \, P_n\right)$ e $\left(P'_0, \, \dots, \, P'_n\right)$ 
+        due $(n+1)$-uple di punti affinemente indipendenti tali che $\forall i , j=0,\ldots,n \quad d(P_i,P_j) = d(P'_i,P'_j)$.
+        Allora esiste un'unica isometria $\phi: E_n \to E_n$ tale che $\phi(P_i) = P'_i$ per $i=0,\ldots,n$.
+        \end{richiamo}
+        \begin{richiamo}[Equazioni di un'isometria]
+        \mbox{}
+
+        Sia $E_n(V, \mathbb{R}, g, f)$ uno spazio affine euclideo e sia $R(O, B)$ un riferimento cartesiano 
+        
+        con $B = \{e_1, \dots, e_n\}$ base ortonormale, sia $\varphi \in Isom(E_n)$ un'isometria con parte lineare $L \in O(V)$.
+
+        L'isometria $\varphi$, per le equazioni di un'affinità, ha equazione:
+        \[
+        X' = AX + b
+        \]
+        Dove:
+        \begin{itemize}
+            \item $A$ è una matrice ortogonale perché associata a una isometria lineare rispetto a una base ortonormale $\implies A \in O(n)$.
+            \item $b \in \mathbb{R}^n$ è il vettore colonna delle coordinate di $\varphi(O)$, ovvero il vettore delle componenti del vettore $\overrightarrow{O\varphi(O)}$ nella base $B$:
+            \[
+            \overrightarrow{O\varphi(O)} = b_1 e_1 + \dots + b_n e_n
+            \]
+            Poiché $B = \{e_1, \dots, e_n\}$ è una base ortonormale di $(V,g)$, si ha:
+            \[
+            \forall i = 1, \dots, n \quad b_i = g(\overrightarrow{O\varphi(O)}, e_i)
+            \]
+        \end{itemize}
+
+        \textbf{Viceversa:} \\
+        Sia $\varphi: E_n \to E_n$ un'applicazione tale che per ogni $P \in E_n$ (spazio affine euclideo), posto:
+        \[
+        X = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix}, \quad X' = \begin{pmatrix} x'_1 \\ \vdots \\ x'_n \end{pmatrix}
+        \]
+        dove $X$ è il vettore delle coordinate di $P$ e $X'$ è il vettore delle coordinate di $\varphi(P)$, risulta:
+        \[
+        X' = AX + b \quad \text{con } A \in O(n), \, b \in \mathbb{R}^n \implies \varphi \text{ è un'isometria.}
+        \]
+        \end{richiamo}
+        \begin{richiamo}[Isometrie Dirette e Inverse]
+        \mbox{}
+        
+        \textbf{Richiamo sulle isometrie lineari}\\
+        Sia $(V,g)$ uno spazio vettoriale euclideo e sia $L \in O(V)$, fissata $B$ base ortonormale di $(V,g)$, la matrice associata $A = M_B(L)$ appartiene al gruppo ortogonale $O(n) \implies \det(A) = \pm 1$.
+
+        Si osservi che se $B'$ è un'altra base ortonormale, posto $A' = M_{B'}(L)$, per i teoremi di Geometria 1 le matrici $A$ e $A'$ sono simili $\implies \det(A) = \det(A')$.
+        Pertanto, il determinante dell'applicazione lineare è ben definito (indipendente dalla base scelta): 
+        \[
+        \det(L) = \det(A) = \det(A') = \pm 1
+        \]
+        L'insieme $SO(V) = \{L \in O(V) \mid \det(L) = 1\}$ (gruppo speciale ortogonale) è un sottogruppo di $(O(V), \circ)$.
+
+        \textbf{Isometrie "affini"}\\
+        Sia $E_n(V, \mathbb{R}, g, f)$ uno spazio affine euclideo e sia $\varphi \in Isom(E_n)$ un'isometria con parte lineare $L \in O(V)$. 
+        Si dice che $\varphi$ è:
+        \begin{itemize}
+            \item un'\textbf{isometria diretta} se $\det(L) = 1$
+            \item un'\textbf{isometria inversa} se $\det(L) = -1$
+        \end{itemize}
         \end{richiamo}
         \begin{osservazione}
         Se $\phi: \mathbb{R}^n \to \mathbb{R}^n$ è un'isometria allora $\phi$ è differenziabile e per la
@@ -120,9 +210,9 @@
         \end{osservazione}
         \newpage
         \begin{definizione}
-        Sia $F:A \to \mathbb{R}^m$ con $A \subseteq \mathbb{R}^n$ aperto si definiscono le \textcolor{red}{funzioni componenti} di $F$ 
+        Sia $F:A \to \mathbb{R}^n$ con $A \subseteq \mathbb{R}^n$ aperto si definiscono le \textcolor{red}{funzioni componenti} di $F$ 
 
-        \textcolor{red}{$F^i = \pi^i \circ F : A \to \mathbb{R}^n$} per $i=1,\ldots,m$ dove $\pi^i: \mathbb{R}^m \to \mathbb{R}$ è la proiezione 
+        \textcolor{red}{$F^i = \pi^i \circ F : A \to \mathbb{R}$} per $i=1,\ldots,n$ dove $\pi^i: \mathbb{R}^n \to \mathbb{R}$ è la proiezione 
         $i$-esima 
 
         Se $F$ è differenziabile in $\displaystyle x_0 \in A \overset{\textcolor{violet}{\substack{\text{dim in} \\ \text{analisi 3} }}}{\Rightarrow} \forall i=1,\ldots,m \quad \forall j=1,\ldots,n \quad$ \scalebox{1.6}{$\exists$} $\displaystyle \frac{\partial F^i}{\partial x_j}(x_0)$ \textcolor{blu}{(le $F^i$ 
