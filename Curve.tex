@@ -209,13 +209,49 @@
         $\Rightarrow \left(d\phi\right)_{x_0} = \left(d \left( \tau_b \circ R \right) \right)_{x_0} \overset{\eqref{eq:composizione_di_applicazioni_differenziabili}}{=} \left(d\tau_b\right)_{R(x_0)} \circ \left(dR\right)_{x_0} = id_{\mathbb{R}^n} \circ R = R$ 
         \end{osservazione}
         \newpage
-        \begin{definizione}
-        Sia $F:A \to \mathbb{R}^n$ con $A \subseteq \mathbb{R}^n$ aperto si definiscono le \textcolor{red}{funzioni componenti} di $F$ 
+        \begin{richiamo}[Matrice associata a un'applicazione lineare]
+        Siano $V$ e $W$ due spazi vettoriali reali di dimensione $n$ ed $m$.
+        Sia $L: V \to W$ un'applicazione lineare. 
+        Fissiamo due basi arbitrarie per i due spazi:
+        \begin{itemize}
+            \item $\mathfrak{B}_V = \{v_1, \dots, v_n\}$ base per lo spazio di partenza $V$.
+            \item $\mathfrak{B}_W = \{w_1, \dots, w_m\}$ base per lo spazio di arrivo $W$.
+        \end{itemize}
 
-        \textcolor{red}{$F^i = \pi^i \circ F : A \to \mathbb{R}$} per $i=1,\ldots,n$ dove $\pi^i: \mathbb{R}^n \to \mathbb{R}$ è la proiezione 
+        Per costruire la matrice associata $M_{\mathfrak{B}_W}^{\mathfrak{B}_V}(L) \in M_{m,n}(\mathbb{R})$, si valuta l'immagine tramite $L$ di ciascun vettore della base di partenza e la si esprime come combinazione lineare dei vettori della base di arrivo:
+        \[
+        L(v_j) = \sum_{i=1}^m a_{ij} w_i \quad \text{per ogni } j = 1, \dots, n
+        \]
+        La $j$-esima colonna della matrice è formata esattamente dai coefficienti $(a_{1j}, a_{2j}, \dots, a_{mj})^T$ di questa combinazione lineare.
+
+        \vspace{0.3cm}
+        \textbf{Esempio generico:} \\
+        Sia $L: \mathbb{R}^2 \to \mathbb{R}^3$ un'applicazione lineare. \\
+        Sia $\mathfrak{B}_V = \{v_1, v_2\}$ una base di partenza per $\mathbb{R}^2$ e $\mathfrak{B}_W = \{w_1, w_2, w_3\}$ una base di arrivo per $\mathbb{R}^3$. \\
+        Supponiamo che, calcolando l'applicazione $L$ sui vettori di $\mathfrak{B}_V$, si ottenga:
+        \begin{align*}
+        L(v_1) &= 2w_1 - 1w_2 + 0w_3 \implies \text{La prima colonna è } \begin{pmatrix} 2 \\ -1 \\ 0 \end{pmatrix} \\
+        L(v_2) &= 3w_1 + 5w_2 + 1w_3 \implies \text{La seconda colonna è } \begin{pmatrix} 3 \\ 5 \\ 1 \end{pmatrix}
+        \end{align*}
+
+        La matrice associata all'applicazione lineare rispetto alle basi $\mathfrak{B}_V$ e $\mathfrak{B}_W$ è una matrice rettangolare $3 \times 2$:
+        \[
+        M_{\mathfrak{B}_W}^{\mathfrak{B}_V}(L) = \begin{pmatrix} 2 & 3 \\ -1 & 5 \\ 0 & 1 \end{pmatrix}
+        \]
+        Se $X \in \mathbb{R}^2$ è il vettore colonna delle coordinate di un generico vettore $x \in V$ rispetto a $\mathfrak{B}_V$, le coordinate $Y \in \mathbb{R}^3$ della sua immagine $L(x) \in W$ rispetto a $\mathfrak{B}_W$ si ottengono con il prodotto matriciale:
+        \[
+        Y = M_{\mathfrak{B}_W}^{\mathfrak{B}_V}(L) X
+        \]
+        \end{richiamo}
+        \newpage
+        \begin{definizione}
+        Sia $F:A \to \mathbb{R}^m$ con $A \subseteq \mathbb{R}^n$ aperto si definiscono le \textcolor{red}{funzioni componenti} di $F$ 
+
+        \textcolor{red}{$F^i = \pi^i \circ F : A \to \mathbb{R}$} per $i=1,\ldots,m$ dove $\pi^i: \mathbb{R}^m \to \mathbb{R}$ è la proiezione 
         $i$-esima 
 
-        Se $F$ è differenziabile in $\displaystyle x_0 \in A \overset{\textcolor{violet}{\substack{\text{dim in} \\ \text{analisi 3} }}}{\Rightarrow} \forall i=1,\ldots,m \quad \forall j=1,\ldots,n \quad$ \scalebox{1.6}{$\exists$} $\displaystyle \frac{\partial F^i}{\partial x_j}(x_0)$ \textcolor{blu}{(le $F^i$ 
+        Se $F$ è differenziabile in $\displaystyle x_0 \in A \overset{\textcolor{violet}{\substack{\text{dim in} \\ \text{analisi 3} }}}{\Rightarrow} \forall i=1,\ldots,m \quad \forall j=1,\ldots,n \quad$ \scalebox{1.6}{$\exists$} 
+        $\displaystyle \frac{\partial F^i}{\partial x_j}(x_0) \textcolor{violet}{= dF^i_{x_0}(e_j)}$ \textcolor{blu}{(le $F^i$ 
         sono parzialmente differenziabili in $x_0$)}
         
         Si definisce \textcolor{red}{matrice Jacobiana di $F$ in $x_0$} la matrice 
@@ -226,11 +262,11 @@
         dove $\left\{e_j\right\}_{j=1,\ldots,n}$ è la base canonica di $\mathbb{R}^n$ e
         $\left\{e'_i\right\}_{i=1,\ldots,m}$ è la base canonica di $\mathbb{R}^m$
         
-        $\displaystyle dF_{x_0}(e_j) = \sum_{i=1}^m \frac{\partial F^i}{\partial x_j}(x_0) e'_i \overset{\textcolor{violet}{\substack{j\text{-esima} \\ \text{colonna della} \\ \text{Jacobiana}}}}{=} \begin{pmatrix}
+        \[  dF_{x_0}(e_j) = \sum_{i=1}^m \frac{\partial F^i}{\partial x_j}(x_0) e'_i \overset{\textcolor{violet}{\substack{j\text{-esima} \\ \text{colonna della} \\ \text{Jacobiana}}}}{=} \begin{pmatrix}
         \frac{\partial F^1}{\partial x_j}(x_0) \\
         \vdots \\
         \frac{\partial F^m}{\partial x_j}(x_0)
-        \end{pmatrix}$
+        \end{pmatrix} \]
         
         Si dice che $F:A \to \mathbb{R}^m$ è \textcolor{red}{differenziabile di classe $C^1$} se ammette derivate parziali in ogni punto di $A$ e 
         $\displaystyle \frac{\partial F^1}{\partial x_j}:A \to \mathbb{R}$ sono continue.
@@ -974,6 +1010,10 @@
         un \textcolor{red}{diffeomorfismo}
         \end{proposizione}
         \begin{proof}
+        \mbox{}
+        \textcolor{violet}{Dire che $U_\alpha \cap U_\beta \neq \emptyset$ significa ammettere che c'è almeno un "pezzo" della curva (un punto $p$) che è coperto 
+        contemporaneamente da entrambe le parametrizzazioni}
+
         Sia $t_0 \in \alpha^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\alpha$
         
         Verifichiamo che $\beta^{-1} \circ \alpha$ è differenziabile in un intorno di $t_0$
@@ -986,13 +1026,18 @@
 
         $\dot{\beta}(s) = \left(\dot{x}^1(s), \ldots, \dot{x}^n(s)\right)$
         
-        \textcolor{orange}{$\beta$ è regolare} $\Rightarrow \dot{\beta}(s_0) \neq 0 \Rightarrow \exists i \in \{1, \ldots, n\}$ tale che $\dot{x}^i(s_0) \neq 0$
+        \textcolor{orange}{$\beta$ è regolare} $\Rightarrow \dot{\beta}(s_0) \neq 0 \Rightarrow \exists i \in \{1, \ldots, n\}$ tale che $\dot{x}^i(s_0) \neq 0$ \textcolor{violet}{(ci salviamo
+        questo indice $i$)}
 
         La funzione $s \in \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right) \subset I_\beta \mapsto x^i(s)= p^i(\beta(s)) \in \mathbb{R}$ 
-        è differenziabile.
+        è differenziabile \textcolor{violet}{(essendo $\beta$ una curva parametrizzata è differenziabile di classe $C^\infty$ di conseguenza ogni sua funzione componente 
+        $x^i(s)$ eredita la differenziabilità)}
 
-        Per il teorema della funzione inversa $\exists J $ intorno aperto di $s_0 \quad J \subset \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right)$ ed
-        $\exists V$ intorno aperto di $x^i(s_0) = p^i(\beta(s_0)) = p^i(p)$ tale che \textcolor{celeste}{$p^i \circ \beta: J \to V$ sia un diffeomorfismo}.
+        Per il \textcolor{hotpink}{teorema della funzione inversa} \textcolor{violet}{(questo teorema afferma che se hai una funzione da
+         $\mathbb{R}$ in $\mathbb{R}$, esattamente come la nostra $x^i(s)$, e la sua derivata in un punto, $s_0$, non si annulla $\Rightarrow$in un piccolo intorno di quel punto la funzione 
+         è strettamente monotona $\Rightarrow$ localmente invertibile e la sua inversa è anch'essa differenziabile)} $\exists J $ intorno aperto di $s_0 \quad J \subset \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right)$ ed
+        $\exists V$ intorno aperto di $x^i(s_0) = p^i(\beta(s_0)) = p^i(p)$ tale che \textcolor{celeste}{$p^i \circ \beta: J \to V$ sia un diffeomorfismo} 
+        \textcolor{violet}{$\Rightarrow (p^i \circ \beta)^{-1} : V \to J$ è un diffeomorfismo}.
 
         $\textcolor{violet}{\underbrace{\textcolor{verde}{(p^i)^{-1}(V)}}_{\text{aperto in } \mathbb{R}^n}} \cap \mathcal{C}$ è un aperto di $\mathcal{C}$ che contiene $\beta(s_0)=\alpha(t_0)=p$.
 
@@ -1209,7 +1254,7 @@
         \end{center}
         Posto $\varphi_i = c_i^{-1}: U_i \to (-1,1)$ per $i=1,2,3,4$ e $\displaystyle \left\{\left(U_i, \varphi_i\right)\right\}_{i=1,2,3,4}$ è un
         atlante differenziabile su $\mathcal{C}$ per la proposizione \ref{prop:funzione_di_transizione_curve} segue che per ogni 
-        $i,j \in \{1,2,3,4\}$ con $i \neq j$ tale che $U_i \cap U_j \neq \emptyset$
+        $i,j \in \{1,2,3,4\}$ con $i \neq j$ tale che $U_i \cap U_j \neq \emptyset$ \textcolor{violet}{(osservazione: $U_1 \cap U_2 = \emptyset = U_3 \cap U_4 $)}
         $\varphi_i \circ \varphi_j^{-1}= c_i^{-1} \circ c_j: \varphi_j(U_i \cap U_j) \to \varphi_i(U_i \cap U_j)$ è un diffeomorfismo.
 
         \textcolor{violet}{Tramite la proiezione stereografica si potrà trovare un atlante differenziabile con $2$ carte.}
