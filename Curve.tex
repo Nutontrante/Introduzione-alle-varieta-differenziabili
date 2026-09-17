@@ -1445,7 +1445,7 @@
         \[ \left(x_1(t), \, \dots, \, x_n(t) \right) = \rho \left( M_1(t), \, -M_2(t), \, \dots, \, (-1)^{n-1} M_n(t) \right) \quad \textcolor{violet}{\rho \in \mathbb{R}} \]
         \textcolor{violet}{dove $M_i(t)$ è il minore di ordine $n-1$ della matrice $C(t)$ ottenuto eliminando la $i$-esima colonna.}
         \begin{align*}
-        \rho \left[ e_j^1(t) M_1 - e_j^2(t) M_2 + \cdots + (-1)^{n-1} e_j^n(t) M_n \right] 
+        \textcolor{violet}{e_j \cdot e_n} =\rho \left[ e_j^1(t) M_1 - e_j^2(t) M_2 + \cdots + (-1)^{n-1} e_j^n(t) M_n \right] 
         &= \rho \begin{vmatrix}
         e_1^1(t) & \cdots & e_1^n(t) \\
         \vdots & \ddots & \vdots \\
@@ -1459,6 +1459,8 @@
         e_j^1(t) & \cdots & e_j^n(t)
         \end{vmatrix} \overset{\textcolor{violet}{\substack{\text{2 righe} \\ \text{uguali}}}}{=} 0
         \end{align*}
+        \textcolor{violet}{Abbiamo quindi trovato un vettore $e_n(t)$ ortogonale a tutti i precedenti $e_1(t), \dots, e_{n-1}(t)$}
+
         $e_n(t) = \left(x_1(t), \dots, x_n(t) \right) \quad e_n(t) \cdot e_n(t) = 1 \Rightarrow x_1^2(t) + \cdots + x_n^2(t) = 1$
 
         $\displaystyle \Rightarrow \rho(t)^2 \left[ M_1^2(t) + \cdots + M_n^2(t) \right] = 1 \Rightarrow \rho(t) = \pm \dfrac{1}{\quad \sqrt{M_1^2(t) + \cdots + M_n^2(t)} \quad}$
@@ -1466,15 +1468,21 @@
         Si sceglie il segno $+$ o il segno $-$ in modo tale che $\left(e_1(t), \, \dots, \, e_n(t) \right)$ sia concorde con la
         base ortonormale di $\mathbb{R}^n$ infine per costruzione $e_n(t)$ è differenziabile.
 
-        Verifico l'unicità del riferimento canonico di Frenet siano $\left(e_i\right)_{1 \leq i \leq n}$ e $\left(\overline{e}_i\right)_{1 \leq i \leq n}$ due riferimenti di Frenet 
+        Verifico \textcolor{red}{l'unicità} del riferimento canonico di Frenet siano $\left(e_i\right)_{1 \leq i \leq n}$ e $\left(\overline{e}_i\right)_{1 \leq i \leq n}$ due riferimenti di Frenet 
         che soddisfano le condizioni \textcolor{black}{1.} e \textcolor{black}{2.}
 
         Proviamo che $\forall i = 1, \dots, n \quad e_i = \overline{e}_i$
 
-        Per $i=1$ $\langle e_1(t) \rangle = \langle \overline{e}_1(t) \rangle = \langle \dot{c}(t) \rangle$ con $\left(e_1(t)\right)$ e $\left(\overline{e}_1(t)\right)$ basi ortonormali
-        concordemente orientate $\displaystyle \Rightarrow e_1(t) = \overline{e}_1(t) = \frac{\dot{c}(t)}{\|\dot{c}(t)\|}$
+        Per $i=1$ 
+        
+        $\langle e_1(t) \rangle = \langle \overline{e}_1(t) \rangle = \langle \dot{c}(t) \rangle$ con $\left(e_1(t)\right)$ e $\left(\overline{e}_1(t)\right)$ basi ortonormali
+        concordemente orientate
+        
+        $\displaystyle \Rightarrow e_1(t) = \overline{e}_1(t) = \frac{\dot{c}(t)}{\|\dot{c}(t)\|}$
 
-        Per $1<j\leq n-1$ supponiamo \textcolor{orange}{$e_k(t) = \overline{e}_k(t) \quad \forall k = 1, \dots, j-1$} e proviamo che $e_j(t) = \overline{e}_j(t)$
+        Per $1<j\leq n-1$ 
+        
+        supponiamo \textcolor{orange}{$e_k(t) = \overline{e}_k(t) \quad \forall k = 1, \dots, j-1$} e proviamo che $e_j(t) = \overline{e}_j(t)$
 
         $\left(e_1(t), \, \dots , \, e_j(t)\right) \quad \left(\overline{e}_1(t), \, \dots , \, \overline{e}_j(t)\right)$ sono basi ortonormali concordemente orientate dello stesso
         sottospazio vettoriale \textcolor{violet}{ di dimensione $j$} la matrice di passaggio è 
@@ -1485,6 +1493,10 @@
         0 & 0 & \cdots & \pm 1
         \end{pmatrix} \]
         Poiché le basi sono concordemente orientate, il determinante della matrice di passaggio deve essere $+1$, quindi l'ultimo elemento deve essere $+1$ e quindi $e_j(t) = \overline{e}_j(t)$.
+
+        Per $i=n$ 
+
+        L'unicità di $e_n(t)$ deriva dalla costruzione stessa.
         \end{proof}
         \begin{definizione}
         Una curva parametrizzata che soddisfa l'ipotesi \eqref{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet} si dice \textcolor{red}{
