@@ -38,7 +38,8 @@
             \end{equation}
         \end{osservazione}
         \begin{definizione}
-        $R: \mathbb{R}^n \to \mathbb{R}^n$ si dice \textcolor{red}{isometria lineare} (o operatore unitario) se $R$ è lineare e conserva il prodotto scalare cioè
+        $R: \mathbb{R}^n \to \mathbb{R}^n$ si dice \textcolor{red}{isometria lineare} (o operatore unitario \textcolor{violet}{in contesti di applicazioni affini e in particolare
+        di isometrie $R$ l'abbiamo chimata parte lineare dell'applicazione affine}) se $R$ è lineare e conserva il prodotto scalare cioè
         \[ \forall x,y \in \mathbb{R}^n \quad R(x) \cdot R(y) = x \cdot y \]
         o equivalentemente conserva le norme 
         \[ \forall x \in \mathbb{R}^n \quad \norm{R(x)} = \norm{x} \]
@@ -79,6 +80,37 @@
         
         \textcolor{violet}{In questa dimostrazione abbiamo supposto che esistano $R$ e $b$ tali che $\phi = \tau_b \circ R$ e abbiamo mostrato come determinarli esplicitamente.}
         \end{proof}
+        \begin{richiamo}
+        Siano $A_n\left(V, \, \mathbb{K}, \,f \right)$ e $A'_m\left(V', \, \mathbb{K}, \,f' \right)$ due spazi affini associati agli stessi campi $\mathbb{K}$ e
+        agli spazi vettoriali $V$ e $V'$ rispettivamente mediante le applicazioni
+        \[ f: A_n \times A_n \to V \quad \text{e} \quad f': A'_m \times A'_m \to V' \]
+        Sia $\varphi: A_n \to A'_m$ si dice che $\varphi$ è \textcolor{red}{un'applicazione affine} se $\exists L: V \to V'$ 
+        \textcolor{red}{un'applicazione lineare detta parte lineare} 
+        tale che $\forall P, Q \in A_n L \quad \overrightarrow{PQ} = \overrightarrow{\varphi(P)\varphi(Q)}$.
+
+        Si dimostra che $\varphi$ è \textcolor{celeste}{bigettiva} $\iff L$ è \textcolor{celeste}{bigettiva}  \textcolor{celeste}{(isomorfismo)}.
+
+        Se $\varphi \colon A_n \to A'_m$ è un'applicazione affine \textcolor{celeste}{bigettiva} $\Rightarrow m=n$ 
+
+        Le applicazioni affini conservano il parallelismo dei sottospazi.
+        \end{richiamo}
+        \begin{richiamo}
+        Sia $A_n\left(V, \, \mathbb{K}, \,f \right)$ spazio affine sia $\varphi \colon A_n \to A_n$ un'applicazione affine 
+        si dice che $\varphi$ è un'\textcolor{red}{affinità} o \textcolor{red}{una trasformazione affine} se $\varphi$ è \textcolor{celeste}{bigettiva}
+        \begin{align*}
+        \varphi : A_n \to A_n \text{ è un'affinità } \iff {} & \exists L \colon V \to V \text{ automorfismo tale che } \\
+        & \forall P,Q \in A_n \quad L\left(\overrightarrow{PQ}\right) = \overrightarrow{\varphi(P)\varphi(Q)}
+        \end{align*}
+        Si dimostra che $Aff(A_n):= \{\varphi: A_n \to A_n \mid \varphi \text{ è un'affinità}\}$ è un gruppo rispetto alla composizione di funzioni.
+
+        Una affinità conserva le dimensioni dei sottospazi affini cioè manda rette in rette e piani in piani.
+        \end{richiamo}
+        \begin{richiamo}[Teorema di esistenza e unicità delle affinità]
+        \mbox{}
+        
+        Sia $A_n\left(V, \, \mathbb{K}, \,f \right)$ spazio affine e sia $\left(P_0, \, \dots , \, P_n\right)$ e $\left(P'_0, \, \dots , \, P'_n\right)$ due
+        $(n+1)$-uple di punti affinamente indipendenti di $A_n$  allora esiste un'unica affinità $\varphi: A_n \to A_n$ tale che $\varphi(P_i) = P'_i$ per $i=0,\ldots,n$.
+        \end{richiamo}
         \begin{osservazione}
         Se $\phi: \mathbb{R}^n \to \mathbb{R}^n$ è un'isometria allora $\phi$ è differenziabile e per la
         
