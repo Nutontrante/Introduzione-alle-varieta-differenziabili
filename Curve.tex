@@ -1264,8 +1264,9 @@
         Sia $c: I \to \mathbb{R}^n$ una curva parametrizzata si dice \textcolor{red}{$n$-riferimento mobile lungo $c$} una famiglia di applicazioni
         differenziabili \textcolor{red}{$e_i: I \to \mathbb{R}^n$} per $i=1,\dots,n$ tali che 
         
-        $\forall t \in I \quad \forall i,j \in \{1,\dots,n\} \quad$ \textcolor{red}{$e_i(t) \cdot e_j(t) = \delta_{ij}$}
-        \textcolor{blu}{(ovvero $\forall t \in I \quad (e_i(t))_{i=1,\dots,n}$ è base ortonormale di $\mathbb{R}^n$)}
+        $\forall t \in I \quad \forall i,j \in \{1,\dots,n\} \,$ \textcolor{red}{$e_i(t) \cdot e_j(t) = \delta_{ij}$}
+        \textcolor{blu}{(ovvero $\forall t \in I \, (e_i(t))_{i=1,\dots,n}$ è base ortonormale di $\mathbb{R}^n$)}
+
         Identificando $\mathbb{R}^n \equiv T_{c(t)}\mathbb{R}^n \quad \left(e_i(t)\right)_{1 \leq i \leq n}$ può 
         essere riguardata come una famiglia di campi vettoriali differenziabili lungo $c$ \textcolor{blu}{($e_i(t) \equiv (c(t), e_i(t)) \in T_{c(t)}\mathbb{R}^n$)}.
         \begin{center}
@@ -1349,11 +1350,16 @@
         \end{tikzpicture}
         \end{center}
         \end{esempio}
+        \textcolor{violet}{Quindi se $c$ è una curva parametrizzata non necessariamente regolare si può sempre 
+        definire un $n$-riferimento mobile lungo la curva che abbiamo definito come una famiglia di $n$ funzioni differenziabili parametrizzate nello 
+        stesso intervallo $I$ e se $\forall t$ si identifica $\mathbb{R}^n$ con lo spazio tangente alla curva in $c(t)$, cioè $T_{c(t)}\mathbb{R}^n$,
+        il riferimento mobile non è altro che una famiglia di campi vettoriali differenziabili lungo la curva $c$ chiedendo però che in ogni $t$ $\left(e_i (t)\right)_{1 \leq i \leq n}$
+        formi una base ortonormale di $\mathbb{R}^n$}
         \newpage
         \begin{teorema} [esistenza e unicità del riferimento canonico di Frenet]
         \label{th:esistenza_e_unicita_del_riferimento_canonico_di_Frenet}
         \mbox{}
-
+            
         Sia $c: I \to \mathbb{R}^n$ una curva parametrizzata tale che 
         \begin{equation}
         \label{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet}
