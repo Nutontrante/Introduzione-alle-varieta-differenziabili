@@ -1359,7 +1359,7 @@
         \begin{teorema} [esistenza e unicità del riferimento canonico di Frenet]
         \label{th:esistenza_e_unicita_del_riferimento_canonico_di_Frenet}
         \mbox{}
-            
+
         Sia $c: I \to \mathbb{R}^n$ una curva parametrizzata tale che 
         \begin{equation}
         \label{eq:ipotesi_teorema_di_esistenza_e_unicita_del_riferimento_canonico_di_Frenet}
@@ -1368,9 +1368,11 @@
         Allora esiste un unico riferimento di Frenet $(e_i)_{1 \leq i \leq n}$ tale che 
         \begin{enumerate}
             \item $\forall k \in \{1, \dots, n-1\} \quad \forall t \in I \quad \langle e_1(t), \dots, e_k(t) \rangle = \langle \dot{c}(t), \dots, c^{(k)}(t) \rangle$ e
-            le basi $\{ e_1(t), \dots, e_k(t) \}$ e $\{ \dot{c}(t), \dots, c^{(k)}(t) \}$ sono concordemente orientate.
-            \item $\forall t \in I \quad \{ e_1(t), \dots, e_n(t) \} \quad \text{è una base ortonormale di } \mathbb{R}^n$ concordemente 
-            orientata con la base canonica di $\mathbb{R}^n$.
+            le basi $\{ e_1(t), \dots, e_k(t) \}$ e $\{ \dot{c}(t), \dots, c^{(k)}(t) \}$ sono concordemente orientate \textcolor{violet}{(i vettori $e_1(t), \dots, e_k(t)$ 
+            sono sicuramente lin. indip. perché sono i primi $k$ vettori di una base invece i vettori $\dot{c}(t), \dots, c^{(k)}(t) \quad \forall k \leq n-1$ sono lin. indip. 
+            per ipotesi)}
+            \item $\forall t \in I \quad \{ e_1(t), \dots, e_n(t) \}$ \textcolor{violet}{(questa condizione coinvolge anche l'$n$-esimo campo vettoriale)}  è una base ortonormale di  $\mathbb{R}^n$ concordemente 
+            orientata con la base canonica di $\mathbb{R}^n$ \textcolor{violet}{(cioè la matrice di passaggio da $\{ e_1(t), \dots, e_n(t) \}$ alla base canonica ha determinante positivo)}.
         \end{enumerate}
         \end{teorema}
         \begin{proof}
@@ -1406,6 +1408,10 @@
         $\displaystyle c^{(j)}(t)=\norm{\tilde{e}_j(t)} e_j(t) + \sum_{r=1}^{j-1} \left( c^{(j)}(t) \cdot e_r(t) \right) e_r(t)$ 
         
         la matrice di passaggio da $\langle e_1(t), \dots, e_j(t) \rangle$ a $\langle \dot{c}(t), \dots, c^{(j)}(t) \rangle$ è:
+
+        \textcolor{violet}{Per costruire la matrice di passaggio da $\langle e_1, \dots, e_j \rangle$ a $\langle \dot{c}, \dots, c^{(j)} \rangle$, prendo il
+        $k$-esimo vettore della seconda base ($c^{(k)}$), lo scrivo come combinazione lineare dei vettori della prima base
+        ($e_r$) e metto i coefficienti trovati nella $k$-esima colonna.}
 
         \[ A(t) =
         \begin{pmatrix}
@@ -1724,7 +1730,9 @@
         \[
         e'_j = \sum_{i=1}^n a_{ij} e_i \quad \text{per } j = 1, \dots, n
         \]
-        Si definisce \textbf{matrice di cambiamento di base} (o matrice di passaggio) dalla base $\mathfrak{B}'$ alla base $\mathfrak{B}$, la matrice 
+        Si definisce \textbf{matrice di cambiamento di base} (o matrice di passaggio) 
+        
+        dalla base $\mathfrak{B}'$ alla base $\mathfrak{B}$, la matrice 
         \[ M_{\mathfrak{B}}^{\mathfrak{B}'} = (a_{ij}) \in GL(n, \mathbb{R}) \] le cui colonne sono costituite ordinatamente dalle componenti dei vettori della nuova base $\mathfrak{B}'$ rispetto alla vecchia base $\mathfrak{B}$.
 
         Se indichiamo con $X$ e $X'$ i vettori colonna delle componenti di uno stesso vettore $v \in V$ rispetto, rispettivamente, a $\mathfrak{B}$ e $\mathfrak{B}'$, vale la relazione vettoriale fondamentale:
@@ -1745,21 +1753,23 @@
         \[
         v_1 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} \quad v_2 = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \quad v_3 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}
         \]
-        Poiché in questo caso stiamo già esprimendo i vettori della nuova base $\mathfrak{B}'$ in funzione dei vettori della vecchia base $\mathfrak{B}$ (la canonica), la \textbf{matrice di cambiamento di base} $M_{\mathfrak{B}}^{\mathfrak{B}'}$ si ottiene banalmente mettendo in colonna le componenti dei nuovi vettori:
+        \textbf{Costruzione manuale della matrice di passaggio da $\mathfrak{B}$ a $\mathfrak{B}'$:} \\
+        Poiché stiamo già esprimendo i vettori della nuova base $\mathfrak{B}'$ in funzione dei vettori della vecchia base
+         $\mathfrak{B}$, la \textbf{matrice di cambiamento di base} $M_{\mathfrak{B}}^{\mathfrak{B}'}$ si ottiene banalmente (la base canonica è molto comoda 
+         per questo) incollonnando le componenti dei nuovi vettori:
         \[
         M_{\mathfrak{B}}^{\mathfrak{B}'} = \begin{pmatrix} 
         1 & 0 & 1 \\ 
         1 & 1 & 0 \\ 
         0 & 1 & 1 
         \end{pmatrix}
-        \]
-
+        \] 
         \textbf{Esempio di trasformazione delle coordinate:} \\
-        Prendiamo un vettore $w$ le cui coordinate rispetto alla \textit{nuova} base $\mathfrak{B}'$ sono date dal vettore colonna $X' = (1, -1, 2)^T$. Geometricamente questo significa che la sua unica combinazione lineare possibile è:
+        Prendiamo un vettore $w$ le cui coordinate rispetto alla \textit{nuova} base $\mathfrak{B}'$ sono $X' = (1, -1, 2)^T$. Geometricamente significa:
         \[
         w = 1 \cdot v_1 - 1 \cdot v_2 + 2 \cdot v_3
         \]
-        Per trovare le coordinate $X$ dello stesso vettore $w$ rispetto alla base "vecchia" $\mathfrak{B}$, utilizziamo la relazione matriciale $X = M_{\mathfrak{B}}^{\mathfrak{B}'} X'$:
+        Per trovare le coordinate $X$ dello stesso vettore $w$ rispetto alla base "vecchia" $\mathfrak{B}$, utilizziamo la relazione $X = M_{\mathfrak{B}}^{\mathfrak{B}'} X'$:
         \[
         X = \begin{pmatrix} 
         1 & 0 & 1 \\ 
@@ -1774,9 +1784,29 @@
         \end{pmatrix} = 
         \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}
         \]
-        Quindi, il vettore che nella base $\mathfrak{B}'$ chiamavamo $(1, -1, 2)^T$, nella base canonica $\mathfrak{B}$ si chiama $(3, 0, 1)^T$. 
+        Quindi, il vettore che in $\mathfrak{B}'$ era $(1, -1, 2)^T$, in $\mathfrak{B}$ è $(3, 0, 1)^T$. 
 
-        Se volessimo fare il percorso inverso (conoscendo le coordinate in $\mathfrak{B}$ e volendo trovare quelle in $\mathfrak{B}'$), basterebbe invertire la matrice: $X' = (M_{\mathfrak{B}}^{\mathfrak{B}'})^{-1} X$.
+        \vspace{0.3cm}
+        \textbf{Costruzione manuale della matrice di passaggio da $\mathfrak{B}'$ a $\mathfrak{B}$:} \\
+        Per fare il percorso inverso, ci serve la matrice di passaggio $M_{\mathfrak{B}'}^{\mathfrak{B}}$. 
+        
+        Prima di calcolare l'inversa meccanicamente, possiamo costruirla con la stessa regola costruttiva: esprimiamo i vettori della "vecchia" base $\mathfrak{B}$ come combinazione lineare della "nuova" base $\mathfrak{B}'$.
+        
+        Risolvendo i sistemi lineari per uguagliare le componenti, otteniamo:
+        \begin{align*}
+        e_1 &= \frac{1}{2}v_1 - \frac{1}{2}v_2 + \frac{1}{2}v_3 \implies \text{prima colonna: } \begin{pmatrix} 1/2 \\ -1/2 \\ 1/2 \end{pmatrix} \\
+        e_2 &= \frac{1}{2}v_1 + \frac{1}{2}v_2 - \frac{1}{2}v_3 \implies \text{seconda colonna: } \begin{pmatrix} 1/2 \\ 1/2 \\ -1/2 \end{pmatrix} \\
+        e_3 &= -\frac{1}{2}v_1 + \frac{1}{2}v_2 + \frac{1}{2}v_3 \implies \text{terza colonna: } \begin{pmatrix} -1/2 \\ 1/2 \\ 1/2 \end{pmatrix}
+        \end{align*}
+        Mettendo in colonna i coefficienti, otteniamo la matrice inversa costruita direttamente "a mano":
+        \[
+        M_{\mathfrak{B}'}^{\mathfrak{B}} = (M_{\mathfrak{B}}^{\mathfrak{B}'})^{-1} = \frac{1}{2} \begin{pmatrix} 
+        1 & 1 & -1 \\ 
+        -1 & 1 & 1 \\ 
+        1 & -1 & 1 
+        \end{pmatrix}
+        \]
+        La relazione vettoriale per il percorso inverso sarà quindi $X' = M_{\mathfrak{B}'}^{\mathfrak{B}} X$.
         \end{richiamo}
         \begin{richiamo}[Orientazione di uno spazio vettoriale]
         \mbox{}
