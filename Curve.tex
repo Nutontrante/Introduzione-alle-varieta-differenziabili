@@ -1528,16 +1528,25 @@
         \begin{definizione}
         Il riferimento univocamente determinato dal teorema \ref{th:esistenza_e_unicita_del_riferimento_canonico_di_Frenet} si chiama \textcolor{red}{riferimento canonico di Frenet}.
         \end{definizione}
+        \begin{osservazione}
+        In $\mathbb{R}^2$ la forte regolarità coincide con la regolarità, cioè una curva è fortemente regolare se e solo se è regolare perché:
+
+        \textcolor{violet}{Sia $c(t)$ una curva fortemente regolare $\iff \dot{c}(t)$ è lin. indip. $\iff c(t) \neq 0 \iff c(t)$ è regolare}
+        \end{osservazione}
         \newpage
         \begin{esempio}[Riferimento canonico di Frenet per una curva di $\mathbb{R}^2$]
         \mbox{}
+
+        \textcolor{violet}{Ci torneremo sulle curve in $\mathbb{R}^2$ e in $\mathbb{R}^3$ in modo dettagliato più avanti.}
 
         Sia $c:I \to \mathbb{R}^2$ curva parametrizzata fortemente regolare, determiniamo il riferimento canonico di Frenet.
 
         Il riferimento canonico di Frenet $(e_1(t), e_2(t))$ è dato da
         \begin{enumerate}
             \item $\displaystyle e_1(t) = \frac{\dot{c}(t)}{\|\dot{c}(t)\|}$
-            \item $e_2(t)$ versore tale che $(e_1(t), e_2(t))$ sia una base ortonormale di $\mathbb{R}^2$ concordemente orientata con la base canonica di $\mathbb{R}^2$
+            \item \textcolor{violet}{Qua Gram-Schmidt non lo applichiamo perché $e_2$ è $e_n$ con $n=2$} 
+            
+            $e_2(t)$ versore tale che $(e_1(t), e_2(t))$ sia una base ortonormale di $\mathbb{R}^2$ concordemente orientata con la base canonica di $\mathbb{R}^2$
         \end{enumerate}
         In generale se $e_1(t)=\left(\alpha(t), \beta(t)\right) \Rightarrow e_2(t) = \left(-\beta(t), \alpha(t)\right)$ infatti
         \[ \norm{e_2(t)} = \sqrt{(-\beta(t))^2 + (\alpha(t))^2} = \sqrt{\beta(t)^2 + \alpha(t)^2} = \norm{e_1(t)} =1 \]
@@ -1549,6 +1558,7 @@
         \end{pmatrix} \in O(2) \]
         Inoltre, poiché $\det(A(t)) = \alpha(t)\alpha(t) - (-\beta(t))\beta(t) = \alpha(t)^2 + \beta(t)^2 = 1 > 0 \Rightarrow A(t) \in SO(2)$
         \end{esempio}
+        \newpage
         \begin{esempio}
         Sia $c: \mathbb{R} \to \mathbb{R}^2 \quad c(t) = (a \cos t, a \sin t) \quad a>0$ $c$ è la parametrizzazione della circonferenza di raggio $a$ centrata nell'origine.
 
@@ -1565,7 +1575,51 @@
         
         $\displaystyle \tilde{e}_1(s) = \frac{\dot{\tilde{c}}(s)}{\norm{\dot{\tilde{c}}(s)}} = \left(- \sin s , - \cos s \right)$
 
-        $\tilde{e}_2(s) = (\cos s, -\sin s)$
+        $\tilde{e}_2(s) = (\cos s, -\sin s)$ 
+
+        \textcolor{violet}{Per capire il comportamento dei vettori di Frenet non bisogna affidarsi algebricamente al segno delle componenti, che varia a seconda del quadrante, ma occorre
+        fare un ragionamento puramente geometrico. Il primo vettore del riferimento, $e_1$ deve sempre essere tangente alla curva e puntare nella direzione di marcia e poiché la
+        parametrizzazione $c(t)$ descrive un moto in senso antiorario, $e_1$ punta in avanti in quella direzione.} 
+
+        \textcolor{violet}{Il cambiamento di parametro $s \mapsto -s$ ha invece derivata strettamente negativa, il che significa che la nuova curva $\tilde{c}(s)$ percorre il medesimo supporto 
+        ma in verso opposto, ovvero in senso orario $\Rightarrow$ il nuovo vettore tangente $\tilde{e}_1$ si ribalta e punta nella direzione esattamente contraria rispetto a $e_1$.}
+        \textcolor{violet}{Per il secondo vettore interviene il Teorema di Frenet, che impone la ferrea regola dell'orientazione: la base ortonormale costruita deve risultare concordemente 
+        orientata con la base canonica del piano. Visivamente, per mantenere il determinante della matrice di passaggio sempre positivo, il secondo vettore deve obbligatoriamente 
+        essere ottenuto ruotando il primo vettore di $90$ gradi in senso antiorario. Ruotando $e_1$ di $90$ gradi a sinistra, otteniamo un $e_2$ che punta verso l'origine della circonferenza. 
+        Se applichiamo questa regola a $\tilde{e}_1$, che viaggia in senso orario, il vettore normale risultante $\tilde{e}_2$ punterà inevitabilmente verso l'esterno.}
+        \begin{center}
+        \begin{tikzpicture}[scale=1.2]
+
+        % 1. Assi cartesiani
+        \draw[->, thick, gray!80] (-2.5, 0) -- (2.5, 0) node[right, text=black] {$x$};
+        \draw[->, thick, gray!80] (0, -2.5) -- (0, 2.5) node[above, text=black] {$y$};
+
+        % 2. Circonferenza di raggio 2
+        \draw[very thick, teal] (0,0) circle (2);
+        \node[teal, above left] at (-1.414, 1.414) {$\supp(c) = \supp(\tilde{c})$};
+
+        % 3. Scelgo un punto P a 45 gradi (t = \pi/4, s = -\pi/4)
+        \coordinate (P) at (45:2);
+        \fill[black] (P) circle (1.5pt) node[above right=4pt, yshift=-8pt,xshift=4pt, text=black] {$c(t) = \tilde{c}(s)$};
+
+        % 4. Vettori di Frenet originali (c(t) percorsa in senso antiorario)
+        % e_1 tangente antiorario (45+90 = 135 gradi)
+        \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (P) -- ++(135:1.2) 
+            node[above left, xshift=8pt, yshift=2pt] { $e_1(t)$};
+        % e_2 normale orientata positivamente (135+90 = 225 gradi, punta all'origine)
+        \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (P) -- ++(225:1.2) 
+            node[below left, xshift=8pt] { $e_2(t)$};
+
+        % 5. Vettori di Frenet rovesciati (\tilde{c}(s) percorsa in senso orario)
+        % \tilde{e}_1 tangente orario (direzione opposta a e_1, 135-180 = -45 = 315 gradi)
+        \draw[-{Stealth[length=3mm]}, very thick, orange] (P) -- ++(315:1.2) 
+            node[below right] { $\tilde{e}_1(s)$};
+        % \tilde{e}_2 normale orientata positivamente (315+90 = 405 = 45 gradi, punta all'esterno)
+        \draw[-{Stealth[length=3mm]}, very thick, orange] (P) -- ++(45:1.2) 
+            node[above right] { $\tilde{e}_2(s)$};
+
+        \end{tikzpicture}
+        \end{center}
         \end{esempio}
         \newpage
         \begin{definizione}
