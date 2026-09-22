@@ -202,6 +202,7 @@
         \end{itemize}
         \end{richiamo}
         \begin{osservazione}
+        \label{oss:differenziale_di_una_isometria}
         Se $\phi: \mathbb{R}^n \to \mathbb{R}^n$ è un'isometria allora $\phi$ è differenziabile e per la
         
         proposizione \ref{prop:caratterizzazione_isometria} $\phi= \tau_b \circ R$ 
@@ -242,6 +243,97 @@
         \[
         Y = M_{\mathfrak{B}_W}^{\mathfrak{B}_V}(L) X
         \]
+        \end{richiamo}
+         \begin{richiamo}[Matrice di cambiamento di base]
+        \mbox{}
+
+        Sia $V$ uno spazio vettoriale su $\mathbb{R}$ di dimensione $n$ data una base $\mathfrak{B} = \{e_1, \dots, e_n\}$, per il teorema di esistenza e unicità della rappresentazione, sappiamo che per ogni vettore $v \in V$ esiste un'unica $n$-upla di scalari $(x_1, \dots, x_n) \in \mathbb{R}^n$ tale che:
+        \[
+        v = x_1 e_1 + \dots + x_n e_n = \sum_{i=1}^n x_i e_i
+        \]
+        I coefficienti $x_i$ sono le \textbf{componenti} (o coordinate) di $v$ rispetto a $\mathfrak{B}$.
+
+        Sia ora $\mathfrak{B}' = \{e'_1, \dots, e'_n\}$ un'altra base di $V$, poiché $\mathfrak{B}$ è una base ciascun vettore $e'_j$ della nuova base $\mathfrak{B}'$ può essere espresso in modo unico come combinazione lineare dei vettori della vecchia base $\mathfrak{B}$:
+        \[
+        e'_j = \sum_{i=1}^n a_{ij} e_i \quad \text{per } j = 1, \dots, n
+        \]
+        Si definisce \textbf{matrice di cambiamento di base} (o matrice di passaggio) 
+        
+        dalla base $\mathfrak{B}'$ alla base $\mathfrak{B}$, la matrice 
+        \[ M_{\mathfrak{B}}^{\mathfrak{B}'} = (a_{ij}) \in GL(n, \mathbb{R}) \] le cui colonne sono costituite ordinatamente dalle componenti dei vettori della nuova base $\mathfrak{B}'$ rispetto alla vecchia base $\mathfrak{B}$.
+
+        Se indichiamo con $X$ e $X'$ i vettori colonna delle componenti di uno stesso vettore $v \in V$ rispetto, rispettivamente, a $\mathfrak{B}$ e $\mathfrak{B}'$, vale la relazione vettoriale fondamentale:
+        \[
+        X = M_{\mathfrak{B}}^{\mathfrak{B}'} X'
+        \]
+        Poiché la matrice mappa una base in una base, essa ha rango massimo, il suo determinante è non nullo, ed è pertanto invertibile. 
+        
+        La sua matrice inversa $(M_{\mathfrak{B}}^{\mathfrak{B}'})^{-1} = M_{\mathfrak{B}'}^{\mathfrak{B}}$ è la matrice di passaggio dalla base $\mathfrak{B}$ alla base $\mathfrak{B}'$.
+        \end{richiamo}
+        \begin{richiamo}[Esempio pratico: Cambiamento di base in $\mathbb{R}^3$]
+        Consideriamo lo spazio vettoriale $\mathbb{R}^3$ e due sue basi.
+        Sia $\mathfrak{B} = \{e_1, e_2, e_3\}$ la base canonica standard, dove:
+        \[
+        e_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \quad e_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \quad e_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
+        \]
+        Sia $\mathfrak{B}' = \{v_1, v_2, v_3\}$ una nuova base formata dai seguenti vettori linearmente indipendenti:
+        \[
+        v_1 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} \quad v_2 = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \quad v_3 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}
+        \]
+        \textbf{Costruzione manuale della matrice di passaggio da $\mathfrak{B}$ a $\mathfrak{B}'$:} \\
+        Poiché stiamo già esprimendo i vettori della nuova base $\mathfrak{B}'$ in funzione dei vettori della vecchia base
+         $\mathfrak{B}$, la \textbf{matrice di cambiamento di base} $M_{\mathfrak{B}}^{\mathfrak{B}'}$ si ottiene banalmente (la base canonica è molto comoda 
+         per questo) incollonnando le componenti dei nuovi vettori:
+        \[
+        M_{\mathfrak{B}}^{\mathfrak{B}'} = \begin{pmatrix} 
+        1 & 0 & 1 \\ 
+        1 & 1 & 0 \\ 
+        0 & 1 & 1 
+        \end{pmatrix}
+        \] 
+        \textbf{Esempio di trasformazione delle coordinate:} \\
+        Prendiamo un vettore $w$ le cui coordinate rispetto alla \textit{nuova} base $\mathfrak{B}'$ sono $X' = (1, -1, 2)^T$. Geometricamente significa:
+        \[
+        w = 1 \cdot v_1 - 1 \cdot v_2 + 2 \cdot v_3
+        \]
+        Per trovare le coordinate $X$ dello stesso vettore $w$ rispetto alla base "vecchia" $\mathfrak{B}$, utilizziamo la relazione $X = M_{\mathfrak{B}}^{\mathfrak{B}'} X'$:
+        \[
+        X = \begin{pmatrix} 
+        1 & 0 & 1 \\ 
+        1 & 1 & 0 \\ 
+        0 & 1 & 1 
+        \end{pmatrix} 
+        \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix} = 
+        \begin{pmatrix} 
+        1(1) + 0(-1) + 1(2) \\ 
+        1(1) + 1(-1) + 0(2) \\ 
+        0(1) + 1(-1) + 1(2) 
+        \end{pmatrix} = 
+        \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}
+        \]
+        Quindi, il vettore che in $\mathfrak{B}'$ era $(1, -1, 2)^T$, in $\mathfrak{B}$ è $(3, 0, 1)^T$. 
+
+        \vspace{0.3cm}
+        \textbf{Costruzione manuale della matrice di passaggio da $\mathfrak{B}'$ a $\mathfrak{B}$:} \\
+        Per fare il percorso inverso, ci serve la matrice di passaggio $M_{\mathfrak{B}'}^{\mathfrak{B}}$. 
+        
+        Prima di calcolare l'inversa meccanicamente, possiamo costruirla con la stessa regola costruttiva: esprimiamo i vettori della "vecchia" base $\mathfrak{B}$ come combinazione lineare della "nuova" base $\mathfrak{B}'$.
+        
+        Risolvendo i sistemi lineari per uguagliare le componenti, otteniamo:
+        \begin{align*}
+        e_1 &= \frac{1}{2}v_1 - \frac{1}{2}v_2 + \frac{1}{2}v_3 \implies \text{prima colonna: } \begin{pmatrix} 1/2 \\ -1/2 \\ 1/2 \end{pmatrix} \\
+        e_2 &= \frac{1}{2}v_1 + \frac{1}{2}v_2 - \frac{1}{2}v_3 \implies \text{seconda colonna: } \begin{pmatrix} 1/2 \\ 1/2 \\ -1/2 \end{pmatrix} \\
+        e_3 &= -\frac{1}{2}v_1 + \frac{1}{2}v_2 + \frac{1}{2}v_3 \implies \text{terza colonna: } \begin{pmatrix} -1/2 \\ 1/2 \\ 1/2 \end{pmatrix}
+        \end{align*}
+        Mettendo in colonna i coefficienti, otteniamo la matrice inversa costruita direttamente "a mano":
+        \[
+        M_{\mathfrak{B}'}^{\mathfrak{B}} = (M_{\mathfrak{B}}^{\mathfrak{B}'})^{-1} = \frac{1}{2} \begin{pmatrix} 
+        1 & 1 & -1 \\ 
+        -1 & 1 & 1 \\ 
+        1 & -1 & 1 
+        \end{pmatrix}
+        \]
+        La relazione vettoriale per il percorso inverso sarà quindi $X' = M_{\mathfrak{B}'}^{\mathfrak{B}} X$.
         \end{richiamo}
         \newpage
         \begin{definizione}
@@ -1778,97 +1870,6 @@
         Con $\displaystyle i \leq n-2 \iff i+1 \leq n-1 \Rightarrow k_i(t) = \frac{\omega_{i,i+1}(t)}{\norm{\dot{c}(t)}} >0$ 
         \end{proof}
     \section{Curve differenziabili e isometrie}
-        \begin{richiamo}[Matrice di cambiamento di base]
-        \mbox{}
-
-        Sia $V$ uno spazio vettoriale su $\mathbb{R}$ di dimensione $n$ data una base $\mathfrak{B} = \{e_1, \dots, e_n\}$, per il teorema di esistenza e unicità della rappresentazione, sappiamo che per ogni vettore $v \in V$ esiste un'unica $n$-upla di scalari $(x_1, \dots, x_n) \in \mathbb{R}^n$ tale che:
-        \[
-        v = x_1 e_1 + \dots + x_n e_n = \sum_{i=1}^n x_i e_i
-        \]
-        I coefficienti $x_i$ sono le \textbf{componenti} (o coordinate) di $v$ rispetto a $\mathfrak{B}$.
-
-        Sia ora $\mathfrak{B}' = \{e'_1, \dots, e'_n\}$ un'altra base di $V$, poiché $\mathfrak{B}$ è una base ciascun vettore $e'_j$ della nuova base $\mathfrak{B}'$ può essere espresso in modo unico come combinazione lineare dei vettori della vecchia base $\mathfrak{B}$:
-        \[
-        e'_j = \sum_{i=1}^n a_{ij} e_i \quad \text{per } j = 1, \dots, n
-        \]
-        Si definisce \textbf{matrice di cambiamento di base} (o matrice di passaggio) 
-        
-        dalla base $\mathfrak{B}'$ alla base $\mathfrak{B}$, la matrice 
-        \[ M_{\mathfrak{B}}^{\mathfrak{B}'} = (a_{ij}) \in GL(n, \mathbb{R}) \] le cui colonne sono costituite ordinatamente dalle componenti dei vettori della nuova base $\mathfrak{B}'$ rispetto alla vecchia base $\mathfrak{B}$.
-
-        Se indichiamo con $X$ e $X'$ i vettori colonna delle componenti di uno stesso vettore $v \in V$ rispetto, rispettivamente, a $\mathfrak{B}$ e $\mathfrak{B}'$, vale la relazione vettoriale fondamentale:
-        \[
-        X = M_{\mathfrak{B}}^{\mathfrak{B}'} X'
-        \]
-        Poiché la matrice mappa una base in una base, essa ha rango massimo, il suo determinante è non nullo, ed è pertanto invertibile. 
-        
-        La sua matrice inversa $(M_{\mathfrak{B}}^{\mathfrak{B}'})^{-1} = M_{\mathfrak{B}'}^{\mathfrak{B}}$ è la matrice di passaggio dalla base $\mathfrak{B}$ alla base $\mathfrak{B}'$.
-        \end{richiamo}
-        \begin{richiamo}[Esempio pratico: Cambiamento di base in $\mathbb{R}^3$]
-        Consideriamo lo spazio vettoriale $\mathbb{R}^3$ e due sue basi.
-        Sia $\mathfrak{B} = \{e_1, e_2, e_3\}$ la base canonica standard, dove:
-        \[
-        e_1 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \quad e_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \quad e_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
-        \]
-        Sia $\mathfrak{B}' = \{v_1, v_2, v_3\}$ una nuova base formata dai seguenti vettori linearmente indipendenti:
-        \[
-        v_1 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} \quad v_2 = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} \quad v_3 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}
-        \]
-        \textbf{Costruzione manuale della matrice di passaggio da $\mathfrak{B}$ a $\mathfrak{B}'$:} \\
-        Poiché stiamo già esprimendo i vettori della nuova base $\mathfrak{B}'$ in funzione dei vettori della vecchia base
-         $\mathfrak{B}$, la \textbf{matrice di cambiamento di base} $M_{\mathfrak{B}}^{\mathfrak{B}'}$ si ottiene banalmente (la base canonica è molto comoda 
-         per questo) incollonnando le componenti dei nuovi vettori:
-        \[
-        M_{\mathfrak{B}}^{\mathfrak{B}'} = \begin{pmatrix} 
-        1 & 0 & 1 \\ 
-        1 & 1 & 0 \\ 
-        0 & 1 & 1 
-        \end{pmatrix}
-        \] 
-        \textbf{Esempio di trasformazione delle coordinate:} \\
-        Prendiamo un vettore $w$ le cui coordinate rispetto alla \textit{nuova} base $\mathfrak{B}'$ sono $X' = (1, -1, 2)^T$. Geometricamente significa:
-        \[
-        w = 1 \cdot v_1 - 1 \cdot v_2 + 2 \cdot v_3
-        \]
-        Per trovare le coordinate $X$ dello stesso vettore $w$ rispetto alla base "vecchia" $\mathfrak{B}$, utilizziamo la relazione $X = M_{\mathfrak{B}}^{\mathfrak{B}'} X'$:
-        \[
-        X = \begin{pmatrix} 
-        1 & 0 & 1 \\ 
-        1 & 1 & 0 \\ 
-        0 & 1 & 1 
-        \end{pmatrix} 
-        \begin{pmatrix} 1 \\ -1 \\ 2 \end{pmatrix} = 
-        \begin{pmatrix} 
-        1(1) + 0(-1) + 1(2) \\ 
-        1(1) + 1(-1) + 0(2) \\ 
-        0(1) + 1(-1) + 1(2) 
-        \end{pmatrix} = 
-        \begin{pmatrix} 3 \\ 0 \\ 1 \end{pmatrix}
-        \]
-        Quindi, il vettore che in $\mathfrak{B}'$ era $(1, -1, 2)^T$, in $\mathfrak{B}$ è $(3, 0, 1)^T$. 
-
-        \vspace{0.3cm}
-        \textbf{Costruzione manuale della matrice di passaggio da $\mathfrak{B}'$ a $\mathfrak{B}$:} \\
-        Per fare il percorso inverso, ci serve la matrice di passaggio $M_{\mathfrak{B}'}^{\mathfrak{B}}$. 
-        
-        Prima di calcolare l'inversa meccanicamente, possiamo costruirla con la stessa regola costruttiva: esprimiamo i vettori della "vecchia" base $\mathfrak{B}$ come combinazione lineare della "nuova" base $\mathfrak{B}'$.
-        
-        Risolvendo i sistemi lineari per uguagliare le componenti, otteniamo:
-        \begin{align*}
-        e_1 &= \frac{1}{2}v_1 - \frac{1}{2}v_2 + \frac{1}{2}v_3 \implies \text{prima colonna: } \begin{pmatrix} 1/2 \\ -1/2 \\ 1/2 \end{pmatrix} \\
-        e_2 &= \frac{1}{2}v_1 + \frac{1}{2}v_2 - \frac{1}{2}v_3 \implies \text{seconda colonna: } \begin{pmatrix} 1/2 \\ 1/2 \\ -1/2 \end{pmatrix} \\
-        e_3 &= -\frac{1}{2}v_1 + \frac{1}{2}v_2 + \frac{1}{2}v_3 \implies \text{terza colonna: } \begin{pmatrix} -1/2 \\ 1/2 \\ 1/2 \end{pmatrix}
-        \end{align*}
-        Mettendo in colonna i coefficienti, otteniamo la matrice inversa costruita direttamente "a mano":
-        \[
-        M_{\mathfrak{B}'}^{\mathfrak{B}} = (M_{\mathfrak{B}}^{\mathfrak{B}'})^{-1} = \frac{1}{2} \begin{pmatrix} 
-        1 & 1 & -1 \\ 
-        -1 & 1 & 1 \\ 
-        1 & -1 & 1 
-        \end{pmatrix}
-        \]
-        La relazione vettoriale per il percorso inverso sarà quindi $X' = M_{\mathfrak{B}'}^{\mathfrak{B}} X$.
-        \end{richiamo}
         \begin{richiamo}[Orientazione di uno spazio vettoriale]
         \mbox{}
 
@@ -1898,14 +1899,20 @@
         \begin{proof}
         \mbox{}
 
-        \textcolor{orange}{$\mathfrak{B}$ è positiva significa $\det \left( e_1, \, \dots, \, e_n \right) >0$ }
+        \textcolor{violet}{Dire che $\mathfrak{B}$ è positiva significa dire che è concordemente orientata con la base canonica $\mathfrak{B}_0 \Rightarrow$ 
+        la matrice di passaggio da $\mathfrak{B}$ a $\mathfrak{B}_0$ ha determinante positivo $\overset{\text{rel. di eq.}}{\Rightarrow}$ 
+        la matrice di passaggio da $\mathfrak{B}_0$ a $\mathfrak{B}$ (che si costruisce proprio mettendo in colonna le componenti dei vettori $e_i$ rispetto alla base canonica) ha determinante strettamente positivo.}
+
+        \textcolor{orange}{$\mathfrak{B}$ è positiva significa \textcolor{violet}{$\det M^{\mathfrak{B}_0}_{\mathfrak{B}}(id) =$} $\det \left( e_1, \, \dots, \, e_n \right) >0$ }
         \[ \det \left( L \left( e_1 \right), \, \dots, \, L \left( e_n \right) \right) = \det \left( M^{\mathfrak{B}_0}_{\mathfrak{B}}(L) \right) >0 \]
+        $\textcolor{violet}{M_{\mathfrak{B}}^{\mathfrak{B}_0}(L) = \underbrace{M_{\mathfrak{B}_0}^{\mathfrak{B}_0}(L)}_{\substack{\det >0 \\ \text{perché per} \\ \text{ip. } \det L >0}} \cdot \underbrace{M_{\mathfrak{B}}^{\mathfrak{B}_0}(id)}_{\det >0}}$
         \end{proof}
         \begin{osservazione}
         Se $L \colon V \to W$ è un isomorfismo tra spazi vettoriali reali e
         
         $\mathfrak{B}= \{e_1, \, \dots, \, e_n\} \quad \mathfrak{B}'= \{v_1', \, \dots, \, v_n' \}$ sono concordemente orientate
-        anche $\{L(v_1), \, \dots , \, L(v_n) \}$ e  $\{L(v_1'), \, \dots , \, L(v_n') \}$ sono concordemente orientate.
+        anche $\{L(v_1), \, \dots , \, L(v_n) \}$ e  $\{L(v_1'), \, \dots , \, L(v_n') \}$ sono concordemente orientate \textcolor{violet}{(qui 
+        non c'è nessun legame con la base canonica di $\mathbb{R}^n$)}.
         \end{osservazione}
         \begin{proof}
         \mbox{}
@@ -1931,13 +1938,18 @@
         \mbox{}
 
         \begin{enumerate}
-            \item Basta osservare che $\forall t \in I$ 
+            \item \textcolor{violet}{Per la proposizione \ref{prop:caratterizzazione_isometria} e l'osservazione \ref{oss:differenziale_di_una_isometria} il differenziale di una isometria coincide
+            con la parte lineare $L$.}
+            
+            Basta osservare che $\forall t \in I$ 
             \[ \dot{\tilde{c}}(t) = d \left(F \circ c\right)_t (1) = \left(dF\right)_{c(t)} \left( \dot{c}(t) \right) \overset{\substack{\text{differenziale} \\ \text{di una funzione} \\ \text{lineare} \\ \text{coincide con} \\ \text{la funzione} }}{=} L \left( \dot{c}(t) \right) \]
-            Da cui segue che 
+            Da cui segue anche che 
             \begin{equation}
             \label{eq:dimostrazione_funzioni_di_curvatura_invarianti_metrici_1} 
             \tilde{c}^{(k)}(t) = L \left( c^{(k)}(t) \right) \quad k \geq 1
             \end{equation}
+
+            in virtù del fatto che $L$, essendo lineare, coincide con il proprio differenziale in ogni punto.
 
             Poichè $L$ in quanto isomorfismo conserva la lineare indipendenza dei vettori, segue che
             
@@ -1945,15 +1957,16 @@
             $\left\{ \dot{\tilde{c}}(t), \, \ddot{\tilde{c}}(t), \, \dots, \, \tilde{c}^{(n)}(t) \right\}$ sono linearmente indipendenti, quindi $\tilde{c}$ è fortemente regolare.
             \item $\left(e_i\right)_{1 \leq i \leq n}$ riferimento canonico di Frenet di $c$
             
-            $L \circ e_i \colon I \to \mathbb{R}^n \quad \{L(e_1(t)), \, \dots, \, L(e_n(t))\}$ è base ortonormale di $\mathbb{R}^n$ per ogni $t \in I$ 
-            perché $L$ è ismometria lineare ed è base positiva di $\mathbb{R}^n$ per la proposizione \ref{prop:isometrie_dirette_preservano_orientazione} perché $F$
-            è un'isometria diretta.
+            $L \circ e_i \colon I \to \mathbb{R}^n \quad \forall t \in I \quad \{L(e_1(t)), \, \dots, \, L(e_n(t))\}$ è base ortonormale di $\mathbb{R}^n$ positiva  
+            per la proposizione \ref{prop:isometrie_dirette_preservano_orientazione} \textcolor{orange}{perché $F$ è una isometria diretta}.
             \[ L \left( \langle \dot{c}(t), \, \dots, \, c^{(k)}(t) \rangle \right) \overset{\eqref{eq:dimostrazione_funzioni_di_curvatura_invarianti_metrici_1}}{=} \langle \dot{\tilde{c}}(t), \, \dots, \, \tilde{c}^{(k)}(t) \rangle \] 
             $\Rightarrow \left\{L(e_1(t)), \, \dots, \, L(e_k(t)) \right\}$ base di 
             $\langle \dot{\tilde{c}}(t), \, \dots, \, \tilde{c}^{(k)}(t) \rangle$ è una base concorde con
             
             la base $\left( \tilde{\dot{c}}(t), \, \dots, \, \tilde{c}^{(k)}(t) \right)$ quindi $L \circ e_i$ è il riferimento canonico di Frenet di $\tilde{c}$
-            \item Considerate quindi le funzioni di curvatura $k_i \colon I \to \mathbb{R}$ di $c$ e le corrispondenti funzioni di curvatura $\tilde{k}_i \colon I \to \mathbb{R}$ di $\tilde{c}$ 
+            \item Notiamo innanzitutto che, sfruttando ancora la linearità di $L$, risulta:
+            \[ \color{blu} \dot{\tilde{e}}_i = \dot{\widehat{L \circ e_i}} = L \circ \dot{e}_i \]
+            Considerate quindi le funzioni di curvatura $k_i \colon I \to \mathbb{R}$ di $c$ e le corrispondenti funzioni di curvatura $\tilde{k}_i \colon I \to \mathbb{R}$ di $\tilde{c}$ 
             abbiamo, stante la definizione:
             \[ k_i(t) = \frac{ \omega_{i,i+1}(t) }{ \, \norm{\dot{c}(t)} \,} = \frac{ \dot{e}_i(t) \cdot e_{i+1}(t) }{ \, \norm{\dot{c}(t)} \,}  \]
             \begin{align*}
@@ -1962,6 +1975,7 @@
             \end{align*}
         \end{enumerate}
         \end{proof}
+        \newpage
         Il rilevante risultato mostra che sotto opportune ipotesi una curva è completamente determinata, a meno di isometrie, dalle sue funzioni di curvatura.
         \begin{teorema}
         \label{th:curva_univocamente_determinata_a_meno_di_isometrie}
