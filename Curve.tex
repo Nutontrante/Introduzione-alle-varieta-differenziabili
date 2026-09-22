@@ -140,6 +140,7 @@
         Una isometria conserva gli angoli e le distanze.
         \end{richiamo}
         \begin{richiamo}[Teorema di esistenza e unicità delle isometrie]
+        \label{richiamo:teorema_esistenza_unicita_isometrie}
         \mbox{}
             
         Sia $E_n \left(V , \, \mathbb{R}, \, g, \, f \right)$ uno spazio affine euclideo siano $\left(P_0, \, \dots, \, P_n\right)$ e $\left(P'_0, \, \dots, \, P'_n\right)$ 
@@ -1992,7 +1993,7 @@
 
         Siano $\left(e_i\right)_{1 \leq i \leq n}$ e $\left(\tilde{e}_i\right)_{1 \leq i \leq n}$ i riferimenti canonici di Frenet di $c$ e $\tilde{c}$ rispettivamente.
 
-        Fissiamo $t_0 \in I$ e consideriamo l'unica isometria $F: \mathbb{R}^n \to \mathbb{R}^n$ tale che $F(c(t_0)) = \tilde{c}(t_0)$ e la cui parte lineare è 
+        Fissiamo $t_0 \in I$ e consideriamo \textcolor{violet}{(lo posso fare per il richiamo \ref{richiamo:teorema_esistenza_unicita_isometrie})} l'unica isometria $F: \mathbb{R}^n \to \mathbb{R}^n$ tale che $F(c(t_0)) = \tilde{c}(t_0)$ e la cui parte lineare è 
         l'ismoetria lineare $L \colon \mathbb{R}^n \to \mathbb{R}^n$ che trasforma la base ortonormale $\left\{e_1(t_0), \, \dots, \, e_n(t_0) \right\}$ nella base ortonormale
         $\left\{\tilde{e}_1(t_0), \, \dots, \, \tilde{e}_n(t_0) \right\}$ cioè 
         \begin{equation}
@@ -2014,11 +2015,11 @@
         \[ \tilde{\omega}_{i,i+1} (t) = \norm{\dot{\tilde{c}}(t)} \tilde{k}_i(t) \overset{\textcolor{orange}{ \substack{\text{ipotesi} \\ \text{1. e 2.} \\ \text{ }}}}{=} \norm{\dot{c}(t)} k_i(t) = \omega_{i,i+1} (t)  \] 
         \begin{equation}
         \label{eq:dimmostrazione_curva_univocamente_determinata_a_meno_di_isometrie_3}
-        \Rightarrow  \dot{\tilde{e}}_i = \sum_{j=1}^{n} \omega_{ij} (t)  \tilde{e}_j(t)  
+        \Rightarrow  \dot{\tilde{e}}_i = \sum_{j=1}^{n} \omega_{ij} (t)  \textcolor{celeste}{\tilde{e}_j(t)}  
         \end{equation}
         Applicando $L$ ad \eqref{eq:dimmostrazione_curva_univocamente_determinata_a_meno_di_isometrie_2} e si ottiene
-        \[ L(\dot{e}_i (t) ) =  \sum_{j=1}^{n} \omega_{ij} (t) L(e_j(t))  \]
-        Quindi le funzioni $L \circ e_i$ e $\tilde{e}_i$ soddisfano lo stesso sistema di equazioni differenziali ordinarie del primo ordine poiché
+        \[ L(\dot{e}_i (t) ) =  \sum_{j=1}^{n} \omega_{ij} (t) \textcolor{celeste}{L(e_j(t))}  \]
+        Quindi le funzioni \textcolor{celeste}{$L \circ e_i$} e \textcolor{celeste}{$\tilde{e}_i$} soddisfano lo stesso sistema di equazioni differenziali ordinarie del primo ordine poiché
         esse coincidono per costruzione nel punto $t=t_0$ tali funzioni coincidono su $I$ 
 
         In particolare $\tilde{e}_1 = L \circ e_1$ da cui 
@@ -2027,7 +2028,8 @@
         \[ \dot{\tilde{c}}=L \circ \dot{c} \]
         A questo punto basta ricostruire la curva $\tilde{c}$ da $\dot{\tilde{c}}$ utilizzando 
         \textcolor{hotpink}{il teorema fondamentale del calcolo integrale}
-        tenendo conto del fatto che una primitiva di $\dot{\tilde{c}}$ è data da $L \circ c$
+        tenendo conto del fatto che una primitiva di $\dot{\tilde{c}}$ è data da $L \circ c$ \textcolor{violet}{(sempre perché il differenziale di 
+        un applicazione lineare è l'applicazione stessa $\frac{d}{dt} (L \circ c) = L \circ \dot{c}$ )}
         \begin{align*}
         \tilde{c}(t) &= \tilde{c}(t_0) + \int_{t_0}^{t} \dot{\tilde{c}}(s) \, ds = \tilde{c}(t_0) + \left( L \circ c \right)(t) - \left( L \circ c \right)(t_0) \\
         &= F(c(t_0)) + L(c(t)) - L(c(t_0)) = F(c(t_0)) + F(c(t)) - F(c(t_0)) = F(c(t))
@@ -2036,14 +2038,15 @@
 
         Dobbiamo provare che $F$ è unica 
 
-        Siano $F$ e $F'$ isometrie dirette tali che $F \circ c = \tilde{c} = F' \circ c$ dette $L$ e $L'$ le parti lineari di $F$ e $F'$ so che dalla proposizione 
+        Siano $F$ e $F'$ isometrie dirette tali che $F \circ c = \tilde{c} = F' \circ c$ dette $L$ e $L'$ le parti lineari di $F$ e $F'$ so 
+        \textcolor{violet}{(visto che sono dirette)} dalla proposizione 
         \ref{prop:funzioni_di_curvatura_invarianti_metrici} che le famiglie 
         $\left(L(e_i)\right)_{1 \leq i \leq n}$ e $\left(L'(e_i)\right)_{1 \leq i \leq n}$ devono coincidere entrambe con il riferimento 
         canonico di Frenet $\left(\tilde{e}_i\right)_{1 \leq i \leq n}$ di $c$ che è univocamente determinato.
 
         In particolare fissato $t_0 \in I$
         \[ L(e_i(t_0)) = L'(e_i(t_0)) \Rightarrow L = L' \]
-        Ma $F(c(t_0)) = \tilde{c}(t_0) = F'(c(t_0)) \overset{\textcolor{violet}{ \substack{\text{prop. isometrie} \\ \text{dirette} }}}{\Rightarrow} F = F'$
+        Ma $F(c(t_0)) = \tilde{c}(t_0) = F'(c(t_0)) \overset{\textcolor{violet}{ \substack{\text{richiamo \ref{richiamo:teorema_esistenza_unicita_isometrie}} }}}{\Rightarrow} F = F'$
         \end{proof}
         \begin{esempio}
         Consideriamo le curve $c(t)=(t,-t)$ e $\tilde{c}(t)=(-t,t)$
