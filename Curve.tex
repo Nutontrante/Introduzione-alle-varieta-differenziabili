@@ -1570,12 +1570,11 @@
 
         Considero $\phi : \mathbb{R} \to \mathbb{R} \quad s \mapsto -s$ diffeomorfismo 
         $\displaystyle \tilde{c} = c \circ \phi: \mathbb{R} \to \mathbb{R}$ è un'altra parametrizzazione della circonferenza
+        $\displaystyle \tilde{c}(s) = c(-s)= \left(a \cos s, -a \sin s\right)$ 
         
-        $\displaystyle \tilde{c}(s) = \left(-a \sin s, -a \cos s\right) \quad \displaystyle \norm{ \, \dot{\tilde{c}}(s) \,} = \sqrt{ \, (-a \cos s)^2 + (a \sin s)^2 \, } = a$
+        $\dot{\tilde{c}}(s) = (-a \sin s, -a \cos s) \quad \displaystyle \norm{ \, \dot{\tilde{c}}(s) \,} = \sqrt{ \, (-a \sin s)^2 + (-a \cos s)^2 \, } = a$
         
-        $\displaystyle \tilde{e}_1(s) = \frac{\dot{\tilde{c}}(s)}{\norm{\dot{\tilde{c}}(s)}} = \left(- \sin s , - \cos s \right)$
-
-        $\tilde{e}_2(s) = (\cos s, -\sin s)$ 
+        $\displaystyle \tilde{e}_1(s) = \frac{\dot{\tilde{c}}(s)}{\norm{\dot{\tilde{c}}(s)}} = \left(- \sin s , - \cos s \right) \quad \tilde{e}_2(s) = (\cos s, -\sin s)$ 
 
         \textcolor{violet}{Per capire il comportamento dei vettori di Frenet non bisogna affidarsi algebricamente al segno delle componenti, che varia a seconda del quadrante, ma occorre
         fare un ragionamento puramente geometrico. Il primo vettore del riferimento, $e_1$ deve sempre essere tangente alla curva e puntare nella direzione di marcia e poiché la
@@ -1588,7 +1587,7 @@
         essere ottenuto ruotando il primo vettore di $90$ gradi in senso antiorario. Ruotando $e_1$ di $90$ gradi a sinistra, otteniamo un $e_2$ che punta verso l'origine della circonferenza. 
         Se applichiamo questa regola a $\tilde{e}_1$, che viaggia in senso orario, il vettore normale risultante $\tilde{e}_2$ punterà inevitabilmente verso l'esterno.}
         \begin{center}
-        \begin{tikzpicture}[scale=1.2]
+        \begin{tikzpicture}[scale=1.1]
 
         % 1. Assi cartesiani
         \draw[->, thick, gray!80] (-2.5, 0) -- (2.5, 0) node[right, text=black] {$x$};
@@ -1605,10 +1604,10 @@
         % 4. Vettori di Frenet originali (c(t) percorsa in senso antiorario)
         % e_1 tangente antiorario (45+90 = 135 gradi)
         \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (P) -- ++(135:1.2) 
-            node[above left, xshift=8pt, yshift=2pt] { $e_1(t)$};
+            node[above left, xshift=12pt, yshift=2pt] { $e_1(t)$};
         % e_2 normale orientata positivamente (135+90 = 225 gradi, punta all'origine)
         \draw[-{Stealth[length=3mm]}, very thick, green!70!black] (P) -- ++(225:1.2) 
-            node[below left, xshift=8pt] { $e_2(t)$};
+            node[below left, xshift=12pt] { $e_2(t)$};
 
         % 5. Vettori di Frenet rovesciati (\tilde{c}(s) percorsa in senso orario)
         % \tilde{e}_1 tangente orario (direzione opposta a e_1, 135-180 = -45 = 315 gradi)
@@ -1625,11 +1624,12 @@
         \begin{definizione}
         \mbox{}
 
-        Sia $c: I \to \mathbb{R}^n$ curva parametrizzata sia $\left(e_i\right)_{1 \leq i \leq n}$ $n$-riferimento mobile lungo $c$
+        Sia $c: I \to \mathbb{R}^n$ curva parametrizzata \textcolor{violet}{(non necessariamente regolare)} sia $\left(e_i\right)_{1 \leq i \leq n}$ $n$-riferimento mobile lungo $c$
+        \textcolor{blu}{(quindi le $e_i$ differenziabili e $\dot{e}_i$ sono vettori di $\mathbb{R}^n$ che si possono scrivere come combinazioni lineari delle $e_i$)}
 
         \[ \text{Poniamo } \textcolor{red}{\forall t \in I \quad \forall i =1, \dots, n \quad \dot{e}_i(t)=\sum_{j=1}^{n} \omega_{ij}(t) e_j(t)} \]
 
-        dove $\forall i,j = 1, \dots, n \quad \omega_{ij}(t) = \dot{e}_i(t) \cdot e_j(t)$
+        dove $\forall i,j = 1, \dots, n \quad \omega_{ij}(t) \overset{\textcolor{violet}{\substack{ \text{come si trovano le} \\ \text{componenti} \\ \text{di un vettore} \\ \text{rispetto a una} \\  \text{base ortonormale}}}}{=} \dot{e}_i(t) \cdot e_j(t)$ 
 
         Verifichiamo che $\forall t \in I \quad \forall i,j = 1, \dots, n \quad \omega_{ij}(t) = -\omega_{ji}(t)$ da cui segue che la matrice 
         
@@ -1660,6 +1660,7 @@
         \dot{e}(t) = \omega(t) e(t)
         \end{equation}
         \end{definizione}
+        \newpage
         \begin{osservazione}
         Sia $\phi :J \to I$ un diffeomorfismo \textcolor{violet}{(cambiamento di parametro)} e poniamo 
 
@@ -1667,7 +1668,7 @@
 
         Consideriamo \textcolor{red}{$\left(\tilde{e}_i\right)_{1 \leq i \leq n} \quad \tilde{e}_i = e_i \circ \phi : J \to \mathbb{R}^n$} $\quad \tilde{e}_i(s) = e_i(\phi(s)) \quad \forall s \in J$
 
-        $\left(\tilde{e}_i\right)_{1 \leq i \leq n}$ è un $n$-riferimento mobile lungo $\tilde{c}$ e consideriamo le corrispondenti equazioni di Frenet
+        $\left(\tilde{e}_i\right)_{1 \leq i \leq n}$ è un \textcolor{red}{$n$-riferimento mobile lungo $\tilde{c}$} e consideriamo le corrispondenti equazioni di Frenet
 
         \[ \dot{\tilde{e}}_i(s) = \sum_{j=1}^{n} \tilde{\omega}_{ij}(s) \tilde{e}_j(s), \quad i = 1, \dots, n \]
         Sappiamo che $\dot{\tilde{c}}(s) = \dot{c}(\phi(s)) \phi'(s)$ osserviamo che se $\dot{\tilde{c}}(s) \neq 0$ allora 
@@ -1679,21 +1680,15 @@
         \begin{proof}
         \begin{align*}
         \frac{\tilde{\omega}_{ij}(s)}{\norm{\dot{\tilde{c}}(s)}} &= \frac{ \dot{\tilde{e_i}}(s) \cdot \tilde{e}_j(s) }{ \, \left|\phi ' (s)\right| \, \norm{\dot{c}(\phi(s))} \, } = \frac{ \phi'(s) \dot{e_i}(\phi(s)) \cdot e_j(\phi(s)) }{ \, \left|\phi ' (s)\right| \, \norm{\dot{c}(\phi(s))} \, } \\
-        &= \textcolor{blu}{\underbrace{ \textcolor{verde}{\frac{\phi'(s)}{|\phi'(s)|}}}_{\pm 1}} \, \frac{\omega_{ij}(\phi(s))}{ \, \norm{\dot{c}(\phi(s))} \,}
+        &= \textcolor{blu}{\underbrace{ \textcolor{verde}{\frac{\phi'(s)}{\, \abs {\phi'(s)}  \,}}}_{\pm 1}} \, \frac{\omega_{ij}(\phi(s))}{ \, \norm{\dot{c}(\phi(s))} \,}
         \end{align*}
         \end{proof}
         \end{osservazione}
+        \newpage
         \begin{proposizione}
         Sia $c: I \to \mathbb{R}^n$ curva fortemente regolare e sia $\left(e_i\right)_{1 \leq i \leq n}$ il riferimento canonico di Frenet allora
-        \textcolor{red}{$\omega_{ij} (t) =0 \quad \forall j > i+1$} ovvero
-        \[ \omega(t) = 
-        \begin{pmatrix}
-        0 & \omega_{12}(t) & 0 & \cdots & 0 \\
-        -\omega_{12}(t) & 0 & \omega_{23}(t) & \cdots & 0 \\
-        0 & -\omega_{23}(t) & 0 & \cdots & 0 \\
-        \vdots & \vdots & \vdots & \ddots & \vdots \\
-        0 & 0 & 0 & \cdots & 0
-        \end{pmatrix} \]
+        \textcolor{red}{$\omega_{ij} (t) =0 \quad \forall j > i+1$} ovvero \textcolor{violet}{(tolgo la dipendenza da $t$ solo per allegerire la matrice)}
+        $$ \omega(t) = \omega =  \begin{pmatrix} 0 & \omega_{12} & 0 & \cdots & 0 \\ -\omega_{12} & 0 & \omega_{23} & \ddots & \vdots \\ 0 & -\omega_{23} & 0 & \ddots & 0 \\ \vdots & \ddots & \ddots & \ddots & \omega_{n-1,n} \\ 0 & \cdots & 0 & -\omega_{n-1,n} & 0 \end{pmatrix}$$
         \end{proposizione}
         \textcolor{violet}{la matrice $\omega(t)$ è un tipo particolarissimo e strettissimo di matrice a banda: è una matrice tridiagonale antisimmetrica. Ha zeri sulla diagonale principale, e valori non nulli solo sulla riga appena sopra e appena sotto.}
         \begin{proof}
@@ -1703,7 +1698,9 @@
 
         $\Rightarrow e_i(t)$ è combinazione lineare dei vettori $\dot{c}(t), \ddot{c}(t), \dots, c^{(i)}(t)$
         \[ e_i(t) = \sum_{r=1}^{i} b_i^r(t) c^{(r)}(t) \]
-        \[ \dot{e}_i(t) = \sum_{r=1}^{i} \left( \dot{b}_i^r(t) c^{(r)}(t) + b_i^r(t) c^{(r+1)}(t) \right) \]
+        \[ \dot{e}_i(t) = \sum_{r=1}^{i} \left( \dot{b}_i^r(t) c^{(r)}(t) + b_i^r(t) c^{(r+1)}(t) \right) =
+         \color{blu} \underbrace{ \textcolor{verde}{\sum_{r=1}^{i} \dot{b}_i^r(t) c^{(r)}(t)}}_{\in \langle e_1(t), \dots, e_i(t) \rangle} \textcolor{verde}{+}
+          \underbrace{\textcolor{verde}{\sum_{r=1}^{i} b_i^r(t) c^{(r+1)}(t)}}_{\in \langle e_1(t), \dots, e_{i+1}(t) \rangle} \]
         $\Rightarrow \dot{e}_i(t)$ è combinazione lineare dei vettori $\dot{c}(t), \ddot{c}(t), \dots, c^{(i+1)}(t)$
         
         $\Rightarrow \dot{e}_i(t) \in \langle \dot{c}(t), \ddot{c}(t), \dots, c^{(i+1)}(t) \rangle = \langle e_1(t), e_2(t), \dots, e_{i+1}(t) \rangle $
@@ -1728,13 +1725,20 @@
         Per $n \geq 3$ le prime $n-2$ funzioni di curvatura sono \textcolor{red}{positive}, ovvero 
 
         \textcolor{red}{$\forall i = 1, \dots, n-2 \quad k_i(t) >0 \quad \forall t \in I$} \textcolor{blu}{($\iff \omega_{i,i+1}(t) > 0 \quad \forall t \in I$)}
-        \[ \begin{pmatrix}
-            0 & \textcolor{celeste}{\omega_{12}(t)} & \cdots & \cdots & 0 \\
-            -\omega_{12}(t) & 0 & \cdots & \cdots & 0 \\
-            \vdots & \vdots & 0 & \textcolor{celeste}{\omega_{n-2,n-1}(t)} & 0 \\
-            \vdots & \cdots & -\omega_{n-2,n-1}(t) & 0 & \textcolor{violet}{\underbrace{\textcolor{black}{\omega_{n-1,n}(t)}}_{\substack{\text{qui non posso} \\ \text{dire nulla}}}} \\
-            0 & \cdots & \cdots & -\omega_{n-1,n}(t) & 0
-            \end{pmatrix} \quad \textcolor{celeste}{\omega_{i,i+1}(t)> 0 \quad \forall i = 1, \dots, n-2} \]
+            \[ 
+            \omega(t) =  
+            \begin{pmatrix} 
+                0 & \color{celeste}{\omega_{12}(t)} & \cdots & 0 & 0 \\
+                -\omega_{12}(t) & 0 & \ddots & \vdots & \vdots \\
+                \vdots & \ddots & \ddots & \color{celeste}{\omega_{n-2,n-1}(t)} & 0 \\ 
+                0 & \cdots & -\omega_{n-2,n-1}(t) & 0 & \color{violet} \underbrace{\textcolor{black}{\omega_{n-1,n}(t)}}_{\text{qui non posso dire nulla}} \\ 
+                0 & \cdots & 0 & -\omega_{n-1,n}(t) & 0 
+            \end{pmatrix} \quad  
+            \begin{aligned}
+                & \textcolor{celeste}{\omega_{i,i+1}(t) > 0} \\
+                & \textcolor{celeste}{\forall i = 1, \dots, n-2}
+            \end{aligned} 
+            \]
         \end{proposizione}
         \begin{proof}
         \mbox{}
@@ -1751,7 +1755,7 @@
         0 & 0 & \cdots & \norm{\tilde{e}_j(t)}
         \end{pmatrix}
         \]
-        \[ c^{(j)}(t) = \sum_{r=1}^{j} a_j^r (t) e_r(t) \quad a_j^j(t) = \norm{\tilde{e}_j(t)}> 0 \]
+        \[ c^{(j)}(t) = \sum_{r=1}^{j} a_j^r (t) e_r(t) \qquad a_j^j(t) = \norm{\tilde{e}_j(t)}> 0 \]
         La matrice di passaggio da $ \left(\dot{c}(t), \ddot{c}(t), \dots, c^{(j)}(t)\right)$ a $\left(e_1(t), \, \dots, \, e_j(t)\right)$ è $A(t)^{-1}=B(t)$
         \[ B(t) =
         \begin{pmatrix}
