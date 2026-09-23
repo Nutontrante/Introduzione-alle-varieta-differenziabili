@@ -2275,7 +2275,7 @@
         \left( \cos \theta (t), \, \sin \theta (t) \right) = e_1(t) = \left( \cos \tilde{\theta} (t), \, \sin \tilde{\theta} (t) \right)
         \end{equation}
         \[ \Rightarrow \forall t \in I \quad \exists m(t) \in \mathbb{Z} \text{ tale che } \tilde{\theta}(t) - \theta(t) = 2m(t)\pi \]
-        $\Rightarrow \frac{1}{2\pi} \left(\tilde{\theta} - \theta \right) \colon I \to \mathbb{R}$ è una funzione a valori in $\mathbb{Z}$ 
+        $\Rightarrow \dfrac{1}{2\pi} \left(\tilde{\theta} - \theta \right) \colon I \to \mathbb{R}$ è una funzione a valori in $\mathbb{Z}$ 
         \textcolor{blu}{(funzione da $I$ connesso in $\mathbb{Z}$ sconnesso)} ed essendo continua deve essere costante 
         \[ \frac{1}{2 \pi } \left( \tilde{\theta} - \theta \right) (t) \equiv m \quad m \in \mathbb{Z} \]
         Sia $\theta$ verificante \eqref{eq:curvatura_piana_in_funzione_angolo_dim_1} proviamo che $\dot{\theta} =k \cdot \norm{\dot{c}}$
@@ -2286,10 +2286,10 @@
         \[ \textcolor{violet}{\dot{e}_1(t) = k(t) \norm{\dot{c}(t)} e_2(t)} \]
         \textcolor{violet}{da cui segue immediatamente che }
         \[ \dot{\theta}(t) = k(t) \norm{\dot{c}(t)} \]
-        Resta da provare l'esistenza di tali funzioni \textcolor{violet}{$\theta$}
+        Resta da provare l'esistenza di tali funzioni $\theta$
 
         Fissiamo un punto $t_0 \in I$ e scelgo $\theta(t_0) \in \mathbb{R}$ tale che 
-        \[ e_1(t_0) = \left( \cos \theta(t_0), \, \sin \theta(t_0) \right) \]
+        \[ e_1(t_0) = \left( \cos \theta(t_0), \, \sin \theta(t_0) \right) \textcolor{violet}{\Rightarrow e_2(t_0) = \left( -\sin \theta(t_0), \, \cos \theta(t_0) \right) } \]
         Pongo \textcolor{red}{$\displaystyle \theta(t) := \theta(t_0) + \int_{t_0}^{t} \omega_{12} (s) \, ds$} $\theta$ è $C^\infty$ e $\theta(t_0)=\theta_0$
 
         Provo che $\forall t \quad e_1(t) = \left( \cos \theta(t), \, \sin \theta(t) \right)$
@@ -2298,12 +2298,14 @@
         $\dot{\theta} = \omega_{12}$ supponiamo $ e_1(t) = \left( \alpha (t), \, \beta (t) \right) \quad e_1= \left( \alpha, \beta \right) $
 
         Pongo \textcolor{red}{$\psi := \left(\cos \theta, \, \sin \theta \right)$} e provo che $\psi = e_1$
+        \textcolor{violet}{come dimostro che sono uguali? qualsiasi vettore del piano può essere scritto come combinazione lineare di $e_1$ ed $e_2$ usando i prodotti scalari come coefficienti,
+        quindi scriveremo il nostro vettore inventato $\psi$ rispetto alla base di Frenet}
 
         Intanto dalle equazioni di Frenet si ha:
         \[ \dot{e}_1 = \omega_{12} e_2 = \dot{\theta} \left(- \beta, \, \alpha \right) \]
         Affermiamo che le funzioni $ \psi \cdot e_1$ e $\psi \cdot e_2$ sono costanti; da qui segue facilmente la tesi, perchè si ricava che:
-        \[ \psi = \left( \psi \cdot e_1 \right) e_1 + \left( \psi \cdot e_2 \right) e_2 = \left( \psi(t_0) \cdot e_1(t_0) \right) e_1 + \left( \psi(t_0) \cdot e_2(t_0) \right) e_2 = 1 e_1 + 0 e_2 = e_1 \]
+        \[ \psi = \left( \psi \cdot e_1 \right) e_1 + \left( \psi \cdot e_2 \right) e_2 \overset{\color{violet} \substack{\text{sfrutto la costanza} \\ \text{nell'unico} \\ \text{punto  } t_0 \text{ in cui} \\ \text{conosco i valori}}}{\textcolor{verde}{=}} \left( \psi(t_0) \cdot e_1(t_0) \right) e_1 + \left( \psi(t_0) \cdot e_2(t_0) \right) e_2 = 1 e_1 + 0 e_2 = e_1 \]
         Ora provo che sono effetivamente costanti 
-        \[ \frac{d}{dt} \left( \psi \cdot e_1\right) = \dot{\psi} \cdot e_1 + \psi \cdot \dot{e}_1 = \dot{\theta} \left(- \sin \theta, \, \cos \theta \right) \cdot \left( \alpha, \, \beta \right) + \dot{\theta} \left(\cos \theta, \, \sin \theta \right) \cdot \left( -\beta, \, \alpha \right) = 0 \]
+        \[ \frac{d}{dt} \left( \psi \cdot e_1\right) = \dot{\psi} \cdot e_1 + \psi \cdot \dot{e}_1 = \dot{\theta} \left(- \sin \theta, \, \cos \theta \right) \cdot \left( \alpha, \, \beta \right) + \left(\cos \theta, \, \sin \theta \right) \cdot \dot{\theta}  \left( -\beta, \, \alpha \right) = 0 \]
         Il che mostra che effettivamente $\psi \cdot e_1$ è costante, la verifica per $\psi \cdot e_2$ è simile.
         \end{proof}
