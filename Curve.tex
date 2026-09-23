@@ -1935,7 +1935,7 @@
             \item La curva $\tilde{c} := F \circ c \colon I \to \mathbb{R}^n$ è fortemente regolare.
             \item Se $\left(e_i\right)_{1 \leq i \leq n}$ è il riferimento canonico di Frenet di $c$ allora $\left(L(e_i)\right)_{1 \leq i \leq n}$ è 
             il riferimento canonico di Frenet di $\tilde{c}$
-            \item Le funzioni di curvatura di $c$ e di $\tilde{c}$ coincidono.
+            \item Le funzioni di curvatura di $c$ e di $\tilde{c}$ coincidono \textcolor{blu}{($k_i= \tilde{k}_i \quad i=1, \dots, n-1$)}.
         \end{enumerate}
         \end{proposizione}
         \begin{proof}
@@ -1946,9 +1946,9 @@
             con la parte lineare $L$.}
             
             Basta osservare che $\forall t \in I$ 
-            \[ \dot{\tilde{c}}(t) = d \left(F \circ c\right)_t (1) = \left(dF\right)_{c(t)} \left( \dot{c}(t) \right) \overset{\substack{\text{differenziale} \\ \text{di una funzione} \\ \text{lineare} \\ \text{coincide con} \\ \text{la funzione} }}{=} L \left( \dot{c}(t) \right) \]
+            \[ \dot{\tilde{c}}(t) = d \left(F \circ c\right)_t (1) \overset{\textcolor{violet}{\text{chain rule}}}{=} \textcolor{violet}{\underbrace{\textcolor{verde}{\left(dF\right)_{c(t)} \left( \dot{c}(t) \right)}}_{\substack{\text{il differenziale di $F$} \\ \text{nel punto $c(t)$} \\ \text{applicato al vettore $\dot{c}(t)$}}}} \overset{\textcolor{violet}{\substack{\text{il differenziale} \\ \text{di una isometria} \\ \text{è la parte lineare} \\ \text{oss: } \ref{oss:differenziale_di_una_isometria} }}}{=} L \left( \dot{c}(t) \right) \]
             Da cui segue anche che 
-            \[ \color{violet} \ddot{\tilde{c}}(t) = d(L \circ \dot{c})_t(1)=(dL)_{\dot{c}(t)}\big(d\dot{c}_t(1)) = L\left(\ddot{c}(t)\right) \]
+            \[ \color{violet} \ddot{\tilde{c}}(t) = d(L \circ \dot{c})_t(1)=(dL)_{\dot{c}(t)}(d\dot{c}_t(1)) = (dL)_{\dot{c}(t)}(\ddot{c}(t)) = L\left(\ddot{c}(t)\right) \]
             \begin{equation}
             \label{eq:dimostrazione_funzioni_di_curvatura_invarianti_metrici_1} 
             \tilde{c}^{(k)}(t) = L \left( c^{(k)}(t) \right) \quad k \geq 1
@@ -1956,10 +1956,10 @@
 
             in virtù del fatto che $L$, essendo lineare, coincide con il proprio differenziale in ogni punto.
 
-            Poichè $L$ in quanto isomorfismo conserva la lineare indipendenza dei vettori, segue che
+            Poichè $L$ in quanto isomorfismo \textcolor{violet}{(in particolare monomorfismo)} conserva la lineare indipendenza dei vettori, segue che
             
             $\forall t \in I$ i vettori
-            $\left\{ \dot{\tilde{c}}(t), \, \ddot{\tilde{c}}(t), \, \dots, \, \tilde{c}^{(n)}(t) \right\}$ sono linearmente indipendenti, quindi $\tilde{c}$ è fortemente regolare.
+            $\left\{ \dot{\tilde{c}}(t), \, \ddot{\tilde{c}}(t), \, \dots, \, \tilde{c}^{(n-1)}(t) \right\}$ sono linearmente indipendenti, quindi $\tilde{c}$ è fortemente regolare.
             \item $\left(e_i\right)_{1 \leq i \leq n}$ riferimento canonico di Frenet di $c$
             
             $L \circ e_i \colon I \to \mathbb{R}^n \quad \forall t \in I \quad \{L(e_1(t)), \, \dots, \, L(e_n(t))\}$ è base ortonormale di $\mathbb{R}^n$ positiva  
