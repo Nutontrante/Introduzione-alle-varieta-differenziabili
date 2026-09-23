@@ -97,10 +97,10 @@
         \begin{richiamo}
         Sia $A_n\left(V, \, \mathbb{K}, \,f \right)$ spazio affine sia $\varphi \colon A_n \to A_n$ un'applicazione affine 
         si dice che $\varphi$ è un'\textcolor{red}{affinità} o \textcolor{red}{una trasformazione affine} se $\varphi$ è \textcolor{celeste}{bigettiva}
-        \begin{align*}
-        \varphi : A_n \to A_n \text{ è un'affinità } \iff {} & \exists L \colon V \to V \text{ automorfismo tale che } \\
-        & \forall P,Q \in A_n \quad L\left(\overrightarrow{PQ}\right) = \overrightarrow{\varphi(P)\varphi(Q)}
-        \end{align*}
+        \begin{align}
+        \varphi : A_n \to A_n \text{ è un'affinità } \iff {} & \exists L \colon V \to V \text{ automorfismo tale che } \notag \\
+        & \forall P,Q \in A_n \quad L\left(\overrightarrow{PQ}\right) = \overrightarrow{\varphi(P)\varphi(Q)} \label{eq:condizione_affinita}
+        \end{align}
         Si dimostra che $Aff(A_n):= \{\varphi: A_n \to A_n \mid \varphi \text{ è un'affinità}\}$ è un gruppo rispetto alla composizione di funzioni.
 
         Una affinità conserva le dimensioni dei sottospazi affini cioè manda rette in rette e piani in piani.
@@ -1968,15 +1968,17 @@
             $\Rightarrow \left\{L(e_1(t)), \, \dots, \, L(e_k(t)) \right\}$ base di 
             $\langle \dot{\tilde{c}}(t), \, \dots, \, \tilde{c}^{(k)}(t) \rangle$ è una base concorde con
             
-            la base $\left( \tilde{\dot{c}}(t), \, \dots, \, \tilde{c}^{(k)}(t) \right)$ quindi $L \circ e_i$ è il riferimento canonico di Frenet di $\tilde{c}$
+            la base $\left( \tilde{\dot{c}}(t), \, \dots, \, \tilde{c}^{(k)}(t) \right)$ quindi
+            possiamo concludere che il riferimento canonico di Frenet $\left(\tilde{e}_i\right)_{1 \leq i \leq n}$ di $\tilde{c}$ è costituito dalla
+            famiglia di funzioni $L \circ e_i$ per $i = 1, \dots, n$.
             \item Notiamo innanzitutto che, sfruttando ancora la linearità di $L$, risulta:
             \[ \color{blu} \dot{\tilde{e}}_i = \dot{\widehat{L \circ e_i}} = L \circ \dot{e}_i \]
             Considerate quindi le funzioni di curvatura $k_i \colon I \to \mathbb{R}$ di $c$ e le corrispondenti funzioni di curvatura $\tilde{k}_i \colon I \to \mathbb{R}$ di $\tilde{c}$ 
             abbiamo, stante la definizione:
             \[ k_i(t) = \frac{ \omega_{i,i+1}(t) }{ \, \norm{\dot{c}(t)} \,} = \frac{ \dot{e}_i(t) \cdot e_{i+1}(t) }{ \, \norm{\dot{c}(t)} \,}  \]
             \begin{align*}
-            \tilde{k}_i(t) &= \frac{ \tilde{\omega}_{i,i+1}(t) }{ \, \norm{\dot{\tilde{c}}(t)} \,} = \frac{ \dot{\tilde{e}}_i(t) \cdot \tilde{e}_{i+1}(t) }{ \, \norm{\dot{\tilde{c}}(t)} \,} \overset{ \color{blu} \substack{  \text{Sfruttando la} \\   \text{linearità di } L   \\ \quad \dot{\tilde{e}}_i = \dot{\widehat{L \, \circ \, e_i}} = L \circ \dot{e}_i  \quad \\ \text{e le proprietà} \\ \text{delle isometrie} }}{=} \frac{ L\left( \dot{\tilde{e}}_i(t) \right) \cdot L \left( e_{i+1}(t) \right) }{ \, \norm{L \left( \dot{c} (t)\right)}  \,} \\
-            &= \frac{ \dot{e}_i(t) \cdot e_{i+1}(t) }{ \, \norm{\dot{c}(t)} \,} = k_i(t)
+            \tilde{k}_i(t) &= \frac{ \tilde{\omega}_{i,i+1}(t) }{ \, \norm{\dot{\tilde{c}}(t)} \,} = \frac{ \dot{\tilde{e}}_i(t) \cdot \tilde{e}_{i+1}(t) }{ \, \norm{\dot{\tilde{c}}(t)} \,} \overset{ \color{blu} \substack{  \text{Sfruttando la} \\   \text{linearità di } L   \\ \quad \dot{\tilde{e}}_i = \dot{\widehat{L \, \circ \, e_i}} = L \circ \dot{e}_i  \quad \\ \text{e le proprietà} \\ \text{delle isometrie} }}{=} \frac{ L\left( \dot{e}_i(t) \right) \cdot L \left( e_{i+1}(t) \right) }{ \, \norm{L \left( \dot{c} (t)\right)}  \,} \\
+            &\overset{\textcolor{violet}{\substack{L \text{ è} \\ \text{isometria} \\  \text{lineare}}}}{=} \frac{ \dot{e}_i(t) \cdot e_{i+1}(t) }{ \, \norm{\dot{c}(t)} \,} = k_i(t)
             \end{align*}
         \end{enumerate}
         \end{proof}
@@ -1986,7 +1988,7 @@
         \label{th:curva_univocamente_determinata_a_meno_di_isometrie}
         Siano $c \colon I \to \mathbb{R}^n$ e $\tilde{c} \colon I \to \mathbb{R}^n$ curve parametrizzare fortemente regolari, tali che:
         \begin{enumerate}
-            \item $\norm{\dot{c}(t)} = \norm{\dot{\tilde{c}}(t)}$ per ogni $t \in I$.
+            \item $\norm{\dot{c}(t)} = \norm{\dot{\tilde{c}}(t)}$ per ogni $t \in I$ \textcolor{violet}{(supponendo le curve parametrizzate per lunghezza d'arco questa condizione è superflua)}.
             \item $k_i = \tilde{k}_i \quad \forall i=1, \dots, n-1$
         \end{enumerate}
         Allora $\exists ! F \colon \mathbb{R}^n \to \mathbb{R}^n$ isometria diretta tale che $\tilde{c} = F \circ c$
@@ -2003,7 +2005,10 @@
         \label{eq:dimmostrazione_curva_univocamente_determinata_a_meno_di_isometrie_1}
         L(e_i(t_0)) = \tilde{e}_i(t_0), \quad i=1, \dots, n
         \end{equation}
-        Chiaramente $\det L = 1$ 
+        
+        \textcolor{violet}{(Noi vogliamo dimostrarlo per $t$ generico, non solo per $t_0$)}
+
+        Chiaramente $\det L = 1$ \textcolor{violet}{(perché le basi sono positive)}
 
         Proviamo che $\tilde{c} = F \circ c$ usando le \textcolor{hotpink}{equazioni di Frenet} \eqref{eq:equazioni_di_Frenet} delle $2$ curve $c$ e $\tilde{c}$
         \begin{equation}
@@ -2023,7 +2028,7 @@
         Applicando $L$ ad \eqref{eq:dimmostrazione_curva_univocamente_determinata_a_meno_di_isometrie_2} e si ottiene
         \[ L(\dot{e}_i (t) ) =  \sum_{j=1}^{n} \omega_{ij} (t) \textcolor{celeste}{L(e_j(t))}  \]
         Quindi le funzioni \textcolor{celeste}{$L \circ e_i$} e \textcolor{celeste}{$\tilde{e}_i$} soddisfano lo stesso sistema di equazioni differenziali ordinarie del primo ordine poiché
-        esse coincidono per costruzione nel punto $t=t_0$ tali funzioni coincidono su $I$ 
+        esse coincidono per costruzione nel punto $t=t_0$ tali funzioni coincidono su $I$ per \textcolor{hotpink}{il teorema di esistenza e unicità di Cauchy}
 
         In particolare $\tilde{e}_1 = L \circ e_1$ da cui 
         \[ \dot{\tilde{c}}(t) = \norm{\dot{\tilde{c}}(t)} \tilde{e}_1(t) = \norm{\dot{c}(t)} L(e_1(t)) = L(\dot{c}(t)) \]
@@ -2035,7 +2040,7 @@
         un applicazione lineare è l'applicazione stessa $\frac{d}{dt} (L \circ c) = L \circ \dot{c}$ )}
         \begin{align*}
         \tilde{c}(t) &= \tilde{c}(t_0) + \int_{t_0}^{t} \dot{\tilde{c}}(s) \, ds = \tilde{c}(t_0) + \left( L \circ c \right)(t) - \left( L \circ c \right)(t_0) \\
-        &= F(c(t_0)) + L(c(t)) - L(c(t_0)) = F(c(t_0)) + F(c(t)) - F(c(t_0)) = F(c(t))
+        &= F(c(t_0)) + L(c(t)) - L(c(t_0)) \overset{\textcolor{violet}{\eqref{eq:condizione_affinita}}}{=} F(c(t_0)) + F(c(t)) - F(c(t_0)) = F(c(t))
         \end{align*}
         e resta provato che $\tilde{c} = F \circ c$
 
@@ -2045,7 +2050,7 @@
         \textcolor{violet}{(visto che sono dirette)} dalla proposizione 
         \ref{prop:funzioni_di_curvatura_invarianti_metrici} che le famiglie 
         $\left(L(e_i)\right)_{1 \leq i \leq n}$ e $\left(L'(e_i)\right)_{1 \leq i \leq n}$ devono coincidere entrambe con il riferimento 
-        canonico di Frenet $\left(\tilde{e}_i\right)_{1 \leq i \leq n}$ di $c$ che è univocamente determinato.
+        canonico di Frenet $\left(\tilde{e}_i\right)_{1 \leq i \leq n}$ di $c$ che è univocamente determinato $\Rightarrow L \circ e_i = L' \circ e_i$.
 
         In particolare fissato $t_0 \in I$
         \[ L(e_i(t_0)) = L'(e_i(t_0)) \Rightarrow L = L' \]
@@ -2054,7 +2059,7 @@
         \begin{esempio}
         Consideriamo le curve $c(t)=(t,-t)$ e $\tilde{c}(t)=(-t,t)$
         \begin{center}
-        \begin{tikzpicture}[scale=1.2]
+        \begin{tikzpicture}[scale=1.1]
 
         % Assi cartesiani
         \draw[->, thick, gray!80] (-2.5, 0) -- (2.5, 0) node[right, text=black] {$x$};
