@@ -2110,8 +2110,15 @@
         \begin{proposizione}
         Sia $c \colon I \to \mathbb{R}^2$ una curva regolare allora:
         \begin{enumerate}
-            \item $\ddot{c} \cdot e_2 = k \norm{\dot{c}}^2$
-            \item $\displaystyle k(t) = \frac{\det \left( \dot{c}(t) \, \ddot{c}(t) \right)}{ \norm{\dot{c}(t)}^3}$
+            \item 
+            \begin{equation}
+            \label{eq:relazione_tra_la_derivata_seconda_di_c_e_la_funzione_di_curvatura_di_una_curva_piana}
+            \ddot{c} \cdot e_2 = k \norm{\dot{c}}^2
+            \end{equation}
+            \item 
+            \begin{equation} 
+            \label{eq:funzione_di_curvatura_curva_piana}  
+            k(t) = \frac{\det \left( \dot{c}(t) \, \ddot{c}(t) \right)}{ \norm{\dot{c}(t)}^3} \end{equation}
         \end{enumerate}
         \end{proposizione}
         \begin{proof}
@@ -2152,7 +2159,7 @@
         Si ha poi
         \[ \ddot{c}(t) = \left(-\frac{\varepsilon^2}{r} \cos \left(\frac{\varepsilon \, t}{r}\right), \, -\frac{\varepsilon^2}{r} \sin \left(\frac{\varepsilon \, t}{r}\right) \right) = \left(-\frac{1}{r} \cos \left(\frac{\varepsilon \, t}{r}\right), \, -\frac{1}{r} \sin \left(\frac{\varepsilon \, t}{r}\right) \right) \]
         Dunque 
-        \[ k(t) = \det(\dot{c}(t) \quad \ddot{c}(t)) = \begin{vmatrix}
+        \[ k(t) \textcolor{violet}{\overset{{\eqref{eq:funzione_di_curvatura_curva_piana}}}{=} \frac{\det \left( \dot{c}(t) \, \ddot{c}(t) \right)}{ \norm{\dot{c}(t)}^3}} = \det(\dot{c}(t) \quad \ddot{c}(t)) = \begin{vmatrix}
             -\varepsilon \sin \left(\dfrac{\varepsilon \, t}{r}\right) & -\dfrac{1}{r} \cos \left(\dfrac{\varepsilon \, t}{r}\right) \\
             \varepsilon \cos \left(\dfrac{\varepsilon \, t}{r}\right) & -\dfrac{1}{r} \sin \left(\dfrac{\varepsilon \, t}{r}\right)
         \end{vmatrix} =  \dfrac{\varepsilon}{r} \]
@@ -2176,18 +2183,66 @@
         Si osserva che i due semipiani considerati nell'enunciato sono:
         \[ \Sigma_+ = \{ P \in \mathbb{R}^2 \mid  \left( P - c(t_0) \right) \cdot e_2(t_0) \geq 0 \} \quad \Sigma_- = \{ P \in \mathbb{R}^2 \mid \left( P - c(t_0) \right) \cdot e_2(t_0) \leq 0 \} \]
         Consideriamo quindi la funzione $f \colon I \to \mathbb{R}$ definita ponendo:
-        \[ f(t) := \left( c(t) - c(t_0) \right) \cdot e_2(t_0) \]
+        \[ \color{red} f(t) := \left( c(t) - c(t_0) \right) \cdot e_2(t_0) \]
         ovvero 
         \[ f = \left(c - c(t_0)\right) \cdot e_2(t_0) \]
-        \textcolor{violet}{Chiaramente $f$ è differenziabile???}
+        \textcolor{violet}{Chiaramente $f$ è differenziabile perché $c(t)$ è $C^\infty$ e $c(t_0)$ e $e_2(t_0)$ sono costanti.}
 
-        Abbiamo $f(t_0) =0 \Rightarrow \dot{f} = \dot{c} \cdot e_2(t_0) \Rightarrow \ddot{f} = \ddot{c} \cdot e_2(t_0)$
+        Abbiamo $f(t_0) =0 \Rightarrow \dot{f}(t) = \dot{c}(t) \cdot e_2(t_0) \Rightarrow \ddot{f}(t) = \ddot{c}(t) \cdot e_2(t_0)$
 
-        Pertanto $f(t_0) = 0 \quad \ddot{f}(t_0) = k(t_0) \norm{\dot{c}(t_0)}^2 $
+        Pertanto $f(t_0) = 0 \quad \ddot{f}(t_0) \overset{\textcolor{violet}{\eqref{eq:relazione_tra_la_derivata_seconda_di_c_e_la_funzione_di_curvatura_di_una_curva_piana}}}{=} k(t_0) \color{violet} \underbrace{\textcolor{verde}{\norm{\dot{c}(t_0)}^2}}_{\neq 0 \Rightarrow >0} $
 
         Se $k(t_0) > 0 \Rightarrow t_0$ punto di minimo locale per $f \Rightarrow $ \textcolor{violet}{quindi $\exists$ un intorno $J \subset I$ di $t_0$ tale che $f(t) \geq 0$ per ogni $t \in J$}
-        $f(t) \geq 0$ per ogni $t \in J \Rightarrow c(J) \subset \Sigma_+$.
+        $f(t) \geq 0$ in $J \subset I \Rightarrow c(J) \subset \Sigma_+$.
         \end{proof}
+        \begin{center}
+        \begin{tikzpicture}[
+            >=Stealth,
+            scale=1.1
+        ]
+            % Assi
+            \draw[->, gray] (-5, 0) -- (6.5, 0) node[below] {$x$};
+            \draw[->, gray] (0, -3.5) -- (0, 3.5) node[left] {$y$};
+
+            % Curva accentuata: si comporta come due parabole strette per massimizzare il distacco dalla tangente
+            \draw[thick, teal] (-4.5, -1.5) 
+                to[out=70, in=225] (-2.5, 1.5) coordinate (P1) 
+                to[out=45, in=180] (-0.5, 2.5) 
+                to[out=0, in=135] (2.5, -1.0) coordinate (P2)  
+                to[out=-45, in=180] (4.5, -2.0) 
+                to[out=0, in=225] (6, -0.5);
+
+            % ==========================================
+            % Punto 1: k < 0 (Rosso) - Molto concava (verso il basso)
+            % ==========================================
+            % Retta tangente (inclinazione 45°)
+            \draw[red, thin] (P1) ++(225:3.5) -- ++(45:6); 
+            
+            % Vettori normali e tangenti
+            \draw[->, red, thick] (P1) -- ++(45:1.5) node[below right] {$e_1(t)$};
+            \draw[->, red, thick] (P1) -- ++(135:1.5) node[above left] {$e_2(t)$};
+            
+            \node[red, font=\large] at (-2.8, 3.0) {$k < 0$};
+
+            \node[celeste, text width=4.5cm, align=left, font=\small] (text1) at (-3.5, -2.5) {in un intorno del punto\\ la curva è contenuta\\ nel semipiano individuato\\ dalla retta tangente\\ verso il quale punta $-e_2(t)$};
+
+            % ==========================================
+            % Punto 2: k > 0 (Verde) - Molto convessa (verso l'alto)
+            % ==========================================
+            % Retta tangente (inclinazione -45°)
+            \draw[green!60!black, thin] (P2) ++(135:3) -- ++(-45:5); 
+            
+            % Vettori normali e tangenti
+            \draw[->, green!60!black, thick] (P2) -- ++(-45:1.5) node[below left] {$e_1(t)$};
+            \draw[->, green!60!black, thick] (P2) -- ++(45:1.5) node[above right] {$e_2(t)$};
+            
+            \node[green!60!black, font=\large] at (4.5, 1.0) {$k > 0$};
+
+            \node[celeste, text width=4.5cm, align=left, font=\small] (text2) at (4.0, -3.5) {in un intorno del punto\\ la curva è contenuta\\ nel semipiano individuato\\ dalla retta tangente\\ verso il quale punta $e_2(t)$};
+            
+
+        \end{tikzpicture}
+        \end{center}
         \newpage 
         Diamo infine un'altra interpretazione della curvatura e del suo segno, in termini di variazione del vettore tangente, vogliamo mostrare che è 
         possibile descrivere mediante una funzione differenziabile l'angolo $\theta (t)$ e che $e_1(t)$ forma con il vettore fisso $\epsilon_1$
