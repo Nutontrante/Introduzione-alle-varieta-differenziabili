@@ -2711,7 +2711,62 @@
 
         $e_3(t)$ è versore tale che $\{e_1(t), e_2(t), e_3(t)\}$ è base ortonormale di $\mathbb{R}^3$ concorde con la base canonica $\Rightarrow  \textcolor{red}{e_3(t) = e_1(t) \times e_2(t)}$.
 
-        Pertanto 
-        \[ e_3(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}} \times \frac{\ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}{\norm{ \ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}} \]
+        Pertanto
+        \begin{align*}
+        e_3(t) &= \frac{\dot{c}(t)}{\norm{\dot{c}(t)}} \times \frac{\ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}{\norm{ \ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}} \overset{\textcolor{blu}{\substack{\text{per linearità} \\ \text{ed essendo} \\ \dot{c} \times e_1(t)=0 }}}{=} \\
+        &= \frac{1}{\alpha} \left(\dot{c}(t) \times \ddot{c}(t) \right) \quad \alpha >0
+        \end{align*}
+        \[ e_3(t) = \frac{\dot{c}(t) \times \ddot{c}(t)}{\norm{\dot{c}(t) \times \ddot{c}(t)}} \]
+        Equazioni di Frenet
+        \[ \omega(t) = \begin{pmatrix}
+            0 & \omega_{12}(t) & 0 \\
+            -\omega_{12}(t) & 0 & \omega_{23}(t) \\
+            0 & -\omega_{23}(t) & 0
+        \end{pmatrix} \quad 
+        \begin{cases}
+            \dot{e}_1(t) = \omega_{12}(t) e_2(t) \\
+            \dot{e}_2(t) = -\omega_{12}(t) e_1(t) + \omega_{23}(t) e_3(t) \\
+            \dot{e}_3(t) = -\omega_{23}(t) e_2(t)
+        \end{cases}
+        \]
+        Sono quindi definite due funzioni di curvatura
         
+        $\displaystyle k_1(t) = \textcolor{red}{k(t) = \frac{\omega_{12}}{\norm{\dot{c}(t)}}>0}$ detta \textcolor{red}{curvatura} di $c$
+
+        $\displaystyle k_2(t) = \textcolor{red}{\tau(t) = \frac{\omega_{23}}{\norm{\dot{c}(t)}}}$ detta \textcolor{red}{torsione} di $c$
+
+        Le equazioni di Frenet si possono riscrivere come 
+        \[ \begin{cases*}
+            \dot{e}_1(t) = k(t) \norm{\dot{c}(t)} e_2(t) \\
+            \dot{e}_2(t) = -k(t) \norm{\dot{c}(t)} e_1(t) + \tau(t) \norm{\dot{c}(t)} e_3(t) \\
+            \dot{e}_3(t) = -\tau(t) \norm{\dot{c}(t)} e_2(t)
+        \end{cases*} \]
+        \begin{osservazione}
+        Supponiamo $\norm{\dot{c}(t)}=k$ costante $\Rightarrow \dot{c}(t) \cdot \dot{c}(t)=k^2$ costante
+        
+        Differenziando 
+        $\dot{c}(t) \cdot \ddot{c}(t) + \ddot{c}(t) \cdot \dot{c}(t) = 0 \Rightarrow \dot{c}(t) \cdot \ddot{c}(t) = 0$
+
+        Pertanto in questo caso $\displaystyle e_1(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}} \qquad e_2(t) = \frac{\ddot{c}(t)}{\norm{\ddot{c}(t)}} \qquad e_3(t) = e_1(t) \times e_2(t)$.
+        \end{osservazione}
+        \newpage
+        \textcolor{violet}{Andiamo a dimostrare una proposizione che ci semplificherà i calcoli}
+        \begin{proposizione}
+        \mbox{}
+
+        \begin{enumerate}
+            \item $\displaystyle k(t)= \frac{\norm{\dot{c}(t) \times \ddot{c}(t)}}{\norm{\dot{c}(t)}^3}$
+            \item $\displaystyle \tau(t) = \frac{ \det(\dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t)) }{\norm{\dot{c}(t) \times \ddot{c}(t)}^2}$
+        \end{enumerate}
+        \end{proposizione}
+        \begin{proof}
+        \begin{enumerate}
+            \item $\dot{c}(t) = \norm{\dot{c}(t)} e_1(t) $
+            
+            $\ddot{c}(t) = \norm{\dot{c}(t)} \dot{e}_1(t) = \norm{\dot{c}(t)} k(t) \norm{\dot{c}(t)} e_2(t) = k(t) \norm{\dot{c}(t)}^2 e_2(t) $
+            \item 
+        \end{enumerate}
+        \end{proof}
+        
+
         
