@@ -1813,6 +1813,7 @@
         \[ \textcolor{red}{k_i : I \to \mathbb{R} \quad i = 1, \dots, n-1 \quad \forall t \in I \quad k_i(t) = \frac{\omega_{i,i+1}(t)}{\norm{\dot{c}(t)}} = \frac{\dot{e_i} (t) \cdot e_{i+1}(t)}{\norm{\dot{c}(t)}}} \]
         \end{definizione}
         \begin{proposizione}
+        \label{prop:funzioni_curvatura_positive}
         \mbox{}
         
         Per $n \geq 3$ le prime $n-2$ funzioni di curvatura sono \textcolor{red}{positive}, ovvero 
@@ -2057,9 +2058,10 @@
         Ma $F(c(t_0)) = \tilde{c}(t_0) = F'(c(t_0)) \overset{\textcolor{violet}{ \substack{\text{richiamo \ref{richiamo:teorema_esistenza_unicita_isometrie}} }}}{\Rightarrow} F = F'$
         \end{proof}
         \begin{esempio}
-        Consideriamo le curve $c(t)=(t,-t)$ e $\tilde{c}(t)=(-t,t)$
+        Consideriamo le curve $c(t)=(t,-t)$ e $\tilde{c}(t)=(t,t)$ \textcolor{violet}{queste curve sono le stesse a meno di isometria perché 
+        in particolare a meno di rotazione (isometria diretta) o riflessione (isometria inversa) tuttavia il teorema predica solo sulle isometrie dirette}
         \begin{center}
-        \begin{tikzpicture}[scale=1.1]
+        \begin{tikzpicture}[scale=0.75]
 
         % Assi cartesiani
         \draw[->, thick, gray!80] (-2.5, 0) -- (2.5, 0) node[right, text=black] {$x$};
@@ -2114,6 +2116,7 @@
             \dot{e}_2 = -\omega_{12} e_1 = - k \norm{\dot{c}} e_1
         \end{cases}
         \end{equation}
+        \textcolor{violet}{$\omega_{12} = \dot{e_1} \cdot e_2$}
         \newpage
         \begin{proposizione}
         Sia $c \colon I \to \mathbb{R}^2$ una curva regolare allora:
@@ -2140,7 +2143,7 @@
             \begin{align*} \det \left( \dot{c} \quad \ddot{c} \right) &= \det \left( \norm{\dot{c}} e_1 \qquad  \left(\frac{d}{dt} \norm{\dot{c}}\right) e_1 + k \norm{\dot{c}}^2 e_2 \right) \textcolor{blu}{\overset{ \det(v \quad v_1+v_2) = \det (v \quad v_1) + \det(v \quad v_2) }{\textcolor{verde}{=}}} \\
             &= \det \left( \norm{\dot{c}} e_1 \quad \left(\frac{d}{dt} \norm{\dot{c}}\right) e_1 \right) + \det \left( \norm{\dot{c}} e_1 \quad k \norm{\dot{c}}^2 e_2 \right) \\ 
             &= 0 + \det \left( \norm{\dot{c}} e_1 \quad k \norm{\dot{c}}^2 e_2 \right) \\
-            &= k \norm{\dot{c}}^3 \det(e_1 \quad e_2) = k \norm{\dot{c}}^3
+            &= k \norm{\dot{c}}^3 \det(e_1 \quad e_2) = k \norm{\dot{c}}^3 
             \end{align*}
             da cui si ricava la \textcolor{black}{2.}
         \end{enumerate}
@@ -2172,6 +2175,9 @@
             \varepsilon \cos \left(\dfrac{\varepsilon \, t}{r}\right) & -\dfrac{1}{r} \sin \left(\dfrac{\varepsilon \, t}{r}\right)
         \end{vmatrix} =  \dfrac{\varepsilon}{r} \]
         $\Rightarrow k(t)$ costante
+
+        \textcolor{violet}{Noi sappiamo che in $\mathbb{R}^n$ tutte le funzioni di curvatura tranne l'ultima sono poistive per la proposizione \ref{prop:funzioni_curvatura_positive}
+        nel nostro caso in $\mathbb{R}^2$ a seconda del valore di $\varepsilon$ la curvatura sarà positiva o negativa.}
         \end{esempio}
         \newpage
         Diamo ora un significato geometrico al segno della curvatura di una curva regolare in suo punto, fissato $t_0 \in I$ chiameremo retta tangente alla curva in $t_0$, la retta
@@ -2198,7 +2204,7 @@
 
         Abbiamo $f(t_0) =0 \Rightarrow \dot{f}(t) = \dot{c}(t) \cdot e_2(t_0) \Rightarrow \ddot{f}(t) = \ddot{c}(t) \cdot e_2(t_0)$
 
-        Pertanto $f(t_0) = 0 \quad \ddot{f}(t_0) \overset{\textcolor{violet}{\eqref{eq:relazione_tra_la_derivata_seconda_di_c_e_la_funzione_di_curvatura_di_una_curva_piana}}}{=} k(t_0) \color{violet} \underbrace{\textcolor{verde}{\norm{\dot{c}(t_0)}^2}}_{\neq 0 \Rightarrow >0} $
+        Pertanto $\dot{f}(t_0) = 0 \quad \ddot{f}(t_0) \overset{\textcolor{violet}{\eqref{eq:relazione_tra_la_derivata_seconda_di_c_e_la_funzione_di_curvatura_di_una_curva_piana}}}{=} k(t_0) \color{violet} \underbrace{\textcolor{verde}{\norm{\dot{c}(t_0)}^2}}_{\neq 0 \Rightarrow >0} $
 
         Se $k(t_0) > 0 \Rightarrow t_0$ punto di minimo locale per $f \Rightarrow $ \textcolor{violet}{quindi $\exists$ un intorno $J \subset I$ di $t_0$ tale che $f(t) \geq 0$ per ogni $t \in J$}
         $f(t) \geq 0$ in $J \subset I \Rightarrow c(J) \subset \Sigma_+$.
@@ -2206,7 +2212,7 @@
         \begin{center}
         \begin{tikzpicture}[
             >=Stealth,
-            scale=1.1
+            scale=1.05
         ]
             % Assi
             \draw[->, gray] (-5, 0) -- (6.5, 0) node[below] {$x$};
@@ -2310,10 +2316,10 @@
         quindi scriveremo il nostro vettore inventato $\psi$ rispetto alla base di Frenet}
 
         Intanto dalle equazioni di Frenet si ha:
-        \[ \dot{e}_1 = \omega_{12} e_2 = \dot{\theta} \left(- \beta, \, \alpha \right) \]
+        \[ \color{celeste} \dot{e}_1 = \omega_{12} e_2 = \dot{\theta} \left(- \beta, \, \alpha \right) \]
         Affermiamo che le funzioni $ \psi \cdot e_1$ e $\psi \cdot e_2$ sono costanti; da qui segue facilmente la tesi, perchè si ricava che:
         \[ \psi = \left( \psi \cdot e_1 \right) e_1 + \left( \psi \cdot e_2 \right) e_2 \overset{\color{violet} \substack{\text{sfrutto la costanza} \\ \text{nell'unico} \\ \text{punto  } t_0 \text{ in cui} \\ \text{conosco i valori}}}{\textcolor{verde}{=}} \left( \psi(t_0) \cdot e_1(t_0) \right) e_1 + \left( \psi(t_0) \cdot e_2(t_0) \right) e_2 = 1 e_1 + 0 e_2 = e_1 \]
         Ora provo che sono effetivamente costanti 
-        \[ \frac{d}{dt} \left( \psi \cdot e_1\right) = \dot{\psi} \cdot e_1 + \psi \cdot \dot{e}_1 = \dot{\theta} \left(- \sin \theta, \, \cos \theta \right) \cdot \left( \alpha, \, \beta \right) + \left(\cos \theta, \, \sin \theta \right) \cdot \dot{\theta}  \left( -\beta, \, \alpha \right) = 0 \]
+        \[ \frac{d}{dt} \left( \psi \cdot e_1\right) = \dot{\psi} \cdot e_1 + \psi \cdot \dot{e}_1 = \dot{\theta} \left(- \sin \theta, \, \cos \theta \right) \cdot \left( \alpha, \, \beta \right) + \left(\cos \theta, \, \sin \theta \right) \cdot \textcolor{celeste}{\dot{\theta}  \left( -\beta, \, \alpha \right)} = 0 \]
         Il che mostra che effettivamente $\psi \cdot e_1$ è costante, la verifica per $\psi \cdot e_2$ è simile.
         \end{proof}
