@@ -2417,4 +2417,301 @@
         \end{esempio}
         \begin{esempio}
         Sia $\rho \colon I \to \mathbb{R}$ una funzione differenziabile a partire da $\rho$ si definisce la parametrizzazione 
+        $c : I \to \mathbb{R}^2$ tale che $c(t) = (\rho(t) \cos t, \rho(t) \sin t)$.
+
+        \[ \text{Posto} \quad \begin{cases*}
+            x = \rho(t) \cos t\\
+            y = \rho(t) \sin t
+        \end{cases*} \Rightarrow x^2 + y^2 = \rho(t)^2 \]
+        $(\rho, t)$ sono le coordinate polari di $(x, y)$
+        \begin{center}
+        \begin{tikzpicture}[scale=0.6]
+        % Assi cartesiani
+        \draw[->, thick, gray!80!black] (-3, 0) -- (5, 0);
+        \draw[->, thick, gray!80!black] (0, -2) -- (0, 4);
+        
+        % Segmento per il raggio vettore (rho)
+        \draw[very thick, celeste] (0,0) -- (45:4);
+        
+        % Punto P e relativa etichetta
+        \filldraw[red] (45:4) circle (1.5pt);
+        \node[red, above right, font=\large] at (45:4) {$P(x,y)$};
+        
+        % Etichetta per rho
+        \node[celeste, above left, font=\large, xshift=2mm] at (45:2) {$\rho(t)$};
+        
+        % Arco per l'angolo t e relativa etichetta
+        \draw[very thick, verde] (1,0) arc (0:45:1);
+        \node[verde, right, font=\large, xshift=-1mm, yshift=1mm] at (22.5:1.2) {$t$};
+        
+        \end{tikzpicture}
+        \end{center}
+        Come esercizio la Prof. Dileo propone di determinare $\dot{c}(t)$, $\ddot{c}(t)$ e $k(t)$
+        \[ \dot{c}(t) = (\dot{\rho}(t) \cos t - \rho(t) \sin t, \dot{\rho}(t) \sin t + \rho(t) \cos t)   \]
+        \[ \ddot{c}(t) = (\ddot{\rho}(t) \cos t - 2 \dot{\rho}(t) \sin t - \rho(t) \cos t, \ddot{\rho}(t) \sin t + 2 \dot{\rho}(t) \cos t - \rho(t) \sin t)   \]
+        \[ \norm{\dot{c}(t)} = \sqrt{(\dot{\rho}(t) \cos t - \rho(t) \sin t)^2 + (\dot{\rho}(t) \sin t + \rho(t) \cos t)^2} = \sqrt{\dot{\rho}(t)^2 + \rho(t)^2} \]
+        \begin{align*} \det(\dot{c}(t), \ddot{c}(t)) =& \begin{vmatrix}
+            \dot{\rho}(t) \cos t - \rho(t) \sin t \quad & \quad \ddot{\rho}(t) \cos t - 2 \dot{\rho}(t) \sin t - \rho(t) \cos t \\
+            \dot{\rho}(t) \sin t + \rho(t) \cos t \quad & \quad \ddot{\rho}(t) \sin t + 2 \dot{\rho}(t) \cos t - \rho(t) \sin t
+        \end{vmatrix}\\
+         =& (\dot{\rho}(t) \cos t - \rho(t) \sin t)(\ddot{\rho}(t) \sin t + 2 \dot{\rho}(t) \cos t - \rho(t) \sin t) - \\ 
+         &(\ddot{\rho}(t) \cos t - 2 \dot{\rho}(t) \sin t - \rho(t) \cos t)(\dot{\rho}(t) \sin t + \rho(t) \cos t) \\
+         =& \dot{\rho}(t)^2 + \rho(t)^2 + \rho(t) \ddot{\rho}(t) - (\dot{\rho}(t)^2 + \rho(t)^2) = \rho(t) \ddot{\rho}(t) 
+        \end{align*}
+        \[ k(t) = \frac{\det(\dot{c}(t), \ddot{c}(t))}{\norm{\dot{c}(t)}^3}= \frac{\rho(t) \ddot{\rho}(t)}{(\dot{\rho}(t)^2 + \rho(t)^2)^{3/2}} \]
         \end{esempio}
+        \newpage
+        \begin{esempio}[Spirale Archimedea]
+        \mbox{}
+
+        Studiamo un caso particolare dell'esempio precedente considerando $\rho(t)= at$ con $c \colon \mathbb{R}_+ \to \mathbb{R}^2$ tale che
+        $c(t) = (at \cos t, at \sin t)$ con $a>0$
+
+        Vediamo l'intersezione con l'asse $x$:
+
+        $y=0 \iff t \sin t=0 \iff t=0 \text{ oppure } t= k \pi \quad k \in \mathbb{Z}$ 
+        $\Rightarrow x=0, -a \pi, 2 a \pi, -3 a \pi, \dots$
+
+        Vediamo l'interesezione con l'asse $y$:
+
+        $\displaystyle x=0 \iff t \cos t=0 \iff t=0 \text{ oppure } t= \frac{\pi}{2} + k \pi \quad k \in \mathbb{Z}$
+
+        $\displaystyle \Rightarrow y=0, \, a \frac{\pi}{2}, \, -a \frac{3}{2}\pi, \, a \frac{5}{2}\pi, \dots$
+        \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+        
+        % Assi cartesiani
+        \draw[->, thick, gray!80!black] (-5, 0) -- (6, 0) node[right] {$x$};
+        \draw[->, thick, gray!80!black] (0, -5) -- (0, 5) node[above] {$y$};
+
+        % Definizione del parametro 'a' per la proporzione del disegno
+        \def\a{0.3}
+
+        % Spirale Archimedea: r(t) = a * t
+        % Impostiamo il dominio da 0 a 5\pi. In TikZ di default \t nel comando plot è in gradi,
+        % quindi mappiamo da 0 a 900 gradi.
+        % Il raggio è calcolato convertendo i gradi in radianti: r = \a * (\t * \pi / 180)
+        \draw[thick, cyan!60!blue, domain=0:900, variable=\t, samples=400]
+            plot (\t: {\a * \t * pi / 180});
+
+        % --- Intersezioni con l'asse X (t = k * \pi) ---
+        \filldraw[red] (0,0) circle (2pt) node[below right] {$0$};
+        
+        % t = \pi  =>  x = -a\pi
+        \filldraw[red] ({-\a*pi}, 0) circle (2pt) node[below left] {$-a\pi$};
+        
+        % t = 2\pi =>  x = 2a\pi
+        \filldraw[red] ({\a*2*pi}, 0) circle (2pt) node[below right] {$2a\pi$};
+        
+        % t = 3\pi =>  x = -3a\pi
+        \filldraw[red] ({-\a*3*pi}, 0) circle (2pt) node[above left] {$-3a\pi$};
+        
+        % t = 4\pi =>  x = 4a\pi
+        \filldraw[red] ({\a*4*pi}, 0) circle (2pt) node[above right] {$4a\pi$};
+
+
+        % --- Intersezioni con l'asse Y (t = \pi/2 + k * \pi) ---
+        % t = \pi/2   =>  y = a\pi/2
+        \filldraw[orange!90!black] (0, {\a*pi/2}) circle (2pt) node[right] {$a\frac{\pi}{2}$};
+        
+        % t = 3\pi/2  =>  y = -a(3/2)\pi
+        \filldraw[orange!90!black] (0, {-\a*3*pi/2}) circle (2pt) node[right] {$-a\frac{3}{2}\pi$};
+        
+        % t = 5\pi/2  =>  y = a(5/2)\pi
+        \filldraw[orange!90!black] (0, {\a*5*pi/2}) circle (2pt) node[right] {$a\frac{5}{2}\pi$};
+        
+        % t = 7\pi/2  =>  y = -a(7/2)\pi
+        \filldraw[orange!90!black] (0, {-\a*7*pi/2}) circle (2pt) node[right] {$-a\frac{7}{2}\pi$};
+
+        \end{tikzpicture}
+        \end{center}
+        \end{esempio}
+        \begin{osservazione}
+        Se $c \colon I \to \mathbb{R}^2$ è parametrizzata per lunghezza d'arco: 
+        \begin{equation}
+        \label{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}
+        e_1 = \dot{c}(t) \qquad \ddot{c}(t)= \dot{e}_1= k(t) e_2(t)
+        \end{equation}
+        \end{osservazione}
+        \newpage
+        \begin{proposizione}
+        Sia $c \colon I \to \mathbb{R}^2$ curva regolare allora le seguenti condizioni sono equivalenti:
+        \begin{enumerate}
+            \item $\forall t \in I \quad k(t)=0$
+            \item $\exists \tilde{c} \colon J \to \mathbb{R}^2$ parametrizzazione per lunghezza d'arco di $c$ t.c. \textcolor{red}{$\forall s \in J \quad \tilde{c}(s)=\left(s-s_0\right)v +v_0$} con $s_0 \in J$ 
+            e $v, v_0 \in \mathbb{R}^2 \quad v \neq 0$ \textcolor{blu}{(in altre parole, $\tilde{c}$ è un segmento di retta passante per $v_0$ e di giacitura generata da $v$)}
+        \end{enumerate}
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        $\mathbf{1 \Rightarrow 2}$ 
+
+        $\exists \tilde{c}=c \circ \phi: J \to \mathbb{R}^2$ parametrizzazione per lunghezza d'arco di $c$  
+
+        Si può assumere che $\phi$ conservi l'orientazione $\forall s \in J \quad \tilde{k}(s)=k \left(\phi(s)\right)=0$
+
+        \[ \ddot{\tilde{c}}(s) = \tilde{k}(s) \tilde{e}_2(s) = 0 \Rightarrow \dot{\tilde{c}}(s)=v \in \mathbb{R}^2 \quad \norm{v}=1 \]
+        \[ \tilde{c}(s) = \int_{s_0}^s \dot{\tilde{c}}(r) \, dr + \tilde{c}(s_0) = \int_{s_0}^s v \, dr + \tilde{c}(s_0) = v(s-s_0) + v_0 \quad \text{dove } v_0 = \tilde{c}(s_0) \in \mathbb{R}^2 \]
+
+        $\mathbf{2 \Rightarrow 1}$ 
+        
+        Sia $\tilde{c}= c \circ \phi \quad \phi \colon J \to I$ diffeomorfismo tale che 
+        \[ \forall s \in J \quad \tilde{c}(s) = (s-s_0)v + v_0 \quad \text{e} \quad \norm{\dot{\tilde{c}}(s)} = \norm{v} = 1 \] 
+        Si può assumere che $\phi$ conservi l'orientazione 
+        \[ \dot{\tilde{c}}(s) = v \Rightarrow \ddot{\tilde{c}}(s) = 0 \]
+        $\tilde{c}$ è parametrizzata per lunghezza d'arco per 
+        $\overset{\eqref{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}}{\Rightarrow} \ddot{\tilde{c}}(s) = \tilde{k}(s) \tilde{e}_2(s) =0 \Rightarrow \tilde{k}(s) = 0$
+        
+        $\Rightarrow \tilde{k}(s) = k (\phi(s)) = 0 \Rightarrow k(t) = 0 \quad \forall t \in I$.
+        \end{proof}
+        \newpage
+        \begin{proposizione}
+        Sia $c \colon I \to \mathbb{R}^2$ curva regolare allora le seguenti condizioni sono equivalenti:
+        \begin{enumerate}
+            \item $\displaystyle \forall t \in I \quad \abs{k(t)} = \frac{1}{r} \quad r>0$
+            \item $\exists \tilde{c} \colon J \to \mathbb{R}^2$ riparametrizzazione per lunghezza d'arco $\exists x_0 \in R^2$ tale che 
+            
+            $\forall s \in J \quad \norm{\tilde{c}(s) - x_0} = r$ \textcolor{blu}{($\tilde{c}$ è arco di circonferenza con centro in $x_0$ e raggio $r$)}
+        \end{enumerate}
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        $\mathbf{1 \Rightarrow 2}$
+
+        Supponiamo $\displaystyle \forall t \in I \quad \abs{k(t)} = \frac{1}{r} \quad r>0 \quad k(t)= \pm \frac{1}{r}= \frac{\varepsilon}{r}$ dove $\varepsilon = \pm 1$
+
+        Sia $\tilde{c}=c \circ \phi: J \to \mathbb{R}^2$ parametrizzazione per lunghezza d'arco, con $\phi$ che conserva l'orientazione. 
+        \[ \tilde{k}(s)= k(\phi(s)) = \frac{\varepsilon}{r} \]
+        \begin{align*}
+        \frac{d}{ds} \left(\tilde{c}(s) + \varepsilon r \tilde{e}_2 (s) \right) &= \dot{\tilde{c}}(s) + \varepsilon r \dot{\tilde{e}}_2(s) = \dot{\tilde{c}}(s) + \varepsilon r \left(-\tilde{k}(s) \tilde{e}_1(s)\right) \\
+        &= \dot{\tilde{c}}(s) - \varepsilon r \frac{\varepsilon}{r} \tilde{e}_1(s) \overset{\eqref{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}}{=}  \dot{\tilde{c}}(s) - \varepsilon^2 \, \dot{\tilde{c}}(s)= 0
+        \end{align*}
+        Pertanto $\tilde{c}(s) + \varepsilon r \tilde{e}_2(s) = x_0$ costante
+        \[ \tilde{c}(s) - x_0 = - \varepsilon r \tilde{e}_2(s) \Rightarrow \norm{\tilde{c}(s) - x_0} = r \]
+        \begin{center}
+        \begin{tikzpicture}[
+            scale=0.98,
+            >={Stealth[length=2.5mm, width=1.5mm]} % Rende tutte le frecce più appuntite
+        ]
+            
+            % Assi cartesiani (grigio scuro)
+            \draw[->, thick, verde] (-1, 0) -- (7, 0);
+            \draw[->, thick, verde] (0, -0.5) -- (0, 5.5);
+            
+            % Definizioni coordinate e parametri
+            \def\cx{3.5}       
+            \def\cy{2.2}       
+            \def\R{1.7}        
+            \def\ang{105}      
+            
+            \coordinate (C) at (\cx, \cy);
+            \coordinate (P) at ({\cx + \R*cos(\ang)}, {\cy + \R*sin(\ang)});
+            
+            % Cerchio osculatore
+            \draw[thick, gray!80!black] (C) circle (\R);
+            
+            % Vettore x_0 (aggiunto shorten >= 3pt per distaccarlo dal centro)
+            \draw[->, thick, gray!80!black, shorten >=1pt] (0,0) -- (C) node[midway, below=1pt, sloped] {$x_0$};
+            
+            % Vettore \tilde{c}(s) (aggiunto shorten >= 3pt per distaccarlo dalla curva)
+            \draw[->, thick, green!60!black, shorten >=1pt] (0,0) -- (P) node[midway, above left, sloped] {$\tilde{c}(s)$};
+            
+            % Vettore rosso \varepsilon r \tilde{e}_2(s) (distaccato leggermente anche questo per pulizia)
+            \draw[->, thick, red!90!black, shorten >=1pt] (P) -- (C) node[midway, right=2pt] {$\varepsilon r \tilde{e}_2(s)$};
+            
+            % Vettori del riferimento (tangente e normale)
+            \draw[->, thick, orange!90!yellow] (P) -- ++({\ang-90}:1.4) node[above right] {$\tilde{e}_1(s)$};
+            \draw[->, thick, orange!90!yellow] (P) -- ++({\ang}:1.4) node[above right] {$\tilde{e}_2(s)$};
+            
+            % Testo delle formule a destra
+            \node[right, text=gray!90!black] at (5.5, 3.5) {
+                \renewcommand{\arraystretch}{2} 
+                \begin{tabular}{l}
+                    Se $\tilde{k}(s) < 0$ \\
+                    $\tilde{k}(s) = \frac{\varepsilon}{r} \quad \varepsilon = -1$ \\
+                    $\varepsilon r \tilde{e}_2(s) = -r \tilde{e}_2(s)$ \\
+                    \mbox{} \\
+                    \color{blu} $\Rightarrow x_0 = \textcolor{green!60!black}{\tilde{c}(s)} + \textcolor{red}{\varepsilon r \tilde{e}_2(s)}$
+                \end{tabular}
+            }; 
+        \end{tikzpicture}
+        \end{center}
+        $\mathbf{2 \Rightarrow 1}$
+
+        Sia $\tilde{c}= c \circ \phi \colon J \to I$ riparametrizzazione per lunghezza d'arco tale che 
+        \[ \forall s \in J \quad \norm{ \tilde{c}(s) -x_0}=r \quad x_0 \in \mathbb{R}^2 \Rightarrow \norm{ \tilde{c}(s) -x_0}^2=r^2 \]
+        \[ \Rightarrow \left( \tilde{c}(s) - x_0 \right) \cdot \left( \tilde{c}(s) - x_0 \right) = r^2 \Rightarrow \dot{\tilde{c}}(s) \cdot \left( \tilde{c}(s) - x_0 \right) = 0 \]
+        \[ \Rightarrow \forall s \in J \quad \tilde{c}(s) -x_0 \in \langle \dot{\tilde{c}}(s) \rangle^\perp = \langle \tilde{e}_1(s) \rangle^\perp = \langle \tilde{e}_2(s) \rangle \]
+        \[ \Rightarrow \forall s \in J \quad  x_0 - \tilde{c}(s) = \lambda(s) \tilde{e}_2(s) \]
+        \[ r= \norm{x_0 - \tilde{c}(s)} = \abs{\lambda(s)} \Rightarrow \lambda(s) = \pm r = \varepsilon r \]
+        \[ \tilde{c}(s)=x_0 - \varepsilon r \tilde{e}_2(s) \]
+        \[ \dot{\tilde{c}}(s) = - \varepsilon r \dot{\tilde{e}}_2(s) = + \varepsilon r \tilde{k}(s) \tilde{e}_1(s) = + \varepsilon r \tilde{k}(s) \tilde{e}_1(s) = + \varepsilon r \tilde{k}(s) \dot{\tilde{c}}(s) \]
+        \[ \forall t \in I \quad \abs{k(t)}= \frac{1}{r} \]
+        \end{proof}
+        \begin{osservazione}
+        Il centro della circonferenza è
+        \[ x_0 = \tilde{c}(s) + \varepsilon r \tilde{e}_2(s) = \tilde{c}(s) + \frac{1}{\tilde{k}(s)} \tilde{e}_2(s) \]
+        \end{osservazione}
+        \begin{definizione}
+        Sia $c \colon I \to \mathbb{R}^2$ una curva regolare sia $t \in I$ tale che $k(t) \neq 0$ si definisce \textcolor{red}{centro di curvatura} 
+        il punto \textcolor{red}{$C(t)$} tale che \textcolor{red}{$\displaystyle C(t) = c(t) + \frac{1}{k(t)} e_2(t)$}
+        La circonferenza di centro $C(t)$ e raggio $\left| \dfrac{1}{k(t)} \right|$ prende il nome di \textcolor{red}{circonferenza osculatrice della curva $c$ in $c(t)$}.
+        \begin{center}
+        \begin{tikzpicture}[
+            scale=1.2,
+            >={Stealth[length=2.5mm, width=1.5mm]} % Frecce appuntite e leggibili
+        ]
+            
+            % Parametri principali
+            \def\ang{210} % Direzione di e_1 (verso il basso a sinistra)
+            \def\R{1.6}   % Raggio del cerchio osculatore
+            
+            % Coordinate del punto sulla curva e del centro del cerchio
+            \coordinate (ct) at (0, 0); 
+            % Il centro C(t) si trova muovendosi da c(t) lungo la direzione di e_2
+            \coordinate (Ct) at ({\R*cos(\ang+90)}, {\R*sin(\ang+90)}); 
+            
+            % Cerchio osculatore (Rosso)
+            \draw[thick, red!90!black] (Ct) circle (\R);
+            
+            % Curva parametrizzata (Teal/Blu scuro)
+            % Usiamo gli angoli di ingresso e uscita per renderla tangente in c(t)
+            \draw[thick, teal!90!blue] 
+                (6.5, -0.2) to[out=160, in=30, looseness=0.95] 
+                (ct) to[out=210, in=60, looseness=0.85] 
+                (-1.5, -2);
+                
+            % Vettori del riferimento di Frenet (Verdi)
+            % Vettore tangente e_1
+            \draw[->, thick, green!60!black, shorten >=2pt] (ct) -- ++({\ang}:1.2) node[above left] {$e_1$};
+            % Vettore normale e_2 (ruotato di +90 gradi rispetto a e_1)
+            \draw[->, thick, green!60!black, shorten >=2pt] (ct) -- ++({\ang+90}:0.9) node[right=4pt, below] {$e_2$};
+            
+            % Punti e Etichette
+            % Punto c(t)
+            \fill[teal!90!blue] (ct) circle (1.5pt) node[above=3pt, right=1pt, xshift=-28pt] {$c(t)$};
+            % Centro C(t)
+            \fill[cyan!80!blue] (Ct) circle (1.5pt) node[below=1pt] {$C(t)$};
+            
+        \end{tikzpicture}
+        \end{center}
+        \end{definizione}
+    \section{Curve nello spazio}
+        Sia $c \colon I \to \mathbb{R}^3$ una curva parametrizzata.
+
+        $c$ è fortemente regolare $\iff$ $\dot{c}(t)$ e $\ddot{c}(t)$ sono linearmente indipendenti
+
+        In tal caso il riferimento canonico di Frenet è dato da:
+
+        \textcolor{red}{$\displaystyle e_1(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}}$} 
+        
+        \textcolor{red}{$\displaystyle e_2(t) = \frac{\ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}{\norm{ \ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}}$}
+
+        $e_3(t)$ è versore tale che $\{e_1(t), e_2(t), e_3(t)\}$ è base ortonormale di $\mathbb{R}^3$ concorde con la base canonica $\Rightarrow  \textcolor{red}{e_3(t) = e_1(t) \times e_2(t)}$.
+
+        Pertanto 
+        \[ e_3(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}} \times \frac{\ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}{\norm{ \ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}} \]
+        
+        
