@@ -2323,3 +2323,98 @@
         \[ \frac{d}{dt} \left( \psi \cdot e_1\right) = \dot{\psi} \cdot e_1 + \psi \cdot \dot{e}_1 = \dot{\theta} \left(- \sin \theta, \, \cos \theta \right) \cdot \left( \alpha, \, \beta \right) + \left(\cos \theta, \, \sin \theta \right) \cdot \textcolor{celeste}{\dot{\theta}  \left( -\beta, \, \alpha \right)} = 0 \]
         Il che mostra che effettivamente $\psi \cdot e_1$ è costante, la verifica per $\psi \cdot e_2$ è simile.
         \end{proof}
+        \begin{esempio}
+        Sia $f \colon I \to \mathbb{R}$ funzione differenziabile e $c \colon I \to \mathbb{R}^2 \quad c(t)=\left( t, \, f(t) \right)$ 
+
+        $\supp(c)=\graf(f) \quad \dot{c}(t)= \left(1, f'(t)\right) \neq 0 \quad \ddot{c}(t) = \left(0, f''(t)\right)$
+
+        Il riferimento canonico di Frenet è 
+        \[ e_1(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}} = \frac{1}{\sqrt{1 + (f'(t))^2}} \left(1, f'(t)\right) \qquad  e_2(t) =  \frac{1}{\sqrt{1 + (f'(t))^2}} \left( -f'(t), 1 \right) \]
+        \[ k(t) = \frac{\det(\dot{c}(t), \ddot{c}(t))}{\norm{\dot{c}(t)}^3} = \frac{1 \cdot f''(t) - f'(t) \cdot 0}{\left( \sqrt{1 + (f'(t))^2} \right)^{3}} = \frac{f''(t)}{\left[ 1 + (f'(t))^2 \right]^{3/2}} \]
+        La curvatura ha lo stesso segno di $f''$ infatti 
+
+        $\quad k(t) >0 \iff f''(t) > 0 \iff$ il grafico di $f$ è concavo verso l'alto 
+
+        $\quad k(t) <0 \iff f''(t) < 0 \iff$ il grafico di $f$ è concavo verso il basso
+        \begin{center}
+        \begin{tikzpicture}[
+            >=Stealth,
+            scale=0.85
+        ]
+            % Assi
+            \draw[->, gray] (-5, 0) -- (6.5, 0) node[below] {$x$};
+            \draw[->, gray] (0, -3.5) -- (0, 3.5) node[left] {$y$};
+
+            % Curva accentuata: si comporta come due parabole strette per massimizzare il distacco dalla tangente
+            \draw[thick, teal] (-4.5, -1.5) 
+                to[out=70, in=225] (-2.5, 1.5) coordinate (P1) 
+                to[out=45, in=180] (-0.5, 2.5) 
+                to[out=0, in=135] (2.5, -1.0) coordinate (P2)  
+                to[out=-45, in=180] (4.5, -2.0) 
+                to[out=0, in=225] (6, -0.5);
+
+            % ==========================================
+            % Punto 1: k < 0 (Rosso) - Molto concava (verso il basso)
+            % ==========================================
+            % Retta tangente (inclinazione 45°)
+            \draw[red, thin] (P1) ++(225:3.5) -- ++(45:6); 
+            
+            % Vettori normali e tangenti
+            \draw[->, red, thick] (P1) -- ++(45:1.5) node[below right] {$e_1(t)$};
+            \draw[->, red, thick] (P1) -- ++(135:1.5) node[above left] {$e_2(t)$};
+            
+            \node[red, font=\large] at (-2.8, 3.0) {$k < 0$};
+
+            \node[celeste, text width=4.5cm, align=left, font=\small] (text1) at (-3.5, -3.5) {in un intorno del punto\\ la curva è contenuta\\ nel semipiano individuato\\ dalla retta tangente\\ verso il quale punta $-e_2(t)$};
+
+            % ==========================================
+            % Punto 2: k > 0 (Verde) - Molto convessa (verso l'alto)
+            % ==========================================
+            % Retta tangente (inclinazione -45°)
+            \draw[green!60!black, thin] (P2) ++(135:3) -- ++(-45:5); 
+            
+            % Vettori normali e tangenti
+            \draw[->, green!60!black, thick] (P2) -- ++(-45:1.5) node[below left] {$e_1(t)$};
+            \draw[->, green!60!black, thick] (P2) -- ++(45:1.5) node[above right] {$e_2(t)$};
+            
+            \node[green!60!black, font=\large] at (4.5, 1.0) {$k > 0$};
+
+            \node[celeste, text width=4.5cm, align=left, font=\small] (text2) at (4.0, -4.5) {in un intorno del punto\\ la curva è contenuta\\ nel semipiano individuato\\ dalla retta tangente\\ verso il quale punta $e_2(t)$};
+            
+
+        \end{tikzpicture}
+        \end{center}
+        \end{esempio}
+        \begin{esempio}
+        $c \colon \mathbb{R} \to \mathbb{R}^2$ tale che $c(t)= \left(a \cos t, b \sin t \right) \quad a,b \in \mathbb{R}^*$ $c$ è la parametrizzazione 
+        dell'ellisse infatti:
+
+        \[ \text{posto }  \begin{cases*}
+            x = a \cos t\\
+            y = b \sin t
+        \end{cases*} \Rightarrow \frac{x^2}{a^2} + \frac{y^2}{b^2} = \cos^2 t + \sin^2 t = 1 \]
+        \begin{center}
+        \begin{tikzpicture}[scale=1]
+        % Assi cartesiani
+        \draw[->, thick] (-2.5, 0) -- (3, 0) node[right] {$x$};
+        \draw[->, thick] (0, -1.5) -- (0, 1.5) node[left] {$y$};
+        
+        % Ellisse
+        \draw[thick, blue!60!black] (0,0) ellipse (2 and 1);
+        
+        % Etichette dei semiassi
+        \node[below right] at (2, 0) {$|a|$};
+        \node[below left] at (-2, 0) {$-|a|$};
+        \node[above right] at (0, 1) {$|b|$};
+        \node[below right] at (0, -1) {$-|b|$};
+        \end{tikzpicture}
+        \end{center}
+        \[ \dot{c}(t) = \left( -a \sin t, b \cos t \right) \quad \norm{\dot{c}(t)} = \sqrt{a^2 \sin^2 t + b^2 \cos^2 t} \neq 0 \quad \ddot{c}(t) = \left( -a \cos t, -b \sin t \right) \]
+        Il riferimento canonico di Frenet è dato da:
+        \[ e_1(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}}=\frac{(-a \sin t, b \cos t)}{\norm{\dot{c}(t)}} \qquad e_2(t) = \frac{(-b \cos t, -a \sin t)}{\norm{\dot{c}(t)}} \]
+        \[ k(t) = \frac{\det(\dot{c}(t), \ddot{c}(t))}{\norm{\dot{c}(t)}^3} = \frac{\begin{vmatrix} -a \sin t & -a \cos t \\ b \cos t & -b \sin t \end{vmatrix}}{\left( \sqrt{a^2 \sin^2 t + b^2 \cos^2 t} \right)^3} = \frac{ab}{\left( a^2 \sin^2 t + b^2 \cos^2 t \right)^{3/2}} \]
+        Se $a=b$ si ha una circonferenza e $\displaystyle k(t) = \frac{ab}{\abs{a}^3}=\frac{1}{\abs{a}}$
+        \end{esempio}
+        \begin{esempio}
+        Sia $\rho \colon I \to \mathbb{R}$ una funzione differenziabile a partire da $\rho$ si definisce la parametrizzazione 
+        \end{esempio}
