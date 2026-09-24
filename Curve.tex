@@ -2844,21 +2844,22 @@
         \end{proof}
         \begin{esempio}[Curvatura e torsione dell'elica cilindrica]
         \mbox{}
-         
+
         $c \colon \mathbb{R} \to \mathbb{R}^3 \quad c(t) = (a \cos t, a \sin t, bt)$
 
         $\dot{c}(t)=(-a \sin t, a \cos t, b) \quad \norm{\dot{c}(t)} = \sqrt{a^2 + b^2}$
 
         $\ddot{c}(t)=(-a \cos t, -a \sin t, 0) \quad \dddot{c}(t)=(a \sin t, -a \cos t, 0)$
 
-        \[ \dot{c}(t) \times \ddot{c}(t) = \left( \begin{vmatrix}
-            a \cos t &  b \\
-            -a \sin t & 0
-        \end{vmatrix}, \,  \begin{vmatrix}
-            -a \sin t & a \cos t \\
-            -a \cos t & -a \sin t
-        \end{vmatrix}, \,  \begin{vmatrix}
-            -a \sin t & a \cos t \\
-            -a \cos t & -a \sin t
-        \end{vmatrix} \right) \]
+        \begin{align*} 
+        \dot{c}(t) \times \ddot{c}(t) &= \left( \begin{vmatrix}   a \cos t &  b \\   -a \sin t & 0 \end{vmatrix}, \quad  \begin{vmatrix}-a \sin t & b \\ -a \cos t & 0 \end{vmatrix}, \quad \begin{vmatrix} -a \sin t & a \cos t \\  -a \cos t & -a \sin t  \end{vmatrix} \right) \\
+        &= (a b \sin t, -a b \cos t, a^2) \neq 0
+        \end{align*}
+        $\norm{\dot{c}(t) \times \ddot{c}(t)} = \sqrt{a^2 b^2 + a^4}= a \sqrt{a^2 +b^2} $
+
+        $\displaystyle k(t)=\frac{\norm{\dot{c}(t) \times \ddot{c}(t)}}{\norm{\dot{c}(t)}^3} = \frac{a \sqrt{a^2 +b^2}}{(a^2 + b^2)^{3/2}} = \frac{a}{a^2 + b^2}>0$ costante positiva
+
+        $\displaystyle \tau(t) = \frac{\det(\dot{c}(t), \ddot{c}(t), \dddot{c}(t)) }{a^2\left(a^2+b^2\right)}=\frac{\begin{vmatrix} -a \sin t & -a \cos t & a \sin t \\ a \cos t & -a \sin t & -a \cos t \\ b & 0 & 0 \end{vmatrix}}{a^2\left(a^2+b^2\right)} = \frac{ab^2}{a^2(a^2+b^2)} = \frac{b}{a^2+b^2} \neq 0 $
+
+        $\tau(t)$ costante
         \end{esempio}
