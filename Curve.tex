@@ -2736,11 +2736,14 @@
         $\displaystyle k_2(t) = \textcolor{red}{\tau(t) = \frac{\omega_{23}}{\norm{\dot{c}(t)}}}$ detta \textcolor{red}{torsione} di $c$
 
         Le equazioni di Frenet si possono riscrivere come 
-        \[ \begin{cases*}
+
+        \begin{equation}\label{eq:equazioni_di_Frenet_per_curve_nello_spazio}
+        \begin{cases}
             \dot{e}_1(t) = k(t) \norm{\dot{c}(t)} e_2(t) \\
             \dot{e}_2(t) = -k(t) \norm{\dot{c}(t)} e_1(t) + \tau(t) \norm{\dot{c}(t)} e_3(t) \\
             \dot{e}_3(t) = -\tau(t) \norm{\dot{c}(t)} e_2(t)
-        \end{cases*} \]
+        \end{cases}
+        \end{equation}
         \begin{osservazione}
         Supponiamo $\norm{\dot{c}(t)}=k$ costante $\Rightarrow \dot{c}(t) \cdot \dot{c}(t)=k^2$ costante
         
@@ -2756,7 +2759,11 @@
 
         \begin{enumerate}
             \item $\displaystyle k(t)= \frac{\norm{\dot{c}(t) \times \ddot{c}(t)}}{\norm{\dot{c}(t)}^3}$
-            \item $\displaystyle \tau(t) = \frac{ \det(\dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t)) }{\norm{\dot{c}(t) \times \ddot{c}(t)}^2}$
+            \item 
+            \begin{equation}
+            \label{eq:torsione}    
+            \tau(t) = \frac{ \det(\dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t)) }{\norm{\dot{c}(t) \times \ddot{c}(t)}^2} 
+            \end{equation}
         \end{enumerate}
         \end{proposizione}
         \begin{proof}
@@ -2796,9 +2803,43 @@
         \begin{proposizione}
         Sia $c \colon I \to \mathbb{R}^3$ curva fortemente regolare allora:
 
-        $c$ è una \textcolor{red}{curva piana} $\iff \forall t \in I \quad \tau(t) = 0$
+        $c$ è una \textcolor{red}{curva piana} $\iff \forall t \in I \quad \textcolor{red}{\tau(t) = 0}$
         \end{proposizione}
         \begin{proof}
+        \mbox{}
+
+        $\mathbf{1 \Rightarrow 2}$
+
+        Supponiamo che $c$ sia una curva piana $\exists x_0,u,v \in \mathbb{R}^3$ con $u,v$ linearmente indipendenti tali che 
+        $\forall t \in I \quad c(t) \in \color{blu} \underbrace{\textcolor{verde}{S(x_0, \langle u,v \rangle)}}_{\substack{\text{piano per } x_0 \\ \text{di giacitura} \\ \langle u,v \rangle}}$
+
+        $\Rightarrow c(t) - x_0 = \alpha (t)u+ \beta(t)v \quad \alpha(t), \beta(t) \in \mathbb{R}$
+
+        $ \dot{c}(t) = \dot{\alpha}(t) u + \dot{\beta}(t) v  \in \langle u,v \rangle$
         
+        $\Rightarrow$ i vettori $\dot{c}(t), \ddot{c}(t), \dddot{c}(t)$ sono linearmente dipendenti $\Rightarrow \det(\dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t)) = 0$
+
+        $\overset{\eqref{eq:torsione}}{\Rightarrow} \tau(t) = 0$
+
+        $\mathbf{2 \Rightarrow 1}$
+
+        Supponiamo $\forall t \in I \quad \tau(t) = 0$ le equazioni di Frenet per la curva $c$ \eqref{eq:equazioni_di_Frenet_per_curve_nello_spazio} diventano:
+        \begin{equation*}
+        \begin{cases}
+            \dot{e}_1(t) = k(t) \norm{\dot{c}(t)} e_2(t) \\
+            \dot{e}_2(t) = -k(t) \norm{\dot{c}(t)} e_1(t) \\
+            \dot{e}_3(t) = 0
+        \end{cases}
+        \end{equation*}
+        Pertanto sono costanti $e_3(t) \equiv e_3$ costante $\langle e_3(t) \rangle^\perp = \langle e_1(t), e_2(t) \rangle$
+
+        Sia $t_0 \in I$, proviamo che la curva è contenuta nel piano passante per $c(t_0)$ e di giacitura $\langle e_3 \rangle^\perp$
+
+        E' sufficiente provare che $\forall t \in I \quad c(t) - c(t_0) \in \langle e_3 \rangle^\perp$
+        
+        ovvero $\left(c(t) - c(t_0) \right) \cdot e_3 =0$ ovvero $\forall t \in I \quad c(t) \cdot e_3 = c(t_0) \cdot e_3$
+
+        Proviamo che il prodotto scalare $c(t) \cdot e_3$ è costante.
+        \[ \frac{d}{dt} \left( c(t) \cdot e_3 \right) = \dot{c}(t) \cdot e_3 = \norm{\dot{c}(t)} e_1(t) \cdot e_3 \]
         \end{proof}
         
