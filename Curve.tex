@@ -2091,7 +2091,10 @@
         le funzioni componenti $\alpha$ e $\beta$ di $e_1$ soddisfano $\alpha^2 + \beta^2 = 1$ identicamente.
 
         Osserviamo che $e_2$ si ottene immediatamente come 
-        \[ e_2 = (-\beta, \, \alpha) \] 
+        \begin{equation}
+        \label{eq:secondo_vettore_del_riferimento_canonico_di_Frenet_in_una_curva_piana}
+        e_2 = (-\beta, \, \alpha)
+        \end{equation}
         e le equazioni di Frenet di $c$ in forma matriciale sono 
         \[ \dot{e} = \omega e \textcolor{violet}{\iff 
         \begin{pmatrix}
@@ -2329,8 +2332,8 @@
         $\supp(c)=\graf(f) \quad \dot{c}(t)= \left(1, f'(t)\right) \neq 0 \quad \ddot{c}(t) = \left(0, f''(t)\right)$
 
         Il riferimento canonico di Frenet è 
-        \[ e_1(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}} = \frac{1}{\sqrt{1 + (f'(t))^2}} \left(1, f'(t)\right) \qquad  e_2(t) =  \frac{1}{\sqrt{1 + (f'(t))^2}} \left( -f'(t), 1 \right) \]
-        \[ k(t) = \frac{\det(\dot{c}(t), \ddot{c}(t))}{\norm{\dot{c}(t)}^3} = \frac{1 \cdot f''(t) - f'(t) \cdot 0}{\left( \sqrt{1 + (f'(t))^2} \right)^{3}} = \frac{f''(t)}{\left[ 1 + (f'(t))^2 \right]^{3/2}} \]
+        \[ e_1(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}} = \frac{1}{\sqrt{1 + (f'(t))^2}} \left(1, f'(t)\right) \overset{\textcolor{violet}{\eqref{eq:secondo_vettore_del_riferimento_canonico_di_Frenet_in_una_curva_piana}}}{\Rightarrow} e_2(t) =  \frac{1}{\sqrt{1 + (f'(t))^2}} \left( -f'(t), 1 \right) \]
+        \[ k(t) \overset{\textcolor{violet}{\eqref{eq:funzione_di_curvatura_curva_piana}}}{=} \frac{\det(\dot{c}(t), \ddot{c}(t))}{\norm{\dot{c}(t)}^3} = \frac{1 \cdot f''(t) - f'(t) \cdot 0}{\left( \sqrt{1 + (f'(t))^2} \right)^{3}} = \frac{f''(t)}{\left[ 1 + (f'(t))^2 \right]^{3/2}} \]
         La curvatura ha lo stesso segno di $f''$ infatti 
 
         $\quad k(t) >0 \iff f''(t) > 0 \iff$ il grafico di $f$ è concavo verso l'alto 
@@ -2547,21 +2550,23 @@
 
         $\mathbf{1 \Rightarrow 2}$ 
 
-        $\exists \tilde{c}=c \circ \phi: J \to \mathbb{R}^2$ parametrizzazione per lunghezza d'arco di $c$  
+        \textcolor{violet}{Per la proposizione \ref{prop:esistenza_riparametrizzazione_lunghezza_arco}} $\exists \tilde{c}=c \circ \phi: J \to \mathbb{R}^2$ parametrizzazione per lunghezza d'arco di $c$  
 
-        Si può assumere che $\phi$ conservi l'orientazione $\forall s \in J \quad \tilde{k}(s)=k \left(\phi(s)\right)=0$
+        Si può assumere che $\phi$ conservi l'orientazione \textcolor{orange}{$\forall s \in J \quad \tilde{k}(s)=k \left(\phi(s)\right)=0$}
 
-        \[ \ddot{\tilde{c}}(s) = \tilde{k}(s) \tilde{e}_2(s) = 0 \Rightarrow \dot{\tilde{c}}(s)=v \in \mathbb{R}^2 \quad \norm{v}=1 \]
+        \[ \ddot{\tilde{c}}(s) \overset{\textcolor{violet}{\eqref{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}}}{=} \tilde{k}(s) \tilde{e}_2(s) = 0 \Rightarrow \dot{\tilde{c}}(s)=v \in \mathbb{R}^2 \quad \norm{v}=1 \]
+        \textcolor{violet}{Come costruiremo $\tilde{c}(s)$ ? sappiamo che $\dot{\tilde{c}}(s) = v$ costante in $J$ quindi $\tilde{c}(s)$ la otteniamo integrando 
+        da un punto fissato $s_0 \in J $ fino a $s$ rispetto alla variabile di integrazione $r$}
         \[ \tilde{c}(s) = \int_{s_0}^s \dot{\tilde{c}}(r) \, dr + \tilde{c}(s_0) = \int_{s_0}^s v \, dr + \tilde{c}(s_0) = v(s-s_0) + v_0 \quad \text{dove } v_0 = \tilde{c}(s_0) \in \mathbb{R}^2 \]
 
         $\mathbf{2 \Rightarrow 1}$ 
         
-        Sia $\tilde{c}= c \circ \phi \quad \phi \colon J \to I$ diffeomorfismo tale che 
-        \[ \forall s \in J \quad \tilde{c}(s) = (s-s_0)v + v_0 \quad \text{e} \quad \norm{\dot{\tilde{c}}(s)} = \norm{v} = 1 \] 
+        Sia \textcolor{orange}{$\tilde{c}= c \circ \phi$} $\quad \phi \colon J \to I$ diffeomorfismo tale che 
+        \[ \color{orange} \forall s \in J \quad \tilde{c}(s) = (s-s_0)v + v_0 \quad \textcolor{verde}{\text{e}} \quad \norm{\dot{\tilde{c}}(s)} = \norm{v} = 1 \] 
         Si può assumere che $\phi$ conservi l'orientazione 
         \[ \dot{\tilde{c}}(s) = v \Rightarrow \ddot{\tilde{c}}(s) = 0 \]
         $\tilde{c}$ è parametrizzata per lunghezza d'arco per 
-        $\overset{\eqref{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}}{\Rightarrow} \ddot{\tilde{c}}(s) = \tilde{k}(s) \tilde{e}_2(s) =0 \Rightarrow \tilde{k}(s) = 0$
+        $\overset{\textcolor{violet}{\eqref{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}}}{\Rightarrow} \ddot{\tilde{c}}(s) = \tilde{k}(s) \tilde{e}_2(s) =0 \Rightarrow \tilde{k}(s) = 0$
         
         $\Rightarrow \tilde{k}(s) = k (\phi(s)) = 0 \Rightarrow k(t) = 0 \quad \forall t \in I$.
         \end{proof}
@@ -2570,7 +2575,7 @@
         Sia $c \colon I \to \mathbb{R}^2$ curva regolare allora le seguenti condizioni sono equivalenti:
         \begin{enumerate}
             \item $\displaystyle \forall t \in I \quad \abs{k(t)} = \frac{1}{r} \quad r>0$
-            \item $\exists \tilde{c} \colon J \to \mathbb{R}^2$ riparametrizzazione per lunghezza d'arco $\exists x_0 \in R^2$ tale che 
+            \item $\exists \tilde{c} \colon J \to \mathbb{R}^2$ riparametrizzazione per lunghezza d'arco $\exists x_0 \in \mathbb{R}^2$ tale che 
             
             $\forall s \in J \quad \norm{\tilde{c}(s) - x_0} = r$ \textcolor{blu}{($\tilde{c}$ è arco di circonferenza con centro in $x_0$ e raggio $r$)}
         \end{enumerate}
@@ -2580,13 +2585,19 @@
 
         $\mathbf{1 \Rightarrow 2}$
 
-        Supponiamo $\displaystyle \forall t \in I \quad \abs{k(t)} = \frac{1}{r} \quad r>0 \quad k(t)= \pm \frac{1}{r}= \frac{\varepsilon}{r}$ dove $\varepsilon = \pm 1$
+        Supponiamo \textcolor{orange}{$\displaystyle \forall t \in I \quad \abs{k(t)} = \frac{1}{r} \quad r>0$} $\displaystyle \Rightarrow k(t)= \pm \frac{1}{r}= \frac{\varepsilon}{r}$ dove $\varepsilon = \pm 1$
 
-        Sia $\tilde{c}=c \circ \phi: J \to \mathbb{R}^2$ parametrizzazione per lunghezza d'arco, con $\phi$ che conserva l'orientazione. 
+        Sia $\tilde{c}=c \circ \phi: J \to \mathbb{R}^2$ parametrizzazione per lunghezza d'arco, con $\phi$ che conserva l'orientazione
+        \textcolor{violet}{(posso sempre considerare la parametrizzazione per la proposizione \ref{prop:esistenza_riparametrizzazione_lunghezza_arco})}. 
         \[ \tilde{k}(s)= k(\phi(s)) = \frac{\varepsilon}{r} \]
+        \textcolor{violet}{Se una curva fosse davvero una circonferenza di raggio $r$, dove si troverebbe il suo centro $x_0$ a partire da un 
+        punto qualsiasi $\tilde{c}(s)$ della curva? Il vettore normale $\tilde{e}_2(s)$ è sempre perpendicolare alla curva (dir. raggio), 
+        quindi partendo da $\tilde{c}(s)$ e spostandosi di 
+        una distanza $r$ lungo la direzione normale (con il segno opportuno $\epsilon = \pm 1$), dovremmo arrivare al presunto centro $x_0(s)= \tilde{c}(s) + \varepsilon r \tilde{e}_2(s)$.}
+        \textcolor{violet}{Per una curva generica, il "centro di curvatura" $x_0(s)$ cambia punto per punto al variare di $s$ ma per una circonferenza, il centro deve rimanere costante.}
         \begin{align*}
         \frac{d}{ds} \left(\tilde{c}(s) + \varepsilon r \tilde{e}_2 (s) \right) &= \dot{\tilde{c}}(s) + \varepsilon r \dot{\tilde{e}}_2(s) = \dot{\tilde{c}}(s) + \varepsilon r \left(-\tilde{k}(s) \tilde{e}_1(s)\right) \\
-        &= \dot{\tilde{c}}(s) - \varepsilon r \frac{\varepsilon}{r} \tilde{e}_1(s) \overset{\eqref{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}}{=}  \dot{\tilde{c}}(s) - \varepsilon^2 \, \dot{\tilde{c}}(s)= 0
+        &= \dot{\tilde{c}}(s) - \varepsilon r \frac{\varepsilon}{r} \tilde{e}_1(s) \overset{\textcolor{violet}{\eqref{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}}}{=}  \dot{\tilde{c}}(s) - \varepsilon^2 \, \dot{\tilde{c}}(s)= 0
         \end{align*}
         Pertanto $\tilde{c}(s) + \varepsilon r \tilde{e}_2(s) = x_0$ costante
         \[ \tilde{c}(s) - x_0 = - \varepsilon r \tilde{e}_2(s) \Rightarrow \norm{\tilde{c}(s) - x_0} = r \]
@@ -2640,15 +2651,15 @@
         \end{center}
         $\mathbf{2 \Rightarrow 1}$
 
-        Sia $\tilde{c}= c \circ \phi \colon J \to I$ riparametrizzazione per lunghezza d'arco tale che 
-        \[ \forall s \in J \quad \norm{ \tilde{c}(s) -x_0}=r \quad x_0 \in \mathbb{R}^2 \Rightarrow \norm{ \tilde{c}(s) -x_0}^2=r^2 \]
-        \[ \Rightarrow \left( \tilde{c}(s) - x_0 \right) \cdot \left( \tilde{c}(s) - x_0 \right) = r^2 \Rightarrow \dot{\tilde{c}}(s) \cdot \left( \tilde{c}(s) - x_0 \right) = 0 \]
+        Sia \textcolor{orange}{$\tilde{c}= c \circ \phi \colon J \to I$ riparametrizzazione per lunghezza d'arco} tale che 
+        \[ \textcolor{orange}{\forall s \in J \quad \norm{ \tilde{c}(s) -x_0}=r \quad x_0 \in \mathbb{R}^2} \Rightarrow \norm{ \tilde{c}(s) -x_0}^2=r^2 \]
+        \[ \Rightarrow \left( \tilde{c}(s) - x_0 \right) \cdot \left( \tilde{c}(s) - x_0 \right) = r^2 \overset{\textcolor{violet}{\substack{\text{deriviamo entrambi i} \\ \text{membri rispetto a } s}}}{\Rightarrow} \textcolor{violet}{2 \dot{\tilde{c}}(s) \cdot (\tilde{c}(s) - x_0) = 0 \Rightarrow} \, \dot{\tilde{c}}(s) \cdot \left( \tilde{c}(s) - x_0 \right) = 0 \]
         \[ \Rightarrow \forall s \in J \quad \tilde{c}(s) -x_0 \in \langle \dot{\tilde{c}}(s) \rangle^\perp = \langle \tilde{e}_1(s) \rangle^\perp = \langle \tilde{e}_2(s) \rangle \]
         \[ \Rightarrow \forall s \in J \quad  x_0 - \tilde{c}(s) = \lambda(s) \tilde{e}_2(s) \]
-        \[ r= \norm{x_0 - \tilde{c}(s)} = \abs{\lambda(s)} \Rightarrow \lambda(s) = \pm r = \varepsilon r \]
-        \[ \tilde{c}(s)=x_0 - \varepsilon r \tilde{e}_2(s) \]
-        \[ \dot{\tilde{c}}(s) = - \varepsilon r \dot{\tilde{e}}_2(s) = + \varepsilon r \tilde{k}(s) \tilde{e}_1(s) = + \varepsilon r \tilde{k}(s) \tilde{e}_1(s) = + \varepsilon r \tilde{k}(s) \dot{\tilde{c}}(s) \]
-        \[ \forall t \in I \quad \abs{k(t)}= \frac{1}{r} \]
+        \[ \overset{\textcolor{violet}{\substack{\text{se 2 vettori} \\ \text{coincidono le loro} \\ \text{norme in } J \\ \text{coincideranno} }}}{\Rightarrow} \textcolor{orange}{r=} \norm{x_0 - \tilde{c}(s)} = \abs{\lambda(s)} \Rightarrow \lambda(s) = \pm r = \varepsilon r \]
+        \[ \Rightarrow \tilde{c}(s)=x_0 - \varepsilon r \tilde{e}_2(s) \]
+        \[ \Rightarrow \dot{\tilde{c}}(s) = - \varepsilon r \dot{\tilde{e}}_2(s) = + \varepsilon r \tilde{k}(s) \tilde{e}_1(s) = + \varepsilon r \tilde{k}(s) \tilde{e}_1(s) = + \varepsilon r \tilde{k}(s) \dot{\tilde{c}}(s) \]
+        \[ \overset{\textcolor{violet}{k(t)=\dfrac{\varepsilon}{r}}}{\Rightarrow} \forall t \in I \quad \abs{k(t)}= \frac{1}{r} \]
         \end{proof}
         \begin{osservazione}
         Il centro della circonferenza è
