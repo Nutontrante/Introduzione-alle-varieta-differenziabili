@@ -136,5 +136,22 @@
         \begin{osservazione}
         Lo spazio $T_{f(u)} \mathbb{R}^3$ si può munire del prodotto scalare definito da 
         \[ \left(f(u), x\right) \cdot \left(f(u), y\right) = x \underbrace{\cdot}_{\substack{\text{prodotto} \\ \text{scalare} \\ \text{standard} \\ \text{in } \mathbb{R}^3}} y \qquad x,y \in \mathbb{R}^3 \]
-        Pertanto $T_{f(u)} \mathbb{R}^3 = T_u f \oplus \left(T_u f\right)^\perp$
+        Pertanto $T_{f(u)} \mathbb{R}^3 = T_u f \oplus \left(T_u f\right)^\perp \quad \dim \left(T_uf\right)=2 \quad \dim \left(\left(T_u f\right)^\perp\right)=1$
         \end{osservazione}
+        \begin{definizione}
+        \mbox{}
+
+        Si dice che $\hat{X} \colon A \to T \mathbb{R}^3$ è un \textcolor{red}{campo vettoriale tangente lungo $f$} 
+        
+        se \textcolor{red}{$\forall u \in A \quad \hat{X}(u) \in T_u f$}
+        
+        Si dice che $\hat{X} \colon A \to T \mathbb{R}^3$ è un \textcolor{red}{campo vettoriale normale lungo $f$} 
+
+        se \textcolor{red}{$\forall u \in A \quad \hat{X}(u) \in \left(T_u f\right)^\perp$}
+        \end{definizione}
+        \begin{esempio}
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare, si considerino le applicazioni 
+        \[ f_{u^1} \colon A \to \mathbb{R}^3 \quad u \mapsto f_{u^1}(u) \]
+        \[ f_{u^2} \colon A \to \mathbb{R}^3 \quad u \mapsto f_{u^2}(u) \]
+        $f_{u^1}(u)$ e $f_{u^2}(u)$ definiscono due campi vettoriali tangenti lungo $f$.
+        \end{esempio}
