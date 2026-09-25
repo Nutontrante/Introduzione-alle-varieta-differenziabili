@@ -2186,6 +2186,7 @@
         Diamo ora un significato geometrico al segno della curvatura di una curva regolare in suo punto, fissato $t_0 \in I$ chiameremo retta tangente alla curva in $t_0$, la retta
         passante per $c(t_0)$ parallela al vettore tangente $e_1(t_0)$.
         \begin{proposizione}
+        \label{prop:segno_curvatura_semipiano}
         Sia $c \colon I \to \mathbb{R}^2$ curva regolare con riferimento di Frenet $\{e_1, \, e_2\}$ e si fissi $t_0 \in I$ allora:
         \begin{enumerate}
             \item Se $k(t_0) > 0$ esiste un intorno $J \subset I$ di $t_0$ tale che $c(J)$ è interamente contenuto nel semipiano di $\mathbb{R}^2$
@@ -2329,12 +2330,14 @@
         \begin{esempio}
         Sia $f \colon I \to \mathbb{R}$ funzione differenziabile e $c \colon I \to \mathbb{R}^2 \quad c(t)=\left( t, \, f(t) \right)$ 
 
-        $\supp(c)=\graf(f) \quad \dot{c}(t)= \left(1, f'(t)\right) \neq 0 \quad \ddot{c}(t) = \left(0, f''(t)\right)$
+        $\supp(c)=\graf(f) \quad \dot{c}(t)= \left(1, f'(t)\right) \neq 0 \quad \ddot{c}(t) = \left(0, f''(t)\right)$ 
+        \textcolor{violet}{(la regolarità in $\mathbb{R}^2$ equivale alla forte regolarità quindi esiste il riferimento canonico di Frenet)}
 
         Il riferimento canonico di Frenet è 
         \[ e_1(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}} = \frac{1}{\sqrt{1 + (f'(t))^2}} \left(1, f'(t)\right) \overset{\textcolor{violet}{\eqref{eq:secondo_vettore_del_riferimento_canonico_di_Frenet_in_una_curva_piana}}}{\Rightarrow} e_2(t) =  \frac{1}{\sqrt{1 + (f'(t))^2}} \left( -f'(t), 1 \right) \]
-        \[ k(t) \overset{\textcolor{violet}{\eqref{eq:funzione_di_curvatura_curva_piana}}}{=} \frac{\det(\dot{c}(t), \ddot{c}(t))}{\norm{\dot{c}(t)}^3} = \frac{1 \cdot f''(t) - f'(t) \cdot 0}{\left( \sqrt{1 + (f'(t))^2} \right)^{3}} = \frac{f''(t)}{\left[ 1 + (f'(t))^2 \right]^{3/2}} \]
-        La curvatura ha lo stesso segno di $f''$ infatti 
+        \[ k(t) \overset{\textcolor{violet}{\eqref{eq:funzione_di_curvatura_curva_piana}}}{=} \frac{\det(\dot{c}(t) \quad \ddot{c}(t))}{\norm{\dot{c}(t)}^3} = \frac{1 \cdot f''(t) - f'(t) \cdot 0}{\left( \sqrt{1 + (f'(t))^2} \right)^{3}} = \frac{f''(t)}{\left[ 1 + (f'(t))^2 \right]^{3/2}} \]
+        La curvatura ha lo stesso segno di $f''$ infatti \textcolor{violet}{(questo è coerente con la proposizione \ref{prop:segno_curvatura_semipiano} e ciò 
+        che già sappiamo sull'interpretazione geometrica della derivata seconda)}
 
         $\quad k(t) >0 \iff f''(t) > 0 \iff$ il grafico di $f$ è concavo verso l'alto 
 
@@ -2415,7 +2418,7 @@
         \[ \dot{c}(t) = \left( -a \sin t, b \cos t \right) \quad \norm{\dot{c}(t)} = \sqrt{a^2 \sin^2 t + b^2 \cos^2 t} \neq 0 \quad \ddot{c}(t) = \left( -a \cos t, -b \sin t \right) \]
         Il riferimento canonico di Frenet è dato da:
         \[ e_1(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}}=\frac{(-a \sin t, b \cos t)}{\norm{\dot{c}(t)}} \qquad e_2(t) = \frac{(-b \cos t, -a \sin t)}{\norm{\dot{c}(t)}} \]
-        \[ k(t) = \frac{\det(\dot{c}(t), \ddot{c}(t))}{\norm{\dot{c}(t)}^3} = \frac{\begin{vmatrix} -a \sin t & -a \cos t \\ b \cos t & -b \sin t \end{vmatrix}}{\left( \sqrt{a^2 \sin^2 t + b^2 \cos^2 t} \right)^3} = \frac{ab}{\left( a^2 \sin^2 t + b^2 \cos^2 t \right)^{3/2}} \]
+        \[ k(t) \overset{\textcolor{violet}{{\eqref{eq:funzione_di_curvatura_curva_piana}}}}{=}  \frac{\det(\dot{c}(t), \ddot{c}(t))}{\norm{\dot{c}(t)}^3} = \frac{\begin{vmatrix} -a \sin t & -a \cos t \\ b \cos t & -b \sin t \end{vmatrix}}{\left( \sqrt{a^2 \sin^2 t + b^2 \cos^2 t} \right)^3} = \frac{ab}{\left( a^2 \sin^2 t + b^2 \cos^2 t \right)^{3/2}} \]
         Se $a=b$ si ha una circonferenza e $\displaystyle k(t) = \frac{ab}{\abs{a}^3}=\frac{1}{\abs{a}}$
         \end{esempio}
         \begin{esempio}
@@ -2454,8 +2457,8 @@
         \[ \ddot{c}(t) = (\ddot{\rho}(t) \cos t - 2 \dot{\rho}(t) \sin t - \rho(t) \cos t, \ddot{\rho}(t) \sin t + 2 \dot{\rho}(t) \cos t - \rho(t) \sin t)   \]
         \[ \norm{\dot{c}(t)} = \sqrt{(\dot{\rho}(t) \cos t - \rho(t) \sin t)^2 + (\dot{\rho}(t) \sin t + \rho(t) \cos t)^2} = \sqrt{\dot{\rho}(t)^2 + \rho(t)^2} \]
         \begin{align*} \det(\dot{c}(t), \ddot{c}(t)) =& \begin{vmatrix}
-            \dot{\rho}(t) \cos t - \rho(t) \sin t \quad & \quad \ddot{\rho}(t) \cos t - 2 \dot{\rho}(t) \sin t - \rho(t) \cos t \\
-            \dot{\rho}(t) \sin t + \rho(t) \cos t \quad & \quad \ddot{\rho}(t) \sin t + 2 \dot{\rho}(t) \cos t - \rho(t) \sin t
+            \dot{\rho}(t) \cos t - \rho(t) \sin t \qquad & \qquad \ddot{\rho}(t) \cos t - 2 \dot{\rho}(t) \sin t - \rho(t) \cos t \\
+            \dot{\rho}(t) \sin t + \rho(t) \cos t \qquad & \qquad \ddot{\rho}(t) \sin t + 2 \dot{\rho}(t) \cos t - \rho(t) \sin t
         \end{vmatrix}\\
          =& (\dot{\rho}(t) \cos t - \rho(t) \sin t)(\ddot{\rho}(t) \sin t + 2 \dot{\rho}(t) \cos t - \rho(t) \sin t) - \\ 
          &(\ddot{\rho}(t) \cos t - 2 \dot{\rho}(t) \sin t - \rho(t) \cos t)(\dot{\rho}(t) \sin t + \rho(t) \cos t) \\
@@ -2533,7 +2536,7 @@
         Se $c \colon I \to \mathbb{R}^2$ è parametrizzata per lunghezza d'arco: 
         \begin{equation}
         \label{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}
-        e_1 = \dot{c}(t) \qquad \ddot{c}(t)= \dot{e}_1= k(t) e_2(t)
+        e_1 = \dot{c}(t) \qquad \ddot{c}(t)= \dot{e}_1 \overset{\textcolor{violet}{\eqref{eq:Frenet_per_curve_piane}}}{=}k(t) \, \norm{\dot{c}(t)} \, e_2(t) = k(t) e_2(t)
         \end{equation}
         \end{osservazione}
         \newpage
@@ -2552,7 +2555,8 @@
 
         \textcolor{violet}{Per la proposizione \ref{prop:esistenza_riparametrizzazione_lunghezza_arco}} $\exists \tilde{c}=c \circ \phi: J \to \mathbb{R}^2$ parametrizzazione per lunghezza d'arco di $c$  
 
-        Si può assumere che $\phi$ conservi l'orientazione \textcolor{orange}{$\forall s \in J \quad \tilde{k}(s)=k \left(\phi(s)\right)=0$}
+        Si può assumere che $\phi$ conservi l'orientazione \textcolor{violet}{(non è restrittivo perché se rovesciasse l'orientazione si potrebbe comporre 
+        con la funzione $s \mapsto -s$ su $J$ per ottenere una nuova riparametrizzazione che conserva l'orientazione)} \textcolor{orange}{$\forall s \in J \quad \tilde{k}(s)=k \left(\phi(s)\right)=0$}
 
         \[ \ddot{\tilde{c}}(s) \overset{\textcolor{violet}{\eqref{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}}}{=} \tilde{k}(s) \tilde{e}_2(s) = 0 \Rightarrow \dot{\tilde{c}}(s)=v \in \mathbb{R}^2 \quad \norm{v}=1 \]
         \textcolor{violet}{Come costruiremo $\tilde{c}(s)$ ? sappiamo che $\dot{\tilde{c}}(s) = v$ costante in $J$ quindi $\tilde{c}(s)$ la otteniamo integrando 
@@ -2563,7 +2567,8 @@
         
         Sia \textcolor{orange}{$\tilde{c}= c \circ \phi$} $\quad \phi \colon J \to I$ diffeomorfismo tale che 
         \[ \color{orange} \forall s \in J \quad \tilde{c}(s) = (s-s_0)v + v_0 \quad \textcolor{verde}{\text{e}} \quad \norm{\dot{\tilde{c}}(s)} = \norm{v} = 1 \] 
-        Si può assumere che $\phi$ conservi l'orientazione 
+        Si può assumere che $\phi$ conservi l'orientazione \textcolor{violet}{(non è restrittivo perché se rovesciasse l'orientazione si potrebbe comporre 
+        con la funzione $s \mapsto -s$ su $J$ per ottenere una nuova riparametrizzazione che conserva l'orientazione)}
         \[ \dot{\tilde{c}}(s) = v \Rightarrow \ddot{\tilde{c}}(s) = 0 \]
         $\tilde{c}$ è parametrizzata per lunghezza d'arco per 
         $\overset{\textcolor{violet}{\eqref{eq:riferimento_di_Frenet_curve_piane_parametrizzate_per_lunghezza_d_arco}}}{\Rightarrow} \ddot{\tilde{c}}(s) = \tilde{k}(s) \tilde{e}_2(s) =0 \Rightarrow \tilde{k}(s) = 0$
@@ -2624,10 +2629,10 @@
             \draw[thick, gray!80!black] (C) circle (\R);
             
             % Vettore x_0 (aggiunto shorten >= 3pt per distaccarlo dal centro)
-            \draw[->, thick, gray!80!black, shorten >=1pt] (0,0) -- (C) node[midway, below=1pt, sloped] {$x_0$};
+            \draw[->, thick, gray!80!black, shorten >=1pt] (0,0) -- (C) node[midway, below=2pt] {$x_0$};
             
             % Vettore \tilde{c}(s) (aggiunto shorten >= 3pt per distaccarlo dalla curva)
-            \draw[->, thick, green!60!black, shorten >=1pt] (0,0) -- (P) node[midway, above left, sloped] {$\tilde{c}(s)$};
+            \draw[->, thick, green!60!black, shorten >=1pt] (0,0) -- (P) node[midway, above left] {$\tilde{c}(s)$};
             
             % Vettore rosso \varepsilon r \tilde{e}_2(s) (distaccato leggermente anche questo per pulizia)
             \draw[->, thick, red!90!black, shorten >=1pt] (P) -- (C) node[midway, right=2pt] {$\varepsilon r \tilde{e}_2(s)$};
@@ -2662,6 +2667,8 @@
         \[ \overset{\textcolor{violet}{k(t)=\dfrac{\varepsilon}{r}}}{\Rightarrow} \forall t \in I \quad \abs{k(t)}= \frac{1}{r} \]
         \end{proof}
         \begin{osservazione}
+        \textcolor{violet}{Non approfondiremo il concetto più di tanto}
+
         Il centro della circonferenza è
         \[ x_0 = \tilde{c}(s) + \varepsilon r \tilde{e}_2(s) = \tilde{c}(s) + \frac{1}{\tilde{k}(s)} \tilde{e}_2(s) \]
         \end{osservazione}
@@ -2671,7 +2678,7 @@
         La circonferenza di centro $C(t)$ e raggio $\left| \dfrac{1}{k(t)} \right|$ prende il nome di \textcolor{red}{circonferenza osculatrice della curva $c$ in $c(t)$}.
         \begin{center}
         \begin{tikzpicture}[
-            scale=1.2,
+            scale=1.1,
             >={Stealth[length=2.5mm, width=1.5mm]} % Frecce appuntite e leggibili
         ]
             
@@ -2708,6 +2715,8 @@
             
         \end{tikzpicture}
         \end{center}
+        \textcolor{violet}{Se ho una qualunque curva parametrizzata regolare in un punto in cui la curvatura è diversa da $0$ si può sempre considerare
+         un cerchio osculatore in quel punto, se aumenta la curvatura diminuisce il raggio del cerchio osculatore.}
         \end{definizione}
     \section{Curve nello spazio}
         Sia $c \colon I \to \mathbb{R}^3$ una curva parametrizzata.
@@ -2769,7 +2778,11 @@
         \mbox{}
 
         \begin{enumerate}
-            \item $\displaystyle k(t)= \frac{\norm{\dot{c}(t) \times \ddot{c}(t)}}{\norm{\dot{c}(t)}^3}$
+            \item 
+            \begin{equation}
+            \label{eq:curvatura_nello_spazio}
+            k(t)= \frac{\norm{\dot{c}(t) \times \ddot{c}(t)}}{\norm{\dot{c}(t)}^3}
+            \end{equation}
             \item 
             \begin{equation}
             \label{eq:torsione}    
