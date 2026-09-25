@@ -3117,3 +3117,44 @@
         \end{esempio}
         \newpage
         \textcolor{red}{Forma normale locale di una curva}
+        Sia $c \colon I  \to \mathbb{R}^3$ curva fortemente regolare parametrizzata per lunghezza d'arco \textcolor{blu}{($\norm{\dot{c}(t)} = 1$)}
+        sia $\left(e_i(t)\right)_{i=1,2,3}$ il riferimento canonico di Frenet.
+
+        Equazioni di Frenet:
+
+        \[ \begin{cases*}
+        \dot{e}_1(t) = k(t) e_2(t)\\
+        \dot{e}_2(t) = -k(t) e_1(t) + \tau(t) e_3(t)\\
+        \dot{e}_3(t) = -\tau(t) e_2(t)
+        \end{cases*} \]
+
+        Esplicitiamo i vettori derivati:
+
+        $\dot{c}(t) = e_1(t)$
+
+        $\ddot{c}(t) = k(t) e_2(t)$
+
+        $\dddot{c}(t) = \dot{k}(t) e_2(t) + k(t) \left(-k(t) e_1(t) + \tau(t) e_3(t)\right) = -k^2(t) e_1(t) + \dot{k}(t) e_2(t) + k(t) \tau(t) e_3(t)$
+
+        Supponiamo $t_0=0 \in I$
+
+        Nel seguito poniamo $e_i=e_i(0) \quad i=1,2,3 \quad k_0=k(0) \quad \tau_0=\tau(0) \quad k'_0=k'(0)$
+
+        Consideriamo lo \textcolor{red}{sviluppo in serie di Taylor} di $c(t)$ con punto iniziale $t_0=0$ 
+        \begin{align*}
+        c(t)-c(0) &= \dot{c}(0)t + \frac{1}{2} \ddot{c}(0) t^2 + \frac{1}{6} \dddot{c}(0) t^3 + \mathrm{o}(t^3) \\
+        &= t e_1 + \frac{1}{2} t^2 \left(k_0 e_2 \right) + \frac{1}{6} t^3 \left(-k_0^2 e_1 + k'_0 e_2 + k_0 \tau_0 e_3\right) + \mathrm{o}(t^3) \\
+        &= \left(t -\frac{1}{6} k_0^2 t^3 \right) e_1 + \left(\frac{1}{2} k_0 t^2 + \frac{1}{6} k'_0 t^3 \right) e_2 + \frac{1}{6} k_0 \tau_0 t^3 e_3 + \mathrm{o}(t^3)
+        \end{align*}
+        La proiezione di $c(t)$ sul piano osculatore in $t_0$ è parametrizzato da:
+        \[ \left(t- \frac{1}{6} k_0^2 t^3 \right) e_1 + \left(\frac{1}{2} k_0 t^2 - \frac{1}{6} k'_0 t^3 \right) e_2 + \mathrm{o} (3) = \left(t, \frac{1}{2}k_0 t^2, 0\right) + \mathrm{o}(2) \]
+        cioè la parametrizzazione di una parabola
+
+        La proiezione di $c(t)$ sul piano normale in $t_0$ è parametrizzato da:
+        \[  \left(0, \frac{1}{2}k_0 t^2 + \frac{1}{6} t^3, \frac{1}{6} k_0 \tau_0 t^3 \right) + \mathrm{o}(3) \]
+        cioè la parametrizzazione di una cubica cuspidale
+
+        La proiezione di $c(t)$ sul piano rettificante in $t_0$ è parametrizzato da:
+        \[  \left(t, 0, 0 \right) + \mathrm{o}(2) \]
+        cioè la parametrizzazione di una retta
+
