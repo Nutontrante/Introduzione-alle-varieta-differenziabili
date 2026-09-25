@@ -2863,3 +2863,37 @@
 
         $\tau(t)$ costante
         \end{esempio}
+        \newpage 
+        \textcolor{violet}{(Qui inizia la lezione $5$ della Dileo)}
+        \begin{teorema}
+        Siano $k \colon V \to \mathbb{R}$ e $\tau \colon V \to \mathbb{R}$ funzioni differenziabili definite su $V$ intorno aperto di $O \in \mathbb{R}$, 
+        si supponga che $\forall t \in V \quad k(t) > 0$.
+
+        Allora $\exists I$ intervallo tale che $O \in I \subset V$ e $\textcolor{red}{\exists \, c \colon I \to \mathbb{R}^3}$ curva parametrizzata per 
+        lunghezza d'arco e fortemente regolare, avente funzioni di curvatura e torsione \textcolor{red}{ $k_{\restriction{I}}$ \textcolor{black}{e} $\tau_{\restriction{I}}$}.
+        \textcolor{blu}{($c$ è unica a meno di isometrie)}
+        \end{teorema}
+        \begin{proof}
+        \mbox{}
+
+        Poniamo $\forall t \in V \quad A(t) = \begin{pmatrix} 0 & k(t) & 0 \\ -k(t) & 0 & \tau(t) \\ 0 & -\tau(t) & 0 \end{pmatrix}$.
+
+        Considero il sistema lineare di equazioni differenziali 
+        \begin{equation}
+        \label{eq:sistema_di_ODE_dim_teorema_curve_spazio_1}
+        X'(t) = A(t) X(t) \quad \forall t \in V \text{ con } X(t) \in M_3(\mathbb{R})
+        \end{equation}
+        Considero la condizione iniziale \textcolor{celeste}{$X(O) = I_3$} $\textcolor{violet}{\Rightarrow}$ il sistema ammette soluzioni 
+        in un intervallo $I$ tale che $O \in I \subset V$.
+
+        Verifichiamo che $\forall t \in I \quad X(t) \in O(3)$ \textcolor{blue}{(ovvero $X(t)$ è una matrice ortogonale per ogni $t \in I$)}
+
+        \begin{align*}
+        \left(X(t)^t \cdot X(t) \right)' &= X'(t)^t \cdot X(t) + X(t)^t \cdot X'(t) \overset{\textcolor{violet}{\eqref{eq:sistema_di_ODE_dim_teorema_curve_spazio_1}}}{=} (A(t) X(t))^t \cdot X(t) + X(t)^t \cdot A(t) X(t) \\
+        &= X(t)^t \textcolor{blu}{\underbrace{\textcolor{verde}{A(t)^t}}_{=-A(t)}} X(t) + X(t)^t A(t) X(t)=0
+        \end{align*}
+        Pertanto $X(t)^t \cdot X(t)$ è costante e poiché 
+        $X(t)^t X(t) = X(O)^t X(O) = I_3 \Rightarrow \forall t \in I \quad X(t) \in O(3)$
+
+        Sia $e_i(t) \in \mathbb{R}^3$ la $i$-esima riga di $X(t)$
+        \end{proof}
