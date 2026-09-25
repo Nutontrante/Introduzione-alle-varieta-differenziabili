@@ -1,2 +1,140 @@
 \chapter{Superfici}
-\section{Superfici parametrizzate}
+    \section{Superfici parametrizzate \texorpdfstring{$\mathbb{R}^3$}{R\textasciicircum 3}}
+        \begin{definizione}
+        Sia $A \subset \mathbb{R}^2$ aperto connesso si definisce \textcolor{red}{superficie parametrizzata in $\mathbb{R}^3$} 
+        ogni applicazione $\textcolor{red}{f \colon A \to \mathbb{R}^3}$ differenziabile di classe $C^\infty$.
+
+        L'insieme $f(A) \subset \mathbb{R}^3$ è detto \textcolor{red}{supporto di $f$}
+
+        Si dice che $f$ è \textcolor{red}{regolare} se $\forall u \in A \quad \left(df\right)_u \colon \mathbb{R}^2 \to \mathbb{R}^3$ è ingettiva.
+
+        Siano $f^i = p_i \circ f \colon A \to \mathbb{R}$ le funzioni componenti di $f$ tali che $\forall u \in A \quad f(u) = \left(f^1(u), f^2(u), f^3(u)\right)$.
+
+        La matrice Jacobiana di $f$ in $u \in A$ è
+        \[ \left(Jf\right)_u = \left( \frac{\partial f^i}{\partial u^j} \right)_{\substack{i=1,2,3 \\ j=1,2}}= \begin{pmatrix}
+        \frac{\partial f^1}{\partial u^1} & \frac{\partial f^1}{\partial u^2} \\
+        \frac{\partial f^2}{\partial u^1} & \frac{\partial f^2}{\partial u^2} \\
+        \frac{\partial f^3}{\partial u^1} & \frac{\partial f^3}{\partial u^2}
+        \end{pmatrix} \]
+        $\left(Jf\right)_u $ è la matrice associata a $\left(df\right)_u \colon \mathbb{R}^2 \to \mathbb{R}^3$ rispetto alle basi canoniche di 
+        $\mathbb{R}^2$ e $\mathbb{R}^3$.
+        \begin{align*}
+        f \text{ è regolare} &\iff \forall u \in A \quad \left(df\right)_u \text{ è ingettiva} \\
+        &\iff \ker \left(df\right)_u = \{0\} \iff \dim \left(\im \left(df\right)_u \right) = 2 \\
+        &\iff \rg \left( \left(Jf\right)_u  \right) = 2
+        \end{align*}
+        \end{definizione}
+        \newpage
+        \begin{definizione}
+        Sia  $A \subset \mathbb{R}^2$ aperto connesso e $f \colon A \to \mathbb{R}^3$ superficie regolare.
+
+        Sia $u \in A \quad \left(df\right)_u \colon \mathbb{R}^2 \to \mathbb{R}^3$ ingettiva 
+
+        Definiamo l'applicazione 
+        \[ \color{red} \left(df\right)_u \colon T_u \mathbb{R}^2 \to T_{f(u)} \mathbb{R}^3 \quad \left(u,x\right) \mapsto \left(f(u), \left(df\right)_u(x)\right) \]
+        questa applicazione lineare è ingettiva 
+        
+        Si definisce \textcolor{red}{spazio tangente in $u$ a $f$} lo spazio vettoriale 
+        \[ \color{red} T_u f:= \left(df\right)_u \left(T_u \mathbb{R}^2 \right) \subset T_{f(u)} \mathbb{R}^3 \]
+        $T_u f$ è un sottospazio vettoriale di $T_{f(u)} \mathbb{R}^3$ di dimensione $2$
+        
+        Sia $\left\{e_1, e_2\right\}$ la base canonica di $\mathbb{R}^2$ $\left\{ \left(u, e_1\right), \, \left(u, e_2\right) \right\}$ è
+        base di $T_u \mathbb{R}^2$, una base di $T_u f$ è data da 
+        $\left\{\left(df\right)_u \left(u, e_1\right), \, \left(df\right)_u \left(u, e_2\right) \right\}$
+
+        Porremo per $i=1,2$
+        \begin{align*}
+        f_{u^i} &= \left(df\right)_u \left(u, e_i\right) = \left(f(u), \, \left(df\right)_u \left(e_i\right)\right) \\
+        &= \left(f(u), \textcolor{blu}{\underbrace{ \textcolor{black}{\left( \frac{\partial f^1}{\partial u^i}(u), \, \frac{\partial f^2}{\partial u^i}(u), \, \frac{\partial f^3}{\partial u^i}(u) \right)}}_{\substack{\text{prima o seconda colonna} \\ \text{di } (Jf)_u \text{ a seconda} \\ \text{che } i=1,2}}} \right)
+        \end{align*}
+        Pertanto $T_u f = \langle f_{u^1}, f_{u^2} \rangle \subset T_{f(u)} \mathbb{R}^3$.
+        \end{definizione}
+        \begin{osservazione}
+        Non è detto che i vettori $f_{u^1}$ e $f_{u^2}$ siano ortogonali tra loro.
+        \begin{center}
+        \begin{tikzpicture}[
+            scale=1.2,
+            >={Stealth[length=2.5mm, width=1.5mm]}]
+
+            % --- 1. DOMINIO A (in basso a sinistra) ---
+            % Bordo liscio del dominio aperto A
+            \draw[thick, black] 
+                (0.5, 0) to[out=10, in=190] (3.0, 0.2)
+                to[out=80, in=-10] (2.8, 2.1)
+                to[out=170, in=10] (0.8, 1.9)
+                to[out=190, in=100] (0.5, 0);
+            \node[above left, black, yshift=8pt] at (0.7, 1.6) {\Large $A$};
+
+            % Punto u in A
+            \coordinate (u) at (1.8, 0.8);
+            \fill[red!85!black] (u) circle (2pt);
+            \node[below left=2pt, red!85!black] at (u) {$u$};
+
+            % Vettori della base canonica ortogonali in A: e_1 (ambra/arancione) e e_2 (celeste)
+            \draw[->, very thick, cyan!80!blue] (u) -- ++(0, 1.1) 
+                node[left=2pt, font=\small] {$e_2$};
+            \draw[->, very thick, orange!90!black] (u) -- ++(1.1, 0) 
+                node[below=2pt, font=\small] {$e_1$};
+
+
+            % --- 2. SUPERFICIE PARAMETRIZZATA f(A) (in alto a destra) ---
+            % Contorno sagomato della superficie f(A)
+            \draw[very thick, blu] 
+                (3.8, 4.2) to[out=55, in=170] (8.5, 5.4)
+                to[out=-20, in=75] (12.2, 3.5)
+                to[out=-105, in=-15] (8.7, 1.3)
+                to[out=80, in=-85] (8.8, 1.6)
+                to[out=100, in=-35] (3.8, 4.2);
+
+            % --- 3. PIANO TANGENTE T_u f (parallelogramma verde) ---
+            % Coordinate del parallelogramma inclinato
+            \coordinate (Torigin) at (7.5, 4.8);
+            \coordinate (T1) at (9.5, 5.0);
+            \coordinate (T2) at (11.2, 3.8);
+            \coordinate (T3) at (8.9, 3.0);
+
+            % Piano tangente in verde (con riempimento semitrasparente)
+            \draw[thick, green!60!black, fill=green!40!white, fill opacity=0.12] 
+                (Torigin) -- (T1) -- (T2) -- (T3) -- cycle;
+            \node[below right, green!50!black, yshift=-12pt] at (10.0, 3.6) {\Large $T_u f$};
+
+            % Punto f(u) sulla superficie
+            \coordinate (fu) at (9.1, 4.1);
+            \fill[red!85!black] (fu) circle (2.2pt);
+            \node[left=3pt, red!85!black] at (fu) {\small $f(u)$};
+
+            % Vettori tangenti f_{u^1}(u) e f_{u^2}(u) NON ORTOGONALI (angolo acuto evidente)
+            % f_{u^2}(u) (celeste)
+            \draw[->, very thick, cyan!80!blue] (fu) -- ++(1.3, 0.25) 
+                node[above=2pt, font=\small, yshift=-2pt, xshift=-32pt] {$f_{u^2}(u)$};
+                
+            % f_{u^1}(u) (ambra/arancione)
+            \draw[->, very thick, orange!90!black] (fu) -- ++(1.6, -0.4) 
+                node[below left=2pt, font=\small, yshift=6pt, xshift=-12pt] {$f_{u^1}(u)$};
+
+
+            % --- 4. MAPPA PARAMETRICA f ---
+            % Freccia arcuata che rappresenta l'applicazione differenziabile f
+            \draw[->, very thick, blu] 
+                (2.3, 2.5) to[out=40, in=190] (6.0, 4.3);
+            \node[above left, blu, xshift=-12pt, yshift=-2pt] at (4.3, 3.6) {\Large $f$};
+
+        \end{tikzpicture}
+        \end{center}
+        \end{osservazione}
+        \newpage 
+        \begin{definizione}
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare si definisce \textcolor{red}{campo di vettori lungo $f$} 
+        ogni applicazione \textcolor{red}{$\hat{X} \colon A \to T \mathbb{R}^3$} tale che \textcolor{red}{$\forall u \in A \quad \hat{X}(u) \in T_{f(u)} \mathbb{R}^3$}
+
+        Pertanto $\hat{X}(u) = \left(f(u), X(u)\right)$ con $X \colon A \to \mathbb{R}^3$
+
+        Se \textcolor{red}{$X: A \to \mathbb{R}^3$ è differenziabile} si dice che $\hat{X}$ è un \textcolor{red}{campo di vettori differenziabile}
+
+        Nel seguito si potrà identificare $X$ con $\hat{X}$.
+        \end{definizione}
+        \begin{osservazione}
+        Lo spazio $T_{f(u)} \mathbb{R}^3$ si può munire del prodotto scalare definito da 
+        \[ \left(f(u), x\right) \cdot \left(f(u), y\right) = x \underbrace{\cdot}_{\substack{\text{prodotto} \\ \text{scalare} \\ \text{standard} \\ \text{in } \mathbb{R}^3}} y \qquad x,y \in \mathbb{R}^3 \]
+        Pertanto $T_{f(u)} \mathbb{R}^3 = T_u f \oplus \left(T_u f\right)^\perp$
+        \end{osservazione}
