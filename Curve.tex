@@ -2796,18 +2796,18 @@
         \begin{enumerate}
             \item $\dot{c}(t) = \norm{\dot{c}(t)} e_1(t) $
             
-            $\displaystyle \ddot{c}(t) = \frac{d}{dt} \left( \norm{\dot{c}(t)} \right) e_1(t) + \norm{\dot{c}(t)} \dot{e}_1(t) = \frac{d}{dt} \left( \norm{\dot{c}(t)} \right) e_1(t) + \norm{\dot{c}(t)}^2 k(t) e_2(t) $
+            $\displaystyle \ddot{c}(t) = \frac{d}{dt} \left( \norm{\dot{c}(t)} \right) e_1(t) + \norm{\dot{c}(t)} \dot{e}_1(t) \overset{\textcolor{violet}{\eqref{eq:equazioni_di_Frenet_per_curve_nello_spazio}}}{=} \frac{d}{dt} \left( \norm{\dot{c}(t)} \right) e_1(t) + \norm{\dot{c}(t)}^2 k(t) e_2(t) $
 
-            $\displaystyle \dot{c}(t) \times \ddot{c}(t) = \norm{\dot{c}(t)}^2 k(t) \norm{\dot{c}(t)} e_1(t) \times e_2(t) = \norm{\dot{c}(t)}^3 k(t) e_3(t) $
+            $\displaystyle \dot{c}(t) \times \ddot{c}(t) \overset{\textcolor{violet}{\eqref{eq:equazioni_di_Frenet_per_curve_nello_spazio}}}{=}  \norm{\dot{c}(t)} e_1(t) \times \norm{\dot{c}(t)}^2 k(t) e_2(t) = \norm{\dot{c}(t)}^3 k(t) e_3(t) $
 
-            $\displaystyle  \norm{\dot{c}(t) \times \ddot{c}(t)} = \norm{\dot{c}(t)}^3 k(t) \quad \textcolor{blu}{\left(k(t)>0\right)}$
+            $\displaystyle  \norm{\dot{c}(t) \times \ddot{c}(t)} = \norm{\dot{c}(t)}^3 k(t) \quad \textcolor{blu}{k(t)>0}$ \textcolor{blu}{per la proposizione \ref{prop:funzioni_curvatura_positive}}
 
             $\displaystyle \Rightarrow k(t) = \frac{\norm{\dot{c}(t) \times \ddot{c}(t)}}{\norm{\dot{c}(t)}^3}$
             \item 
             \begin{align*}
             \dddot{c}(t) &= \frac{d^2}{dt^2} \left( \norm{\dot{c}(t)} \right) \, e_1(t) +  \frac{d}{dt} \left( \norm{\dot{c}(t)} \right) \, k(t) \norm{\dot{c}(t)} e_2(t) +
             \frac{d}{dt} \left( \norm{\dot{c}(t)}^2 k(t) \right) \, e_2(t) \\ 
-            &+ \norm{\dot{c}(t)}^2 k(t) \left[ \, - k(t) \norm{\dot{c}(t)} e_1(t) + \tau(t) \norm{\dot{c}(t)} \, e_3(t) \,  \right]
+            &+ \norm{\dot{c}(t)}^2 k(t) \textcolor{violet}{\underbrace{\textcolor{verde}{\left[ \, - k(t) \norm{\dot{c}(t)} e_1(t) + \tau(t) \norm{\dot{c}(t)} \, e_3(t) \,  \right]}}_{\dot{e}_2(t) \overset{\eqref{eq:equazioni_di_Frenet_per_curve_nello_spazio}}{=} - k(t) \norm{\dot{c}(t)} e_1(t) + \tau(t) \norm{\dot{c}(t)} \, e_3(t) }} 
             \end{align*}
             \begin{align*}
             \det{ \left( \dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t) \right) } &= \left( \dot{c}(t) \times \ddot{c}(t) \right) \cdot \dddot{c}(t) = \norm{\dot{c}(t)}^3 k(t) e_3 (t) \cdot \dddot{c}(t) \\
