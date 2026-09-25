@@ -2719,7 +2719,7 @@
          un cerchio osculatore in quel punto, se aumenta la curvatura diminuisce il raggio del cerchio osculatore.}
         \end{definizione}
     \section{Curve nello spazio}
-        Sia $c \colon I \to \mathbb{R}^3$ una curva parametrizzata.
+        Sia $c \colon I \to \mathbb{R}^3$ una curva parametrizzata \textcolor{violet}{qui la forte regolarità non coincide con la regolarità}.
 
         $c$ è fortemente regolare $\iff$ $\dot{c}(t)$ e $\ddot{c}(t)$ sono linearmente indipendenti
 
@@ -2727,13 +2727,13 @@
 
         \textcolor{red}{$\displaystyle e_1(t) = \frac{\dot{c}(t)}{\norm{\dot{c}(t)}}$} 
         
-        \textcolor{red}{$\displaystyle e_2(t) = \frac{\ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}{\norm{ \ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}}$}
+        \textcolor{red}{$\displaystyle e_2(t) \overset{\textcolor{violet}{G-S}}{=} \frac{\ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}{\norm{ \ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}}$}
 
         $e_3(t)$ è versore tale che $\{e_1(t), e_2(t), e_3(t)\}$ è base ortonormale di $\mathbb{R}^3$ concorde con la base canonica $\Rightarrow  \textcolor{red}{e_3(t) = e_1(t) \times e_2(t)}$.
 
         Pertanto
         \begin{align*}
-        e_3(t) &= \frac{\dot{c}(t)}{\norm{\dot{c}(t)}} \times \frac{\ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}{\norm{ \ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}} \overset{\textcolor{blu}{\substack{\text{per linearità} \\ \text{ed essendo} \\ \dot{c} \times e_1(t)=0 }}}{=} \\
+        e_3(t) &= \frac{\dot{c}(t)}{\norm{\dot{c}(t)}} \times \frac{\ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}{\norm{ \ddot{c}(t) - \left( \ddot{c}(t) \cdot e_1(t) \right) e_1(t)}} \overset{\textcolor{blu}{\substack{\text{per bilinearità} \\ \text{ed essendo} \\ \dot{c} \times e_1(t)=0 }}}{=} \\
         &= \frac{1}{\alpha} \left(\dot{c}(t) \times \ddot{c}(t) \right) \quad \alpha >0
         \end{align*}
         \[ e_3(t) = \frac{\dot{c}(t) \times \ddot{c}(t)}{\norm{\dot{c}(t) \times \ddot{c}(t)}} \]
@@ -2814,7 +2814,8 @@
             \end{align*}
             \begin{align*}
             \det{ \left( \dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t) \right) } &= \left( \dot{c}(t) \times \ddot{c}(t) \right) \cdot \dddot{c}(t) = \norm{\dot{c}(t)}^3 k(t) e_3 (t) \cdot \dddot{c}(t) \\
-            &= \norm{\dot{c}(t)}^3 k(t)^2 \tau(t) \norm{\dot{c}(t)}^3 \overset{\textcolor{violet}{\eqref{eq:curvatura_nello_spazio}}}{=} \norm{ \dot{c}(t) \times \ddot{c}(t) }^2 \tau(t)
+            &= \norm{\dot{c}(t)}^3 k(t) \norm{\dot{c}(t)}^2 k(t) \norm{\dot{c}(t)} \tau(t) \\
+            &= \norm{\dot{c}(t)}^6 k(t)^2 \tau(t) \overset{\textcolor{violet}{\eqref{eq:curvatura_nello_spazio}}}{=} \norm{ \dot{c}(t) \times \ddot{c}(t) }^2 \tau(t)
             \end{align*}
         \end{enumerate}
         \end{proof}
@@ -2859,7 +2860,7 @@
             \dot{e}_3(t) = 0
         \end{cases}
         \end{equation*}
-        Pertanto sono costanti $e_3(t) \equiv e_3$ costante $\langle e_3(t) \rangle^\perp = \langle e_1(t), e_2(t) \rangle$
+        Pertanto sono costanti $e_3(t) \equiv e_3$ costante $\langle e_3 \rangle^\perp = \langle e_1(t), e_2(t) \rangle$
 
         Sia $t_0 \in I$, proviamo che la curva è contenuta nel piano passante per $c(t_0)$ e di giacitura $\langle e_3 \rangle^\perp$
 
@@ -2873,7 +2874,7 @@
         \begin{esempio}[Curvatura e torsione dell'elica cilindrica]
         \mbox{}
 
-        $c \colon \mathbb{R} \to \mathbb{R}^3 \quad c(t) = (a \cos t, a \sin t, bt)$
+        $c \colon \mathbb{R} \to \mathbb{R}^3 \quad c(t) = (a \cos t, a \sin t, bt) \quad a>0 \quad b \neq 0$
 
         $\dot{c}(t)=(-a \sin t, a \cos t, b) \quad \norm{\dot{c}(t)} = \sqrt{a^2 + b^2}$
 
