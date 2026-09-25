@@ -2796,7 +2796,10 @@
         \begin{enumerate}
             \item $\dot{c}(t) = \norm{\dot{c}(t)} e_1(t) $
             
-            $\displaystyle \ddot{c}(t) = \frac{d}{dt} \left( \norm{\dot{c}(t)} \right) e_1(t) + \norm{\dot{c}(t)} \dot{e}_1(t) \overset{\textcolor{violet}{\eqref{eq:equazioni_di_Frenet_per_curve_nello_spazio}}}{=} \frac{d}{dt} \left( \norm{\dot{c}(t)} \right) e_1(t) + \norm{\dot{c}(t)}^2 k(t) e_2(t) $
+            \begin{equation}
+            \label{eq:c2punti_nello_spazio} 
+            \ddot{c}(t) = \frac{d}{dt} \left( \norm{\dot{c}(t)} \right) e_1(t) + \norm{\dot{c}(t)} \dot{e}_1(t) \overset{\textcolor{violet}{\eqref{eq:equazioni_di_Frenet_per_curve_nello_spazio}}}{=} \frac{d}{dt} \left( \norm{\dot{c}(t)} \right) e_1(t) + \norm{\dot{c}(t)}^2 k(t) e_2(t)
+            \end{equation}
 
             $\displaystyle \dot{c}(t) \times \ddot{c}(t) \overset{\textcolor{violet}{\eqref{eq:equazioni_di_Frenet_per_curve_nello_spazio}}}{=}  \norm{\dot{c}(t)} e_1(t) \times \norm{\dot{c}(t)}^2 k(t) e_2(t) = \norm{\dot{c}(t)}^3 k(t) e_3(t) $
 
@@ -2811,16 +2814,16 @@
             \end{align*}
             \begin{align*}
             \det{ \left( \dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t) \right) } &= \left( \dot{c}(t) \times \ddot{c}(t) \right) \cdot \dddot{c}(t) = \norm{\dot{c}(t)}^3 k(t) e_3 (t) \cdot \dddot{c}(t) \\
-            &= \norm{\dot{c}(t)}^3 k(t)^2 \tau(t) \norm{\dot{c}(t)}^3 = \norm{ \dot{c}(t) \times \ddot{c}(t) }^2 \tau(t)
+            &= \norm{\dot{c}(t)}^3 k(t)^2 \tau(t) \norm{\dot{c}(t)}^3 \overset{\textcolor{violet}{\eqref{eq:curvatura_nello_spazio}}}{=} \norm{ \dot{c}(t) \times \ddot{c}(t) }^2 \tau(t)
             \end{align*}
         \end{enumerate}
         \end{proof}
         \begin{osservazione}
         Se $c: I \to \mathbb{R}^3$ è una curva fortemente regolare parametrizzata per lunghezza d'arco 
         \begin{align}
-        \ddot{c}(t) &= k(t) e_2(t) \label{eq:curva_nello_spazio_parametrizzata_per_lunghezza_darco_1} \\
-        k(t) &= \norm{ \dot{c}(t) \times \ddot{c}(t) } \label{eq:curva_nello_spazio_parametrizzata_per_lunghezza_darco_2} \\
-        \tau(t) &= \frac{ \det(\dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t)) }{k(t)^2} \label{eq:curva_nello_spazio_parametrizzata_per_lunghezza_darco_3}
+        \ddot{c}(t) &\overset{\textcolor{violet}{\eqref{eq:c2punti_nello_spazio}}}{=} k(t) e_2(t) \label{eq:curva_nello_spazio_parametrizzata_per_lunghezza_darco_1} \\
+        k(t) &\overset{\textcolor{violet}{\eqref{eq:curvatura_nello_spazio}}}{=} \norm{ \dot{c}(t) \times \ddot{c}(t) } \label{eq:curva_nello_spazio_parametrizzata_per_lunghezza_darco_2} \\
+        \tau(t) &\overset{\textcolor{violet}{\substack{\det{ \left( \dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t) \right) }   \\ = \norm{\dot{c}(t)}^3 k(t)^2 \tau(t) \norm{\dot{c}(t)}^3 \\ = \norm{ \dot{c}(t) \times \ddot{c}(t) }^2 \tau(t)}}}{=} \frac{ \det(\dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t)) }{k(t)^2} \label{eq:curva_nello_spazio_parametrizzata_per_lunghezza_darco_3}
         \end{align}
         \end{osservazione}
         \newpage
@@ -2836,10 +2839,11 @@
 
         Supponiamo che $c$ sia una curva piana $\exists x_0,u,v \in \mathbb{R}^3$ con $u,v$ linearmente indipendenti tali che 
         $\forall t \in I \quad c(t) \in \color{blu} \underbrace{\textcolor{verde}{S(x_0, \langle u,v \rangle)}}_{\substack{\text{piano per } x_0 \\ \text{di giacitura} \\ \langle u,v \rangle}}$
+        \textcolor{violet}{$c(t)$ è contenuto nel piano per $x_0$ di giacitura $\langle u,v \rangle$ quindi $c(t) - x_0 \in \langle u,v \rangle$}
 
-        $\Rightarrow c(t) - x_0 = \alpha (t)u+ \beta(t)v \quad \alpha(t), \beta(t) \in \mathbb{R}$
+        $\Rightarrow c(t) - x_0 = \alpha (t)u+ \beta(t)v \quad \alpha(t), \beta(t) \in \mathbb{R}$ \textcolor{violet}{derivando}
 
-        $ \dot{c}(t) = \dot{\alpha}(t) u + \dot{\beta}(t) v  \in \langle u,v \rangle$
+        $ \dot{c}(t) = \dot{\alpha}(t) u + \dot{\beta}(t) v  \in \langle u,v \rangle$ 
         
         $\Rightarrow$ i vettori $\dot{c}(t), \ddot{c}(t), \dddot{c}(t)$ sono linearmente dipendenti $\Rightarrow \det(\dot{c}(t) \quad \ddot{c}(t) \quad \dddot{c}(t)) = 0$
 
@@ -2864,7 +2868,7 @@
         ovvero $\left(c(t) - c(t_0) \right) \cdot e_3 =0$ ovvero $\forall t \in I \quad c(t) \cdot e_3 = c(t_0) \cdot e_3$
 
         Proviamo che il prodotto scalare $c(t) \cdot e_3$ è costante.
-        \[ \frac{d}{dt} \left( c(t) \cdot e_3 \right) = \dot{c}(t) \cdot e_3 = \norm{\dot{c}(t)} e_1(t) \cdot e_3 \]
+        \[ \frac{d}{dt} \left( c(t) \cdot e_3 \right) = \dot{c}(t) \cdot e_3 \textcolor{violet}{+ 0} = \norm{\dot{c}(t)} e_1(t) \cdot e_3 =0 \]
         \end{proof}
         \begin{esempio}[Curvatura e torsione dell'elica cilindrica]
         \mbox{}
@@ -2889,7 +2893,7 @@
         \end{esempio}
         \newpage 
         \textcolor{violet}{(Qui inizia la lezione $5$ della Dileo)}
-        \begin{teorema}
+        \begin{teorema}[Teorema di esistenza e unicità di una curva di $\mathbb{R}^3$ con assegnate funzioni di curvatura e torsione]
         Siano $k \colon V \to \mathbb{R}$ e $\tau \colon V \to \mathbb{R}$ funzioni differenziabili definite su $V$ intorno aperto di $O \in \mathbb{R}$, 
         si supponga che $\forall t \in V \quad k(t) > 0$.
 
