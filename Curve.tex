@@ -2893,14 +2893,21 @@
         $\tau(t)$ costante
         \end{esempio}
         \newpage 
-        \textcolor{violet}{(Qui inizia la lezione $5$ della Dileo)}
+        \textcolor{violet}{Sappiamo dal teorema \ref{th:curva_univocamente_determinata_a_meno_di_isometrie} che $2$ curve in $\mathbb{R}^n$
+        con le stesse funzioni di curvatura sono congruenti, cioè sono la stessa curva a meno di isometrie, cioè esiste sempre una isometria 
+        che manda la prima curva nella seconda.}
         \begin{teorema}[Teorema di esistenza e unicità di una curva di $\mathbb{R}^3$ con assegnate funzioni di curvatura e torsione]
-        Siano $k \colon V \to \mathbb{R}$ e $\tau \colon V \to \mathbb{R}$ funzioni differenziabili definite su $V$ intorno aperto di $O \in \mathbb{R}$, 
+        \mbox{}
+
+        Siano $k \colon V \to \mathbb{R}$ e $\tau \colon V \to \mathbb{R}$ funzioni differenziabili definite su $V$ intorno aperto di $0 \in \mathbb{R}$
+        \textcolor{violet}{(potrebbe essere un qualunque $t_0$)}, 
         si supponga che $\forall t \in V \quad k(t) > 0$.
 
-        Allora $\exists I$ intervallo tale che $O \in I \subset V$ e $\textcolor{red}{\exists \, c \colon I \to \mathbb{R}^3}$ curva parametrizzata per 
-        lunghezza d'arco e fortemente regolare, avente funzioni di curvatura e torsione \textcolor{red}{ $k_{\restriction{I}}$ \textcolor{black}{e} $\tau_{\restriction{I}}$}.
-        \textcolor{blu}{($c$ è unica a meno di isometrie)}
+        Allora $\exists I$ intervallo tale che $0 \in I \subset V$ e $\textcolor{red}{\exists \, c \colon I \to \mathbb{R}^3}$ curva parametrizzata per 
+        lunghezza d'arco e fortemente regolare \textcolor{violet}{(quindi ammette il riferimento 
+        canonico di Frenet e siamo autorizzati a parlare di funzioni di curvatura)} avente funzioni di curvatura e torsione \textcolor{red}{ $k_{\restriction{I}}$ \textcolor{black}{e} $\tau_{\restriction{I}}$}.
+        
+        \textcolor{blu}{($c$ è unica a meno di isometrie \textcolor{violet}{dal teorema \ref{th:curva_univocamente_determinata_a_meno_di_isometrie}} )}
         \end{teorema}
         \begin{proof}
         \mbox{}
@@ -2912,34 +2919,39 @@
         \label{eq:sistema_di_ODE_dim_teorema_curve_spazio_1}
         X'(t) = A(t) X(t) \quad \forall t \in V \text{ con } X(t) \in M_3(\mathbb{R})
         \end{equation}
-        Considero la condizione iniziale \textcolor{celeste}{$X(O) = I_3$} $\textcolor{violet}{\Rightarrow}$ il sistema ammette soluzioni 
-        in un intervallo $I$ tale che $O \in I \subset V$.
+        Considero la condizione iniziale \textcolor{celeste}{$X(0) = I_3$} $\textcolor{violet}{\overset{\substack{\text{teorema di esistenza} \\ \text{e unicità di Cauchy} }}{\Rightarrow}}$ il sistema ammette soluzione
+        in un intervallo $I$ tale che $0 \in I \subset V$ \textcolor{violet}{(perché in $V$ sono definite $k$ e $\tau$)}.
 
         Verifichiamo che $\forall t \in I \quad X(t) \in O(3)$ \textcolor{blue}{(ovvero $X(t)$ è una matrice ortogonale per ogni $t \in I$)}
+        \textcolor{violet}{cioè moltiplicata per la propria trasposta dà la matrice identità.}
 
         \begin{align*}
         \left(X(t)^t \cdot X(t) \right)' &= X'(t)^t \cdot X(t) + X(t)^t \cdot X'(t) \overset{\textcolor{violet}{\eqref{eq:sistema_di_ODE_dim_teorema_curve_spazio_1}}}{=} (A(t) X(t))^t \cdot X(t) + X(t)^t \cdot A(t) X(t) \\
         &= X(t)^t \textcolor{blu}{\underbrace{\textcolor{verde}{A(t)^t}}_{=-A(t)}} X(t) + X(t)^t A(t) X(t)=0
         \end{align*}
         Pertanto $X(t)^t \cdot X(t)$ è costante e poiché 
-        $X(t)^t X(t) = X(O)^t X(O) = I_3 \Rightarrow \forall t \in I \quad X(t) \in O(3)$
+        $X(t)^t X(t) = X(0)^t X(0) = I_3 \Rightarrow \forall t \in I \quad X(t) \in O(3)$
 
         Sia $e_i(t) \in \mathbb{R}^3$ la $i$-esima riga di $X(t)$
         \[ X(t) = \begin{pmatrix} e_1(t) \\ e_2(t) \\ e_3(t) \end{pmatrix} \]
-        $X(t) \in O(3) \Rightarrow \{ e_1(t), e_2(t), e_3(t) \}$ è una base ortonormale di $\mathbb{R}^3$ e osserviamo che $\det(X(t)) = 1 \forall t \in I$.
-
-        Infatti l'applicazione 
+        $X(t) \in O(3) \Rightarrow \{ e_1(t), e_2(t), e_3(t) \}$ è una base ortonormale di $\mathbb{R}^3$ e osserviamo che
+        \[ \det(X(t)) = 1 \quad \forall t \in I \]
+        Infatti l'applicazione è continua \textcolor{violet}{(è continua perché i coefficienti di $X(t)$ sono definiti da funzioni differenziabili in particolare continue)}
+        essendo $I$ connesso $\Rightarrow$
+        
+        \[ \overset{\textcolor{violet}{\substack{J \subset \mathbb{R} \text{ connesso} \Rightarrow \\ \abs{J}=1 \lor \, J \text{ è un intervallo}}}}{\Rightarrow} \left( \forall t \in I \det(X(t))=1 \right) \lor \left( \forall t \in I \det(X(t))=-1 \right) \]
         \[ t \in I \mapsto \det(X(t)) = \pm 1 \]
-        è continua 
+        Essendo $\textcolor{celeste}{\det(X(0)) \textcolor{violet}{= \det(I_3)} = 1} \Rightarrow \forall t \in I \quad \det(X(t)) = 1 $
 
-        Essendo $\det(X(O)) = 1 \Rightarrow \det(X(t)) = 1 \forall t \in I$.
-
-        Segue che la base $\{ e_1(t), e_2(t), e_3(t) \}$ è una base ortonormale di $\mathbb{R}^3$ concorde con la base canonica di $\mathbb{R}^3$
+        Segue che la base $\{ e_1(t), e_2(t), e_3(t) \}$ è una base ortonormale di $\mathbb{R}^3$ concorde con la base canonica di $\mathbb{R}^3$ 
+        \textcolor{violet}{(ci siamo procurati $3$ funzioni che definiscono una base ortonormale positiva e sono candidati ad essere il riferimento
+        canonico di Frenet della curva che ancora dobbiamo definire)}
 
         Definiamo la curva $\textcolor{red}{c \colon I \to \mathbb{R}^3}$ come 
         \[ \color{red} \forall t \in I \quad c(t)=\int_0^t  e_1(t) \, dt \]
         $c$ è differenziabile e $\dot{c}(t)=e_1(t) \Rightarrow \norm{\dot{c}}\textcolor{violet}{=\norm{e_1(t)}}=1 \Rightarrow c$ è una curva
-        parametrizzata per lunghezza d'arco.
+        parametrizzata per lunghezza d'arco \textcolor{violet}{(per parlare di riferimento canonico di Frenet dobbiamo assicurarci che 
+        la curva sia fortemente regolare e che il suo riferimento canonico di Frenet sia proprio $e_i(t)$)}.
 
         Essendo soddisfatto il sistema $X'(t) = A(t) X(t)$ uguagliando le righe delle $2$ matrici 
 
