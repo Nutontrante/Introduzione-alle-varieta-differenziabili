@@ -3193,9 +3193,9 @@
 
         Consideriamo lo \textcolor{red}{sviluppo in serie di Taylor} di $c(t)$ con punto iniziale $t_0=0$ 
         \begin{align*}
-        c(t)-c(0) &= \dot{c}(0)t + \frac{1}{2} \ddot{c}(0) t^2 + \frac{1}{6} \dddot{c}(0) t^3 + \mathrm{o}(t^3) \\
-        &= t e_1 + \frac{1}{2} t^2 \left(k_0 e_2 \right) + \frac{1}{6} t^3 \left(-k_0^2 e_1 + k'_0 e_2 + k_0 \tau_0 e_3\right) + \mathrm{o}(t^3) \\
-        &= \left(t -\frac{1}{6} k_0^2 t^3 \right) e_1 + \left(\frac{1}{2} k_0 t^2 + \frac{1}{6} k'_0 t^3 \right) e_2 + \frac{1}{6} k_0 \tau_0 t^3 e_3 + \mathrm{o}(t^3)
+        c(t)-c(0) &= \dot{c}(0)t + \frac{1}{2} \ddot{c}(0) t^2 + \frac{1}{6} \dddot{c}(0) t^3 + \mathrm{o}(3) \\
+        &= t e_1 + \frac{1}{2} t^2 \left(k_0 e_2 \right) + \frac{1}{6} t^3 \left(-k_0^2 e_1 + k'_0 e_2 + k_0 \tau_0 e_3\right) + \mathrm{o}(3) \\
+        &= \left(t -\frac{1}{6} k_0^2 t^3 \right) e_1 + \left(\frac{1}{2} k_0 t^2 + \frac{1}{6} k'_0 t^3 \right) e_2 + \frac{1}{6} k_0 \tau_0 t^3 e_3 + \mathrm{o}(3)
         \end{align*}
         La proiezione di $c(t)$ sul piano osculatore in $t_0$ è parametrizzato da:
         \[ \left(t- \frac{1}{6} k_0^2 t^3 \right) e_1 + \left(\frac{1}{2} k_0 t^2 - \frac{1}{6} k'_0 t^3 \right) e_2 + \mathrm{o} (3) = \textcolor{red}{\left(t, \frac{1}{2}k_0 t^2, 0\right)} + \mathrm{o}(2) \]
