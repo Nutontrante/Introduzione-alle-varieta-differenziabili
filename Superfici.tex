@@ -159,3 +159,122 @@
         \[ f_{u^2} \colon A \to \mathbb{R}^3 \quad u \mapsto f_{u^2}(u) = \left( \frac{\partial f^1}{\partial u^2}(u), \frac{\partial f^2}{\partial u^2}(u), \frac{\partial f^3}{\partial u^2}(u) \right) \in T_u f \]
         $f_{u^1}(u)$ e $f_{u^2}(u)$ definiscono due campi vettoriali tangenti lungo $f$.
         \end{esempio}
+        \newpage
+        \begin{proposizione}
+        Sia $A \subset \mathbb{R}^2$ e $f \colon A \to \mathbb{R}^3$ una superficie parametrizzata regolare, ogni campo vettoriale differenziabile 
+        tangente $X$ lungo $f$ si può scrivere in un unico modo come:
+        \begin{equation}
+        \label{eq:campo_vettoriale_tangente_lungo_una_superficie}
+        X(u) = a^1(u) f_{u^1}(u) + a^2(u) f_{u^2}(u) 
+        \end{equation}
+        dove $a^1, a^2 \colon A \to \mathbb{R}$ sono funzioni differenziabili.
+        Viceversa ogni coppia di funzioni differenziabili $a^1, a^2 \colon A \to \mathbb{R}$ determina 
+        un campo vettoriale differenziabile tangente lungo $f$ dato da \eqref{eq:campo_vettoriale_tangente_lungo_una_superficie}
+        \end{proposizione}
+        \begin{proof}
+        Sia $X \colon A \to \mathbb{R}^3$ campo vettoriale differenziabile tangente lungo $f$. 
+
+        $\forall u \in A \quad X(u) \in T_u f= \langle f_{u^1}(u), f_{u^2}(u) \rangle$ 
+
+        $\Rightarrow \exists \, ! \, a^1(u), a^2(u) \in \mathbb{R} \quad \text{tali che} $
+        \begin{equation}
+        \label{eq:campo_vettoriale_tangente_lungo_una_superficie_dim_1}
+        X(u) = a^1(u) f_{u^1}(u) + a^2(u) f_{u^2}(u)
+        \end{equation}
+        Verifichiamo che le funzioni $a^1, a^2 \colon A \to \mathbb{R}$ sono differenziabili.
+
+        Moltiplichiamo scalarmene \eqref{eq:campo_vettoriale_tangente_lungo_una_superficie_dim_1} per $f_{u^i}(u)$ per $i=1,2$ 
+        \[ \begin{cases*}
+        X(u) \cdot f_{u^1}(u) = a^1(u) f_{u^1}(u) \cdot f_{u^1}(u) + a^2(u) f_{u^2}(u) \cdot f_{u^1}(u) \\
+        X(u) \cdot f_{u^2}(u) = a^1(u) f_{u^1}(u) \cdot f_{u^2}(u) + a^2(u) f_{u^2}(u) \cdot f_{u^2}(u)
+        \end{cases*} \]
+        $\Rightarrow \left(a^1(u), \, a^2(u)\right)$ è soluzione di un sistema lineare di $2$ equazioni in $2$ incognite.
+
+        La matrice incompleta del sistema è 
+        \[ A(u) = \begin{pmatrix}
+        f_{u^1}(u) \cdot f_{u^1}(u) & f_{u^2}(u) \cdot f_{u^1}(u) \\
+        f_{u^1}(u) \cdot f_{u^2}(u) & f_{u^2}(u) \cdot f_{u^2}(u)
+        \end{pmatrix} \]
+        $\det A(u) = \norm{f_{u^1}(u)}^2 \norm{f_{u^2}(u)}^2 - (f_{u^1}(u) \cdot f_{u^2}(u))^2 \overset{\textcolor{violet}{\substack{\text{proprietà} \\ \text{prodotto} \\ \text{vettoriale}}}}{=} \norm{f_{u^1}(u) \times f_{u^2}(u)}^2 >0$
+
+        L'unica soluzione del sistema di Cramer è data da
+        \[ a^1(u) = \frac{ \begin{vmatrix}
+        X(u) \cdot f_{u^1}(u) & \quad f_{u^2}(u) \cdot f_{u^1}(u) \\
+        X(u) \cdot f_{u^2}(u) & \quad f_{u^2}(u) \cdot f_{u^2}(u)
+        \end{vmatrix}}{\det A(u)} \quad
+        a^2(u) = \frac{ \begin{vmatrix}
+        f_{u^1}(u) \cdot f_{u^1}(u) & \quad X(u) \cdot f_{u^1}(u) \\
+        f_{u^1}(u) \cdot f_{u^2}(u) & \quad X(u) \cdot f_{u^2}(u)
+        \end{vmatrix}}{\det A(u)} \]
+        Essendo $X,f, f_{u^1}, f_{u^2}$ differenziabili, anche $a^1$ e $a^2$ sono differenziabili.
+        \end{proof}
+    \section{Riferimento di Gauss}
+        \begin{definizione}
+        Sia $A \subset \mathbb{R}^2$ $f \colon A \to \mathbb{R}^3$ una superficie parametrizzata regolare definiamo 
+
+        $\textcolor{red}{N \colon A \to \mathbb{R}^3} \quad \textcolor{red}{\forall u \in A \quad N(u) = \textcolor{blu}{\underbrace{\textcolor{red}{f_{u^1}(u) \times f_{u^2}(u)}}_{\neq 0 \text{ lin. indip.}}}} $
+
+        $N(u) \cdot f_{u^i}(u) = 0 \quad i=1,2 \Rightarrow N(u) \in \langle f_{u^1}(u), f_{u^2}(u) \rangle^\perp =\left( T_u f \right)^\perp$
+
+        $N$ definisce un \textcolor{red}{campo di vettori normale lungo $f$} essendo $f \colon A \to \mathbb{R}^3$ regolare, $f_{u^1}(u) \times f_{u^2}(u) \neq 0$ 
+
+        Pertanto si può definire \textcolor{red}{$n \colon A \to \mathbb{R}^3$} tale che \textcolor{red}{$\forall u \in A \quad n(u)=\dfrac{f_{u^1}(u) \times f_{u^2}(u)}{\norm{f_{u^1}(u) \times f_{u^2}(u)}}$}
+
+        $n$ definisce un campo di vettori normale unitario lungo $f$ detto \textcolor{red}{campo vettoriale di Gauss}
+        \[ \norm{n(u)} = 1 \Rightarrow n(u) \in \textcolor{blu}{\underbrace{\textcolor{black}{S^2= \{ x \in \mathbb{R}^3 \mid \norm{x} = 1 \}}}_{\substack{\text{sfera di centro} \\ 0 \text{ e raggio } 1}}} \]
+        L'applicazione \textcolor{red}{$n \colon A \to S^2 \subset \mathbb{R}^3 \quad u \mapsto n(u)$} è detta \textcolor{red}{mappa di Gauss}  
+
+        Il riferimento mobile lungo $f$ definito da \textcolor{red}{$\{ f_{u^1}(u), f_{u^2}(u), n(u) \} $} è detto \textcolor{red}{riferimento di Gauss}
+        \begin{center}
+        \begin{tikzpicture}[>=stealth]
+
+            % --- Dominio A (a sinistra) ---
+            % Disegno il rettangolo smussato
+            \draw[thick, rounded corners=12pt] (0,0) rectangle (2,1.5);
+            % Etichetta 'A'
+            \node[teal, font=\Large\bfseries] at (-0.5, 1) {A};
+
+            % --- Freccia della mappa f ---
+            \draw[->, thick] (1.5, 1.7) to[bend left=20] node[above=2pt] {$f$} (3.8, 2.5);
+
+            % --- Superficie (a destra) ---
+            % Definisco i 4 "angoli" della superficie per facilitare il disegno
+            \coordinate (TL) at (2.5, 3.5); % Top Left
+            \coordinate (TR) at (7, 4.8);   % Top Right
+            \coordinate (BR) at (11, 2);    % Bottom Right
+            \coordinate (BL) at (7.5, -0.8);% Bottom Left
+
+            % Disegno il bordo della superficie
+            \draw[very thick, teal] (TL) to[bend left=10] (TR) 
+                                        to[bend right=10] (BR) 
+                                        to[bend left=10] (BL) 
+                                        to[bend left=20] (TL);
+
+            % --- Primo punto f(u) ---
+            \coordinate (P1) at (5.2, 3.1);
+
+            % Vettori in f(u)
+            \draw[->, thick, cyan] (P1) -- +(1.9, 0.4) node[above left, cyan] {$f_{u^1}(u)$};
+            \draw[->, thick, orange] (P1) -- +(1.6, -0.8) node[below left, orange] {$f_{u^2}(u)$};
+            \draw[->, thick, red] (P1) -- +(0.6, 2.1) node[left, red] {$n(u)$};
+
+            % Punto rosso e etichetta f(u)
+            \fill[red] (P1) circle (2pt);
+            \node[red, left=2pt] at (P1) {$f(u)$};
+
+            % --- Secondo punto f(u') ---
+            \coordinate (P2) at (8, 1.7);
+
+            % Vettori in f(u')
+            \draw[->, thick, cyan] (P2) -- +(2.6, 0.6) node[above left, cyan, xshift=-20pt, yshift=-10pt] {$f_{u^1}(u')$};
+            \draw[->, thick, orange] (P2) -- +(1.1, -1.1) node[below left, orange] {$f_{u^2}(u')$};
+            \draw[->, thick, red] (P2) -- +(1.2, 2) node[left, red] {$n(u')$};
+
+            % Punto rosso e etichetta f(u')
+            \fill[red] (P2) circle (2pt);
+            \node[red, below left=2pt] at (P2) {$f(u')$};
+
+        \end{tikzpicture}
+        
+        \end{center}
+        \end{definizione}
