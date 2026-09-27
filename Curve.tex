@@ -2955,24 +2955,27 @@
 
         Essendo soddisfatto il sistema $X'(t) = A(t) X(t)$ uguagliando le righe delle $2$ matrici 
 
-        $\begin{cases*}
-        \dot{e}_1 = k(t) e_2(t) \\
-        \dot{e}_2 = -k(t) e_1(t) + \tau(t) e_3(t) \\
-        \dot{e}_3 = -\tau(t) e_2(t)
-        \end{cases*}$
+        \[ \begin{cases*}
+        \dot{e}_1(t) = k(t) e_2(t) \\
+        \dot{e}_2(t) = -k(t) e_1(t) + \tau(t) e_3(t) \\
+        \dot{e}_3(t) = -\tau(t) e_2(t)
+        \end{cases*} \]
 
-        $\ddot{c}(t) = \dot{e}_1(t) = k(t) e_2(t)$ con $k(t)>0 \quad \Rightarrow \dot{c}(t)$ e $\ddot{c}(t)$ sono linearmente indipendenti 
+        $\textcolor{violet}{\dot{c}(t)=e_1(t)} \quad \ddot{c}(t) = \dot{e}_1(t) = k(t) e_2(t)$ con $k(t)>0  \Rightarrow \dot{c}(t)$ e $\ddot{c}(t)$ sono linearmente indipendenti 
+        
         $\Rightarrow c$ è una curva fortemente regolare
 
-        Verifichiamo che $\left(e_1(t), \, e_2(t), \, e_3(t)\right)$ è il riferimento canonico di Frenet di $c$
+        Verifichiamo che $\left(e_1(t), \, e_2(t), \, e_3(t)\right)$ è il riferimento canonico di Frenet di $c$ \textcolor{violet}{(se 
+        provo questo avrò finito perché siccome i vettori del riferimento canonico di Frenet risolvono $X'=AX$ la curvatura e la 
+        torsione della curva saranno esattamente $k(t)$ e $\tau(t)$)}
 
         $e_1(t)=\dot{c}(t) \quad \langle \dot{c}(t), \, \ddot{c}(t) \rangle = \langle e_1(t), e_2(t) \rangle$
 
         La matrice di passaggio dalla base $\{ e_1(t), \, e_2(t) \}$ alla base $\{ \dot{c}(t), \, \ddot{c}(t) \}$ è 
-        \[ A = \begin{pmatrix} 1 & 0 \\ 0 & k(t) \end{pmatrix} \]
-        $\Rightarrow \det (A)=k(t) >0 \Rightarrow$ le due basi sono concordemente orientate.
+        \[ B = \begin{pmatrix} 1 & 0 \\ 0 & k(t) \end{pmatrix} \]
+        $\Rightarrow \det (B)=k(t) >0 \Rightarrow$ le due basi sono concordemente orientate.
 
-        $\left(e_1(t), \, e_2(t), \, e_3(t)\right)$ è base ortonormale di $\mathbb{R}^3$ concorde con la base canonica.
+        \textcolor{violet}{Già sappiamo che } $\left(e_1(t), \, e_2(t), \, e_3(t)\right)$ è base ortonormale di $\mathbb{R}^3$ concorde con la base canonica.
 
         La curvatura e la torsione di $c$ sono date da $k_{\restriction{I}}$ e $\tau_{\restriction{I}}$.
         \end{proof}
