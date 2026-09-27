@@ -2,16 +2,20 @@
     \section{Superfici parametrizzate \texorpdfstring{$\mathbb{R}^3$}{R\textasciicircum 3}}
         \begin{definizione}
         Sia $A \subset \mathbb{R}^2$ aperto connesso si definisce \textcolor{red}{superficie parametrizzata in $\mathbb{R}^3$} 
-        ogni applicazione $\textcolor{red}{f \colon A \to \mathbb{R}^3}$ differenziabile di classe $C^\infty$.
+        ogni applicazione $\textcolor{red}{f \colon A \to \mathbb{R}^3}$ differenziabile di classe $C^\infty$ 
+        \textcolor{violet}{(parleremo solo di differenziabilità $C^\infty$)}.
 
         L'insieme $f(A) \subset \mathbb{R}^3$ è detto \textcolor{red}{supporto di $f$}
 
-        Si dice che $f$ è \textcolor{red}{regolare} se $\forall u \in A \quad \left(df\right)_u \colon \mathbb{R}^2 \to \mathbb{R}^3$ è ingettiva.
+        \textcolor{violet}{Se $f$ è un'applicazione differenziabile da un aperto $A \subset \mathbb{R}^2$ in $\mathbb{R}^3$ i ogni 
+        punto il suo differenziale è una applicazione lineare $ \left(df\right)_u \colon \mathbb{R}^2 \to \mathbb{R}^3$ }
+
+        Si dice che $f$ è \textcolor{red}{regolare} se $\forall u \in A \quad \textcolor{red}{\left(df\right)_u \colon \mathbb{R}^2 \to \mathbb{R}^3}$ \textcolor{red}{è ingettiva}.
 
         Siano $f^i = p_i \circ f \colon A \to \mathbb{R}$ le funzioni componenti di $f$ tali che $\forall u \in A \quad f(u) = \left(f^1(u), f^2(u), f^3(u)\right)$.
 
         La matrice Jacobiana di $f$ in $u \in A$ è
-        \[ \left(Jf\right)_u = \left( \dfrac{\partial f^i}{\partial u^j} \right)_{\substack{i=1,2,3 \\ j=1,2}}= \begin{pmatrix}
+        \[ \left(Jf\right)_u = \left( \dfrac{\partial f^{\, i}}{\partial u^{\, j}} \right)_{\substack{i=1,2,3 \\ j=1,2}}= \begin{pmatrix}
         \frac{\partial f^1}{\partial u^1} & \frac{\partial f^1}{\partial u^2} \\[2mm]
         \frac{\partial f^2}{\partial u^1} & \frac{\partial f^2}{\partial u^2} \\[2mm]
         \frac{\partial f^3}{\partial u^1} & \frac{\partial f^3}{\partial u^2}
@@ -47,13 +51,13 @@
         f_{u^i} &= \left(df\right)_u \left(u, e_i\right) = \left(f(u), \, \left(df\right)_u \left(e_i\right)\right) \\
         &= \left(f(u), \textcolor{blu}{\underbrace{ \textcolor{black}{\left( \frac{\partial f^1}{\partial u^i}(u), \, \frac{\partial f^2}{\partial u^i}(u), \, \frac{\partial f^3}{\partial u^i}(u) \right)}}_{\substack{\text{prima o seconda colonna} \\ \text{di } (Jf)_u \text{ a seconda} \\ \text{che } i=1,2}}} \right)
         \end{align*}
-        Pertanto $T_u f = \langle f_{u^1}, f_{u^2} \rangle \subset T_{f(u)} \mathbb{R}^3$.
+        Pertanto $T_u f = \left(df\right)_u \left(T_u \mathbb{R}^2 \right) = \langle f_{u^1}, f_{u^2} \rangle \subset T_{f(u)} \mathbb{R}^3$.
         \end{definizione}
         \begin{osservazione}
         Non è detto che i vettori $f_{u^1}$ e $f_{u^2}$ siano ortogonali tra loro.
         \begin{center}
         \begin{tikzpicture}[
-            scale=1.2,
+            scale=1.12,
             >={Stealth[length=2.5mm, width=1.5mm]}]
 
             % --- 1. DOMINIO A (in basso a sinistra) ---
@@ -63,7 +67,7 @@
                 to[out=80, in=-10] (2.8, 2.1)
                 to[out=170, in=10] (0.8, 1.9)
                 to[out=190, in=100] (0.5, 0);
-            \node[above left, black, yshift=8pt] at (0.7, 1.6) {\Large $A$};
+            \node[above left, black, yshift=10pt, xshift=8pt] at (0.7, 1.6) {\Large $A \subset \mathbb{R}^2$};
 
             % Punto u in A
             \coordinate (u) at (1.8, 0.8);
