@@ -131,9 +131,9 @@
         Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare si definisce \textcolor{red}{campo di vettori lungo $f$} 
         ogni applicazione \textcolor{red}{$\hat{X} \colon A \to T \mathbb{R}^3$} tale che \textcolor{red}{$\forall u \in A \quad \hat{X}(u) \in T_{f(u)} \mathbb{R}^3$}
 
-        Pertanto $\hat{X}(u) = \left(f(u), X(u)\right)$ con $X \colon A \to \mathbb{R}^3$
+        Pertanto $\hat{X}(u) = \left(f(u), X(u)\right)$ resta quindi definita l'applicazione $X \colon A \to \mathbb{R}^3$ che $u \mapsto X(u)$.
 
-        Se \textcolor{red}{$X: A \to \mathbb{R}^3$ è differenziabile} si dice che $\hat{X}$ è un \textcolor{red}{campo di vettori differenziabile}
+        Se \textcolor{red}{$X: A \to \mathbb{R}^3$ è differenziabile} si dice che \textcolor{red}{$\hat{X}$ è} un \textcolor{red}{campo di vettori differenziabile}
 
         Nel seguito si potrà identificare $X$ con $\hat{X}$.
         \end{definizione}
@@ -155,7 +155,7 @@
         \end{definizione}
         \begin{esempio}
         Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare, si considerino le applicazioni 
-        \[ f_{u^1} \colon A \to \mathbb{R}^3 \quad u \mapsto f_{u^1}(u) \]
-        \[ f_{u^2} \colon A \to \mathbb{R}^3 \quad u \mapsto f_{u^2}(u) \]
+        \[ f_{u^1} \colon A \to \mathbb{R}^3 \quad u \mapsto f_{u^1}(u) = \left( \frac{\partial f^1}{\partial u^1}(u), \frac{\partial f^2}{\partial u^1}(u), \frac{\partial f^3}{\partial u^1}(u) \right) \in T_u f \]
+        \[ f_{u^2} \colon A \to \mathbb{R}^3 \quad u \mapsto f_{u^2}(u) = \left( \frac{\partial f^1}{\partial u^2}(u), \frac{\partial f^2}{\partial u^2}(u), \frac{\partial f^3}{\partial u^2}(u) \right) \in T_u f \]
         $f_{u^1}(u)$ e $f_{u^2}(u)$ definiscono due campi vettoriali tangenti lungo $f$.
         \end{esempio}
