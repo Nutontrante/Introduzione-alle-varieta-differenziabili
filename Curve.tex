@@ -2577,6 +2577,7 @@
         \end{proof}
         \newpage
         \begin{proposizione}
+        \label{prop:curvatura_costante_circonferenza}
         Sia $c \colon I \to \mathbb{R}^2$ curva regolare allora le seguenti condizioni sono equivalenti:
         \begin{enumerate}
             \item $\displaystyle \forall t \in I \quad \abs{k(t)} = \frac{1}{r} \quad r>0$
@@ -2829,6 +2830,7 @@
         \end{osservazione}
         \newpage
         \begin{proposizione}
+        \label{prop:curva_piana_nello_spazio}
         Sia $c \colon I \to \mathbb{R}^3$ curva fortemente regolare allora:
 
         $c$ è una \textcolor{red}{curva piana} $\iff \forall t \in I \quad \textcolor{red}{\tau(t) = 0}$
@@ -2872,6 +2874,7 @@
         \[ \frac{d}{dt} \left( c(t) \cdot e_3 \right) = \dot{c}(t) \cdot e_3 \textcolor{violet}{+ 0} = \norm{\dot{c}(t)} e_1(t) \cdot e_3 =0 \]
         \end{proof}
         \begin{esempio}[Curvatura e torsione dell'elica cilindrica]
+        \label{es:curvatura_e_torsione_elica_cilindrica}
         \mbox{}
 
         $c \colon \mathbb{R} \to \mathbb{R}^3 \quad c(t) = (a \cos t, a \sin t, bt) \quad a>0 \quad b \neq 0$
@@ -2979,6 +2982,10 @@
 
         La curvatura e la torsione di $c$ sono date da $k_{\restriction{I}}$ e $\tau_{\restriction{I}}$.
         \end{proof}
+        \textcolor{violet}{Questo teorema si applica anche al caso di funzioni costanti $k(t)$ e $\tau(t)$ il teorema dice che esiste ed 
+        è unica a meno di isometrie una curva con curvatura $k$ e torsione $\tau \neq 0$ costanti $\overset{\textcolor{celeste}{\text{es: }\ref{es:curvatura_e_torsione_elica_cilindrica}}}{\Rightarrow}$ la curva è l'elica cilindrica.}
+        \textcolor{violet}{Se $k$ costante $\tau = 0$ per la proposizione \ref{prop:curva_piana_nello_spazio} la curva è piana con 
+        curvatura costante $\overset{\textcolor{black}{\text{prop } \ref{prop:curvatura_costante_circonferenza}}}{\Rightarrow}$ la curva è una circonferenza o un arco di circonferenza.}
         \newpage
         \textcolor{red}{Piano osculatore normale e rettificante}
         \begin{definizione}
