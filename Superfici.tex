@@ -232,7 +232,7 @@
             % Disegno il rettangolo smussato
             \draw[thick, rounded corners=12pt] (0,0) rectangle (2,1.5);
             % Etichetta 'A'
-            \node[teal, font=\Large\bfseries] at (-0.5, 1) {A};
+            \node[black, xshift=30pt,yshift=24pt] at (-0.5, 1) {$A \subset \mathbb{R}^2$};
 
             % --- Freccia della mappa f ---
             \draw[->, thick] (1.5, 1.7) to[bend left=20] node[above=2pt] {$f$} (3.8, 2.5);
@@ -256,7 +256,7 @@
             % Vettori in f(u)
             \draw[->, thick, cyan] (P1) -- +(1.9, 0.4) node[above left, cyan] {$f_{u^1}(u)$};
             \draw[->, thick, orange] (P1) -- +(1.6, -0.8) node[below left, orange] {$f_{u^2}(u)$};
-            \draw[->, thick, red] (P1) -- +(0.6, 2.1) node[left, red] {$n(u)$};
+            \draw[->, thick, red] (P1) -- +(0.2, 2.1) node[left, red] {$n(u)$};
 
             % Punto rosso e etichetta f(u)
             \fill[red] (P1) circle (2pt);
@@ -266,9 +266,9 @@
             \coordinate (P2) at (8, 1.7);
 
             % Vettori in f(u')
-            \draw[->, thick, cyan] (P2) -- +(2.6, 0.6) node[above left, cyan, xshift=-20pt, yshift=-10pt] {$f_{u^1}(u')$};
+            \draw[->, thick, cyan] (P2) -- +(2.2, 0.6) node[above left, cyan, xshift=-20pt, yshift=-10pt] {$f_{u^1}(u')$};
             \draw[->, thick, orange] (P2) -- +(1.1, -1.1) node[below left, orange] {$f_{u^2}(u')$};
-            \draw[->, thick, red] (P2) -- +(1.2, 2) node[left, red] {$n(u')$};
+            \draw[->, thick, red] (P2) -- +(0.1, 2) node[left, red] {$n(u')$};
 
             % Punto rosso e etichetta f(u')
             \fill[red] (P2) circle (2pt);
