@@ -351,18 +351,18 @@
         \[ \textcolor{red}{\text{\scalebox{1.4}{\text{$J_F(x_0)$}}}} = \begin{pmatrix} \frac{\partial F^1}{\partial x_1}(x_0) & \ldots & \frac{\partial F^1}{\partial x_n}(x_0) \\
         \vdots & \ddots & \vdots \\
         \frac{\partial F^m}{\partial x_1}(x_0) & \ldots & \frac{\partial F^m}{\partial x_n}(x_0) \end{pmatrix} = \left( \frac{\partial F^i}{\partial x_j}(x_0) \right)_{\substack{1 \leq i \leq m \\ 1 \leq j \leq n}} \in \scalebox{1.4}{\text{$M_{m,n}(\mathbb{R})$}} \]
-        La matrice $J_F(x_0)$ è la matrice associata a $\left(dF\right)_{x_0}:R^n \to R^m$ rispetto alle basi canoniche di $\mathbb{R}^n$ e $\mathbb{R}^m$ 
+        La matrice $J_F(x_0)$ è la matrice associata a $\left(dF\right)_{x_0}: \mathbb{R}^n \to \mathbb{R}^m$ rispetto alle basi canoniche di $\mathbb{R}^n$ e $\mathbb{R}^m$ 
         dove $\left\{e_j\right\}_{j=1,\ldots,n}$ è la base canonica di $\mathbb{R}^n$ e
         $\left\{e'_i\right\}_{i=1,\ldots,m}$ è la base canonica di $\mathbb{R}^m$
         
-        \[  dF_{x_0}(e_j) = \sum_{i=1}^m \frac{\partial F^i}{\partial x_j}(x_0) e'_i \overset{\textcolor{violet}{\substack{j\text{-esima} \\ \text{colonna della} \\ \text{Jacobiana}}}}{=} \begin{pmatrix}
+        \[  dF_{x_0}(e_j) = \sum_{i=1}^m \frac{\partial F^{\, i}}{\partial x_j}(x_0) e'_i \overset{\textcolor{violet}{\substack{j\text{-esima} \\ \text{colonna della} \\ \text{Jacobiana}}}}{=} \begin{pmatrix}
         \frac{\partial F^1}{\partial x_j}(x_0) \\
         \vdots \\
         \frac{\partial F^m}{\partial x_j}(x_0)
         \end{pmatrix} \]
         
         Si dice che $F:A \to \mathbb{R}^m$ è \textcolor{red}{differenziabile di classe $C^1$} se ammette derivate parziali in ogni punto di $A$ e 
-        $\displaystyle \frac{\partial F^1}{\partial x_j}:A \to \mathbb{R}$ sono continue.
+        $\displaystyle \frac{\partial F^{\,i}}{\partial x_j}:A \to \mathbb{R}$ sono continue.
 
         Si dice che $F:A \to \mathbb{R}^m$ è \textcolor{red}{differenziabile di classe $C^k$} se ammette derivate parziali continue di ordine $k$ in ogni punto di $A$
 
