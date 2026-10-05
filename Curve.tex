@@ -1128,17 +1128,17 @@
 
         Per il \textcolor{hotpink}{teorema della funzione inversa} \textcolor{violet}{(questo teorema afferma che se hai una funzione da
          $\mathbb{R}$ in $\mathbb{R}$, esattamente come la nostra $x^i(s)$, e la sua derivata in un punto, $s_0$, non si annulla $\Rightarrow$in un piccolo intorno di quel punto la funzione 
-         è strettamente monotona $\Rightarrow$ localmente invertibile e la sua inversa è anch'essa differenziabile)} $\exists J $ intorno aperto di $s_0 \quad J \subset \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right)$ ed
-        $\exists V$ intorno aperto di $x^i(s_0) = p^i(\beta(s_0)) = p^i(p)$ tale che \textcolor{celeste}{$p^i \circ \beta: J \to V$ sia un diffeomorfismo} 
+         è strettamente monotona $\Rightarrow$ localmente invertibile e la sua inversa è anch'essa differenziabile)} $\exists \textcolor{red}{J} $ intorno aperto di $s_0 \quad J \subset \beta^{-1} \left(U_{\alpha} \cap U_{\beta} \right)$ ed
+        $\exists \textcolor{red}{V}$ intorno aperto di $x^i(s_0) = p^i(\beta(s_0)) = p^i(p)$ tale che \textcolor{celeste}{$p^i \circ \beta: J \to V$ sia un diffeomorfismo} 
         \textcolor{violet}{$\Rightarrow (p^i \circ \beta)^{-1} : V \to J$ è un diffeomorfismo}.
 
         $\textcolor{violet}{\underbrace{\textcolor{verde}{(p^i)^{-1}(V)}}_{\text{aperto in } \mathbb{R}^n}} \cap \mathcal{C}$ è un aperto di $\mathcal{C}$ che contiene $\beta(s_0)=\alpha(t_0)=p$.
 
-        \textcolor{orange}{Per la continuità di $\alpha$} esiste un intervallo aperto $I \subset \alpha^{-1} \left(U_\alpha \cap U_\beta \right)$ tale che
+        \textcolor{orange}{Per la continuità di $\alpha$} esiste un intervallo aperto $\textcolor{red}{I} \subset \alpha^{-1} \left(U_\alpha \cap U_\beta \right)$ tale che
         $t_0 \in I$
         
         $\alpha(I) \subset (p^i)^{-1}(V) \cap \mathcal{C}$ \textcolor{violet}{(Quindi $\left(p^i \circ \alpha \right)(I) \subset V$ )}
-        \[ I \xrightarrow[]{\quad p^i \circ \alpha \quad} V \xrightarrow[]{\quad \left( \textcolor{celeste}{p^i \circ \beta} \right)^{-1} \quad} J \]
+        \[ \textcolor{red}{I} \xrightarrow[]{\quad p^i \circ \alpha \quad} \textcolor{red}{V} \xrightarrow[]{\quad \left( \textcolor{celeste}{p^i \circ \beta} \right)^{-1} \quad} \textcolor{red}{J} \]
         Questa composizione è differenziabile 
 
         \textcolor{violet}{Non possiamo scrivere $\left(p^i \circ \beta \right)^{-1} = \beta^{-1} \circ (p^i)^{-1}$ perché $(p^i)^{-1}$ non è 
@@ -1149,7 +1149,7 @@
         $\forall t \in I \quad \left(p^i \circ \beta \right)^{-1} \left( \left( p^i \circ \alpha \right) (t) \right) = \beta^{-1} \left( \alpha (t) \right)$
         \textcolor{blu}{(perché $\left(p^i \circ \beta \right) \left( \beta^{-1}(\alpha(t)) \right)) = \left(p^i \circ \alpha \right) (t)$)}
 
-        Pertanto $\beta^{-1} \circ \alpha : I \to J$ è differenziabile.
+        Pertanto $\beta^{-1} \circ \alpha : \textcolor{red}{I} \to \textcolor{red}{J}$ è differenziabile.
 
         Si potrebbe ripetere la dimostrazione scambiando i ruoli di $\alpha$ e $\beta$ risulta che $\alpha^{-1} \circ \beta$ è differenziabile.
 
