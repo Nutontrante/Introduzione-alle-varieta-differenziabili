@@ -431,7 +431,7 @@
             \item 
             \begin{align*} 
             T_v \tilde{f} &= \left(d \tilde{f}\right)_v \left(T_v \mathbb{R}^2\right) = \left(df \right)_{\phi(v)} \left( \left(d \phi\right)_v \left(T_v \mathbb{R}^2\right) \right) 
-            &\textcolor{blu}{\overset{\substack{\left(d \phi\right)_v \colon \mathbb{R}^2 \to \mathbb{R}^2 \quad \phi \colon B \to A \\ T_v \mathbb{R}^2 \to T_{\phi(v)} \mathbb{R}^2 \\ (v,x) \mapsto \left(\phi(v) ,\, (d \phi)_v (x) \right) }}{=}} 
+            &\textcolor{blu}{\overset{\substack{\left(d \phi\right)_v \colon \mathbb{R}^2 \to \mathbb{R}^2 \quad \phi \colon B \to A \\ \text{\textcolor{violet}{lo posso riguardare come}} \\T_v \mathbb{R}^2 \to T_{\phi(v)} \mathbb{R}^2 \\ (v,x) \mapsto \left(\phi(v) ,\, (d \phi)_v (x) \right) }}{=}} 
             \left(df\right)_{\phi(v)} \left(T_{\phi(v)} \mathbb{R}^2 \right)\\
             &= T_{\phi(v)} f
             \end{align*}
@@ -450,7 +450,7 @@
             \begin{align*}
             \tilde{f}_{v^1}(v) \times \tilde{f}_{v^2}(v) &\overset{\eqref{eq:tilde_f_v_i}}{=} \left( \sum_{h=1}^{2} a_{1h} f_{u^h}(\phi(v)) \right) \times \left( \sum_{k=1}^{2} a_{2k} f_{u^k}(\phi(v)) \right) \\
             &= \sum_{h,k=1}^{2} a_{1h} a_{2k} f_{u^h}(\phi(v)) \times f_{u^k}(\phi(v)) \\ 
-            &= a_{11} a_{22} f_{u^1}(\phi(v)) \times f_{u^2}(\phi(v)) + a_{12} a_{21} f_{u^2}(\phi(v)) \times f_{u^1}(\phi(v)) \\
+            &\overset{\textcolor{violet}{\substack{\text{quando } h=k \\ \text{ho il prodotto} \\ \text{vettoriale di un} \\ \text{vettore per se} \\ \text{stesso}}}}{=} a_{11} a_{22} f_{u^1}(\phi(v)) \times f_{u^2}(\phi(v)) + a_{12} a_{21} f_{u^2}(\phi(v)) \times f_{u^1}(\phi(v)) \\
             &= (a_{11} a_{22} - a_{12} a_{21}) \, f_{u^1}(\phi(v)) \times f_{u^2}(\phi(v)) \\
             &= \det \left( J \phi \right)_v \, f_{u^1}(\phi(v)) \times f_{u^2}(\phi(v))
             \end{align*}
