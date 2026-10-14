@@ -278,3 +278,192 @@
         
         \end{center}
         \end{definizione}
+        \begin{esempio}
+        \textcolor{violet}{Fino ad adesso come notazione abbiamo utilizzato $u=(u^1, u^2) \subset A$ ma negli esempi utilizzeremo
+        per comodità $(u, v)$}
+
+        $f \colon \mathbb{R}^2 \to \mathbb{R}^3$ tale che $\forall (u, v) \in \mathbb{R}^2 \quad f(u, v) = x_0 + ux + vy$ dove
+        $x_0$, $x$, $y \in \mathbb{R}^3$ con $x$ e $y$ linearmente indipendenti
+        $\displaystyle x_0 = (x_0^1, x_0^2, x_0^3) \quad x = (x^1, x^2, x^3) \quad y = (y^1, y^2, y^3)$ 
+        \[ f(u,v) = \left(\textcolor{red}{\overbrace{\textcolor{celeste}{x_0^1 + u x^1 + v y^1}}^{f^1(u,v)}} , \quad \textcolor{red}{\overbrace{\textcolor{celeste}{x_0^2 + u x^2 + v y^2}}^{f^2(u,v)}} , \quad \textcolor{red}{\overbrace{\textcolor{celeste}{x_0^3 + u x^3 + v y^3}}^{f^3(u,v)}} \right) \]
+        $\displaystyle \left(Jf\right)_{(u,v)} = \begin{pmatrix}
+        \dfrac{\partial f^1}{\partial u} & \dfrac{\partial f^1}{\partial v} \\[3mm]
+        \dfrac{\partial f^2}{\partial u} & \dfrac{\partial f^2}{\partial v} \\[3mm]
+        \dfrac{\partial f^3}{\partial u} & \dfrac{\partial f^3}{\partial v}
+        \end{pmatrix}_{(u,v)} = \begin{pmatrix}
+        x^1 & y^1 \\
+        x^2 & y^2 \\
+        x^3 & y^3
+        \end{pmatrix} \Rightarrow \rg(Jf)_{(u,v)} = 2 \Rightarrow f$ è una superficie regolare.
+
+        $\textcolor{orange}{f_u(u,v) = \left(x^1, \, x^2, \, x^3\right)=x} \quad \textcolor{verde}{f_v(u,v) = \left(y^1, \, y^2, \, y^3\right)=y} \quad T_{(u,v)}f= \langle f_u(u,v), f_v(u,v) \rangle=\langle x, y \rangle$.
+
+        $N(u,v)= x \times y \Rightarrow \textcolor{red}{n(u,v) = \dfrac{x \times y}{ \norm{x \times y}}}$
+
+        Il supporto di $f$ è il piano passante per $x_0$ di giacitura generata da $x$ e $y$.
+        \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[>=stealth, scale=1.3]
+
+            % Definisco i 4 vertici del piano per creare il parallelogramma di base
+            \coordinate (P1) at (-2, -1);
+            \coordinate (P2) at (3.5, -1);
+            \coordinate (P3) at (5, 2);
+            \coordinate (P4) at (-0.5, 2);
+
+            % Disegno la superficie del piano (supporto di f)
+            \draw[thick, teal, fill=teal!5] (P1) -- (P2) -- (P3) -- (P4) -- cycle;
+
+            % Definisco il punto base x_0
+            \coordinate (x0) at (1, 0.2);
+
+            % Disegno i vettori della giacitura x e y (le derivate parziali)
+            \draw[->, thick, orange] (x0) -- ++(2.2, 0.3) node[right, orange] {$x = f_u$};
+            \draw[->, thick, verde] (x0) -- ++(0.9, 1.4) node[above, verde] {$y = f_v$};
+
+            % Disegno il vettore normale n(u,v) (ortogonale al piano generato da x e y)
+            \draw[->, thick, red] (x0) -- ++(0, 1) node[left, red] {$n(u,v)$};
+
+            % Disegno il punto x_0 alla fine in modo che il pallino copra le origini delle frecce
+            \fill[black] (x0) circle (1.5pt) node[below right, black] {$x_0$};
+
+        \end{tikzpicture}
+        \end{figure}
+        \end{esempio}
+        \begin{esempio}
+        Sia $A \subset \mathbb{R}^2$ aperto connesso, $\varphi \colon A \to \mathbb{R}$ funzione differenziabile e definiamo 
+        
+        $f \colon A \to \mathbb{R}^3 \quad \forall (u,v) \in A \quad f(u,v) = (u, v, \varphi(u,v))$
+
+        Il supporto di $f$ è $\left\{ \left(u,v, \varphi(u,v)\right) \mid (u,v) \in A \right\}= \graf(\varphi)$
+
+        Verifichiamo che $f$ è una superficie parametrizzata regolare, infatti:
+
+        $(Jf)_{(u,v)} = \begin{pmatrix}
+        \dfrac{\partial f^1}{\partial u} & \dfrac{\partial f^1}{\partial v} \\[2mm]
+        \dfrac{\partial f^2}{\partial u} & \dfrac{\partial f^2}{\partial v} \\[2mm]
+        \dfrac{\partial f^3}{\partial u} & \dfrac{\partial f^3}{\partial v}
+        \end{pmatrix}_{(u,v)} = \begin{pmatrix}
+        1 & 0 \\
+        0 & 1 \\
+        \varphi_u(u,v) & \varphi_v(u,v)
+        \end{pmatrix} \Rightarrow \rg(Jf)_{(u,v)} = 2$
+        
+        $\Rightarrow f$ è una superficie regolare.
+
+        $f_u(u,v) = (1, 0, \varphi_u(u,v)), \quad f_v(u,v) = (0, 1, \varphi_v(u,v))$
+
+        $\Rightarrow f_u(u,v) \times f_v(u,v) \textcolor{violet}{= \begin{vmatrix}
+        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+        1 & 0 & \varphi_u(u,v) \\
+        0 & 1 & \varphi_v(u,v)
+        \end{vmatrix}} =(-\varphi_u(u,v), -\varphi_v(u,v), 1)$
+
+        $n(u,v)= \frac{1}{\sqrt{(-\varphi_u(u,v))^2 + (-\varphi_v(u,v))^2 + 1^2}}(-\varphi_u(u,v), -\varphi_v(u,v), 1)$
+        \end{esempio}
+    \section{Parametrizzazioni equivalenti}
+        \begin{definizione}
+        Siano $A,B \subset \mathbb{R}^2$ aperti connessi e siano
+        $f \colon A \to \mathbb{R}^3$ e $\tilde{f} \colon B \to \mathbb{R}^3$ superfici parametrizzate.
+
+        Si dice che $f$ e $\tilde{f}$ sono \textcolor{red}{equivalenti} se esiste un \textcolor{red}{diffeomorfismo $\phi \colon B \to A$ }
+        tale che \textcolor{red}{$\tilde{f} = f \circ \phi$}.
+
+        \textcolor{red}{$\phi$} è detto \textcolor{red}{cambiamento di parametri \textcolor{violet}{(sono $2$)}}.
+
+        In questo modo resta definita una relazione di equivalenza tra superfici parametrizzate.
+
+        Ogni classe di equivalenza \textcolor{red}{$[f]_{\sim}$} prende il nome di \textcolor{red}{superficie non parametrizzata}.
+        \end{definizione}
+        \begin{definizione}
+        Considero il cambiamento di parametri $\phi$ si dice che $\phi$:
+        \begin{itemize}
+            \item \textcolor{red}{conserva l'orientazione} se $\forall v \in B \quad \det( (d \phi)_v ) > 0$ 
+    
+            \textcolor{blu}{$ (d \phi)_v : \mathbb{R}^2 \to \mathbb{R}^2 \quad ( d \phi)^{-1}_v = (d \phi^{-1})_{\phi(v)}$}
+            \begin{proof}
+            $\phi^{-1} \circ \phi = id \Rightarrow \left(d \phi^{-1}\right)_{\phi(v)} \circ (d \phi)_v = id \Rightarrow d \left(\phi^{-1} \circ \phi \right)=id$
+            \end{proof}
+            \item \textcolor{red}{rovescia l'orientazione} se $\forall v \in B \quad \det( (d \phi)_v ) < 0$
+        \end{itemize}
+        Anche la relazione di equivalenza a meno di cambiamenti di variabili che conservino l'orientazione è 
+        una relazione di equivalenza. Ogni classe di equivalenza \textcolor{red}{$[f]_{\sim_0}$} è detta 
+        \textcolor{red}{superficie non parametrizzata orientata}.
+        \end{definizione}
+        \newpage
+        \begin{proposizione}
+        \label{prop:parametrizzazioni_equivalenti}
+        Sia $f \colon A \to \mathbb{R}^3$ una superficie parametrizzata regolare \textcolor{violet}{($A$, $B$ connessi di $\mathbb{R}^2$)}
+        e sia $\phi \colon B \to A$ un diffeomorfismo. 
+        
+        Allora \textcolor{red}{$\tilde{f} = f \circ \phi \colon B \to \mathbb{R}^3$} è una superficie parametrizzata regolare e 
+        \begin{enumerate}
+            \item $\forall v \in B \quad$ \textcolor{red}{$T_v \tilde{f} = T_{\phi(v)} f$}
+            \item La matrice di passaggio da \textcolor{red}{$\left(f_u^1(\phi(v)),f_u^2(\phi(v)) \right)$} alla base 
+            \textcolor{red}{$\left(\tilde{f}_u^1(v),\tilde{f}_u^2(v)\right)$} è data da \textcolor{red}{$\left(J \phi\right)_v$}
+            \item $\forall v \in B \quad$ \textcolor{red}{$\tilde{n}(v)= \pm n(\phi(v))$} a seconda che $\phi$ conservi o rovesci l'orientazione.
+        \end{enumerate}
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+        
+        $\phi$ diffeomorfismo $\Rightarrow \forall v \in B \quad (d \phi)_v \colon T_v \mathbb{R}^2 \to T_{\phi(v)} \mathbb{R}^2$ è isomorfismo.
+
+        $v \in B \quad \left(d \tilde{f}\right)_v = \left(d (f \circ \phi)\right)_v=
+        \color{red}\underbrace{\overbrace{\textcolor{verde}{\left(d f\right)_{\phi(v)}}}^{\substack{\text{ingettivo} \\ \text{perché} \\ \textcolor{orange}{f \text{ è regolare}}}} \textcolor{verde}{\circ} \overbrace{ \textcolor{verde}{\left(d \phi\right)_v}}^{\text{isomorfismo}}}_{\text{ingettivo}}$ $\Rightarrow \tilde{f}$ è regolare 
+        \begin{enumerate}
+            \item 
+            \begin{align*} 
+            T_v \tilde{f} &= \left(d \tilde{f}\right)_v \left(T_v \mathbb{R}^2\right) = \left(df \right)_{\phi(v)} \left( \left(d \phi\right)_v \left(T_v \mathbb{R}^2\right) \right) 
+            &\textcolor{blu}{\overset{\substack{\left(d \phi\right)_v \colon \mathbb{R}^2 \to \mathbb{R}^2 \quad \phi \colon B \to A \\ T_v \mathbb{R}^2 \to T_{\phi(v)} \mathbb{R}^2 \\ (v,x) \mapsto \left(\phi(v) ,\, (d \phi)_v (x) \right) }}{=}} 
+            \left(df\right)_{\phi(v)} \left(T_{\phi(v)} \mathbb{R}^2 \right)\\
+            &= T_{\phi(v)} f
+            \end{align*}
+            \item Per $i=1,2 \quad (e_1,e_2)$ base canonica di $\mathbb{R}^2$ 
+            \begin{align*} 
+            \tilde{f}_{v^i}(v) &= \left(d \tilde{f}\right)_v (e_i) = \left(d f\right)_{\phi(v)} \left( \left(d \phi\right)_v (e_i) \right)= \left(df\right)_{\phi(v)} \left( \underbrace{\sum_{k=1}^{2} \frac{\partial \phi^k}{\partial v^i}(v) e_k}_{\substack{\text{$i$-esima colonna}\\ \text{di } (J \phi)_v}} \right) \\
+            &\overset{\textcolor{red}{\text{lin.}}}{=} \sum_{k=1}^{2} \frac{\partial \phi^k}{\partial v^i}(v) \left(df\right)_{\phi(v)} (e_k) = \sum_{k=1}^{2} \textcolor{green}{\underbrace{\textcolor{verde}{\frac{\partial \phi^k}{\partial v^i}(v)}}_{:= a_{ik}}}  f_{u^k}(\phi(v))
+            \end{align*}
+            \begin{equation}
+            \label{eq:tilde_f_v_i}
+            \tilde{f}_{v^i}(v) =  \sum_{k=1}^{2} a_{ik} f_{u^k}(\phi(v))
+            \end{equation}
+            $\Rightarrow \left(J \phi\right)_v$ è la matrice di passaggio da $\left( f_{u^i}(\phi(v)) \right)_{i=1,2}$ a $\left(\tilde{f}_{v^i}(v)\right)_{i=1,2}$.
+            \item Proviamo che 
+            \[ \color{red} \tilde{f}_{v^1} (v) \times \tilde{f}_{v^2} (v) = \det \left( J \phi \right)_v \, f_{u^1}(\phi(v)) \times f_{u^2}(\phi(v)) \]
+            \begin{align*}
+            \tilde{f}_{v^1}(v) \times \tilde{f}_{v^2}(v) &\overset{\eqref{eq:tilde_f_v_i}}{=} \left( \sum_{h=1}^{2} a_{1h} f_{u^h}(\phi(v)) \right) \times \left( \sum_{k=1}^{2} a_{2k} f_{u^k}(\phi(v)) \right) \\
+            &= \sum_{h,k=1}^{2} a_{1h} a_{2k} f_{u^h}(\phi(v)) \times f_{u^k}(\phi(v)) \\ 
+            &= a_{11} a_{22} f_{u^1}(\phi(v)) \times f_{u^2}(\phi(v)) + a_{12} a_{21} f_{u^2}(\phi(v)) \times f_{u^1}(\phi(v)) \\
+            &= (a_{11} a_{22} - a_{12} a_{21}) \, f_{u^1}(\phi(v)) \times f_{u^2}(\phi(v)) \\
+            &= \det \left( J \phi \right)_v \, f_{u^1}(\phi(v)) \times f_{u^2}(\phi(v))
+            \end{align*}
+            Pertanto 
+            \begin{align*}
+            \tilde{n}(v) &= \frac{\tilde{f}_{v^1}(v) \times \tilde{f}_{v^2}(v)}{\norm{\tilde{f}_{v^1}(v) \times \tilde{f}_{v^2}(v)}} = \frac{\det (J \phi)_v \,  f_{u^1}(\phi(v)) \times f_{u^2}(\phi(v))}{\abs{\det (J \phi)_v} \, \norm{f_{u^1}(\phi(v)) \times f_{u^2}(\phi(v))}} \\
+            &= \pm \, n(\phi(v))
+            \end{align*}
+        \end{enumerate}
+        \end{proof}
+    \section{Superfici differenziabili}
+        \begin{definizione}
+        Sia $S \subset \mathbb{R}^3$ si consideri su $S$ la topologia indotta dalla topologia Euclidea.
+
+        \textcolor{blu}{($V \subset S$ è aperto $\iff V=U \cap S$ con $U \subset \mathbb{R}^3$ aperto)}
+
+        Si dice che $S$ è una \textcolor{red}{superficie differenziabile} se \textcolor{red}{$\forall p \in S \quad \exists \alpha \colon A_\alpha \to U_\alpha \subset S \subset \mathbb{R}^3$ 
+        omeomorfismo} tra $A_\alpha$ aperto connesso di $\mathbb{R}^2$ e $U_\alpha$ aperto di $S$ tale che \textcolor{red}{$p \in U_\alpha$}
+        e \textcolor{red}{$\alpha$} è una \textcolor{red}{superficie parametrizzata regolare}.
+
+        $\alpha$ è detta \textcolor{red}{parametrizzazione locale} della superficie $S$ nel punto $p$, il supporto della parametrizzazione $\alpha$ è $\alpha(A_\alpha) = U_\alpha$.
+
+        Posto \textcolor{red}{$\varphi_\alpha = \alpha^{-1} \colon U_\alpha \to \varphi_\alpha(U_\alpha) = A_\alpha \subset \mathbb{R}^2$} 
+        la coppia \textcolor{red}{$(U_\alpha, \varphi_\alpha)$} è detta \textcolor{red}{carta locale} in $p$.
+
+        Pertanto una superficie differenziabile ammette una famiglia di carte locali \textcolor{red}{$\left\{ (U_\alpha, \varphi_\alpha) \right\}$} tale che
+        \textcolor{red}{$\displaystyle \bigcup_\alpha U_\alpha = S$} e tale famiglia è detta \textcolor{red}{atlante differenziabile}
+        \end{definizione}
+    \section{Prima forma fondamentale}
+    \section{Operatore di Weingarten e seconda forma fondamentale}
+    \section{Comportamento rispetto a cambiamenti di parametro}
+    \section{Curve su una superficie}
