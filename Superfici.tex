@@ -390,13 +390,17 @@
         \begin{definizione}
         Considero il cambiamento di parametri $\phi$ si dice che $\phi$:
         \begin{itemize}
-            \item \textcolor{red}{conserva l'orientazione} se $\forall v \in B \quad \det( (d \phi)_v ) > 0$ 
+            \item \textcolor{red}{conserva l'orientazione} se \textcolor{red}{$\forall v \in B \quad \det( (d \phi)_v ) > 0$}
     
+            \textcolor{violet}{Cosa è il differenziale di $\phi$ in $v$? sicuramente visto che è un
+            diffeomorfismo, $\phi$ è lineare e quindi il suo differenziale è se stesso cioè un isomorfismo e la relativa
+            matrice associata è invertibile quindi il $\det( (d \phi)_v ) \neq 0$} 
+            
             \textcolor{blu}{$ (d \phi)_v : \mathbb{R}^2 \to \mathbb{R}^2 \quad ( d \phi)^{-1}_v = (d \phi^{-1})_{\phi(v)}$}
             \begin{proof}
             $\phi^{-1} \circ \phi = id \Rightarrow \left(d \phi^{-1}\right)_{\phi(v)} \circ (d \phi)_v = id \Rightarrow d \left(\phi^{-1} \circ \phi \right)=id$
             \end{proof}
-            \item \textcolor{red}{rovescia l'orientazione} se $\forall v \in B \quad \det( (d \phi)_v ) < 0$
+            \item \textcolor{red}{rovescia l'orientazione} se \textcolor{red}{$\forall v \in B \quad \det( (d \phi)_v ) < 0$}
         \end{itemize}
         Anche la relazione di equivalenza a meno di cambiamenti di variabili che conservino l'orientazione è 
         una relazione di equivalenza. Ogni classe di equivalenza \textcolor{red}{$[f]_{\sim_0}$} è detta 
@@ -413,7 +417,7 @@
             \item $\forall v \in B \quad$ \textcolor{red}{$T_v \tilde{f} = T_{\phi(v)} f$}
             \item La matrice di passaggio da \textcolor{red}{$\left(f_u^1(\phi(v)),f_u^2(\phi(v)) \right)$} alla base 
             \textcolor{red}{$\left(\tilde{f}_u^1(v),\tilde{f}_u^2(v)\right)$} è data da \textcolor{red}{$\left(J \phi\right)_v$}
-            \item $\forall v \in B \quad$ \textcolor{red}{$\tilde{n}(v)= \pm n(\phi(v))$} a seconda che $\phi$ conservi o rovesci l'orientazione.
+            \item $\forall v \in B \quad$ \textcolor{red}{$\tilde{n}(v)= \pm \, n(\phi(v))$} a seconda che $\phi$ conservi o rovesci l'orientazione.
         \end{enumerate}
         \end{proposizione}
         \begin{proof}
