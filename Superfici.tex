@@ -39,7 +39,10 @@
         questa applicazione lineare è ingettiva 
         
         Si definisce \textcolor{red}{spazio tangente in $u$ a $f$} lo spazio vettoriale 
-        \[ \color{red} T_u f:= \left(df\right)_u \left(T_u \mathbb{R}^2 \right) \subset T_{f(u)} \mathbb{R}^3 \]
+        \begin{equation}
+        \label{eq:def_spazio_tangente_in_un_punto_ad_una_superficie}
+        \color{red} T_u f:= \left(df\right)_u \left(T_u \mathbb{R}^2 \right) \subset T_{f(u)} \mathbb{R}^3 
+        \end{equation}
         $T_u f$ è un sottospazio vettoriale di $T_{f(u)} \mathbb{R}^3$ di dimensione $2$
         
         Sia $\left\{e_1, e_2\right\}$ la base canonica di $\mathbb{R}^2$ $\left\{ \left(u, e_1\right), \, \left(u, e_2\right) \right\}$ è
@@ -154,36 +157,39 @@
         se \textcolor{red}{$\forall u \in A \quad \hat{X}(u) \in \left(T_u f\right)^\perp$}
         \end{definizione}
         \begin{esempio}
+        \label{esempio:campi_vettoriali_tangenti_base}
         Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare, si considerino le applicazioni 
         \[ f_{u^1} \colon A \to \mathbb{R}^3 \quad u \mapsto f_{u^1}(u) = \left( \frac{\partial f^1}{\partial u^1}(u), \frac{\partial f^2}{\partial u^1}(u), \frac{\partial f^3}{\partial u^1}(u) \right) \in T_u f \]
         \[ f_{u^2} \colon A \to \mathbb{R}^3 \quad u \mapsto f_{u^2}(u) = \left( \frac{\partial f^1}{\partial u^2}(u), \frac{\partial f^2}{\partial u^2}(u), \frac{\partial f^3}{\partial u^2}(u) \right) \in T_u f \]
         $f_{u^1}(u)$ e $f_{u^2}(u)$ definiscono due campi vettoriali tangenti lungo $f$.
         \end{esempio}
         \newpage
+        \textcolor{violet}{Caratterizzeremo tutti i campi vettoriali tangenti lungo una superficie parametrizzata regolare}
         \begin{proposizione}
         Sia $A \subset \mathbb{R}^2$ e $f \colon A \to \mathbb{R}^3$ una superficie parametrizzata regolare, ogni campo vettoriale differenziabile 
-        tangente $X$ lungo $f$ si può scrivere in un unico modo come:
+        tangente $X$ \textcolor{violet}{(non distingueremo più tra $\hat{X}$ e $X$)} lungo $f$ si può scrivere in un unico modo come:
         \begin{equation}
         \label{eq:campo_vettoriale_tangente_lungo_una_superficie}
         X(u) = a^1(u) f_{u^1}(u) + a^2(u) f_{u^2}(u) 
         \end{equation}
-        dove $a^1, a^2 \colon A \to \mathbb{R}$ sono funzioni differenziabili.
+        dove $a^1, a^2 \colon A \to \mathbb{R}$ sono funzioni differenziabili \textcolor{violet}{(rispetto all'esempio \ref{esempio:campi_vettoriali_tangenti_base} 
+        dove abbiamo detto che $f_{u^1}(u)$ e $f_{u^2}(u)$ definiscono due campi vettoriali tangenti lungo $f$ qua aggiungiamo 
+        che ogni campo vettoriale tangente lungo $f$ può essere scritto come combinazione lineare di $f_{u^1}(u)$ e $f_{u^2}(u)$)}.
+
         Viceversa ogni coppia di funzioni differenziabili $a^1, a^2 \colon A \to \mathbb{R}$ determina 
         un campo vettoriale differenziabile tangente lungo $f$ dato da \eqref{eq:campo_vettoriale_tangente_lungo_una_superficie}
         \end{proposizione}
         \begin{proof}
         Sia $X \colon A \to \mathbb{R}^3$ campo vettoriale differenziabile tangente lungo $f$. 
 
-        $\forall u \in A \quad X(u) \in T_u f= \langle f_{u^1}(u), f_{u^2}(u) \rangle$ 
-
-        $\Rightarrow \exists \, ! \, a^1(u), a^2(u) \in \mathbb{R} \quad \text{tali che} $
+        $\forall u \in A \quad X(u) \in T_u f= \langle f_{u^1}(u), f_{u^2}(u) \rangle \Rightarrow \exists \, ! \, a^1(u), a^2(u) \in \mathbb{R} \quad \text{tali che} $
         \begin{equation}
         \label{eq:campo_vettoriale_tangente_lungo_una_superficie_dim_1}
         X(u) = a^1(u) f_{u^1}(u) + a^2(u) f_{u^2}(u)
         \end{equation}
-        Verifichiamo che le funzioni $a^1, a^2 \colon A \to \mathbb{R}$ sono differenziabili.
+        Verifichiamo che le funzioni \textcolor{red}{$a^1, a^2 \colon A \to \mathbb{R}$ sono differenziabili}.
 
-        Moltiplichiamo scalarmene \eqref{eq:campo_vettoriale_tangente_lungo_una_superficie_dim_1} per $f_{u^i}(u)$ per $i=1,2$ 
+        \textcolor{green}{Moltiplichiamo scalarmente \eqref{eq:campo_vettoriale_tangente_lungo_una_superficie_dim_1} per $f_{u^i}(u)$} per $i=1,2$ 
         \[ \begin{cases*}
         X(u) \cdot f_{u^1}(u) = a^1(u) f_{u^1}(u) \cdot f_{u^1}(u) + a^2(u) f_{u^2}(u) \cdot f_{u^1}(u) \\
         X(u) \cdot f_{u^2}(u) = a^1(u) f_{u^1}(u) \cdot f_{u^2}(u) + a^2(u) f_{u^2}(u) \cdot f_{u^2}(u)
@@ -197,7 +203,9 @@
         \end{pmatrix} \]
         $\det A(u) = \norm{f_{u^1}(u)}^2 \norm{f_{u^2}(u)}^2 - (f_{u^1}(u) \cdot f_{u^2}(u))^2 \overset{\textcolor{violet}{\substack{\text{proprietà} \\ \text{prodotto} \\ \text{vettoriale}}}}{=} \norm{f_{u^1}(u) \times f_{u^2}(u)}^2 >0$
 
-        L'unica soluzione del sistema di Cramer è data da
+        \textcolor{hotpink}{L'unica soluzione del sistema di Cramer} è data da \textcolor{violet}{(se $Ax=b$ lineare con $\det A \neq 0$
+        $\Rightarrow$ l'unica soluzione $\alpha^t=(\alpha_1, \ldots , \alpha_n)$ è data da $\alpha_i=\frac{\det B_i}{\det A}$ dove
+        $B_i$ è la matrice ottenuta sostituendo alla $i$-esima colonna di $A$ il vettore $b$)}
         \[ a^1(u) = \frac{ \begin{vmatrix}
         X(u) \cdot f_{u^1}(u) & \quad f_{u^2}(u) \cdot f_{u^1}(u) \\
         X(u) \cdot f_{u^2}(u) & \quad f_{u^2}(u) \cdot f_{u^2}(u)
@@ -209,6 +217,8 @@
         Essendo $X,f, f_{u^1}, f_{u^2}$ differenziabili, anche $a^1$ e $a^2$ sono differenziabili.
         \end{proof}
     \section{Riferimento di Gauss}
+        \textcolor{violet}{Individuiamo un particolare campo vettoriale differenziabile normale lungo la superficie $f$ parametrizzata regolare
+        con cui avremo spesso a che fare}
         \begin{definizione}
         Sia $A \subset \mathbb{R}^2$ $f \colon A \to \mathbb{R}^3$ una superficie parametrizzata regolare definiamo 
 
@@ -216,13 +226,13 @@
 
         $N(u) \cdot f_{u^i}(u) = 0 \quad i=1,2 \Rightarrow N(u) \in \langle f_{u^1}(u), f_{u^2}(u) \rangle^\perp =\left( T_u f \right)^\perp$
 
-        $N$ definisce un \textcolor{red}{campo di vettori normale lungo $f$} essendo $f \colon A \to \mathbb{R}^3$ regolare, $f_{u^1}(u) \times f_{u^2}(u) \neq 0$ 
+        \textcolor{red}{$N$} definisce un \textcolor{red}{campo di vettori normale lungo $f$} essendo $f \colon A \to \mathbb{R}^3$ regolare, $f_{u^1}(u) \times f_{u^2}(u) \neq 0$ 
 
         Pertanto si può definire \textcolor{red}{$n \colon A \to \mathbb{R}^3$} tale che \textcolor{red}{$\forall u \in A \quad n(u)=\dfrac{f_{u^1}(u) \times f_{u^2}(u)}{\norm{f_{u^1}(u) \times f_{u^2}(u)}}$}
 
-        $n$ definisce un campo di vettori normale unitario lungo $f$ detto \textcolor{red}{campo vettoriale di Gauss}
+        \textcolor{red}{$n$} definisce un campo di vettori normale unitario lungo $f$ detto \textcolor{red}{campo vettoriale di Gauss}
         \[ \norm{n(u)} = 1 \Rightarrow n(u) \in \textcolor{blu}{\underbrace{\textcolor{black}{S^2= \{ x \in \mathbb{R}^3 \mid \norm{x} = 1 \}}}_{\substack{\text{sfera di centro} \\ 0 \text{ e raggio } 1}}} \]
-        L'applicazione \textcolor{red}{$n \colon A \to S^2 \subset \mathbb{R}^3 \quad u \mapsto n(u)$} è detta \textcolor{red}{mappa di Gauss}  
+        L'applicazione \textcolor{red}{$n \colon A \subset \mathbb{R}^2 \to S^2 \subset \mathbb{R}^3 \quad u \mapsto n(u)$} è detta \textcolor{red}{mappa di Gauss}  
 
         Il riferimento mobile lungo $f$ definito da \textcolor{red}{$\{ f_{u^1}(u), f_{u^2}(u), n(u) \} $} è detto \textcolor{red}{riferimento di Gauss}
         \begin{center}
