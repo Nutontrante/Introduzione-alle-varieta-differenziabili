@@ -479,6 +479,140 @@
         Pertanto una superficie differenziabile ammette una famiglia di carte locali \textcolor{red}{$\left\{ (U_\alpha, \varphi_\alpha) \right\}$} tale che
         \textcolor{red}{$\displaystyle \bigcup_\alpha U_\alpha = S$} e tale famiglia è detta \textcolor{red}{atlante differenziabile}
         \end{definizione}
+        \textcolor{violet}{Questo è un teorema simile a quello visto sulle curve}
+        \begin{teorema}
+        \label{th:superfici_parametrizzazioni_equivalenti}
+        Sia $S \subset \mathbb{R}^3$ superficie differenziabile e siano $\alpha \colon A_\alpha \to U_\alpha$ e $\beta \colon A_\beta \to U_\beta$ due 
+        parametrizzazioni locali di $S$ tali che $U_\alpha \cap U_\beta \neq \emptyset$. Allora l'applicazione
+        \[ \textcolor{red}{\beta^{-1} \circ \alpha} \colon \alpha^{-1}(U_\alpha \cap U_\beta) \subset A_\alpha \subset \mathbb{R}^2 \xrightarrow[]{\quad}  \beta^{-1}(U_\alpha \cap U_\beta) \subset A_\beta \subset \mathbb{R}^2 \]
+        \[ \color{blu} \left(= \varphi_\beta \circ \varphi_\alpha^{-1} \colon \varphi_\alpha \left(U_\alpha \cap U_\beta \right) \xrightarrow[]{\quad} \varphi_\beta \left(U_\alpha \cap U_\beta \right) \right) \]
+        è un \textcolor{red}{diffeomorfismo}.
+
+        Pertanto posto $\phi= \beta^{-1} \circ \alpha$ cioè $\alpha = \beta \circ \phi$ con $\phi$ diffeomorfismo, e quindi
+        le due superfici parametrizzate sono equivalenti nell'aperto $U_\alpha \cap U_\beta$.
+        \end{teorema}
+        \begin{proof}
+        \mbox{}
+
+        Non dimostrata a lezione
+        \end{proof}
+        \begin{center}
+        \begin{tikzpicture}[>=stealth]
+
+            % ==========================================
+            % 1. Superficie e Intorni (in alto)
+            % ==========================================
+            % Bordo della superficie (teal)
+            \draw[thick, teal] (-5, 4.5) 
+                to[bend left=10] (4, 5.5) 
+                to[bend right=10] (5, 2) 
+                to[bend left=10] (-4, 1) 
+                to[bend right=10] cycle;
+
+            % Intorno U_\alpha (arancione, semitrasparente)
+            \fill[orange, fill opacity=0.14] (-1, 3.2) ellipse (2 and 1.2);
+            \draw[thick, orange] (-1, 3.2) ellipse (2 and 1.2);
+            \node[orange, above] at (-1.5, 4.4) {\Large $U_\alpha$};
+
+            % Intorno U_\beta (verde, semitrasparente)
+            \fill[green!70!black, fill opacity=0.14] (1.5, 3) ellipse (2 and 1.4);
+            \draw[thick, green!70!black] (1.5, 3) ellipse (2 and 1.4);
+            \node[green!70!black, above] at (2.5, 4.2) {\Large $U_\beta$};
+
+            % === IL TRUCCO PER L'INTERSEZIONE PRECISA ===
+            % Tagliamo (clip) il bordo tratteggiato di una ellisse 
+            % usando la forma dell'altra.
+            \begin{scope}
+                \clip (-1, 3.2) ellipse (2 and 1.2);
+                \draw[very thick, red, dashed] (1.5, 3) ellipse (2 and 1.4);
+            \end{scope}
+            \begin{scope}
+                \clip (1.5, 3) ellipse (2 and 1.4);
+                \draw[very thick, red, dashed] (-1, 3.2) ellipse (2 and 1.2);
+            \end{scope}
+
+            % Punto p nell'intersezione
+            \fill[red] (0.2, 3.1) circle (2pt) node[red, right=2pt] {\large $p$};
+            \node[red, below] at (0.2, 2.1) {\large $U_\alpha \cap U_\beta$};
+
+
+            % ==========================================
+            % 2. Domini delle carte (in basso)
+            % ==========================================
+            
+            % --- Dominio A_\alpha (sinistra) ---
+            \draw[thick, orange, rounded corners=12pt] (-6, -2.5) rectangle (-2, 0.5);
+            \node[orange, left] at (-6, -1) {\Large $A_\alpha$};
+
+            % Sottoinsieme \alpha^{-1}(U_\alpha \cap U_\beta) disegnato organicamente
+            \fill[yellow, fill opacity=0.14] plot [smooth cycle, tension=0.7] coordinates {(-4.5, -0.5) (-3, -0.7) (-2.5, -1.5) (-3.5, -2) (-4.8, -1.3)};
+            \draw[thick, amber] plot [smooth cycle, tension=0.7] coordinates {(-4.5, -0.5) (-3, -0.7) (-2.5, -1.5) (-3.5, -2) (-4.8, -1.3)};
+            \node[amber, above] at (-3.8, -0.5) {\large $\alpha^{-1}(U_\alpha \cap U_\beta)$};
+            
+            % Punto u
+            \fill[orange] (-3.5, -1.3) circle (2pt) node[below right] {\large $u$};
+
+
+            % --- Dominio A_\beta (destra) ---
+            \draw[thick, green!70!black, rounded corners=12pt] (2, -2.5) rectangle (6, 0.5);
+            \node[green!70!black, right] at (6, -1) {\Large $A_\beta$};
+
+            % Sottoinsieme \beta^{-1}(U_\alpha \cap U_\beta)
+            \fill[hotpink, fill opacity=0.14] (4, -1) ellipse (1.2 and 0.6);
+            \draw[thick, hotpink] (4, -1) ellipse (1.2 and 0.6);
+            \node[hotpink, above] at (3.8, -0.4) {\large $\beta^{-1}(U_\alpha \cap U_\beta)$};
+            
+            % Punto \phi(u) con freccia dal basso verso l'alto
+            \fill[green!70!black] (3.8, -1) circle (2pt);
+            \draw[->, thick, green!70!black] (3.8, -1.9) node[below] {$\phi(u)$} -- (3.8, -1.2);
+
+
+            % ==========================================
+            % 3. Frecce e Mappe
+            % ==========================================
+            
+            % Mappe per la carta \alpha
+            \draw[->, thick, orange] (-3.5, 0.2) to[bend right=10] node[midway, right] {\Large $\alpha$} (-1.5, 2.2);
+            \draw[<-, thick, darkgray] (-4.5, 0.7) to[bend left=15] node[midway, left] {\Large $\varphi_\alpha$} (-2, 2.6);
+
+            % Mappe per la carta \beta
+            \draw[->, thick, green!70!black] (3.5, 0.3) to[bend left=10] node[midway, xshift=-10pt, yshift=-5pt] {\Large $\beta$} (2.0, 2.0);
+            \draw[<-, thick, darkgray] (5.0, 0.2) to[bend right=15] node[midway, right, xshift=5pt] {\Large $\varphi_\beta$} (3,2.4);
+
+            % Mappa di transizione \phi (Rossa in basso)
+            \draw[->, very thick, red] (-1.8, -2) to[bend right=15] node[midway, below=5pt] {\Large $\phi = \beta^{-1} \circ \alpha = \varphi_\beta \circ \varphi_\alpha^{-1}$} (1.8, -2);
+
+
+            % ==========================================
+            % 4. Equazione finale in basso
+            % ==========================================
+            \node[red] at (0, -4) {\Large $\alpha^{-1}(U_\alpha \cap U_\beta) \subset A_\alpha \xrightarrow{\quad \alpha \quad} U_\alpha \cap U_\beta \xrightarrow{\quad \beta^{-1} \quad} \beta^{-1}(U_\alpha \cap U_\beta) \subset A_\beta$};
+
+        \end{tikzpicture}
+        \end{center}
+        \begin{osservazione}
+        Siano $\left(U_\alpha, \varphi_\alpha\right)$ e $\left(U_\beta, \varphi_\beta\right)$ carte locali tali che $U_\alpha \cap U_\beta \neq \emptyset$.
+
+        Sia $p \in U_\alpha \cap U_\beta \quad p= \alpha(u)= \beta\left(\phi(u)\right) \quad u \in \alpha^{-1}(U_\alpha \cap U_\beta) \subset A_\alpha \quad \phi(u) \in \beta^{-1}(U_\alpha \cap U_\beta) \subset A_\beta$.
+        \[ T_u \alpha \overset{\textcolor{black}{ \substack{\text{th: } \ref{th:superfici_parametrizzazioni_equivalenti} \\ \text{e prop: } \ref{prop:parametrizzazioni_equivalenti}}}}{=} T_{\phi(u)} \beta  \]
+        Poniamo 
+        \[ \color{red} T_p S := T_u \alpha = T_{\phi(u)} \beta \]
+        prende il nome di \textcolor{red}{spazio tangente in $p$ alla superficie $S$}
+
+        La definizione non dipende dalla carta locale.
+
+        invece il campo vettoriale di Gauss definito dalle due parametrizzazioni potrebbe cambiare a seconda che
+        $\phi$ conservi o rovesci l'orientazione della superficie.
+        \[ n_\alpha(u) = \pm \, n_\beta(\phi(u)) \]
+        \end{osservazione}
+        \begin{definizione}
+        Una superficie differenziabile $S$ si dice \textcolor{red}{orientabile} se ammette un atlante differenziabile
+       \textcolor{red}{ $\left\{\left(U_\alpha, \, \varphi_{\alpha}\right)\right\}$} tale che comunque prese due carte locali
+        $\left(U_\alpha, \, \varphi_{\alpha}\right)$ e $\left(U_\beta, \, \varphi_{\beta}\right)$ definite da parametrizzazioni
+        locali $\alpha \colon A_\alpha \to U_\alpha$ e $\beta \colon A_\beta \to U_\beta$ tali che $U_\alpha \cap U_\beta \neq \emptyset$ il cambiamento di parametro
+        \textcolor{red}{ $\phi = \beta^{-1} \circ \alpha$ conserva l'orientazione}.
+        In tal caso, è possibile definire globalmente sulla superficie $S$ un campo vettoriale normale unitario.
+        \end{definizione}
     \section{Prima forma fondamentale}
     \section{Operatore di Weingarten e seconda forma fondamentale}
     \section{Comportamento rispetto a cambiamenti di parametro}
