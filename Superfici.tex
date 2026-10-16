@@ -749,6 +749,7 @@
         \color{blu} $\displaystyle \left( \frac{\partial F}{\partial x}(p), \frac{\partial F}{\partial y}(p), \frac{\partial F}{\partial z}(p) \right) \neq \left(0,\, 0, \, 0\right)$ 
         \end{definizione}
         \begin{proposizione}
+        \label{prop:superficie_di_livello}
         Sia $V \subset \mathbb{R}^3$ aperto e sia $F \colon V \to \mathbb{R}$ funzione differenziabile e sia $c \in F(V)$ valore regolare per $F$ allora
         \[ \color{red} S=F^{-1}(c)= \{ (x,y,z) \in V \mid F(x,y,z) = c \} \]
         è una superficie differenziabile detta \textcolor{red}{superficie di livello di $F$}
@@ -790,8 +791,37 @@
         &= \{ (x,y,z) \in V_0 \mid F(x,y,z) = c \} \\
         &= V_0 \cap F^{-1}(c)
         \end{aligned} \]
-        Osserviamo che $f \colon A \to f(A) \subset S \subset \mathbb{R}^3$ è omeomorfismo
+        Osserviamo che $f \colon A \to f(A) \subset S \subset \mathbb{R}^3$ è omeomorfismo e parametrizzazione regolare.
+
+        Determiniamo le funzioni componenti di $f \quad \forall (u,v) \in A$ poniamo $f(u,v)=(x,y,z)$
+        \[ \begin{aligned} 
+            &\Rightarrow G^{-1}(u,v,c)=(x,y,z) \\
+            &\Rightarrow (u,v,c)=G(x,y,z)=(x,y,F(x,y,z)) \\
+            &\Rightarrow \begin{cases*}
+                x=u \\
+                y=v \\
+                F(x,y,z)=c
+            \end{cases*}
+        \end{aligned} \]
+        Pertanto $f(u,v)=(u,v,z=g(u,v))$ ovvero $f$ parametrizza il grafico di una funzione differenziabile $g$ che coincide con 
+        $\graf(g) =f(A)$.
+
+        ($\textcolor{amber}{\underbrace{f(A)}_{= V_0 \cap F^{-1}(c)}}, \, f^{-1})$ è una carta locale nel punto $p$.
         \end{proof}
+        \begin{esempio}
+        Sia $\pi: ax+by+cz+d=0 \quad (a,b,c) \neq (0,0,0)$ piano di $\mathbb{R}^3$.
+
+        $F \colon \mathbb{R}^3 \to \mathbb{R} \quad F(x,y,z)=ax+by+cz+d \quad \pi=F^{-1}(0)$.
+        \[ \frac{\partial F}{\partial x}=a \quad  \frac{\partial F}{\partial y}=b \quad \frac{\partial F}{\partial z}=c \]
+        $0$ è valore regolare per $F \overset{\text{prop: } \ref{prop:superficie_di_livello}}{\Rightarrow} \pi$ è superficie differenziabile.
+        \end{esempio}
+        \begin{esempio}
+        $S^2=\left\{(x,y,z) \in \mathbb{R}^3 \mid x^2+y^2+z^2=1\right\} \quad F \colon \mathbb{R}^3 \to \mathbb{R} \quad F(x,y,z)=x^2+y^2+z^2$
+
+        $\left(\frac{\partial F}{\partial x}, \frac{\partial F}{\partial y}, \frac{\partial F}{\partial z}\right) = (2x, 2y, 2z) \neq (0,0,0)$ sui punti di $S^2$.
+
+        $\overset{\text{prop: } \ref{prop:superficie_di_livello}}{\Rightarrow} S^2 = F^{-1}(1)$ è superficie differenziabile.
+        \end{esempio}
     \section{Prima forma fondamentale}
     \section{Operatore di Weingarten e seconda forma fondamentale}
     \section{Comportamento rispetto a cambiamenti di parametro}
