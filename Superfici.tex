@@ -341,6 +341,7 @@
         \end{figure}
         \end{esempio}
         \begin{esempio}
+        \label{esempio:grafico_funzione_superficie_1}
         Sia $A \subset \mathbb{R}^2$ aperto connesso, $\varphi \colon A \to \mathbb{R}$ funzione differenziabile e definiamo 
         
         $f \colon A \to \mathbb{R}^3 \quad \forall (u,v) \in A \quad f(u,v) = (u, v, \varphi(u,v))$
@@ -613,6 +614,184 @@
         \textcolor{red}{ $\phi = \beta^{-1} \circ \alpha$ conserva l'orientazione}.
         In tal caso, è possibile definire globalmente sulla superficie $S$ un campo vettoriale normale unitario.
         \end{definizione}
+        \newpage
+        \begin{esempio}
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare tale che $f \colon A \to f(A)$ è omeomorfismo 
+        \textcolor{blu}{(su $f(A)$ si considera la topologia indotta dalla topologia di $\mathbb{R}^3$)}
+        allora $f(A)$ è una superficie differenziabile.
+
+        Un atlante è $\left\{\left(f(A), f^{-1}\right)\right\}$ con $f^{-1} \colon f(A) \to A \subset \mathbb{R}^2$.
+        \end{esempio}
+        \begin{esempio}[Riprende esempio \ref{esempio:grafico_funzione_superficie_1}]
+        \label{esempio:grafico_funzione_superficie_2}
+        \mbox{}
+
+        Sia $\varphi \colon A \to \mathbb{R}$ funzione differenziabile $A \subset \mathbb{R}^2$ aperto connesso.
+
+        $f \colon A \to \mathbb{R}^3$ definita da $f(u, v) = (u, v, \varphi(u, v))$ $f$ è parametrizzazione regolare.
+        
+        $S = f(A)= \left\{ \left(u,v, \varphi(u,v) \, \right) \mid u,v \in \mathbb{R} \right\}= \graf(f)$
+
+        $f \colon A \to f(A)$ è omeomorfismo infatti, essendo $f \colon A \to \mathbb{R}^3$ continua, considerando su $f(A)$ la topologia indotta, $f \colon A \to f(A)$ è continua
+        $f$ è \textcolor{amber}{ingettiva} $\Rightarrow f \colon A \to f(A)$ è bigettiva.
+
+        $f^{-1} \colon f(A) \to A \quad \left(u,v, \varphi(u,v) \,\right) \mapsto (u,v)$ è continua $\Rightarrow f \colon A \to f(A)=S$ è omeomorfismo.
+
+        Pertanto $S$ è superficie differenziabile.
+        \end{esempio}
+        \begin{esempio}
+        Consideriamo la sfera 
+        \[ \color{red} S^2 = \left\{ (x,y,z) \in \mathbb{R}^3 \mid x^2 + y^2 + z^2 = 1 \right\} \subset \mathbb{R}^3 \]
+        \textcolor{blu}{($S^2$ non può essere omeomorfa a un aperto di $\mathbb{R}^2$, quindi non si può ricoprire $S^2$ con un unica carta)}
+
+        Consideriamo
+        \[ \color{blu} \underbrace{\textcolor{red}{A=\left\{ \left(u,v\right) \in \mathbb{R}^2 \mid u^2 + v^2 < 1 \right\}}}_{\text{disco aperto di } \mathbb{R}^2 \text{ di centro } (0,0) \text{ e raggio } 1}\]
+        \[ \color{red} f_1 \colon A \to \mathbb{R}^3 \quad f_1(u,v)= \left(u,v, \sqrt{1-u^2-v^2 \,} \,\right) \]
+        $f_1$ è parametrizzazione del grafico della funzione $\varphi \colon A \to \mathbb{R}$ definita da $\varphi(u,v) = \sqrt{1-u^2-v^2 \,}$ \textcolor{blu}{(funzione differenziabile)}.
+
+        Pertanto, per quanto già detto \textcolor{violet}{nell'esempio \ref{esempio:grafico_funzione_superficie_2}} 
+        \begin{itemize}
+            \item $f_1 \colon A \to \mathbb{R}^3$ è parametrizzazione regolare 
+            \item $f_1 \colon A \to f_1(A)=U_1$ è omeomorfismo 
+        \end{itemize}
+        dove 
+        \[ \color{red} U_1 = f_1(A) = \left\{ (x,y,z) \in S^2 \mid z > 0 \right\} \subset S^2 \]
+        \begin{center}
+        \begin{tikzpicture}[>=stealth, scale=0.6]
+
+            % Colore della penna in linea con i tuoi appunti
+
+            % Assi cartesiani (in grigio scuro come nei grafici precedenti)
+            \draw[->, thick, darkgray] (0,0) -- (-1.8, -1.8); % Asse x
+            \draw[->, thick, darkgray] (0,0) -- (4, 0);       % Asse y
+            \draw[->, thick, darkgray] (0,0) -- (0, 3.5);     % Asse z
+
+            % Equatore sul piano xy (tratteggiato)
+            % Disegnato come un'ellisse per dare l'effetto della prospettiva
+            \draw[thick, teal, dashed] (0,0) ellipse (2.2 and 0.6);
+
+            % Cupola / Emisfero superiore (arco solido)
+            % Parte da x = -2.2 e arriva a x = 2.2 con raggio 2.2
+            \draw[very thick, celeste] (-2.2, 0) arc (180:0:2.2);
+        \end{tikzpicture}
+        \end{center}
+        In maniera analoga si definiscono le parametrizzazioni:
+        \[ \color{red} f_2 \colon A \to \mathbb{R}^3 \quad f_2(u,v)= \left(u,v, -\sqrt{1-u^2-v^2 \,} \,\right) \]
+        $f_2 \colon A \to f_2(A)=U_2$ è omeomorfismo dove $U_2 = \left\{ (x,y,z) \in S^2 \mid z < 0 \right\}$
+        \[ \color{red} f_3 \colon A \to \mathbb{R}^3 \quad f_3(u,v)= \left(u,\sqrt{1-u^2-v^2 \,}, v \right) \]
+        $f_3 \colon A \to f_3(A)=U_3$ è omeomorfismo dove $U_3 = \left\{ (x,y,z) \in S^2 \mid y > 0 \right\}$
+        \[ \color{red} f_4 \colon A \to \mathbb{R}^3 \quad f_4(u,v)= \left(u,-\sqrt{1-u^2-v^2 \,}, v \right) \]
+        $f_4 \colon A \to f_4(A)=U_4$ è omeomorfismo dove $U_4 = \left\{ (x,y,z) \in S^2 \mid y < 0 \right\}$
+        \[ \color{red} f_5 \colon A \to \mathbb{R}^3 \quad f_5(u,v)= \left(\sqrt{1-u^2-v^2 \,}, u, v \right) \]
+        $f_5 \colon A \to f_5(A)=U_5$ è omeomorfismo dove $U_5 = \left\{ (x,y,z) \in S^2 \mid x > 0 \right\}$
+        \[ \color{red} f_6 \colon A \to \mathbb{R}^3 \quad f_6(u,v)= \left(-\sqrt{1-u^2-v^2 \,}, u, v \right) \]
+        $f_6 \colon A \to f_6(A)=U_6$ è omeomorfismo dove $U_6 = \left\{ (x,y,z) \in S^2 \mid x < 0 \right\}$
+
+        Posto \textcolor{red}{$\varphi_i = f_i^{-1} \colon U_i \to A_i \subset \mathbb{R}^2$}, \textcolor{red}{$\left\{\left(U_i, \varphi_i\right)_{i=1,\dots,6}\right\}$} è un atlante
+        differenziabile su $S^2$.
+
+        In particolare $\forall i,j = 1,\dots,6$ tali che $U_i \cap U_j \neq \emptyset \quad \varphi_i \circ \varphi_j^{-1} \colon \varphi_j(U_i \cap U_j) \subset \mathbb{R}^2 \to \varphi_i(U_i \cap U_j) \subset \mathbb{R}^2$ 
+        è diffeomorfismo.
+        \end{esempio}
+        \newpage
+        \begin{osservazione}
+        Considerata la parametrizzazione 
+
+        $f \colon A \to \mathbb{R}^3 \quad f(u,v) = \left(u,v, \sqrt{1-u^2-v^2 \,}\right)$ determiniamo il campo vettoriale di Gauss.
+
+        $\displaystyle f_u (u,v) = \left(1, 0, \frac{-u}{\sqrt{1-u^2-v^2 \,}}\right) \quad f_v (u,v) = \left(0, 1, \frac{-v}{\sqrt{1-u^2-v^2 \,}}\right)$
+
+        $\displaystyle f_u (u,v) \times f_v (u,v) = \left( \frac{u}{\sqrt{1-u^2-v^2 \,}}, \frac{v}{\sqrt{1-u^2-v^2 \,}}, 1 \right) = \frac{1}{\sqrt{1-u^2-v^2 \,}} f(u,v)$
+
+        $\displaystyle \norm{f_u (u,v) \times f_v (u,v)} = \frac{1}{\sqrt{1-u^2-v^2 \,}} \norm{f(u,v)} $
+
+        $\color{red} \displaystyle n(u,v)= f(u,v)$
+        \begin{center}
+        \begin{tikzpicture}[>=stealth, scale=1.3]
+
+            % Assi cartesiani
+            \draw[->, thick, black] (0,0) -- (-1.5, -1.5) node[below right] {\large $x$};
+            \draw[->, thick, black] (0,0) -- (4, 0) node[right] {\large $y$};
+            \draw[->, thick, black] (0,0) -- (0, 3.5) node[right] {\large $z$};
+            
+            % Origine
+            \node[left=2pt, black] at (0,0) {O};
+
+            % Emisfero superiore (cupola solida)
+            \draw[very thick, blu] (-2.5, 0) arc (180:0:2.5);
+            
+            % Equatore (tratteggiato nella parte inferiore per l'effetto 3D)
+            \draw[thick, blu, dashed] (-2.5, 0) arc (180:360:2.5 and 0.7);
+            
+            % Coordinata del punto sulla superficie della sfera
+            % Scelgo un punto P proporzionato in 2D
+            \coordinate (P) at (1.6, 1.2);
+
+            % Vettore posizione f(u,v) (Rosso)
+            \draw[->, thick, red] (0,0) -- (P) node[midway, below right=1pt] {\large $f(u,v)$};
+            
+            % Punto rosso sulla superficie
+            \fill[red] (P) circle (1.5pt);
+
+            % Vettore normale n(u,v) (Verde)
+            % Uso le coordinate relative per prolungare la linea esattamente con la stessa pendenza
+            \draw[->, thick, green!70!black] (P) -- +(1.2, 0.9) node[above right] {\large $n(u,v)$};
+
+        \end{tikzpicture}
+        \end{center}
+        \end{osservazione}
+        \newpage
+        \begin{definizione}
+        Sia $V \subset \mathbb{R}^3$ aperto e sia $F \colon V \to \mathbb{R}$ una funzione differenziabile.
+
+        Si dice che \textcolor{red}{$c \in F(V)$} è un \textcolor{red}{valore regolare} per $F$ se \textcolor{red}{$\forall p \in F^{-1}(c) \quad \left(dF\right)_p \neq 0$}
+
+        \color{blu} $\displaystyle \left( \frac{\partial F}{\partial x}(p), \frac{\partial F}{\partial y}(p), \frac{\partial F}{\partial z}(p) \right) \neq \left(0,\, 0, \, 0\right)$ 
+        \end{definizione}
+        \begin{proposizione}
+        Sia $V \subset \mathbb{R}^3$ aperto e sia $F \colon V \to \mathbb{R}$ funzione differenziabile e sia $c \in F(V)$ valore regolare per $F$ allora
+        \[ \color{red} S=F^{-1}(c)= \{ (x,y,z) \in V \mid F(x,y,z) = c \} \]
+        è una superficie differenziabile detta \textcolor{red}{superficie di livello di $F$}
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        Sia $p= (x_0, y_0, z_0) \in S = F^{-1}(c)$ \textcolor{blu}{$F(x_0, y_0, z_0) = c$} 
+        \[ \left(dF\right)_p = \left( \frac{\partial F}{\partial x}(p), \frac{\partial F}{\partial y}(p), \frac{\partial F}{\partial z}(p) \right) \neq (0,0,0) \]
+        Supponiamo $\dfrac{\partial F}{\partial z}(p) \neq 0$ definiamo \textcolor{red}{$G \colon V \to \mathbb{R}^3$} come \textcolor{red}{$G(x,y,z) = (x,y,F(x,y,z))$}.
+        \[ \left(J G\right)_p = 
+        \begin{pmatrix}
+        1 & 0 & 0 \\
+        0 & 1 & 0 \\
+        \frac{\partial F}{\partial x}(p) & \frac{\partial F}{\partial y}(p) & \frac{\partial F}{\partial z}(p)
+        \end{pmatrix} \quad \det \left(J G\right)_p = \frac{\partial F}{\partial z}(p) \neq 0 \]
+        Per il \textcolor{hotpink}{teorema della funzione inversa} esistono $V_0 \subset A$ intorno aperto di $p$ e $W_0 \subset \mathbb{R}^3$ intorno aperto di $G(p)$ tali che 
+        \[ G \colon V_0 \to W_0 \text{ è un diffeomorfismo} \]
+        $G(p)= G(x_0, y_0, z_0)=(x_0, y_0, F(x_0, y_0, z_0))=(x_0, y_0, c)$
+
+        Non è restrittivo assumere $W_0 = A \times U_0$ dove $A$ intorno aperto di $(x_0, y_0)$ in $\mathbb{R}^2$
+        e $U_0$ intorno aperto di $c$ in $\mathbb{R}$.
+        \[
+        \begin{aligned}
+        G \colon V_0 &\longrightarrow A \times U_0 \qquad \text{diffeomorfismo} \\
+        (x, y, z) &\longmapsto (x, y, F(x, y, z))
+        \end{aligned}
+        \]
+        Si può considerare il diffeomorfismo inverso
+        \[ G^{-1} \colon A \times U_0 \longrightarrow V_0 \]
+        Sia \textcolor{red}{$f \colon A \to \mathbb{R}^3 \quad f(u,v)=G^{-1}(u,v,c) \in V_0$}
+
+        Osserviamo che $f(A)= V_0 \cap F^{-1}(c)$ intorno aperto di $p$ in $F^{-1}(c)$.
+
+        Infatti 
+        \[ \begin{aligned}
+        f(A) &= G^{-1}(A \times \{c\} )= \{ (x,y,z) \in V_0 \mid G(x,y,z) \in A \times \{c\} \} \\
+        &= \{ (x,y,z) \in V_0 \mid \textcolor{blu}{\underbrace{\textcolor{verde}{(x,y,F(x,y,z))}}_{\in A \times U_0}} \in A \times \{c\} \} \\
+        &= \{ (x,y,z) \in V_0 \mid F(x,y,z) = c \} \\
+        &= V_0 \cap F^{-1}(c)
+        \end{aligned} \]
+        Osserviamo che $f \colon A \to f(A) \subset S \subset \mathbb{R}^3$ è omeomorfismo
+        \end{proof}
     \section{Prima forma fondamentale}
     \section{Operatore di Weingarten e seconda forma fondamentale}
     \section{Comportamento rispetto a cambiamenti di parametro}
