@@ -823,6 +823,57 @@
         $\overset{\textcolor{black}{\text{prop: } \ref{prop:superficie_di_livello}}}{\Rightarrow} S^2 = F^{-1}(1)$ è superficie differenziabile.
         \end{esempio}
     \section{Prima forma fondamentale}
+        \begin{definizione}
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare e sia $u \in A$.
+        \[ \left\{d f\right\}_u \colon T_u \mathbb{R}^2 \to T_{f(u)} \mathbb{R}^3 \text{ è un'applicazione lineare ingettiva} \]
+        $T_u f = \left(df\right)_u (T_u \mathbb{R}^2) \subset T_{f(u)} \mathbb{R}^3 \quad \dim T_u f = 2$
+
+        Lo spazio $T_{f(u)} \mathbb{R}^3$ è munito del prodotto scalare 
+        \[ \left(f(u) , x \right) \cdot \left(f(u), y\right) = \underbrace{x \cdot y}_{\substack{\text{prodotto} \\ \text{scalare} \\ \text{standard} \\ \text{di } \mathbb{R}^3}} \quad x,y \in \mathbb{R}^3 \]
+        Tale prodotto scalare induce un prodotto scalare su $T_u f$
+        
+        Si definisce \textcolor{red}{prima forma fondamentale di $f$ in $u$} il prodotto scalare 
+        \[ \color{red} I_u \colon T_u f \times T_u f \to \mathbb{R} \quad \text{tale che} \quad \forall X,Y \in T_u f \quad I_u(X,Y) = X \cdot Y \]
+        \textcolor{blu}{(prodotto scalare indotto su $T_u f$ dal prodotto scalare definito su $T_{f(u)} \mathbb{R}^3$)} 
+
+        Considerata la base $\left(f_u^1 (u), \, f_u^2 (u)\right)$ di $T_u f$ la matrice associata a $I_u$ rispetto a tale base è 
+        \[ \color{red} g_u := \left(g_{ij}\right)_{i,j=1,2} = \begin{pmatrix}
+            f_{u^1}(u) \cdot f_{u^1}(u) & f_{u^1}(u) \cdot f_{u^2}(u) \\
+            f_{u^2}(u) \cdot f_{u^1}(u) & f_{u^2}(u) \cdot f_{u^2}(u)
+        \end{pmatrix}  \qquad g_{ij}(u) = f_{u^i}(u) \cdot f_{u^j}(u) \]
+        Si osservi che $g_u$ è matrice simmetrica e definita positiva \textcolor{violet}{(conferma che $I_u$ è un prodotto scalare)}.
+
+        Infatti i suoi minori principali sono 
+
+        $g_{11} = f_{u^1}(u) \cdot f_{u^1}(u) > 0 $ 
+
+        $\det (g_u) = \norm{f_{u^1}(u)}^2 \norm{f_{u^2}(u)}^2 - (f_{u^1}(u) \cdot f_{u^2}(u))^2 \overset{\substack{\text{proprietà del} \\  \text{prodotto} \\ \text{vettoriale}}}{=} \| f_{u^1}(u) \times f_{u^2}(u) \|^2 > 0 $
+        \[ \begin{aligned} \forall i,j=1,2 \quad
+        g_{ij} & \colon A \to \mathbb{R} \quad \text{è differenziabile} \\
+         & \quad u \xmapsto{\quad} g_{ij}(u) = f_{u^i}(u) \cdot f_{u^j}(u)
+        \end{aligned}  \]
+        \end{definizione}
+        \begin{definizione}
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare, sia $n \colon A \to S^2 \subset \mathbb{R}^3$ la mappa di Gauss.
+        \[ \forall u \in A \quad n(u)= \frac{f_{u^1}(u) \times f_{u^2}(u)}{\| f_{u^1}(u) \times f_{u^2}(u) \|} \]
+        \[ u \in A \quad \left(dn\right)_u \colon \mathbb{R}^2 \to \mathbb{R}^3 \text{ applicazione lineare} \]
+        definisco l'applicazione \textcolor{violet}{(con abuso di notazione)} 
+        \[ \begin{aligned}
+            \left(d_n\right)_u \colon  & T_u \mathbb{R}^2 \to T_{f(u)} \mathbb{R}^3 \\
+            & \left(u,x\right) \mapsto \left(f(u), (dn)_u(x)\right)
+        \end{aligned} \]
+        \end{definizione}
+        \newpage
+        \begin{proposizione}
+        $(d_n)_u (T_u \mathbb{R}^2) \subset T_u f$
+
+        \textcolor{blu}{(In generale non vale l'uguaglianza perché non è detto che $(dn)_u$ sia ingettiva)}
+        \end{proposizione}
+        \begin{proof}
+        Sia $(e_1,e_2)$ la base canonica di $\mathbb{R}^2 \equiv T_u \mathbb{R}^2$. 
+
+        $\left(d n\right)_u$
+        \end{proof}
     \section{Operatore di Weingarten e seconda forma fondamentale}
     \section{Comportamento rispetto a cambiamenti di parametro}
     \section{Curve su una superficie}
