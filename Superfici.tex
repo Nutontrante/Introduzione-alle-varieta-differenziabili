@@ -864,7 +864,10 @@
         \end{aligned} \]
         \end{definizione}
         \newpage
-        \begin{proposizione}
+        \begin{proposizione}[\textcolor{violet}{tangenzialità del differenziale della mappa di Gauss}]
+        \label{prop:tangenzialita-differenziale-mappa-Gauss}
+        \mbox{}
+
         $(d_n)_u (T_u \mathbb{R}^2) \subset T_u f$
 
         \textcolor{blu}{(In generale non vale l'uguaglianza perché non è detto che $(dn)_u$ sia ingettiva)}
@@ -872,8 +875,70 @@
         \begin{proof}
         Sia $(e_1,e_2)$ la base canonica di $\mathbb{R}^2 \equiv T_u \mathbb{R}^2$. 
 
-        $\left(d n\right)_u$
+        $\left(d n\right)_u (T_u \mathbb{R}^2)=\langle (dn)_u(e_1), (dn)_u(e_2) \rangle$
+
+        Poniamo \textcolor{red}{$n_{u^i}(u)=(dn)(e_i) \quad i=1,2$}
+
+        Verifichiamo che $n_{u^i}(u) \in T_u f=\langle n(u) \rangle^\perp$
+        \[ n(u) \cdot n(u) = 1 \overset{\textcolor{blu}{\substack{\text{Derivando} \\ \text{parzialmente} \\ \text{rispetto a } u_i}}}{\Rightarrow} n_{u^i}(u) \cdot n(u) + n(u) \cdot n_{u^i}(u) = 0 \Rightarrow n (u) \cdot n_{u^i}(u) =0 \Rightarrow n_{u^i}(u) \in T_u f \]
+
         \end{proof}
+        
     \section{Operatore di Weingarten e seconda forma fondamentale}
+        \begin{definizione}
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare, sia $u \in \mathbb{R}$ e si consideri l'isomorfismo 
+        \[ \color{celeste} \left(df\right)_u \colon T_u \mathbb{R}^2 \to T_u f \]
+        è possibile considerare la composizione \textcolor{violet}{(è ben posto per la prop \ref{prop:tangenzialita-differenziale-mappa-Gauss})}
+        \[ \color{red} T_u f \xrightarrow{\quad  (df)_u^{-1} \quad}  T_u \mathbb{R}^2 \xrightarrow{\quad (dn)_u \quad} T_u f \]
+        Si definisce \textcolor{red}{operatore di Weingarten} (o operatore forma) di \textcolor{red}{$f$ in $u$} l'endomorfismo 
+        \begin{equation}
+        \color{red} L_u = - (dn)_u \circ (df)_u^{-1} \colon T_u f \xrightarrow{\qquad} T_u f
+        \end{equation}
+        $\forall X \in T_u f \quad L_u(X) = - (dn)_u \left( (df)_u^{-1} (X) \right)$
+        \end{definizione}
+        \begin{richiamo}[Endomorfismo autoaggiunto]
+        \mbox{}
+
+        Sia $(V, \langle \cdot, \cdot \rangle)$ uno spazio vettoriale di dimensione finita su un campo $\mathbb{K}$ (con $\mathbb{K} = \mathbb{R}$ oppure $\mathbb{K} = \mathbb{C}$) munito di un prodotto scalare definito positivo. 
+
+        Un endomorfismo $f: V \to V$ si dice \textbf{autoaggiunto} (o \emph{operatore simmetrico} nel caso reale, \emph{operatore hermitiano} nel caso complesso) se coincide con il suo operatore aggiunto $f^*$, ovvero se per ogni coppia di vettori $v, w \in V$ risulta:
+        \[
+        \langle f(v), w \rangle = \langle v, f(w) \rangle
+        \]
+        In termini matriciali, fissata una base ortonormale, la matrice $A$ associata a $f$ coincide con la sua trasposta (se $\mathbb{K} = \mathbb{R}$, $A = A^T$) o con la sua trasposta coniugata (se $\mathbb{K} = \mathbb{C}$, $A = A^\dagger$).
+        \end{richiamo}
+
+        \begin{richiamo}[Teorema Spettrale - Versione Reale]
+        Sia $V$ uno spazio vettoriale euclideo (reale) di dimensione finita. Un endomorfismo $f: V \to V$ è autoaggiunto se e solo se esiste una base ortonormale di $V$ formata da autovettori per $f$.
+        \newline
+        \textbf{Variante matriciale:} Una matrice quadrata reale $A \in M_n(\mathbb{R})$ è diagonalizzabile tramite una matrice ortogonale se e solo se $A$ è simmetrica ($A = A^T$). In tal caso, tutti gli autovalori di $A$ sono reali.
+        \end{richiamo}
+
+        \begin{richiamo}[Teorema Spettrale - Versione Complessa e Operatori Normali]
+        Sia $V$ uno spazio vettoriale unitario (complesso) di dimensione finita. Un endomorfismo $f: V \to V$ è autoaggiunto se e solo se esiste una base ortonormale di $V$ formata da autovettori per $f$ e tutti gli autovalori di $f$ sono \textbf{reali}.
+        \newline
+        \textbf{Nota bene per il caso complesso:} Più in generale, nel caso complesso il teorema spettrale afferma che un operatore è diagonalizzabile in base ortonormale se e solo se è \emph{normale} (ovvero commuta con il suo aggiunto: $f \circ f^* = f^* \circ f$). Gli operatori autoaggiunti sono una sottoclasse speciale degli operatori normali, caratterizzati dall'avere autovalori unicamente reali.
+        \end{richiamo}
+        \newpage
+        \begin{teorema}
+        $L_u$ è endomorfismo di $T_u f$ \textcolor{red}{autoaggiunto} \textcolor{blu}{(o simmetrico)} rispetto alla prima forma fondamentale 
+        \textcolor{blu}{(e quindi si potrà applicare il teorema spettrale)} $I_u$
+        
+        ovvero $\forall u \in A \quad \forall X,Y \in T_u f$ risulta:
+        \begin{equation}
+        \label{eq:L_u_autoaggiunto}
+        \color{red} I_u (L_u(X), Y) = I_u (X, L_u(Y))
+        \end{equation}
+        \end{teorema}
+        \begin{proof}
+        \mbox{}
+
+        È sufficiente verificare \eqref{eq:L_u_autoaggiunto} su una base di $T_u f$. 
+
+        Consideriamo quindi la base $\left(f_{u^1} (u), f_{u^2} (u)\right)$ di $T_u f$.
+        \[ L_u \left(f_{u^1} (u)\right) = - (d n)_u \circ (df)^{-1}_u \left((df)_u (e_i)\right) = - (d n)_u (e_i) = -n_{u^i}(u) \]
+        Pertanto 
+        \[ I_u \left( \right) \]
+        \end{proof}
     \section{Comportamento rispetto a cambiamenti di parametro}
     \section{Curve su una superficie}
