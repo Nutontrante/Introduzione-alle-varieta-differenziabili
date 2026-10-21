@@ -938,7 +938,48 @@
         Consideriamo quindi la base $\left(f_{u^1} (u), f_{u^2} (u)\right)$ di $T_u f$.
         \[ L_u \left(f_{u^1} (u)\right) = - (d n)_u \circ (df)^{-1}_u \left((df)_u (e_i)\right) = - (d n)_u (e_i) = -n_{u^i}(u) \]
         Pertanto 
-        \[ I_u \left( \right) \]
+        \[ I_u \left( L_u(f_{u^i}(u)), f_{u^j}(u) \right) = - n_{u^i}(u) \cdot f_{u^j} (u) \]
+        \[ I_u \left( f_{u^i}(u), L_u(f_{u^j}(u)) \right) = - f_{u^i}(u) \cdot n_{u^j} (u) \]
+        \textcolor{violet}{Devo dimostrare che $- n_{u^i}(u) \cdot f_{u^j} (u) = - f_{u^i}(u) \cdot n_{u^j} (u)$}
+
+        Ricordiamo che $n(u) \cdot f_{u^j}(u) = 0$ 
+        \begin{equation} 
+        \label{eq:L_u_autoaggiundo_dim_1}
+        \overset{\textcolor{blu}{\substack{\text{Derivando} \\ \text{parzialmente} \\ \text{rispetto a } u_i}}}{\Rightarrow} n_{u^i}(u) \cdot f_{u^j}(u) + n(u) \cdot f_{u^j u^i}(u) = 0 
+        \end{equation}
+        Scambiando gli indici $i,j$
+        \[ \Rightarrow n_{u^j}(u) \cdot f_{u^i}(u) + n(u) \cdot 
+        \textcolor{blu}{\underbrace{\textcolor{verde}{f_{u^i u^j}(u)}}_{\substack{f \in C^\infty \\ f_{u^i u^j} = f_{u^j u^i}}}}=0 \]
+        \[ \Rightarrow n_{u^j}(u) \cdot f_{u^i}(u) = n_{u^j}(u) \cdot f_{u^i}(u) \]
+        Segue che 
+        \[ I_u \left( L_u(f_{u^i}(u)), f_{u^j}(u) \right) = I_u \left( f_{u^i}(u), L_u(f_{u^j}(u)) \right) \]
         \end{proof}
+        \newpage
+        \begin{definizione}
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare, sia $u \in A$ si definisce 
+        \textcolor{red}{seconda forma fondamentale di $f$ in $u$} la forma bilineare simmetrica
+        \[ \color{red} \Pi_u \colon T_u f \times T_u f \to \mathbb{R} \qquad \forall X,Y \in T_u f \quad \Pi_u(X,Y) = I_u(L_u(X), Y) \]
+        \textcolor{blu}{La simmetria di $\Pi_u$ segue dal fatto che $L_u$ è autoaggiunto rispetto a $I_u$ cioè \eqref{eq:L_u_autoaggiunto}}
+
+        La matrice associata a $\Pi_u$ rispetto alla base $\left(f_{u^1} (u), f_{u^2} (u)\right)$ è 
+        \[  h_u = \left(h_{ij}\right)_{i,j=1,2} \qquad h_{ij} (u) = \Pi_u(f_{u^i}(u), f_{u^j}(u)) = I_u(L_u(f_{u^i}(u)), f_{u^j}(u)) = - n_{u^i}(u) \cdot f_{u^j} (u) \]
+        \begin{equation}
+        \Rightarrow h_{ij}(u) \overset{\eqref{eq:L_u_autoaggiundo_dim_1}}{=} n(u) \cdot f_{u^i u^j}(u)
+        \end{equation}
+        \end{definizione}
     \section{Comportamento rispetto a cambiamenti di parametro}
+        \begin{proposizione}
+        \mbox{}
+
+        Siano $f \colon A \to \mathbb{R}^3 \quad \tilde{f} \colon B \to \mathbb{R}^3$ superfici parametrizzate regolari equivalenti 
+
+        $\tilde{f} = f \circ \phi \quad \phi \colon B \to A$ diffeomorfismo
+
+        Allora $\forall v \in B \quad \forall X,Y \in T_v \tilde{f} = T_{\phi(v)} f $
+        \begin{enumerate}
+            \item \textcolor{red}{$\tilde{I}_v (X,Y) = I_{\phi(v)} (X,Y)$}
+            \item \textcolor{red}{$\tilde{L}_v = \pm L_{\phi(v)}$}
+            \item \textcolor{red}{$\tilde{\Pi}_v(X,Y) =  \pm \Pi_{\phi(v)}(X,Y)$}
+        \end{enumerate}
+        \end{proposizione}
     \section{Curve su una superficie}
