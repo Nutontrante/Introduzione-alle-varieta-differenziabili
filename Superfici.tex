@@ -1066,8 +1066,8 @@
             \draw[red] (8.8, 3) .. controls (9.5, 2.8) and (9.8, 2) .. (10.8, 1.5);
             
             % Punto c(t) sulla superficie
-            \coordinate (ct) at (9.7, 2.4);
-            \fill[black] (ct) circle (1.5pt) node[above right, text=black, scale=0.9] {$c(t) = f(u(t))$};
+            \coordinate (ct) at (9.66, 2.4);
+            \fill[black] (ct) circle (2.5pt) node[above right, text=black, scale=0.9, xshift=-55, yshift=-25] {$c(t) = f(u(t))$};
 
             % 4. Frecce per le applicazioni
             
@@ -1083,3 +1083,103 @@
         \end{tikzpicture}
         \end{center}
         \end{osservazione}
+        \begin{proposizione}
+        \mbox{}
+
+        Sia $c = f \circ u \colon I \to \mathbb{R}^3$ curva su $f \colon A \to \mathbb{R}^3$ poniamo
+        $u(t)=(u^1(t),u^2(t)) \quad \forall t \in I$ allora
+        \begin{equation} 
+        \label{eq:derivazione_curva_su_una_superficie}
+        \color{red} \forall t \in I \quad \dot{c}(t)= \sum_{i=1}^2 \dot{u}^i(t) f_{u^i}(u(t)) \in T_{u(t)} f
+        \end{equation}
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        \begin{align*}
+        \dot{c}(t) &= (df)_{u(t)} \left(\dot{u} (t)\right) = (df)_{u(t)} \left(\sum_{i=1}^2 \dot{u}^i (t) e_i\right) \\
+        &=\sum_{i=1}^2 \dot{u}^i (t) (df)_{u(t)} (e_i) = \sum_{i=1}^2 \dot{u}^i(t) f_{u^i}(u(t))
+        \end{align*}
+        \end{proof}
+        \newpage
+        \begin{esempio}
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare sia $u_0 = \left(u_0^1, \, u_0^2\right) \in A$
+        definisco \textcolor{black}{$u \colon I \to A \quad u(t)=(u_0^1, t)$} $\quad c_{u_0^1} = f \circ u \colon I \to \mathbb{R}^3$
+
+        \textcolor{red}{$c_{u_0^1}(t) = f(u(t))=c(u_0^1, t) \quad u^1(t)=u_0^1 \quad u^2(t)=t$}
+
+        $\Rightarrow \dot{c}_{u_0^1}(t) \overset{\eqref{eq:derivazione_curva_su_una_superficie}}{=} f_{u^2}(u(t))$
+
+        definisco \textcolor{black}{$u \colon I \to A \quad u(t)=(t, u_0^2)$} $\quad c_{u_0^2} = f \circ u \colon I \to \mathbb{R}^3$
+
+        \textcolor{red}{$c_{u_0^2}(t) = f(u(t))=c(t, u_0^2) \quad u^1(t)=t \quad u^2(t)=u_0^2$}
+
+        $\Rightarrow \dot{c}_{u_0^2}(t) \overset{\eqref{eq:derivazione_curva_su_una_superficie}}{=} f_{u^2}(u(t))$  
+
+        Le curve $c_{u_0^1}$ e $c_{u_0^2}$ sono dette \textcolor{red}{curve coordinate}
+
+        \begin{center}
+        \begin{tikzpicture}[>=Stealth, thick, scale=0.9, transform shape]
+
+            % 1. Intervallo I (in basso a sinistra)
+            \draw[thick, blu] (0,0) -- (2,0) node[midway, below] {$I$};
+
+            % Freccia u da I al dominio A
+            \draw[->, thick, bend left=15, blu] (1, 0.5) to node[midway, above left] {$u$} (2.5, 2.5);
+
+            % 2. Dominio A in R^2 (Centro)
+            % Assi coordinati
+            \draw[->, thick, black] (3, 1.5) -- (6.5, 1.5); % Asse orizzontale u^1
+            \draw[->, thick, black] (4, 0.5) -- (4, 4.5);   % Asse verticale u^2
+
+            % Insieme aperto A (rosso)
+            \draw[red, thick] plot[smooth cycle, tension=0.7] coordinates {(3.3, 2.2) (5.8, 2.0) (6.0, 3.8) (3.5, 4.0)} node[xshift=-12]{$A$};
+
+            % Linee coordinate nel dominio
+            \draw[orange, thick] (2.8, 2.8) -- (6.2, 2.8); % u^2 = costante
+            \draw[cyan, thick] (5.2, 0.8) -- (5.2, 4.2);   % u^1 = costante
+
+            % Etichette nel dominio
+            \node[text=black, scale=0.9] at (3.6, 3.1) {$u_0^2$};
+            \node[text=black, scale=0.9] at (4.8, 1.8) {$u_0^1$};
+            
+            % Punto di intersezione u_0
+            \coordinate (u0) at (5.2, 2.8);
+            \fill[cyan] (u0) circle (1.5pt); 
+            \node[above left, text=red, scale=0.9] at (5.3, 2.8) {$u_0$};
+
+            % Freccia f dal dominio alla superficie
+            \draw[->, thick, bend left=20] (7, 3) to node[midway, below] {$f$} (8.2, 4.2);
+
+            % 3. Superficie S in R^3 (Destra)
+            % Bordo della superficie (color foglia di tè per contrastare)
+            \draw[teal, thick] (7.5, 1) .. controls (9, -0.5) and (11.5, 0.5) .. (12.5, 1.5)
+                                        .. controls (12, 3.5) and (10.5, 4.5) .. (9.5, 4.5)
+                                        .. controls (8, 4) and (7, 2.5) .. (7.5, 1);
+
+            % Curve coordinate sulla superficie
+            % Immagine della linea ciano (varia u^2, fisso u^1 = u0^1)
+            \draw[cyan, thick] (10.5, 0.2) .. controls (10.2, 2) and (9.5, 3.5) .. (8.5, 4.2); 
+            % Immagine della linea arancione (varia u^1, fisso u^2 = u0^2)
+            \draw[orange, thick] (8.5, 2.2) .. controls (9.5, 2.6) and (11, 2.8) .. (12.2, 2.6);
+
+            % Punto f(u_0) sulla superficie
+            \coordinate (fu0) at (10, 2.6);
+            \fill[red] (fu0) circle (1.5pt) node[below left, text=red, scale=0.9] {$f(u_0)$};
+
+            % Vettori tangenti alle curve coordinate
+            % f_{u^2} tangente alla curva arancione
+            \draw[->, orange, thick] (fu0) -- (11.5, 2.85) node[above, text=black, scale=0.9] {$f_{u^2}(u_0)$};
+            % f_{u^1} tangente alla curva ciano
+            \draw[->, cyan, thick] (fu0) -- (9.5, 3.8) node[above, text=black, scale=0.9] {$f_{u^1}(u_0)$};
+
+            % Frecce delle composizioni dal basso (da I alla superficie)
+            % Freccia per c_{u_0^1} (ciano)
+            \draw[->, cyan, thick, bend right=25] (1.4, -0.3) to node[midway, below] {$c_{u_0^1}$} (8.6, -0.1);
+            
+            % Freccia per c_{u_0^2} (arancione)
+            \draw[->, orange, thick, bend right=30] (0.8, -0.5) to node[midway, below] {$c_{u_0^2}$} (9.6, -0.5);
+
+        \end{tikzpicture}
+        \end{center}
+        \end{esempio}
