@@ -882,8 +882,7 @@
         Verifichiamo che $n_{u^i}(u) \in T_u f=\langle n(u) \rangle^\perp$
         \[ n(u) \cdot n(u) = 1 \overset{\textcolor{blu}{\substack{\text{Derivando} \\ \text{parzialmente} \\ \text{rispetto a } u_i}}}{\Rightarrow} n_{u^i}(u) \cdot n(u) + n(u) \cdot n_{u^i}(u) = 0 \Rightarrow n (u) \cdot n_{u^i}(u) =0 \Rightarrow n_{u^i}(u) \in T_u f \]
 
-        \end{proof}
-        
+        \end{proof}      
     \section{Operatore di Weingarten e seconda forma fondamentale}
         \begin{definizione}
         Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare, sia $u \in \mathbb{R}$ e si consideri l'isomorfismo 
@@ -936,7 +935,7 @@
         È sufficiente verificare \eqref{eq:L_u_autoaggiunto} su una base di $T_u f$. 
 
         Consideriamo quindi la base $\left(f_{u^1} (u), f_{u^2} (u)\right)$ di $T_u f$.
-        \[ L_u \left(f_{u^1} (u)\right) = - (d n)_u \circ (df)^{-1}_u \left((df)_u (e_i)\right) = - (d n)_u (e_i) = -n_{u^i}(u) \]
+        \[ L_u \left(f_{u^i} (u)\right) = - (d n)_u \circ (df)^{-1}_u \left((df)_u (e_i)\right) = - (d n)_u (e_i) = -n_{u^i}(u) \]
         Pertanto 
         \[ I_u \left( L_u(f_{u^i}(u)), f_{u^j}(u) \right) = - n_{u^i}(u) \cdot f_{u^j} (u) \]
         \[ I_u \left( f_{u^i}(u), L_u(f_{u^j}(u)) \right) = - f_{u^i}(u) \cdot n_{u^j} (u) \]
