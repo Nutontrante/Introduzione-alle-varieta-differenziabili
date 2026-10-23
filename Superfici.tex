@@ -1226,7 +1226,7 @@
             % Punto x_0 e vettori generatori x, y
             \coordinate (x0) at (1.2, 0.6);
             \draw[->, amber, thick] (x0) -- ++(1.5, -0.2) node[midway, below, text=amber] {$x$};
-            \draw[->, cyan, thick] (x0) -- ++(1.0, 0.5) node[midway, right=6pt, text=cyan] {$y$};
+            \draw[->, cyan, thick] (x0) -- ++(1.0, 0.5) node[midway, right=8pt, text=cyan, yshift=-2pt] {$y$};
             \fill[red] (x0) circle (1.8pt) node[below left, text=red] {$x_0$};
             
             % Punto f(u_0, v_0) e rette coordinate
@@ -1246,4 +1246,272 @@
                 node[right, text=red] {$f(u_0, v_0) = x_0 + u_0 x + v_0 y$};
         \end{tikzpicture}
         \end{center}
+        \end{esempio}
+        \newpage
+        \begin{esempio}[Parametrizzazione della sfera privata dei poli]
+        Consideriamo la seguente parametrizzazione:
+        \[
+        \textcolor{red}{f : \left(-\frac{\pi}{2}, \frac{\pi}{2}\right) \times \mathbb{R} \longrightarrow \mathbb{R}^3}
+        \]
+        \[
+        \textcolor{red}{f(u,v) = (\cos u \cos v, \, \cos u \sin v, \, \sin u)}
+        \]
+        Ponendo:
+        \[
+        \begin{cases}
+        x = \cos u \cos v \\[4pt]
+        y = \cos u \sin v \\[4pt]
+        z = \sin u
+        \end{cases}
+        \]
+        si verifica che:
+        \begin{align*}
+        x^2 + y^2 + z^2 &= \cos^2 u (\cos^2 v + \sin^2 v) + \sin^2 u \\
+        &= \cos^2 u + \sin^2 u = 1
+        \end{align*}
+        da cui segue che:
+        \[
+        \supp(f) \subset S^2 = \left\{ (x,y,z) \in \mathbb{R}^3 \;\middle|\; x^2 + y^2 + z^2 = 1 \right\}
+        \]
+        Per $u = \pm \frac{\pi}{2}$ si ottiene $(x,y,z) = (0,0,\pm 1)$. Pertanto:
+        \[
+        \supp(f) = S^2 \setminus \{N, S\}, \qquad N(0,0,1), \quad S(0,0,-1)
+        \]
+
+        \begin{center}
+        \begin{tikzpicture}[>=Stealth, thick, scale=1.1]
+            % Assi coordinati
+            \draw[->, black] (0,0) -- (3.8,0) node[below] {$y$};
+            \draw[->, black] (0,0) -- (0,3.2) node[above] {$z$};
+            \draw[->, black] (0,0) -- (-2.2,-2.2) node[below] {$x$};
+            \node[above left, text=black] at (0,0) {$O$};
+
+            % Sfera
+            \draw[teal!80!black, line width=1pt] (0,0) circle (2cm);
+
+            % Punti chiave per la proiezione di P
+            \coordinate (O) at (0,0);
+            \coordinate (P) at (1.1, 0.9);
+            \coordinate (Pxy) at (1.1, -0.7);
+            \coordinate (Px) at (-0.7, -0.7);
+            \coordinate (Py) at (1.8, 0);
+
+            % Angoli u e v
+            \fill[green!50!black, opacity=0.25] (O) -- (0.45, -0.28) arc (-32:39:0.53) -- cycle;
+            \node[green!50!black, scale=0.85] at (0.65, 0.15) {$u$};
+
+            \fill[violet, opacity=0.25] (O) -- (-0.32, -0.32) arc (225:328:0.45) -- cycle;
+            \node[violet, scale=0.85] at (-0.1, -0.45) {$v$};
+
+            % Segmenti di proiezione
+            \draw[amber, thick] (O) -- (Pxy) node[midway, below, sloped, scale=0.8] {$\cos u$};
+            \draw[green!60!black, thick] (Pxy) -- (P);
+            \draw[cyan, thick] (Px) -- (Pxy) node[midway, below, scale=0.85] {$y = \cos u \sin v$};
+            \draw[orange!80!black, thick] (Py) -- (Pxy);
+
+            % Angoli retti
+            \draw[black, thin] (1.1, -0.5) -- (0.95, -0.4) -- (0.95, -0.6);
+            \draw[black, thin] (-0.5, -0.7) -- (-0.4, -0.6) -- (-0.6, -0.6);
+
+            % Vettore OP
+            \draw[red, line width=1.1pt] (O) -- (P) node[midway, above left, scale=0.85] {$1$};
+            \fill[red] (P) circle (1.5pt) node[above right] {$P$};
+
+            % Etichette esterne con frecce
+            \node[red, right] at (2.2, 2.2) {$P = f(u,v)$};
+            \draw[->, green!60!black, thin] (1.3, 0.5) to[bend left=20] (2.2, 0.8) node[right, scale=0.85] {$z = \sin u$};
+            \draw[->, orange!80!black, thin] (1.45, -0.45) to[bend right=15] (2.2, -0.45) node[right, scale=0.85] {$x = \cos u \cos v$};
+        \end{tikzpicture}
+        \end{center}
+
+        Calcoliamo le derivate parziali e la matrice jacobiana:
+        \[
+        \textcolor{red}{f_u(u,v)} = (-\sin u \cos v, \, -\sin u \sin v, \, \underbrace{\cos u}_{\textcolor{red}{>0}})
+        \]
+        \[
+        \textcolor{red}{f_v(u,v)} = (-\cos u \sin v, \, \cos u \cos v, \, 0)
+        \]
+        \[
+        (Jf)_{(u,v)} = 
+        \begin{pmatrix}
+        -\sin u \cos v & -\cos u \sin v \\[6pt]
+        -\sin u \sin v & \cos u \cos v \\[6pt]
+        \cos u & 0
+        \end{pmatrix}
+        \]
+
+        Calcoliamo i minori di ordine $2$:
+        \[
+        M_1 = 
+        \begin{vmatrix}
+        -\sin u \sin v & \cos u \cos v \\[6pt]
+        \cos u & 0
+        \end{vmatrix} 
+        = -\cos^2 u \cos v
+        \]
+        \[
+        M_2 = 
+        \begin{vmatrix}
+        -\sin u \cos v & -\cos u \sin v \\[6pt]
+        \cos u & 0
+        \end{vmatrix} 
+        = \cos^2 u \sin v
+        \]
+        \begin{align*}
+        M_3 &= 
+        \begin{vmatrix}
+        -\sin u \cos v & -\cos u \sin v \\[6pt]
+        -\sin u \sin v & \cos u \cos v
+        \end{vmatrix} 
+        = (-\sin u)\cos u 
+        \begin{vmatrix}
+        \cos v & -\sin v \\[6pt]
+        \sin v & \cos v
+        \end{vmatrix} \\[6pt]
+        &= -\sin u \cos u (\cos^2 v + \sin^2 v) = -\sin u \cos u
+        \end{align*}
+
+        Studiamo l'annullamento simultaneo dei minori:
+        \[
+        \begin{cases}
+        M_1 = 0 \\
+        M_2 = 0 \\
+        M_3 = 0
+        \end{cases}
+        \iff \cos u = 0 \iff u = \pm \frac{\pi}{2}
+        \]
+        Poiché $u \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$, i tre minori non si annullano mai contemporaneamente $\implies f$ è regolare.
+
+        Inoltre, sappiamo che $f_u(u,v) \times f_v(u,v) = (M_1, -M_2, M_3)$, da cui:
+        \begin{align*}
+        \norm{f_u(u,v) \times f_v(u,v)}^2 &= M_1^2 + M_2^2 + M_3^2 \\
+        &= \cos^4 u \cos^2 v + \cos^4 u \sin^2 v + \sin^2 u \cos^2 u \\
+        &= \cos^4 u + \sin^2 u \cos^2 u = \cos^2 u
+        \end{align*}
+        Pertanto, poiché $u \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$, si ha:
+        \[
+        \norm{f_u(u,v) \times f_v(u,v)} = \abs{\cos u} = \cos u
+        \]
+        Il versore normale è dato da:
+        \begin{align*}
+        \textcolor{red}{n(u,v)} &= \frac{f_u(u,v) \times f_v(u,v)}{\norm{f_u(u,v) \times f_v(u,v)}} \\
+        &= (-\cos u \cos v, \, -\cos u \sin v, \, -\sin u) \\
+        &= -f(u,v)
+        \end{align*}
+        ossia $\textcolor{red}{n(u,v) = -f(u,v)}$.
+
+        Determiniamo lo spazio tangente $\textcolor{red}{T_{(u,v)}f}$, ovvero il piano passante per $f(u,v)$ e ortogonale a $n(u,v)$:
+        \begin{align*}
+        T_{(u,v)}f : \quad &\big((x,y,z) - f(u,v)\big) \cdot n(u,v) = 0 \\
+        &(x,y,z) \cdot n(u,v) + \norm{f(u,v)}^2 = 0 \\
+        &-(\cos u \cos v)x - (\cos u \sin v)y - (\sin u)z + 1 = 0
+        \end{align*}
+
+        \bigskip
+        \noindent \textcolor{red}{\textbf{Prima forma fondamentale}}
+
+        Calcoliamo i coefficienti della matrice associata alla prima forma fondamentale:
+        \begin{align*}
+        g_{11}(u,v) &= f_u(u,v) \cdot f_u(u,v) = \sin^2 u + \cos^2 u = 1 \\[4pt]
+        g_{12}(u,v) &= f_u(u,v) \cdot f_v(u,v) = \sin u \cos u \sin v \cos v - \sin u \sin v \cos u \cos v = 0 \\[4pt]
+        g_{22}(u,v) &= f_v(u,v) \cdot f_v(u,v) = \cos^2 u
+        \end{align*}
+        Si ottiene quindi:
+        \[
+        \textcolor{red}{g_{(u,v)} = 
+        \begin{pmatrix}
+        1 & 0 \\[6pt]
+        0 & \cos^2 u
+        \end{pmatrix}}
+        \]
+        da cui deduciamo che $f_u$ e $f_v$ sono sempre ortogonali.
+
+        \bigskip
+        \noindent \textcolor{red}{\textbf{Curve coordinate:}}
+        \begin{itemize}
+            \item[\textcolor{red}{$\bullet$}] Fissato $u \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$, consideriamo $c_u : \mathbb{R} \longrightarrow \mathbb{R}^3$ definita da:
+            \[
+            c_u(t) = (\cos u \cos t, \, \cos u \sin t, \, \sin u)
+            \]
+            La curva $c_u$ è una circonferenza contenuta nel piano $z = \sin u$ (\textbf{parallelo}). Inoltre:
+            \[
+            \dot{c}_u(t) = f_v(u,t), \qquad \norm{\dot{c}_u(t)} = \cos u \xrightarrow[u \to \pm \frac{\pi}{2}]{} 0
+            \]
+            
+            \item[\textcolor{red}{$\bullet$}] Fissato $v \in \mathbb{R}$, consideriamo $c_v : \left(-\frac{\pi}{2}, \frac{\pi}{2}\right) \longrightarrow \mathbb{R}^3$ definita da:
+            \[
+            c_v(t) = f(t,v) \quad (\textbf{meridiano})
+            \]
+            Per tale curva si ha:
+            \[
+            \dot{c}_v(t) = f_u(t,v), \qquad \norm{\dot{c}_v(t)} = 1
+            \]
+        \end{itemize}
+
+        \begin{center}
+        \begin{tikzpicture}[>=Stealth, thick, scale=1.1]
+            % Assi coordinati
+            \draw[->, black] (0,0) -- (3.5,0) node[below] {$y$};
+            \draw[->, black] (0,0) -- (0,3.2) node[above] {$z$};
+            \draw[->, black] (0,0) -- (-2.1,-2.1) node[below] {$x$};
+            \node[above left, text=black] at (0,0) {$O$};
+
+            % Sfera
+            \draw[teal!80!black, line width=1pt] (0,0) circle (2cm);
+
+            % Punto P e proiezioni
+            \coordinate (O) at (0,0);
+            \coordinate (P) at (1.0, 1.0);
+            \coordinate (Pxy) at (1.0, -0.6);
+
+            \draw[amber, thick] (O) -- (Pxy);
+            \draw[green!60!black, thick] (Pxy) -- (P);
+            \draw[red, thick] (O) -- (P) node[above right, scale=0.9] {$P$};
+
+            % Parallelo (u = costante, in verde)
+            \draw[green!50!black, thick] (-1.45, 1.38) arc (190:350:1.45 and 0.35);
+            \draw[green!50!black, dashed, thin] (1.45, 1.38) arc (10:170:1.45 and 0.35);
+            
+            % Vettore tangente f_v
+            \draw[->, green!50!black, line width=1.1pt] (0, 1.03) -- (0.65, 1.08) node[above left, scale=0.85] {$f_v$};
+
+            % Meridiano (v = costante, in magenta/viola)
+            \draw[magenta!80!black, line width=1.1pt] (0,2) arc (90:270:0.75 and 2);
+            
+            % Vettore tangente f_u
+            \coordinate (Pm) at (-0.75, 0);
+            \fill[red] (Pm) circle (1.3pt);
+            \draw[->, magenta!80!black, line width=1.1pt] (Pm) -- (-0.75, 1.4) node[midway, left, scale=0.85] {$f_u$};
+
+            % Annotazioni con frecce
+            \node[green!50!black, align=left, scale=0.85] at (-1.8, 2.3) {$u = \text{costante}$ \\ $\norm{f_v} = \cos u$};
+            \draw[->, green!50!black, thin] (-1.6, 1.7) to[bend left=20] (-1.2, 1.25);
+
+            \node[magenta!80!black, align=left, scale=0.85] at (-0.2, -2.7) {$v = \text{costante}$ \\ $\norm{f_u} = 1$};
+            \draw[->, magenta!80!black, thin] (-0.5, -2.2) to[bend left=15] (-0.45, -1.7);
+        \end{tikzpicture}
+        \end{center}
+
+        Determiniamo l'\textcolor{red}{operatore di Weingarten}
+        
+        Ricordando che $n(u,v) = -f(u,v)$, si ha $(dn)_{(u,v)} = -(df)_{(u,v)}$, da cui:
+        \[
+        L_{(u,v)} = -(dn)_{(u,v)} \circ (df)_{(u,v)}^{-1} = (df)_{(u,v)} \circ (df)_{(u,v)}^{-1} = \mathrm{id}_{T_{(u,v)}f}
+        \]
+
+        \bigskip
+        \noindent \textcolor{red}{\textbf{Seconda forma fondamentale}}
+
+        Per ogni $X, Y \in T_{(u,v)}f$, si ha:
+        \[
+        \mathrm{II}_{(u,v)}(X,Y) = \mathrm{I}_{(u,v)}\big(L_{(u,v)}(X), Y\big) = \mathrm{I}_{(u,v)}(X,Y)
+        \]
+        Pertanto $\mathrm{II}_{(u,v)} = \mathrm{I}_{(u,v)}$ e la matrice associata alla seconda forma fondamentale rispetto alla base $\big(f_u(u,v), f_v(u,v)\big)$ è:
+        \[
+        \textcolor{red}{h_{(u,v)} = g_{(u,v)} = 
+        \begin{pmatrix}
+        1 & 0 \\[6pt]
+        0 & \cos^2 u
+        \end{pmatrix}}
+        \]
         \end{esempio}
