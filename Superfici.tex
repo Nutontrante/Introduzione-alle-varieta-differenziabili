@@ -1136,8 +1136,8 @@
             \draw[red, thick] plot[smooth cycle, tension=0.7] coordinates {(3.3, 2.2) (5.8, 2.0) (6.0, 3.8) (3.5, 4.0)} node[xshift=-12]{$A$};
 
             % Linee coordinate nel dominio
-            \draw[orange, thick] (2.8, 2.8) -- (6.2, 2.8); % u^2 = costante
-            \draw[cyan, thick] (5.2, 0.8) -- (5.2, 4.2);   % u^1 = costante
+            \draw[orange, thick, dash dot] (2.8, 2.8) -- (6.2, 2.8); % u^2 = costante
+            \draw[cyan, thick, dash dot] (5.2, 0.8) -- (5.2, 4.2);   % u^1 = costante
 
             % Etichette nel dominio
             \node[text=black, scale=0.9] at (3.6, 3.1) {$u_0^2$};
@@ -1145,8 +1145,8 @@
             
             % Punto di intersezione u_0
             \coordinate (u0) at (5.2, 2.8);
-            \fill[cyan] (u0) circle (1.5pt); 
-            \node[above left, text=red, scale=0.9] at (5.3, 2.8) {$u_0$};
+            \fill[red] (u0) circle (2pt); 
+            \node[above left, text=red, scale=0.9] at (5.2, 2.8) {$u_0$};
 
             % Freccia f dal dominio alla superficie
             \draw[->, thick, bend left=20] (7, 3) to node[midway, below] {$f$} (8.2, 4.2);
@@ -1159,19 +1159,19 @@
 
             % Curve coordinate sulla superficie
             % Immagine della linea ciano (varia u^2, fisso u^1 = u0^1)
-            \draw[cyan, thick] (10.5, 0.2) .. controls (10.2, 2) and (9.5, 3.5) .. (8.5, 4.2); 
+            \draw[cyan, thick, dash dot] (10.5, 0.2) .. controls (10.2, 2) and (9.5, 3.5) .. (8.5, 4.2); 
             % Immagine della linea arancione (varia u^1, fisso u^2 = u0^2)
-            \draw[orange, thick] (8.5, 2.2) .. controls (9.5, 2.6) and (11, 2.8) .. (12.2, 2.6);
+            \draw[orange, thick, dash dot] (8, 1.8) .. controls (9.5, 2.7) and (11, 2.8) .. (11.6, 2.4);
 
             % Punto f(u_0) sulla superficie
-            \coordinate (fu0) at (10, 2.6);
-            \fill[red] (fu0) circle (1.5pt) node[below left, text=red, scale=0.9] {$f(u_0)$};
+            \coordinate (fu0) at (9.8, 2.56);
+            \fill[red] (fu0) circle (3pt) node[below left, text=red, scale=0.9, yshift=-6pt] {$f(u_0)$};
 
             % Vettori tangenti alle curve coordinate
             % f_{u^2} tangente alla curva arancione
-            \draw[->, orange, thick] (fu0) -- (11.5, 2.85) node[above, text=black, scale=0.9] {$f_{u^2}(u_0)$};
+            \draw[->, orange, thick] (fu0) -- (11.5, 2.85) node[above, text=orange, scale=0.9] {$f_{u^2}(u_0)$};
             % f_{u^1} tangente alla curva ciano
-            \draw[->, cyan, thick] (fu0) -- (9.5, 3.8) node[above, text=black, scale=0.9] {$f_{u^1}(u_0)$};
+            \draw[->, cyan, thick] (fu0) -- (9.5, 3.8) node[above, text=cyan, scale=0.9] {$f_{u^1}(u_0)$};
 
             % Frecce delle composizioni dal basso (da I alla superficie)
             % Freccia per c_{u_0^1} (ciano)
@@ -1180,6 +1180,70 @@
             % Freccia per c_{u_0^2} (arancione)
             \draw[->, orange, thick, bend right=30] (0.8, -0.5) to node[midway, below] {$c_{u_0^2}$} (9.6, -0.5);
 
+        \end{tikzpicture}
+        \end{center}
+        \end{esempio}
+        \newpage
+        \begin{esempio}[Piano]
+        Consideriamo l'applicazione:
+        \[
+        \textcolor{red}{f : \mathbb{R}^2 \longrightarrow \mathbb{R}^3, \qquad f(u,v) = x_0 + ux + vy}
+        \]
+        con $x_0, x, y \in \mathbb{R}^3$ e $x, y$ linearmente indipendenti.
+
+        Calcoliamo le derivate parziali e il versore normale:
+        \[ f_u(u,v) = x, \qquad f_v(u,v) = y \]
+        \[ n(u,v) = \frac{x \times y}{\|x \times y\|} \]
+        La matrice associata alla prima forma fondamentale è:
+        \[ g_{(u,v)} = 
+        \begin{pmatrix}
+        \|x\|^2 & x \cdot y \\[6pt]
+        x \cdot y & \|y\|^2
+        \end{pmatrix}\]
+        Poiché $n(u,v)$ è costante, si ha:
+        \[  (dn)_{(u,v)} = 0 \implies L_{(u,v)} = -(dn)_{(u,v)} \circ (df)_{(u,v)}^{-1} = 0 \]
+        Di conseguenza, la matrice associata alla seconda forma fondamentale è nulla:
+        \[ h_{(u,v)} = 0 \]
+        Determiniamo le curve coordinate. Fissato $(u_0, v_0) \in \mathbb{R}^2$, si ha:
+        \begin{itemize}
+            \item $\textcolor{red}{c_{u_0} : \mathbb{R} \longrightarrow \mathbb{R}^3}$ definita da:
+            \[
+            c_{u_0}(t) = f(u_0, t) = x_0 + u_0 x + t y
+            \]
+            che rappresenta la parametrizzazione della retta passante per $f(u_0, v_0)$ di giacitura generata da $y$.
+            
+            \item $\textcolor{red}{c_{v_0} : \mathbb{R} \longrightarrow \mathbb{R}^3}$ definita da:
+            \[
+            c_{v_0}(t) = f(t, v_0) = x_0 + t x + v_0 y
+            \]
+            che rappresenta la parametrizzazione della retta passante per $f(u_0, v_0)$ di giacitura generata da $x$.
+        \end{itemize}
+        \begin{center}
+        \begin{tikzpicture}[>=Stealth, thick, scale=1.1]
+            % Bordo del piano (parallelogramma)
+            \draw[teal!80!black, line width=1pt] (0,0) -- (3.8,0) -- (3.0,2.2) -- (-0.8,2.2) -- cycle;
+            
+            % Punto x_0 e vettori generatori x, y
+            \coordinate (x0) at (1.2, 0.6);
+            \draw[->, amber, thick] (x0) -- ++(1.5, -0.2) node[midway, below, text=amber] {$x$};
+            \draw[->, cyan, thick] (x0) -- ++(1.0, 0.5) node[midway, right=6pt, text=cyan] {$y$};
+            \fill[red] (x0) circle (1.8pt) node[below left, text=red] {$x_0$};
+            
+            % Punto f(u_0, v_0) e rette coordinate
+            \coordinate (fuv) at (1.7, 1.5);
+            
+            % Retta con giacitura x (arancione/ambra)
+            \draw[amber, thick] ($(fuv) - 1.2*(1.5, -0.2)$) -- ($(fuv) + 0.8*(1.5, -0.2)$);
+            
+            % Retta con giacitura y (azzurra)
+            \draw[cyan, thick] ($(fuv) - 1.5*(1.0, 0.5)$) -- ($(fuv) + 0.7*(1.0, 0.5)$);
+            
+            % Pallino su f(u_0, v_0)
+            \fill[red] (fuv) circle (1.8pt);
+            
+            % Freccia curva e testo per f(u_0, v_0)
+            \draw[->, red, thick] (1.75, 1.8) to[out=70, in=180] (2.8, 2.7) 
+                node[right, text=red] {$f(u_0, v_0) = x_0 + u_0 x + v_0 y$};
         \end{tikzpicture}
         \end{center}
         \end{esempio}
