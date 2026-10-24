@@ -776,7 +776,7 @@
         \mbox{}
 
         Sia $p= (x_0, y_0, z_0) \in S = F^{-1}(c)$ \textcolor{blu}{$F(x_0, y_0, z_0) = c$} 
-        \[ \left(dF\right)_p = \left( \frac{\partial F}{\partial x}(p), \frac{\partial F}{\partial y}(p), \frac{\partial F}{\partial z}(p) \right) \neq (0,0,0) \]
+        \[ \color{orange} \left(dF\right)_p = \left( \frac{\partial F}{\partial x}(p), \frac{\partial F}{\partial y}(p), \frac{\partial F}{\partial z}(p) \right) \neq (0,0,0) \]
         Supponiamo $\dfrac{\partial F}{\partial z}(p) \neq 0$ definiamo \textcolor{red}{$G \colon V \to \mathbb{R}^3$} come \textcolor{red}{$G(x,y,z) = (x,y,F(x,y,z))$}.
         \[ \left(J G\right)_p = 
         \begin{pmatrix}
@@ -792,15 +792,17 @@
         e $U_0$ intorno aperto di $c$ in $\mathbb{R}$.
         \[
         \begin{aligned}
-        G \colon V_0 &\longrightarrow A \times U_0 \qquad \text{diffeomorfismo} \\
-        (x, y, z) &\longmapsto (x, y, F(x, y, z))
+        G \colon V_0 & \longrightarrow A \times U_0 \qquad \text{diffeomorfismo} \\
+        (x, y, z) & \longmapsto (x, y, F(x, y, z))
         \end{aligned}
         \]
         Si può considerare il diffeomorfismo inverso
         \[ G^{-1} \colon A \times U_0 \longrightarrow V_0 \]
         Sia \textcolor{red}{$f \colon A \to \mathbb{R}^3 \quad f(u,v)=G^{-1}(u,v,c) \in V_0$}
 
-        Osserviamo che $f(A)= V_0 \cap F^{-1}(c)$ intorno aperto di $p$ in $F^{-1}(c)$.
+        Osserviamo che $f(A)= V_0 \cap F^{-1}(c)$ intorno aperto di $p$ in $F^{-1}(c)$ 
+        \textcolor{violet}{(noi siamo partiti considerando $p \in S$ il nostro obbiettivo è 
+        dimostrare che esiste un intorno aperto di $p$ in $S$ omeomorfo ad un aperto connesso di $\mathbb{R}^2$)}.
 
         Infatti 
         \[ \begin{aligned}
@@ -811,7 +813,9 @@
         \end{aligned} \]
         Osserviamo che $f \colon A \to f(A) \subset S \subset \mathbb{R}^3$ è omeomorfismo e parametrizzazione regolare.
 
-        Determiniamo le funzioni componenti di $f \quad \forall (u,v) \in A$ poniamo $f(u,v)=(x,y,z)$
+        Determiniamo le funzioni componenti di $f$ 
+        
+        $\forall (u,v) \in A$ poniamo $f(u,v)=(x,y,z)$
         \[ \begin{aligned} 
             &\Rightarrow G^{-1}(u,v,c)=(x,y,z) \\
             &\Rightarrow (u,v,c)=G(x,y,z)=(x,y,F(x,y,z)) \\
@@ -825,6 +829,9 @@
         $\graf(g) =f(A)$.
 
         ($\textcolor{amber}{\underbrace{f(A)}_{= V_0 \cap F^{-1}(c)}}, \, f^{-1})$ è una carta locale nel punto $p$.
+
+        \textcolor{violet}{Potenzialmente il numero di queste carte locali potrebbe essere non finito perché la dimostrazione 
+        evidenzia come in ogni punto trovi una carta locale e non è detto che poi riesca a diminuire il numero delle carte, e quindi il numero totale di carte locali potrebbe essere infinito.}
         \end{proof}
         \begin{esempio}
         Sia $\pi: ax+by+cz+d=0 \quad (a,b,c) \neq (0,0,0)$ piano di $\mathbb{R}^3$.
@@ -834,6 +841,8 @@
         $0$ è valore regolare per $F \overset{\textcolor{black}{\text{prop: } \ref{prop:superficie_di_livello}}}{\Rightarrow} \pi$ è superficie differenziabile.
         \end{esempio}
         \begin{esempio}
+        \mbox{}
+        
         $S^2=\left\{(x,y,z) \in \mathbb{R}^3 \mid x^2+y^2+z^2=1\right\} \quad F \colon \mathbb{R}^3 \to \mathbb{R} \quad F(x,y,z)=x^2+y^2+z^2$
 
         $\left(\frac{\partial F}{\partial x}, \frac{\partial F}{\partial y}, \frac{\partial F}{\partial z}\right) = (2x, 2y, 2z) \neq (0,0,0)$ sui punti di $S^2$.
