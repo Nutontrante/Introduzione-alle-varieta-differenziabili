@@ -480,11 +480,13 @@
         Pertanto una superficie differenziabile ammette una famiglia di carte locali \textcolor{red}{$\left\{ (U_\alpha, \varphi_\alpha) \right\}$} tale che
         \textcolor{red}{$\displaystyle \bigcup_\alpha U_\alpha = S$} e tale famiglia è detta \textcolor{red}{atlante differenziabile}
         \end{definizione}
-        \textcolor{violet}{Questo è un teorema simile a quello visto sulle curve}
+        \textcolor{violet}{Questo è un teorema simile a quello visto sulle curve proposizione \ref{prop:funzione_di_transizione_curve}}
         \begin{teorema}
         \label{th:superfici_parametrizzazioni_equivalenti}
         Sia $S \subset \mathbb{R}^3$ superficie differenziabile e siano $\alpha \colon A_\alpha \to U_\alpha$ e $\beta \colon A_\beta \to U_\beta$ due 
-        parametrizzazioni locali di $S$ tali che $U_\alpha \cap U_\beta \neq \emptyset$. Allora l'applicazione
+        parametrizzazioni locali di $S$ tali che $U_\alpha \cap U_\beta \neq \emptyset$. 
+        
+        Allora l'applicazione
         \[ \textcolor{red}{\beta^{-1} \circ \alpha} \colon \alpha^{-1}(U_\alpha \cap U_\beta) \subset A_\alpha \subset \mathbb{R}^2 \xrightarrow[]{\quad}  \beta^{-1}(U_\alpha \cap U_\beta) \subset A_\beta \subset \mathbb{R}^2 \]
         \[ \color{blu} \left(= \varphi_\beta \circ \varphi_\alpha^{-1} \colon \varphi_\alpha \left(U_\alpha \cap U_\beta \right) \xrightarrow[]{\quad} \varphi_\beta \left(U_\alpha \cap U_\beta \right) \right) \]
         è un \textcolor{red}{diffeomorfismo}.
@@ -534,7 +536,7 @@
 
             % Punto p nell'intersezione
             \fill[red] (0.2, 3.1) circle (2pt) node[red, right=2pt] {\large $p$};
-            \node[red, below] at (0.2, 2.1) {\large $U_\alpha \cap U_\beta$};
+            \node[red, below] at (-0.2, 1.9) {\large $U_\alpha \cap U_\beta$};
 
 
             % ==========================================
@@ -595,7 +597,7 @@
         Siano $\left(U_\alpha, \varphi_\alpha\right)$ e $\left(U_\beta, \varphi_\beta\right)$ carte locali tali che $U_\alpha \cap U_\beta \neq \emptyset$.
 
         Sia $p \in U_\alpha \cap U_\beta \quad p= \alpha(u)= \beta\left(\phi(u)\right) \quad u \in \alpha^{-1}(U_\alpha \cap U_\beta) \subset A_\alpha \quad \phi(u) \in \beta^{-1}(U_\alpha \cap U_\beta) \subset A_\beta$.
-        \[ T_u \alpha \overset{\textcolor{black}{ \substack{\text{th: } \ref{th:superfici_parametrizzazioni_equivalenti} \\ \text{e prop: } \ref{prop:parametrizzazioni_equivalenti}}}}{=} T_{\phi(u)} \beta  \]
+        \[ T_u \alpha \overset{\textcolor{black}{ \text{prop: } \ref{prop:parametrizzazioni_equivalenti}}}{=} T_{\phi(u)} \beta  \]
         Poniamo 
         \[ \color{red} T_p S := T_u \alpha = T_{\phi(u)} \beta \]
         prende il nome di \textcolor{red}{spazio tangente in $p$ alla superficie $S$}
@@ -612,15 +614,22 @@
         $\left(U_\alpha, \, \varphi_{\alpha}\right)$ e $\left(U_\beta, \, \varphi_{\beta}\right)$ definite da parametrizzazioni
         locali $\alpha \colon A_\alpha \to U_\alpha$ e $\beta \colon A_\beta \to U_\beta$ tali che $U_\alpha \cap U_\beta \neq \emptyset$ il cambiamento di parametro
         \textcolor{red}{ $\phi = \beta^{-1} \circ \alpha$ conserva l'orientazione}.
+
         In tal caso, è possibile definire globalmente sulla superficie $S$ un campo vettoriale normale unitario.
+        
+        \textcolor{violet}{(scopriremo che il nastro di Möbius non è orientabile)}
         \end{definizione}
         \newpage
+        \textcolor{violet}{Quando andremo avanti nello studio delle parametrizzazioni e introdurremo nuove nozioni ci preoccuperemo di capire se una certa nozione dipende o meno
+        dalla parametrizzazione locale utilizzata.}
         \begin{esempio}
         Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare tale che $f \colon A \to f(A)$ è omeomorfismo 
         \textcolor{blu}{(su $f(A)$ si considera la topologia indotta dalla topologia di $\mathbb{R}^3$)}
         allora $f(A)$ è una superficie differenziabile.
 
         Un atlante è $\left\{\left(f(A), f^{-1}\right)\right\}$ con $f^{-1} \colon f(A) \to A \subset \mathbb{R}^2$.
+
+        \textcolor{violet}{Cosa non vera per tutte le superfici parametrizzate regolari perché non tutte sono definite da omeomorfismi.}
         \end{esempio}
         \begin{esempio}[Riprende esempio \ref{esempio:grafico_funzione_superficie_1}]
         \label{esempio:grafico_funzione_superficie_2}
@@ -638,10 +647,15 @@
         $f^{-1} \colon f(A) \to A \quad \left(u,v, \varphi(u,v) \,\right) \mapsto (u,v)$ è continua $\Rightarrow f \colon A \to f(A)=S$ è omeomorfismo.
 
         Pertanto $S$ è superficie differenziabile.
+
+        \textcolor{violet}{Questo particolare esempio di superficie parametrizzata regolare che si costruisce a partire da una funzione differenziabile
+        il cui supporto è proprio il grafico di $\varphi$ rientra nella classe delle superfici differenziabili.}
         \end{esempio}
         \begin{esempio}
         Consideriamo la sfera 
         \[ \color{red} S^2 = \left\{ (x,y,z) \in \mathbb{R}^3 \mid x^2 + y^2 + z^2 = 1 \right\} \subset \mathbb{R}^3 \]
+        è una superficie differenziabile?
+
         \textcolor{blu}{($S^2$ non può essere omeomorfa a un aperto di $\mathbb{R}^2$, quindi non si può ricoprire $S^2$ con un unica carta)}
 
         Consideriamo
@@ -690,7 +704,9 @@
         Posto \textcolor{red}{$\varphi_i = f_i^{-1} \colon U_i \to A_i \subset \mathbb{R}^2$}, \textcolor{red}{$\left\{\left(U_i, \varphi_i\right)_{i=1,\dots,6}\right\}$} è un atlante
         differenziabile su $S^2$.
 
-        In particolare $\forall i,j = 1,\dots,6$ tali che $U_i \cap U_j \neq \emptyset \quad \varphi_i \circ \varphi_j^{-1} \colon \varphi_j(U_i \cap U_j) \subset \mathbb{R}^2 \to \varphi_i(U_i \cap U_j) \subset \mathbb{R}^2$ 
+        In particolare $\forall i,j = 1,\dots,6$ tali che $U_i \cap U_j \neq \emptyset$ \textcolor{violet}{per il teorema \ref{th:superfici_parametrizzazioni_equivalenti}}
+        
+        $\varphi_i \circ \varphi_j^{-1} \colon \varphi_j(U_i \cap U_j) \subset \mathbb{R}^2 \to \varphi_i(U_i \cap U_j) \subset \mathbb{R}^2$ 
         è diffeomorfismo.
         \end{esempio}
         \newpage
@@ -748,8 +764,10 @@
 
         \color{blu} $\displaystyle \left( \frac{\partial F}{\partial x}(p), \frac{\partial F}{\partial y}(p), \frac{\partial F}{\partial z}(p) \right) \neq \left(0,\, 0, \, 0\right)$ 
         \end{definizione}
-        \begin{proposizione}
+        \begin{proposizione}[\textcolor{violet}{questa prop. definisce una classe di esempi di superfici differenziabili}]
         \label{prop:superficie_di_livello}
+        \mbox{}
+
         Sia $V \subset \mathbb{R}^3$ aperto e sia $F \colon V \to \mathbb{R}$ funzione differenziabile e sia $c \in F(V)$ valore regolare per $F$ allora
         \[ \color{red} S=F^{-1}(c)= \{ (x,y,z) \in V \mid F(x,y,z) = c \} \]
         è una superficie differenziabile detta \textcolor{red}{superficie di livello di $F$}
