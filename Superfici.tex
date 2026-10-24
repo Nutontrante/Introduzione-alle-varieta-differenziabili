@@ -863,7 +863,7 @@
 
         \textcolor{violet}{($A$ aperto connesso)}
         \[ \left(d f \right)_u \colon T_u \mathbb{R}^2 \to T_{f(u)} \mathbb{R}^3 \text{ è un'applicazione lineare ingettiva} \]
-        $T_u f = \left(df\right)_u (T_u \mathbb{R}^2) \subset T_{f(u)} \mathbb{R}^3 \quad \dim T_u f = 2$
+        $T_u f := \left(df\right)_u (T_u \mathbb{R}^2) \subset T_{f(u)} \mathbb{R}^3 \quad \dim T_u f = 2$
 
         \textcolor{blu}{Lo spazio $T_{f(u)} \mathbb{R}^3$ è munito del prodotto scalare }
         \[ \color{blu} \left(f(u) , x \right) \cdot \left(f(u), y\right) = \underbrace{x \cdot y}_{\substack{\text{prodotto} \\ \text{scalare} \\ \text{standard} \\ \text{di } \mathbb{R}^3}} \quad x,y \in \mathbb{R}^3 \]
@@ -873,14 +873,15 @@
         \[ \color{red} I_u \colon T_u f \times T_u f \to \mathbb{R} \quad \text{tale che} \quad \forall X,Y \in T_u f \quad I_u(X,Y) = X \cdot Y \]
         \textcolor{blu}{(prodotto scalare indotto su $T_u f$ dal prodotto scalare definito su $T_{f(u)} \mathbb{R}^3$)} 
 
-        Considerata la base $\left(f_u^1 (u), \, f_u^2 (u)\right)$ di $T_u f$ la matrice associata a $I_u$ rispetto a tale base è 
+        Considerata la base $\left(f_{u^1}(u), \, f_{u^2}(u)\right)$ di $T_u f$ la matrice associata a $I_u$ rispetto a tale base è 
         \[ \color{red} g_u := \left(g_{ij}\right)_{i,j=1,2} = \begin{pmatrix}
             f_{u^1}(u) \cdot f_{u^1}(u) & f_{u^1}(u) \cdot f_{u^2}(u) \\
             f_{u^2}(u) \cdot f_{u^1}(u) & f_{u^2}(u) \cdot f_{u^2}(u)
         \end{pmatrix}  \qquad g_{ij}(u) = f_{u^i}(u) \cdot f_{u^j}(u) \]
         Si osservi che $g_u$ è matrice simmetrica e definita positiva \textcolor{violet}{(conferma che $I_u$ è un prodotto scalare)}.
 
-        Infatti i suoi minori principali sono 
+        \textcolor{violet}{controlliamo che sia efettivamente definita positiva ed un modo per 
+        verificarlo e controllare il segno dei minori principali} infatti i suoi minori principali sono 
 
         $g_{11} = f_{u^1}(u) \cdot f_{u^1}(u) > 0 $ 
 
@@ -912,7 +913,7 @@
         \begin{proof}
         Sia $(e_1,e_2)$ la base canonica di $\mathbb{R}^2 \equiv T_u \mathbb{R}^2$. 
 
-        $\left(d n\right)_u (T_u \mathbb{R}^2)=\langle (dn)_u(e_1), (dn)_u(e_2) \rangle$
+        $\left(d n\right)_u (T_u \mathbb{R}^2)=\langle \, (dn)_u(e_1), (dn)_u(e_2) \, \rangle$
 
         Poniamo \textcolor{red}{$n_{u^i}(u)=(dn)(e_i) \quad i=1,2$}
 
@@ -930,7 +931,11 @@
         \begin{equation}
         \color{red} L_u = - (dn)_u \circ (df)_u^{-1} \colon T_u f \xrightarrow{\qquad} T_u f
         \end{equation}
-        $\forall X \in T_u f \quad L_u(X) = - (dn)_u \left( (df)_u^{-1} (X) \right)$
+        \[ \forall X \in T_u f \qquad L_u(X) = - (dn)_u \left( (df)_u^{-1} (X) \right) \]
+        \textcolor{violet}{Adesso ci ricordiamo che $T_u f$ non è solo un semplice spazio vettoriale euclideo ma è munito di un prodotto
+        scalare definito positivo cioè la prima forma fondamentale e quindi $T_u f$ è uno spazio vettoriale euclideo. }
+
+        \textcolor{violet}{Quando abbiamo un endomorfismo su uno spazio vettoriale euclideo ha senso chiedersi se l'endomorfismo è autoaggiunto}
         \end{definizione}
         \begin{richiamo}[Endomorfismo autoaggiunto]
         \mbox{}
@@ -943,22 +948,10 @@
         \]
         In termini matriciali, fissata una base ortonormale, la matrice $A$ associata a $f$ coincide con la sua trasposta (se $\mathbb{K} = \mathbb{R}$, $A = A^T$) o con la sua trasposta coniugata (se $\mathbb{K} = \mathbb{C}$, $A = A^\dagger$).
         \end{richiamo}
-
-        \begin{richiamo}[Teorema Spettrale - Versione Reale]
-        Sia $V$ uno spazio vettoriale euclideo (reale) di dimensione finita. Un endomorfismo $f: V \to V$ è autoaggiunto se e solo se esiste una base ortonormale di $V$ formata da autovettori per $f$.
-        \newline
-        \textbf{Variante matriciale:} Una matrice quadrata reale $A \in M_n(\mathbb{R})$ è diagonalizzabile tramite una matrice ortogonale se e solo se $A$ è simmetrica ($A = A^T$). In tal caso, tutti gli autovalori di $A$ sono reali.
-        \end{richiamo}
-
-        \begin{richiamo}[Teorema Spettrale - Versione Complessa e Operatori Normali]
-        Sia $V$ uno spazio vettoriale unitario (complesso) di dimensione finita. Un endomorfismo $f: V \to V$ è autoaggiunto se e solo se esiste una base ortonormale di $V$ formata da autovettori per $f$ e tutti gli autovalori di $f$ sono \textbf{reali}.
-        \newline
-        \textbf{Nota bene per il caso complesso:} Più in generale, nel caso complesso il teorema spettrale afferma che un operatore è diagonalizzabile in base ortonormale se e solo se è \emph{normale} (ovvero commuta con il suo aggiunto: $f \circ f^* = f^* \circ f$). Gli operatori autoaggiunti sono una sottoclasse speciale degli operatori normali, caratterizzati dall'avere autovalori unicamente reali.
-        \end{richiamo}
         \newpage
         \begin{teorema}
-        $L_u$ è endomorfismo di $T_u f$ \textcolor{red}{autoaggiunto} \textcolor{blu}{(o simmetrico)} rispetto alla prima forma fondamentale 
-        \textcolor{blu}{(e quindi si potrà applicare il teorema spettrale)} $I_u$
+        $L_u$ è endomorfismo di $T_u f$ \textcolor{red}{autoaggiunto} \textcolor{blu}{(o simmetrico)} rispetto alla prima forma fondamentale $I_u$
+        \textcolor{blu}{(e quindi si potrà applicare il teorema spettrale \textcolor{violet}{risulterà che ammetterà una base ortonormale di autovettori})} 
         
         ovvero $\forall u \in A \quad \forall X,Y \in T_u f$ risulta:
         \begin{equation}
@@ -996,14 +989,14 @@
         \textcolor{red}{seconda forma fondamentale di $f$ in $u$} la forma bilineare simmetrica
         \[ \color{red} \Pi_u \colon T_u f \times T_u f \to \mathbb{R} \qquad \forall X,Y \in T_u f \quad \Pi_u(X,Y) = I_u(L_u(X), Y) \]
         \textcolor{blu}{La simmetria di $\Pi_u$ segue dal fatto che $L_u$ è autoaggiunto rispetto a $I_u$ cioè \eqref{eq:L_u_autoaggiunto}}
-
+        \[ \textcolor{violet}{\underbrace{I_u(L_u(X), \, Y)}_{\Pi_u(X,Y)} = \underbrace{I_u(X, \, L_u(Y))}_{\Pi_u(Y,X)} } \]
         La matrice associata a $\Pi_u$ rispetto alla base $\left(f_{u^1} (u), f_{u^2} (u)\right)$ è 
         \[  h_u = \left(h_{ij}\right)_{i,j=1,2} \qquad h_{ij} (u) = \Pi_u(f_{u^i}(u), f_{u^j}(u)) = I_u(L_u(f_{u^i}(u)), f_{u^j}(u)) = - n_{u^i}(u) \cdot f_{u^j} (u) \]
         \begin{equation}
         \Rightarrow h_{ij}(u) \overset{\eqref{eq:L_u_autoaggiundo_dim_1}}{=} n(u) \cdot f_{u^i u^j}(u)
         \end{equation}
         \end{definizione}
-    \section{Comportamento rispetto a cambiamenti di parametro}
+    \section{Comportamento di \texorpdfstring{$\mathrm{I}_u$ e $L_u$ e $\mathrm{II}_u$}{I\_u, L\_u e II\_u} rispetto a cambiamenti di parametro}
         \begin{proposizione}
         \label{prop:comportamento_cambiamenti_di_parametri_superfici_forme_fondamentali}
         \mbox{}
@@ -1016,7 +1009,7 @@
         \begin{enumerate}
             \item \textcolor{red}{$\tilde{I}_v (X,Y) = I_{\phi(v)} (X,Y)$}
             \item \textcolor{red}{$\tilde{L}_v = \pm L_{\phi(v)}$}
-            \item \textcolor{red}{$\tilde{\Pi}_v(X,Y) =  \pm \Pi_{\phi(v)}(X,Y)$}
+            \item \textcolor{red}{$\widetilde{\Pi}_v(X,Y) =  \pm \Pi_{\phi(v)}(X,Y)$}
         \end{enumerate}
         \end{proposizione}
         \begin{proof}
@@ -1037,8 +1030,8 @@
             \mbox{}
 
             $\begin{aligned}
-                \tilde{\Pi}_v(X,Y) &= \tilde{I}_v ( \tilde{L}_v(X), Y) \\ 
-                &= I_{\phi(v)} ( \pm L_{\phi(v)}(X), \, Y) =  I_{\phi(v)} \left( \pm L_{\phi(v)}(X), \, Y \right) = \pm \Pi_{\phi(v)}(X,Y)
+                \widetilde{\Pi}_v(X,Y) &= \tilde{I}_v ( \tilde{L}_v(X), Y) \\ 
+                &\overset{\textcolor{black}{1. \text{ e } 2.}}{=} I_{\phi(v)} ( \pm L_{\phi(v)}(X), \, Y) = \pm \Pi_{\phi(v)}(X,Y)
             \end{aligned}$
             \end{enumerate}
         \end{proof}
