@@ -28,6 +28,14 @@
         &\iff \rg \left( \left(Jf\right)_u  \right) = 2
         \end{align*}
         \end{definizione}
+        \begin{richiamo}[Identità di Lagrange e norma del prodotto vettoriale]
+        Siano $v, w \in \mathbb{R}^3$ due vettori nello spazio euclideo munito del prodotto scalare standard.
+        Vale la seguente relazione fondamentale:
+        \begin{equation}
+        \label{eq:norma_prodotto_vettoriale}
+        \norm{v \times w}^2 = \norm{v}^2 \norm{w}^2 - (v \cdot w)^2
+        \end{equation}
+        \end{richiamo}
         \newpage
         \begin{definizione}
         Sia  $A \subset \mathbb{R}^2$ aperto connesso e $f \colon A \to \mathbb{R}^3$ superficie regolare.
@@ -201,7 +209,7 @@
         f_{u^1}(u) \cdot f_{u^1}(u) & f_{u^2}(u) \cdot f_{u^1}(u) \\
         f_{u^1}(u) \cdot f_{u^2}(u) & f_{u^2}(u) \cdot f_{u^2}(u)
         \end{pmatrix} \]
-        $\det A(u) = \norm{f_{u^1}(u)}^2 \norm{f_{u^2}(u)}^2 - (f_{u^1}(u) \cdot f_{u^2}(u))^2 \overset{\textcolor{violet}{\substack{\text{proprietà} \\ \text{prodotto} \\ \text{vettoriale}}}}{=} \norm{f_{u^1}(u) \times f_{u^2}(u)}^2 >0$
+        $\det A(u) = \norm{f_{u^1}(u)}^2 \norm{f_{u^2}(u)}^2 - (f_{u^1}(u) \cdot f_{u^2}(u))^2 \overset{\textcolor{violet}{\eqref{eq:norma_prodotto_vettoriale}}}{=} \norm{f_{u^1}(u) \times f_{u^2}(u)}^2 >0$
 
         \textcolor{hotpink}{L'unica soluzione del sistema di Cramer} è data da \textcolor{violet}{(se $Ax=b$ lineare con $\det A \neq 0$
         $\Rightarrow$ l'unica soluzione $\alpha^t=(\alpha_1, \ldots , \alpha_n)$ è data da $\alpha_i=\frac{\det B_i}{\det A}$ dove
@@ -842,7 +850,7 @@
         \end{esempio}
         \begin{esempio}
         \mbox{}
-        
+
         $S^2=\left\{(x,y,z) \in \mathbb{R}^3 \mid x^2+y^2+z^2=1\right\} \quad F \colon \mathbb{R}^3 \to \mathbb{R} \quad F(x,y,z)=x^2+y^2+z^2$
 
         $\left(\frac{\partial F}{\partial x}, \frac{\partial F}{\partial y}, \frac{\partial F}{\partial z}\right) = (2x, 2y, 2z) \neq (0,0,0)$ sui punti di $S^2$.
@@ -851,13 +859,15 @@
         \end{esempio}
     \section{Prima forma fondamentale}
         \begin{definizione}
-        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare e sia $u \in A$.
-        \[ \left\{d f\right\}_u \colon T_u \mathbb{R}^2 \to T_{f(u)} \mathbb{R}^3 \text{ è un'applicazione lineare ingettiva} \]
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare e sia $u \in A$ 
+
+        \textcolor{violet}{($A$ aperto connesso)}
+        \[ \left(d f \right)_u \colon T_u \mathbb{R}^2 \to T_{f(u)} \mathbb{R}^3 \text{ è un'applicazione lineare ingettiva} \]
         $T_u f = \left(df\right)_u (T_u \mathbb{R}^2) \subset T_{f(u)} \mathbb{R}^3 \quad \dim T_u f = 2$
 
-        Lo spazio $T_{f(u)} \mathbb{R}^3$ è munito del prodotto scalare 
-        \[ \left(f(u) , x \right) \cdot \left(f(u), y\right) = \underbrace{x \cdot y}_{\substack{\text{prodotto} \\ \text{scalare} \\ \text{standard} \\ \text{di } \mathbb{R}^3}} \quad x,y \in \mathbb{R}^3 \]
-        Tale prodotto scalare induce un prodotto scalare su $T_u f$
+        \textcolor{blu}{Lo spazio $T_{f(u)} \mathbb{R}^3$ è munito del prodotto scalare }
+        \[ \color{blu} \left(f(u) , x \right) \cdot \left(f(u), y\right) = \underbrace{x \cdot y}_{\substack{\text{prodotto} \\ \text{scalare} \\ \text{standard} \\ \text{di } \mathbb{R}^3}} \quad x,y \in \mathbb{R}^3 \]
+        \textcolor{blu}{Tale prodotto scalare induce un prodotto scalare su $T_u f$}
         
         Si definisce \textcolor{red}{prima forma fondamentale di $f$ in $u$} il prodotto scalare 
         \[ \color{red} I_u \colon T_u f \times T_u f \to \mathbb{R} \quad \text{tale che} \quad \forall X,Y \in T_u f \quad I_u(X,Y) = X \cdot Y \]
@@ -874,7 +884,7 @@
 
         $g_{11} = f_{u^1}(u) \cdot f_{u^1}(u) > 0 $ 
 
-        $\det (g_u) = \norm{f_{u^1}(u)}^2 \norm{f_{u^2}(u)}^2 - (f_{u^1}(u) \cdot f_{u^2}(u))^2 \overset{\substack{\text{proprietà del} \\  \text{prodotto} \\ \text{vettoriale}}}{=} \| f_{u^1}(u) \times f_{u^2}(u) \|^2 > 0 $
+        $\det (g_u) = \norm{f_{u^1}(u)}^2 \norm{f_{u^2}(u)}^2 - (f_{u^1}(u) \cdot f_{u^2}(u))^2 \overset{\textcolor{violet}{\eqref{eq:norma_prodotto_vettoriale}}}{=} \| f_{u^1}(u) \times f_{u^2}(u) \|^2 > 0 $
         \[ \begin{aligned} \forall i,j=1,2 \quad
         g_{ij} & \colon A \to \mathbb{R} \quad \text{è differenziabile} \\
          & \quad u \xmapsto{\quad} g_{ij}(u) = f_{u^i}(u) \cdot f_{u^j}(u)
