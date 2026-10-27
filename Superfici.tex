@@ -1560,5 +1560,92 @@
         \begin{proof}
         \mbox{}
 
-        Sia $X \in T_{u_0}f= \langle f_u(u_0), f_v(u_0) \rangle$.
+        Sia $X \in T_{u_0}f= \langle f_{u^1}(u_0), f_{u^2}(u_0) \rangle \Rightarrow \exists ! (a_1, a_2) \in \mathbb{R}^2 \text{ tale che } X = a_1 f_{u^1}(u_0) + a_2 f_{u^2}(u_0)$.
+
+        Definisco $u \colon \mathbb{R}^2 \to \mathbb{R}^2$ tale che \textcolor{red}{$u(t)=u_0 + t(a_1, a_2)$} $\exists I \subset \mathbb{R}$ 
+        tale che $0 \in I \quad u(I) \subset A$. 
+
+        $c= f \circ u \colon I \to A$ curva su $f$
+
+        $c(0)=f(u(0))=f(u_0)$
+
+        $\begin{aligned}
+        \dot{c}(0) &= (df)_{u_0}(\dot{u}(0)) = (df)_{u_0}(a_1 e_1 + a_2 e_2) \\
+        &= a_1 (df)_{u_0}(e_1) + a_2 (df)_{u_0}(e_2) \\
+        &= a_1 f_{u^1}(u_0) + a_2 f_{u^2}(u_0) = X
+        \end{aligned}$
         \end{proof}
+        \begin{osservazione}
+        Considerato il campo vettoriale normale di Gauss
+        \[ n \colon A \to S^2 \subset \mathbb{R}^3 \]
+        Poniamo $\forall t \in I \quad n(t) = n(u(t))$, definendo in questo modo un
+        campo vettoriale lungo $c$ differenziabile.
+
+        Considerando l'operatore di Weingarten 
+        \[ L_{u_0} \colon T_{u_0}f \to T_{u_0}f \]
+        risulta:
+        \begin{equation}
+        \label{eq:operatore_di_Weingarten_differenziale_della_mappa_di_Gauss}
+            L_{u_0}(X) = - \dot{n}(0)
+        \end{equation}
+        \begin{proof}
+        \[ \begin{aligned}
+            L_{u_0}(X) &= -(dn)_{u_0} \circ (df)^{-1}_{u_0}(X) \\
+                      &= -(dn)_{u_0} \circ (df)^{-1}_{u_0}( \dot{c}(0)) \\
+                      &= -(dn)_{u_0} \circ (df)^{-1}_{u_0}( (df)_{u_0} (\dot{u}(0)) ) \\
+                      &= -(dn)_{u_0} (\dot{u}(0)) \\
+                      &= -\frac{d}{dt} \left(n \circ u\right)_{\restriction t=0} = -\dot{n}(0)
+        \end{aligned} \]
+        Se $c = f \circ u \colon I \to \mathbb{R}^3$ è una curva
+        su $f \colon A \to \mathbb{R}^3$ allora 
+        \[ \color{red} \forall t \in I \quad L_{u(t)}(\dot{c}(t)) = -\dot{n}(t) \]
+        dove $n(t) = n(u(t))$.
+        \end{proof}
+        \end{osservazione}
+        \newpage
+        \begin{proposizione}
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare sia $c = f \circ u \colon I \to \mathbb{R}^3$
+        curva su $f$ con $u \colon I \to A$.
+
+        Poniamo $\forall t \in I \quad n(t)=n(u(t))$ allora:
+        \begin{equation}
+        \label{eq:seconda_forma_fondamentale_curve_su_superficie_1}
+        \color{red} \Pi_{u(t)} (\dot{c}(t), \dot{c}(t)) = \ddot{c}(t) \cdot n(t)
+        \end{equation}
+        Supponiamo $c$ parametrizzata per lunghezza d'arco \textcolor{blu}{($\norm{\dot{c}(t)}=1$)} e fortemente regolare
+        \textcolor{blu}{($\dot{c}(t)$ e $\ddot{c}(t)$ sono linearmente indipendenti)}
+        sia $(e_1, e_2, e_3)$ il riferimento canonico di Frenet e $k(t)>0$ la curvatura di $c$ allora:
+        \begin{equation}
+        \label{eq:seconda_forma_fondamentale_curve_su_superficie_2}
+        \color{red} \Pi_{u(t)} (\dot{c}(t), \dot{c}(t)) = k(t) e_2(t) \cdot n(t)
+        \end{equation}
+        \end{proposizione}
+        \begin{proof}
+        Per quanto osservato prima \eqref{eq:operatore_di_Weingarten_differenziale_della_mappa_di_Gauss} $L_{u(t)}(\dot{c}(t)) = -\dot{n}(t)$ pertanto
+        \[ \begin{aligned}
+            \Pi_{u(t)} (\dot{c}(t), \dot{c}(t)) &= L_{u(t)} (\dot{c}(t)) \cdot \dot{c}(t) \\
+                      &= -\dot{n}(t) \cdot \dot{c}(t)
+        \end{aligned} \]
+        \[ \dot{c}(t) \in T_{u(t)} f \Rightarrow \dot{c}(t) \cdot n(t) = 0 \]
+        Derivando 
+        \[ \ddot{c}(t) \cdot n(t) + \dot{c}(t) \cdot \dot{n}(t) = 0 \]
+        Pertanto 
+        \[ \Pi_{u(t)} (\dot{c}(t), \dot{c}(t)) \textcolor{violet}{= -\dot{n}(t) \cdot \dot{c}(t)} = \ddot{c}(t) \cdot n(t) \]
+        abbiamo dimostrato \eqref{eq:seconda_forma_fondamentale_curve_su_superficie_1}.
+
+        Supponiamo $c$ parametrizzata per lunghezza d'arco e fortemente regolare.
+
+        Se $(e_1, e_2, e_3)$ è il riferimento canonico di Frenet lungo $c$ si ha 
+        
+        $\begin{aligned}
+        &e_1(t)= \dot{c}(t) \\
+        &\dot{c}(t)= \dot{e_1}(t) \overset{\eqref{eq:curva_nello_spazio_parametrizzata_per_lunghezza_darco_1}}{=} k(t) e_2(t)
+        \end{aligned}$
+
+        Pertanto 
+        \[ \Pi_{u(t)} (\dot{c}(t), \dot{c}(t)) = k(t) e_2(t) \cdot n(t) \]
+        \end{proof}
+        \newpage
+        \begin{corollario}[Teorema di Meusnier]
+        
+        \end{corollario}
