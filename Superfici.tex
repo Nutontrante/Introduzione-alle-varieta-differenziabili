@@ -1140,31 +1140,33 @@
         \end{align*}
         \end{proof}
         \newpage
+        \textcolor{violet}{Vediamo degli esempi immediati che ci fanno vedere come 
+        ottenere delle curve su una qualsiasi superficie}
         \begin{esempio}
-        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare sia $u_0 = \left(u_0^1, \, u_0^2\right) \in A$
+        Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare sia \textcolor{blu}{$u_0 = \left(u_0^1, \, u_0^2\right) \in A$}
 
-        definisco \textcolor{black}{$u \colon I \to A \quad u(t)=(u_0^1, t)$} $\quad c_{u_0^1} = f \circ u \colon I \to \mathbb{R}^3$
-
-        \textcolor{red}{$c_{u_0^1}(t) = f(u(t))=c(u_0^1, t) \quad u^1(t)=u_0^1 \quad u^2(t)=t$}
+        definisco \textcolor{cyan}{$u \colon I \to A \quad u(t)=(u_0^1, t)$} \textcolor{violet}{definisce una retta}  
+        
+        $ c_{u_0^1} = f \circ u \colon I \to \mathbb{R}^3 \quad$ \textcolor{red}{$c_{u_0^1}(t) = f(u(t))=c(u_0^1, t) \quad u^1(t)=u_0^1 \quad u^2(t)=t$}
 
         $\Rightarrow \dot{c}_{u_0^1}(t) \overset{\eqref{eq:derivazione_curva_su_una_superficie}}{=} f_{u^2}(u(t))$
 
-        definisco \textcolor{black}{$u \colon I \to A \quad u(t)=(t, u_0^2)$} $\quad c_{u_0^2} = f \circ u \colon I \to \mathbb{R}^3$
-
-        \textcolor{red}{$c_{u_0^2}(t) = f(u(t))=c(t, u_0^2) \quad u^1(t)=t \quad u^2(t)=u_0^2$}
+        definisco \textcolor{orange}{$u \colon I \to A \quad u(t)=(t, u_0^2)$}  \textcolor{violet}{definisce una retta}
+        
+        $c_{u_0^2} = f \circ u \colon I \to \mathbb{R}^3 \quad$ \textcolor{red}{$c_{u_0^2}(t) = f(u(t))=c(t, u_0^2) \quad u^1(t)=t \quad u^2(t)=u_0^2$}
 
         $\Rightarrow \dot{c}_{u_0^2}(t) \overset{\eqref{eq:derivazione_curva_su_una_superficie}}{=} f_{u^2}(u(t))$  
 
-        Le curve $c_{u_0^1}$ e $c_{u_0^2}$ sono dette \textcolor{red}{curve coordinate}
+        Le curve \textcolor{cyan}{$c_{u_0^1}$} e \textcolor{orange}{$c_{u_0^2}$} sono dette \textcolor{red}{curve coordinate}
 
         \begin{center}
         \begin{tikzpicture}[>=Stealth, thick, scale=0.9, transform shape]
 
             % 1. Intervallo I (in basso a sinistra)
-            \draw[thick, blu] (0,0) -- (2,0) node[midway, below] {$I$};
+            \draw[thick, hotpink] (0,0) -- (2,0) node[midway, below] {$I$};
 
             % Freccia u da I al dominio A
-            \draw[->, thick, bend left=15, blu] (1, 0.5) to node[midway, above left] {$u$} (2.5, 2.5);
+            \draw[->, thick, bend left=15, hotpink] (1, 0.5) to node[midway, above left] {$u$} (2.5, 2.5);
 
             % 2. Dominio A in R^2 (Centro)
             % Assi coordinati
@@ -1179,16 +1181,16 @@
             \draw[cyan, thick, dash dot] (5.2, 0.8) -- (5.2, 4.2);   % u^1 = costante
 
             % Etichette nel dominio
-            \node[text=black, scale=0.9] at (3.6, 3.1) {$u_0^2$};
-            \node[text=black, scale=0.9] at (4.8, 1.8) {$u_0^1$};
+            \node[text=orange, scale=0.85] at (3.5, 3.05) {$(t, u_0^2)$};
+            \node[text=cyan, scale=0.85] at (4.7, 2.2) {$(u_0^1, t)$};
             
             % Punto di intersezione u_0
             \coordinate (u0) at (5.2, 2.8);
-            \fill[red] (u0) circle (2pt); 
-            \node[above left, text=red, scale=0.9] at (5.2, 2.8) {$u_0$};
+            \fill[blu] (u0) circle (2pt); 
+            \node[above left, text=blu, scale=0.9] at (5.2, 2.8) {$u_0$};
 
             % Freccia f dal dominio alla superficie
-            \draw[->, thick, bend left=20] (7, 3) to node[midway, below] {$f$} (8.2, 4.2);
+            \draw[->, thick, bend left=40] (6.4, 3.4) to node[midway, below] {$f$} (8.2, 4.2);
 
             % 3. Superficie S in R^3 (Destra)
             % Bordo della superficie (color foglia di tè per contrastare)
@@ -1198,9 +1200,11 @@
 
             % Curve coordinate sulla superficie
             % Immagine della linea ciano (varia u^2, fisso u^1 = u0^1)
-            \draw[cyan, thick, dash dot] (10.5, 0.2) .. controls (10.2, 2) and (9.5, 3.5) .. (8.5, 4.2); 
+            \draw[cyan, thick, dash dot] (10.5, 0.2) .. controls (10.2, 2) and (9.5, 3.5) .. (8.5, 4.2)
+                node[pos=0.18, right=2pt, text=cyan, scale=0.9] {$c_{u_0^1}$}; 
             % Immagine della linea arancione (varia u^1, fisso u^2 = u0^2)
-            \draw[orange, thick, dash dot] (8, 1.8) .. controls (9.5, 2.7) and (11, 2.8) .. (11.6, 2.4);
+            \draw[orange, thick, dash dot] (8, 1.8) .. controls (9.5, 2.7) and (11, 2.8) .. (11.6, 2.4)
+                node[pos=0.15, above left=-1pt, text=orange, scale=0.9] {$c_{u_0^2}$};
 
             % Punto f(u_0) sulla superficie
             \coordinate (fu0) at (9.8, 2.56);
@@ -1208,7 +1212,7 @@
 
             % Vettori tangenti alle curve coordinate
             % f_{u^2} tangente alla curva arancione
-            \draw[->, orange, thick] (fu0) -- (11.5, 2.85) node[above, text=orange, scale=0.9] {$f_{u^2}(u_0)$};
+            \draw[->, orange, thick] (fu0) -- (11.5, 2.85) node[above, text=orange, scale=0.9, xshift=-12pt] {$f_{u^2}(u_0)$};
             % f_{u^1} tangente alla curva ciano
             \draw[->, cyan, thick] (fu0) -- (9.5, 3.8) node[above, text=cyan, scale=0.9] {$f_{u^1}(u_0)$};
 
@@ -1224,6 +1228,8 @@
         \end{esempio}
         \newpage
         \begin{esempio}[Piano]
+        \mbox{}
+
         Consideriamo l'applicazione:
         \[
         \textcolor{red}{f : \mathbb{R}^2 \longrightarrow \mathbb{R}^3, \qquad f(u,v) = x_0 + ux + vy}
