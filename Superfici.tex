@@ -1647,5 +1647,383 @@
         \end{proof}
         \newpage
         \begin{corollario}[Teorema di Meusnier]
-        
+        Sia $c = f \circ u \colon I \to \mathbb{R}^3$ curva su $f$ parametrizzata per lunghezza d'arco e fortemente regolare.
+
+        sia $\theta(t) \in [0, \frac{\pi}{2}]$ l'angolo che $n(t)$ forma con il piano osculatore di $c$ in $c(t)$ allora:
+        \begin{equation}
+        \color{red} \abs{\Pi_{u(t)} (\dot{c}(t), \dot{c}(t))} = k(t) \cos \theta(t)
+        \end{equation}
         \end{corollario}
+        \begin{proof}
+        Poiché la curva giace sulla superficie, si ha:
+        \begin{align*}
+        \dot{c}(t) \in T_{u(t)}f &\implies \dot{c}(t) \cdot n(t) = 0 \\
+        &\implies e_1(t) \cdot n(t) = 0 \\
+        &\implies n(t) \in \langle e_2(t), e_3(t) \rangle \quad (\text{piano normale della curva})
+        \end{align*}
+
+        \begin{center}
+        \begin{tikzpicture}[>=Stealth, thick, scale=1.05]
+            % Bordo della superficie f (in blu/ottanio)
+            \draw[teal!80!black, line width=1pt] 
+                (-3.2, -0.4) .. controls (-2.0, 1.8) and (0.2, 2.3) .. (1.8, 1.5)
+                            .. controls (2.5, 1.0) and (2.8, -0.5) .. (3.5, -0.9)
+                            .. controls (2.2, -1.5) and (1.2, -2.5) .. (-0.5, -1.6)
+                            .. controls (-1.2, -0.7) and (-2.2, -0.4) .. (-3.2, -0.4);
+
+            % Origine del riferimento in c(t)
+            \coordinate (O) at (0,0);
+
+            % Curva c su f (in verde): passa esattamente per (O) ed è tangente a e_1(t)
+            \draw[green!60!black, line width=1.1pt] 
+                (-0.55, -1.25) to[out=65, in=225] (O) to[out=45, in=190] (1.45, 0.9);
+            \draw[->, green!60!black, thin] (2.6, 1.3) node[right, text=green!60!black, scale=0.9] {curva su $f$} to[bend right=15] (1.6, 0.72);
+
+            % Versori di Frenet e_1, e_2, e_3 (in nero)
+            \draw[->, black] (O) -- (0, 1.3) node[left, text=black, scale=0.85] {$e_3(t)$};
+            \draw[->, black] (O) -- (1.3, 0) node[below right, text=black, scale=0.85] {$e_2(t)$};
+            \draw[->, black, dashed] (O) -- (-0.8, -0.8) node[above left, text=black, scale=0.85] {$e_1(t)$};
+
+            % Versore normale alla superficie n(t) (in rosso)
+            \draw[->, red, line width=1.1pt] (O) -- (0.8, 1.0) node[above right, text=red, scale=0.85] {$n(t)$};
+
+            % Arco dell'angolo \vartheta(t)
+            \draw[red, thick] (0.4, 0) arc (0:51.3:0.4);
+            \node[text=red, scale=0.8] at (0.62, 0.25) {$\vartheta(t)$};
+        \end{tikzpicture}
+        \end{center}
+
+        Se $\vartheta(t)$ è l'angolo che $n(t)$ forma con il piano osculatore $\langle e_1(t), e_2(t) \rangle$, allora $\vartheta(t)$ coincide con l'angolo che $n(t)$ forma con il versore $\pm e_2(t)$:
+
+        \begin{center}
+        \begin{tikzpicture}[>=Stealth, thick, scale=0.95]
+            % --- Primo caso (in alto a sinistra): n(t) nel II quadrante ---
+            \begin{scope}[shift={(0,0)}]
+                \draw[->, black] (0,0) -- (1.4,0) node[right, text=black, scale=0.85] {$e_2$};
+                \draw[->, black] (0,0) -- (-1.4,0) node[above left, text=black, scale=0.85] {$-e_2$};
+                \draw[->, black] (0,0) -- (0,1.4) node[above, text=black, scale=0.85] {$e_3$};
+                \draw[->, red, line width=1pt] (0,0) -- (-1.1, 0.8) node[above, text=red, scale=0.85] {$n(t)$};
+                \draw[red] (-0.45,0) arc (180:144:0.45);
+                \node[text=red, scale=0.75] at (-0.7, 0.22) {$\vartheta(t)$};
+            \end{scope}
+
+            % --- Secondo caso (in alto a destra): n(t) nel III quadrante ---
+            \begin{scope}[shift={(5.5,0)}]
+                \draw[->, black] (0,0) -- (1.4,0) node[right, text=black, scale=0.85] {$e_2$};
+                \draw[->, black] (0,0) -- (-1.4,0) node[above left, text=black, scale=0.85] {$-e_2$};
+                \draw[->, black] (0,0) -- (0,1.4) node[above, text=black, scale=0.85] {$e_3$};
+                \draw[->, red, line width=1pt] (0,0) -- (-1.1, -0.8) node[below right, text=red, scale=0.85] {$n(t)$};
+                \draw[red] (-0.45,0) arc (180:216:0.45);
+                \node[text=red, scale=0.75] at (-0.75, -0.22) {$\vartheta(t)$};
+            \end{scope}
+
+            % --- Terzo caso (in basso al centro): n(t) nel IV quadrante ---
+            \begin{scope}[shift={(2.75,-2.7)}]
+                \draw[->, black] (0,0) -- (1.4,0) node[right, text=black, scale=0.85] {$e_2$};
+                \draw[->, black] (0,0) -- (0,1.4) node[above, text=black, scale=0.85] {$e_3$};
+                \draw[->, red, line width=1pt] (0,0) -- (1.1, -0.8) node[right, text=red, scale=0.85] {$n(t)$};
+                \draw[red] (0.45,0) arc (0:-36:0.45);
+                \node[text=red, scale=0.75] at (0.75, -0.2) {$\vartheta(t)$};
+            \end{scope}
+        \end{tikzpicture}
+        \end{center}
+
+        Pertanto si ha:
+        \[
+        \cos\vartheta(t) = \frac{n(t) \cdot (\pm e_2(t))}{\norm{n(t)} \, \norm{\pm e_2(t)}} = n(t) \cdot (\pm e_2(t))
+        \]
+        da cui, ricordando che $\vartheta(t) \in \left[0, \frac{\pi}{2}\right]$ (e quindi $\cos\vartheta(t) \ge 0$), segue:
+        \[
+        \implies \abs{n(t) \cdot e_2(t)} = \abs{\cos\vartheta(t)} = \cos\vartheta(t)
+        \]
+        Pertanto da \eqref{eq:seconda_forma_fondamentale_curve_su_superficie_2} otteniamo:
+        \begin{align*}
+        \abs{\mathrm{II}_{u(t)}\big(\dot{c}(t), \dot{c}(t)\big)} &= \abs{k(t)} \, \abs{e_2(t) \cdot n(t)} \\
+        &= k(t) \cos\vartheta(t)
+        \end{align*}
+        (Si ricordi che $k(t) > 0 \quad \forall t \in I$).
+        \end{proof}
+
+        \begin{osservazione}
+        Se $\vartheta(t) < \frac{\pi}{2}$, allora:
+        \[
+        k(t) = \frac{\abs{\mathrm{II}_{u(t)}\big(\dot{c}(t), \dot{c}(t)\big)}}{\cos\vartheta(t)}
+        \]
+        Se per un certo $t_0$ risulta $\vartheta(t_0) = 0$ (ovvero $n(t_0) = \pm e_2(t_0)$), allora:
+        \[
+        k(t_0) = \abs{\mathrm{II}_{u(t_0)}\big(\dot{c}(t_0), \dot{c}(t_0)\big)}
+        \]
+        e $\mathrm{II}_{u(t_0)}\big(\dot{c}(t_0), \dot{c}(t_0)\big)$ è positiva o negativa a seconda che sia $n(t_0) = \pm e_2(t_0)$.
+        \end{osservazione}
+    \section{Curvatura normale}
+        \begin{definizione}[Piano normale e curva sezione normale]
+        \mbox{}
+
+        Sia $\textcolor{red}{f : A \longrightarrow \mathbb{R}^3}$ una superficie parametrizzata regolare e sia $\textcolor{red}{S = f(A)}$ il supporto di $f$. 
+        
+        Siano $\textcolor{red}{u \in A}$, $\textcolor{red}{p = f(u) \in S}$ e $\textcolor{red}{X \in T_u f}$ tale che $\textcolor{red}{\norm{X} = 1}$.
+
+        Considerato il versore normale $\textcolor{red}{n(u)}$, denotiamo con $\textcolor{red}{\pi}$ il piano passante per $p$ di giacitura generata da $X$ e $n(u)$, si dice che $\pi$ è un \textcolor{red}{piano normale} 
+        alla superficie nel punto $p$.
+
+        Si può verificare che $S \cap \pi$, localmente in $p$, è supporto di una curva regolare $\textcolor{red}{c = f \circ u : I \longrightarrow \mathbb{R}^3}$ parametrizzata per lunghezza d'arco.
+        
+        Se inoltre $p = c(t_0)$, con $t_0 \in I$, e si ha $\dot{c}(t_0) = X$, la curva $c$ è detta \textcolor{red}{curva sezione normale} della superficie $f$ nel punto $p = f(u)$.
+        \end{definizione}
+
+        \begin{center}
+        \begin{tikzpicture}[>=Stealth, thick, scale=1.05]
+            % Piano normale \pi
+            \draw[black, line width=0.8pt] (-1.2, -1.2) -- (0.8, 0.2) -- (0.8, 3.0) -- (-1.2, 1.6) -- cycle;
+            \node[text=black] at (-1.3, 1.8) {$\pi$};
+
+            % Superficie S (in blu/ottanio)
+            \draw[teal!80!black, line width=1pt, dashed] (-1.2, -1.2) .. controls (-1.7, -0.9) and (-1.5, -0.3) .. (-0.3, 1.2);
+            \draw[teal!80!black, line width=1pt] (-0.3, 1.2) .. controls (0.4, 1.0) and (1.2, 0.2) .. (1.6, -0.8)
+                                                .. controls (0.5, -1.3) and (-0.5, -1.3) .. (-1.2, -1.2);
+
+            % Punto p
+            \coordinate (P) at (-0.3, 1.2);
+            \fill[black] (P) circle (1.3pt);
+            \node[below, text=black, scale=0.9] at (-0.28, 1.15) {$p$};
+
+            % Curva sezione normale c (in rosso)
+            \draw[red, line width=1.2pt] (-0.8, -0.5) .. controls (-0.8, 0.5) and (-0.6, 1.2) .. (P);
+            \draw[red, line width=1.1pt, dashed] (P) .. controls (0.0, 1.2) and (0.2, 0.6) .. (0.3, -0.1);
+
+            % Versore normale n (in verde)
+            \draw[->, green!60!black, line width=1pt] (P) -- (-0.3, 2.1) node[right, text=green!60!black, scale=0.9] {$n$};
+
+            % Vettore tangente X (in rosso)
+            \draw[->, red, line width=1pt] (P) -- (0.4, 1.58) node[above right, text=red, scale=0.85] {$X = \dot{c}(t_0) \in T_u f$};
+        \end{tikzpicture}
+        \end{center}
+
+        \begin{osservazione}
+        $c$ è una curva piana, contenuta nel piano $\pi$, che coincide con il suo piano osculatore $\langle e_1(t_0), e_2(t_0) \rangle$, inoltre:
+        \[
+        e_1(t_0) = \dot{c}(t_0) = X
+        \]
+        Poiché $X \in T_u f \implies X \perp n(t_0)$, i vettori $n(t_0)$ e $e_2(t_0)$ appartengono entrambi alla giacitura di $\pi$ e sono entrambi 
+        ortogonali a $e_1(t_0)$, pertanto:
+        \[
+        n(t_0) = \pm e_2(t_0)
+        \]
+        Per il Teorema di Meusnier si ha:
+        \[
+        \textcolor{red}{\abs{\mathrm{II}_u(X,X)} = k(t_0)}
+        \]
+        In particolare, $\textcolor{red}{\mathrm{II}_u(X,X) = \pm k(t_0)}$ a seconda che sia $n(t_0) = \pm e_2(t_0)$.
+
+        Si osservi che la curva è piana e nel riferimento di Frenet $\big(e_1(t_0), e_2(t_0)\big)$, risulta $k(t_0) > 0$. Pertanto $e_2(t_0)$ giace nel semipiano di $\pi$ contenente, almeno localmente in $p$, la curva.
+
+        \begin{center}
+        \begin{tikzpicture}[>=Stealth, thick, scale=1.05]
+            % Piano normale \pi
+            \draw[black, line width=0.8pt] (-1.2, -1.2) -- (0.8, 0.2) -- (0.8, 3.0) -- (-1.2, 1.6) -- cycle;
+            \node[text=black] at (-1.3, 1.8) {$\pi$};
+
+            % Superficie S (in blu/ottanio)
+            \draw[teal!80!black, line width=1pt, dashed] (-1.2, -1.2) .. controls (-1.7, -0.9) and (-1.5, -0.3) .. (-0.3, 1.2);
+            \draw[teal!80!black, line width=1pt] (-0.3, 1.2) .. controls (0.4, 1.0) and (1.2, 0.2) .. (1.6, -0.8)
+                                                .. controls (0.5, -1.3) and (-0.5, -1.3) .. (-1.2, -1.2);
+
+            % Punto p
+            \coordinate (P) at (-0.3, 1.2);
+            \fill[black] (P) circle (1.3pt);
+            \node[above left, text=black, scale=0.9] at (-0.35, 1.2) {$p$};
+
+            % Curva sezione normale c (in rosso)
+            \draw[red, line width=1.2pt] (-0.8, -0.5) .. controls (-0.8, 0.5) and (-0.6, 1.2) .. (P);
+            \draw[red, line width=1.1pt, dashed] (P) .. controls (0.0, 1.2) and (0.2, 0.6) .. (0.3, -0.1);
+
+            % Versore normale n (in verde)
+            \draw[->, green!60!black, line width=1pt] (P) -- (-0.3, 2.3) node[right, text=green!60!black, scale=0.9] {$n$};
+
+            % Versore e_2(t_0) (in nero, verso il basso)
+            \draw[->, black, line width=0.9pt] (P) -- (-0.3, 0.35) node[below, text=black, scale=0.8] {$e_2(t_0)$};
+
+            % Vettore tangente X (in rosso)
+            \draw[->, red, line width=1pt] (P) -- (0.4, 1.68) node[above right, text=red, scale=0.85] {$X = \dot{c}(t_0) \in T_u f$};
+        \end{tikzpicture}
+        \end{center}
+        \end{osservazione}
+
+        \begin{definizione}[Curvatura normale]
+        Sia $\textcolor{red}{f : A \longrightarrow \mathbb{R}^3}$ una superficie regolare, e siano $u \in A$ e $\textcolor{red}{X \in T_u f}$ con $\textcolor{red}{\norm{X} = 1}$.
+        
+        Si definisce \textcolor{red}{curvatura normale di $f$ in $u$ nella direzione $\pm X$} il numero reale:
+        \[
+        \textcolor{red}{k(X) = \mathrm{II}_u(X,X) = \mathrm{II}_u(-X,-X) = k(-X)}
+        \]
+        \end{definizione}
+
+        \begin{osservazione}
+        Per quanto detto in precedenza, la curvatura normale di $f$ in $u$ nella direzione $\pm X$ coincide in valore assoluto con la curvatura della curva $c$ su $f$ ottenuta come sezione normale della superficie nel punto $f(u)$.
+        La curvatura normale è positiva o negativa a seconda che sia $n(t_0) = \pm e_2(t_0)$.
+        \end{osservazione}
+
+        \begin{esempio}[Piano]
+        \mbox{}
+
+            Considerata la parametrizzazione del piano:
+            \[
+            \textcolor{red}{f : \mathbb{R}^2 \longrightarrow \mathbb{R}^3, \qquad f(u,v) = x_0 + ux + vy}
+            \]
+            è stato visto che $\forall (u,v) \in \mathbb{R}^2$ si ha $\mathrm{II}_{(u,v)} = 0$.
+            
+            Pertanto, per ogni $X \in T_{(u,v)}f$ con $\norm{X} = 1$:
+            \[
+            k(X) = \mathrm{II}_{(u,v)}(X,X) = 0
+            \]
+            La curvatura normale è $0$ e le curve sezioni normali sono rette.
+        \end{esempio}
+        \begin{esempio}[Sfera]
+        \mbox{}
+
+            Per la sfera, calcoliamo le \textcolor{red}{curvature normali}: poiché per ogni $(u,v) \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right) \times \mathbb{R}$ risulta
+            
+            $\mathrm{II}_{(u,v)} = \mathrm{I}_{(u,v)}$, segue che per ogni $X \in T_{(u,v)}f$ con $\norm{X} = 1$:
+            \[
+            k(X) = \mathrm{II}_{(u,v)}(X,X) = \mathrm{I}_{(u,v)}(X,X) = \norm{X}^2 = 1
+            \]
+            Le curve sezioni normali sono circonferenze di raggio massimo.
+        \end{esempio}
+
+    \section{Curvature principali}
+
+        \noindent \textbf{Premesse su forme bilineari simmetriche.}
+
+        Sia $\textcolor{red}{(V,g)}$ uno spazio vettoriale euclideo con $\dim_{\mathbb{R}} V = 2$, e sia $\textcolor{red}{L : V \longrightarrow V}$ un endomorfismo \textcolor{red}{simmetrico} (o autoaggiunto), ovvero tale che:
+        \[
+        \forall v, w \in V \qquad g\big(L(v), w\big) = g\big(v, L(w)\big)
+        \]
+        Per il \textcolor{red}{teorema spettrale}, $L$ ammette una \textcolor{red}{base ortonormale $(v_1, v_2)$} formata da \textcolor{red}{autovettori} di $L$.
+        
+        Denotiamo con $\textcolor{red}{k_1, k_2} \in \mathbb{R}$ i relativi autovalori e supponiamo $k_1 \le k_2$.
+
+        Si consideri ora l'applicazione:
+        \[
+        \textcolor{red}{b : V \times V \longrightarrow \mathbb{R}} \quad \text{t.c.} \quad \textcolor{red}{b(v,w) = g\big(L(v), w\big) \quad \forall v, w \in V}
+        \]
+        $b$ è una forma bilineare simmetrica su $V$. 
+
+        $V$ è uno spazio metrico, munito della topologia che rende $V$ omeomorfo a $\mathbb{R}^2$ mediante l'applicazione:
+        \[
+        \alpha v_1 + \beta v_2 \in V \stackrel{\rho}{\longmapsto} (\alpha, \beta) \in \mathbb{R}^2
+        \]
+        L'insieme
+        \[
+        \textcolor{red}{V_1 = \big\{ v \in V \;\big|\; \norm{v} = 1 \big\}}
+        \]
+        è un compatto di $V$ omeomorfo alla circonferenza:
+        \[
+        S^1 = \big\{ (\alpha, \beta) \in \mathbb{R}^2 \;\big|\; \alpha^2 + \beta^2 = 1 \big\}
+        \]
+        \newpage
+        \begin{proposizione}
+        Consideriamo l'applicazione data dalla restrizione a $V_1$ della forma quadratica associata a $b$:
+        \[
+        \textcolor{red}{v \in V_1 \longmapsto b(v,v) = g\big(L(v), v\big) \in \mathbb{R}}
+        \]
+        Essa è continua su un compatto e quindi ammette un minimo e un massimo. Si verifica che il \textcolor{red}{minimo} e il \textcolor{red}{massimo}
+         coincidono con gli autovalori $\textcolor{red}{k_1}$ e $\textcolor{red}{k_2}$ di $L$, ovvero:
+        \begin{align*}
+        k_1 &= \min \big\{ b(v,v) \;\big|\; \norm{v} = 1 \big\} \\[4pt]
+        k_2 &= \max \big\{ b(v,v) \;\big|\; \norm{v} = 1 \big\}
+        \end{align*}
+        \end{proposizione}
+
+        \begin{proof}
+        Infatti, consideriamo $v \in V_1$, con $v = \alpha v_1 + \beta v_2$. Poiché $(v_1, v_2)$ è una base ortonormale:
+        \[
+        \norm{v} = 1 \implies \alpha^2 + \beta^2 = 1 \implies \exists \vartheta \in [0, 2\pi] \quad \text{t.c.} \quad \alpha = \cos\vartheta, \quad \beta = \sin\vartheta
+        \]
+        Dunque $v = \cos\vartheta \, v_1 + \sin\vartheta \, v_2$, calcoliamo $b(v,v)$:
+        \begin{align*}
+        b(v,v) &= g\big(L(v), v\big) \\
+        &= g\big(L(\cos\vartheta \, v_1 + \sin\vartheta \, v_2), \, v\big) \\
+        &= g\big(\cos\vartheta \, L(v_1) + \sin\vartheta \, L(v_2), \, v\big) \\
+        &= g(\cos\vartheta \, k_1 v_1 + \sin\vartheta \, k_2 v_2, \, \cos\vartheta \, v_1 + \sin\vartheta \, v_2) \\
+        &\overset{\textcolor{blu}{\substack{(v_1, v_2) \\ \text{ è base} \\ \text{ortonormale}}}}{=} k_1 \cos^2\vartheta + k_2 \sin^2\vartheta
+        \end{align*}
+        Abbiamo quindi la composizione:
+        \[
+        \begin{array}{ccccc}
+        V_1 & \xrightarrow{\text{omeomorfismo}} & S^1 & \xrightarrow{\text{continua}} & \mathbb{R} \\[6pt]
+        v = \cos\vartheta \, v_1 + \sin\vartheta \, v_2 & \longmapsto & (\cos\vartheta, \sin\vartheta) & \longmapsto & k_1 \cos^2\vartheta + k_2 \sin^2\vartheta
+        \end{array}
+        \]
+        Il valore minimo e il valore massimo della funzione $k_1 \cos^2\vartheta + k_2 \sin^2\vartheta$ sono rispettivamente $k_1$ e $k_2$ (avendo supposto $k_1 \le k_2$).
+        \end{proof}
+
+        \newpage
+        Sia ora $\textcolor{red}{f : A \longrightarrow \mathbb{R}^3}$ una superficie parametrizzata regolare e sia $\textcolor{red}{u \in A}$.
+        \begin{itemize}
+            \item $\textcolor{red}{(T_u f, \mathrm{I}_u)}$ è uno spazio vettoriale euclideo di dimensione $2$.
+            \item $\textcolor{red}{L_u : T_u f \longrightarrow T_u f}$ è un endomorfismo autoaggiunto rispetto al prodotto scalare $\mathrm{I}_u$.
+            \item La seconda forma fondamentale è definita da:
+            \[
+            \textcolor{red}{\mathrm{II}_u : T_u f \times T_u f \longrightarrow \mathbb{R}, \qquad \mathrm{II}_u(X,Y) = \mathrm{I}_u\big(L_u(X), Y\big)}
+            \]
+        \end{itemize}
+        Poniamo:
+        \[
+        \textcolor{red}{S_u^1 f = \big\{ X \in T_u f \;\big|\; \norm{X} = 1 \big\}}
+        \]
+
+        \begin{definizione}[Funzione di curvatura normale]
+        \mbox{}
+
+        Si definisce \textcolor{red}{funzione di curvatura normale} di $f$ in $u$ la restrizione 
+        a $S_u^1 f$ della forma quadratica associata a $\mathrm{II}_u$, ovvero l'applicazione:
+        \[
+        \textcolor{red}{k : S_u^1 f \longrightarrow \mathbb{R}}
+        \]
+        \[
+        \textcolor{red}{\forall X \in T_u f, \; \norm{X} = 1 \qquad k(X) = \mathrm{II}_u(X,X) = \mathrm{I}_u\big(L_u(X), X\big)}
+        \]
+        \end{definizione}
+
+        Se $k_1(u), k_2(u)$ sono gli autovalori di $L_u$ con $k_1(u) \le k_2(u)$, allora per quanto visto nelle premesse
+         $k_1(u)$ e $k_2(u)$ sono rispettivamente il minimo e il massimo della funzione di curvatura normale di $f$ in $u$.
+        \newpage
+        \begin{definizione}[Curvature principali e direzioni principali di curvatura]
+        \mbox{}
+
+        $\textcolor{red}{k_1(u)}$ e $\textcolor{red}{k_2(u)}$ prendono il nome di \textcolor{red}{curvature principali di $f$ in $u$}.
+
+        Se $X_1, X_2 \in S_u^1 f$ sono autovettori relativi agli autovalori $k_1(u)$ e $k_2(u)$, allora $X_1$ e $X_2$ prendono il nome di \textcolor{red}{direzioni principali di curvatura (D.P.C.)}.
+        \end{definizione}
+
+        \begin{osservazione}
+        Si possono presentare due possibilità:
+        \begin{enumerate}
+            \item[\textcolor{red}{\text{1)}}] $\textcolor{red}{k_1(u) = k_2(u) = k(u)}$
+            \[
+            \implies \mathrm{II}_u = k(u)\,\mathrm{I}_u, \qquad L_u = k(u)\,\mathrm{id}_{T_u f}
+            \]
+            Ogni vettore $X \in T_u f$, con $\norm{X} = 1$, è autovettore di $L_u$ con autovalore $k(u)$. In particolare, $\forall X \in T_u f$ con $\norm{X} = 1$, $X$ è una D.P.C.
+            
+            \item[\textcolor{red}{\text{2)}}] $\textcolor{red}{k_1(u) < k_2(u)}$
+            
+            Se $(X_1, X_2)$ è una base ortonormale di autovettori con $L_u(X_1) = k_1(u)X_1$ e $L_u(X_2) = k_2(u)X_2$, allora $\mathrm{II}_u$ non è proporzionale a $\mathrm{I}_u$. Esistono esattamente $2$ (a meno del segno) direzioni principali di curvatura ortogonali tra loro.
+        \end{enumerate}
+        \end{osservazione}
+    \section{Tipologie di punti su una superficie}
+        \begin{definizione}[Punto ombelicale e punto planare]
+        \mbox{}
+
+        Un punto $\textcolor{red}{u \in A}$ si dice \textcolor{red}{ombelicale} per la superficie $f$ se $\textcolor{red}{k_1(u) = k_2(u)}$.
+
+        Si dice inoltre che $u$ è \textcolor{red}{planare} se $\textcolor{red}{k_1(u) = k_2(u) = 0}$.
+        \end{definizione}
+
+        \begin{esempio}
+        \mbox{}
+        
+        \begin{itemize}
+            \item Il piano ha tutti i punti ombelicali planari $\big(L_{(u,v)} = 0\big)$.
+            \item La sfera ha tutti i punti ombelicali non planari $\big(L_{(u,v)} = \mathrm{id}_{T_{(u,v)}f}\big)$.
+        \end{itemize}
+        \end{esempio}
