@@ -929,6 +929,7 @@
         \[ \color{red} T_u f \xrightarrow{\quad  (df)_u^{-1} \quad}  T_u \mathbb{R}^2 \xrightarrow{\quad (dn)_u \quad} T_u f \]
         Si definisce \textcolor{red}{operatore di Weingarten} (o operatore forma) di \textcolor{red}{$f$ in $u$} l'endomorfismo 
         \begin{equation}
+        \label{eq:definizione_operatore_di_Weingarten}
         \color{red} L_u = - (dn)_u \circ (df)_u^{-1} \colon T_u f \xrightarrow{\qquad} T_u f
         \end{equation}
         \[ \forall X \in T_u f \qquad L_u(X) = - (dn)_u \left( (df)_u^{-1} (X) \right) \]
@@ -1157,7 +1158,7 @@
 
         $\Rightarrow \dot{c}_{u_0^2}(t) \overset{\eqref{eq:derivazione_curva_su_una_superficie}}{=} f_{u^2}(u(t))$  
 
-        Le curve \textcolor{cyan}{$c_{u_0^1}$} e \textcolor{orange}{$c_{u_0^2}$} sono dette \textcolor{red}{curve coordinate}
+        Le curve \textcolor{cyan}{$c_{u_0^1}$} e \textcolor{orange}{$c_{u_0^2}$} sono dette \textcolor{red}{curve coordinate alla superficie $f$}
 
         \begin{center}
         \begin{tikzpicture}[>=Stealth, thick, scale=0.9, transform shape]
@@ -1239,17 +1240,22 @@
         Calcoliamo le derivate parziali e il versore normale:
         \[ f_u(u,v) = x, \qquad f_v(u,v) = y \]
         \[ n(u,v) = \frac{x \times y}{\|x \times y\|} \]
-        La matrice associata alla prima forma fondamentale è:
+        La matrice associata alla prima forma fondamentale rispetto alla base $\left\{f_u (u,v),\, f_v (u,v)\right\}$ è:
         \[ g_{(u,v)} = 
         \begin{pmatrix}
         \|x\|^2 & x \cdot y \\[6pt]
         x \cdot y & \|y\|^2
         \end{pmatrix}\]
         Poiché $n(u,v)$ è costante, si ha:
-        \[  (dn)_{(u,v)} = 0 \implies L_{(u,v)} = -(dn)_{(u,v)} \circ (df)_{(u,v)}^{-1} = 0 \]
+        \[  (dn)_{(u,v)} = 0 \Rightarrow L_{(u,v)} \overset{\eqref{eq:definizione_operatore_di_Weingarten}}{=} -(dn)_{(u,v)} \circ (df)_{(u,v)}^{-1} = 0 \]
+        \textcolor{violet}{poiché $L_{(u,v)}$ è autoaggiunto e quindi diagonalizzabile per \eqref{eq:L_u_autoaggiunto} 
+        so anche che gli autovalori dell'operatore di Weingarten sono nulli quindi la seconda forma fondamentale si annulla}
+        \[ \Rightarrow \Pi_{(u,v)} = \textcolor{violet}{\Pi_{(u,v)}(X,Y)= I_{(u,v)} \left( L_{u,v}(X), Y \right)} =0 \]
         Di conseguenza, la matrice associata alla seconda forma fondamentale è nulla:
         \[ h_{(u,v)} = 0 \]
-        Determiniamo le curve coordinate. Fissato $(u_0, v_0) \in \mathbb{R}^2$, si ha:
+        Determiniamo le curve coordinate. 
+        
+        Fissato $(u_0, v_0) \in \mathbb{R}^2$, si ha:
         \begin{itemize}
             \item $\textcolor{red}{c_{u_0} : \mathbb{R} \longrightarrow \mathbb{R}^3}$ definita da:
             \[
@@ -1278,10 +1284,12 @@
             \coordinate (fuv) at (1.7, 1.5);
             
             % Retta con giacitura x (arancione/ambra)
-            \draw[amber, thick] ($(fuv) - 1.2*(1.5, -0.2)$) -- ($(fuv) + 0.8*(1.5, -0.2)$);
+            \draw[amber, thick] ($(fuv) - 1.2*(1.5, -0.2)$) -- ($(fuv) + 0.8*(1.5, -0.2)$)  
+             node[pos=0.18, right=2pt, text=cyan, scale=0.9, yshift=-12pt] {$c_{u_0}$};
             
             % Retta con giacitura y (azzurra)
-            \draw[cyan, thick] ($(fuv) - 1.5*(1.0, 0.5)$) -- ($(fuv) + 0.7*(1.0, 0.5)$);
+            \draw[cyan, thick] ($(fuv) - 1.5*(1.0, 0.5)$) -- ($(fuv) + 0.7*(1.0, 0.5)$)
+             node[pos=0.18, right=2pt, text=amber, scale=0.9, yshift=32pt] {$c_{v_0}$};
             
             % Pallino su f(u_0, v_0)
             \fill[red] (fuv) circle (1.8pt);
@@ -1294,6 +1302,8 @@
         \end{esempio}
         \newpage
         \begin{esempio}[Parametrizzazione della sfera privata dei poli]
+        \mbox{}
+
         Consideriamo la seguente parametrizzazione:
         \[
         \textcolor{red}{f : \left(-\frac{\pi}{2}, \frac{\pi}{2}\right) \times \mathbb{R} \longrightarrow \mathbb{R}^3}
@@ -1363,7 +1373,7 @@
             \fill[red] (P) circle (1.5pt) node[above right] {$P$};
 
             % Etichette esterne con frecce
-            \node[red, right] at (2.2, 2.2) {$P = f(u,v)$};
+            \node[red, right] at (1.2, 2.2) {$P(x,y,z) = f(u,v)$};
             \draw[->, green!60!black, thin] (1.3, 0.5) to[bend left=20] (2.2, 0.8) node[right, scale=0.85] {$z = \sin u$};
             \draw[->, orange!80!black, thin] (1.45, -0.45) to[bend right=15] (2.2, -0.45) node[right, scale=0.85] {$x = \cos u \cos v$};
         \end{tikzpicture}
@@ -1508,17 +1518,12 @@
             \coordinate (O) at (0,0);
             \coordinate (P) at (1.0, 1.0);
             \coordinate (Pxy) at (1.0, -0.6);
-
-            \draw[amber, thick] (O) -- (Pxy);
-            \draw[green!60!black, thick] (Pxy) -- (P);
-            \draw[red, thick] (O) -- (P) node[above right, scale=0.9] {$P$};
-
             % Parallelo (u = costante, in verde)
             \draw[green!50!black, thick] (-1.45, 1.38) arc (190:350:1.45 and 0.35);
             \draw[green!50!black, dashed, thin] (1.45, 1.38) arc (10:170:1.45 and 0.35);
             
             % Vettore tangente f_v
-            \draw[->, green!50!black, line width=1.1pt] (0, 1.03) -- (0.65, 1.08) node[above left, scale=0.85] {$f_v$};
+            \draw[->, green!50!black, line width=1.1pt] (0, 1.09) -- (0.65, 1.14) node[above left, scale=0.85] {$f_v(u,t)$};
 
             % Meridiano (v = costante, in magenta/viola)
             \draw[magenta!80!black, line width=1.1pt] (0,2) arc (90:270:0.75 and 2);
@@ -1526,7 +1531,7 @@
             % Vettore tangente f_u
             \coordinate (Pm) at (-0.75, 0);
             \fill[red] (Pm) circle (1.3pt);
-            \draw[->, magenta!80!black, line width=1.1pt] (Pm) -- (-0.75, 1.4) node[midway, left, scale=0.85] {$f_u$};
+            \draw[->, magenta!80!black, line width=1.1pt] (Pm) -- (-0.75, 1.4) node[midway, left, scale=0.85] {$f_u(t,v)$};
 
             % Annotazioni con frecce
             \node[green!50!black, align=left, scale=0.85] at (-1.8, 2.3) {$u = \text{costante}$ \\ $\norm{f_v} = \cos u$};
