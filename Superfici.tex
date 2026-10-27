@@ -1058,18 +1058,20 @@
     \section{Curve su una superficie}
         \begin{definizione}
         Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare, si definisce
-        \textcolor{red}{curva su $f$} una curva parametrizzata $c \colon I \to \mathbb{R}^3$ con $I$ intervallo aperto tale che 
-        esiste $u \colon I \to A$ applicazione differenziabile tale che \textcolor{red}{$c= f \circ u$}
-
-        Pertanto il supporto di $c$ è contenuto nel supporto di $f$
-        \[ c(I)=f(u(I)) \subset f(A) \]
+        \textcolor{red}{curva su $f$} una curva parametrizzata \textcolor{red}{$c \colon I \to \mathbb{R}^3$} con $I$ intervallo aperto tale che 
+        \textcolor{red}{$\exists u \colon I \to A$} applicazione differenziabile
+        tale che \textcolor{red}{$c= f \circ u$}
         \end{definizione}
+        \begin{osservazione}
+        Se $c$ è una curva su una superficie parametrizzata $f$ il supporto di $c$ è contenuto nel supporto di $f$
+        \[ \supp(c)=c(I)=f(u(I)) \subset f(A)= \supp(f) \]
+        \end{osservazione}
         \begin{osservazione}
         $u \colon I \to A \subset \mathbb{R}^2$ è parametrizzazione di una curva piana.
         \begin{center}
         \begin{tikzpicture}[>=Stealth, thick]
             % 1. Intervallo I
-            \draw (0,0) -- (2.5,0) node[midway, below=3pt] {$I$};
+            \draw (0,0) -- (2.5,0) node[midway, below=10pt] {$I \subset \mathbb{R}$};
             
             % Punto t sull'intervallo I
             \coordinate (t) at (1,0);
@@ -1077,7 +1079,7 @@
 
             % 2. Dominio A (aperto in R^2)
             \draw plot[smooth cycle, tension=0.7] coordinates {(3.5,1.5) (5.5,1.3) (6,2.5) (4.5,3.2) (3.2,2.5)};
-            \node at (4.5, 3.5) {$A$};
+            \node at (4.5, 3.5) {$A \subset \mathbb{R}^2$};
 
             % Curva u(I) dentro A
             \draw[red] plot[smooth, tension=1] coordinates {(3.8, 2.5) (4.5, 2.2) (5.3, 1.7)};
@@ -1090,6 +1092,7 @@
             \draw (7.7,1) .. controls (9.5,0.5) and (10.5,1) .. (11.5,1.5)
                         .. controls (11,2.8) and (10,3.5) .. (9.5,3.8)
                         .. controls (8.5,3.5) and (7.5,2.5) .. (7.7,1);
+            \node at (8.3,3.5) {$\mathbb{R}^3$};
 
             % Curva c(I) sulla superficie
             \draw[red] (8.8, 3) .. controls (9.5, 2.8) and (9.8, 2) .. (10.8, 1.5);
@@ -1121,12 +1124,18 @@
         \label{eq:derivazione_curva_su_una_superficie}
         \color{red} \forall t \in I \quad \dot{c}(t)= \sum_{i=1}^2 \dot{u}^i(t) f_{u^i}(u(t)) \in T_{u(t)} f
         \end{equation}
+        \textcolor{violet}{Posso considerare il vettore tangente alla curva $\dot{c}(t)$ ma posso considerare anche 
+        i $2$ vettori $f_{u^i}(u(t))$ che generano lo spazio tangente nel punto $u(t)$ alla superficie $f$ cioè $T_{u(t)}f$}
+
+        \textcolor{violet}{$\dot{c}(t)$ è combinazione lineare dei vettori $f_{u^i}(u(t))$ per $i=1,2$ e quindi vive nello
+        spazio tangente alla superficie $f$ nel punto $u(t)$, cioè $T_{u(t)}f$ quindi $\dot{c}(t)$ e $f_{u^i}(u(t))$ 
+        sono linearmente dipendenti e stanno nello stesso spazio vettoriale di dimensione $2$}
         \end{proposizione}
         \begin{proof}
         \mbox{}
 
         \begin{align*}
-        \dot{c}(t) &= (df)_{u(t)} \left(\dot{u} (t)\right) = (df)_{u(t)} \left(\sum_{i=1}^2 \dot{u}^i (t) e_i\right) \\
+        \dot{c}(t) &\overset{\eqref{eq:differenziale_con_derivate_parziali}}{=} (df)_{u(t)} \left(\dot{u} (t)\right) = (df)_{u(t)} \left(\sum_{i=1}^2 \dot{u}^i (t) e_i\right) \\
         &=\sum_{i=1}^2 \dot{u}^i (t) (df)_{u(t)} (e_i) = \sum_{i=1}^2 \dot{u}^i(t) f_{u^i}(u(t))
         \end{align*}
         \end{proof}
@@ -1889,7 +1898,6 @@
             \]
             Le curve sezioni normali sono circonferenze di raggio massimo.
         \end{esempio}
-
     \section{Curvature principali}
 
         \noindent \textbf{Premesse su forme bilineari simmetriche.}
@@ -2021,7 +2029,7 @@
 
         \begin{esempio}
         \mbox{}
-        
+
         \begin{itemize}
             \item Il piano ha tutti i punti ombelicali planari $\big(L_{(u,v)} = 0\big)$.
             \item La sfera ha tutti i punti ombelicali non planari $\big(L_{(u,v)} = \mathrm{id}_{T_{(u,v)}f}\big)$.

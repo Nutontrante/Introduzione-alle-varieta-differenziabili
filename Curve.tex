@@ -343,9 +343,11 @@
         \textcolor{red}{$F^i = \pi^i \circ F : A \to \mathbb{R}$} per $i=1,\ldots,m$ dove $\pi^i: \mathbb{R}^m \to \mathbb{R}$ è la proiezione 
         $i$-esima 
 
-        Se $F$ è differenziabile in $\displaystyle x_0 \in A \overset{\textcolor{violet}{\substack{\text{dim in} \\ \text{analisi 3} }}}{\Rightarrow} \forall i=1,\ldots,m \quad \forall j=1,\ldots,n \quad$ \scalebox{1.6}{$\exists$} 
-        $\displaystyle \frac{\partial F^i}{\partial x_j}(x_0) \textcolor{violet}{= dF^i_{x_0}(e_j)}$ \textcolor{blu}{(le $F^i$ 
-        sono parzialmente differenziabili in $x_0$)}
+        \begin{equation} 
+        \label{eq:differenziale_con_derivate_parziali}
+        \text{ Se } F \text{ è diff. in } x_0 \in A \overset{\textcolor{violet}{\substack{\text{dim in} \\ \text{analisi 3} }}}{\Rightarrow} \forall i=1,\ldots,m \quad \forall j=1,\ldots,n \quad \exists \frac{\partial F^i}{\partial x_j}(x_0) \textcolor{violet}{= dF^i_{x_0}(e_j)} 
+        \end{equation}
+        \textcolor{blu}{(le $F^i$ sono parzialmente differenziabili in $x_0$)}
         
         Si definisce \textcolor{red}{matrice Jacobiana di $F$ in $x_0$} la matrice 
         \[ \textcolor{red}{\text{\scalebox{1.4}{\text{$J_F(x_0)$}}}} = \begin{pmatrix} \frac{\partial F^1}{\partial x_1}(x_0) & \ldots & \frac{\partial F^1}{\partial x_n}(x_0) \\
