@@ -1695,7 +1695,7 @@
         \newpage
         \begin{corollario}[Teorema di Meusnier]
         \mbox{}
-        
+
         Sia $c = f \circ u \colon I \to \mathbb{R}^3$ curva su $f$ parametrizzata per lunghezza d'arco e fortemente regolare.
 
         sia $\theta(t) \in [0, \frac{\pi}{2}]$ l'angolo che $n(t)$ forma con il piano osculatore di $c$ in $c(t)$ allora:
@@ -1704,11 +1704,13 @@
         \end{equation}
         \end{corollario}
         \begin{proof}
+        \mbox{}
+
         Poiché la curva giace sulla superficie, si ha:
         \begin{align*}
         \dot{c}(t) \in T_{u(t)}f &\implies \dot{c}(t) \cdot n(t) = 0 \\
         &\implies e_1(t) \cdot n(t) = 0 \\
-        &\implies n(t) \in \langle e_2(t), e_3(t) \rangle \quad (\text{piano normale della curva})
+        &\implies n(t) \in \langle e_1(t) \rangle^\perp= \langle e_2(t), e_3(t) \rangle \quad (\text{piano normale della curva})
         \end{align*}
 
         \begin{center}
@@ -1738,11 +1740,11 @@
 
             % Arco dell'angolo \vartheta(t)
             \draw[red, thick] (0.4, 0) arc (0:51.3:0.4);
-            \node[text=red, scale=0.8] at (0.62, 0.25) {$\vartheta(t)$};
+            \node[text=red, scale=0.8] at (0.62, 0.25) {$\theta(t)$};
         \end{tikzpicture}
         \end{center}
 
-        Se $\vartheta(t)$ è l'angolo che $n(t)$ forma con il piano osculatore $\langle e_1(t), e_2(t) \rangle$, allora $\vartheta(t)$ coincide con l'angolo che $n(t)$ forma con il versore $\pm e_2(t)$:
+        Se $\theta(t)$ è l'angolo che $n(t)$ forma con il piano osculatore $\langle e_1(t), e_2(t) \rangle$, allora $\theta(t)$ coincide con l'angolo che $n(t)$ forma con il versore $\pm e_2(t)$:
 
         \begin{center}
         \begin{tikzpicture}[>=Stealth, thick, scale=0.95]
@@ -1753,7 +1755,7 @@
                 \draw[->, black] (0,0) -- (0,1.4) node[above, text=black, scale=0.85] {$e_3$};
                 \draw[->, red, line width=1pt] (0,0) -- (-1.1, 0.8) node[above, text=red, scale=0.85] {$n(t)$};
                 \draw[red] (-0.45,0) arc (180:144:0.45);
-                \node[text=red, scale=0.75] at (-0.7, 0.22) {$\vartheta(t)$};
+                \node[text=red, scale=0.75] at (-0.7, 0.22) {$\theta(t)$};
             \end{scope}
 
             % --- Secondo caso (in alto a destra): n(t) nel III quadrante ---
@@ -1763,7 +1765,7 @@
                 \draw[->, black] (0,0) -- (0,1.4) node[above, text=black, scale=0.85] {$e_3$};
                 \draw[->, red, line width=1pt] (0,0) -- (-1.1, -0.8) node[below right, text=red, scale=0.85] {$n(t)$};
                 \draw[red] (-0.45,0) arc (180:216:0.45);
-                \node[text=red, scale=0.75] at (-0.75, -0.22) {$\vartheta(t)$};
+                \node[text=red, scale=0.75] at (-0.75, -0.22) {$\theta(t)$};
             \end{scope}
 
             % --- Terzo caso (in basso al centro): n(t) nel IV quadrante ---
@@ -1772,33 +1774,33 @@
                 \draw[->, black] (0,0) -- (0,1.4) node[above, text=black, scale=0.85] {$e_3$};
                 \draw[->, red, line width=1pt] (0,0) -- (1.1, -0.8) node[right, text=red, scale=0.85] {$n(t)$};
                 \draw[red] (0.45,0) arc (0:-36:0.45);
-                \node[text=red, scale=0.75] at (0.75, -0.2) {$\vartheta(t)$};
+                \node[text=red, scale=0.75] at (0.75, -0.2) {$\theta(t)$};
             \end{scope}
         \end{tikzpicture}
         \end{center}
 
         Pertanto si ha:
         \[
-        \cos\vartheta(t) = \frac{n(t) \cdot (\pm e_2(t))}{\norm{n(t)} \, \norm{\pm e_2(t)}} = n(t) \cdot (\pm e_2(t))
+        \cos\theta(t) = \frac{n(t) \cdot (\pm e_2(t))}{\norm{n(t)} \, \norm{\pm e_2(t)}} = n(t) \cdot (\pm e_2(t))
         \]
-        da cui, ricordando che $\vartheta(t) \in \left[0, \frac{\pi}{2}\right]$ (e quindi $\cos\vartheta(t) \ge 0$), segue:
+        da cui, ricordando che $\theta(t) \in \left[0, \frac{\pi}{2}\right]$ (e quindi $\cos\theta(t) \ge 0$), segue:
         \[
-        \implies \abs{n(t) \cdot e_2(t)} = \abs{\cos\vartheta(t)} = \cos\vartheta(t)
+        \implies \abs{n(t) \cdot e_2(t)} = \abs{\cos\theta(t)} = \cos\theta(t)
         \]
         Pertanto da \eqref{eq:seconda_forma_fondamentale_curve_su_superficie_2} otteniamo:
         \begin{align*}
         \abs{\mathrm{II}_{u(t)}\big(\dot{c}(t), \dot{c}(t)\big)} &= \abs{k(t)} \, \abs{e_2(t) \cdot n(t)} \\
-        &= k(t) \cos\vartheta(t)
+        &= k(t) \cos\theta(t)
         \end{align*}
         (Si ricordi che $k(t) > 0 \quad \forall t \in I$).
         \end{proof}
 
         \begin{osservazione}
-        Se $\vartheta(t) < \frac{\pi}{2}$, allora:
+        Se $\theta(t) < \frac{\pi}{2}$, allora:
         \[
-        k(t) = \frac{\abs{\mathrm{II}_{u(t)}\big(\dot{c}(t), \dot{c}(t)\big)}}{\cos\vartheta(t)}
+        k(t) = \frac{\abs{\mathrm{II}_{u(t)}\big(\dot{c}(t), \dot{c}(t)\big)}}{\cos\theta(t)}
         \]
-        Se per un certo $t_0$ risulta $\vartheta(t_0) = 0$ (ovvero $n(t_0) = \pm e_2(t_0)$), allora:
+        Se per un certo $t_0$ risulta $\theta(t_0) = 0$ (ovvero $n(t_0) = \pm e_2(t_0)$), allora:
         \[
         k(t_0) = \abs{\mathrm{II}_{u(t_0)}\big(\dot{c}(t_0), \dot{c}(t_0)\big)}
         \]
