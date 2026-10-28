@@ -1992,6 +1992,7 @@
         \]
         \newpage
         \begin{proposizione}
+        \label{prop:minmax-autovalori}
         Consideriamo l'applicazione data dalla restrizione a \textcolor{amber}{$V_1$} della forma quadratica associata a $b$:
         \[
         \textcolor{red}{v \in V_1 \longmapsto b(v,v) = g\big(L(v), v\big) \in \mathbb{R}}
@@ -2008,8 +2009,10 @@
 
         \begin{proof}
         \mbox{}
+
+        Infatti, consideriamo $v \in V_1$, con $v = \alpha v_1 + \beta v_2$. 
         
-        Infatti, consideriamo $v \in V_1$, con $v = \alpha v_1 + \beta v_2$. Poiché $(v_1, v_2)$ è una base ortonormale:
+        Poiché $(v_1, v_2)$ è una base ortonormale:
         \[
         \norm{v} = 1 \implies \alpha^2 + \beta^2 = 1 \implies \exists \vartheta \in [0, 2\pi] \quad \text{t.c.} \quad \alpha = \cos\vartheta, \quad \beta = \sin\vartheta
         \]
@@ -2021,6 +2024,9 @@
         &= g(\cos\vartheta \, k_1 v_1 + \sin\vartheta \, k_2 v_2, \, \cos\vartheta \, v_1 + \sin\vartheta \, v_2) \\
         &\overset{\textcolor{blu}{\substack{(v_1, v_2) \\ \text{ è base} \\ \text{ortonormale}}}}{=} k_1 \cos^2\vartheta + k_2 \sin^2\vartheta
         \end{align*}
+        \textcolor{violet}{Il minimo si ottiene quando $\cos^2 \vartheta =1$ e $\sin^2 \vartheta=0$
+        cioè $k_1$ e il massimo si ottiene quando $\cos^2 \vartheta =0$ e $\sin^2 \vartheta=1$, cioè $k_2$.}
+
         Abbiamo quindi la composizione:
         \[
         \begin{array}{ccccc}
@@ -2032,6 +2038,8 @@
         \end{proof}
 
         \newpage
+        \textcolor{violet}{Trasferiamo ora la informazione della \ref{prop:minmax-autovalori} nel nostro contesto.}
+        
         Sia ora $\textcolor{red}{f : A \longrightarrow \mathbb{R}^3}$ una superficie parametrizzata regolare e sia $\textcolor{red}{u \in A}$.
         \begin{itemize}
             \item $\textcolor{red}{(T_u f, \mathrm{I}_u)}$ è uno spazio vettoriale euclideo di dimensione $2$.
@@ -2059,9 +2067,9 @@
         \]
         \end{definizione}
 
-        Se $k_1(u), k_2(u)$ sono gli autovalori di $L_u$ con $k_1(u) \le k_2(u)$, allora per quanto visto nelle premesse
-         $k_1(u)$ e $k_2(u)$ sono rispettivamente il minimo e il massimo della funzione di curvatura normale di $f$ in $u$.
-        \newpage
+        Se $k_1(u), k_2(u)$ sono gli autovalori di $L_u$ con $k_1(u) \le k_2(u)$, allora per quanto visto nella 
+        proposizione \ref{prop:minmax-autovalori} 
+        $k_1(u)$ e $k_2(u)$ sono rispettivamente il minimo e il massimo della funzione di curvatura normale di $f$ in $u$.
         \begin{definizione}[Curvature principali e direzioni principali di curvatura]
         \mbox{}
 
@@ -2077,18 +2085,24 @@
             \[
             \implies \mathrm{II}_u = k(u)\,\mathrm{I}_u, \qquad L_u = k(u)\,\mathrm{id}_{T_u f}
             \]
-            Ogni vettore $X \in T_u f$, con $\norm{X} = 1$, è autovettore di $L_u$ con autovalore $k(u)$. In particolare, $\forall X \in T_u f$ con $\norm{X} = 1$, $X$ è una D.P.C.
+            Ogni vettore $X \in T_u f$, con $\norm{X} = 1$, è autovettore di $L_u$ con autovalore $k(u)$. 
+            
+            In particolare, $\forall X \in T_u f$ con $\norm{X} = 1$, $X$ è una D.P.C.
             
             \item[\textcolor{red}{\text{2)}}] $\textcolor{red}{k_1(u) < k_2(u)}$
             
-            Se $(X_1, X_2)$ è una base ortonormale di autovettori con $L_u(X_1) = k_1(u)X_1$ e $L_u(X_2) = k_2(u)X_2$, allora $\mathrm{II}_u$ non è proporzionale a $\mathrm{I}_u$. Esistono esattamente $2$ (a meno del segno) direzioni principali di curvatura ortogonali tra loro.
+            Se $(X_1, X_2)$ è una base ortonormale di autovettori con 
+            \[ L_u(X_1) = k_1(u)X_1 \text{ e } L_u(X_2) = k_2(u)X_2 \]
+            allora $\mathrm{II}_u$ non è proporzionale a $\mathrm{I}_u$. 
+            
+            Esistono esattamente $2$ (a meno del segno) direzioni principali di curvatura ortogonali tra loro.
         \end{enumerate}
         \end{osservazione}
     \section{Tipologie di punti su una superficie}
         \begin{definizione}[Punto ombelicale e punto planare]
         \mbox{}
 
-        Un punto $\textcolor{red}{u \in A}$ si dice \textcolor{red}{ombelicale} per la superficie $f$ se $\textcolor{red}{k_1(u) = k_2(u)}$.
+        Un punto $\textcolor{red}{u \in A}$ si dice \textcolor{red}{ombellicale} per la superficie $f$ se $\textcolor{red}{k_1(u) = k_2(u)}$.
 
         Si dice inoltre che $u$ è \textcolor{red}{planare} se $\textcolor{red}{k_1(u) = k_2(u) = 0}$.
         \end{definizione}
