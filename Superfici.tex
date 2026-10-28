@@ -1813,16 +1813,23 @@
         \begin{definizione}[Piano normale e curva sezione normale]
         \mbox{}
 
-        Sia $\textcolor{red}{f : A \longrightarrow \mathbb{R}^3}$ una superficie parametrizzata regolare e sia $\textcolor{red}{S = f(A)}$ il supporto di $f$. 
+        Sia $\textcolor{red}{f : A \longrightarrow \mathbb{R}^3}$ una superficie parametrizzata regolare e sia $S = f(A)$ il supporto di $f$. 
         
-        Siano $\textcolor{red}{u \in A}$, $\textcolor{red}{p = f(u) \in S}$ e $\textcolor{red}{X \in T_u f}$ tale che $\textcolor{red}{\norm{X} = 1}$.
+        Siano $u \in A$, $p = f(u) \in S$ e $X \in T_u f$ tale che $\norm{X} = 1$.
 
-        Considerato il versore normale $n(u)$, denotiamo con $\textcolor{red}{\pi}$ il piano passante per $p$ di giacitura generata da $X$ e $n(u)$, si dice che $\pi$ è un \textcolor{red}{piano normale} 
-        alla superficie nel punto $p$.
+        Sia $n(u)$ la normale di Gauss in $u$, denotiamo con $\textcolor{red}{\pi}$ il piano
+         passante per $p$ di giacitura generata da $X$ e $n(u)$, si dice che $\pi$ è un
+        \textcolor{red}{piano normale alla superficie $f$ nel punto $p$}.
 
-        Si può verificare che $S \cap \pi$, localmente in $p$, è supporto di una curva regolare $\textcolor{red}{c = f \circ u : I \longrightarrow \mathbb{R}^3}$ parametrizzata per lunghezza d'arco.
+        \textcolor{violet}{$\pi$ seziona la superficie e si ha una curva sulla superficie stessa, ora su questa
+        trattazione non saremo molto rigorosi perché con strumenti un pò diversi che provengono dalla teoria
+        delle varietà differenziabili quello che sto per dire si giustifica immediatamente altrimenti bisognerebbe
+        mettersi a fare una dimostrazione analitica un pò dispendiosa, quindi crediamoci <3.}
+
+        Si può verificare che \textcolor{red}{$S \cap \pi$} localmente in $p$, \textcolor{red}{è supporto di una curva regolare} $\textcolor{red}{c = f \circ u : I \longrightarrow \mathbb{R}^3}$ parametrizzata per lunghezza d'arco.
         
-        Se inoltre $p = c(t_0)$, con $t_0 \in I$, e si ha $\dot{c}(t_0) = X$, la curva $c$ è detta \textcolor{red}{curva sezione normale} della superficie $f$ nel punto $p = f(u)$.
+        Inoltre se $p = c(t_0)$, con $t_0 \in I$ e $\dot{c}(t_0) = X$, la curva \textcolor{red}{$c$}
+        è detta \textcolor{red}{curva sezione normale} della superficie $f$ nel punto $p = f(u)$.
         \end{definizione}
 
         \begin{center}
@@ -1854,6 +1861,8 @@
         \end{center}
 
         \begin{osservazione}
+        \mbox{}
+
         $c$ è una curva piana, contenuta nel piano $\pi$, che coincide con il suo piano osculatore $\langle e_1(t_0), e_2(t_0) \rangle$, inoltre:
         \[
         e_1(t_0) = \dot{c}(t_0) = X
@@ -1865,11 +1874,13 @@
         \]
         Per il Teorema di Meusnier si ha:
         \[
-        \textcolor{red}{\abs{\mathrm{II}_u(X,X)} = k(t_0)}
+        \abs{\Pi_u(X,X)} = k(t_0)
         \]
-        In particolare, $\textcolor{red}{\mathrm{II}_u(X,X) = \pm k(t_0)}$ a seconda che sia $n(t_0) = \pm e_2(t_0)$.
+        In particolare, $\Pi_u(X,X) = \pm k(t_0)$ a seconda che sia $n(t_0) = \pm e_2(t_0)$.
 
-        Si osservi che la curva è piana e nel riferimento di Frenet $\big(e_1(t_0), e_2(t_0)\big)$, risulta $k(t_0) > 0$. Pertanto $e_2(t_0)$ giace nel semipiano di $\pi$ contenente, almeno localmente in $p$, la curva.
+        Si osservi che la curva è piana e nel riferimento di Frenet $\big(e_1(t_0), e_2(t_0)\big)$, risulta $k(t_0) > 0$. 
+        
+        Pertanto $e_2(t_0)$ giace nel semipiano di $\pi$ contenente, almeno localmente in $p$, la curva.
 
         \begin{center}
         \begin{tikzpicture}[>=Stealth, thick, scale=1.05]
@@ -1892,7 +1903,7 @@
             \draw[red, line width=1.1pt, dashed] (P) .. controls (0.0, 1.2) and (0.2, 0.6) .. (0.3, -0.1);
 
             % Versore normale n (in verde)
-            \draw[->, green!60!black, line width=1pt] (P) -- (-0.3, 2.3) node[right, text=green!60!black, scale=0.9] {$n$};
+            \draw[->, green!60!black, line width=1pt] (P) -- (-0.3, 2) node[right, text=green!60!black, scale=0.9] {$n$};
 
             % Versore e_2(t_0) (in nero, verso il basso)
             \draw[->, black, line width=0.9pt] (P) -- (-0.3, 0.35) node[below, text=black, scale=0.8] {$e_2(t_0)$};
@@ -1904,16 +1915,19 @@
         \end{osservazione}
 
         \begin{definizione}[Curvatura normale]
+        \mbox{}
+
         Sia $\textcolor{red}{f : A \longrightarrow \mathbb{R}^3}$ una superficie regolare, e siano $u \in A$ e $\textcolor{red}{X \in T_u f}$ con $\textcolor{red}{\norm{X} = 1}$.
         
         Si definisce \textcolor{red}{curvatura normale di $f$ in $u$ nella direzione $\pm X$} il numero reale:
         \[
-        \textcolor{red}{k(X) = \mathrm{II}_u(X,X) = \mathrm{II}_u(-X,-X) = k(-X)}
+        \textcolor{red}{k(X) = \Pi_u(X,X) = \Pi_u(-X,-X) = k(-X)}
         \]
         \end{definizione}
 
         \begin{osservazione}
         Per quanto detto in precedenza, la curvatura normale di $f$ in $u$ nella direzione $\pm X$ coincide in valore assoluto con la curvatura della curva $c$ su $f$ ottenuta come sezione normale della superficie nel punto $f(u)$.
+        
         La curvatura normale è positiva o negativa a seconda che sia $n(t_0) = \pm e_2(t_0)$.
         \end{osservazione}
 
@@ -1947,7 +1961,8 @@
 
         \noindent \textbf{Premesse su forme bilineari simmetriche.}
 
-        Sia $\textcolor{red}{(V,g)}$ uno spazio vettoriale euclideo con $\dim_{\mathbb{R}} V = 2$, e sia $\textcolor{red}{L : V \longrightarrow V}$ un endomorfismo \textcolor{red}{simmetrico} (o autoaggiunto), ovvero tale che:
+        Sia $\textcolor{red}{(V,g)}$ uno spazio vettoriale euclideo con $\dim_{\mathbb{R}} V = 2$ 
+        \textcolor{violet}{(nel nostro contesto sarà lo spazio tangente)} e sia $\textcolor{red}{L : V \longrightarrow V}$ un endomorfismo \textcolor{red}{simmetrico} (o autoaggiunto), ovvero tale che:
         \[
         \forall v, w \in V \qquad g\big(L(v), w\big) = g\big(v, L(w)\big)
         \]
@@ -1955,19 +1970,21 @@
         
         Denotiamo con $\textcolor{red}{k_1, k_2} \in \mathbb{R}$ i relativi autovalori e supponiamo $k_1 \le k_2$.
 
+        \[ \color{blu} L(v_1) = k_1 v_1 \qquad L(v_2) = k_2 v_2 \]
+
         Si consideri ora l'applicazione:
         \[
         \textcolor{red}{b : V \times V \longrightarrow \mathbb{R}} \quad \text{t.c.} \quad \textcolor{red}{b(v,w) = g\big(L(v), w\big) \quad \forall v, w \in V}
         \]
-        $b$ è una forma bilineare simmetrica su $V$. 
+        $b$ è una forma bilineare simmetrica su $V$ \textcolor{violet}{(perché $L$ è simmetrico rispetto a $g$)}. 
 
         $V$ è uno spazio metrico, munito della topologia che rende $V$ omeomorfo a $\mathbb{R}^2$ mediante l'applicazione:
         \[
-        \alpha v_1 + \beta v_2 \in V \stackrel{\rho}{\longmapsto} (\alpha, \beta) \in \mathbb{R}^2
+        \alpha v_1 + \beta v_2 \in V \stackrel{\qquad}{\longmapsto} (\alpha, \beta) \in \mathbb{R}^2
         \]
         L'insieme
         \[
-        \textcolor{red}{V_1 = \big\{ v \in V \;\big|\; \norm{v} = 1 \big\}}
+        \textcolor{amber}{V_1 = \big\{ v \in V \;\big|\; \norm{v} = 1 \big\}}
         \]
         è un compatto di $V$ omeomorfo alla circonferenza:
         \[
@@ -1975,12 +1992,14 @@
         \]
         \newpage
         \begin{proposizione}
-        Consideriamo l'applicazione data dalla restrizione a $V_1$ della forma quadratica associata a $b$:
+        Consideriamo l'applicazione data dalla restrizione a \textcolor{amber}{$V_1$} della forma quadratica associata a $b$:
         \[
         \textcolor{red}{v \in V_1 \longmapsto b(v,v) = g\big(L(v), v\big) \in \mathbb{R}}
         \]
-        Essa è continua su un compatto e quindi ammette un minimo e un massimo. Si verifica che il \textcolor{red}{minimo} e il \textcolor{red}{massimo}
-         coincidono con gli autovalori $\textcolor{red}{k_1}$ e $\textcolor{red}{k_2}$ di $L$, ovvero:
+        Essa è continua su un compatto e quindi ammette un minimo e un massimo. 
+        
+        Si verifica che il \textcolor{red}{minimo} e il \textcolor{red}{massimo}
+        coincidono con gli autovalori $\textcolor{red}{k_1}$ e $\textcolor{red}{k_2}$ di $L$, ovvero:
         \begin{align*}
         k_1 &= \min \big\{ b(v,v) \;\big|\; \norm{v} = 1 \big\} \\[4pt]
         k_2 &= \max \big\{ b(v,v) \;\big|\; \norm{v} = 1 \big\}
@@ -1988,6 +2007,8 @@
         \end{proposizione}
 
         \begin{proof}
+        \mbox{}
+        
         Infatti, consideriamo $v \in V_1$, con $v = \alpha v_1 + \beta v_2$. Poiché $(v_1, v_2)$ è una base ortonormale:
         \[
         \norm{v} = 1 \implies \alpha^2 + \beta^2 = 1 \implies \exists \vartheta \in [0, 2\pi] \quad \text{t.c.} \quad \alpha = \cos\vartheta, \quad \beta = \sin\vartheta
