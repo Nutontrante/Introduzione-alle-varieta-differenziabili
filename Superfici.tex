@@ -1566,6 +1566,13 @@
         \]
         \end{esempio}
         \newpage
+        \textcolor{violet}{Studiamo ancora le curve su superfici perché ci aiutano a studiare alcune proprietà geometriche delle parameterizzazioni.}
+
+        \textcolor{violet}{Vogliamo osservare con la proposizione successiva
+        che ogni vettore tangente ad una superficie si può sempre riguardare come vettore tangente
+        ad una curva sulla superficie in quel punto, cioè dato un vettore tangente
+        esiste sempre una curva sulla superficie che in quel punto ha come vettore tangente
+        quel vettore stesso.}
         \begin{proposizione}
         \label{prop:Caratterizzazione_cinematica_del_piano_tangente}
         \mbox{}
@@ -1580,12 +1587,14 @@
         \begin{proof}
         \mbox{}
 
-        Sia $X \in T_{u_0}f= \langle f_{u^1}(u_0), f_{u^2}(u_0) \rangle \Rightarrow \exists ! (a_1, a_2) \in \mathbb{R}^2 \text{ tale che } X = a_1 f_{u^1}(u_0) + a_2 f_{u^2}(u_0)$.
+        Sia $X \in T_{u_0}f= \langle f_{u^1}(u_0), f_{u^2}(u_0) \rangle \Rightarrow \exists ! (a_1, a_2) \in (\mathbb{R}^2)^* $ \textcolor{violet}{(in $(\mathbb{R}^2)^*$ e 
+        non in $(\mathbb{R}^2)$ perché $X \neq 0$ \textcolor{orange}{per ipotesi})} 
+        $\text{ tale che } X = a_1 f_{u^1}(u_0) + a_2 f_{u^2}(u_0)$.
 
-        Definisco $u \colon \mathbb{R}^2 \to \mathbb{R}^2$ tale che \textcolor{red}{$u(t)=u_0 + t(a_1, a_2)$} $\exists I \subset \mathbb{R}$ 
+        Definisco $u \colon \mathbb{R} \to \mathbb{R}^2$ tale che \textcolor{red}{$u(t)=u_0 + t(a_1, a_2)$} \textcolor{violet}{(retta in $\mathbb{R}^2$ passante per $u_0$ nella direzione $(a_1, a_2)$)} $\exists I \subset \mathbb{R}$ 
         tale che $0 \in I \quad u(I) \subset A$. 
 
-        $c= f \circ u \colon I \to A$ curva su $f$
+        \textcolor{red}{$c= f \circ u \colon I \to A$} curva su $f$
 
         $c(0)=f(u(0))=f(u_0)$
 
@@ -1595,35 +1604,56 @@
         &= a_1 f_{u^1}(u_0) + a_2 f_{u^2}(u_0) = X
         \end{aligned}$
         \end{proof}
-        \begin{osservazione}
+        \newpage
+        \begin{osservazione}[Significato geometrico dell'operatore di Weingarten]
+        \mbox{}
+
         Considerato il campo vettoriale normale di Gauss
         \[ n \colon A \to S^2 \subset \mathbb{R}^3 \]
-        Poniamo $\forall t \in I \quad n(t) = n(u(t))$, definendo in questo modo un
+        Poniamo $\forall t \in I \quad n(t) = n(u(t))$ 
+        \textcolor{violet}{(cioè vado a valutare la normale di Gauss soltanto nei punti della curva)}
+        definendo in questo modo un
         campo vettoriale lungo $c$ differenziabile.
 
-        Considerando l'operatore di Weingarten 
+        Considerando l'operatore di Weingarten \textcolor{violet}{in $f(u_0)= c(0)$}
         \[ L_{u_0} \colon T_{u_0}f \to T_{u_0}f \]
-        risulta:
+        proverò che:
         \begin{equation}
         \label{eq:operatore_di_Weingarten_differenziale_della_mappa_di_Gauss}
             L_{u_0}(X) = - \dot{n}(0)
         \end{equation}
+        \textcolor{violet}{Questo mi da un'interpretazione geometrica dell'operatore di Weingarten: esso misura come la normale di Gauss cambia lungo una
+        curva che è tangente al vettore $X$ nel punto $f(u_0)=c(0)$}
         \begin{proof}
         \[ \begin{aligned}
             L_{u_0}(X) &= -(dn)_{u_0} \circ (df)^{-1}_{u_0}(X) \\
                       &= -(dn)_{u_0} \circ (df)^{-1}_{u_0}( \dot{c}(0)) \\
                       &= -(dn)_{u_0} \circ (df)^{-1}_{u_0}( (df)_{u_0} (\dot{u}(0)) ) \\
                       &= -(dn)_{u_0} (\dot{u}(0)) \\
-                      &= -\frac{d}{dt} \left(n \circ u\right)_{\restriction t=0} = -\dot{n}(0)
+                      &= -\frac{d}{dt} \left(n \circ u\right)_{\restriction t=0} \overset{\textcolor{violet}{\substack{n=n \circ u \\ \text{abuso di}  \\ \text{notazione}}}}{=} -\dot{n}(0)
         \end{aligned} \]
-        Se $c = f \circ u \colon I \to \mathbb{R}^3$ è una curva
-        su $f \colon A \to \mathbb{R}^3$ allora 
-        \[ \color{red} \forall t \in I \quad L_{u(t)}(\dot{c}(t)) = -\dot{n}(t) \]
-        dove $n(t) = n(u(t))$.
         \end{proof}
+        \textcolor{violet}{Su alcuni testi viene data \eqref{eq:operatore_di_Weingarten_differenziale_della_mappa_di_Gauss}
+        come definizione dell'operatore di Weingarten però se avessimo dato questa come definizione avremmo dovuto assicurarci
+        che è ben posta cioè non dipende dalla curva scelta per rappresentare il vettore tangente $X$.}
+
+        \textcolor{violet}{Il vantaggio della nostra definizione di $L_u$ è che essa è intrinsecamente ben posta, cioè non dipende dalla curva scelta per rappresentare il vettore tangente $X$.}
+        \end{osservazione}
+        \begin{osservazione}
+        \mbox{}
+
+        In generale \textcolor{violet}{si può provare che} se $c = f \circ u \colon I \to \mathbb{R}^3$ è una curva
+        su $f \colon A \to \mathbb{R}^3$ allora 
+        \begin{equation}
+        \label{eq:operatore_di_Weingarten_differenziale_della_mappa_di_Gauss_2}
+        \color{red} \forall t \in I \quad L_{u(t)}(\dot{c}(t)) = -\dot{n}(t) 
+        \end{equation}
+        dove $n(t) = n(u(t))$.
         \end{osservazione}
         \newpage
         \begin{proposizione}
+        \mbox{}
+
         Sia $f \colon A \to \mathbb{R}^3$ superficie parametrizzata regolare sia $c = f \circ u \colon I \to \mathbb{R}^3$
         curva su $f$ con $u \colon I \to A$.
 
@@ -1641,11 +1671,8 @@
         \end{equation}
         \end{proposizione}
         \begin{proof}
-        Per quanto osservato prima \eqref{eq:operatore_di_Weingarten_differenziale_della_mappa_di_Gauss} $L_{u(t)}(\dot{c}(t)) = -\dot{n}(t)$ pertanto
-        \[ \begin{aligned}
-            \Pi_{u(t)} (\dot{c}(t), \dot{c}(t)) &= L_{u(t)} (\dot{c}(t)) \cdot \dot{c}(t) \\
-                      &= -\dot{n}(t) \cdot \dot{c}(t)
-        \end{aligned} \]
+        \mbox{}
+        \[ \Pi_{u(t)} (\dot{c}(t), \dot{c}(t)) = L_{u(t)} (\dot{c}(t)) \cdot \dot{c}(t) \overset{\eqref{eq:operatore_di_Weingarten_differenziale_della_mappa_di_Gauss_2}}{=} -\dot{n}(t) \cdot \dot{c}(t) \]
         \[ \dot{c}(t) \in T_{u(t)} f \Rightarrow \dot{c}(t) \cdot n(t) = 0 \]
         Derivando 
         \[ \ddot{c}(t) \cdot n(t) + \dot{c}(t) \cdot \dot{n}(t) = 0 \]
@@ -1667,6 +1694,8 @@
         \end{proof}
         \newpage
         \begin{corollario}[Teorema di Meusnier]
+        \mbox{}
+        
         Sia $c = f \circ u \colon I \to \mathbb{R}^3$ curva su $f$ parametrizzata per lunghezza d'arco e fortemente regolare.
 
         sia $\theta(t) \in [0, \frac{\pi}{2}]$ l'angolo che $n(t)$ forma con il piano osculatore di $c$ in $c(t)$ allora:
