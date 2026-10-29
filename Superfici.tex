@@ -2104,7 +2104,8 @@
 
         Un punto $\textcolor{red}{u \in A}$ si dice \textcolor{red}{ombellicale} per la superficie $f$ se $\textcolor{red}{k_1(u) = k_2(u)}$.
 
-        Si dice inoltre che $u$ è \textcolor{red}{planare} se $\textcolor{red}{k_1(u) = k_2(u) = 0}$.
+        Si dice inoltre che $u$ è \textcolor{red}{planare} se $\textcolor{red}{k_1(u) = k_2(u) = 0}$
+        \textcolor{blu}{($L_u \equiv 0$)}.
         \end{definizione}
 
         \begin{esempio}
@@ -2115,3 +2116,182 @@
             \item La sfera ha tutti i punti ombelicali non planari $\big(L_{(u,v)} = \mathrm{id}_{T_{(u,v)}f}\big)$.
         \end{itemize}
         \end{esempio}
+        \begin{definizione}
+        Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie parametrizzata regolare.
+        \begin{itemize}
+            \item Si dice che $f$ è \textcolor{red}{planare} se \textcolor{red}{$\forall u \in A \quad n(u) = \text{costante}$}.
+            \item Si dice che $f$ è \textcolor{red}{sferica} se
+            \[
+            \textcolor{red}{\exists x_0 \in \mathbb{R}^3 \quad \exists \rho > 0 \text{ t.c. } \forall u \in A \quad \norm{f(u) - x_0} = \rho}
+            \]
+        \end{itemize}
+        \textcolor{violet}{(Geometricamente, una superficie planare ha il versore normale costante in ogni punto, quindi il suo supporto è contenuto in un piano affine; una superficie sferica ha invece tutti i punti equidistanti da un centro fisso $x_0$, quindi il suo supporto è contenuto in una sfera di centro $x_0$ e raggio $\rho$).}
+        \end{definizione}
+        \newpage
+        \begin{teorema}
+        \label{th:caraterizzazione:superfici_a_punti_ombellicali}
+        Sia $f : A \to \mathbb{R}^3$ superficie parametrizzata regolare allora:
+        $(1) \, f$ è a punti tutti ombellicali $\iff$ $2 \, f$ è planare o sferica.
+        \end{teorema}
+
+        \begin{proof}
+        \mbox{}
+
+        $1 \Rightarrow 2$
+        
+        \textcolor{orange}{Supponiamo $f$ a punti tutti ombelicali}
+        \[ \Rightarrow \forall u \in A \quad k_1(u) = k_2(u) = k(u) \]
+        \[  L_u = k(u) \, i_{T_u f} = -(dn)_u \circ (df)_u^{-1} \Rightarrow (dn)_u = -k(u) (df)_u \]
+        Considerata la base canonica di $\mathbb{R}^2$:
+        \[ (dn)_u(e_i) = -k(u) (df)_u(e_i) \quad i = 1, 2 \]
+        \[ n_{u^i}(u) = -k(u) f_{u^i}(u) \]
+        Derivando rispetto a $u^j$:
+        \[ n_{u^i u^j}(u) = -\frac{\partial k}{\partial u^j}(u) f_{u^i}(u) - k(u) f_{u^i u^j}(u) \]
+        Scambiando gli indici $i$ e $j$:
+        \[ n_{u^j u^i}(u) = -\frac{\partial k}{\partial u^i}(u) f_{u^j}(u) - k(u) f_{u^j u^i}(u) \]
+        \textcolor{violet}{(Per il teorema di Schwarz sulle derivate seconde miste, essendo $n$ ed $f$ di classe $C^\infty$, si ha $n_{u^i u^j}(u) = n_{u^j u^i}(u)$ e $f_{u^i u^j}(u) = f_{u^j u^i}(u)$,
+        sottraendo membro a membro le due equazioni i termini con le derivate seconde di $f$ si elidono)}
+        \[ \Rightarrow \frac{\partial k}{\partial u^j}(u) f_{u^i}(u) - \frac{\partial k}{\partial u^i}(u) f_{u^j}(u) = 0 \]
+        Per $i = 1$ e $j = 2$, si ottiene:
+        \[ \frac{\partial k}{\partial u^1}(u) = \frac{\partial k}{\partial u^2}(u) = 0 \Rightarrow k \text{ è costante (essendo } A \text{ aperto connesso)} \]
+        \textcolor{violet}{(Infatti per $i=1, j=2$ la relazione diventa $\frac{\partial k}{\partial u^2}(u) f_{u^1}(u) - \frac{\partial k}{\partial u^1}(u) f_{u^2}(u) = 0$. Poiché $f$ è una superficie regolare, i vettori $f_{u^1}(u)$ e $f_{u^2}(u)$ sono linearmente indipendenti in ogni punto $u \in A$, dunque i coefficienti della combinazione lineare devono essere entrambi nulli).}
+
+        \begin{itemize}
+            \item Supponiamo $k(u) = 0 \quad \forall u \in A$:
+            \[
+            (dn)_u = -k(u)(df)_u = 0 \Rightarrow n(u) = \text{costante} \Rightarrow f \text{ è planare.}
+            \]
+            \item Supponiamo $k(u) = k \neq 0 \quad \forall u \in A$:
+            \[
+            (dn)_u = -k(df)_u \Rightarrow d(n + kf)_u = 0 \quad \textcolor{violet}{(\text{per linearità del differenziale, essendo } k \text{ costante})}
+            \]
+            \[ \Rightarrow \forall u \in A \quad n(u) + k f(u) = \text{costante} \Rightarrow \frac{n(u)}{k} + f(u) = x_0 \in \mathbb{R}^3 \Rightarrow f(u) - x_0 = -\frac{n(u)}{k} \]
+            \[ \norm{f(u) - x_0} = \abs*{\frac{1}{k}} = \rho > 0 \quad \textcolor{violet}{(\text{poiché } \norm{n(u)} = 1)} \Rightarrow f \text{ è sferica.} \]
+        \end{itemize}
+        $2 \Rightarrow 1$ 
+        
+        \textcolor{orange}{Supponiamo $f$ planare}:
+        \[ \forall u \in A \quad n(u) = \text{costante} \Rightarrow  \forall u \in A \quad (dn)_u = 0 \implies L_u = -(dn)_u \circ (df)_u^{-1} = 0 \]
+        \[ \Rightarrow L_u \text{ ha un unico autovalore } k_1(u) = k_2(u) = 0 \] 
+        \[ \Rightarrow \text{tutti i punti sono planari (e quindi ombelicali).} \]
+        \textcolor{orange}{Supponiamo $f$ sferica}:
+        \[
+        \exists x_0 \in \mathbb{R}^3 \quad \exists \rho > 0 \quad \forall u \in A \quad \norm{f(u) - x_0} = \rho
+        \]
+        \[
+        (f(u) - x_0) \cdot (f(u) - x_0) = \rho^2
+        \]
+        Derivando rispetto a $u^i$: 
+        
+        \textcolor{violet}{(usando la regola di Leibniz $\frac{\partial}{\partial u^i}[(f(u)-x_0)\cdot(f(u)-x_0)] = 2 f_{u^i}(u)\cdot(f(u)-x_0) = 0$)}
+        \[
+        \forall i = 1, 2 \quad f_{u^i}(u) \cdot (f(u) - x_0) = 0
+        \Rightarrow f(u) - x_0 \in \langle n(u) \rangle  
+        \]
+        \textcolor{violet}{(poiché $f(u) - x_0$ è ortogonale alla base $(f_{u^1}(u), f_{u^2}(u))$ di $T_u f$)}
+        \[
+        \Rightarrow n(u) = \pm \frac{f(u) - x_0}{\norm{f(u) - x_0}} = \pm \frac{1}{\rho} (f(u) - x_0) 
+        \]
+        \textcolor{violet}{(essendo $A$  connesso e  $n$ continua, il segno  $\pm$  è costante su tutto $A$)}
+        \[
+        \Rightarrow (dn)_u = \pm \frac{1}{\rho} (df)_u = -k (df)_u \quad \text{con } -k = \pm \frac{1}{\rho}
+        \]
+        \[
+        L_u = -(dn)_u \circ (df)_u^{-1} = k \, i_{T_u f}
+        \]
+        \[
+        \Rightarrow k_1(u) = k_2(u) = k \neq 0 \Rightarrow u \text{ è ombelicale non planare.}
+        \]
+        \end{proof}
+        \newpage
+
+        \begin{definizione}
+        Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie parametrizzata regolare.
+
+        Si definisce \textcolor{red}{curvatura di Gauss} di $f$ l'applicazione
+        \[
+        \textcolor{red}{K : A \to \mathbb{R} \quad \forall u \in A \quad K(u) = k_1(u) \cdot k_2(u)}
+        \]
+        Si definisce \textcolor{red}{curvatura media} di $f$ l'applicazione
+        \[
+        \textcolor{red}{H : A \to \mathbb{R} \quad \forall u \in A \quad H(u) = \frac{k_1(u) + k_2(u)}{2}}
+        \]
+        \end{definizione}
+        \newpage
+        \begin{proposizione}
+        Sia $f : A \to \mathbb{R}^3$ superficie parametrizzata regolare, sia \textcolor{red}{$u \in A$}. 
+
+        Siano $g_u$ e $h_u$ le matrici associate a $I_u$ e $\Pi_u$ rispetto alla base $(f_{u^1}(u), f_{u^2}(u))$ di $T_u f$.
+        
+        Sia $B_u = (b_j^i)_{1 \le i,j \le 2}$ la matrice associata 
+        a $L_u$ rispetto alla base $(f_{u^1}(u), f_{u^2}(u))$.
+        
+        Allora \textcolor{red}{$B_u = g_u^{-1} \circ h_u$}.
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        \textcolor{violet}{Per definizione di matrice associata a un endomorfismo rispetto alla base $(f_{u^1}(u), f_{u^2}(u))$, nella
+        $j$-esima colonna di $B_u$ ci sono le componenti di $L_u(f_{u^j}(u))$ ovvero $\displaystyle L_u(f_{u^j}(u)) = \sum_{k=1}^2 b_j^k f_{u^k}(u)$}
+        \[ g_u=(g_{ij} (u))_{1 \leq i,j \leq 2} \quad h_u=(h_{ij}(u))_{1 \leq i,j leq 2} \quad B_u=(b_{ij})_{1 \leq i,j \leq 2} \]
+        Fisso $i,j=1,2$
+        \begin{align*}
+        h_{ij}(u) &= \Pi_u(f_{u^i}(u), f_{u^j}(u)) = \\
+        &= I_u(f_{u^i}(u), L_u(f_{u^j}(u))) = \\
+        &= I_u(f_{u^i}(u), b_j^k f_{u^k}(u)) = \\
+        &= b_j^k g_{ik}(u) = g_{ik}(u) b_j^k
+        \end{align*}
+        \textcolor{violet}{(Nell'ultimo passaggio si riconosce il prodotto riga per colonna tra la riga $i$-esima della matrice $g_u$ e la colonna $j$-esima della matrice $B_u$):}
+        \[
+        \implies h_u = g_u \cdot B_u \implies B_u = g_u^{-1} \cdot h_u
+        \]
+        \end{proof}
+        \newpage
+
+        \begin{proposizione}
+        Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie parametrizzata regolare.
+        \begin{enumerate}[label=\textcolor{red}{\arabic*)}]
+            \item \textcolor{red}{$\forall u \in A \quad K(u) = \frac{\det(h_u)}{\det(g_u)}$}
+            \item \textcolor{red}{$\forall u \in A \quad 2 H(u) = \operatorname{tr}(g_u^{-1} h_u) = \sum_{i,j=1}^2 g^{ij}(u) h_{ij}(u)$}
+            
+            dove $g_u^{-1} = (g^{ij}(u))_{1 \le i,j \le 2}$.
+            \item \textcolor{red}{$K$} e \textcolor{red}{$H$} sono funzioni differenziabili.
+        \end{enumerate}
+        \end{proposizione}
+
+        \begin{proof}
+        $k_1(u)$ e $k_2(u)$ sono gli autovalori di $L_u$.
+
+        La matrice associata a $L_u$ nella base di autovettori è
+        \[
+        D = \begin{pmatrix} k_1(u) & 0 \\ 0 & k_2(u) \end{pmatrix}
+        \]
+        $D$ è simile alla matrice $B_u = g_u^{-1} h_u$. Pertanto
+        \begin{align*}
+        K(u) = k_1(u) \cdot k_2(u) &= \det(D) = \det(g_u^{-1} \cdot h_u) \\
+        &= \det(g_u^{-1}) \cdot \det(h_u) \quad \textcolor{violet}{(\text{per il teorema di Binet})} \\
+        &= \frac{1}{\det(g_u)} \cdot \det(h_u) = \frac{\det(h_u)}{\det(g_u)}
+        \end{align*}
+        Le matrici $B_u$ e $D$, essendo simili, hanno anche la stessa traccia. Pertanto,
+
+        \begin{align*}
+        2 H(u) = k_1(u) + k_2(u) &= \operatorname{tr}(B_u) = \operatorname{tr}(g_u^{-1} h_u) \\
+        &= \sum_{i,j=1}^2 g^{ij}(u) h_{ij}(u)
+        \end{align*}
+
+        %\textcolor{violet}{(Infatti l'elemento di posto $(i,i)$ sulla diagonale della matrice prodotto $g_u^{-1} h_u$ è dato da $\sum_{j=1}^2 g^{ij}(u) h_{ji}(u)$; sommando su $i=1,2$ per calcolare la traccia e sfruttando la simmetria della seconda forma fondamentale $h_{ji}(u) = h_{ij}(u)$, si ottiene esattamente $\sum_{i,j=1}^2 g^{ij}(u) h_{ij}(u)$. Inoltre, poiché le componenti $g_{ij}(u)$ e $h_{ij}(u)$ sono funzioni $C^\infty$ e $\det(g_u(u)) > 0$ ovunque su $A$, dal punto 1) e 2) segue immediatamente il punto 3), cioè che $K$ e $H$ sono funzioni differenziabili perché composizione di operazioni razionali con denominatore mai nullo).}
+        \end{proof}
+        \newpage
+
+        \begin{osservazione}
+        Le curvature principali $k_1(u)$ e $k_2(u)$, in quanto autovalori della matrice $B_u = g_u^{-1} h_u$, sono radici del polinomio caratteristico di $B_u$:
+        \begin{align*}
+        p_{B_u}(\lambda) &= \begin{vmatrix} b_1^1 - \lambda & b_2^1 \\ b_1^2 & b_2^2 - \lambda \end{vmatrix} = \\
+        &= b_1^1 b_2^2 + \lambda^2 - (b_1^1 + b_2^2)\lambda - b_2^1 b_1^2 \\
+        &= \lambda^2 - \operatorname{tr}(B_u)\lambda + \det(B_u) \\
+        &= \lambda^2 - 2 H(u) \lambda + K(u)
+        \end{align*}
+        Pertanto, le curvature principali risolvono l'equazione \textcolor{red}{$\lambda^2 - 2 H(u)\lambda + K(u) = 0$}.
+
+        \textcolor{violet}{(Da questa equazione di secondo grado segue anche la formula esplicita per le curvature principali: $k_{1,2}(u) = H(u) \pm \sqrt{H(u)^2 - K(u)}$, da cui si vede subito che $H(u)^2 - K(u) = \left(\frac{k_1(u) - k_2(u)}{2}\right)^2 \ge 0$, con uguaglianza se e solo se $u$ è un punto ombelicale).}
+        \end{osservazione}
