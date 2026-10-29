@@ -2305,34 +2305,35 @@
         \end{equation}
         \textcolor{violet}{I coefficienti dipendono dalla curvatura media e dalla curvatura di Gauss}
         \end{osservazione}
+        \newpage
         \begin{definizione}
         Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie parametrizzata regolare. Sia \textcolor{red}{$u_0 \in A$} $u_0$ si dice:
         \begin{enumerate}[label=\arabic*)]
-            \item \textcolor{red}{punto ellittico} se $K(u_0) > 0$.
+            \item \textcolor{red}{punto ellittico} se $K(u_0) > 0$ \textcolor{violet}{(cioè se la curvatura di Gauss è positiva)}.
             
-            \textcolor{blue!80!black}{$\implies$ le curvature principali $k_1(u_0)$ e $k_2(u_0)$ sono entrambe non nulle e hanno lo stesso segno.}
+            \textcolor{blu}{$\Rightarrow$ le curvature principali $k_1(u_0)$ e $k_2(u_0)$ sono entrambe non nulle e hanno lo stesso segno.}
             
-            \textcolor{blue!80!black}{Se $k_1(u_0) \neq k_2(u_0)$, esistono $2$ a meno del segno D.P.C. $X_1, X_2$ ortogonali tra loro.}
+            \textcolor{blu}{Se $k_1(u_0) \neq k_2(u_0)$ \textcolor{violet}{per l'osservazione \ref{oss:direzioni_principali_di_curvatura}} esistono $2$ a meno del segno D.P.C. $X_1, X_2$ ortogonali tra loro.}
             
-            \textcolor{blue!80!black}{Se $k_1(u_0) = k_2(u_0)$, il punto è ombelicale e ogni vettore unitario è D.P.C.}
+            \textcolor{blu}{Se $k_1(u_0) = k_2(u_0)$ \textcolor{violet}{per l'osservazione \ref{oss:direzioni_principali_di_curvatura}} il punto è ombelicale \textcolor{violet}{(ma non 
+            può essere planare)} e ogni vettore unitario è D.P.C.}
+
+            \textcolor{violet}{un esempio è la sfera $f \colon ] - \frac{\pi}{2}, \frac{\pi}{2} [ \times \mathbb{R} \to \mathbb{R}^3$ che è una superficie $L_u = id_{T_u f}$ a punti tutti ellittici $k_1(u)=k_2(u) \Rightarrow K(u)=1>0$}
             
             \item \textcolor{red}{punto iperbolico} se $K(u_0) < 0$.
             
-            \textcolor{blue!80!black}{$\implies$ le curvature principali $k_1(u_0)$ e $k_2(u_0)$ sono entrambe non nulle e di segno opposto.}
+            \textcolor{blu}{$\Rightarrow$ le curvature principali $k_1(u_0)$ e $k_2(u_0)$ sono entrambe non nulle e di segno opposto} 
             
-            \textcolor{blue!80!black}{$u_0$ non può essere punto ombelicale.}
-            
-            \textcolor{blue!80!black}{$\exists \, 2$ a meno del segno D.P.C. $X_1, X_2$ ortogonali tra loro.}
+            \textcolor{blu}{$\Rightarrow k_1(u_0) < 0 < k_2(u_0) \Rightarrow u_0$ non può essere punto ombelicale ed $\exists \, 2$ a meno del segno D.P.C. $X_1, X_2$ ortogonali tra loro.}
             
             \item \textcolor{red}{punto parabolico} se $K(u_0) = 0$ e $L_{u_0} \neq 0$.
             
-            \textcolor{blue!80!black}{$\implies$ le due curvature principali sono una nulla e una non nulla \textcolor{violet}{(non possono essere entrambe nulle altrimenti, essendo $L_{u_0}$ diagonalizzabile, si avrebbe $L_{u_0} = 0$)}.}
-            
-            \textcolor{blue!80!black}{$\exists \, 2$ a meno del segno D.P.C. $X_1, X_2$ ortogonali tra loro.}
+            \textcolor{blu}{$\Rightarrow$ le due curvature principali sono una nulla e una non nulla \textcolor{violet}{(non possono essere entrambe nulle altrimenti si avrebbe $L_{u_0} = 0$)}}
+            \textcolor{blu}{$\exists \, 2$ a meno del segno D.P.C. $X_1, X_2$ ortogonali tra loro.}
             
             \item \textcolor{red}{punto planare} se $K(u_0) = 0$ e $L_{u_0} = 0$.
             
-            \textcolor{violet}{($\implies k_1(u_0) = k_2(u_0) = 0$, il punto è ombelicale e ogni vettore unitario di $T_{u_0}f$ è D.P.C.).}
+            \textcolor{violet}{($\Rightarrow k_1(u_0) = k_2(u_0) = 0$, il punto è ombelicale e ogni vettore unitario di $T_{u_0}f$ è D.P.C.).}
         \end{enumerate}
         \end{definizione}
         \newpage
