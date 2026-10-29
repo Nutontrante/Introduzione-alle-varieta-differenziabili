@@ -2262,34 +2262,31 @@
             \item \begin{equation} \forall u \in A \quad \textcolor{red}{K(u) = \frac{\det(h_u)}{\det(g_u)}} \end{equation}
             \item \begin{equation} \forall u \in A \quad \textcolor{red}{\displaystyle 2 H(u) = \operatorname{tr}(g_u^{-1} h_u) = \sum_{i,j=1}^2 g^{ij}(u) h_{ij}(u)} \end{equation}
             
-            dove $g_u^{-1} = (g^{ij}(u))_{1 \le i,j \le 2}$.
-            \item \textcolor{red}{$K$} e \textcolor{red}{$H$} sono funzioni differenziabili.
+            dove $g_u^{-1} = (g^{ij}(u))_{1 \le i,j \le 2}$ 
+            
+            \textcolor{violet}{con gli indici in alto denoto il coefficiente di posto $ij$ della matrice inversa di $g_u$}
+
+            \textcolor{violet}{con gli indici in basso denoto il coefficiente di posto $ij$ della matrice $g_u$}
+            \item Le funzioni \textcolor{red}{$K$} e \textcolor{red}{$H$} sono differenziabili \textcolor{violet}{Dimostrati $1)$ e $2)$ non c'è 
+            nulla da dimostrare perchè $g^{ij}(u)$, $g_{ij}(u)$ e $h_{ij}(u)$ sono $C^\infty$}
         \end{enumerate}
         \end{proposizione}
 
         \begin{proof}
         \mbox{}
 
-        $k_1(u)$ e $k_2(u)$ sono gli autovalori di $L_u$.
-
-        La matrice associata a $L_u$ nella base di autovettori è
+        $k_1(u)$ e $k_2(u)$ sono gli autovalori di $L_u$ e la matrice associata a $L_u$ nella base di autovettori è
         \[
         D(u) = \begin{pmatrix} k_1(u) & 0 \\ 0 & k_2(u) \end{pmatrix}
         \]
-        $D$ è simile alla matrice $B_u = g_u^{-1} h_u$ e hanno lo stesso determinante e la stessa traccia
+        $D$ è simile alla matrice per la proposizione \ref{prop:riscrittura_matrice_associata_all_operatore_di_Weingarten} $B_u = g_u^{-1} h_u \Rightarrow$  hanno lo stesso determinante e la stessa traccia
         \begin{align*}
         K(u) = k_1(u) \cdot k_2(u) &= \det(D) = \det(g_u^{-1} \cdot h_u) \\
         &= \det(g_u^{-1}) \cdot \det(h_u) \quad \textcolor{violet}{(\text{per il teorema di Binet})} \\
         &= \frac{1}{\det(g_u)} \cdot \det(h_u) = \frac{\det(h_u)}{\det(g_u)}
         \end{align*}
-        Le matrici $B_u$ e $D$, essendo simili, hanno anche la stessa traccia, pertanto:
-        \begin{align*}
-        2 H(u) = k_1(u) + k_2(u) &= \operatorname{tr}(B_u) = \operatorname{tr}(g_u^{-1} h_u) \\
-        &= \sum_{i,j=1}^2 g^{ij}(u) h_{ij}(u)
-        \end{align*}
-
-        \textcolor{violet}{Inoltre, poiché le componenti $g_{ij}(u)$ e $h_{ij}(u)$ sono funzioni $C^\infty$ e $\det(g_u(u)) > 0$ ovunque su $A$ si ha 
-        che $K$ e $H$ sono funzioni differenziabili perché composizione di operazioni razionali con denominatore mai nullo.}
+        Hanno anche la stessa traccia, pertanto:
+        \[ 2 H(u) = k_1(u) + k_2(u) = \operatorname{tr}(B_u) \overset{\eqref{eq:riscrittura_matrice_associata_all_operatore_di_Weingarten}}{=} \operatorname{tr}(g_u^{-1} h_u) = \sum_{i,j=1}^2 g^{ij}(u) h_{ij}(u) \]
         \end{proof}
         \newpage
 
@@ -2298,15 +2295,12 @@
         
         $B_u = g_u^{-1} h_u$, sono radici del polinomio caratteristico di $B_u$:
         \begin{align*}
-        p_{B_u}(\lambda) &= \begin{vmatrix} b_1^1 - \lambda & b_2^1 \\ b_1^2 & b_2^2 - \lambda \end{vmatrix} = \\
-        &= b_1^1 b_2^2 + \lambda^2 - (b_1^1 + b_2^2)\lambda - b_2^1 b_1^2 \\
-        &= \lambda^2 - \operatorname{tr}(B_u)\lambda + \det(B_u) \\
-        &= \lambda^2 - 2 H(u) \lambda + K(u)
+        p_{B_u}(\lambda) &= \begin{vmatrix} b_1^1 - \lambda & b_2^1 \\ b_1^2 & b_2^2 - \lambda \end{vmatrix} = b_1^1 b_2^2 + \lambda^2 - (b_1^1 + b_2^2)\lambda - b_2^1 b_1^2 \\
+        &= \lambda^2 - \operatorname{tr}(B_u)\lambda + \det(B_u) = \lambda^2 - 2 H(u) \lambda + K(u)
         \end{align*}
         Pertanto, le curvature principali risolvono l'equazione 
         \begin{equation}
         \label{eq:curvature_principali_1}
         \color{red} \lambda^2 - 2 H(u)\lambda + K(u) = 0.
         \end{equation}
-        \textcolor{violet}{(Da questa equazione di secondo grado segue anche la formula esplicita per le curvature principali: $k_{1,2}(u) = H(u) \pm \sqrt{H(u)^2 - K(u)}$, da cui si vede subito che $H(u)^2 - K(u) = \left(\frac{k_1(u) - k_2(u)}{2}\right)^2 \ge 0$, con uguaglianza se e solo se $u$ è un punto ombelicale).}
         \end{osservazione}
