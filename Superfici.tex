@@ -1958,7 +1958,6 @@
             Le curve sezioni normali sono circonferenze di raggio massimo.
         \end{esempio}
     \section{Curvature principali}
-
         \noindent \textbf{Premesse su forme bilineari simmetriche.}
 
         Sia $\textcolor{red}{(V,g)}$ uno spazio vettoriale euclideo con $\dim_{\mathbb{R}} V = 2$ 
@@ -2079,6 +2078,7 @@
         \end{definizione}
 
         \begin{osservazione}
+        \label{oss:direzioni_principali_di_curvatura}
         Si possono presentare due possibilità:
         \begin{enumerate}
             \item[\textcolor{red}{\text{1)}}] $\textcolor{red}{k_1(u) = k_2(u) = k(u)}$
@@ -2102,7 +2102,7 @@
         \begin{definizione}[Punto ombelicale e punto planare]
         \mbox{}
 
-        Un punto $\textcolor{red}{u \in A}$ si dice \textcolor{red}{ombellicale} per la superficie $f$ se $\textcolor{red}{k_1(u) = k_2(u)}$.
+        Un punto $\textcolor{red}{u \in A}$ si dice \textcolor{red}{ombelicale} per la superficie $f$ se $\textcolor{red}{k_1(u) = k_2(u)}$.
 
         Si dice inoltre che $u$ è \textcolor{red}{planare} se $\textcolor{red}{k_1(u) = k_2(u) = 0}$
         \textcolor{blu}{($L_u \equiv 0$)}.
@@ -2116,22 +2116,43 @@
             \item La sfera ha tutti i punti ombelicali non planari $\big(L_{(u,v)} = \mathrm{id}_{T_{(u,v)}f}\big)$.
         \end{itemize}
         \end{esempio}
+        \textcolor{violet}{Riepilogo della prec. lezione: l'idea della curvatura normale è prendiamo in un punto la normale di Gauss prendiamo una qualunque direzione tangente $X$ di norma $1$ 
+        la normale e la direzione tangente formano un piano se intersechiamo questo piano con una superficie otteniamo una curva piana detta curva a sezione normale della
+        superficie, la curvatura di questa curva a sezione normale coincide con il valore assoluto della seconda forma fondamentale calcolata in $(X,X)$
+        questa seconda forma fondamentale calcolata in $(X,X)$ prende il nome di curvatura normale nella direzione $\pm X$}
+
+        \textcolor{violet}{Poi abbiamo visto che se si considera la funzione definita su tutti i vettori tangenti alla superficie $f$ di norma $1$, cioè $S^1_uf$ questa
+        funzione ha un minimo e un massimo e questi coincidono con gli autovalori dell'operatore di Weingarten, questi autovalori li abbiamo chiamati curvature principali.}
+
+        \textcolor{violet}{Se i $2$ autovalori coincidono l'operatore di Weingarten è un multiplo dell'identità dello spazio tangente e in questo caso ogni direzione unitaria $X$ è 
+        direzione principale di curvatura e questi punti si chiamano punti ombelicali}
+
+        \textcolor{violet}{Se i $2$ autovalori sono distinti esistono solo $2$ (a meno del segno) direzioni principali di curvatura}
+        \newpage
+        \textcolor{violet}{Ora dobbiamo approfondire alcune questioni riguardanti i punti ombelicali $k_1(u)=k_2(u)$}
         \begin{definizione}
+        \mbox{}
+
         Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie parametrizzata regolare.
         \begin{itemize}
-            \item Si dice che $f$ è \textcolor{red}{planare} se \textcolor{red}{$\forall u \in A \quad n(u) = \text{costante}$}.
-            \item Si dice che $f$ è \textcolor{red}{sferica} se
-            \[
-            \textcolor{red}{\exists x_0 \in \mathbb{R}^3 \quad \exists \rho > 0 \text{ t.c. } \forall u \in A \quad \norm{f(u) - x_0} = \rho}
-            \]
+            \item Si dice che $f$ è \textcolor{red}{planare} se \textcolor{red}{$\forall u \in A \quad n(u) = \text{costante}$}
+            
+            \textcolor{violet}{Un esempio di parametrizzazione di superficie planare l'abbiamo già visto: il piano ma non è detto che quella parametrizzazione che abbiamo visto sia l'unica possibile}
+            \item Si dice che $f$ è \textcolor{red}{sferica} se \textcolor{red}{$\exists x_0 \in \mathbb{R}^3 \quad \exists \rho > 0 \text{ t.c. } \forall u \in A \quad \norm{f(u) - x_0} = \rho$}
+        
         \end{itemize}
-        \textcolor{violet}{(Geometricamente, una superficie planare ha il versore normale costante in ogni punto, quindi il suo supporto è contenuto in un piano affine; una superficie sferica ha invece tutti i punti equidistanti da un centro fisso $x_0$, quindi il suo supporto è contenuto in una sfera di centro $x_0$ e raggio $\rho$).}
+        %\textcolor{violet}{(Geometricamente, una superficie planare ha il versore normale costante in ogni punto, quindi il suo supporto è contenuto in un piano affine; una superficie sferica ha invece tutti i punti equidistanti da un centro fisso $x_0$, quindi il suo supporto è contenuto in una sfera di centro $x_0$ e raggio $\rho$).}
         \end{definizione}
         \newpage
-        \begin{teorema}
-        \label{th:caraterizzazione:superfici_a_punti_ombellicali}
+        \begin{teorema}[Caratterizzazione di superfici a punti tutti ombelicali]
+        \label{th:caraterizzazione:superfici_a_punti_tutti_ombellicali}
+        \mbox{}
+
         Sia $f : A \to \mathbb{R}^3$ superficie parametrizzata regolare allora:
-        $(1) \, f$ è a punti tutti ombellicali $\iff$ $2 \, f$ è planare o sferica.
+
+        $1) \, f$ è a punti tutti ombelicali $\iff$ $2) \, f$ è planare o sferica.
+
+        \textcolor{violet}{Ci potrebbero essere superfici che contengono dei punti ombelicali ma non sono tutti ombelicali}
         \end{teorema}
 
         \begin{proof}
@@ -2139,32 +2160,29 @@
 
         $1 \Rightarrow 2$
         
-        \textcolor{orange}{Supponiamo $f$ a punti tutti ombelicali}
-        \[ \Rightarrow \forall u \in A \quad k_1(u) = k_2(u) = k(u) \]
-        \[  L_u = k(u) \, i_{T_u f} = -(dn)_u \circ (df)_u^{-1} \Rightarrow (dn)_u = -k(u) (df)_u \]
+        \textcolor{orange}{Supponiamo $f$ a punti tutti ombelicali} $ \Rightarrow \forall u \in A \quad k_1(u) = k_2(u) = k(u) $
+        \[ \overset{\textcolor{blu}{\text{oss: } \ref{oss:direzioni_principali_di_curvatura}}}{\Rightarrow}  L_u = k(u) \, id_{T_u f} \overset{\eqref{eq:definizione_operatore_di_Weingarten}}{=} -(dn)_u \circ (df)_u^{-1} \Rightarrow (dn)_u = -k(u) (df)_u \]
         Considerata la base canonica di $\mathbb{R}^2$:
-        \[ (dn)_u(e_i) = -k(u) (df)_u(e_i) \quad i = 1, 2 \]
-        \[ n_{u^i}(u) = -k(u) f_{u^i}(u) \]
+        \[ (dn)_u(e_i) = -k(u) (df)_u(e_i) \quad i = 1, 2 \Rightarrow n_{u^i}(u) = -k(u) f_{u^i}(u) \]
         Derivando rispetto a $u^j$:
         \[ n_{u^i u^j}(u) = -\frac{\partial k}{\partial u^j}(u) f_{u^i}(u) - k(u) f_{u^i u^j}(u) \]
         Scambiando gli indici $i$ e $j$:
         \[ n_{u^j u^i}(u) = -\frac{\partial k}{\partial u^i}(u) f_{u^j}(u) - k(u) f_{u^j u^i}(u) \]
-        \textcolor{violet}{(Per il teorema di Schwarz sulle derivate seconde miste, essendo $n$ ed $f$ di classe $C^\infty$, si ha $n_{u^i u^j}(u) = n_{u^j u^i}(u)$ e $f_{u^i u^j}(u) = f_{u^j u^i}(u)$,
+        \textcolor{violet}{(Per il teorema di Schwarz sulle derivate seconde miste, essendo $n$ ed $f$ di classe $C^\infty$ si ha:}
+        
+        \textcolor{violet}{ $n_{u^i u^j}(u) = n_{u^j u^i}(u)$ e $f_{u^i u^j}(u) = f_{u^j u^i}(u)$,
         sottraendo membro a membro le due equazioni i termini con le derivate seconde di $f$ si elidono)}
-        \[ \Rightarrow \frac{\partial k}{\partial u^j}(u) f_{u^i}(u) - \frac{\partial k}{\partial u^i}(u) f_{u^j}(u) = 0 \]
+        \[ \Rightarrow \frac{\partial k}{\partial u^j}(u) f_{u^i}(u) - \frac{\partial k}{\partial u^i}(u) f_{u^j}(u) = 0  \quad \forall i,j=1,2 \]
         Per $i = 1$ e $j = 2$, si ottiene:
-        \[ \frac{\partial k}{\partial u^1}(u) = \frac{\partial k}{\partial u^2}(u) = 0 \Rightarrow k \text{ è costante (essendo } A \text{ aperto connesso)} \]
-        \textcolor{violet}{(Infatti per $i=1, j=2$ la relazione diventa $\frac{\partial k}{\partial u^2}(u) f_{u^1}(u) - \frac{\partial k}{\partial u^1}(u) f_{u^2}(u) = 0$. Poiché $f$ è una superficie regolare, i vettori $f_{u^1}(u)$ e $f_{u^2}(u)$ sono linearmente indipendenti in ogni punto $u \in A$, dunque i coefficienti della combinazione lineare devono essere entrambi nulli).}
-
+        \[ \frac{\partial k}{\partial u^1}(u) = \frac{\partial k}{\partial u^2}(u) = 0 \quad \forall u \in A \overset{\textcolor{orange}{\substack{A \\ \text{ connesso}}}}{\Rightarrow} k \text{ è costante } \]
+        \textcolor{violet}{Infatti per $i=1 \quad j=2$ la relazione diventa $\frac{\partial k}{\partial u^2}(u) f_{u^1}(u) - \frac{\partial k}{\partial u^1}(u) f_{u^2}(u) = 0$.}
+        
+        \textcolor{violet}{Poiché $f$ è una superficie regolare, i vettori $f_{u^1}(u)$ e $f_{u^2}(u)$ sono linearmente indipendenti in ogni punto $u \in A$, dunque i coefficienti della combinazione lineare devono essere entrambi nulli.}
         \begin{itemize}
             \item Supponiamo $k(u) = 0 \quad \forall u \in A$:
-            \[
-            (dn)_u = -k(u)(df)_u = 0 \Rightarrow n(u) = \text{costante} \Rightarrow f \text{ è planare.}
-            \]
+            \[ (dn)_u = -k(u)(df)_u = 0 \Rightarrow n(u) = \text{costante} \Rightarrow f \text{ è planare.} \]
             \item Supponiamo $k(u) = k \neq 0 \quad \forall u \in A$:
-            \[
-            (dn)_u = -k(df)_u \Rightarrow d(n + kf)_u = 0 \quad \textcolor{violet}{(\text{per linearità del differenziale, essendo } k \text{ costante})}
-            \]
+            \[ (dn)_u = -k(df)_u \Rightarrow d(n + kf)_u = 0 \quad \textcolor{violet}{(\text{per linearità del differenziale, essendo } k \text{ costante})} \]
             \[ \Rightarrow \forall u \in A \quad n(u) + k f(u) = \text{costante} \Rightarrow \frac{n(u)}{k} + f(u) = x_0 \in \mathbb{R}^3 \Rightarrow f(u) - x_0 = -\frac{n(u)}{k} \]
             \[ \norm{f(u) - x_0} = \abs*{\frac{1}{k}} = \rho > 0 \quad \textcolor{violet}{(\text{poiché } \norm{n(u)} = 1)} \Rightarrow f \text{ è sferica.} \]
         \end{itemize}
@@ -2172,36 +2190,21 @@
         
         \textcolor{orange}{Supponiamo $f$ planare}:
         \[ \forall u \in A \quad n(u) = \text{costante} \Rightarrow  \forall u \in A \quad (dn)_u = 0 \implies L_u = -(dn)_u \circ (df)_u^{-1} = 0 \]
-        \[ \Rightarrow L_u \text{ ha un unico autovalore } k_1(u) = k_2(u) = 0 \] 
-        \[ \Rightarrow \text{tutti i punti sono planari (e quindi ombelicali).} \]
+        \[ \Rightarrow  k_1(u) = k_2(u) = 0 \Rightarrow u \text{ è ombelicale \textcolor{violet}{(in particolare planare)}} \] 
         \textcolor{orange}{Supponiamo $f$ sferica}:
-        \[
-        \exists x_0 \in \mathbb{R}^3 \quad \exists \rho > 0 \quad \forall u \in A \quad \norm{f(u) - x_0} = \rho
-        \]
-        \[
-        (f(u) - x_0) \cdot (f(u) - x_0) = \rho^2
-        \]
+        \[ \exists x_0 \in \mathbb{R}^3 \quad \exists \rho > 0 \quad \forall u \in A \quad \norm{f(u) - x_0} = \rho \]
+        \[ \Rightarrow (f(u) - x_0) \cdot (f(u) - x_0) = \rho^2 \]
         Derivando rispetto a $u^i$: 
-        
-        \textcolor{violet}{(usando la regola di Leibniz $\frac{\partial}{\partial u^i}[(f(u)-x_0)\cdot(f(u)-x_0)] = 2 f_{u^i}(u)\cdot(f(u)-x_0) = 0$)}
         \[
         \forall i = 1, 2 \quad f_{u^i}(u) \cdot (f(u) - x_0) = 0
-        \Rightarrow f(u) - x_0 \in \langle n(u) \rangle  
+        \Rightarrow f(u) - x_0 \in (T_u f)^\perp = \langle n(u) \rangle  
         \]
-        \textcolor{violet}{(poiché $f(u) - x_0$ è ortogonale alla base $(f_{u^1}(u), f_{u^2}(u))$ di $T_u f$)}
-        \[
-        \Rightarrow n(u) = \pm \frac{f(u) - x_0}{\norm{f(u) - x_0}} = \pm \frac{1}{\rho} (f(u) - x_0) 
-        \]
-        \textcolor{violet}{(essendo $A$  connesso e  $n$ continua, il segno  $\pm$  è costante su tutto $A$)}
-        \[
-        \Rightarrow (dn)_u = \pm \frac{1}{\rho} (df)_u = -k (df)_u \quad \text{con } -k = \pm \frac{1}{\rho}
-        \]
-        \[
-        L_u = -(dn)_u \circ (df)_u^{-1} = k \, i_{T_u f}
-        \]
-        \[
-        \Rightarrow k_1(u) = k_2(u) = k \neq 0 \Rightarrow u \text{ è ombelicale non planare.}
-        \]
+        \textcolor{violet}{$\norm{n(u)}=1$}
+        \[ \Rightarrow n(u) = \pm \frac{f(u) - x_0}{\norm{f(u) - x_0}} \overset{\textcolor{orange}{\substack{\text{ipotesi}}}}{=} \pm \frac{1}{\rho} (f(u) - x_0) \]
+        \[ \Rightarrow (dn)_u = \pm \frac{1}{\rho} (df)_u = -k (df)_u \quad \text{con } -k = \pm \frac{1}{\rho} \]
+        \textcolor{violet}{La costante chiamata $-k$ solo per avere $k$ unico autovalore ma potevamo fare l'opposto}
+        \[ \Rightarrow L_u = -(dn)_u \circ (df)_u^{-1} = k \, id_{T_u f} \]
+        \[ \Rightarrow k_1(u) = k_2(u) = k \neq 0 \Rightarrow u \text{ è ombelicale non planare.} \]
         \end{proof}
         \newpage
 
@@ -2210,7 +2213,7 @@
 
         Si definisce \textcolor{red}{curvatura di Gauss} di $f$ l'applicazione
         \[
-        \textcolor{red}{K : A \to \mathbb{R} \quad \forall u \in A \quad K(u) = k_1(u) \cdot k_2(u)}
+        \textcolor{red}{K : A \to \mathbb{R} \quad \forall u \in A \quad K(u) = k_1(u)  k_2(u)}
         \]
         Si definisce \textcolor{red}{curvatura media} di $f$ l'applicazione
         \[
