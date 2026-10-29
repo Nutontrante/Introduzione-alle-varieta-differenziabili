@@ -2209,7 +2209,7 @@
         \newpage
 
         \begin{definizione}
-        Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie parametrizzata regolare.
+        Sia $f : A \to \mathbb{R}^3$ superficie parametrizzata regolare.
 
         Si definisce \textcolor{red}{curvatura di Gauss} di $f$ l'applicazione
         \[
@@ -2220,20 +2220,18 @@
         \textcolor{red}{H : A \to \mathbb{R} \quad \forall u \in A \quad H(u) = \frac{k_1(u) + k_2(u)}{2}}
         \]
         \end{definizione}
-        \newpage
-        \begin{proposizione}
+        \begin{proposizione}[Riscrittura matrice associata a $L_u$ rispetto alla base $(f_{u^1}, f_{u^2})$]
         \label{prop:riscrittura_matrice_associata_all_operatore_di_Weingarten}
-        Sia $f : A \to \mathbb{R}^3$ superficie parametrizzata regolare, sia \textcolor{red}{$u \in A$}. 
+        \mbox{}
 
-        Siano $g_u$ e $h_u$ le matrici associate a $I_u$ e $\Pi_u$ rispetto alla base $(f_{u^1}(u), f_{u^2}(u))$ di $T_u f$.
-        
-        Sia $B_u = (b_j^i)_{1 \le i,j \le 2}$ la matrice associata 
+        Sia $f : A \to \mathbb{R}^3$ superficie parametrizzata regolare, sia $u \in A$ e siano $g_u$ e $h_u$ le matrici associate
+        a $I_u$ e $\Pi_u$ rispetto alla base $(f_{u^1}(u), f_{u^2}(u))$ di $T_u f$ e $B_u = (b_{ij})_{1 \le i,j \le 2}$ la matrice associata 
         a $L_u$ rispetto alla base $(f_{u^1}(u), f_{u^2}(u))$.
         
         Allora 
         \begin{equation}
         \label{eq:riscrittura_matrice_associata_all_operatore_di_Weingarten}
-        \color{red} B_u = g_u^{-1} \circ h_u
+        \color{red} B_u = g_u^{-1} \cdot h_u
         \end{equation}
         \end{proposizione}
         \begin{proof}
@@ -2241,17 +2239,20 @@
 
         \textcolor{violet}{Per definizione di matrice associata a un endomorfismo rispetto alla base $(f_{u^1}(u), f_{u^2}(u))$, nella
         $j$-esima colonna di $B_u$ ci sono le componenti di $L_u(f_{u^j}(u))$ ovvero $\displaystyle L_u(f_{u^j}(u)) = \sum_{k=1}^2 b_j^k f_{u^k}(u)$}
-        \[ g_u=(g_{ij} (u))_{1 \leq i,j \leq 2} \quad h_u=(h_{ij}(u))_{1 \leq i,j \leq 2} \quad B_u=(b_{ij})_{1 \leq i,j \leq 2} \]
+        \[ g_u=(g_{ij} (u))_{1 \leq i,j \leq 2} \qquad h_u=(h_{ij}(u))_{1 \leq i,j \leq 2} \qquad B_u=(b_{ij})_{1 \leq i,j \leq 2} \]
         Fisso $i,j=1,2$
         \begin{align*}
-        h_{ij}(u) &= \Pi_u(f_{u^i}(u), f_{u^j}(u)) = I_u(f_{u^i}(u), L_u(f_{u^j}(u))) \\
-        &= I_u(f_{u^i}(u), b_j^k f_{u^k}(u)) = b_j^k g_{ik}(u) = g_{ik}(u) b_j^k
+        h_{ij}(u) &= \Pi_u \bigg( f_{u^i}(u), f_{u^j}(u) \bigg) = I_u \bigg( f_{u^i}(u), L_u(f_{u^j}(u)) \, \bigg) \\
+        &= I_u \bigg( f_{u^i}(u), \sum_{k=1}^2 b_{kj} f_{u^k}(u) \bigg) \overset{\textcolor{red}{\text{bilinearità}}}{=} \sum_{k=1}^2 b_{kj} \textcolor{green}{\underbrace{I_u \big( f_{u^i}(u) , f_{u^k}(u) \big)}_{g_{ik}(u)}} \\
+        &= \sum_{k=1}^2 b_{jk}(u) g_{ik}(u) = \sum_{k=1}^2 g_{ik}(u) b_{jk}(u)  
         \end{align*}
         \textcolor{violet}{(Nell'ultimo passaggio si riconosce il prodotto riga per colonna tra la riga $i$-esima della matrice $g_u$ e la colonna $j$-esima della matrice $B_u$):}
         \[
         \Rightarrow h_u = g_u \cdot B_u \Rightarrow B_u = g_u^{-1} \cdot h_u
         \]
         \end{proof}
+        \textcolor{violet}{In generale non è facile come nella sfera ($L_u \equiv id T_uf$) o come nel piano ($L_u \equiv 0$) determinare l'operatore di Weingarten, è più
+        facile determinare prima le matrici $g_u$ e $h_u$ e successivamente $B_u$}
         \newpage
 
         \begin{proposizione}
