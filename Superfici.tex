@@ -2453,13 +2453,15 @@
         \newpage
         \begin{definizione}
         Sia $f : A \to \mathbb{R}^3$ superficie parametrizzata regolare e sia $u \in A$ $X \in T_u f$ con $\norm{X} = 1$
-        si dice che \textcolor{red}{$X$} è \textcolor{red}{direzione asintotica} di $f$ in $u$ se \textcolor{red}{$\Pi_u(X,X) = 0$}
+        si dice che \textcolor{red}{$X$} è \textcolor{red}{direzione asintotica} \textcolor{blu}{(D.A.)} di $f$ in $u$ se \textcolor{red}{$\Pi_u(X,X) = 0$}
         \textcolor{blu}{ovvero la curvatura normale della $f$ in $u$ nella direzione di $X$ è $0$}
         \end{definizione}
         \begin{osservazione}
         \mbox{}
 
-        Se $X$ è D.A. di $f$ in $u$, allora $-X$ è D.A. di $f$ in $u$. Infatti $\norm{-X} = 1$ e $\Pi_u(-X,-X) = (-1)^2 \Pi_u(X,X) = 0$.
+        Se $X$ è D.A. di $f$ in $u$, allora $-X$ è D.A. di $f$ in $u$. 
+        
+        Infatti $\norm{-X} = 1$ e $\Pi_u(-X,-X) = (-1)^2 \Pi_u(X,X) = 0$.
         \end{osservazione}
         \begin{osservazione}
         \mbox{}
@@ -2469,7 +2471,10 @@
         Le direzioni asintotiche sono i vettori di norma $1$ isotropi rispetto alla seconda forma fondamentale. \textcolor{violet}{(Infatti $X$ è sia D.A. sia D.P.C. se e solo se $L_u(X) = 0$, cioè se e solo se $X$ è un autovettore di $L_u$ relativo all'autovalore $0$, il che accade solo nei punti parabolici o planari; nei punti iperbolici vedremo invece che le direzioni asintotiche non sono mai direzioni principali).}
         \end{osservazione}
         \begin{proposizione}
-        Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie parametrizzata regolare. Allora esistono direzioni asintotiche di $f$ in $u$ se e solo se \textcolor{red}{$K(u) \le 0$}.
+        \label{prop:esistenza_direzioni_asintotiche}
+        Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie parametrizzata regolare.
+        
+        Allora esistono direzioni asintotiche di $f$ in $u$ se e solo se \textcolor{red}{$K(u) \le 0$}.
         \end{proposizione}
 
         \begin{proof}
@@ -2481,7 +2486,7 @@
         k_2(u) = \max \left\{ \mathrm{II}_u(X,X) \;\middle|\; X \in T_u f, \ \norm{X} = 1 \right\}
         \]
         \begin{align*}
-        K(u) \le 0 &\iff k_1(u) \le 0 \le k_2(u) \quad \textcolor{violet}{(\text{poiché per convenzione } k_1(u) \le k_2(u))} \\
+        K(u) \le 0 &\iff k_1(u) \le 0 \le k_2(u) \quad \textcolor{violet}{(\text{per convenzione } k_1(u) \le k_2(u))} \\
         &\iff \text{la funzione curvatura normale } X \in S_u^1 f \longmapsto \mathrm{II}_u(X,X) \text{ ammette uno zero} \\
         &\quad \textcolor{violet}{\text{per il th. dei valori intermedi essendo } S_u^1 f \text{ connesso e la funzione continua}} \\
         &\iff \exists X \in T_u f \quad \norm{X} = 1 \text{ t.c. } \mathrm{II}_u(X,X) = 0.
@@ -2490,7 +2495,8 @@
         \newpage
 
         \begin{proposizione}
-        Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie regolare. Sia \textcolor{red}{$u \in A$}. Allora:
+        \label{prop:classificazione_punti_su_una_superficie}
+        Sia $f : A \to \mathbb{R}^3$ superficie regolare sia $u \in A$ allora:
         \begin{enumerate}[label=\arabic*)]
             \item $u$ è \textcolor{red}{ellittico} $\iff \nexists$ direzioni asintotiche in $u$;
             \item $u$ è \textcolor{red}{iperbolico} $\iff \exists \, 2$ a meno del segno D.A. linearmente indipendenti;
@@ -2498,20 +2504,22 @@
             \item $u$ è \textcolor{red}{planare} $\iff \forall X \in T_u f \quad \norm{X} = 1 \quad X \text{ è D.A.}$
         \end{enumerate}
         \end{proposizione}
-
         \begin{proof}
-        \textcolor{red}{1)} è conseguenza della proposizione precedente:
+        \mbox{}
+
+        $\mathbf{1)}$ è conseguenza della proposizione precedente \ref{prop:esistenza_direzioni_asintotiche}:
         \[
         u \text{ è ellittico} \iff K(u) > 0 \iff \nexists \text{ D.A. in } u.
         \]
-        Per completare la dimostrazione è sufficiente dimostrare in 2), 3), 4) le implicazioni $\implies$) \textcolor{violet}{(poiché le quattro classi di punti — ellittico, iperbolico, parabolico, planare — formano una partizione dei punti di $A$, e i quattro casi a secondo membro sul numero di direzioni asintotiche — $0$, $2$ a meno del segno, $1$ a meno del segno, $\infty$ — sono anch'essi mutuamente esclusivi)}.
+        Per completare la dimostrazione è sufficiente dimostrare in 2), 3), 4) le implicazioni $\Rightarrow$)
+        \textcolor{violet}{perchè se provo tutte le $\Rightarrow$ e so una delle condizioni del secondo membro per esempio che esistono $2$
+        direzioni asintotiche a meno del segno linearmente indipendenti il punto non può essere ellittico perché altrimenti non ce ne sarebbero, non puà essere parabolico
+        perché altrimenti ce ne sarebbe una sola, non può essere planare perché altrimenti ce ne sarebbero infinite.} 
 
-        \textcolor{red}{4)} Supponiamo $u$ \textcolor{red}{planare}.
-        \[
-        \implies \mathrm{II}_u = 0 \implies \forall X \in T_u f \quad \norm{X} = 1 \quad \mathrm{II}_u(X,X) = 0 \quad \text{ovvero } X \text{ è D.A.}
-        \]
+        $\mathbf{4)}$ Supponiamo \textcolor{orange}{$u$ planare}.
+        \[ \Rightarrow L_u=0 \Rightarrow \Pi_u = 0 \Rightarrow \forall X \in T_u f \quad \norm{X} = 1 \quad \Pi_u(X,X) = 0 \quad \textcolor{blu}{(\text{ovvero } X \text{ è D.A.})} \]
 
-        \textcolor{red}{2) 3)} Supponiamo $u$ \textcolor{red}{iperbolico} oppure \textcolor{red}{parabolico}.
+        $\mathbf{2) \quad 3)}$ supponiamo \textcolor{orange}{$u$ iperbolico} oppure \textcolor{orange}{$u$ parabolico}.
 
         In entrambi i casi esistono $2$ a meno del segno direzioni principali di curvatura $X_1$ e $X_2$ tra loro ortogonali:
         \[
@@ -2521,50 +2529,42 @@
         L_u(X_1) = k_1(u) X_1 \qquad L_u(X_2) = k_2(u) X_2
         \]
         Sia $X \in T_u f$, $X = a X_1 + b X_2$ con $a, b \in \mathbb{R}$.
-        \[
-        X \text{ è D.A.} \iff \begin{cases} \mathrm{I}_u(X,X) = 1 \iff a^2 + b^2 = 1 \\ \mathrm{II}_u(X,X) = 0 \end{cases}
-        \]
-        \textcolor{violet}{(Nella base ortonormale di autovettori $(X_1, X_2)$ la matrice associata alla seconda forma fondamentale $\mathrm{II}_u$ è diagonale con elementi diagonali $k_1(u)$ e $k_2(u)$):}
-        \begin{align*}
-        \mathrm{II}_u(X,X) &= \begin{pmatrix} a & b \end{pmatrix} \begin{pmatrix} k_1(u) & 0 \\ 0 & k_2(u) \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} \\
-        &= a^2 k_1(u) + b^2 k_2(u)
-        \end{align*}
-        Pertanto $X = a X_1 + b X_2$ è D.A.
-        \[
-        \iff \begin{cases} a^2 + b^2 = 1 \\ a^2 k_1(u) + b^2 k_2(u) = 0 \end{cases}
-        \]
-
-        \textcolor{red}{3)} Supponiamo $u$ \textcolor{red}{parabolico}:
+        \[ X \text{ è D.A.} \iff \begin{cases} \textcolor{violet}{\norm{X}=1=} I_u(X,X) = 1 \iff a^2 + b^2 = 1 \\[6mm] \Pi_u(X,X) = 0 = \begin{pmatrix} a & b \end{pmatrix} 
+            \textcolor{blu}{\underbrace{\textcolor{verde}{\begin{pmatrix} k_1(u) & 0 \\ 0 & k_2(u) \end{pmatrix}}}_{\substack{\text{matrice associata a } \Pi_u \\ \text{rispetto a } (X_1, X_2) \\ \Pi_u(X_1,X_1)=L_u(X_1) \cdot X_1 = k_1(u) \\ \Pi_u(X_2,X_2)=L_u(X_2) \cdot X_2 = k_2(u) \\  \Pi_u(X_1,X_2)=L_u(X_1) \cdot X_2 = 0 }}} \begin{pmatrix} a \\ b \end{pmatrix} = a^2 k_1(u) + b^2 k_2(u) \end{cases}  \]
+        \[ X \text{ è D.A.} \iff  \begin{cases} a^2 + b^2 = 1 \\ a^2 k_1(u) + b^2 k_2(u) = 0 \end{cases} \]
+        \newpage
+        $\mathbf{3)}$ Supponiamo \textcolor{orange}{$u$ parabolico}:
         \[
         K(u) = k_1(u) \cdot k_2(u) = 0 \qquad L_u \neq 0
         \]
         \begin{itemize}
-            \item Se $k_1(u) = 0 \implies k_2(u) \neq 0 \implies b = 0, \ a = \pm 1$.
+            \item Se $k_1(u) = 0 \Rightarrow k_2(u) \neq 0 \Rightarrow b = 0, \ a = \pm 1$.
             
             $X = \pm X_1$ è l'unica direzione asintotica.
-            \item Se $k_2(u) = 0 \implies k_1(u) \neq 0 \implies a = 0, \ b = \pm 1$.
+            \item Se $k_2(u) = 0 \Rightarrow k_1(u) \neq 0 \Rightarrow a = 0, \ b = \pm 1$.
             
             $X = \pm X_2$ è l'unica direzione asintotica.
         \end{itemize}
 
-        \textcolor{red}{2)} Supponiamo $u$ \textcolor{red}{iperbolico}:
+        $\mathbf{2)}$ Supponiamo \textcolor{orange}{$u$ iperbolico}:
         \[
-        K(u) < 0 \implies k_1(u) < 0 < k_2(u)
+        K(u) < 0 \Rightarrow k_1(u) < 0 < k_2(u)
         \]
-        \begin{align*}
-        a^2 k_1(u) + b^2 k_2(u) &= -a^2(-k_1(u)) + b^2 k_2(u) \\
-        &= -\left(a\sqrt{-k_1(u)}\right)^2 + \left(b\sqrt{k_2(u)}\right)^2
-        \end{align*}
+        \[ a^2 k_1(u) + b^2 k_2(u) = -a^2(-k_1(u)) + b^2 k_2(u) = -\left(a\sqrt{-k_1(u)}\right)^2 + \left(b\sqrt{k_2(u)}\right)^2 \]
         \textcolor{violet}{(Scomponendo come differenza di quadrati):}
         \[
         \begin{cases}
-        \left(-a\sqrt{-k_1(u)} + b\sqrt{k_2(u)}\right)\left(a\sqrt{-k_1(u)} + b\sqrt{k_2(u)}\right) = 0 \quad (*) \\
+        \left(-a\sqrt{-k_1(u)} + b\sqrt{k_2(u)}\right)\left(a\sqrt{-k_1(u)} + b\sqrt{k_2(u)}\right) = 0 \quad \textcolor{hotpink}{(*)} \\
         a^2 + b^2 = 1
         \end{cases}
         \]
-        $\exists \, 2$ a meno del segno direzioni asintotiche.
+        \textcolor{violet}{Ci sono $2$ soluzioni indipendenti}
 
-        \textcolor{violet}{(Geometricamente, nel piano delle coordinate $(a,b)$, l'equazione $(*)$ rappresenta una coppia di rette passanti per l'origine di coefficienti angolari opposti $b = \pm \sqrt{\frac{-k_1(u)}{k_2(u)}}\,a$, mentre $a^2+b^2=1$ è la circonferenza unitaria; ciascuna retta interseca la circonferenza in due punti diametralmente opposti):}
+        $\exists \, 2$ a meno del segno direzioni asintotiche linearmente indipendenti.
+
+        \textcolor{violet}{(Geometricamente, nel piano delle coordinate $(a,b)$, l'equazione $\textcolor{hotpink}{(*)}$ rappresenta una coppia di rette
+         passanti per l'origine di coefficienti angolari opposti $b = \pm \sqrt{\frac{-k_1(u)}{k_2(u)}}\,a$, mentre $a^2+b^2=1$ è la circonferenza
+          unitaria; ciascuna retta interseca la circonferenza in due punti diametralmente opposti):}
 
         \begin{center}
         \begin{tikzpicture}[scale=1.1]
@@ -2580,18 +2580,16 @@
         \end{tikzpicture}
         \end{center}
 
-        In particolare $(a,b) = \left( \frac{1}{\sqrt{-k_1(u)}}, \, \pm \frac{1}{\sqrt{k_2(u)}} \right)$ soddisfa l'equazione $(*)$. Pertanto
+        In particolare $(a,b) = \left( \frac{1}{\sqrt{-k_1(u)}}, \, \pm \frac{1}{\sqrt{k_2(u)}} \right)$ soddisfa l'equazione $\textcolor{hotpink}{(*)}$ pertanto
         \[
         \textcolor{red}{v_1 = \frac{X_1}{\sqrt{-k_1}} + \frac{X_2}{\sqrt{k_2}} \qquad v_2 = \frac{X_1}{\sqrt{-k_1}} - \frac{X_2}{\sqrt{k_2}}}
         \]
-        soddisfano $\mathrm{II}_u(v_i, v_i) = 0$.
+        soddisfano $\Pi_u(v_i, v_i) = 0$.
 
         Per ottenere le direzioni asintotiche è sufficiente normalizzare $v_1$ e $v_2$.
 
-        Si osservi che $v_1$ e $v_2$ in genere non sono tra loro ortogonali. Infatti:
-        \[
-        v_1 \cdot v_2 = \frac{1}{-k_1} - \frac{1}{k_2} = \frac{-k_2 - k_1}{k_1 k_2} \quad \textcolor{violet}{= -\frac{2H(u)}{K(u)}}
+        \textcolor{blu}{Si osservi che $v_1$ e $v_2$ in genere non sono tra loro ortogonali, infatti:}
+        \[ \color{blu} v_1 \cdot v_2 = \frac{1}{-k_1} - \frac{1}{k_2} = \frac{-k_2 - k_1}{k_1 k_2} \quad \textcolor{violet}{= -\frac{2H(u)}{K(u)}}
         \]
-        \textcolor{violet}{(Da questa formula si vede anche subito che in un punto iperbolico le due direzioni asintotiche sono ortogonali tra loro se e solo se $k_1(u) + k_2(u) = 0$, ovvero se e solo se la curvatura media è nulla: $H(u) = 0$).}
         \end{proof}
         \newpage
