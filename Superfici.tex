@@ -2594,14 +2594,122 @@
         \end{proof}
         \newpage
         \begin{esempio}[Parametrizzazione del toro]
+        \label{esempio:superfici_toro}
+        \mbox{}
+
         Sia $f : \mathbb{R}^2 \to \mathbb{R}^3$ con $a, b \in \mathbb{R}$ tali che $a > b > 0$, definita da:
         \[
         \textcolor{red}{f(u,v) = \big( (a + b \cos u)\cos v, \, (a + b \cos u)\sin v, \, b \sin u \big)}
         \]
-        \textcolor{violet}{(Geometricamente, $a$ rappresenta la distanza dal centro del toro al centro del tubo circolare, mentre $b$ è il raggio del tubo stesso. La condizione $a > b > 0$ garantisce che il toro abbia effettivamente il "buco" centrale e non si auto-intersechi sull'asse $z$).}
+        \begin{center}
+        \begin{tikzpicture}[
+            x={(0.9cm,-0.63cm)}, y={(0.9cm,0.55cm)}, z={(0cm,1.3cm)},
+            line cap=round, line join=round, >=stealth,
+            lab/.style={font=\large, inner sep=2pt}
+        ]
+        % ---------- parametri ----------
+        \def\a{2.6}    % raggio maggiore
+        \def\b{1}      % raggio minore
+        \def\vv{35}    % angolo v (gradi)
+        \def\uu{40}    % angolo u (gradi)
+
+        % direzione di proiezione (dipende da x, y, z del tikzpicture):
+        % vettore d=(1,-1,\kk) che la proiezione manda in zero; \kk = 1.18/1.15
+        \def\kk{1.026}
+        % una normale n=(cos u cos v, cos u sin v, sin u) e' "visibile" se n.d > 0:
+        %   cos u (cos v - sin v) + \kk sin u > 0
+
+        \pgfmathsetmacro{\rr}{\a+\b*cos(\uu)}   % a + b cos u
+
+        % ---------- punti ----------
+        \coordinate (O) at (0,0,0);
+        \coordinate (C) at ({\a*cos(\vv)},{\a*sin(\vv)},0);
+        \coordinate (Q) at ({\rr*cos(\vv)},{\rr*sin(\vv)},0);
+        \coordinate (A) at ({\rr*cos(\vv)},0,0);
+        \coordinate (P) at ({\rr*cos(\vv)},{\rr*sin(\vv)},{\b*sin(\uu)});
+
+        % ---------- toro: linee sulla superficie (solo parte visibile) ----------
+        % meridiani (v costante)
+        \foreach \w in {0,15,...,345}{
+        \foreach \t in {0,4,...,356}{
+            \pgfmathparse{ifthenelse(cos(\t+2)*(cos(\w)-sin(\w))+\kk*sin(\t+2)>0,1,0)}
+            \ifnum\pgfmathresult=1
+            \draw[gray!45, very thin] plot[domain=\t:\t+4, samples=2, variable=\s]
+                ({(\a+\b*cos(\s))*cos(\w)}, {(\a+\b*cos(\s))*sin(\w)}, {\b*sin(\s)});
+            \fi
+        }
+        }
+        % parallelli (u costante)
+        \foreach \p in {0,30,...,330}{
+        \foreach \t in {0,4,...,356}{
+            \pgfmathparse{ifthenelse(cos(\p)*(cos(\t+2)-sin(\t+2))+\kk*sin(\p)>0,1,0)}
+            \ifnum\pgfmathresult=1
+            \draw[gray!45, very thin] plot[domain=\t:\t+4, samples=2, variable=\s]
+                ({(\a+\b*cos(\p))*cos(\s)}, {(\a+\b*cos(\p))*sin(\s)}, {\b*sin(\p)});
+            \fi
+        }
+        }
+        % contorno apparente (silhouette): n.d = 0
+        \foreach \sg in {90,-90}{
+        \draw[gray!70!black, thick] plot[domain=0:360, samples=181, variable=\t]
+            ({(\a+\b*cos(atan2(\kk,cos(\t)-sin(\t))+\sg))*cos(\t)},
+            {(\a+\b*cos(atan2(\kk,cos(\t)-sin(\t))+\sg))*sin(\t)},
+            {\b*sin(atan2(\kk,cos(\t)-sin(\t))+\sg)});
+        }
+
+        % ---------- assi ----------
+        \draw[->, thick] (0,0,0) -- (5.2,0,0) node[lab, below right] {$x$};
+        \draw[->, thick] (0,0,0) -- (0,5.6,0) node[lab, above right] {$y$};
+        \draw[->, thick] (0,0,0) -- (0,0,3.2) node[lab, above] {$z$};
+        \node[lab, left] at (O) {$O$};
+
+        % ---------- meridiano evidenziato: davanti pieno, dietro tratteggiato ----------
+        \foreach \t in {0,4,...,356}{
+        \pgfmathparse{ifthenelse(cos(\t+2)*(cos(\vv)-sin(\vv))+\kk*sin(\t+2)>0,1,0)}
+        \ifnum\pgfmathresult=1
+            \draw[cyan!50!blue!80!black, very thick] plot[domain=\t:\t+4, samples=2, variable=\s]
+            ({(\a+\b*cos(\s))*cos(\vv)}, {(\a+\b*cos(\s))*sin(\vv)}, {\b*sin(\s)});
+        \else
+            \draw[cyan!50!blue!80!black, thick, densely dashed] plot[domain=\t:\t+4, samples=2, variable=\s]
+            ({(\a+\b*cos(\s))*cos(\vv)}, {(\a+\b*cos(\s))*sin(\vv)}, {\b*sin(\s)});
+        \fi
+        }
+
+        % ---------- segmento a e angolo v ----------
+        \draw[green!50!black, very thick] (O) -- (C) node[midway, above, lab, green!50!black] {$a$};
+        \fill[green!60!black, opacity=.45] (O) --
+        plot[domain=0:\vv, samples=20, variable=\t] ({0.9*cos(\t)},{0.9*sin(\t)},0) -- cycle;
+        \draw[green!50!black, thick] plot[domain=0:\vv, samples=20, variable=\t]
+        ({0.9*cos(\t)},{0.9*sin(\t)},0);
+        \node[lab, green!50!black, xshift=-20pt, yshift=10pt] at ({1.35*cos(\vv/2)},{1.35*sin(\vv/2)-0.1},0) {$v$};
+
+        % ---------- angolo u (nel piano del meridiano) ----------
+        \fill[violet, opacity=.4] (C) --
+        plot[domain=0:\uu, samples=20, variable=\t]
+        ({\a*cos(\vv)+0.6*cos(\t)*cos(\vv)}, {\a*sin(\vv)+0.6*cos(\t)*sin(\vv)}, {0.6*sin(\t)}) -- cycle;
+        \node[lab, violet, xshift=-16pt, yshift=-4pt] at
+        ({\a*cos(\vv)+0.95*cos(\uu/2)*cos(\vv)}, {\a*sin(\vv)+0.95*cos(\uu/2)*sin(\vv)}, {0.95*sin(\uu/2)}) {$u$};
+
+        % ---------- segmenti b, b cos u, b sen u ----------
+        \draw[violet!80!red, very thick] (C) -- (P) node[midway, above left, lab] {$b$};
+        \draw[cyan, very thick] (C) -- (Q) node[midway, below, lab, cyan!70!blue, xshift=-20pt] {$b\cos u$};
+        \draw[red, thick] (Q) -- (P) node[midway, right, lab, red, xshift=14pt, yshift=-6pt] {$z=b\,\sin u$};
+        \fill[red] (P) circle (1.6pt) node[above right, lab, red, xshift=6pt, yshift=6pt] {$P=f(u,v)$};
+
+        % ---------- proiezioni su x e y ----------
+        \draw[gray, dashed] (O) -- (Q);
+        \draw[blue!50!black, very thick] (O) -- (A)
+        node[midway, below left, lab, blue!50!black] {$x=(a+b\cos u)\cos v$};
+        \draw[orange!90!black, very thick] (A) -- (Q)
+        node[midway, below right, lab, orange!90!black, xshift=30pt, yshift=-2pt]
+        {$y=(a+b\cos u)\sin v$};
+        \end{tikzpicture}
+        \end{center}
+        \textcolor{violet}{Geometricamente, $a$ rappresenta la distanza dal centro del toro al centro del tubo circolare, mentre $b$ è il raggio del tubo stesso. La condizione $a > b > 0$ garantisce che il toro abbia effettivamente il "buco" centrale e non si auto-intersechi sull'asse $z$.}
 
         \textcolor{blu}{$a + b \cos u > 0$}
-        \textcolor{blu}{Infatti $a > b > 0 \implies \frac{a}{b} > 1 \implies -\frac{a}{b} < -1 \le \cos u \implies a + b \cos u > 0$}
+
+        \textcolor{verde}{Infatti $a > b > 0 \Rightarrow \dfrac{a}{b} > 1 \Rightarrow -\dfrac{a}{b} < -1 \le \cos u \Rightarrow a + b \cos u > 0$}
         
         Calcoliamo le derivate parziali prime:
         \begin{align*}
