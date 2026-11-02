@@ -2593,3 +2593,487 @@
         \]
         \end{proof}
         \newpage
+        \begin{esempio}[Parametrizzazione del toro]
+        Sia $f : \mathbb{R}^2 \to \mathbb{R}^3$ con $a, b \in \mathbb{R}$ tali che $a > b > 0$, definita da:
+        \[
+        \textcolor{red}{f(u,v) = \big( (a + b \cos u)\cos v, \, (a + b \cos u)\sin v, \, b \sin u \big)}
+        \]
+        \textcolor{violet}{(Geometricamente, $a$ rappresenta la distanza dal centro del toro al centro del tubo circolare, mentre $b$ è il raggio del tubo stesso. La condizione $a > b > 0$ garantisce che il toro abbia effettivamente il "buco" centrale e non si auto-intersechi sull'asse $z$).}
+
+        \textcolor{blu}{$a + b \cos u > 0$}
+        \textcolor{blu}{Infatti $a > b > 0 \implies \frac{a}{b} > 1 \implies -\frac{a}{b} < -1 \le \cos u \implies a + b \cos u > 0$}
+        
+        Calcoliamo le derivate parziali prime:
+        \begin{align*}
+        \textcolor{red}{f_u(u,v)} &= (-b \sin u \cos v, \, -b \sin u \sin v, \, b \cos u) \\
+        \textcolor{red}{f_v(u,v)} &= \big( -(a + b \cos u)\sin v, \, (a + b \cos u)\cos v, \, 0 \big)
+        \end{align*}
+
+        La matrice jacobiana in $(u,v)$ è data da:
+        \[
+        (Jf)_{(u,v)} = \begin{pmatrix}
+        -b \sin u \cos v & -(a + b \cos u)\sin v \\
+        -b \sin u \sin v & (a + b \cos u)\cos v \\
+        b \cos u & 0
+        \end{pmatrix}
+        \]
+
+        Calcoliamo i minori di ordine $2$:
+        \begin{align*}
+        M_1 &= -b(a + b \cos u)\cos u \cos v \\
+        M_2 &= b(a + b \cos u)\cos u \sin v \\
+        M_3 &= -b(a + b \cos u)\sin u
+        \end{align*}
+        Pertanto il prodotto vettoriale fondamentale è:
+        \[
+        f_u(u,v) \times f_v(u,v) = (M_1, -M_2, M_3)
+        \]
+        Calcolandone la norma al quadrato otteniamo:
+        \begin{align*}
+        \norm{f_u(u,v) \times f_v(u,v)}^2 &= M_1^2 + M_2^2 + M_3^2 \\
+        &= b^2(a + b \cos u)^2 (\cos^2 u \cos^2 v + \cos^2 u \sin^2 v + \sin^2 u) \\
+        &= b^2(a + b \cos u)^2 \neq 0
+        \end{align*}
+        Da cui segue che:
+        \[
+        \norm{f_u(u,v) \times f_v(u,v)} = b(a + b \cos u)
+        \]
+        Quindi $f$ è regolare.
+
+        La normale di Gauss è data da:
+        \begin{align*}
+        \textcolor{red}{n(u,v)} &= \frac{f_u(u,v) \times f_v(u,v)}{\norm{f_u(u,v) \times f_v(u,v)}} \\
+        &= (-\cos u \cos v, \, -\cos u \sin v, \, -\sin u)
+        \end{align*}
+        \textcolor{violet}{(Notiamo che con questa scelta di orientazione dei parametri $(u,v)$, la normale di Gauss $n(u,v)$ punta verso l'interno del tubo del toro, come evidenziato anche dal disegno schematico con le frecce rivolte verso il centro della sezione circolare).}
+
+        \noindent \textcolor{red}{$\mathbf{1^a}$ \textbf{forma fondamentale}}
+        \begin{align*}
+        g_{11}(u,v) &= f_u(u,v) \cdot f_u(u,v) = b^2 \\
+        g_{12}(u,v) &= f_u(u,v) \cdot f_v(u,v) = 0 \\
+        g_{22}(u,v) &= f_v(u,v) \cdot f_v(u,v) = (a + b \cos u)^2
+        \end{align*}
+        La matrice associata alla prima forma fondamentale è:
+        \[
+        \textcolor{red}{g_{(u,v)} = \begin{pmatrix}
+        b^2 & 0 \\
+        0 & (a + b \cos u)^2
+        \end{pmatrix}}
+        \]
+        \textcolor{violet}{(Poiché $g_{12}(u,v) = 0$ per ogni $(u,v)$, le linee coordinate formano una rete ortogonale: paralleli e meridiani si intersecano sempre ortogonalmente in ogni punto del toro).}
+
+        \noindent \textcolor{red}{\textbf{Linee coordinate}}
+        \begin{itemize}
+            \item Fissato $u \in \mathbb{R}$, consideriamo $\textcolor{red}{c_u : \mathbb{R} \to \mathbb{R}^3}$:
+            \begin{align*}
+            c_u(t) &= f(u,t) \\
+            &= \big( (a + b \cos u)\cos t, \, (a + b \cos u)\sin t, \, b \sin u \big) \\
+            &= (0, 0, b \sin u) + (\rho \cos t, \, \rho \sin t, \, 0)
+            \end{align*}
+            Questa è una circonferenza contenuta nel piano $z = b \sin u$ di centro $(0, 0, b \sin u)$ e raggio $\rho = a + b \cos u$.
+            
+            Il vettore tangente è:
+            \[
+            \dot{c}_u(t) = f_v(u,t) = (-\rho \sin t, \, \rho \cos t, \, 0)
+            \]
+            con $\norm{f_v} = a + b \cos u$ (dipende da $u$).
+            
+            La linea coordinata $c_u$ è detta \textcolor{red}{parallelo} del toro.
+            
+            La curva $c_u$ è sezione normale di $f$?
+            Lo è se e solo se la giacitura del piano $z = b \sin u$ \textcolor{violet}{(che è il piano $z = 0$, generato dai vettori $(1,0,0)$ e $(0,1,0)$)} contiene la normale di Gauss
+            \[
+            n(u,t) = (-\cos u \cos t, \, -\cos u \sin t, \, -\sin u)
+            \]
+            ovvero per $\sin u = 0 \iff u = k\pi$ \textcolor{violet}{(con $k \in \mathbb{Z}$)}.
+            (Pertanto, tra le linee coordinate $c_u$, solo i due equatori, quello esterno e quello interno, corrispondenti a $u = 0$ e $u = \pi$, sono sezioni normali).
+
+            \item Fissato $v \in \mathbb{R}$, consideriamo $\textcolor{red}{c_v : \mathbb{R} \to \mathbb{R}^3}$ \textcolor{violet}{(negli appunti manoscritti compare $\mathbb{R} \to \mathbb{R}$ per una svista, ma il codominio è $\mathbb{R}^3$)}:
+            \begin{align*}
+            c_v(t) &= f(t,v) \\
+            &= \big( (a + b \cos t)\cos v, \, (a + b \cos t)\sin v, \, b \sin t \big)
+            \end{align*}
+            $c_v$ è una curva piana, contenuta nel piano
+            \[
+            \sin v \, x - \cos v \, y = 0
+            \]
+            In particolare:
+            \[
+            c_v(t) = \underbrace{(a \cos v, \, a \sin v, \, 0)}_{\textcolor{amber}{\text{punto del piano}}} + \underbrace{(b \cos v \cos t, \, b \sin v \cos t, \, b \sin t)}_{\textcolor{green!60!black}{\substack{\text{vettore di norma } b \\ \text{parallelo al piano}}}}
+            \]
+            $c_v(t)$ è la circonferenza di centro $C(a \cos v, \, a \sin v, \, 0)$ e raggio $b$ contenuta nel piano $\sin v \, x - \cos v \, y = 0$ (che contiene l'asse $z$). \textcolor{violet}{(Attenzione: a metà della terza pagina degli appunti manoscritti è stato scritto $\sin v \, x + \cos v \, y = 0$ con il segno $+$, ma l'equazione corretta del piano che contiene $c_v(t)$ è quella con il segno $-$ scritta poche righe prima, cioè $\sin v \, x - \cos v \, y = 0$).}
+            
+            Il vettore tangente è:
+            \[
+            \dot{c}_v(t) = f_u(t,v) = (-b \sin t \cos v, \, -b \sin t \sin v, \, b \cos t)
+            \]
+            con $\norm{f_u} = b$ 
+            
+            \textcolor{violet}{negli appunti è scritto $\norm{f_u} = 1$, ma calcolando la norma si ha: }
+            \[ \color{violet} \sqrt{b^2 \sin^2 t (\cos^2 v + \sin^2 v) + b^2 \cos^2 t} = b \]
+            \textcolor{violet}{ che è coerente con $g_{11}(u,v) = b^2$ calcolato nella prima forma fondamentale}.
+            
+            La linea coordinata $c_v$ è detta \textcolor{red}{meridiano} del toro.
+            
+            Si osservi che la normale di Gauss $n(t,v)$ è contenuta nella giacitura del piano della curva:
+            \[
+            n(t,v) = (-\cos t \cos v, \, -\cos t \sin v, \, -\sin t)
+            \]
+            Infatti:
+            \[
+            \sin v (-\cos t \cos v) - \cos v (-\cos t \sin v) = 0
+            \]
+            Pertanto le curve $c_v$ sono sezioni normali di $f$.
+        \end{itemize}
+
+        \noindent \textcolor{red}{$\mathbf{2^a}$ \textbf{forma fondamentale}}
+
+        Calcoliamo le derivate parziali seconde di $f$:
+        \begin{align*}
+        f_{uu}(u,v) &= (-b \cos u \cos v, \, -b \cos u \sin v, \, -b \sin u) \\
+        f_{uv}(u,v) &= (b \sin u \sin v, \, -b \sin u \cos v, \, 0) \\
+        f_{vv}(u,v) &= \big( -(a + b \cos u)\cos v, \, -(a + b \cos u)\sin v, \, 0 \big)
+        \end{align*}
+        I coefficienti della seconda forma fondamentale sono:
+        \begin{align*}
+        h_{11}(u,v) &= n(u,v) \cdot f_{uu}(u,v) = b \\
+        h_{12}(u,v) &= n(u,v) \cdot f_{uv}(u,v) = 0 \\
+        h_{22}(u,v) &= n(u,v) \cdot f_{vv}(u,v) = (a + b \cos u)\cos u
+        \end{align*}
+        La matrice associata alla seconda forma fondamentale è:
+        \[
+        \textcolor{red}{h_{(u,v)} = \begin{pmatrix}
+        b & 0 \\
+        0 & \cos u (a + b \cos u)
+        \end{pmatrix}}
+        \]
+
+        \noindent \textcolor{red}{\textbf{Operatore di Weingarten}}
+
+        La matrice associata all'operatore di Weingarten $L_{(u,v)}$ rispetto alla base $\big( f_u(u,v), \, f_v(u,v) \big)$ è:
+        \begin{align*}
+        A = g_{(u,v)}^{-1} h_{(u,v)} &= \begin{pmatrix}
+        \frac{1}{b^2} & 0 \\[6pt]
+        0 & \frac{1}{(a + b \cos u)^2}
+        \end{pmatrix}
+        \begin{pmatrix}
+        b & 0 \\[6pt]
+        0 & (a + b \cos u)\cos u
+        \end{pmatrix} \\[6pt]
+        &= \textcolor{red}{\begin{pmatrix}
+        \frac{1}{b} & 0 \\[6pt]
+        0 & \frac{\cos u}{a + b \cos u}
+        \end{pmatrix}}
+        \end{align*}
+        Poiché la matrice è diagonale, $f_u$ e $f_v$ sono autovettori di $L_{(u,v)}$ con autovalori
+        \[
+        \frac{1}{b} \quad \text{e} \quad \frac{\cos u}{a + b \cos u}
+        \]
+        \textcolor{violet}{(Di conseguenza, poiché i vettori tangenti alle linee coordinate $f_u$ e $f_v$ sono autovettori dell'operatore di Weingarten in ogni punto, sia i meridiani che i paralleli sono linee di curvatura principale per il toro).}
+
+        Le \textcolor{red}{curvature principali} sono $\frac{1}{b}$ e $\frac{\cos u}{a + b \cos u}$.
+
+        Osserviamo che:
+        \[
+        b \cos u < a + b \cos u \implies \frac{b \cos u}{a + b \cos u} < 1 \implies \frac{\cos u}{a + b \cos u} < \frac{1}{b} \quad (\text{non ci sono punti ombelicali})
+        \]
+        Poniamo quindi:
+        \[
+        \textcolor{red}{k_1(u) = \frac{\cos u}{a + b \cos u}}, \qquad \textcolor{red}{k_2(u) = \frac{1}{b}}
+        \]
+        Normalizzando gli autovettori troviamo:
+        \begin{align*}
+        \textcolor{red}{X_1} &= \textcolor{red}{\frac{f_v}{\norm{f_v}} = (-\sin v, \, \cos v, \, 0)} \\
+        \textcolor{red}{X_2} &= \textcolor{red}{\frac{f_u}{\norm{f_u}} = (-\sin u \cos v, \, -\sin u \sin v, \, \cos u)}
+        \end{align*}
+        \textcolor{violet}{(Attenzione: nella seconda componente di $X_2$ sugli appunti manoscritti è stato omesso il segno meno davanti a $\sin u \sin v$, ma dividendo $f_u = (-b \sin u \cos v, -b \sin u \sin v, b \cos u)$ per la sua norma $\norm{f_u} = b > 0$ entrambe le prime due componenti restano col segno $-$).}
+
+        $X_1$ e $X_2$ sono \textcolor{red}{direzioni principali di curvatura}.
+
+        \noindent \textcolor{red}{\textbf{Curvatura di Gauss}}
+        \[
+        \textcolor{red}{K(u,v)} = k_1(u,v) \cdot k_2(u,v) = \frac{\cos u}{b(a + b \cos u)}
+        \]
+
+        \noindent \textcolor{red}{\textbf{Curvatura media}}
+        \[
+        \textcolor{red}{H(u,v)} = \frac{k_1(u,v) + k_2(u,v)}{2} = \frac{1}{2} \left( \frac{1}{b} + \frac{\cos u}{a + b \cos u} \right)
+        \]
+
+        Studiamo il segno della curvatura di Gauss per classificare i punti del toro \textcolor{violet}{(ricordando che $b(a + b \cos u) > 0$ sempre, il segno di $K(u,v)$ dipende esclusivamente dal segno di $\cos u$; per il legame con le direzioni asintotiche si veda anche la prop. \ref{prop:classificazione_punti_su_una_superficie})}:
+        \begin{itemize}
+            \item $K(u,v) > 0 \iff \cos u > 0 \iff u \in \left( -\frac{\pi}{2} + 2k\pi, \, \frac{\pi}{2} + 2k\pi \right)$:
+            
+            i punti ``esterni'' sono punti \textcolor{red}{ellittici} \textcolor{violet}{(e pertanto, per la prop. \ref{prop:classificazione_punti_su_una_superficie}, in tali punti non esistono direzioni asintotiche)}.
+            
+            \item $K(u,v) = 0 \iff \cos u = 0 \iff u = \pm \frac{\pi}{2} + 2k\pi$:
+            
+            i punti dei due paralleli superiore e inferiore sono punti \textcolor{red}{parabolici} \textcolor{violet}{(non essendo mai nullo l'operatore di Weingarten poichè $k_2(u) = \frac{1}{b} \neq 0$, non ci sono punti planari; per la prop. \ref{prop:classificazione_punti_su_una_superficie}, lungo questi due paralleli esiste un'unica direzione asintotica a meno del segno)}.
+            
+            \item $K(u,v) < 0 \iff \cos u < 0 \iff u \in \left( \frac{\pi}{2} + 2k\pi, \, \frac{3}{2}\pi + 2k\pi \right)$:
+            
+            i punti ``interni'' sono punti \textcolor{red}{iperbolici} \textcolor{violet}{(e quindi, per la prop. \ref{prop:classificazione_punti_su_una_superficie}, in ciascuno di essi esistono esattamente $2$ direzioni asintotiche linearmente indipendenti a meno del segno)}.
+        \end{itemize}
+        \noindent \textbf{Direzioni asintotiche del toro}\\
+        Considerata la parametrizzazione del toro,
+        \begin{itemize}
+            \item nei punti parabolici esiste un'unica a meno del segno direzione asintotica, che coincide con la direzione principale di curvatura, con curvatura principale nulla 
+            
+            $\left( \frac{f_v}{\norm{f_v}} \text{ tangente al parallelo superiore o inferiore} \right)$ \textcolor{violet}{(infatti nei punti parabolici $\cos u = 0$, da cui $k_1(u,v) = 0$ e $k_2(u,v) = \frac{1}{b} \neq 0$; un versore tangente $X = \alpha X_1 + \beta X_2$ annulla la seconda forma fondamentale $h_{(u,v)}(X,X) = k_1 \alpha^2 + k_2 \beta^2 = \frac{1}{b}\beta^2$ se e solo se $\beta = 0$, ovvero $X = \pm X_1 = \pm \frac{f_v}{\norm{f_v}}$, in perfetto accordo con il punto 3 della Proposizione \ref{prop:classificazione_punti_su_una_superficie})};
+            \item nei punti iperbolici esistono $2$ a meno del segno direzioni asintotiche \textcolor{violet}{(per il punto 2 della Proposizione \ref{prop:classificazione_punti_su_una_superficie})}.
+        \end{itemize}
+        Le D.P.C. sono
+        \[
+        X_1 = \frac{f_v}{\norm{f_v}} = (-\sin v, \cos v, 0)
+        \]
+        con curvatura principale $\displaystyle k_1(u,v) = \frac{\cos u}{a + b \cos u}$
+        \[
+        X_2 = \frac{f_u}{\norm{f_u}} = (-\sin u \cos v, -\sin u \sin v, \cos u)
+        \]
+        con curvatura principale $\displaystyle k_2(u,v) = \frac{1}{b}$.
+
+        \noindent Posto
+        \[
+        v_1 = \frac{X_1}{\sqrt{-k_1}} + \frac{X_2}{\sqrt{k_2}}, \qquad v_2 = \frac{X_1}{\sqrt{-k_1}} - \frac{X_2}{\sqrt{k_2}}
+        \]
+        \textcolor{violet}{(attenzione: negli appunti a mano sotto il primo termine di $v_2$ è scappato il pedice $2$ nella radice, $\sqrt{-k_2}$, ma è chiaramente un refuso per $\sqrt{-k_1}$: nei punti iperbolici $\cos u < 0$, quindi $k_1 < 0 \implies -k_1 > 0$, mentre $k_2 = \frac{1}{b} > 0$. In questo modo $h_{(u,v)}(v_i, v_i) = k_1 \left(\frac{1}{\sqrt{-k_1}}\right)^2 + k_2 \left(\pm\frac{1}{\sqrt{k_2}}\right)^2 = \frac{k_1}{-k_1} + \frac{k_2}{k_2} = -1 + 1 = 0$)}
+
+        \noindent le direzioni asintotiche sono $\displaystyle \frac{v_i}{\norm{v_i}}$.
+
+        \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=0.9]
+            % Griglia e assi
+            %\draw[step=0.5cm, gray!30, very thin] (-3,-2.5) grid (3,2.5);
+            \draw[->] (-3,0) -- (3,0) node[below right] {$x$};
+            \draw[->] (0,-2.5) -- (0,2.5) node[above left] {$y$};
+            
+            % Tacche assi
+            \node[below, font=\scriptsize] at (-2,0) {$-2$};
+            \node[below, font=\scriptsize] at (2,0) {$2$};
+            \node[left, font=\scriptsize] at (0,2) {$2$};
+            \node[left, font=\scriptsize] at (0,-2) {$-2$};
+            \node[below left, font=\scriptsize] at (0,0) {$0$};
+
+            % Curva intersezione (Lemniscata in viola)
+            \draw[violet, thick, samples=200, smooth, variable=\t, domain=0:360] 
+                plot ({2.8*cos(\t)/(1 + (sin(\t))^2)}, {2.8*sin(\t)*cos(\t)/(1 + (sin(\t))^2)});
+
+            % Direzioni principali di curvatura (in verde)
+            \draw[->, green!60!black, very thick, >=stealth] (0,0) -- (1.6,0);
+            \draw[->, green!60!black, very thick, >=stealth] (0,0) -- (0,1.6);
+            \node[green!60!black, right, align=left, font=\small] at (4.2, 0.2) {in verde\\direzioni principali di\\curvatura};
+
+            % Direzioni asintotiche (in rosso)
+            \draw[->, red, very thick, >=stealth] (0,0) -- (1.2, 1.2);
+            \draw[->, red, very thick, >=stealth] (0,0) -- (-1.2, 1.2);
+            \node[red, left, align=left, font=\small] at (-2.2, 1.6) {in rosso\\direzioni\\asintotiche};
+        \end{tikzpicture}
+        \end{figure}
+
+        \noindent Curva intersezione del toro con il piano tangente in un punto dell'equatore interno \textcolor{violet}{(poiché l'equatore interno $u = \pi$ è costituito da punti iperbolici, il piano tangente attraversa la superficie tagliandola lungo una curva che presenta nel punto di tangenza un punto doppio nodale, le cui rette tangenti nei due rami sono proprio le due direzioni asintotiche in rosso)}.
+
+        \end{esempio}
+        \newpage
+        \begin{definizione}
+        Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie parametrizzata regolare. Sia \textcolor{red}{$c = f \circ u : I \to \mathbb{R}^3$} curva su $f$, \textcolor{red}{$u : I \to A$}.
+        \begin{enumerate}[label=\textcolor{red}{\arabic*.}]
+            \item $c$ si dice \textcolor{red}{linea asintotica} se
+            \[
+            \forall t \in I \quad \dfrac{\dot{c}(t)}{\norm{\dot{c}(t)}} \text{ è D.A. di } f \text{ in } u(t).
+            \]
+            \item $c$ si dice \textcolor{red}{linea di curvatura principale} se
+            \[
+            \forall t \in I \quad \dfrac{\dot{c}(t)}{\norm{\dot{c}(t)}} \text{ è D.P.C. di } f \text{ in } u(t).
+            \]
+        \end{enumerate}
+        \textcolor{violet}{(Nota implicita: affinché il versore tangente $\dfrac{\dot{c}(t)}{\norm{\dot{c}(t)}}$ sia ben definito, si sta assumendo che $c$ sia una curva regolare su $f$, ovvero $\dot{c}(t) \neq 0$ per ogni $t \in I$).}
+        \end{definizione}
+
+        \begin{osservazione}
+        Consideriamo le \textcolor{red}{curve coordinate} su $f : A \to \mathbb{R}^3$:
+
+        \noindent \textcolor{red}{$u = \text{costante}$}
+        \[
+        c_u : I \to \mathbb{R}^3, \qquad c_u(t) = f(u,t)
+        \]
+        \[
+        \dot{c}_u(t) = f_v(u,t)
+        \]
+        \begin{itemize}
+            \item $c_u$ è linea di curvatura principale $\iff \dfrac{f_v}{\norm{f_v}}$ è D.P.C.
+            \item $c_u$ è linea asintotica $\iff \dfrac{f_v}{\norm{f_v}}$ è D.A.
+        \end{itemize}
+
+        \noindent \textcolor{red}{$v = \text{costante}$}
+        \[
+        c_v : I \to \mathbb{R}^3, \qquad c_v(t) = f(t,v)
+        \]
+        \[
+        \dot{c}_v(t) = f_u(t,v)
+        \]
+        \begin{itemize}
+            \item $c_v$ è linea di curvatura principale $\iff \dfrac{f_u}{\norm{f_u}}$ è D.P.C.
+            \item $c_v$ è linea asintotica $\iff \dfrac{f_u}{\norm{f_u}}$ è D.A. \textcolor{violet}{(Attenzione: negli appunti a mano in alto a destra c'è scritto $\dfrac{f_v}{\norm{f_v}}$ per una piccola svista di copia-incolla dal caso precedente, ma poiché il vettore tangente a $c_v$ è $\dot{c}_v(t) = f_u(t,v)$, il versore tangente è $\dfrac{f_u}{\norm{f_u}}$)}.
+        \end{itemize}
+        In particolare, sia per la parametrizzazione della sfera $S^2 \setminus \{N,S\}$ che per la parametrizzazione del toro le curve coordinate (paralleli e meridiani) sono linee principali di curvatura \textcolor{violet}{(infatti in entrambi i casi avevamo trovato $g_{12} = 0$ e $h_{12} = 0$, perciò la matrice dell'operatore di Weingarten rispetto alla base coordinata $\{f_u, f_v\}$ risultava diagonale, rendendo $f_u$ e $f_v$ autovettori di $L_{(u,v)}$ in ogni punto)}.
+        \end{osservazione}
+
+        \section{Superfici di rotazione}
+
+        Sia $I \subset \mathbb{R}$ intervallo.\\
+        Siano \textcolor{red}{$h, k : I \to \mathbb{R}$} funzioni differenziabili tali che $\forall u \in I$
+        \[
+        h(u) \neq 0 \quad \text{e} \quad h'(u)^2 + k'(u)^2 \neq 0.
+        \]
+        Sia \textcolor{red}{$c : I \to \mathbb{R}^3$} \textcolor{red}{t.c.}
+        \[
+        \textcolor{red}{c(u) = (h(u), 0, k(u))}.
+        \]
+        $c$ è una curva piana regolare che non interseca l'asse $z$. Infatti:
+        \begin{itemize}
+            \item il supporto di $c$ è contenuto nel piano $y = 0$;
+            \item $\norm{\dot{c}(u)}^2 = h'(u)^2 + k'(u)^2 \neq 0$;
+            \item $h(u) \neq 0 \implies c$ non interseca l'asse $z : \begin{cases} x = 0 \\ y = 0 \end{cases}$ \textcolor{violet}{(dato che $I$ è un intervallo e $h$ è continua con $h(u) \neq 0$ per ogni $u \in I$, per il teorema dei valori intermedi $h(u)$ mantiene segno costante su tutto $I$: tipicamente si assume $h(u) > 0$, così che $h(u)$ rappresenti proprio la distanza del punto $(h(u), 0, k(u))$ dall'asse di rotazione $z$, cioè il raggio del parallelo corrispondente)}.
+        \end{itemize}
+        Si definisce la superficie parametrizzata
+        \[
+        \textcolor{red}{f : I \times \mathbb{R} \to \mathbb{R}^3}
+        \]
+        \[
+        \textcolor{red}{f(u,v) = (h(u)\cos v, \, h(u)\sin v, \, k(u))}
+        \]
+        \[
+        \textcolor{red}{\equiv \begin{pmatrix} \cos v & -\sin v & 0 \\ \sin v & \cos v & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} h(u) \\ 0 \\ k(u) \end{pmatrix}}
+        \]
+        \textcolor{violet}{(dove la matrice $3 \times 3$ è la matrice ortogonale speciale associata alla rotazione nello spazio di angolo $v$ intorno all'asse $z$, applicata al punto generico della curva profilo $c(u)$)}.
+
+        \noindent $f$ è la superficie di rotazione della curva $c$ intorno all'asse $z$.
+
+        \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1.1]
+            % Assi
+            \draw[->] (0,0) -- (-2.2,-1.3) node[below left] {$x$};
+            \draw[->] (0,0) -- (3.2,0) node[right] {$y$};
+            \draw[->] (0,0) -- (0,3.2) node[above] {$z$};
+
+            % Curva profilo nel piano xz (in rosso)
+            \draw[red, thick] plot[smooth] coordinates {(-1.4,-1.0) (-1.1,0.2) (-0.6,1.6) (-0.5,2.7)};
+            
+            % Profilo ruotato (in blu/azzurro)
+            \draw[cyan!70!black, thick] plot[smooth] coordinates {(1.4,-1.0) (1.2,0.4) (0.9,1.8) (1.0,2.7)};
+            \draw[cyan!70!black, thick] plot[smooth] coordinates {(2.2,-0.6) (1.8,0.6) (1.4,1.9) (1.5,2.7)};
+
+            % Punto sulla curva profilo e proiezioni
+            \coordinate (Cu) at (-0.65, 1.5);
+            \coordinate (Zu) at (0, 1.9);
+            \coordinate (Xu) at (-0.65, -0.39);
+            \draw[gray, thin] (Cu) -- (Zu) node[midway, above, green!50!black, font=\scriptsize] {$h(u)$};
+            \draw[gray, thin] (Cu) -- (Xu);
+            \draw[yellow!80!black, thick] (0,0) -- (Xu) node[midway, below, font=\scriptsize] {$h(u)$};
+            \node[right, green!50!black, font=\scriptsize] at (0, 2.0) {$k(u)$};
+
+            % Punto ruotato P = f(u,v)
+            \coordinate (P) at (0.85, 1.35);
+            \coordinate (Pxy) at (0.85, -0.51);
+            \draw[green!50!black, thick] (P) -- (Pxy);
+            \draw[yellow!80!black, thick] (0,0) -- (Pxy);
+            
+            % Angolo v
+            \draw[gray, ->] (-0.25,-0.15) arc (210:330:0.35);
+            \node[below, font=\scriptsize] at (0.05,-0.15) {$v$};
+
+            % Arco di parallelo
+            \draw[black, thick] (Cu) to[bend right=25] (P);
+            \draw[black, thin] (P) to[bend right=15] (1.45, 1.85);
+
+            % Pallini rossi e label
+            \fill[red] (Cu) circle (1.5pt);
+            \fill[red] (P) circle (1.5pt) node[above right, font=\small] {$P = f(u,v)$};
+            \node[red, below right, font=\scriptsize] at (Pxy) {$(h(u)\cos v, \, h(u)\sin v, \, 0)$};
+        \end{tikzpicture}
+        \end{figure}
+
+        \noindent Verificare che $f$ è regolare 
+        
+        \textcolor{violet}{calcoliamo i vettori tangenti fondamentali: $f_u(u,v) = (h'(u)\cos v, \, h'(u)\sin v, \, k'(u))$ e $f_v(u,v) = (-h(u)\sin v, \, h(u)\cos v, \, 0)$.}
+        
+        \textcolor{violet}{Il loro prodotto vettoriale è $f_u \times f_v = (-h(u)k'(u)\cos v, \, -h(u)k'(u)\sin v, \, h(u)h'(u))$, la cui norma al quadrato vale $\norm{f_u \times f_v}^2 = h(u)^2 (h'(u)^2 + k'(u)^2)$, che è strettamente positiva per le due ipotesi iniziali $h(u) \neq 0$ e $h'(u)^2 + k'(u)^2 \neq 0$}.
+
+        \noindent Le linee coordinate $u = \text{costante}$ sono circonferenze dette \textcolor{red}{paralleli} \textcolor{violet}{(contenute nel piano orizzontale $z = k(u)$, con centro $(0,0,k(u))$ sull'asse $z$ e raggio $\abs{h(u)}$)}.\\
+        Le linee coordinate $v = \text{costante}$ sono dette \textcolor{red}{meridiani} \textcolor{violet}{(e sono tutte congruenti alla curva profilo $c$, essendo ottenute ruotando $c$ di un angolo fissato $v$ attorno all'asse $z$)}.
+
+        \begin{esempio}
+        \leavevmode
+        \begin{itemize}
+            \item \textcolor{red}{Sfera}: \quad $h(u) = \cos u, \quad u \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$\\
+            $\phantom{\text{Sfera}:} \quad k(u) = \sin u$
+            \[
+            f(u,v) = (\cos u \cos v, \, \cos u \sin v, \, \sin u)
+            \]
+            \item \textcolor{red}{Toro}: \quad $h(u) = a + b \cos u, \quad u \in \mathbb{R}$\\
+            $\phantom{\text{Toro}:} \quad k(u) = b \sin u$ \textcolor{violet}{(attenzione: negli appunti a mano nella riga di $k(u)$ è rimasto scritto solo $\sin u$ senza il coefficiente $b$, ma nella riga subito sotto della $f(u,v)$ compare correttamente $b \sin u$)}
+            \[
+            f(u,v) = ((a + b \cos u)\cos v, \, (a + b \cos u)\sin v, \, b \sin u)
+            \]
+            \item \textcolor{red}{Cilindro}: \quad $h(u) = a \quad \text{costante}$ \textcolor{violet}{($a > 0$, con $u \in \mathbb{R}$)}\\
+            $\phantom{\text{Cilindro}:} \quad k(u) = u$
+            \[
+            f(u,v) = (a \cos v, \, a \sin v, \, u)
+            \]
+            \item \textcolor{red}{Catenoide}: \quad $h(u) = \cosh u \quad \left(\text{superficie di rotazione della curva catenaria}\right)$\\
+            $\phantom{\text{Catenoide}:} \quad k(u) = u$
+            \[
+            c(u) = (\cosh u, \, 0, \, u) \implies f(u,v) = (\cosh u \cos v, \, \cosh u \sin v, \, u)
+            \]
+            \textcolor{violet}{(attenzione: negli appunti a mano è stato scritto $f(u,v) = (\cosh u, 0, u)$, che però dipende solo da $u$ ed è in realtà la curva profilo $c(u)$ nel piano $xz$; la superficie di rotazione corrispondente è $f(u,v) = (\cosh u \cos v, \cosh u \sin v, u)$).}\\
+            La catenoide è un esempio di superficie minima ($H = 0$).
+            \item \textcolor{red}{Pseudosfera}: \quad $h(u) = \sin u$ \textcolor{violet}{(con $u \in \left(0, \frac{\pi}{2}\right)$ oppure $u \in (0, \pi) \setminus \left\{\frac{\pi}{2}\right\}$ affinché la curva sia regolare, dato che per $u = \frac{\pi}{2}$ si annullano sia $h'(u) = \cos u$ sia $k'(u) = -\sin u + \frac{1}{\sin u} = \frac{\cos^2 u}{\sin u}$)}\\
+            $\phantom{\text{Pseudosfera}:} \quad k(u) = \cos u + \ln\left(\tan \frac{u}{2}\right)$\\
+            Superficie di rotazione della curva trattrice.\\
+            La pseudosfera ha curvatura di Gauss costante $K = -1$.
+        \end{itemize}
+        \end{esempio}
+
+        \section{Esercizi assegnati su superfici}
+
+        \noindent \textbf{Esercizio 1}\\
+        Si consideri la seguente superficie parametrizzata
+        \[
+        \textcolor{red}{f : \mathbb{R}^2 \to \mathbb{R}^3}
+        \]
+        \[
+        \textcolor{red}{f(u,v) = (a \cos v, \, a \sin v, \, u) \qquad a > 0}
+        \]
+        Verificare che $f$ è regolare.\\
+        In ogni punto $(u,v) \in \mathbb{R}^2$ determinare:
+        \begin{itemize}
+            \item prima forma fondamentale
+            \item seconda forma fondamentale
+            \item operatore di Weingarten
+            \item curvature principali e direzioni principali di curvatura
+            \item curvatura di Gauss e curvatura media
+            \item classificare il punto (ellittico, iperbolico, parabolico, planare)
+        \end{itemize}
+
+        \newpage
+
+        \noindent \textbf{Esercizio 2}\\
+        Si consideri la seguente superficie parametrizzata
+        \[
+        \textcolor{red}{f : \mathbb{R}^2 \to \mathbb{R}^3}
+        \]
+        \[
+        \textcolor{red}{f(u,v) = (v \cos u, \, v \sin u, \, u)}
+        \]
+        Verificare che $f$ è regolare.\\
+        In ogni punto $(u,v) \in \mathbb{R}^2$ determinare:
+        \begin{itemize}
+            \item prima forma fondamentale
+            \item seconda forma fondamentale
+            \item operatore di Weingarten
+            \item curvature principali e direzioni principali di curvatura
+            \item curvatura di Gauss e curvatura media
+            \item classificare il punto (ellittico, iperbolico, parabolico, planare)
+        \end{itemize}
