@@ -3101,7 +3101,9 @@
         \end{esempio}
         \newpage
         \begin{definizione}
-        Sia \textcolor{red}{$f : A \to \mathbb{R}^3$} superficie parametrizzata regolare. Sia \textcolor{red}{$c = f \circ u : I \to \mathbb{R}^3$} curva su $f$, \textcolor{red}{$u : I \to A$}.
+        Sia $f : A \to \mathbb{R}^3$ superficie parametrizzata regolare
+        
+        Sia \textcolor{red}{$c = f \circ u : I \to \mathbb{R}^3$} curva su $f$ \textcolor{blu}{($u : I \to A$)}
         \begin{enumerate}[label=\textcolor{red}{\arabic*.}]
             \item $c$ si dice \textcolor{red}{linea asintotica} se
             \[
@@ -3112,15 +3114,15 @@
             \forall t \in I \quad \dfrac{\dot{c}(t)}{\norm{\dot{c}(t)}} \text{ è D.P.C. di } f \text{ in } u(t).
             \]
         \end{enumerate}
-        \textcolor{violet}{(Nota implicita: affinché il versore tangente $\dfrac{\dot{c}(t)}{\norm{\dot{c}(t)}}$ sia ben definito, si sta assumendo che $c$ sia una curva regolare su $f$, ovvero $\dot{c}(t) \neq 0$ per ogni $t \in I$).}
+        \textcolor{violet}{Non faremo uno studio approfondito delle linee asintotiche e delle linee principali di curvatura ma ci limitiamo a fare qualche osservazione.}
         \end{definizione}
 
         \begin{osservazione}
         Consideriamo le \textcolor{red}{curve coordinate} su $f : A \to \mathbb{R}^3$:
 
-        \noindent \textcolor{red}{$u = \text{costante}$}
+        \noindent \textcolor{black}{$u = \text{costante}$}
         \[
-        c_u : I \to \mathbb{R}^3, \qquad c_u(t) = f(u,t)
+         \color{red} c_u : I \to \mathbb{R}^3 \qquad c_u(t) = f(u,t)
         \]
         \[
         \dot{c}_u(t) = f_v(u,t)
@@ -3130,115 +3132,156 @@
             \item $c_u$ è linea asintotica $\iff \dfrac{f_v}{\norm{f_v}}$ è D.A.
         \end{itemize}
 
-        \noindent \textcolor{red}{$v = \text{costante}$}
+        \noindent \textcolor{black}{$v = \text{costante}$}
         \[
-        c_v : I \to \mathbb{R}^3, \qquad c_v(t) = f(t,v)
+        \color{red} c_v : I \to \mathbb{R}^3 \qquad c_v(t) = f(t,v)
         \]
         \[
         \dot{c}_v(t) = f_u(t,v)
         \]
         \begin{itemize}
             \item $c_v$ è linea di curvatura principale $\iff \dfrac{f_u}{\norm{f_u}}$ è D.P.C.
-            \item $c_v$ è linea asintotica $\iff \dfrac{f_u}{\norm{f_u}}$ è D.A. \textcolor{violet}{(Attenzione: negli appunti a mano in alto a destra c'è scritto $\dfrac{f_v}{\norm{f_v}}$ per una piccola svista di copia-incolla dal caso precedente, ma poiché il vettore tangente a $c_v$ è $\dot{c}_v(t) = f_u(t,v)$, il versore tangente è $\dfrac{f_u}{\norm{f_u}}$)}.
+            \item $c_v$ è linea asintotica $\iff \dfrac{f_u}{\norm{f_u}}$ è D.A. 
         \end{itemize}
-        In particolare, sia per la parametrizzazione della sfera $S^2 \setminus \{N,S\}$ che per la parametrizzazione del toro le curve coordinate (paralleli e meridiani) sono linee principali di curvatura \textcolor{violet}{(infatti in entrambi i casi avevamo trovato $g_{12} = 0$ e $h_{12} = 0$, perciò la matrice dell'operatore di Weingarten rispetto alla base coordinata $\{f_u, f_v\}$ risultava diagonale, rendendo $f_u$ e $f_v$ autovettori di $L_{(u,v)}$ in ogni punto)}.
+        In particolare \textcolor{violet}{(generalmente non è cosi)} sia per la parametrizzazione della sfera $S^2 \setminus \{N,S\}$ che per la parametrizzazione del toro 
+        $\dfrac{f_u}{\norm{f_u}}$ e $\dfrac{f_v}{\norm{f_v}}$ sono D.P.C. in ogni punto $\Rightarrow$
+        le curve coordinate (paralleli e meridiani) sono linee principali di curvatura 
+        \textcolor{violet}{(infatti in entrambi i casi avevamo trovato $g_{12} = 0$ e $h_{12} = 0$, perciò la matrice dell'operatore di Weingarten rispetto alla base coordinata $\{f_u, f_v\}$ risultava diagonale, rendendo $f_u$ e $f_v$ autovettori di $L_{(u,v)}$ in ogni punto)}.
         \end{osservazione}
 
-        \section{Superfici di rotazione}
+    \section{Superfici di rotazione}
 
-        Sia $I \subset \mathbb{R}$ intervallo.\\
-        Siano \textcolor{red}{$h, k : I \to \mathbb{R}$} funzioni differenziabili tali che $\forall u \in I$
+        Sia $I \subset \mathbb{R}$ intervallo e siano \textcolor{red}{$h, k : I \to \mathbb{R}$} funzioni differenziabili tali che 
         \[
-        h(u) \neq 0 \quad \text{e} \quad h'(u)^2 + k'(u)^2 \neq 0.
+         \color{red} \forall u \in I \quad h(u) \neq 0 \quad \text{e} \quad h'(u)^2 + k'(u)^2 \neq 0.
         \]
         Sia \textcolor{red}{$c : I \to \mathbb{R}^3$} \textcolor{red}{t.c.}
         \[
         \textcolor{red}{c(u) = (h(u), 0, k(u))}.
         \]
-        $c$ è una curva piana regolare che non interseca l'asse $z$. Infatti:
-        \begin{itemize}
+        $c$ è una curva piana regolare che non interseca l'asse $z$. 
+
+        Infatti:
+        \begin{itemize} \color{verde}
             \item il supporto di $c$ è contenuto nel piano $y = 0$;
             \item $\norm{\dot{c}(u)}^2 = h'(u)^2 + k'(u)^2 \neq 0$;
-            \item $h(u) \neq 0 \implies c$ non interseca l'asse $z : \begin{cases} x = 0 \\ y = 0 \end{cases}$ \textcolor{violet}{(dato che $I$ è un intervallo e $h$ è continua con $h(u) \neq 0$ per ogni $u \in I$, per il teorema dei valori intermedi $h(u)$ mantiene segno costante su tutto $I$: tipicamente si assume $h(u) > 0$, così che $h(u)$ rappresenti proprio la distanza del punto $(h(u), 0, k(u))$ dall'asse di rotazione $z$, cioè il raggio del parallelo corrispondente)}.
+            \item $h(u) \neq 0 \implies c$ non interseca l'asse $z : \begin{cases} x = 0 \\ y = 0 \end{cases}$ 
         \end{itemize}
         Si definisce la superficie parametrizzata
         \[
         \textcolor{red}{f : I \times \mathbb{R} \to \mathbb{R}^3}
         \]
         \[
-        \textcolor{red}{f(u,v) = (h(u)\cos v, \, h(u)\sin v, \, k(u))}
-        \]
-        \[
-        \textcolor{red}{\equiv \begin{pmatrix} \cos v & -\sin v & 0 \\ \sin v & \cos v & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} h(u) \\ 0 \\ k(u) \end{pmatrix}}
+        \color{red} f(u,v) = (h(u)\cos v, \, h(u)\sin v, \, k(u)) \\
+        \equiv \begin{pmatrix} \cos v & -\sin v & 0 \\ \sin v & \cos v & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} h(u) \\ 0 \\ k(u) \end{pmatrix}
         \]
         \textcolor{violet}{(dove la matrice $3 \times 3$ è la matrice ortogonale speciale associata alla rotazione nello spazio di angolo $v$ intorno all'asse $z$, applicata al punto generico della curva profilo $c(u)$)}.
 
-        \noindent $f$ è la superficie di rotazione della curva $c$ intorno all'asse $z$.
+        \textcolor{red}{$f$ è la superficie di rotazione della curva $c$ intorno all'asse $z$}.
+        \begin{center}
+        \begin{tikzpicture}[
+            x={(-0.55cm,-0.40cm)}, y={(1cm,0cm)}, z={(0cm,1cm)},
+            >=Stealth, scale=1.05, line cap=round]
 
-        \begin{figure}[H]
-        \centering
-        \begin{tikzpicture}[scale=1.1]
-            % Assi
-            \draw[->] (0,0) -- (-2.2,-1.3) node[below left] {$x$};
-            \draw[->] (0,0) -- (3.2,0) node[right] {$y$};
-            \draw[->] (0,0) -- (0,3.2) node[above] {$z$};
+        % ---- parametri ----
+        \def\hh{2.2}    % raggio base di h
+        \def\kk{2.6}    % k(u)
+        \def\vv{50}     % angolo v in gradi
+        % profilo: h(t) = \hh + 0.5*sin(180*t/\kk)  =>  h(0)=h(\kk)=\hh
+        \def\hu{\hh}    % h(u) = h(k(u)) = h(0)
 
-            % Curva profilo nel piano xz (in rosso)
-            \draw[red, thick] plot[smooth] coordinates {(-1.4,-1.0) (-1.1,0.2) (-0.6,1.6) (-0.5,2.7)};
-            
-            % Profilo ruotato (in blu/azzurro)
-            \draw[cyan!70!black, thick] plot[smooth] coordinates {(1.4,-1.0) (1.2,0.4) (0.9,1.8) (1.0,2.7)};
-            \draw[cyan!70!black, thick] plot[smooth] coordinates {(2.2,-0.6) (1.8,0.6) (1.4,1.9) (1.5,2.7)};
+        % ---- paralleli di sfondo ----
+        \foreach \q in {0.3,1.0,1.7,3.6,4.3,4.9}{
+            \pgfmathsetmacro{\rr}{\hh + 0.5*sin(180*\q/\kk)}
+            \draw[gray!55, thin, domain=0:360, samples=80, variable=\a]
+            plot ({\rr*cos(\a)}, {\rr*sin(\a)}, \q);
+        }
 
-            % Punto sulla curva profilo e proiezioni
-            \coordinate (Cu) at (-0.65, 1.5);
-            \coordinate (Zu) at (0, 1.9);
-            \coordinate (Xu) at (-0.65, -0.39);
-            \draw[gray, thin] (Cu) -- (Zu) node[midway, above, green!50!black, font=\scriptsize] {$h(u)$};
-            \draw[gray, thin] (Cu) -- (Xu);
-            \draw[yellow!80!black, thick] (0,0) -- (Xu) node[midway, below, font=\scriptsize] {$h(u)$};
-            \node[right, green!50!black, font=\scriptsize] at (0, 2.0) {$k(u)$};
+        % ---- altre copie della curva ----
+        \foreach \ang in {110,170,230,290}{
+            \draw[blue!40!cyan, opacity=0.6, thick, smooth, samples=60,
+                domain=-0.5:5.0, variable=\t]
+            plot ({(\hh + 0.5*sin(180*\t/\kk))*cos(\ang)},
+                    {(\hh + 0.5*sin(180*\t/\kk))*sin(\ang)}, {\t});
+        }
 
-            % Punto ruotato P = f(u,v)
-            \coordinate (P) at (0.85, 1.35);
-            \coordinate (Pxy) at (0.85, -0.51);
-            \draw[green!50!black, thick] (P) -- (Pxy);
-            \draw[yellow!80!black, thick] (0,0) -- (Pxy);
-            
-            % Angolo v
-            \draw[gray, ->] (-0.25,-0.15) arc (210:330:0.35);
-            \node[below, font=\scriptsize] at (0.05,-0.15) {$v$};
+        % ---- assi ----
+        \draw[->, thick, gray!70!black] (0,0,0) -- (4.2,0,0) node[below left] {$x$};
+        \draw[->, thick, gray!70!black] (0,0,0) -- (0,5,0) node[right] {$y$};
+        \draw[->, thick, gray!70!black] (0,0,0) -- (0,0,5.6) node[above] {$z$};
 
-            % Arco di parallelo
-            \draw[black, thick] (Cu) to[bend right=25] (P);
-            \draw[black, thin] (P) to[bend right=15] (1.45, 1.85);
+        % ---- curva profilo c ----
+        \draw[red!80!black, very thick, smooth, samples=60, domain=-0.5:5.0, variable=\t]
+            plot ({\hh + 0.5*sin(180*\t/\kk)}, 0, {\t});
 
-            % Pallini rossi e label
-            \fill[red] (Cu) circle (1.5pt);
-            \fill[red] (P) circle (1.5pt) node[above right, font=\small] {$P = f(u,v)$};
-            \node[red, below right, font=\scriptsize] at (Pxy) {$(h(u)\cos v, \, h(u)\sin v, \, 0)$};
+        % ---- curva ruotata di v ----
+        \draw[blue!70!black, very thick, smooth, samples=60, domain=-0.5:5.0, variable=\t]
+            plot ({(\hh + 0.5*sin(180*\t/\kk))*cos(\vv)},
+                {(\hh + 0.5*sin(180*\t/\kk))*sin(\vv)}, {\t});
+
+        % ---- coordinate ----
+        \coordinate (Cu) at (\hu, 0, \kk);
+        \coordinate (P)  at ({\hu*cos(\vv)}, {\hu*sin(\vv)}, \kk);
+        \coordinate (Pb) at ({\hu*cos(\vv)}, {\hu*sin(\vv)}, 0);
+        \coordinate (Hb) at (\hu, 0, 0);
+        \coordinate (Ka) at (0,0,\kk);
+        \coordinate (O)  at (0,0,0);
+
+        % ---- parallelo a quota k(u) ----
+        \draw[black!60, dashed, thick, domain=\vv:360, samples=100, variable=\a]
+            plot ({\hu*cos(\a)}, {\hu*sin(\a)}, \kk);
+        \draw[black, very thick, domain=0:\vv, samples=50, variable=\a]
+            plot ({\hu*cos(\a)}, {\hu*sin(\a)}, \kk);
+
+        % ---- proiezioni nel piano xy (finiscono esattamente sulle curve) ----
+        \draw[green!50!black, very thick] (Cu) -- (Hb);
+        \draw[gray, dashed] (P)  -- (Pb);
+        \draw[orange!85!black, very thick] (O) -- (Hb);
+        \draw[orange!85!black, very thick] (O) -- (Pb);
+        \draw[gray, dashed, thick, domain=0:\vv, samples=40, variable=\a]
+            plot ({\hu*cos(\a)}, {\hu*sin(\a)}, 0);
+
+        % ---- raggio h(u) a quota k(u) ----
+        \draw[orange!85!black, thick] (Ka) -- (Cu)
+            node[midway, above] {$h(u)$};
+        \draw[orange!85!black, thick] (Ka) -- (P);
+
+        % ---- quota k(u) ----
+        \draw[green!50!black, very thick] (O) -- (Ka)
+            node[midway, left] {$k(u)$};
+        \draw[green!50!black, very thick] (Pb) -- (P);
+
+        % ---- angolo v ----
+        \fill[violet!35, opacity=0.7]
+            (O) -- (0.9,0,0)
+            -- plot[domain=0:\vv, samples=30, variable=\a]
+            ({0.9*cos(\a)}, {0.9*sin(\a)}, 0)
+            -- cycle;
+        \draw[violet!80!black, thick, domain=0:\vv, samples=30, variable=\a]
+            plot ({0.9*cos(\a)}, {0.9*sin(\a)}, 0);
+        \draw[violet!80!black, thick] (0.78,0,0) -- (1.02,0,0);
+        \draw[violet!80!black, thick]
+            ({0.78*cos(\vv)},{0.78*sin(\vv)},0) -- ({1.02*cos(\vv)},{1.02*sin(\vv)},0);
+        \node[violet!80!black] at ({1.35*cos(\vv/2)}, {1.35*sin(\vv/2)}, 0) {$v$};
+
+        % ---- punti ----
+        \fill[red!80!black] (Cu) circle (2.2pt);
+        \node[red!80!black, above left] at (Cu) {$c(u)$};
+        \fill[blue!70!black] (P) circle (2.2pt);
+        \node[blue!70!black, below right, font=\small] at (P) {$P=f(u,v)$};
         \end{tikzpicture}
-        \end{figure}
+        \end{center}
+        \begin{esempio}[esempi di superfici di rotazione]
+        \mbox{}
 
-        \noindent Verificare che $f$ è regolare 
-        
-        \textcolor{violet}{calcoliamo i vettori tangenti fondamentali: $f_u(u,v) = (h'(u)\cos v, \, h'(u)\sin v, \, k'(u))$ e $f_v(u,v) = (-h(u)\sin v, \, h(u)\cos v, \, 0)$.}
-        
-        \textcolor{violet}{Il loro prodotto vettoriale è $f_u \times f_v = (-h(u)k'(u)\cos v, \, -h(u)k'(u)\sin v, \, h(u)h'(u))$, la cui norma al quadrato vale $\norm{f_u \times f_v}^2 = h(u)^2 (h'(u)^2 + k'(u)^2)$, che è strettamente positiva per le due ipotesi iniziali $h(u) \neq 0$ e $h'(u)^2 + k'(u)^2 \neq 0$}.
-
-        \noindent Le linee coordinate $u = \text{costante}$ sono circonferenze dette \textcolor{red}{paralleli} \textcolor{violet}{(contenute nel piano orizzontale $z = k(u)$, con centro $(0,0,k(u))$ sull'asse $z$ e raggio $\abs{h(u)}$)}.\\
-        Le linee coordinate $v = \text{costante}$ sono dette \textcolor{red}{meridiani} \textcolor{violet}{(e sono tutte congruenti alla curva profilo $c$, essendo ottenute ruotando $c$ di un angolo fissato $v$ attorno all'asse $z$)}.
-
-        \begin{esempio}
-        \leavevmode
         \begin{itemize}
-            \item \textcolor{red}{Sfera}: \quad $h(u) = \cos u, \quad u \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$\\
+            \item \textcolor{red}{Sfera}: \quad $h(u) = \cos u \quad u \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right)$\\
             $\phantom{\text{Sfera}:} \quad k(u) = \sin u$
             \[
             f(u,v) = (\cos u \cos v, \, \cos u \sin v, \, \sin u)
             \]
-            \item \textcolor{red}{Toro}: \quad $h(u) = a + b \cos u, \quad u \in \mathbb{R}$\\
-            $\phantom{\text{Toro}:} \quad k(u) = b \sin u$ \textcolor{violet}{(attenzione: negli appunti a mano nella riga di $k(u)$ è rimasto scritto solo $\sin u$ senza il coefficiente $b$, ma nella riga subito sotto della $f(u,v)$ compare correttamente $b \sin u$)}
+            \item \textcolor{red}{Toro}: \quad $h(u) = a + b \cos u \quad u \in \mathbb{R}$\\
+            $\phantom{\text{Toro}:} \quad k(u) = b \sin u$ 
             \[
             f(u,v) = ((a + b \cos u)\cos v, \, (a + b \cos u)\sin v, \, b \sin u)
             \]
@@ -3247,14 +3290,17 @@
             \[
             f(u,v) = (a \cos v, \, a \sin v, \, u)
             \]
+            \textcolor{violet}{(rotazione di una retta parallela all'asse $z$ a distanza $a$ da esso)}
             \item \textcolor{red}{Catenoide}: \quad $h(u) = \cosh u \quad \left(\text{superficie di rotazione della curva catenaria}\right)$\\
             $\phantom{\text{Catenoide}:} \quad k(u) = u$
+
+            \textcolor{violet}{la catenoiede è ottenuta dalla rotazione della curva catenaria $c(u) = (\cosh u, 0, u)$ intorno all'asse $z$}
             \[
-            c(u) = (\cosh u, \, 0, \, u) \implies f(u,v) = (\cosh u \cos v, \, \cosh u \sin v, \, u)
+            c(u) = (\cosh u, \, 0, \, u) \Rightarrow f(u,v) = (\cosh u \cos v, \, \cosh u \sin v, \, u)
             \]
-            \textcolor{violet}{(attenzione: negli appunti a mano è stato scritto $f(u,v) = (\cosh u, 0, u)$, che però dipende solo da $u$ ed è in realtà la curva profilo $c(u)$ nel piano $xz$; la superficie di rotazione corrispondente è $f(u,v) = (\cosh u \cos v, \cosh u \sin v, u)$).}\\
-            La catenoide è un esempio di superficie minima ($H = 0$).
-            \item \textcolor{red}{Pseudosfera}: \quad $h(u) = \sin u$ \textcolor{violet}{(con $u \in \left(0, \frac{\pi}{2}\right)$ oppure $u \in (0, \pi) \setminus \left\{\frac{\pi}{2}\right\}$ affinché la curva sia regolare, dato che per $u = \frac{\pi}{2}$ si annullano sia $h'(u) = \cos u$ sia $k'(u) = -\sin u + \frac{1}{\sin u} = \frac{\cos^2 u}{\sin u}$)}\\
+            \textcolor{violet}{Se si fanno i calcoli esce $H=0$ e questo ci dice che la catenoide è una superficie minima, perchè minimizza 
+            il funzionale di area un altro esempio di superficie minima è la bolla di sapone.}
+            \item \textcolor{red}{Pseudosfera}: \quad $h(u) = \sin u$\\
             $\phantom{\text{Pseudosfera}:} \quad k(u) = \cos u + \ln\left(\tan \frac{u}{2}\right)$\\
             Superficie di rotazione della curva trattrice.\\
             La pseudosfera ha curvatura di Gauss costante $K = -1$.
