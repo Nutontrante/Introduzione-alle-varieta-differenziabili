@@ -3347,16 +3347,17 @@
         \end{itemize}
     \section{Superfici rigate}
         \begin{esempio}[Elicoide]
+        \mbox{}
+
         Consideriamo la superficie parametrizzata data da
         \[
-        f \colon \mathbb{R}^2 \longrightarrow \mathbb{R}^3, \qquad f(u,v) = (v \cos u, v \sin u, u).
+        \color{red} f \colon \mathbb{R}^2 \longrightarrow \mathbb{R}^3, \qquad f(u,v) = (v \cos u, v \sin u, u).
         \]
-
-        \noindent\textbf{Regolarità}
+        \textbf{Regolarità}
 
         Calcoliamo le derivate parziali prime e la matrice Jacobiana in $(u,v) \in \mathbb{R}^2$:
         \[
-        f_u(u,v) = (-v \sin u, v \cos u, 1), \qquad f_v(u,v) = (\cos u, \sin u, 0),
+        f_u(u,v) = (-v \sin u, v \cos u, 1) \qquad f_v(u,v) = (\cos u, \sin u, 0),
         \]
         \[
         (Jf)_{(u,v)} = 
@@ -3372,7 +3373,6 @@
         M_2 &= -\cos u, \\
         M_3 &= -v \sin^2 u - v \cos^2 u = -v.
         \end{align*}
-        Pertanto il prodotto vettoriale dei vettori tangenti fondamentali è
         \[
         f_u(u,v) \times f_v(u,v) = (M_1, -M_2, M_3) = (-\sin u, \cos u, -v),
         \]
@@ -3381,12 +3381,10 @@
         \norm{f_u(u,v) \times f_v(u,v)}^2 = 1 + v^2 \neq 0 \qquad \forall (u,v) \in \mathbb{R}^2.
         \]
         La superficie è quindi regolare in ogni punto. 
-        
-        Il versore normale (mappa di Gauss) è dato da:
         \[
         n(u,v) = \frac{1}{\sqrt{1+v^2}}(-\sin u, \cos u, -v).
         \]
-        \noindent\textbf{Prima forma fondamentale}
+        \textbf{Prima forma fondamentale}
 
         Calcolando i prodotti scalari $g_{11} = \norm{f_u}^2 = 1 + v^2$, $g_{12} = f_u \cdot f_v = 0$ e $g_{22} = \norm{f_v}^2 = 1$, la matrice della prima forma fondamentale è:
         \[
@@ -3407,68 +3405,152 @@
             ovvero di equazioni parametriche
             \[
             \begin{cases}
-            x = (\cos u)t \\
-            y = (\sin u)t \\
-            z = u
+            x = (\cos u)t \quad \textcolor{blu}{\text{equazione parametrica della retta}} \\ 
+            y = (\sin u)t  \quad \textcolor{blu}{\text{passante per } (0,0,u) \text{ e di}} \\ 
+            z = u \qquad \qquad \textcolor{blu}{\text{parametri direttori } (\cos u, \sin u, 0)}
             \end{cases}
             \]
-            che rappresenta la retta passante per $(0,0,u)$ di parametri direttori $(\cos u, \sin u, 0)$, con vettore velocità $\dot{c}_u(t) = f_v(u,t) = (\cos u, \sin u, 0)$. Al variare di $u$ i parametri direttori della retta ruotano:
-            \begin{align*}
-            u = 0 &\longrightarrow (1,0,0), \\
-            u = \frac{\pi}{4} &\longrightarrow (1,1,0), \\
-            u = \frac{\pi}{2} &\longrightarrow (0,1,0), \\
-            &\;\;\vdots
-            \end{align*}
+            $\dot{c}_u(t) = f_v(u,t) = (\cos u, \sin u, 0)$, al variare di $u$ i parametri direttori della retta ruotano:
+            \[ u = 0 \longrightarrow (1,0,0) \quad
+            u = \frac{\pi}{4} \longrightarrow (1,1,0) \quad
+            u = \frac{\pi}{2} \longrightarrow (0,1,0) \]
+            \[ u = \frac{3}{4}\pi \longrightarrow (-1,1,0) \quad
+            u = \pi \longrightarrow (-1,0,0)
+            \]
 
             \begin{center}
-            \begin{tikzpicture}[tdplot_main_coords, scale=1.2, >=Stealth]
+            \begin{tikzpicture}[
+                x={(0.9cm,-0.58cm)}, 
+                y={(0.78cm,0.52cm)}, 
+                z={(0cm,1.05cm)}, 
+                scale=1.05, 
+                >=Stealth
+            ]
                 % Assi coordinati
-                \draw[->, thick, black] (0,0,0) -- (3.5,0,0) node[above left] {$x$};
+                \draw[->, thick, black] (0,0,0) -- (3.6,0,0) node[above right] {$x$};
                 \draw[->, thick, black] (0,0,0) -- (0,3.5,0) node[below right] {$y$};
-                \draw[->, thick, black] (0,0,0) -- (0,0,3.8) node[right] {$z$};
+                \draw[->, thick, black] (0,0,0) -- (0,0,4.2) node[right] {$z$};
                 \node[below left] at (0,0,0) {$O$};
 
-                % u = 0
-                \draw[thick, yellow!80!orange] (-2,0,0) -- (3.8,0,0) node[right] {$u=0$};
-                % u = pi/4
-                \draw[thick, green!60!black] (0,0,0.78) -- (2.2,2.2,0.78) node[above left] {$u=\frac{\pi}{4}$};
-                % u = pi/2
-                \draw[thick, cyan!80!black] (0,0,1.57) -- (0,3.2,1.57) node[above left] {$u=\frac{\pi}{2}$};
-                % u = 3pi/4
-                \draw[thick, orange!90!red] (0,0,2.35) -- (-2.2,2.2,2.35) node[above right] {$u=\frac{3}{4}\pi$};
-                % u = pi
-                \draw[thick, violet] (0,0,3.14) -- (-2.8,0,3.14) node[above right] {$u=\pi$};
-            \end{tikzpicture}
-            \end{center}
+                % --- u = 0 ---
+                \draw[yellow!85!orange, thick] (-1.2,0,0) -- (4.2,0,0) node[above right] {$u=0$};
+                \fill[yellow!85!orange] (0,0,0) circle (1.5pt);
+                \draw[->, yellow!75!black, ultra thick] (0,0,0) -- (1,0,0) node[below left, scale=0.85] {$f_v$};
 
+                % --- u = pi/4 ---
+                \draw[green!60!black, thick] (0,0,0.785) -- (2.4,2.4,0.785) node[above left] {$u=\frac{\pi}{4}$};
+                \fill[green!60!black] (0,0,0.785) circle (1.5pt);
+                \draw[->, green!50!black, ultra thick] (0,0,0.785) -- (0.707,0.707,0.785) node[below, scale=0.85] {$f_v$};
+
+                % --- u = pi/2 ---
+                \draw[cyan!80!black, thick] (0,0,1.57) -- (0,3.5,1.57) node[above left] {$u=\frac{\pi}{2}$};
+                \fill[cyan!80!black] (0,0,1.57) circle (1.5pt);
+                \draw[->, cyan!60!blue, ultra thick] (0,0,1.57) -- (0,1,1.57) node[above left, scale=0.85] {$f_v$};
+
+                % --- u = 3pi/4 ---
+                \draw[orange!90!red, thick] (0,0,0) -- (0,0,4.456) node[above right] {$u=\frac{3}{4}\pi$};
+                \fill[orange!90!red] (0,0,2.356) circle (1.5pt);
+                \draw[->, red!80!black, ultra thick] (0,0,2.356) -- (0,0,3) node[left, scale=0.85] {$f_v$};
+
+                % --- u = pi ---
+                \draw[violet, thick] (0,0,3.14) -- (-2.8,0,3.14) node[above right] {$u=\pi$};
+                \fill[violet] (0,0,3.14) circle (1.5pt);
+                \draw[->, violet!80!black, ultra thick] (0,0,3.14) -- (-1,0,3.14) node[below left, scale=0.85] {$f_v$};
+            \end{tikzpicture}
+            \[
+            \begin{array}{l c c}
+            \textbf{Valore di } u & \textbf{Punto } (0,0,u) & \textbf{Param. direttori} \\[0.4em]
+            \hline \\[-0.6em]
+            {\color{yellow!80!black} u = 0} & (0,0,0) & (1,0,0) \\[0.5em]
+            {\color{green!60!black} u = \dfrac{\pi}{4}} & \left(0,0,\dfrac{\pi}{4}\right) & (1,1,0) \\
+            {\color{cyan!80!black} u = \dfrac{\pi}{2}} & \left(0,0,\dfrac{\pi}{2}\right) & (0,1,0) \\
+            {\color{orange!90!red} u = \dfrac{3}{4}\pi} & \left(0,0,\dfrac{3}{4}\pi\right) & (-1,1,0) \\
+            {\color{violet} u = \pi} & (0,0,\pi) & (-1,0,0) 
+            \end{array}
+            \]
+            \end{center}
+            \textcolor{violet}{Le linee coordinate ci aiutano a visualizzare la superficie infatti abbiamo capito che man mano che saliamo l'asse $z$
+            i parametri direttori delle rette ruotano intorno all'asse $z$.}
             \item Fissato $v \in \mathbb{R}$, consideriamo la linea coordinata $c_v \colon \mathbb{R} \longrightarrow \mathbb{R}^3$ definita da
             \[
             c_v(t) = f(t,v) = (v \cos t, v \sin t, t),
             \]
             con vettore velocità $\dot{c}_v(t) = f_u(t,v) = (-v \sin t, v \cos t, 1)$.
             \begin{itemize}
-                \item Se $v = 0 \implies c_0$ coincide con l'asse $z$.
-                \item Se $v \neq 0 \implies c_v$ è un'elica cilindrica di passo $2\pi$ (contenuta nel cilindro di equazione $x^2 + y^2 = v^2$).
+                \item Se $v = 0 \Rightarrow c_0$ coincide con l'asse $z$.
+                \item Se $v \neq 0 \Rightarrow c_v$ è un'elica cilindrica di passo $2\pi$
+                
+                (contenuta nel cilindro di equazione $x^2 + y^2 = v^2$)
             \end{itemize}
         \end{itemize}
 
         \begin{center}
-        \begin{tikzpicture}[tdplot_main_coords, scale=0.85, >=Stealth]
-            % Generatrici (rette c_u)
-            \foreach \u in {0, 15, ..., 540} {
-                \draw[gray!70, very thin] ({-2*cos(\u)}, {-2*sin(\u)}, {\u*0.008}) -- ({2*cos(\u)}, {2*sin(\u)}, {\u*0.008});
+        \begin{tikzpicture}[
+            x={(0.85cm,-0.30cm)},
+            y={(0.55cm,0.42cm)},
+            z={(0cm,0.95cm)},
+            scale=1.05,
+            >=Stealth
+        ]
+            % Superficie dell'elicoide (griglia alleggerita)
+            \foreach \u in {-100, -80, ..., 540} {
+                \foreach \v in {-0.6, -0.2, 0.2, 0.6, 1.0, 1.4, 1.8} {
+                    \pgfmathsetmacro{\unext}{\u + 20}
+                    \pgfmathsetmacro{\vnext}{\v + 0.4}
+                    \pgfmathsetmacro{\zcurr}{\u * 0.0075}
+                    \pgfmathsetmacro{\znext}{\unext * 0.0075}
+                    % Colore leggermente modulato per dare profondità 3D
+                    \pgfmathsetmacro{\colmix}{45 + 25*sin(\u)}
+                    \filldraw[
+                        fill=blue!\colmix!cyan!35,
+                        fill opacity=0.88,
+                        draw=black!65,
+                        very thin
+                    ]
+                        ({\v*cos(\u)}, {\v*sin(\u)}, {\zcurr}) --
+                        ({\vnext*cos(\u)}, {\vnext*sin(\u)}, {\zcurr}) --
+                        ({\vnext*cos(\unext)}, {\vnext*sin(\unext)}, {\znext}) --
+                        ({\v*cos(\unext)}, {\v*sin(\unext)}, {\znext}) -- cycle;
+                }
             }
-            % Eliche (curve c_v)
-            \foreach \v in {-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2} {
-                \draw[blue!60!black, thin] ({\v*cos(0)}, {\v*sin(0)}, 0)
-                \foreach \u in {10, 20, ..., 540} {
-                    -- ({\v*cos(\u)}, {\v*sin(\u)}, {\u*0.008})
-                };
+
+            % =========================================================
+            % Vettori tangenti f_u (arancioni/gialli, lungo le eliche c_v)
+            % =========================================================
+            % Elica interna (v = 0.6)
+            \foreach \u in {265, 310, 355} {
+                \pgfmathsetmacro{\uend}{\u + 28}
+                \draw[->, orange!70!yellow, ultra thick]
+                    ({0.6*cos(\u)}, {0.6*sin(\u)}, {\u*0.0075}) --
+                    ({0.6*cos(\uend)}, {0.6*sin(\uend)}, {\uend*0.0075});
             }
-            % Vettori tangenti f_v (in rosso lungo una retta generatrice)
-            \draw[->, red, thick] ({1.2*cos(120)}, {1.2*sin(120)}, {120*0.008}) -- ({1.9*cos(120)}, {1.9*sin(120)}, {120*0.008}) node[right] {$f_v$};
-            % Vettori tangenti f_u (in arancione lungo un'elica)
-            \draw[->, orange!90!yellow, thick] ({1.5*cos(90)}, {1.5*sin(90)}, {90*0.008}) -- ({1.5*cos(90)-0.7*sin(90)}, {1.5*sin(90)+0.7*cos(90)}, {90*0.008+0.35}) node[right] {$f_u$};
+
+            % Elica esterna (v = 1.4)
+            \foreach \u in {265, 310} {
+                \pgfmathsetmacro{\uend}{\u + 32}
+                \draw[->, orange!70!yellow, ultra thick]
+                    ({1.4*cos(\u)}, {1.4*sin(\u)}, {\u*0.0075}) --
+                    ({1.4*cos(\uend)}, {1.4*sin(\uend)}, {\uend*0.0075});
+            }
+            % Ultimo vettore f_u con etichetta
+            \draw[->, orange!70!yellow, ultra thick]
+                ({1.4*cos(355)}, {1.4*sin(355)}, {355*0.0075}) --
+                ({1.4*cos(390)}, {1.4*sin(390)}, {390*0.0075})
+                node[above right, orange!70!yellow, xshift=24pt, font=\bfseries\large] {$f_u$};
+
+            % =========================================================
+            % Vettori tangenti f_v (rossi, lungo le rette generatrici c_u)
+            % =========================================================
+            \foreach \u in {265, 310} {
+                \draw[->, red!90!black, ultra thick]
+                    ({1.4*cos(\u)}, {1.4*sin(\u)}, {\u*0.0075}) --
+                    ({2.2*cos(\u)}, {2.2*sin(\u)}, {\u*0.0075});
+            }
+            % Ultimo vettore f_v con etichetta
+            \draw[->, red!90!black, ultra thick]
+                ({1.4*cos(355)}, {1.4*sin(355)}, {355*0.0075}) --
+                ({2.2*cos(355)}, {2.2*sin(355)}, {355*0.0075})
+                node[right, red!90!black, font=\bfseries\large] {$f_v$};
         \end{tikzpicture}
         \end{center}
 
@@ -3523,7 +3605,7 @@
         -\lambda & \dfrac{1}{(\sqrt{1+v^2})^3} \\[1em]
         \dfrac{1}{\sqrt{1+v^2}} & -\lambda
         \end{vmatrix}
-        = \lambda^2 - \frac{1}{(1+v^2)^2} = 0 \implies \lambda = \pm \frac{1}{1+v^2}.
+        = \lambda^2 - \frac{1}{(1+v^2)^2} = 0 \Rightarrow \lambda = \pm \frac{1}{1+v^2}.
         \]
         Le curvature principali sono pertanto:
         \[
@@ -3534,17 +3616,20 @@
         \begin{itemize}
             \item La curvatura di Gauss è
             \[
-            K(u,v) = k_1(u,v) k_2(u,v) = -\frac{1}{(1+v^2)^2} < 0 \implies \text{tutti i punti sono iperbolici.}
+            K(u,v) = k_1(u,v) k_2(u,v) = -\frac{1}{(1+v^2)^2} < 0 \Rightarrow \text{tutti i punti sono iperbolici.} 
             \]
+            $\overset{\text{prop. } \ref{prop:classificazione_punti_su_una_superficie}}{\Rightarrow} \exists 2$ a meno del segno direzioni principali di curvatura 
+            \textcolor{violet}{(bisogna calcolare autovettori)}.
             \item La curvatura media è
             \[
-            H(u,v) = \frac{k_1(u,v) + k_2(u,v)}{2} = 0 \implies \text{l'elicoide è una superficie minima.}
+            H(u,v) = \frac{k_1(u,v) + k_2(u,v)}{2} = 0 \Rightarrow \text{l'elicoide è una superficie minima.}
             \]
         \end{itemize}
-
+        \newpage
         \noindent\textbf{Direzioni principali di curvatura}
 
         Poiché i punti sono iperbolici (e quindi non ombelicali), in ogni punto esistono $2$, a meno del segno, direzioni principali di curvatura tra loro ortogonali.
+
         Determiniamo l'autospazio relativo a $k_1 = -\frac{1}{1+v^2}$:
         \[
         V_{k_1} = \left\{ \alpha f_u + \beta f_v \;\middle|\; (B - k_1 I_2) \begin{pmatrix} \alpha \\ \beta \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \right\}.
@@ -3579,40 +3664,49 @@
 
         Poiché tutti i punti sono iperbolici, in ogni punto esistono $2$, a meno del segno, direzioni asintotiche. Si osservi che:
         \[
-        \mathrm{II}_{(u,v)}(f_u, f_u) = h_{11}(u,v) = 0, \qquad \mathrm{II}_{(u,v)}(f_v, f_v) = h_{22}(u,v) = 0.
+        \Pi_{(u,v)}(f_u, f_u) = h_{11}(u,v) = 0 \qquad \Pi_{(u,v)}(f_v, f_v) = h_{22}(u,v) = 0.
         \]
-        Pertanto i versori $\frac{f_u}{\norm{f_u}}$ e $\frac{f_v}{\norm{f_v}}$ sono le direzioni asintotiche. Ne segue che le linee coordinate dell'elicoide sono linee asintotiche, ma non sono linee di curvatura principale.
+        Pertanto i versori $\frac{f_u}{\norm{f_u}}$ e $\frac{f_v}{\norm{f_v}}$ sono le direzioni asintotiche. 
+        
+        Ne segue che le linee coordinate dell'elicoide sono linee asintotiche, ma non sono linee di curvatura principale.
         \end{esempio}
         \newpage
         % ==========================================
         % PARTE SULLE SUPERFICI RIGATE
         % ==========================================
 
-        \begin{definizione}[Superficie rigata]
+        \begin{definizione}[Superficie rigata \textcolor{violet}{(rigata $\equiv$ contiene rette)}]
         \mbox{}
 
-        Si definisce \textbf{superficie rigata} una superficie tale che per ogni suo punto $P$ passa una retta $r$ interamente contenuta nella superficie.
+        Si definisce \textcolor{red}{superficie rigata} una superficie tale che per ogni suo punto $P$ passa una retta $r$ interamente contenuta nella superficie.
 
         Una superficie rigata può essere parametrizzata nel seguente modo:
-        \[
-        f \colon I \times \mathbb{R} \to \mathbb{R}^3 \qquad f(u,v) = \alpha(u) + v \xi(u),
-        \]
-        dove $\alpha \colon I \to \mathbb{R}^3$ è una curva detta \textbf{direttrice} e $\xi \colon I \to \mathbb{R}^3$ è un campo di vettori lungo $\alpha$.
+        \begin{equation}
+        \label{eq:superficie_rigata_param}
+        \color{red} f \colon I \times \mathbb{R} \to \mathbb{R}^3 \qquad f(u,v) = \textcolor{amber}{\alpha(u)} + v \textcolor{celeste}{\xi(u)}
+        \end{equation}
+        dove \textcolor{amber}{$\alpha \colon I \to \mathbb{R}^3$} è una curva detta \textcolor{amber}{direttrice} \textcolor{blu}{$(f(u,0)=\alpha(u))$} e 
+        \textcolor{celeste}{$\xi \colon I \to \mathbb{R}^3$} è un \textcolor{celeste}{campo di vettori} lungo la curva $\alpha$ \textcolor{blu}{$(f_v(u,0)=\xi(u))$}.
         \end{definizione}
-
         \begin{osservazione}
-        In generale questa parametrizzazione può non essere regolare. Analizziamo le linee coordinate di $f$:
+        \mbox{}
+
+        In generale la parametrizzazione \eqref{eq:superficie_rigata_param} può non essere regolare. 
+        
+        Analizziamo le linee coordinate di $f$:
         \begin{itemize}
             \item Per ogni $u \in I$, la linea coordinata $c_u \colon \mathbb{R} \to \mathbb{R}^3$ data da
             \[
             c_u(t) = \alpha(u) + t \xi(u)
             \]
-            è la parametrizzazione della retta passante per $\alpha(u)$ di direzione $\xi(u)$. Le linee coordinate $c_u$ sono dette \textbf{generatrici}.
+            è la parametrizzazione della retta passante per $\alpha(u)$ di direzione $\xi(u)$. 
+            
+            Le linee coordinate \textcolor{green!60!black}{$c_u$} sono dette \textcolor{green!60!black}{\textbf{generatrici}}.
             \item Per ogni $v \in \mathbb{R}$, la linea coordinata $c_v \colon I \to \mathbb{R}^3$ data da
             \[
             c_v(t) = \alpha(t) + v \xi(t)
             \]
-            è una curva sulla superficie; le curve $c_v$ sono dette \textbf{direttrici}.
+            è una curva sulla superficie; le curve \textcolor{hotpink}{$c_v$} sono dette \textcolor{hotpink}{\textbf{direttrici}}.
         \end{itemize}
 
         \begin{center}
@@ -3624,17 +3718,17 @@
             \draw[green!60!black, thick] (-2.3, 0.0) -- (2.5, -1.4);
 
             % Curva direttrice alpha (rossa)
-            \draw[red, very thick] (-1.4, -0.6) node[above left] {$\alpha$} .. controls (-0.6, -0.7) and (-0.9, 1.8) .. (1.2, 2.1);
+            \draw[amber, very thick] (-1.4, -0.6) node[above left] {$\alpha$} .. controls (-0.6, -0.7) and (-0.9, 1.8) .. (1.2, 2.1);
 
             % Curva direttrice c_v (blu)
-            \draw[blue!70!black, very thick] (-0.2, -0.9) .. controls (0.6, -0.2) and (0.5, 1.3) .. (2.1, 1.7);
-            \node[blue!70!black] at (1.1, 0.9) {$c_v$};
+            \draw[hotpink, very thick] (-0.2, -0.9) .. controls (0.6, -0.2) and (0.5, 1.3) .. (2.1, 1.7);
+            \node[hotpink] at (1.2, 0.9) {$c_v$};
 
             % Vettori v\xi(u) lungo le generatrici
-            \draw[->, green!40!black, very thick] (0.52, 1.79) -- (1.58, 1.48);
-            \draw[->, green!40!black, very thick] (-0.42, 0.90) node[above left, black] {$\alpha(u)$} -- (0.72, 0.58) node[midway, above, black] {$v\xi(u)$};
-            \draw[->, green!40!black, very thick] (-0.68, 0.21) -- (0.42, -0.12);
-            \draw[->, green!40!black, very thick] (-0.88, -0.42) -- (0.04, -0.69);
+            \draw[->, celeste, very thick] (0.52, 1.79) -- (1.58, 1.48);
+            \draw[->, celeste, very thick] (-0.42, 0.90) node[above left, amber, yshift=0.3cm] {$\alpha(u)$} -- (0.72, 0.58) node[midway, above, celeste] {$v\xi(u)$};
+            \draw[->, celeste, very thick] (-0.68, 0.21) -- (0.42, -0.12);
+            \draw[->, celeste, very thick] (-0.88, -0.42) -- (0.04, -0.69);
         \end{tikzpicture}
         \end{center}
         \end{osservazione}
@@ -3659,22 +3753,25 @@
             Si riottiene l'\textbf{elicoide}.
         \end{enumerate}
         \end{esempio}
-        \newpage
         \begin{proposizione}
+        \mbox{}
+
         La curvatura di Gauss di una superficie rigata regolare è sempre non positiva:
         \[
-        K(u,v) \le 0.
+        K(u,v) \le 0
         \]
-        Inoltre, in ogni punto della superficie, il versore $\frac{\xi(u)}{\norm{\xi(u)}}$ individua una direzione asintotica.
+        Inoltre, in ogni punto della superficie, il versore $\dfrac{\xi(u)}{\norm{\xi(u)}}$ individua una direzione asintotica.
         \end{proposizione}
         \begin{proof}
+        \mbox{}
+
         Data la parametrizzazione $f(u,v) = \alpha(u) + v \xi(u)$, calcoliamo le derivate parziali rispetto a $v$:
         \[
-        f_v(u,v) = \xi(u) \Rightarrow f_{vv}(u,v) = 0.
+        f_v(u,v) = \xi(u) \Rightarrow f_{vv}(u,v) = 0
         \]
         Di conseguenza, il coefficiente $h_{22}$ della seconda forma fondamentale è identicamente nullo:
         \[
-        h_{22}(u,v) = n(u,v) \cdot f_{vv}(u,v) = 0.
+        h_{22}(u,v) = n(u,v) \cdot f_{vv}(u,v) = 0
         \]
         La matrice della seconda forma fondamentale ha quindi la forma
         \[
@@ -3682,15 +3779,15 @@
         \begin{pmatrix}
         h_{11} & h_{12} \\
         h_{12} & 0
-        \end{pmatrix}.
+        \end{pmatrix}
         \]
         Poiché la superficie è regolare, $\det\bigl(g_{(u,v)}\bigr) > 0$, e la curvatura di Gauss vale:
         \[
-        K(u,v) = \frac{\det\bigl(h_{(u,v)}\bigr)}{\det\bigl(g_{(u,v)}\bigr)} = -\frac{(h_{12})^2}{\det\bigl(g_{(u,v)}\bigr)} \le 0.
+        K(u,v) = \frac{\det\bigl(h_{(u,v)}\bigr)}{\det\bigl(g_{(u,v)}\bigr)} = -\frac{(h_{12})^2}{\det\bigl(g_{(u,v)}\bigr)} \le 0
         \]
         Si noti inoltre che
         \[
-        0 = h_{22}(u,v) = \mathrm{II}_{(u,v)}\bigl(f_v, f_v\bigr) = \mathrm{II}_{(u,v)}\bigl(\xi(u), \xi(u)\bigr),
+        0 = h_{22}(u,v) = \Pi_{(u,v)}\bigl(f_v, f_v\bigr) = \Pi_{(u,v)}\bigl(\xi(u), \xi(u)\bigr)
         \]
-        da cui segue che $\frac{\xi(u)}{\norm{\xi(u)}}$ è una direzione asintotica.
+        da cui segue che $\dfrac{\xi(u)}{\norm{\xi(u)}}$ è una direzione asintotica.
         \end{proof}
