@@ -3148,7 +3148,6 @@
         le curve coordinate (paralleli e meridiani) sono linee principali di curvatura 
         \textcolor{violet}{(infatti in entrambi i casi avevamo trovato $g_{12} = 0$ e $h_{12} = 0$, perciò la matrice dell'operatore di Weingarten rispetto alla base coordinata $\{f_u, f_v\}$ risultava diagonale, rendendo $f_u$ e $f_v$ autovettori di $L_{(u,v)}$ in ogni punto)}.
         \end{osservazione}
-
     \section{Superfici di rotazione}
 
         Sia $I \subset \mathbb{R}$ intervallo e siano \textcolor{red}{$h, k : I \to \mathbb{R}$} funzioni differenziabili tali che 
@@ -3306,7 +3305,7 @@
             La pseudosfera ha curvatura di Gauss costante $K = -1$.
         \end{itemize}
         \end{esempio}
-        \section{Esercizi assegnati su superfici}
+    \section{Esercizi assegnati su superfici}
         \textbf{Esercizio 1}\\
         Si consideri la seguente superficie parametrizzata
         \[
@@ -3347,3 +3346,351 @@
             \item classificare il punto (ellittico, iperbolico, parabolico, planare)
         \end{itemize}
     \section{Superfici rigate}
+        \begin{esempio}[Elicoide]
+        Consideriamo la superficie parametrizzata data da
+        \[
+        f \colon \mathbb{R}^2 \longrightarrow \mathbb{R}^3, \qquad f(u,v) = (v \cos u, v \sin u, u).
+        \]
+
+        \noindent\textbf{Regolarità}
+
+        Calcoliamo le derivate parziali prime e la matrice Jacobiana in $(u,v) \in \mathbb{R}^2$:
+        \[
+        f_u(u,v) = (-v \sin u, v \cos u, 1), \qquad f_v(u,v) = (\cos u, \sin u, 0),
+        \]
+        \[
+        (Jf)_{(u,v)} = 
+        \begin{pmatrix}
+        -v \sin u & \cos u \\
+        v \cos u & \sin u \\
+        1 & 0
+        \end{pmatrix}.
+        \]
+        I minori di ordine $2$ estratti dalla matrice Jacobiana sono:
+        \begin{align*}
+        M_1 &= -\sin u, \\
+        M_2 &= -\cos u, \\
+        M_3 &= -v \sin^2 u - v \cos^2 u = -v.
+        \end{align*}
+        Pertanto il prodotto vettoriale dei vettori tangenti fondamentali è
+        \[
+        f_u(u,v) \times f_v(u,v) = (M_1, -M_2, M_3) = (-\sin u, \cos u, -v),
+        \]
+        da cui
+        \[
+        \norm{f_u(u,v) \times f_v(u,v)}^2 = 1 + v^2 \neq 0 \qquad \forall (u,v) \in \mathbb{R}^2.
+        \]
+        La superficie è quindi regolare in ogni punto. 
+        
+        Il versore normale (mappa di Gauss) è dato da:
+        \[
+        n(u,v) = \frac{1}{\sqrt{1+v^2}}(-\sin u, \cos u, -v).
+        \]
+        \noindent\textbf{Prima forma fondamentale}
+
+        Calcolando i prodotti scalari $g_{11} = \norm{f_u}^2 = 1 + v^2$, $g_{12} = f_u \cdot f_v = 0$ e $g_{22} = \norm{f_v}^2 = 1$, la matrice della prima forma fondamentale è:
+        \[
+        g_{(u,v)} = 
+        \begin{pmatrix}
+        v^2 + 1 & 0 \\
+        0 & 1
+        \end{pmatrix}.
+        \]
+        \newpage
+        \noindent\textbf{Linee coordinate}
+
+        \begin{itemize}
+            \item Fissato $u \in \mathbb{R}$, consideriamo la linea coordinata $c_u \colon \mathbb{R} \longrightarrow \mathbb{R}^3$ definita da
+            \[
+            c_u(t) = f(u,t) = (t \cos u, t \sin u, u),
+            \]
+            ovvero di equazioni parametriche
+            \[
+            \begin{cases}
+            x = (\cos u)t \\
+            y = (\sin u)t \\
+            z = u
+            \end{cases}
+            \]
+            che rappresenta la retta passante per $(0,0,u)$ di parametri direttori $(\cos u, \sin u, 0)$, con vettore velocità $\dot{c}_u(t) = f_v(u,t) = (\cos u, \sin u, 0)$. Al variare di $u$ i parametri direttori della retta ruotano:
+            \begin{align*}
+            u = 0 &\longrightarrow (1,0,0), \\
+            u = \frac{\pi}{4} &\longrightarrow (1,1,0), \\
+            u = \frac{\pi}{2} &\longrightarrow (0,1,0), \\
+            &\;\;\vdots
+            \end{align*}
+
+            \begin{center}
+            \begin{tikzpicture}[tdplot_main_coords, scale=1.2, >=Stealth]
+                % Assi coordinati
+                \draw[->, thick, black] (0,0,0) -- (3.5,0,0) node[above left] {$x$};
+                \draw[->, thick, black] (0,0,0) -- (0,3.5,0) node[below right] {$y$};
+                \draw[->, thick, black] (0,0,0) -- (0,0,3.8) node[right] {$z$};
+                \node[below left] at (0,0,0) {$O$};
+
+                % u = 0
+                \draw[thick, yellow!80!orange] (-2,0,0) -- (3.8,0,0) node[right] {$u=0$};
+                % u = pi/4
+                \draw[thick, green!60!black] (0,0,0.78) -- (2.2,2.2,0.78) node[above left] {$u=\frac{\pi}{4}$};
+                % u = pi/2
+                \draw[thick, cyan!80!black] (0,0,1.57) -- (0,3.2,1.57) node[above left] {$u=\frac{\pi}{2}$};
+                % u = 3pi/4
+                \draw[thick, orange!90!red] (0,0,2.35) -- (-2.2,2.2,2.35) node[above right] {$u=\frac{3}{4}\pi$};
+                % u = pi
+                \draw[thick, violet] (0,0,3.14) -- (-2.8,0,3.14) node[above right] {$u=\pi$};
+            \end{tikzpicture}
+            \end{center}
+
+            \item Fissato $v \in \mathbb{R}$, consideriamo la linea coordinata $c_v \colon \mathbb{R} \longrightarrow \mathbb{R}^3$ definita da
+            \[
+            c_v(t) = f(t,v) = (v \cos t, v \sin t, t),
+            \]
+            con vettore velocità $\dot{c}_v(t) = f_u(t,v) = (-v \sin t, v \cos t, 1)$.
+            \begin{itemize}
+                \item Se $v = 0 \implies c_0$ coincide con l'asse $z$.
+                \item Se $v \neq 0 \implies c_v$ è un'elica cilindrica di passo $2\pi$ (contenuta nel cilindro di equazione $x^2 + y^2 = v^2$).
+            \end{itemize}
+        \end{itemize}
+
+        \begin{center}
+        \begin{tikzpicture}[tdplot_main_coords, scale=0.85, >=Stealth]
+            % Generatrici (rette c_u)
+            \foreach \u in {0, 15, ..., 540} {
+                \draw[gray!70, very thin] ({-2*cos(\u)}, {-2*sin(\u)}, {\u*0.008}) -- ({2*cos(\u)}, {2*sin(\u)}, {\u*0.008});
+            }
+            % Eliche (curve c_v)
+            \foreach \v in {-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2} {
+                \draw[blue!60!black, thin] ({\v*cos(0)}, {\v*sin(0)}, 0)
+                \foreach \u in {10, 20, ..., 540} {
+                    -- ({\v*cos(\u)}, {\v*sin(\u)}, {\u*0.008})
+                };
+            }
+            % Vettori tangenti f_v (in rosso lungo una retta generatrice)
+            \draw[->, red, thick] ({1.2*cos(120)}, {1.2*sin(120)}, {120*0.008}) -- ({1.9*cos(120)}, {1.9*sin(120)}, {120*0.008}) node[right] {$f_v$};
+            % Vettori tangenti f_u (in arancione lungo un'elica)
+            \draw[->, orange!90!yellow, thick] ({1.5*cos(90)}, {1.5*sin(90)}, {90*0.008}) -- ({1.5*cos(90)-0.7*sin(90)}, {1.5*sin(90)+0.7*cos(90)}, {90*0.008+0.35}) node[right] {$f_u$};
+        \end{tikzpicture}
+        \end{center}
+
+        \noindent\textbf{Seconda forma fondamentale}
+
+        Calcoliamo le derivate parziali seconde di $f$:
+        \begin{align*}
+        f_{uu}(u,v) &= (-v \cos u, -v \sin u, 0), \\
+        f_{uv}(u,v) &= (-\sin u, \cos u, 0), \\
+        f_{vv}(u,v) &= (0, 0, 0).
+        \end{align*}
+        I coefficienti della seconda forma fondamentale sono quindi:
+        \begin{align*}
+        h_{11}(u,v) &= n(u,v) \cdot f_{uu}(u,v) = 0, \\
+        h_{12}(u,v) &= n(u,v) \cdot f_{uv}(u,v) = \frac{1}{\sqrt{1+v^2}}, \\
+        h_{22}(u,v) &= n(u,v) \cdot f_{vv}(u,v) = 0.
+        \end{align*}
+        La matrice associata alla seconda forma fondamentale è:
+        \[
+        h_{(u,v)} = 
+        \begin{pmatrix}
+        0 & \dfrac{1}{\sqrt{1+v^2}} \\[1em]
+        \dfrac{1}{\sqrt{1+v^2}} & 0
+        \end{pmatrix}.
+        \]
+
+        \noindent\textbf{Operatore di Weingarten}
+
+        La matrice associata all'operatore di Weingarten $L_{(u,v)}$ rispetto alla base $\bigl(f_u(u,v), f_v(u,v)\bigr)$ è:
+        \[
+        B = g_{(u,v)}^{-1} h_{(u,v)} = 
+        \begin{pmatrix}
+        \dfrac{1}{1+v^2} & 0 \\[1em]
+        0 & 1
+        \end{pmatrix}
+        \begin{pmatrix}
+        0 & \dfrac{1}{\sqrt{1+v^2}} \\[1em]
+        \dfrac{1}{\sqrt{1+v^2}} & 0
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        0 & \dfrac{1}{(\sqrt{1+v^2})^3} \\[1em]
+        \dfrac{1}{\sqrt{1+v^2}} & 0
+        \end{pmatrix}.
+        \]
+
+        \noindent\textbf{Curvature principali, curvatura di Gauss e curvatura media}
+
+        Determiniamo gli autovalori della matrice $B$:
+        \[
+        \begin{vmatrix}
+        -\lambda & \dfrac{1}{(\sqrt{1+v^2})^3} \\[1em]
+        \dfrac{1}{\sqrt{1+v^2}} & -\lambda
+        \end{vmatrix}
+        = \lambda^2 - \frac{1}{(1+v^2)^2} = 0 \implies \lambda = \pm \frac{1}{1+v^2}.
+        \]
+        Le curvature principali sono pertanto:
+        \[
+        k_1(u,v) = -\frac{1}{1+v^2} < 0, \qquad k_2(u,v) = \frac{1}{1+v^2} > 0.
+        \]
+        Poiché $k_1(u,v) \neq k_2(u,v)$ per ogni $(u,v) \in \mathbb{R}^2$, non ci sono punti ombelicali.
+        Inoltre:
+        \begin{itemize}
+            \item La curvatura di Gauss è
+            \[
+            K(u,v) = k_1(u,v) k_2(u,v) = -\frac{1}{(1+v^2)^2} < 0 \implies \text{tutti i punti sono iperbolici.}
+            \]
+            \item La curvatura media è
+            \[
+            H(u,v) = \frac{k_1(u,v) + k_2(u,v)}{2} = 0 \implies \text{l'elicoide è una superficie minima.}
+            \]
+        \end{itemize}
+
+        \noindent\textbf{Direzioni principali di curvatura}
+
+        Poiché i punti sono iperbolici (e quindi non ombelicali), in ogni punto esistono $2$, a meno del segno, direzioni principali di curvatura tra loro ortogonali.
+        Determiniamo l'autospazio relativo a $k_1 = -\frac{1}{1+v^2}$:
+        \[
+        V_{k_1} = \left\{ \alpha f_u + \beta f_v \;\middle|\; (B - k_1 I_2) \begin{pmatrix} \alpha \\ \beta \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} \right\}.
+        \]
+        Risolviamo il sistema lineare associato:
+        \[
+        \begin{pmatrix}
+        \dfrac{1}{1+v^2} & \dfrac{1}{(\sqrt{1+v^2})^3} \\[1em]
+        \dfrac{1}{\sqrt{1+v^2}} & \dfrac{1}{1+v^2}
+        \end{pmatrix}
+        \begin{pmatrix}
+        \alpha \\
+        \beta
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        0 \\
+        0
+        \end{pmatrix}
+        \iff
+        \begin{cases}
+        \dfrac{\alpha}{1+v^2} + \dfrac{\beta}{(\sqrt{1+v^2})^3} = 0 \\[1em]
+        \dfrac{\alpha}{\sqrt{1+v^2}} + \dfrac{\beta}{1+v^2} = 0
+        \end{cases}
+        \Rightarrow \beta = -\sqrt{1+v^2}\,\alpha.
+        \]
+        Dunque $X_1 = f_u - \sqrt{1+v^2}\,f_v$ è un autovettore relativo all'autovalore $k_1$, e il versore $\frac{X_1}{\norm{X_1}}$ è una direzione principale di curvatura.
+
+        Analogamente, $X_2 = f_u + \sqrt{1+v^2}\,f_v$ è un autovettore relativo all'autovalore $k_2$, e il versore $\frac{X_2}{\norm{X_2}}$ è l'altra direzione principale di curvatura.
+
+        \noindent\textbf{Direzioni e linee asintotiche}
+
+        Poiché tutti i punti sono iperbolici, in ogni punto esistono $2$, a meno del segno, direzioni asintotiche. Si osservi che:
+        \[
+        \mathrm{II}_{(u,v)}(f_u, f_u) = h_{11}(u,v) = 0, \qquad \mathrm{II}_{(u,v)}(f_v, f_v) = h_{22}(u,v) = 0.
+        \]
+        Pertanto i versori $\frac{f_u}{\norm{f_u}}$ e $\frac{f_v}{\norm{f_v}}$ sono le direzioni asintotiche. Ne segue che le linee coordinate dell'elicoide sono linee asintotiche, ma non sono linee di curvatura principale.
+        \end{esempio}
+        \newpage
+        % ==========================================
+        % PARTE SULLE SUPERFICI RIGATE
+        % ==========================================
+
+        \begin{definizione}[Superficie rigata]
+        \mbox{}
+
+        Si definisce \textbf{superficie rigata} una superficie tale che per ogni suo punto $P$ passa una retta $r$ interamente contenuta nella superficie.
+
+        Una superficie rigata può essere parametrizzata nel seguente modo:
+        \[
+        f \colon I \times \mathbb{R} \to \mathbb{R}^3 \qquad f(u,v) = \alpha(u) + v \xi(u),
+        \]
+        dove $\alpha \colon I \to \mathbb{R}^3$ è una curva detta \textbf{direttrice} e $\xi \colon I \to \mathbb{R}^3$ è un campo di vettori lungo $\alpha$.
+        \end{definizione}
+
+        \begin{osservazione}
+        In generale questa parametrizzazione può non essere regolare. Analizziamo le linee coordinate di $f$:
+        \begin{itemize}
+            \item Per ogni $u \in I$, la linea coordinata $c_u \colon \mathbb{R} \to \mathbb{R}^3$ data da
+            \[
+            c_u(t) = \alpha(u) + t \xi(u)
+            \]
+            è la parametrizzazione della retta passante per $\alpha(u)$ di direzione $\xi(u)$. Le linee coordinate $c_u$ sono dette \textbf{generatrici}.
+            \item Per ogni $v \in \mathbb{R}$, la linea coordinata $c_v \colon I \to \mathbb{R}^3$ data da
+            \[
+            c_v(t) = \alpha(t) + v \xi(t)
+            \]
+            è una curva sulla superficie; le curve $c_v$ sono dette \textbf{direttrici}.
+        \end{itemize}
+
+        \begin{center}
+        \begin{tikzpicture}[scale=1.1, >=Stealth]
+            % Generatrici (rette verdi)
+            \draw[green!60!black, thick] (-1.2, 2.3) -- (4.2, 0.7);
+            \draw[green!60!black, thick] (-2.2, 1.4) -- (3.8, -0.3) node[above left, pos=0.9] {$c_u$};
+            \draw[green!60!black, thick] (-2.0, 0.6) -- (3.4, -1.0);
+            \draw[green!60!black, thick] (-2.3, 0.0) -- (2.5, -1.4);
+
+            % Curva direttrice alpha (rossa)
+            \draw[red, very thick] (-1.4, -0.6) node[above left] {$\alpha$} .. controls (-0.6, -0.7) and (-0.9, 1.8) .. (1.2, 2.1);
+
+            % Curva direttrice c_v (blu)
+            \draw[blue!70!black, very thick] (-0.2, -0.9) .. controls (0.6, -0.2) and (0.5, 1.3) .. (2.1, 1.7);
+            \node[blue!70!black] at (1.1, 0.9) {$c_v$};
+
+            % Vettori v\xi(u) lungo le generatrici
+            \draw[->, green!40!black, very thick] (0.52, 1.79) -- (1.58, 1.48);
+            \draw[->, green!40!black, very thick] (-0.42, 0.90) node[above left, black] {$\alpha(u)$} -- (0.72, 0.58) node[midway, above, black] {$v\xi(u)$};
+            \draw[->, green!40!black, very thick] (-0.68, 0.21) -- (0.42, -0.12);
+            \draw[->, green!40!black, very thick] (-0.88, -0.42) -- (0.04, -0.69);
+        \end{tikzpicture}
+        \end{center}
+        \end{osservazione}
+
+        \begin{esempio}
+        Vediamo tre casi fondamentali di superfici rigate:
+        \begin{enumerate}
+            \item $\xi(u) = \xi_0$ costante:
+            \[
+            f(u,v) = \alpha(u) + v \xi_0.
+            \]
+            Le generatrici sono tutte parallele tra loro $\longrightarrow$ \textbf{cilindro}.
+            \item $\alpha(u) = \alpha_0$ costante:
+            \[
+            f(u,v) = \alpha_0 + v \xi(u).
+            \]
+            Le generatrici passano tutte per il punto fisso $\alpha_0$ $\longrightarrow$ \textbf{cono}.
+            \item $\alpha(u) = (0,0,u)$ (asse $z$) e $\xi(u) = (\cos u, \sin u, 0)$:
+            \[
+            f(u,v) = \alpha(u) + v \xi(u) = (v \cos u, v \sin u, u).
+            \]
+            Si riottiene l'\textbf{elicoide}.
+        \end{enumerate}
+        \end{esempio}
+        \newpage
+        \begin{proposizione}
+        La curvatura di Gauss di una superficie rigata regolare è sempre non positiva:
+        \[
+        K(u,v) \le 0.
+        \]
+        Inoltre, in ogni punto della superficie, il versore $\frac{\xi(u)}{\norm{\xi(u)}}$ individua una direzione asintotica.
+        \end{proposizione}
+        \begin{proof}
+        Data la parametrizzazione $f(u,v) = \alpha(u) + v \xi(u)$, calcoliamo le derivate parziali rispetto a $v$:
+        \[
+        f_v(u,v) = \xi(u) \Rightarrow f_{vv}(u,v) = 0.
+        \]
+        Di conseguenza, il coefficiente $h_{22}$ della seconda forma fondamentale è identicamente nullo:
+        \[
+        h_{22}(u,v) = n(u,v) \cdot f_{vv}(u,v) = 0.
+        \]
+        La matrice della seconda forma fondamentale ha quindi la forma
+        \[
+        h_{(u,v)} = 
+        \begin{pmatrix}
+        h_{11} & h_{12} \\
+        h_{12} & 0
+        \end{pmatrix}.
+        \]
+        Poiché la superficie è regolare, $\det\bigl(g_{(u,v)}\bigr) > 0$, e la curvatura di Gauss vale:
+        \[
+        K(u,v) = \frac{\det\bigl(h_{(u,v)}\bigr)}{\det\bigl(g_{(u,v)}\bigr)} = -\frac{(h_{12})^2}{\det\bigl(g_{(u,v)}\bigr)} \le 0.
+        \]
+        Si noti inoltre che
+        \[
+        0 = h_{22}(u,v) = \mathrm{II}_{(u,v)}\bigl(f_v, f_v\bigr) = \mathrm{II}_{(u,v)}\bigl(\xi(u), \xi(u)\bigr),
+        \]
+        da cui segue che $\frac{\xi(u)}{\norm{\xi(u)}}$ è una direzione asintotica.
+        \end{proof}
