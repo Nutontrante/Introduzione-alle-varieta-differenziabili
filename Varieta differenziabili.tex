@@ -1,5 +1,9 @@
 \chapter{Varietà differenziabili}
     \section{Varietà topologiche}
+        \textcolor{violet}{In topologia abbiamo studiato la definizione di spazio localmente euclideo, che è uno spazio topologico in cui ogni punto ammette un intorno omeomorfo a un aperto di $\mathbb{R}^n$ 
+        ora vedremo che si può definire una varietà topologica come uno spazio topologico che è localmente euclideo, di Hausdorff e a base numerabile.}
+
+        \textcolor{violet}{Ora diamo la definizione con $n \geq 1$ poi vedremo che si può definire anche per $n=0$}
         \begin{definizione}
         \mbox{}
 
@@ -9,40 +13,68 @@
             \textcolor{blu}{(cioè $\forall p, q \in M \quad \exists U, V \text{ intorni aperti di } p \text{ e } q \text{ risp. t.c. } U \cap V = \emptyset$)};
             \item $M$ è a base numerabile (o secondo-numerabile) \textcolor{blu}{(cioè $M$ ammette una base di topologia numerabile)};
             \item $M$ è localmente Euclideo di dimensione $n$ 
-            \textcolor{blu}{(cioè $\forall p \in M \quad \exists U \text{ intorno aperto di } p, \ \exists \tilde{U} \subset \mathbb{R}^n \text{ aperto}, \ \exists \varphi : U \to \tilde{U} \text{ omeomorfismo}$)}
+            \textcolor{blu}{(cioè $\forall p \in M \quad \exists U \text{ intorno aperto di } p$} 
+            
+            \textcolor{blu}{$\exists \tilde{U} \subset \mathbb{R}^n \text{ aperto } \exists \varphi : U \to \tilde{U} \text{ omeomorfismo}$)}
         \end{enumerate}
         \end{definizione}
+        \textcolor{violet}{Non tutti gli autori sono concordi con la definizione di varietà topologica così come non tutti sono concordi su quella di varietà differenziabile, ha seguito
+        il libro di Lee per questa parte.}
 
+        \textcolor{violet}{Non sempre nella definizione è richiesto che la varietà sia a base numerabile ma è una condizione che diventa necessaria per alcune proprietà e invece 
+        di assumerlo di volta in volta si preferisce assumerlo come condizione della definizione.}
+        \newpage
         \begin{definizione}
-        Sia $M$ varietà topologica di dimensione $n \ge 1$. Si definisce \textcolor{red}{carta} (o carta locale, o carta coordinata, o carta ammissibile) ogni coppia $(U, \varphi)$, con $U$ aperto di $M$ e $\varphi : U \to \varphi(U) = \tilde{U} \subset \mathbb{R}^n$ omeomorfismo tra $U$ e un aperto $\varphi(U)$ di $\mathbb{R}^n$.
-        $U$ è detto \textcolor{red}{dominio della carta}, o \textcolor{red}{dominio coordinato}.
+        \mbox{}
 
-        Poniamo
+        Sia $M$ varietà topologica di dimensione $n \ge 1$, si definisce \textcolor{red}{carta} \textcolor{blu}{(o carta locale, o carta coordinata, o carta ammissibile)} ogni coppia 
+        \textcolor{red}{$(U, \varphi)$} con $U$ aperto di $M$ e 
+        $\varphi \colon U \to \varphi(U) = \tilde{U} \subset \mathbb{R}^n$ omeomorfismo tra $U$ e un aperto $\varphi(U)$ di $\mathbb{R}^n$.
+        
+        \textcolor{red}{$U$} è detto \textcolor{red}{dominio della carta} \textcolor{blu}{(o dominio coordinato)} poniamo:
         \[
-        \forall q \in U \quad \varphi(q) = \left(x^1(q), \dots, x^n(q)\right) \in \varphi(U) \subset \mathbb{R}^n.
+        \forall q \in U \quad \varphi(q) = \left(x^1(q), \dots, x^n(q)\right) \in \varphi(U) \subset \mathbb{R}^n
         \]
         Si definiscono quindi le funzioni
         \[
-        x^i = p_i \circ \varphi : U \to \mathbb{R}
+        \textcolor{red}{x^i = p_i \circ \varphi : U \to \mathbb{R}} \text{ dove } p_i \colon \varphi(U) \subset \mathbb{R}^n \to \mathbb{R} \quad (x^1, \dots, x^n) \mapsto x^i 
+        \text{ è la $i$-esima proiezione}
         \]
-        dove $p_i : \varphi(U) \subset \mathbb{R}^n \to \mathbb{R}$, $(x^1, \dots, x^n) \mapsto x^i$ è la $i$-esima proiezione. Le funzioni $x^1, \dots, x^n : U \to \mathbb{R}$ sono dette funzioni \textcolor{red}{coordinate locali} su $U$ (o semplicemente coordinate locali) e sono funzioni continue.
+        le funzioni $x^1, \dots, x^n : U \to \mathbb{R}$ sono dette funzioni \textcolor{red}{coordinate locali} su $U$ \textcolor{blu}{(o semplicemente coordinate locali)} 
+        e sono funzioni continue \textcolor{violet}{(perchè $\varphi$ è un omeomorfismo e $p_i$ sono continue)}.
 
-        Dalla definizione di varietà topologica segue che $\forall p \in M \ \exists (U, \varphi)$ carta locale tale che $p \in U$. Pertanto, $M$ ammette una famiglia $\mathcal{A} = \{(U_\alpha, \varphi_\alpha)\}_{\alpha \in A}$ di carte locali tale che
+        Dalla definizione di varietà topologica segue che $\forall p \in M \ \exists (U, \varphi)$ carta locale tale che $p \in U$
+        \textcolor{violet}{(In ogni punto esiste una carta locale)}
+
+        Pertanto $M$ ammette una famiglia $\mathcal{A} = \{(U_\alpha, \varphi_\alpha)\}_{\alpha \in A}$ di carte locali tale che
         \[
         M = \bigcup_{\alpha \in A} U_\alpha \quad (\text{i domini delle carte ricoprono } M).
         \]
-        La famiglia $\mathcal{A} = \{(U_\alpha, \varphi_\alpha)\}_{\alpha \in A}$ è detta \textcolor{red}{atlante}.
+        La famiglia \textcolor{red}{$\mathcal{A} = \{(U_\alpha, \varphi_\alpha)\}_{\alpha \in A}$} è detta \textcolor{red}{atlante topologico}.
         \end{definizione}
 
         \begin{esempio}
+        \mbox{}
+
         \begin{enumerate}[label=\arabic*)]
-            \item $\mathbb{R}^n$ è varietà topologica di dimensione $n$. Un atlante è $\mathcal{A} = \{(\mathbb{R}^n, i_{\mathbb{R}^n})\}$.
-            \item Se $\mathscr{C} \subset \mathbb{R}^n$ è una \textcolor{red}{curva differenziabile}, allora $\mathscr{C}$ è varietà topologica di dimensione $1$. Un atlante è $\{(U_\alpha, \varphi_\alpha)\}$ con
+            \item \textcolor{violet}{Uno spazio topologico localmente omeomorfo a $\mathbb{R}^n$ è proprio $\mathbb{R}^n$ (non si esclude la possibilità che l'omeomorfismo sia globale)} 
+    
+            $\mathbb{R}^n$ è varietà topologica di dimensione $n$, un atlante è $\mathcal{A} = \{(\mathbb{R}^n, id_{\mathbb{R}^n})\}$.
+            \item \textcolor{violet}{Abbiamo parlato di atlante anche quando abbiamo introdotto le curve differenziabili def. \ref{def:curva_differenziabile} cioè un sottoinsieme
+            di $\mathbb{R}^n$ munito della topologia indotta dalla topologia euclidea su $\mathbb{R}^n$ che è $T_2$ $\Rightarrow T_2$ e a base 
+            numerabile in più è localmente omeomorfo a un aperto di $\mathbb{R}$, quindi è una varietà topologica di dimensione $1$}
+            
+            Se $\mathcal{C} \subset \mathbb{R}^n$ è una \textcolor{red}{curva differenziabile}, allora $\mathcal{C}$ è varietà topologica di dimensione $1$.
+            
+            Un atlante è $\{(U_\alpha, \varphi_\alpha)\}$ con
             \[
             \varphi_\alpha = \alpha^{-1} : U_\alpha \to I_\alpha \subset \mathbb{R}
             \]
-            essendo $\alpha : I_\alpha \to U_\alpha \subset \mathscr{C} \subset \mathbb{R}^n$ omeomorfismo e parametrizzazione regolare.
-            \item Se $S \subset \mathbb{R}^3$ è una \textcolor{red}{superficie differenziabile}, allora $S$ è varietà topologica di dimensione $2$. Un atlante è $\{(U_\alpha, \varphi_\alpha)\}$ con
+            essendo $\alpha : I_\alpha \to U_\alpha \subset \mathcal{C} \subset \mathbb{R}^n$ omeomorfismo e parametrizzazione regolare.
+            \newpage
+            \item Se $S \subset \mathbb{R}^3$ è una \textcolor{red}{superficie differenziabile}, allora $S$ è varietà topologica di dimensione $2$.
+            
+            Un atlante è $\{(U_\alpha, \varphi_\alpha)\}$ con
             \[
             \varphi_\alpha = \alpha^{-1} : U_\alpha \to A_\alpha \subset \mathbb{R}^2
             \]
@@ -50,97 +82,164 @@
             
             Pertanto sono varietà topologiche:
             \begin{itemize}
-                \item $S^2 \subset \mathbb{R}^3$;
-                \item il grafico di una funzione differenziabile $\varphi : A \subset \mathbb{R}^2 \to \mathbb{R}$ ($S = \{(u, v, \varphi(u,v)) \mid (u,v) \in A\}$);
-                \item le superfici di livello di una funzione differenziabile $F : A \subset \mathbb{R}^3 \to \mathbb{R}$ ($S = F^{-1}(a)$, con $a$ valore regolare per $F$).
+                \item $S^2 \subset \mathbb{R}^3$ \textcolor{violet}{(Abbiamo costruito un atlante da $6$ carte che ricopre $S^2$)};
+                \item il grafico di una funzione differenziabile $\varphi : A \subset \mathbb{R}^2 \to \mathbb{R}$ 
+                
+                \textcolor{blu}{($S = \{(u, v, \varphi(u,v)) \mid (u,v) \in A\}$)};
+                \item le superfici di livello di una funzione differenziabile $F : A \subset \mathbb{R}^3 \to \mathbb{R}$ 
+                
+                \textcolor{blu}{($S = F^{-1}(a)$, con $a$ valore regolare per $F$)}.
             \end{itemize}
         \end{enumerate}
         \end{esempio}
     \section{Funzione di transizione tra due carte}
         \begin{definizione}
-        Sia $M$ varietà topologica di dimensione $n \ge 1$. Siano $(U_\alpha, \varphi_\alpha)$, $(U_\beta, \varphi_\beta)$ carte locali tali che $U_\alpha \cap U_\beta \neq \emptyset$. Si può considerare la seguente composizione:
+        Sia $M$ varietà topologica di dimensione $n \ge 1$ e siano $(U_\alpha, \varphi_\alpha)$, $(U_\beta, \varphi_\beta)$ carte locali tali che $U_\alpha \cap U_\beta \neq \emptyset$. 
+        
+        Si può considerare la seguente composizione:
         \[
         \varphi_\alpha(U_\alpha \cap U_\beta) \subset \mathbb{R}^n \xrightarrow{\varphi_\alpha^{-1}} U_\alpha \cap U_\beta \xrightarrow{\varphi_\beta} \varphi_\beta(U_\alpha \cap U_\beta) \subset \mathbb{R}^n.
         \]
         L'applicazione
         \[
-        \varphi_\beta \circ \varphi_\alpha^{-1} : \varphi_\alpha(U_\alpha \cap U_\beta) \to \varphi_\beta(U_\alpha \cap U_\beta)
+        \color{red} \varphi_\beta \circ \varphi_\alpha^{-1} : \varphi_\alpha(U_\alpha \cap U_\beta) \to \varphi_\beta(U_\alpha \cap U_\beta)
         \]
         è un omeomorfismo e prende il nome di \textcolor{red}{funzione di transizione} dalla carta $(U_\alpha, \varphi_\alpha)$ alla carta $(U_\beta, \varphi_\beta)$.
 
-        Siano $x^1, \dots, x^n : U_\alpha \to \mathbb{R}$, $x^i = p_i \circ \varphi_\alpha$ le coordinate locali della carta $(U_\alpha, \varphi_\alpha)$ e $y^1, \dots, y^n : U_\beta \to \mathbb{R}$, $y^i = p_i \circ \varphi_\beta$ le coordinate locali della carta $(U_\beta, \varphi_\beta)$. Per ogni $p \in U_\alpha \cap U_\beta$:
+        Siano $x^1, \dots, x^n : U_\alpha \to \mathbb{R} \quad x^i = p_i \circ \varphi_\alpha$ le coordinate locali della carta $(U_\alpha, \varphi_\alpha)$ e 
+        
+        $y^1, \dots, y^n : U_\beta \to \mathbb{R} \quad y^i = p_i \circ \varphi_\beta$ le coordinate locali della carta $(U_\beta, \varphi_\beta)$. 
+        
+        Per ogni $p \in U_\alpha \cap U_\beta$:
         \[
-        \varphi_\alpha(p) = \left(x^1(p), \dots, x^n(p)\right), \qquad \varphi_\beta(p) = \left(y^1(p), \dots, y^n(p)\right),
+        \varphi_\alpha(p) = \left(x^1(p), \dots, x^n(p)\right) \qquad \varphi_\beta(p) = \left(y^1(p), \dots, y^n(p)\right)
         \]
         \[
-        \left(x^1(p), \dots, x^n(p)\right) \xmapsto{\varphi_\beta \circ \varphi_\alpha^{-1}} \left(y^1(p), \dots, y^n(p)\right).
+        \left(x^1(p), \dots, x^n(p)\right) \xmapsto{\quad \textcolor{red}{\varphi_\beta \circ \varphi_\alpha^{-1}}} \left(y^1(p), \dots, y^n(p)\right)
         \]
-        La funzione di transizione $\varphi_\beta \circ \varphi_\alpha^{-1}$, alle coordinate di un punto $p$ nella carta $(U_\alpha, \varphi_\alpha)$, associa le coordinate dello stesso punto nella carta $(U_\beta, \varphi_\beta)$.
+        La funzione di transizione $\varphi_\beta \circ \varphi_\alpha^{-1}$ alle coordinate di un punto $p$ nella carta $(U_\alpha, \varphi_\alpha)$
+        associa le coordinate dello stesso punto nella carta $(U_\beta, \varphi_\beta)$.
 
         \begin{center}
-        \begin{tikzpicture}[scale=0.95, >=Stealth]
-            % Superficie M
-            \draw[thick, cyan!60!black] (-3, 1.5) to[out=20, in=165] (2.5, 2.5) to[out=-65, in=55] (1.2, -0.5) to[out=140, in=0] (-3, 1.5);
-            \node[cyan!60!black, font=\bfseries] at (-2.5, 2.1) {$M$};
+        \begin{tikzpicture}[
+            >=Stealth,
+            %every node/.style={font=\small},
+            mapnode/.style={thick}
+        ]
 
-            % Aperto U_alpha (giallo/oliva)
-            \fill[olive!40, opacity=0.7] (-0.3, 1.8) to[out=10, in=150] (1.0, 2.0) to[out=-30, in=60] (0.8, 1.1) to[out=-120, in=-20] (-0.5, 1.3) to[out=160, in=-170] (-0.3, 1.8);
-            \draw[olive!80!black, thick] (-0.3, 1.8) to[out=10, in=150] (1.0, 2.0) to[out=-30, in=60] (0.8, 1.1) to[out=-120, in=-20] (-0.5, 1.3) to[out=160, in=-170] (-0.3, 1.8);
-            \node[olive!80!black] at (-0.4, 2.2) {$U_\alpha$};
+        % ---------- VARIETA' M ----------
+        \draw[thick, blue!60!black, fill=blue!5]
+            (0,5.2) .. controls (1,6.6) and (3,6.8) .. (5,6.3)
+                    .. controls (6.5,6.0) and (8,6.8) .. (9.5,6.0)
+                    .. controls (10.5,5.4) and (10.2,4.2) .. (9,3.8)
+                    .. controls (7,3.2) and (6,4.0) .. (4.5,3.6)
+                    .. controls (2.5,3.2) and (1,3.6) .. (0,5.2);
+        \node[blue!60!black, font=\large] at (10.2,6.4) {$M$};
 
-            % Aperto U_beta (verde)
-            \fill[green!50!black, opacity=0.45] (0.5, 1.95) to[out=20, in=130] (1.6, 1.7) to[out=-50, in=30] (1.4, 0.9) to[out=-150, in=-60] (0.3, 1.3) to[out=120, in=-160] (0.5, 1.95);
-            \draw[green!50!black, thick] (0.5, 1.95) to[out=20, in=130] (1.6, 1.7) to[out=-50, in=30] (1.4, 0.9) to[out=-150, in=-60] (0.3, 1.3) to[out=120, in=-160] (0.5, 1.95);
-            \node[green!40!black] at (1.9, 1.8) {$U_\beta$};
+        % Aperti U_alpha e U_beta
+        \draw[thick, orange!90!black, fill=yellow!25] (3.6,5.2) ellipse (1.7 and 0.8);
+        \draw[thick, green!50!black, fill=green!20] (5.6,5.0) ellipse (1.7 and 0.8);
 
-            % Intersezione U_alpha \cap U_beta (bordo rosso tratteggiato)
-            \draw[red, thick, dashed] (0.5, 1.95) to[out=-160, in=120] (0.3, 1.3) to[out=-60, in=-120] (0.8, 1.1) to[out=60, in=-30] (1.0, 2.0) -- cycle;
-            \node[red, font=\small] at (0.65, 0.8) {$U_\alpha \cap U_\beta$};
+        % Intersezione
+        \begin{scope}
+        \clip (3.6,5.2) ellipse (1.7 and 0.8);
+        \fill[red!25] (5.6,5.0) ellipse (1.7 and 0.8);
+        \end{scope}
+        \draw[thick, red!70!black, dashed] (3.6,5.2) ellipse (1.7 and 0.8);
+        \draw[thick, red!70!black] (5.6,5.0) ellipse (1.7 and 0.8);
 
-            % Punto p
-            \fill[red] (0.65, 1.55) circle (1.5pt) node[below, font=\small] {$p$};
+        % Punto p
+        \fill[magenta] (4.6,5.1) circle (2pt);
+        \node[magenta, above] at (4.6,5.15) {$p$};
 
-            % Aperto \varphi_\alpha(U_\alpha) a sinistra
-            \draw[amber!90!black, very thick] (-3.2, -1.8) to[out=90, in=180] (-2.0, -0.9) to[out=0, in=90] (-1.0, -1.7) to[out=-90, in=0] (-2.2, -2.5) to[out=180, in=-90] (-3.2, -1.8);
-            \node[amber!90!black, font=\small] at (-2.8, -0.6) {$\varphi_\alpha(U_\alpha) \subset \mathbb{R}^n$};
+        % Etichette aperti
+        \node[orange!90!black] at (2.6,6.2) {$U_\alpha$};
+        \node[green!50!black] at (6.9,6.0) {$U_\beta$};
+        \node[red!70!black] at (4.6,4.0) {$U_\alpha\cap U_\beta$};
 
-            % Immagine intersezione a sinistra
-            \draw[red, thick] (-2.7, -1.6) to[out=60, in=170] (-1.8, -1.3) to[out=-10, in=80] (-1.5, -1.8) to[out=-100, in=-20] (-2.4, -2.0) to[out=160, in=-120] (-2.7, -1.6);
-            \node[red, font=\scriptsize] at (-2.1, -1.15) {$\varphi_\alpha(U_\alpha \cap U_\beta)$};
-            \fill[red] (-2.1, -1.7) circle (1.2pt) node[above, font=\scriptsize] {$\varphi_\alpha(p)$};
+        % ---------- SPAZI EUCLIDEI ----------
+        % R^n sinistro
+        \draw[thick, orange!90!black, fill=yellow!10, rounded corners=12pt]
+            (-1.8,-1.2) rectangle (3.2,1.8);
+        \node[orange!90!black] at (-0.4,2.2) {$\varphi_\alpha(U_\alpha)\subset\mathbb{R}^n$};
 
-            % Aperto \varphi_\beta(U_\beta) a destra
-            \draw[green!50!black, very thick] (2.4, -1.9) to[out=90, in=180] (3.6, -1.0) to[out=0, in=90] (4.6, -1.8) to[out=-90, in=0] (3.4, -2.7) to[out=180, in=-90] (2.4, -1.9);
-            \node[green!50!black, font=\small] at (4.5, -0.7) {$\varphi_\beta(U_\beta) \subset \mathbb{R}^n$};
+        \draw[thick, red!70!black, fill=red!10, rounded corners=8pt]
+            (-0.9,-0.6) rectangle (2.3,1.1);
+        \node[red!70!black] at (0.7,1.45) {$\varphi_\alpha(U_\alpha\cap U_\beta)$};
+        \fill[magenta] (1.0,0.3) circle (2pt);
+        \node[magenta, right] at (1.05,0.3) {$\varphi_\alpha(p)$};
 
-            % Immagine intersezione a destra
-            \draw[red, thick] (2.9, -1.8) to[out=60, in=170] (3.8, -1.5) to[out=-10, in=80] (4.1, -2.0) to[out=-100, in=-20] (3.2, -2.2) to[out=160, in=-120] (2.9, -1.8);
-            \node[red, font=\scriptsize] at (3.5, -1.35) {$\varphi_\beta(U_\alpha \cap U_\beta)$};
-            \fill[red] (3.5, -1.9) circle (1.2pt) node[below, font=\scriptsize] {$\varphi_\beta(p)$};
+        % R^n destro
+        \draw[thick, green!50!black, fill=green!10, rounded corners=12pt]
+            (7.0,-1.2) rectangle (12.0,1.8);
+        \node[green!50!black] at (10.6,2.2) {$\varphi_\beta(U_\beta)\subset\mathbb{R}^n$};
 
-            % Frecce delle carte
-            \draw[->, thick] (-0.2, 1.3) to[out=-135, in=55] node[midway, above left] {$\varphi_\alpha$} (-1.8, -0.7);
-            \draw[->, thin, gray!80!black] (-1.5, -0.8) to[out=50, in=-130] node[midway, below right, font=\small] {$\varphi_\alpha^{-1}$} (0.4, 1.2);
-            \draw[->, thick] (1.6, 1.3) to[out=-35, in=110] node[midway, above right] {$\varphi_\beta$} (3.4, -0.8);
+        \draw[thick, red!70!black, fill=red!10, rounded corners=8pt]
+            (7.9,-0.6) rectangle (11.1,1.1);
+        \node[red!70!black] at (9.5,1.45) {$\varphi_\beta(U_\alpha\cap U_\beta)$};
+        \fill[magenta] (9.6,0.3) circle (2pt);
+        \node[magenta, right] at (9.65,0.3) {$\varphi_\beta(p)$};
 
-            % Freccia funzione di transizione
-            \draw[->, red, thick] (-0.8, -1.8) to[out=-15, in=-165] node[midway, below] {$\varphi_\beta \circ \varphi_\alpha^{-1}$} (2.2, -1.8);
+        % ---------- FRECCE ----------
+        % phi_alpha
+        \draw[->, thick, orange!90!black] (2.6,4.6) to[bend right=25]
+            node[midway, left, xshift=-2pt] {$\varphi_\alpha$} (0.8,1.9);
+        % phi_alpha^{-1}
+        \draw[->, thick, gray, dashed] (1.6,1.9) to[bend left=15]
+            node[midway, right, xshift=4pt, yshift=-4pt] {$\varphi_\alpha^{-1}$} (3.2,4.5);
+        % phi_beta
+        \draw[->, thick, green!50!black] (6.6,4.6) to[bend left=25]
+            node[midway, right, xshift=8pt, yshift=-4pt] {$\varphi_\beta$} (9.4,1.9);
+        % phi_beta^{-1}
+        \draw[->, thick, gray, dashed] (8.6,1.9) to[bend left=15]
+            node[midway, left, xshift=-4pt] {$\varphi_\beta^{-1}$} (6.2,4.2);
+
+        % Funzione di transizione
+        \draw[->, very thick, red] (2.5,0.3) -- (8.6,0.3)
+            node[midway, above] {$\varphi_\beta\circ\varphi_\alpha^{-1} \qquad$};
+
+        % ---------- DIAGRAMMA SOTTO ----------
+        \node[align=center, black] at (5.2,-2.6)
+        {$\varphi_\alpha(U_\alpha\cap U_\beta)
+        \xrightarrow{\;\varphi_\alpha^{-1}\;}
+        U_\alpha\cap U_\beta
+        \xrightarrow{\;\varphi_\beta\;}
+        \varphi_\beta(U_\alpha\cap U_\beta)$};
+
+        \node[align=center] at (5.2,-3.8)
+        {\textcolor{red}{$\varphi_\beta\circ\varphi_\alpha^{-1}\colon
+        \varphi_\alpha(U_\alpha\cap U_\beta)\to\varphi_\beta(U_\alpha\cap U_\beta)$}
+        è un omeomorfismo detto \textcolor{red}{funzione di transizione}};
+
+        % Coordinate
+        \node[hotpink, align=left] at (1.2,-1.8)
+        {$\varphi_\alpha(p)=(x^1(p),\dots,x^n(p))$};
+        \node[hotpink, align=left] at (9.8,-1.8)
+        {$\varphi_\beta(p)=(y^1(p),\dots,y^n(p))$};
+
         \end{tikzpicture}
         \end{center}
 
+
         L'omeomorfismo inverso di $\varphi_\beta \circ \varphi_\alpha^{-1}$ è
         \[
-        \varphi_\alpha \circ \varphi_\beta^{-1} : \varphi_\beta(U_\alpha \cap U_\beta) \to \varphi_\alpha(U_\alpha \cap U_\beta),
+        \varphi_\alpha \circ \varphi_\beta^{-1} \colon \varphi_\beta(U_\alpha \cap U_\beta) \to \varphi_\alpha(U_\alpha \cap U_\beta)
         \]
         funzione di transizione dalla carta $(U_\beta, \varphi_\beta)$ alla carta $(U_\alpha, \varphi_\alpha)$.
         \end{definizione}
 
         \begin{osservazione}
-        Si consideri su una curva differenziabile $\mathscr{C} \subset \mathbb{R}^n$ un atlante differenziabile $\{(U_\alpha, \varphi_\alpha)\}$ dove $\varphi_\alpha = \alpha^{-1}$, con $\alpha : I_\alpha \subset \mathbb{R} \to U_\alpha \subset \mathscr{C} \subset \mathbb{R}^n$ parametrizzazione regolare e omeomorfismo. La funzione di transizione
+        \mbox{}
+
+        Si consideri su una curva differenziabile $\mathscr{C} \subset \mathbb{R}^n$ un atlante differenziabile $\{(U_\alpha, \varphi_\alpha)\}$ dove
+        
+        $\varphi_\alpha = \alpha^{-1}$ con $\alpha \colon I_\alpha \subset \mathbb{R} \to U_\alpha \subset \mathscr{C} \subset \mathbb{R}^n$ parametrizzazione regolare e omeomorfismo. 
+        
+        La funzione di transizione
         \[
         \varphi_\beta \circ \varphi_\alpha^{-1} = \beta^{-1} \circ \alpha : I_\alpha \to I_\beta
         \]
-        è il cambiamento di parametro che (è stato provato) è un diffeomorfismo.
+        è il cambiamento di parametro che dalla proposizione \ref{prop:funzione_di_transizione_curve} è un diffeomorfismo.
 
         Analogamente per una superficie differenziabile $S \subset \mathbb{R}^3$, considerato un atlante differenziabile $\{(U_\alpha, \varphi_\alpha)\}$ tale che $\varphi_\alpha = \alpha^{-1}$ con $\alpha : A_\alpha \subset \mathbb{R}^2 \to U_\alpha \subset S \subset \mathbb{R}^3$ parametrizzazione regolare e omeomorfismo, la funzione di transizione
         \[
@@ -150,15 +249,19 @@
         \end{osservazione}
         \newpage
         \begin{proposizione}
-        Sia $M$ varietà topologica e sia $p \in M$. I domini delle carte locali costituiscono un \textcolor{red}{sistema fondamentale di intorni} di $p$, ovvero
+        Sia $M$ varietà topologica e sia $p \in M$ i domini delle carte locali costituiscono un \textcolor{red}{sistema fondamentale di intorni} di $p$, ovvero
         \[
         \forall A \text{ intorno aperto di } p \quad \exists (U, \varphi) \text{ carta locale t.c. } p \in U \subset A.
         \]
         \end{proposizione}
 
         \begin{proof}
-        Sia $A$ intorno aperto di $p$. Considerato $p \in M$, $\exists (U', \varphi')$ carta locale tale che $p \in U'$.
+        \mbox{}
+
+        Sia $A$ intorno aperto di $p$ e considerato $p \in M$, $\exists (U', \varphi')$ carta locale tale che $p \in U'$.
+
         Poniamo $U = U' \cap A$ intorno aperto di $p$.
+        
         Allora $\varphi = (\varphi'|_{U})_* : U \to \varphi(U) \subset \mathbb{R}^n$ è omeomorfismo e $(U, \varphi)$ è carta locale in $p$ con $U \subset A$.
         \end{proof}
 
@@ -170,8 +273,10 @@
         \end{proposizione}
 
         \begin{proof}
-        Sia $p \in M$, sia $A$ intorno aperto di $p$. Sia $(U, \varphi)$ carta locale tale che $p \in U \subset A$.
-        Poiché $\varphi : U \to \varphi(U) \subset \mathbb{R}^n$ è omeomorfismo, sia $B = B_r(\varphi(p)) \subset \varphi(U)$.
+        \mbox{}
+
+        Sia $p \in M$, sia $A$ intorno aperto di $p$ e sia $(U, \varphi)$ carta locale tale che $p \in U \subset A$.
+        Poiché $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^n$ è omeomorfismo, sia $B = B_r(\varphi(p)) \subset \varphi(U)$.
         $B$ è connesso di $\mathbb{R}^n$ e quindi di $\varphi(U)$.
         Allora $p \in \varphi^{-1}(B) \subset U \subset A$ e $V := \varphi^{-1}(B)$ è intorno connesso di $p$.
         \end{proof}
@@ -184,9 +289,14 @@
         \end{proposizione}
 
         \begin{proof}
-        Sia $p \in M$ e sia $A$ intorno aperto di $p$. Sia $(U, \varphi)$ carta locale in $p$ t.c. $U \subset A$.
-        Poiché $\varphi : U \to \varphi(U) \subset \mathbb{R}^n$ è omeomorfismo, sia $\overline{B} = \overline{B_r(\varphi(p))} \subset \varphi(U)$.
+        \mbox{}
+
+        Sia $p \in M$ e sia $A$ intorno aperto di $p$ e sia $(U, \varphi)$ carta locale in $p$ t.c. $U \subset A$.
+
+        Poiché $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^n$ è omeomorfismo, sia $\overline{B} = \overline{B_r(\varphi(p))} \subset \varphi(U)$.
+        
         $\overline{B}$ è intorno compatto di $\varphi(p)$.
+        
         Allora $K := \varphi^{-1}(\overline{B})$ è intorno compatto di $p$ tale che $K \subset U \subset A$.
         \end{proof}
 
