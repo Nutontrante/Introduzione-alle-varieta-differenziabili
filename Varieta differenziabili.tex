@@ -319,7 +319,7 @@
 
         \textcolor{violet}{Ma noi studieremo solo varietà differenziabili di classe $C^\infty$}
         \end{osservazione}
-
+    \section{Atlante massimale}
         \begin{definizione}
         \mbox{}
 
@@ -333,7 +333,159 @@
 
         $\forall \alpha, \beta \in A \text{ tale che } U_\alpha \cap U_\beta \neq \emptyset \quad$ \textcolor{celeste}{$\varphi_\beta \circ \varphi_\alpha^{-1}$} è \textcolor{celeste}{diffeomorfismo}
         \end{definizione}
+        \begin{definizione}
+        Sia $M$ varietà topologica con $\dim M = n \geq 1$ un atlante differenziabile su $M$ si dice \textcolor{red}{massimale} 
+        se non è strettamente contenuto in alcun atlante differenziabile \textcolor{blu}{(cioè $\forall \mathcal{B}$ atlante differenziabile su $M$ 
+        $\mathcal{A} \subset \mathcal{B} \Rightarrow \mathcal{A} = \mathcal{B}$)}. 
+        \end{definizione}
+        \begin{proposizione}
+        \mbox{}
+
+        Sia $\mathcal{A}$ atlante differenziabile le seguenti condizioni sono equivalenti:
+
+        \[ (1) \, \mathcal{A}  \text{ è massimale } \iff (2) \begin{aligned}  \, &\forall (U, \varphi) \text{ carta locale se } (U, \varphi) \text{ è compatibile } \\
+             &\text{ con tutte le carte di } \mathcal{A} \Rightarrow (U, \varphi) \in \mathcal{A} \end{aligned} \]
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        $\mathbf{(1) \Rightarrow (2)}$ 
+
+        Sia $(U, \varphi)$ carta locale compatibile con tutte le carte di $\mathcal{A}$ e poniamo \textcolor{red}{$\mathcal{B} = \mathcal{A} \cup \{(U, \varphi)\}$}
+        
+        allora $\mathcal{B}$ è un atlante differenziabile su $M$ e $\mathcal{A} \subset \mathcal{B} \overset{\textcolor{orange}{\text{ipotesi 1}}}{\Rightarrow} \mathcal{A} = \mathcal{B}
+        \Rightarrow (U, \varphi) \in \mathcal{A}$
+
+        $\mathbf{(2) \Rightarrow (1)}$ 
+
+        Sia $\mathcal{B}$ atlante differenziabile tale che $\mathcal{A} \subset \mathcal{B}$ e sia $(U, \varphi) \in \mathcal{B}$
+        
+        Proviamo che $(U, \varphi) \in \mathcal{A}$ 
+
+        Poiché $\mathcal{A} \subset \mathcal{B}$ tutte le carte di $\mathcal{A}$ sono compatibili con $(U, \varphi) \overset{\textcolor{orange}{\text{ipotesi 2}}}{\Rightarrow} (U, \varphi) \in \mathcal{A}$
+        \end{proof}
+        \newpage
+        \begin{proposizione}
+        Sia $\mathcal{A}$ atlante differenziabile massimale su $M$ sia $p \in M$ allora i domini delle carte di $\mathcal{A}$
+        formano un sistema fondamentale di intorni di $p$ \textcolor{blu}{(cioè $\forall A$ intorno aperto di $p$}
+
+        \textcolor{blu}{$\exists (U, \varphi) \in \mathcal{A}$ tale che $p \in U \subset A$)}
+        \end{proposizione}
+        \begin{proof}
+        Sia $A$ intorno aperto di $p$ proviamo che $\exists (U, \varphi) \in \mathcal{A}$ tale che $p \in U \subset A$
+
+        Poichè $\mathcal{A}$ è un atlante differenziabile $\Rightarrow \exists (U', \varphi') \in \mathcal{A}$ tale che $p \in U'$ 
+
+        Poniamo \textcolor{red}{$U=U' \cap A$} intorno aperto di $p$ e $U \subset A$
+
+        $\textcolor{red}{\varphi = \left( \varphi'_{\restriction{U' \cap A}} \right)_\# }$ $\colon U \to \varphi(U) \subset \mathbb{R}^n$ omeomorfismo
+
+        Proviamo che $(U, \varphi)$ è compatibile con tutte le carte di $\mathcal{A}$
+
+        Data la \textcolor{orange}{massimalità di $\mathcal{A}$} seguirà che $(U, \varphi) \in \mathcal{A}$
+
+        Sia $(V, \psi) \in \mathcal{A}$ tale che $V \cap U \neq \emptyset$
+        \[ V \cap U = V \cap U' \cap A \neq \emptyset \Rightarrow V \cap U' \neq \emptyset \]
+        $\Rightarrow (V, \psi)$ e $(U', \psi')$ sono compatibili
+        \[ \Rightarrow \psi  \circ (\varphi')^{-1} \colon \varphi ' (V \cap U') \to \psi (V \cap U') \text{ è diffeomorfismo} \]
+        \[ \Rightarrow \psi \circ \varphi^{-1} \colon \varphi (U \cap V) \to  \psi (U \cap V) \text{ è diffeomorfismo} \]
+        perché $\displaystyle \psi \circ \varphi^{-1} = \left( \psi \circ (\varphi')^{-1}_{\restriction \varphi(U \cap V)} \right)_\# \Rightarrow (V, \psi)$ e $(U, \varphi)$ sono compatibili
+        \end{proof}
     \section{Varietà differenziabili}
+        \begin{definizione}
+        \mbox{}
+
+        Si definisce \textcolor{red}{struttura differenziabile} su una varietà topologica $M$, un atlante differenziabile massimale.
+
+        Si definisce \textcolor{red}{varietà differenziabile} di dimensione $n \geq 1$ una varietà topologica di dimensione $n$ munita di una struttura differenziabile.
+        \end{definizione}
+        \begin{teorema}[Teorema di esistenza di atlanti massimali]
+        \mbox{}
+
+        Sia $M$ una varietà topologica $\dim M = n \geq 1$
+        \begin{enumerate}
+            \item Ogni atlante differenziabile su $M$ è contenuto in un \textcolor{red}{unico} atlante differenziabile massimale
+            \item Due atlanti differenziabili $\mathcal{A}_1$ e $\mathcal{A}_2$ su $M$ determinano la stessa struttura differenziabile
+            se e solo se $\mathcal{A}_1 \cap \mathcal{A}_2$ è atlante differenziabile. 
+        \end{enumerate}
+        \end{teorema}
+        \begin{proof}
+        \mbox{}
+
+        \begin{enumerate}
+            \item Sia $\mathcal{A}$ atlante differenziabile 
+            \[ \overline{\mathcal{A}} := \left\{ (U, \varphi) \mid (U, \varphi) \text{ è carta locale compatibile con tutte le carte di } \mathcal{A} \right\} \]
+            Si osservi che \textcolor{red}{$\mathcal{A} \subset \overline{\mathcal{A}}$}
+
+            Sia $(U, \varphi) \in \mathcal{A} \Rightarrow (U, \varphi)$ è compatibile con tutte le carte di $\mathcal{A} \Rightarrow (U, \varphi) \in \overline{\mathcal{A}}$
+
+            Verifichiamo che \textcolor{red}{$\overline{\mathcal{A}}$ è atlante differenziabile}
+
+            $\forall p \in M \quad \exists (U, \varphi) \in A \subset \overline{\mathcal{A}}$ tale che $p \in U \Rightarrow$ i domini delle carte
+            di $\mathcal{A}$ ricoprono $M \Rightarrow$
+            
+            $\displaystyle \Rightarrow M=\bigcup_{(U, \varphi) \in \overline{\mathcal{A}}} U$  
+
+            Proviamo che \textcolor{red}{$\forall (U, \varphi), (U',\varphi') \in \overline{\mathcal{A}}$ tale che $U \cap U' \neq \emptyset \quad \varphi' \circ \varphi^{-1} \colon \varphi(U \cap U') \to \varphi'(U \cap U')$} 
+            \textcolor{red}{è diffeomorfismo}
+            
+            Siano $(U , \varphi), (U' , \varphi) \in \overline{\mathcal{A}}$ tale che $U \cap U' \neq \emptyset$ sia $p \in U \cap U' \quad x = \varphi(p) \in \varphi(U \cap U')$
+
+            Considerato l'atlante differenziabile $\mathcal{A} \Rightarrow \exists (V, \psi) \in \mathcal{A}$ tale che $p \in V$  
+
+            $(U, \varphi) \in \overline{\mathcal{A}} \Rightarrow (U, \varphi)$ è compatibile con $(V, \psi)$
+
+            $\overset{\textcolor{blu}{p \in U \cap V \neq \emptyset}}{\Rightarrow} \psi \circ \varphi^{-1} \colon \varphi(U \cap V) \to \psi (U \cap V)$ è diffeomorfismo
+
+            $(U', \varphi') \in \overline{\mathcal{A}} \Rightarrow (U', \varphi')$ è compatibile con $(V, \psi)$
+
+            $\overset{\textcolor{blu}{p \in U' \cap V \neq \emptyset}}{\Rightarrow} \varphi' \circ \psi^{-1} \colon \psi(U' \cap V) \to \varphi' (U' \cap V)$ è diffeomorfismo
+
+            Poniamo \textcolor{celeste}{$W=U \cap U' \cap V$} intorno aperto di $p$ $\varphi(W)$ è intorno aperto di $x = \varphi(p)$ con $\varphi(W) \subset \varphi(U \cap U')$
+            
+            $\varphi ' \circ \varphi^{-1} = \varphi' \circ \psi^{-1} \circ \psi \circ \varphi^{-1} \colon \varphi(W) \to \varphi'(W)$ è differenziabile
+
+            Pertanto $\varphi ' \circ \varphi^{-1}$ è differenziabile in ogni punto $\Rightarrow \varphi' \circ \varphi^{-1}$ è differenziabile
+
+            Analogamente $\varphi \circ (\varphi ')^{-1} \colon \varphi'(U \cap U') \to \varphi(U \cap U')$ è differenziabile.
+
+            Proviamo che \textcolor{red}{$\overline{\mathcal{A}}$ è massimale}
+
+            Se $(V, \psi)$ è una carta locale compatibile con tutte le carte di $\overline{\mathcal{A}} \Rightarrow (V, \psi)$ è compatibile con tutte 
+            le carte di $\mathcal{A}$ \textcolor{blu}{(perchè $\mathcal{A} \subset \overline{\mathcal{A}}$)}
+
+            Segue che $(V, \psi) \in \overline{\mathcal{A}}$ pertanto $\overline{A}$ è massimale
+
+            Proviamo \textcolor{red}{l'unicità}
+
+            Sia $\mathcal{B}$ atlante differenziabile massimale tale che $\mathcal{A} \subset \mathcal{B}$ proviamo che $\mathcal{B} = \overline{\mathcal{A}}$
+
+            Sia $(V, \psi)$ carta di $\mathcal{B} \overset{\textcolor{blu}{\mathcal{A} \subset \mathcal{B}}}{\Rightarrow} (V, \psi)$ è compatibile con tutte le carti di $\mathcal{A} \Rightarrow (V, \psi) \in \overline{\mathcal{A}}$ 
+            
+            $\Rightarrow \mathcal{B} \subset \overline{\mathcal{A}} 
+            \overset{\textcolor{blu}{\mathcal{B} \text{ massimale}}}{\Rightarrow} \mathcal{B}= \overline{\mathcal{A}}$
+            \item Siano $\mathcal{A}_1$ e $\mathcal{A}_2$ atlanti differenziabili 
+            
+            $\overset{\textcolor{black}{1.}}{\Rightarrow} \exists ! \, \overline{\mathcal{A}}_{1}$ atlante differenziabile tale che ${\mathcal{A}}_{1} \subset \overline{\mathcal{A}}_1$
+
+            $\overset{\textcolor{black}{1.}}{\Rightarrow} \exists ! \, \overline{\mathcal{A}}_{2}$ atlante differenziabile tale che ${\mathcal{A}}_{2} \subset \overline{\mathcal{A}}_2$
+            
+            Proviamo che 
+            \[ \color{red} \overline{\mathcal{A}_1} = \overline{\mathcal{A}_2} \iff \mathcal{A}_1 \cup \mathcal{A}_2 \text{ è atlante differenziabile} \]
+
+            \textcolor{orange}{Supponiamo  $\overline{\mathcal{A}_1} = \overline{\mathcal{A}_2}$}
+
+            $\mathcal{A}_1 \subset \overline{\mathcal{A}}_1 = \mathcal{A}_2 \Rightarrow$ ogni carta di $\mathcal{A}_1$ è compatibile con ogni carta di $\mathcal{A}_2$
+            $\Rightarrow \mathcal{A}_1 \cup \mathcal{A}_2$ è atlante differenziabile.
+
+            \textcolor{orange}{Supponiamo  $\mathcal{A}_1 \cup \mathcal{A}_2$ atlante differenziabile}
+
+            tutte le carte di $\mathcal{A}_1$ sono compatibili con tutte le carte di $\mathcal{A}_2 \Rightarrow \mathcal{A}_1 \subset \overline{\mathcal{A}_2}$
+            $\Rightarrow \overline{\mathcal{A}}_2$ è atlante differenziale massimale contenente $\mathcal{A}_1$ ma $\overline{\mathcal{A}}_1$ è l'unico atlante differenziabile
+            
+            contenente $\mathcal{A}_1 \Rightarrow$ $\overline{\mathcal{A}_1} = \overline{\mathcal{A}_2}$
+        \end{enumerate}
+        \end{proof}
     \section{Esempi di varietà differenziabili}
     \section{Funzioni differenziabili su una varietà differenziabile}
     \section{Applicazioni tra varietà differenziabili}
