@@ -433,7 +433,7 @@
         \begin{enumerate}
             \item Ogni atlante differenziabile su $M$ è contenuto in un \textcolor{red}{unico} atlante differenziabile massimale
             \item Due atlanti differenziabili $\mathcal{A}_1$ e $\mathcal{A}_2$ su $M$ determinano la stessa struttura differenziabile
-            se e solo se $\mathcal{A}_1 \cap \mathcal{A}_2$ è atlante differenziabile. 
+            se e solo se $\mathcal{A}_1 \cup \mathcal{A}_2$ è atlante differenziabile. 
         \end{enumerate}
         \end{teorema}
         \begin{proof}
@@ -444,7 +444,7 @@
             \[ \overline{\mathcal{A}} := \left\{ (U, \varphi) \mid (U, \varphi) \text{ è carta locale compatibile con tutte le carte di } \mathcal{A} \right\} \]
             Si osservi che \textcolor{red}{$\mathcal{A} \subset \overline{\mathcal{A}}$}
 
-            Sia $(U, \varphi) \in \mathcal{A} \Rightarrow (U, \varphi)$ è compatibile con tutte le carte di $\mathcal{A} \Rightarrow (U, \varphi) \in \overline{\mathcal{A}}$
+            Sia $(U, \varphi) \in \mathcal{A} \overset{\textcolor{violet}{\mathcal{A} \text{ atlante diff.}}}{\Rightarrow} (U, \varphi)$ è compatibile con tutte le carte di $\mathcal{A} \Rightarrow (U, \varphi) \in \overline{\mathcal{A}}$
 
             Verifichiamo che \textcolor{red}{$\overline{\mathcal{A}}$ è atlante differenziabile}
 
@@ -468,9 +468,14 @@
 
             $\overset{\textcolor{blu}{p \in U' \cap V \neq \emptyset}}{\Rightarrow} \varphi' \circ \psi^{-1} \colon \psi(U' \cap V) \to \varphi' (U' \cap V)$ è diffeomorfismo
 
-            Poniamo \textcolor{celeste}{$W=U \cap U' \cap V$} intorno aperto di $p$ $\varphi(W)$ è intorno aperto di $x = \varphi(p)$ con $\varphi(W) \subset \varphi(U \cap U')$
+            Poniamo \textcolor{celeste}{$W=U \cap U' \cap V$} intorno aperto di $p$ 
+            
+            $\varphi(W)$ è intorno aperto di $x = \varphi(p)$ con $\varphi(W) \subset \varphi(U \cap U')$
             
             $\varphi ' \circ \varphi^{-1} = \varphi' \circ \psi^{-1} \circ \psi \circ \varphi^{-1} \colon \varphi(W) \to \varphi'(W)$ è differenziabile
+
+            Abbiamo provato che $\forall x \in \varphi (U \cap U') \quad \exists \varphi(W)$ intorno aperto di $x$ con $\varphi(W) \subset \varphi(U \cap U')$ 
+            tale che $(\varphi ' \circ \varphi^{-1})_{\restriction{\varphi(W)}}$ è differenziabile
 
             Pertanto $\varphi ' \circ \varphi^{-1}$ è differenziabile in ogni punto $\Rightarrow \varphi' \circ \varphi^{-1}$ è differenziabile
 
@@ -481,8 +486,8 @@
             Se $(V, \psi)$ è una carta locale compatibile con tutte le carte di $\overline{\mathcal{A}} \Rightarrow (V, \psi)$ è compatibile con tutte 
             le carte di $\mathcal{A}$ \textcolor{blu}{(perchè $\mathcal{A} \subset \overline{\mathcal{A}}$)}
 
-            Segue che $(V, \psi) \in \overline{\mathcal{A}}$ pertanto $\overline{A}$ è massimale
-
+            Segue che $(V, \psi) \in \overline{\mathcal{A}}$ pertanto $\overline{\mathcal{A}}$ è massimale
+            %1h e 3min
             Proviamo \textcolor{red}{l'unicità}
 
             Sia $\mathcal{B}$ atlante differenziabile massimale tale che $\mathcal{A} \subset \mathcal{B}$ proviamo che $\mathcal{B} = \overline{\mathcal{A}}$
