@@ -339,6 +339,7 @@
         $\mathcal{A} \subset \mathcal{B} \Rightarrow \mathcal{A} = \mathcal{B}$)}. 
         \end{definizione}
         \begin{proposizione}
+        \label{prop:atlante_massimale_equivalenza}
         \mbox{}
 
         Sia $\mathcal{A}$ atlante differenziabile le seguenti condizioni sono equivalenti:
@@ -369,6 +370,7 @@
         \end{proof}
         \newpage
         \begin{proposizione}
+        \label{prop:atlante_differenziabile_massimale_domini_delle_carte_ammettono_un_sistema_fondamentale_di_intorni}
         \mbox{}
 
         Sia $\mathcal{A}$ atlante differenziabile massimale su $M$ sia $p \in M$ allora i domini delle carte di $\mathcal{A}$
@@ -381,15 +383,16 @@
 
         Sia $A$ intorno aperto di $p$ proviamo che $\exists (U, \varphi) \in \mathcal{A}$ tale che $p \in U \subset A$
 
-        Poichè $\mathcal{A}$ è un atlante differenziabile $\Rightarrow \exists (U', \varphi') \in \mathcal{A}$ tale che $p \in U'$ 
+        Poichè $\mathcal{A}$ è un atlante differenziabile $\overset{\textcolor{violet}{\substack{\text{i domini delle} \\ \text{carte di } \mathcal{A} \\ \text{ricoprono } M}}}{\Rightarrow} \exists (U', \varphi') \in \mathcal{A}$ tale che $p \in U'$ 
 
         Poniamo \textcolor{red}{$U=U' \cap A$} intorno aperto di $p$ e $U \subset A$
 
-        $\textcolor{red}{\varphi = \left( \varphi'_{\restriction{U' \cap A}} \right)_\# }$ $\colon U \to \varphi(U) \subset \mathbb{R}^n$ omeomorfismo
+        \textcolor{red}{$\varphi = \left( \varphi'_{\restriction{U' \cap A}} \right)_\# \colon U \to \varphi(U)$} $\subset \mathbb{R}^n$ omeomorfismo \textcolor{violet}{$(U, \varphi)$ è
+        una carta locale di $M$ in $p$ e $U \subset A$}
 
-        Proviamo che $(U, \varphi)$ è compatibile con tutte le carte di $\mathcal{A}$
+        Provo che $(U, \varphi) \in \mathcal{A}$ e per farlo proviamo che $(U, \varphi)$ è compatibile con tutte le carte di $\mathcal{A}$
 
-        Data la \textcolor{orange}{massimalità di $\mathcal{A}$} seguirà che $(U, \varphi) \in \mathcal{A}$
+        Data la \textcolor{orange}{massimalità di $\mathcal{A}$} \textcolor{violet}{per la proposzione \ref{prop:atlante_massimale_equivalenza}} seguirà che $(U, \varphi) \in \mathcal{A}$
 
         Sia $(V, \psi) \in \mathcal{A}$ tale che $V \cap U \neq \emptyset$
         \[ V \cap U = V \cap U' \cap A \neq \emptyset \Rightarrow V \cap U' \neq \emptyset \]
@@ -399,6 +402,7 @@
         perché $\displaystyle \psi \circ \varphi^{-1} = \left( \psi \circ (\varphi')^{-1}_{\restriction \varphi(U \cap V)} \right)_\# \Rightarrow (V, \psi)$ e $(U, \varphi)$ sono compatibili
         \end{proof}
         \begin{esempio}[controesempio]
+        \label{es:controesempio_atlante_massimale_su_Rn}
         \mbox{}
 
         In generale per un atlante differenziabile la proposizione precedente non è vera. 
@@ -420,6 +424,8 @@
 
         Si definisce \textcolor{red}{varietà differenziabile} di dimensione $n \geq 1$ una varietà topologica di dimensione $n$ munita di una struttura differenziabile.
         \end{definizione}
+        \textcolor{violet}{Noi su $\mathbb{R}^n$ abbiamo visto che c'è l'atlante differenziabile $\mathcal{A}=\left\{  \left( \mathbb{R}^n, id_{\mathbb{R}^n}\right) \right\}$ ma 
+        ci siamo convinti nell'esempio \ref{es:controesempio_atlante_massimale_su_Rn} che non è massimale la domanda a cui vogliamo rispondere è "$\mathbb{R}^n$ è una varietà differenziabile"?}
         \begin{teorema}[Teorema di esistenza di atlanti massimali]
         \mbox{}
 
