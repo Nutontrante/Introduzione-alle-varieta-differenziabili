@@ -581,9 +581,9 @@
         \begin{definizione}
         \mbox{}
 
-        Si definisce \textcolor{red}{varietà topologica di dimensione $0$} uno spazio topologico $M$ discreto e numerabile  
+        Si definisce \textcolor{red}{varietà topologica di dimensione $0$} uno spazio topologico $M$ discreto \textcolor{violet}{($M=\mathcal{P}(X)$)} e numerabile  
         \end{definizione}
-        \textcolor{violet}{Noi non studieremo nel dettaglio le varietà di dimensione $0$}
+        \textcolor{violet}{Noi non studieremo le varietà di dimensione $0$}
         \begin{osservazione}
         \mbox{}
 
@@ -591,8 +591,12 @@
 
         $\forall p \in M \quad \exists \left\{p\right\}$ intorno aperto di $p$ in $M$ $\exists \varphi_p \colon \left\{p\right\} \to \mathbb{R}^0 = \left\{ 0 \right\}$ omeomorfismo
 
+        \textcolor{violet}{Questo è abbastanza coerente con la definizione di varietà topologica in ogni punto esiste un intorno aperto
+        che è omeomorfo all'insieme ridotto al solo punto di $\mathbb{R}$ d'altra parte questo è anche coerente con la nozione di atlante differenziabile perché:}
+
         $\mathcal{A}= \left\{\left( \left\{p\right\}, \varphi_p \right)\right\}_{p \in M}$ prese 2 carte $( \left\{p\right\}, \varphi_p )$ e $( \left\{q\right\}, \varphi_q )$
         \[ \left\{p\right\} \cap \left\{q\right\} \neq \emptyset \iff p = q  \]
+        \textcolor{violet}{quando le $2$ carte sono distinte l'intersezione dei domini è vuota quindi diciamo che le $2$ carte sono differenziabilmente compatibili}
         \end{osservazione}
         \newpage
         \begin{esempio}[Aperti di varietà differenziabili]
@@ -600,12 +604,12 @@
 
         Sia $M$ una varietà differenziabile con $\dim M =n \geq 1$ e sia $A \subset M$ con $A$ aperto allora 
 
-        $A$ è varietà differenziabile $\dim A = n$ detta \textcolor{red}{sottovarietà aperta} di $M$, infatti
+        \textcolor{red}{$A$} è varietà differenziabile $\dim A = n$ detta \textcolor{red}{sottovarietà aperta} di $M$, infatti
 
         \begin{proof}
         \mbox{}
 
-        $A$ come $M$ è spazio topologico di Hausdorff \textcolor{violet}{($T_2$)} e a base numerabile e
+        $A$ in quanto aperto di $M$ è spazio topologico di Hausdorff \textcolor{violet}{($T_2$)} e a base numerabile e
         
         sia $\mathcal{A}=\left\{(U_i, \varphi_i)\right\}_{i \in I}$ atlante differenziabile su $M$ allora verifichiamo che
         
@@ -613,10 +617,11 @@
         \begin{itemize}
             \item $U_i \cap A$ è un aperto di $A$
             \item $\varphi_i \colon U_i \to \varphi_i (U_i) \subset \mathbb{R}^n$ è omeomorfismo $\Rightarrow \left( \varphi_{i \, \restriction U_i \cap A}  \right)_\# \colon U_i \cap A \to \varphi_i (U_i \cap A) \subset \mathbb{R}^n$
+            è omeomorfismo
             \item $\displaystyle \bigcup_{i \in I} (U_i \cap A) = \left( \bigcup_{i \in I} U_i \right) \cap A = M \cap A =A$
             \item Le carte di $\mathcal{A}'$ sono a $2$ a $2$ compatibili infatti: 
             
-            $\forall i ,j \in I $ tale che $U_i \cap U_j \cap A \neq \emptyset$
+            $\forall i ,j \in I $ tale che $\left(U_i \cap A\right)\cap \left(U_j \cap A\right) =U_i \cap U_j \cap A \neq \emptyset \Rightarrow U_i \cap U_j \neq \emptyset$
             
             $\varphi_i \circ \varphi_j^{-1} \colon \varphi_j (U_i \cap U_j) \to \varphi_i (U_i \cap U_j)$ è un diffeomorfismo
 
@@ -628,11 +633,11 @@
         \begin{esempio}[Spazi vettoriali reali finitamente generati]
         \mbox{}
         
-        Sia \textcolor{red}{$V$} uno spazio vettoriale reale, con $\dim_{\mathbb{R}} V = n$. Definiamo una topologia su $V$.
+        Sia $V$ uno spazio vettoriale reale, con $\dim_{\mathbb{R}} V = n$. Definiamo una topologia su $V$.
 
-        Sia \textcolor{red}{$\mathcal{B} = \{e_1, \dots, e_n\}$} una base di $V$ e sia \textcolor{red}{$\varphi \colon V \to \mathbb{R}^n$} l'isomorfismo tale che:
+        Sia $\mathcal{B} = \{e_1, \dots, e_n\}$ una base di $V$ e sia $\varphi \colon V \to \mathbb{R}^n$ l'isomorfismo tale che:
         \[
-        \forall i = 1, \dots, n \quad \textcolor{red}{\varphi(e_i) = \varepsilon_i}
+        \forall i = 1, \dots, n \quad \varphi(e_i) = \varepsilon_i
         \]
         dove $\{\varepsilon_1, \dots, \varepsilon_n\}$ è la base canonica di $\mathbb{R}^n$. In particolare, per ogni $v = x^1 e_1 + \dots + x^n e_n \in V$, si ha:
         \[
@@ -644,9 +649,9 @@
         \]
         Verifichiamo che la topologia considerata non dipende dalla base.
 
-        Sia \textcolor{red}{$\mathcal{B}' = \{e'_1, \dots, e'_n\}$} un'altra base di $V$ e sia \textcolor{red}{$\varphi' \colon V \to \mathbb{R}^n$} l'isomorfismo tale che:
+        Sia $\mathcal{B}' = \{e'_1, \dots, e'_n\}$ un'altra base di $V$ e sia $\varphi' \colon V \to \mathbb{R}^n$ l'isomorfismo tale che:
         \[
-        \forall i = 1, \dots, n \quad \textcolor{red}{\varphi'(e'_i) = \varepsilon_i}
+        \forall i = 1, \dots, n \quad \varphi'(e'_i) = \varepsilon_i
         \]
         Sia $\tau'$ la topologia su $V$ che rende $\varphi'$ un omeomorfismo:
         \[
@@ -663,11 +668,14 @@
         \[
         X = \begin{pmatrix} x^1 \\ \vdots \\ x^n \end{pmatrix}, \quad X' = \begin{pmatrix} x'^1 \\ \vdots \\ x'^n \end{pmatrix}
         \]
-        si ha \textcolor{red}{$X' = AX$}, dove $A = M_{\mathcal{B}'\mathcal{B}}$. Pertanto:
+        si ha $X' = AX$ dove $A = M_{\mathcal{B}'\mathcal{B}}$. 
+        
+        Pertanto:
         \[
-        \textcolor{red}{x'^i = a^i_j x^j}
+        x'^i = a^i_j x^j
         \]
-        sono funzioni continue in $x^1, \dots, x^n$, da cui segue che $\varphi' \circ \varphi^{-1} \colon \mathbb{R}^n \to \mathbb{R}^n$ è continua. Analogamente, $(\varphi' \circ \varphi^{-1})^{-1} = \varphi \circ \varphi'^{-1}$ è continua. Pertanto $\varphi' \circ \varphi^{-1}$ è un omeomorfismo:
+        sono funzioni continue in $x^1, \dots, x^n$, da cui segue che $\varphi' \circ \varphi^{-1} \colon \mathbb{R}^n \to \mathbb{R}^n$ è continua.
+        Analogamente, $(\varphi' \circ \varphi^{-1})^{-1} = \varphi \circ \varphi'^{-1}$ è continua. Pertanto $\varphi' \circ \varphi^{-1}$ è un omeomorfismo:
         \[
         \begin{aligned}
         U \in \tau &\iff \varphi(U) \subset \mathbb{R}^n \text{ è aperto} \\
@@ -675,7 +683,7 @@
         &\iff \varphi'(U) \subset \mathbb{R}^n \text{ è aperto} \iff U \in \tau'
         \end{aligned}
         \]
-        $V$ è quindi uno spazio topologico $T_2$ e a base numerabile, e \textcolor{red}{$\mathcal{A} = \{(V, \varphi)\}$} è un atlante differenziabile su $V$:
+        $V$ è quindi uno spazio topologico $T_2$ e a base numerabile, e $\mathcal{A} = \{(V, \varphi)\}$ è un atlante differenziabile su $V$:
         \[
         \implies V \text{ è varietà differenziabile di dimensione } n
         \]
@@ -685,7 +693,9 @@
         \newpage
 
         \begin{esempio}
-        Sia \textcolor{red}{$M_{m,n}(\mathbb{R})$} lo spazio vettoriale delle matrici a $m$ righe e $n$ colonne a coefficienti reali. Poiché $M_{m,n}(\mathbb{R})$ è uno spazio vettoriale reale di dimensione $m \cdot n$:
+        Sia \textcolor{red}{$M_{m,n}(\mathbb{R})$} lo spazio vettoriale delle matrici a $m$ righe e $n$ colonne a coefficienti reali. 
+        
+        Poiché $M_{m,n}(\mathbb{R})$ è uno spazio vettoriale reale di dimensione $m \cdot n$:
         \[
         \implies M_{m,n}(\mathbb{R}) \text{ è varietà differenziabile di dimensione } m \cdot n
         \]
@@ -698,9 +708,11 @@
 
         Consideriamo il gruppo lineare generale:
         \[
-        \textcolor{red}{GL(n, \mathbb{R}) = \{A \in M_n(\mathbb{R}) \mid \det(A) \neq 0\}}
+        \color{red}{GL(n, \mathbb{R}) = \{A \in M_n(\mathbb{R}) \mid \det(A) \neq 0\}}
         \]
-        $GL(n, \mathbb{R})$ è un aperto di $M_n(\mathbb{R})$. Infatti l'applicazione:
+        $GL(n, \mathbb{R})$ è un aperto di $M_n(\mathbb{R})$. 
+        
+        Infatti l'applicazione:
         \[
         \det \colon M_n(\mathbb{R}) \to \mathbb{R}, \quad A \longmapsto \det(A)
         \]
@@ -777,6 +789,14 @@
             Pertanto la funzione di transizione $F$ è un diffeomorfismo.
         \end{itemize}
         \end{proof}
+    \section{Altri esempi di varietà differenziabili}
+        \begin{esempio}[Sfera di dimensione $n$]
+            
+        \end{esempio}
+        \newpage
+        \begin{esempio}[Spazio proiettivo di dimensione $n$]
+            
+        \end{esempio}
     \section{Funzioni differenziabili su una varietà differenziabile}
     \section{Applicazioni tra varietà differenziabili}
     \section{Proprietà topologiche delle varietà differenziabili}
