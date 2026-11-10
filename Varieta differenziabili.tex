@@ -583,13 +583,200 @@
 
         Si definisce \textcolor{red}{varietà topologica di dimensione $0$} uno spazio topologico $M$ discreto e numerabile  
         \end{definizione}
+        \textcolor{violet}{Noi non studieremo nel dettaglio le varietà di dimensione $0$}
         \begin{osservazione}
         \mbox{}
 
         Sia $M$ una varietà topologica di dimensione $0$
 
         $\forall p \in M \quad \exists \left\{p\right\}$ intorno aperto di $p$ in $M$ $\exists \varphi_p \colon \left\{p\right\} \to \mathbb{R}^0 = \left\{ 0 \right\}$ omeomorfismo
+
+        $\mathcal{A}= \left\{\left( \left\{p\right\}, \varphi_p \right)\right\}_{p \in M}$ prese 2 carte $( \left\{p\right\}, \varphi_p )$ e $( \left\{q\right\}, \varphi_q )$
+        \[ \left\{p\right\} \cap \left\{q\right\} \neq \emptyset \iff p = q  \]
         \end{osservazione}
+        \newpage
+        \begin{esempio}[Aperti di varietà differenziabili]
+        \mbox{}
+
+        Sia $M$ una varietà differenziabile con $\dim M =n \geq 1$ e sia $A \subset M$ con $A$ aperto allora 
+
+        $A$ è varietà differenziabile $\dim A = n$ detta \textcolor{red}{sottovarietà aperta} di $M$, infatti
+
+        \begin{proof}
+        \mbox{}
+
+        $A$ come $M$ è spazio topologico di Hausdorff \textcolor{violet}{($T_2$)} e a base numerabile e
+        
+        sia $\mathcal{A}=\left\{(U_i, \varphi_i)\right\}_{i \in I}$ atlante differenziabile su $M$ allora verifichiamo che
+        
+        $\mathcal{A}'= \left\{\left(U_i \cap A , (\varphi_{i \, \restriction U_i \cap A} )_\# \right) \right\}$ è atlante differenziabile su $A$
+        \begin{itemize}
+            \item $U_i \cap A$ è un aperto di $A$
+            \item $\varphi_i \colon U_i \to \varphi_i (U_i) \subset \mathbb{R}^n$ è omeomorfismo $\Rightarrow \left( \varphi_{i \, \restriction U_i \cap A}  \right)_\# \colon U_i \cap A \to \varphi_i (U_i \cap A) \subset \mathbb{R}^n$
+            \item $\displaystyle \bigcup_{i \in I} (U_i \cap A) = \left( \bigcup_{i \in I} U_i \right) \cap A = M \cap A =A$
+            \item Le carte di $\mathcal{A}'$ sono a $2$ a $2$ compatibili infatti: 
+            
+            $\forall i ,j \in I $ tale che $U_i \cap U_j \cap A \neq \emptyset$
+            
+            $\varphi_i \circ \varphi_j^{-1} \colon \varphi_j (U_i \cap U_j) \to \varphi_i (U_i \cap U_j)$ è un diffeomorfismo
+
+            $\varphi_i \circ \varphi_j^{-1} \colon \varphi_j (U_i \cap U_j \cap A) \to \varphi_i (U_i \cap U_j \cap A)$ è un diffeomorfismo
+        \end{itemize}
+        \end{proof}
+        \end{esempio}
+        \newpage
+        \begin{esempio}[Spazi vettoriali reali finitamente generati]
+        \mbox{}
+        
+        Sia \textcolor{red}{$V$} uno spazio vettoriale reale, con $\dim_{\mathbb{R}} V = n$. Definiamo una topologia su $V$.
+
+        Sia \textcolor{red}{$\mathcal{B} = \{e_1, \dots, e_n\}$} una base di $V$ e sia \textcolor{red}{$\varphi \colon V \to \mathbb{R}^n$} l'isomorfismo tale che:
+        \[
+        \forall i = 1, \dots, n \quad \textcolor{red}{\varphi(e_i) = \varepsilon_i}
+        \]
+        dove $\{\varepsilon_1, \dots, \varepsilon_n\}$ è la base canonica di $\mathbb{R}^n$. In particolare, per ogni $v = x^1 e_1 + \dots + x^n e_n \in V$, si ha:
+        \[
+        \varphi(v) = (x^1, \dots, x^n)
+        \]
+        Si consideri ora su $V$ l'unica topologia $\tau$ tale che $\varphi$ sia un omeomorfismo:
+        \[
+        \forall U \subset V \quad \underset{(U \text{ è aperto})}{U \in \tau} \iff \varphi(U) \text{ è aperto di } \mathbb{R}^n
+        \]
+        Verifichiamo che la topologia considerata non dipende dalla base.
+
+        Sia \textcolor{red}{$\mathcal{B}' = \{e'_1, \dots, e'_n\}$} un'altra base di $V$ e sia \textcolor{red}{$\varphi' \colon V \to \mathbb{R}^n$} l'isomorfismo tale che:
+        \[
+        \forall i = 1, \dots, n \quad \textcolor{red}{\varphi'(e'_i) = \varepsilon_i}
+        \]
+        Sia $\tau'$ la topologia su $V$ che rende $\varphi'$ un omeomorfismo:
+        \[
+        \forall U \subset V \quad U \in \tau' \iff \varphi'(U) \text{ è aperto di } \mathbb{R}^n
+        \]
+        Consideriamo la seguente composizione:
+        \[
+        \begin{aligned}
+        \mathbb{R}^n &\xrightarrow{\varphi^{-1}} V \xrightarrow{\varphi'} \mathbb{R}^n \\
+        (x^1, \dots, x^n) &\longmapsto v = x^1 e_1 + \dots + x^n e_n \longmapsto \underset{\substack{\text{t.c.} \\ v = x'^1 e'_1 + \dots + x'^n e'_n}}{(x'^1, \dots, x'^n)}
+        \end{aligned}
+        \]
+        Posto
+        \[
+        X = \begin{pmatrix} x^1 \\ \vdots \\ x^n \end{pmatrix}, \quad X' = \begin{pmatrix} x'^1 \\ \vdots \\ x'^n \end{pmatrix}
+        \]
+        si ha \textcolor{red}{$X' = AX$}, dove $A = M_{\mathcal{B}'\mathcal{B}}$. Pertanto:
+        \[
+        \textcolor{red}{x'^i = a^i_j x^j}
+        \]
+        sono funzioni continue in $x^1, \dots, x^n$, da cui segue che $\varphi' \circ \varphi^{-1} \colon \mathbb{R}^n \to \mathbb{R}^n$ è continua. Analogamente, $(\varphi' \circ \varphi^{-1})^{-1} = \varphi \circ \varphi'^{-1}$ è continua. Pertanto $\varphi' \circ \varphi^{-1}$ è un omeomorfismo:
+        \[
+        \begin{aligned}
+        U \in \tau &\iff \varphi(U) \subset \mathbb{R}^n \text{ è aperto} \\
+        &\iff (\varphi' \circ \varphi^{-1})(\varphi(U)) \text{ è aperto} \\
+        &\iff \varphi'(U) \subset \mathbb{R}^n \text{ è aperto} \iff U \in \tau'
+        \end{aligned}
+        \]
+        $V$ è quindi uno spazio topologico $T_2$ e a base numerabile, e \textcolor{red}{$\mathcal{A} = \{(V, \varphi)\}$} è un atlante differenziabile su $V$:
+        \[
+        \implies V \text{ è varietà differenziabile di dimensione } n
+        \]
+        Si noti che gli atlanti $\mathcal{A} = \{(V, \varphi)\}$ e $\mathcal{A}' = \{(V, \varphi')\}$ definiscono la stessa struttura differenziabile. Infatti le due carte $(V, \varphi)$ e $(V, \varphi')$ sono differenziabilmente compatibili, essendo $\varphi' \circ \varphi^{-1} \colon \mathbb{R}^n \to \mathbb{R}^n$ un diffeomorfismo.
+        \end{esempio}
+
+        \newpage
+
+        \begin{esempio}
+        Sia \textcolor{red}{$M_{m,n}(\mathbb{R})$} lo spazio vettoriale delle matrici a $m$ righe e $n$ colonne a coefficienti reali. Poiché $M_{m,n}(\mathbb{R})$ è uno spazio vettoriale reale di dimensione $m \cdot n$:
+        \[
+        \implies M_{m,n}(\mathbb{R}) \text{ è varietà differenziabile di dimensione } m \cdot n
+        \]
+        \end{esempio}
+
+        \newpage
+
+        \begin{esempio}
+        \mbox{}
+
+        Consideriamo il gruppo lineare generale:
+        \[
+        \textcolor{red}{GL(n, \mathbb{R}) = \{A \in M_n(\mathbb{R}) \mid \det(A) \neq 0\}}
+        \]
+        $GL(n, \mathbb{R})$ è un aperto di $M_n(\mathbb{R})$. Infatti l'applicazione:
+        \[
+        \det \colon M_n(\mathbb{R}) \to \mathbb{R}, \quad A \longmapsto \det(A)
+        \]
+        è continua e $GL(n, \mathbb{R}) = \det^{-1}(\mathbb{R}^*)$. Essendo $\mathbb{R}^*$ aperto in $\mathbb{R}$, segue che $GL(n, \mathbb{R})$ è aperto in $M_n(\mathbb{R})$:
+        \[
+        \implies GL(n, \mathbb{R}) \text{ è varietà differenziabile di dimensione } n^2 \text{ (sottovarietà aperta di } M_n(\mathbb{R})\text{)}
+        \]
+        \end{esempio}
+
+    \section{Varietà prodotto di varietà differenziabili}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Sia \textcolor{red}{$M_1$} una varietà differenziabile di dimensione $n \ge 1$ e sia \textcolor{red}{$M_2$} una varietà differenziabile di dimensione $m \ge 1$. Allora \textcolor{red}{$M_1 \times M_2$} è una varietà differenziabile di dimensione $m + n$.
+        \end{proposizione}
+
+        \begin{proof}
+        \mbox{}
+
+        Sia $\mathcal{A}_1 = \{(U_\alpha, \varphi_\alpha)\}_{\alpha \in A}$ un atlante differenziabile su $M_1$ e
+        
+        sia $\mathcal{A}_2 = \{(V_\beta, \psi_\beta)\}_{\beta \in B}$ un
+        atlante differenziabile su $M_2$ e proviamo che:
+        \[
+        \mathcal{A} = \{(U_\alpha \times V_\beta, \varphi_\alpha \times \psi_\beta)\}_{(\alpha, \beta) \in A \times B}
+        \]
+        è un atlante differenziabile su $M_1 \times M_2$.
+        \begin{itemize}
+            \item $U_\alpha \times V_\beta$ è aperto di $M_1 \times M_2$ per la topologia prodotto.
+            \item $\bigcup_{(\alpha, \beta) \in A \times B} (U_\alpha \times V_\beta) = \bigcup_{\alpha \in A} U_\alpha \times \bigcup_{\beta \in B} V_\beta = M_1 \times M_2$.
+            \item $\forall \alpha \in A, \ \forall \beta \in B$, l'applicazione:
+            \[
+            \begin{aligned}
+            \varphi_\alpha \times \psi_\beta \colon U_\alpha \times V_\beta &\longrightarrow \varphi_\alpha(U_\alpha) \times \psi_\beta(V_\beta) \subset \mathbb{R}^n \times \mathbb{R}^m \\
+            (p, q) &\longmapsto (\varphi_\alpha(p), \psi_\beta(q))
+            \end{aligned}
+            \]
+            è un omeomorfismo tra $U_\alpha \times V_\beta$ e $\varphi_\alpha(U_\alpha) \times \psi_\beta(V_\beta)$, aperto di $\mathbb{R}^{n+m}$.
+            \item Le carte di $\mathcal{A}$ sono a due a due compatibili. Siano \textcolor{red}{$(U \times V, \varphi \times \psi)$} e \textcolor{red}{$(U' \times V', \varphi' \times \psi')$} carte di $\mathcal{A}$ con:
+            \[
+            \begin{aligned}
+            (U, \varphi), (U', \varphi') &\in \mathcal{A}_1 \\
+            (V, \psi), (V', \psi') &\in \mathcal{A}_2
+            \end{aligned}
+            \]
+            Supponiamo $(U \times V) \cap (U' \times V') \neq \emptyset$ e poniamo:
+            \[
+            W = (U \times V) \cap (U' \times V') = (U \cap U') \times (V \cap V')
+            \]
+            Da $W \neq \emptyset$ segue che $U \cap U' \neq \emptyset$ e $V \cap V' \neq \emptyset$, pertanto:
+            \[
+            \varphi' \circ \varphi^{-1} \colon \varphi(U \cap U') \subset \mathbb{R}^n \longrightarrow \varphi'(U \cap U') \subset \mathbb{R}^n \quad \text{è diffeomorfismo}
+            \]
+            \[
+            \psi' \circ \psi^{-1} \colon \psi(V \cap V') \subset \mathbb{R}^m \longrightarrow \psi'(V \cap V') \subset \mathbb{R}^m \quad \text{è diffeomorfismo}
+            \]
+            Consideriamo la funzione di transizione:
+            \[
+            (\varphi' \times \psi') \circ (\varphi \times \psi)^{-1} \colon (\varphi \times \psi)(W) \longrightarrow (\varphi' \times \psi')(W)
+            \]
+            Verifichiamo che:
+            \[
+            F := (\varphi' \times \psi') \circ (\varphi \times \psi)^{-1} = (\varphi' \circ \varphi^{-1}) \times (\psi' \circ \psi^{-1})
+            \]
+            Infatti, $(\varphi \times \psi)(W) = \varphi(U \cap U') \times \psi(V \cap V')$. Sia $(x, y) \in (\varphi \times \psi)(W)$, con $x \in \varphi(U \cap U') \subset \mathbb{R}^n$ e $y \in \psi(V \cap V') \subset \mathbb{R}^m$:
+            \[
+            \begin{aligned}
+            \left( (\varphi' \times \psi') \circ (\varphi \times \psi)^{-1} \right)(x, y) &= (\varphi' \times \psi')\left(\varphi^{-1}(x), \psi^{-1}(y)\right) \\
+            &= \left(\varphi'(\varphi^{-1}(x)), \psi'(\psi^{-1}(y))\right) \\
+            &= \left( (\varphi' \circ \varphi^{-1}) \times (\psi' \circ \psi^{-1}) \right)(x, y)
+            \end{aligned}
+            \]
+            Pertanto la funzione di transizione $F$ è un diffeomorfismo.
+        \end{itemize}
+        \end{proof}
     \section{Funzioni differenziabili su una varietà differenziabile}
     \section{Applicazioni tra varietà differenziabili}
     \section{Proprietà topologiche delle varietà differenziabili}
