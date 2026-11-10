@@ -427,6 +427,7 @@
         \textcolor{violet}{Noi su $\mathbb{R}^n$ abbiamo visto che c'è l'atlante differenziabile $\mathcal{A}=\left\{  \left( \mathbb{R}^n, id_{\mathbb{R}^n}\right) \right\}$ ma 
         ci siamo convinti nell'esempio \ref{es:controesempio_atlante_massimale_su_Rn} che non è massimale la domanda a cui vogliamo rispondere è "$\mathbb{R}^n$ è una varietà differenziabile"?}
         \begin{teorema}[Teorema di esistenza di atlanti massimali]
+        \label{th:esistenza_di_atlanti_massimali}
         \mbox{}
 
         Sia $M$ una varietà topologica $\dim M = n \geq 1$
@@ -487,7 +488,7 @@
             le carte di $\mathcal{A}$ \textcolor{blu}{(perchè $\mathcal{A} \subset \overline{\mathcal{A}}$)}
 
             Segue che $(V, \psi) \in \overline{\mathcal{A}}$ pertanto $\overline{\mathcal{A}}$ è massimale
-            %1h e 3min
+
             Proviamo \textcolor{red}{l'unicità}
 
             Sia $\mathcal{B}$ atlante differenziabile massimale tale che $\mathcal{A} \subset \mathcal{B}$ proviamo che $\mathcal{B} = \overline{\mathcal{A}}$
@@ -498,16 +499,17 @@
             \overset{\textcolor{blu}{\mathcal{B} \text{ massimale}}}{\Rightarrow} \mathcal{B}= \overline{\mathcal{A}}$
             \item Siano $\mathcal{A}_1$ e $\mathcal{A}_2$ atlanti differenziabili 
             
-            $\overset{\textcolor{black}{1.}}{\Rightarrow} \exists ! \, \overline{\mathcal{A}}_{1}$ atlante differenziabile tale che ${\mathcal{A}}_{1} \subset \overline{\mathcal{A}}_1$
+            $\overset{\textcolor{black}{1.}}{\Rightarrow} \exists ! \, \overline{\mathcal{A}_{1}}$ atlante differenziabile tale che ${\mathcal{A}}_{1} \subset \overline{\mathcal{A}_1}$
 
-            $\overset{\textcolor{black}{1.}}{\Rightarrow} \exists ! \, \overline{\mathcal{A}}_{2}$ atlante differenziabile tale che ${\mathcal{A}}_{2} \subset \overline{\mathcal{A}}_2$
+            $\overset{\textcolor{black}{1.}}{\Rightarrow} \exists ! \, \overline{\mathcal{A}_{2}}$ atlante differenziabile tale che ${\mathcal{A}}_{2} \subset \overline{\mathcal{A}_2}$
             
             Proviamo che 
             \[ \color{red} \overline{\mathcal{A}_1} = \overline{\mathcal{A}_2} \iff \mathcal{A}_1 \cup \mathcal{A}_2 \text{ è atlante differenziabile} \]
 
             \textcolor{orange}{Supponiamo  $\overline{\mathcal{A}_1} = \overline{\mathcal{A}_2}$}
 
-            $\mathcal{A}_1 \subset \overline{\mathcal{A}}_1 = \mathcal{A}_2 \Rightarrow$ ogni carta di $\mathcal{A}_1$ è compatibile con ogni carta di $\mathcal{A}_2$
+            $\mathcal{A}_1 \subset \overline{\mathcal{A}_1} = \mathcal{A}_2 \overset{\textcolor{violet}{\substack{\text{i domini delle carte} \\ \text{di } \mathcal{A}_1 \text{ ricoprono } M \\
+            \text{così per quelle di } \mathcal{A}_2 \\ \text{e le carte sono a } 2 \text{ a } 2 \\ \text{compatibili}}}}{\Rightarrow}$ ogni carta di $\mathcal{A}_1$ è compatibile con ogni carta di $\mathcal{A}_2$
             $\Rightarrow \mathcal{A}_1 \cup \mathcal{A}_2$ è atlante differenziabile.
 
             \textcolor{orange}{Supponiamo  $\mathcal{A}_1 \cup \mathcal{A}_2$ atlante differenziabile}
@@ -523,11 +525,18 @@
         \mbox{}
 
         Su $\mathbb{R}^n$ consideriamo 
-        \[ \mathcal{A}_1 = \left\{ \left(\mathbb{R}^n, id_{\mathbb{R}^n}\right) \right\} \subset \overline{\mathcal{A}_1}  \qquad \mathcal{A}_2= \left\{ (B_1(x), id) \mid x \in \mathbb{R}^n \right\} \subset \overline{\mathcal{A}_2}  \]
+        \[ \mathcal{A}_1 = \left\{ \left(\mathbb{R}^n, id_{\mathbb{R}^n}\right) \right\} \subset \overline{\mathcal{A}_1}  \qquad \mathcal{A}_2= \left\{ (B_1(x), id_{\mathbb{R}^n}) \mid x \in \mathbb{R}^n \right\} \subset \overline{\mathcal{A}_2}  \]
         dove $B_1(x)= \left\{y \in \mathbb{R}^n \mid \norm{x-y} < 1 \right\}$
+        
+        \textcolor{violet}{Abbiamo visto nell'esempio \ref{es:controesempio_atlante_massimale_su_Rn} che $\mathcal{A}_1$ non può essere massimale, però sicuramente definisce una struttura differenziabile
+        ed esiste per il teorema \ref{th:esistenza_di_atlanti_massimali} un unico atlante differenziabile $\overline{\mathcal{A}_1}$ tale che $\mathcal{A}_1 \subset \overline{\mathcal{A}_1} $
+        invece $\mathcal{A}_2$ sicuramente ricopre tutto $\mathbb{R}^n$ e sicuramente queste carte dove l'identità è un omeomorfismo tra la palla e un aperto di $\mathbb{R}^n$ quindi questa è una collezione
+        di carte locali e le carte sono a $2$ a $2$ compatibili perchè qui l'omeomorfismo è sempre l'identità quindi anche $\mathcal{A}_2$ è un atlante differenziabile}
 
         $\mathcal{A}_1$ e $\mathcal{A}_2$ sono atlanti differenziabili. 
 
+        \textcolor{violet}{Posso chiedermi se la struttura differenziabile è la stessa per verificarlo useremo il punto $2$ del teorema \ref{th:esistenza_di_atlanti_massimali}}
+        \[ \color{blu} \overline{\mathcal{A}_1} = \overline{\mathcal{A}_2} \overset{\text{th. } \ref{th:esistenza_di_atlanti_massimali}}{\iff} \mathcal{A}_1 \cup \mathcal{A}_2 \text{ è atlante differenziabile} \]
         Poichè la carta $\left(\mathbb{R}^n, id_{\mathbb{R}^n}\right) $ è compatibile con tutte le carte di $\mathcal{A}_2$, $\mathcal{A}_1 \cup \mathcal{A}_2$ è atlante
         differenziabile.
 
@@ -544,17 +553,29 @@
         \begin{esempio}[$\mathbb{R}$]
         \mbox{}
         
-        Su $\mathbb{R}$ consideriamo l'applicazione
-        \[ \color{red} \psi \colon \mathbb{R} \to \mathbb{R} \quad \psi (x) = x^3 \]
+        Su $\mathbb{R}$ abbiamo la struttura differenziabile standard definita dall'atlante $\mathcal{A}= \left\{(\mathbb{R} , id_{\mathbb{R}})\right\}$ consideriamo l'applicazione
+        \[ \color{red} \psi \colon \mathbb{R} \to \mathbb{R} \quad \forall x \in \mathbb{R} \quad \psi (x) = x^3 \]
         $\psi$ è omeomorfismo e si può considerare su $\mathbb{R}$ la struttura differenziabile definita 
 
-        dall'atlante $\mathcal{A}_1 = { \left( \mathbb{R}, \psi \right) }$
+        dall'atlante $\mathcal{A}'= \left\{ \left( \mathbb{R}, \psi \right) \right\}$ differenziabile su $\mathbb{R}$ \textcolor{violet}{(perchè il dominio dell'unica carta
+        che c'è ricopre $\mathbb{R}$ ed è ovvio che questa è compatibile con se stessa perché $\psi \circ \psi^{-1} = id_{\mathbb{R}}$ è diffeomorfismo )}
 
-        Questa struttura è diversa dalla struttura differenziabile definita 
+        Questa struttura è diversa dalla struttura differenziabile definita dall'atlante $\mathcal{A}$ perché
+
+        \textcolor{verde}{$\begin{aligned}
+        \text{Le strutture differenziabili} \\ \text{definite da } \mathcal{A} \text{ e } \mathcal{A}' \text{ coincidono} &\iff  \mathcal{A} \cup \mathcal{A}' \text{ è atlante differenziabile} \\
+        &\iff \psi \circ id_{\mathbb{R}} \colon \mathbb{R} \to \mathbb{R} \text{ è differenziabile \textcolor{black}{(vero)} e la sua inversa} \\
+        & \qquad \quad id_{\mathbb{R}} \circ \psi^{-1} \colon \mathbb{R} \to \mathbb{R} \quad y \mapsto \sqrt[3]{y} \\ 
+        &\qquad \quad \text{è differenziabile \textcolor{red}{(falso)} \textcolor{violet}{non è differenziabile in 0}}
+        \end{aligned}$}
+
+        \textcolor{violet}{Qui cominciamo ad allontanarci dall'analisi perchè noi cominceremo a definire su una varietà differenziabile il concetto 
+        di applicazione differenziabile a valori reali $M \to \mathbb{R}$ perché noi abbiamo studiato la differenziabilità di oggetti tramite la definizioni di applicazione 
+        differenziabile da $\mathbb{R}^n \to \mathbb{R}^m$ data fondamentalmente dai corsi di analisi.}
         
-        dall'atlante $\mathcal{A}_2 = { \left( \mathbb{R}, id_{\mathbb{R}} \right) }$
-
-        Infatti $id_{\mathbb{R}} \circ \psi^{-1} \colon \mathbb{R} \to \mathbb{R} \quad y \mapsto \sqrt[3]{y}$ non è differenziabile in $0$
+        \textcolor{violet}{Però quello che faremo sarà andare ad introdurre la nozione di applicazione differenziabile a valori reali su una varietà su cui c'è una struttura 
+        differenziabile e poi andremo anche a definire un oggetto che sarà il "differenziale" di quell'applicazione ma se cambia la struttura differenziabile sulla varietà un'applicazione che 
+        è differenziabile rispetto ad una struttura non lo sarà rispetto ad un'altra struttura.}
         \end{esempio}
         \newpage
         \begin{definizione}
