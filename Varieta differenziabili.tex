@@ -802,14 +802,333 @@
         \end{proof}
     \section{Altri esempi di varietà differenziabili}
         \textcolor{violet}{Qua inizia la lezione 14}
-        \begin{esempio}[Sfera di dimensione $n$]
+        \begin{esempio}[Sfera di dimensione $n$: atlante delle proiezioni ortogonali]
         \mbox{}
-        
+
+        Consideriamo la sfera
+        \[
+        \textcolor{red}{S^n = \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; \sum_{i=1}^{n+1} (x^i)^2 = 1 \right\} \subset \mathbb{R}^{n+1}}
+        \]
+        Si consideri su $S^n$ la topologia indotta da $\mathbb{R}^{n+1}$. $S^n$ è uno spazio topologico $T_2$ e a base numerabile.
+
+        Proviamo che $S^n$ è localmente euclideo di dimensione $n$ ($\implies S^n$ è una varietà topologica di dimensione $n$).
+
+        Per ogni $i = 1, \dots, n+1$, poniamo
+        \begin{align*}
+        \textcolor{red}{V_i^+} &= \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; x^i > 0 \right\} \\
+        \textcolor{red}{V_i^-} &= \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; x^i < 0 \right\}
+        \end{align*}
+        $V_i^+$ e $V_i^-$ sono aperti di $\mathbb{R}^{n+1}$, da cui segue che
+        \[
+        \textcolor{red}{U_i^+ = V_i^+ \cap S^n} \quad \text{e} \quad \textcolor{red}{U_i^- = V_i^- \cap S^n}
+        \]
+        sono aperti di $S^n$. Inoltre
+        \[
+        \bigcup_{i=1}^{n+1} U_i^+ \cup \bigcup_{i=1}^{n+1} U_i^- = S^n
+        \]
+        quindi $\left\{ U_i^+, U_i^- \right\}_{i=1, \dots, n+1}$ è un ricoprimento aperto di $S^n$.
+
+        Verifichiamo che ciascuno degli aperti $U_i^+, U_i^-$ è omeomorfo a un aperto di $\mathbb{R}^n$. Poniamo
+        \[
+        \textcolor{red}{B^n = \left\{ (u^1, \dots, u^n) \in \mathbb{R}^n \;\middle|\; \norm{u} = \sqrt{\sum_{i=1}^n (u^i)^2} < 1 \right\}}
+        \]
+        $B^n$ è un aperto di $\mathbb{R}^n$. Sia
+        \[
+        \textcolor{red}{f : B^n \to \mathbb{R}, \quad u \mapsto \sqrt{1 - \norm{u}^2}}
+        \]
+        $f$ è una funzione continua. Consideriamo l'applicazione $\textcolor{red}{\psi_i^+ : B^n \to U_i^+}$ definita da
+        \[
+        u = (u^1, \dots, u^n) \in B^n \xmapsto{\psi_i^+} \left( u^1, \dots, u^{i-1}, \underbrace{f(u)}_{>0}, u^i, \dots, u^n \right) \in U_i^+
+        \]
+        Si ha effettivamente $\psi_i^+(u) \in U_i^+$, infatti $f(u) > 0$ e
+        \[
+        \norm{\psi_i^+(u)}^2 = \norm{u}^2 + f(u)^2 = \norm{u}^2 + 1 - \norm{u}^2 = 1 \implies \psi_i^+(u) \in S^n \cap V_i^+ = U_i^+
+        \]
+        $\psi_i^+$ è continua e bigettiva. Per verificare che $\psi_i^+$ è bigettiva consideriamo l'applicazione
+        \[
+        \textcolor{red}{\varphi_i^+ : U_i^+ \to B^n, \quad x = (x^1, \dots, x^{n+1}) \mapsto (x^1, \dots, x^{i-1}, x^{i+1}, \dots, x^{n+1})}
+        \]
+        Si ha $\varphi_i^+(x) \in B^n$, infatti, poiché $x^i > 0$:
+        \[
+        \norm{\varphi_i^+(x)}^2 = \norm{x}^2 - (x^i)^2 = 1 - (x^i)^2 < 1
+        \]
+        Si verifica per esercizio che
+        \[
+        \left.
+        \begin{aligned}
+        \varphi_i^+ \circ \psi_i^+ &= i_{B^n} \\
+        \psi_i^+ \circ \varphi_i^+ &= i_{U_i^+}
+        \end{aligned}
+        \right\} \implies \psi_i^+ \text{ è bigettiva e la sua inversa è } \varphi_i^+
+        \]
+        Poiché $\varphi_i^+$ è continua, segue che $\textcolor{red}{\varphi_i^+ : U_i^+ \to B^n}$ è un \textcolor{red}{omeomorfismo}.
+
+        Analogamente, si può considerare l'applicazione
+        \[
+        u = (u^1, \dots, u^n) \in B^n \xmapsto{\psi_i^-} \left( u^1, \dots, u^{i-1}, -f(u), u^i, \dots, u^n \right) \in U_i^-
+        \]
+        $\psi_i^-$ è continua e bigettiva con inversa
+        \[
+        \textcolor{red}{\varphi_i^- : U_i^- \to B^n, \quad x = (x^1, \dots, x^{n+1}) \mapsto (x^1, \dots, x^{i-1}, x^{i+1}, \dots, x^{n+1})}
+        \]
+        Pertanto $\textcolor{red}{\varphi_i^- : U_i^- \to B^n}$ è un \textcolor{red}{omeomorfismo}, e quindi
+        \[
+        \left\{ (U_i^+, \varphi_i^+), (U_i^-, \varphi_i^-) \right\}_{i=1, \dots, n+1}
+        \]
+        è un atlante (topologico).
+
+        Verifichiamo che le carte sono a due a due differenziabilmente compatibili:
+        \begin{itemize}
+            \item $U_i^+ \cap U_i^- = \emptyset$.
+            \item Per $i \neq j$, $U_i^{\pm} \cap U_j^{\pm} \neq \emptyset$. Supponendo ad esempio $i < j$, consideriamo la composizione $\varphi_i^{\pm} \circ (\varphi_j^{\pm})^{-1}$:
+            \begin{align*}
+            u = (u^1, \dots, u^n) \in B^n &\xmapsto{(\varphi_j^{\pm})^{-1}} \left( u^1, \dots, u^i, \dots, u^{j-1}, \pm f(u), u^j, \dots, u^n \right) \\
+            &\xmapsto{\varphi_i^{\pm}} \left( u^1, \dots, u^{i-1}, u^{i+1}, \dots, u^{j-1}, \pm f(u), u^j, \dots, u^n \right) \in B^n
+            \end{align*}
+            La composizione è differenziabile. Analogamente lo è la sua inversa $\varphi_j^{\pm} \circ (\varphi_i^{\pm})^{-1}$, pertanto $\varphi_i^{\pm} \circ (\varphi_j^{\pm})^{-1}$ è un diffeomorfismo.
+        \end{itemize}
+        Pertanto $\textcolor{red}{S^n}$ è una \textcolor{red}{varietà differenziabile di dimensione $n$}.
         \end{esempio}
-        \newpage
-        \begin{esempio}[Spazio proiettivo di dimensione $n$]
+
+        \begin{esempio}[Atlante delle proiezioni stereografiche sulla sfera]
+        \mbox{}
+
+        Consideriamo la sfera
+        \[
+        \textcolor{red}{S^n = \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; \sum_{i=1}^{n+1} (x^i)^2 = 1 \right\}}
+        \]
+        Sia $N = (0, \dots, 0, 1)$ il polo nord; l'insieme $\textcolor{red}{U_1 = S^n \setminus \{N\}}$ è un aperto di $S^n$. Consideriamo la \textcolor{red}{proiezione stereografica}
+        \[
+        \textcolor{red}{\varphi_1 : U_1 \to \mathbb{R}^n}
+        \]
+        e verifichiamo che è un omeomorfismo. $\varphi_1$ si definisce come segue: sia $P \in U_1$, $P = (u^1, \dots, u^{n+1})$ con $u^{n+1} \neq 1$. La retta $\overline{PN}$ ha parametri direttori
+        \[
+        (u^1 - 0, \dots, u^n - 0, u^{n+1} - 1)
+        \]
+        Pertanto la retta $\overline{PN}$ ha equazioni parametriche
+        \[
+        \begin{cases}
+        x^1 = u^1 t \\
+        \vdots \\
+        x^n = u^n t \\
+        x^{n+1} - 1 = (u^{n+1} - 1)t
+        \end{cases}
+        \]
+        Sia $\pi$ l'iperpiano di equazione $x^{n+1} = 0$:
+        \[
+        \pi = \left\{ (x^1, \dots, x^n, 0) \;\middle|\; x^i \in \mathbb{R} \right\} \equiv \mathbb{R}^n
+        \]
+        Intersecando $\pi \cap \overline{PN}$ si ottiene:
+        \[
+        \begin{cases}
+        x^i = \dfrac{u^i}{1 - u^{n+1}} \quad \text{per } i = 1, \dots, n \\[2ex]
+        t = \dfrac{1}{1 - u^{n+1}}
+        \end{cases}
+        \]
+        Quindi $\pi \cap \overline{PN} = \{Q\}$, dove $Q\left( \dfrac{u^1}{1 - u^{n+1}}, \dots, \dfrac{u^n}{1 - u^{n+1}}, 0 \right)$. Poniamo quindi
+        \[
+        \textcolor{red}{\varphi_1(u^1, \dots, u^{n+1}) = \left( \frac{u^1}{1 - u^{n+1}}, \dots, \frac{u^n}{1 - u^{n+1}} \right)}
+        \]
+        $\varphi_1$ è continua.
+
+        \begin{center}
+        \begin{tikzpicture}[scale=1.2, >=Stealth]
+            % Piano x^{n+1} = 0
+            \draw (-3.5,-1.3) -- (1.8,-1.3) -- (3.5,1.3) -- (-1.8,1.3) -- cycle;
+            \node[anchor=east] at (3.4, 1.1) {$x^{n+1}=0$};
             
+            % Sfera
+            \draw[cyan!70!black, thick] (0,0) circle (1.3cm);
+            
+            % Assi e origine
+            \draw[->] (0,-1.3) -- (0,2.2) node[above right] {$x^{n+1}$};
+            \fill (0,0) circle (1.2pt) node[below left] {$O$};
+            
+            % Polo Nord N
+            \coordinate (N) at (0,1.3);
+            \fill[red] (N) circle (1.5pt) node[above right] {$N$};
+            
+            % Punto P e sua proiezione \varphi_1(P)
+            \coordinate (P) at (0.85, 0.2);
+            \coordinate (phiP) at (1.55, -0.95);
+            \draw[red, thick, ->] (-0.3, 1.8) -- (phiP);
+            \fill[red] (P) circle (1.5pt) node[above right] {$P$};
+            \fill[red] (phiP) circle (1.5pt) node[above right] {$\varphi_1(P)$};
+            
+            % Punto P' e sua proiezione \varphi_1(P')
+            \coordinate (Pprime) at (-0.65, 0.65);
+            \coordinate (phiPprime) at (-1.95, -0.65);
+            \draw[verde, thick] (0.2, 1.5) -- (phiPprime);
+            \fill[verde] (Pprime) circle (1.5pt) node[above left] {$P'$};
+            \fill[verde] (phiPprime) circle (1.5pt) node[below] {$\varphi_1(P')$};
+        \end{tikzpicture}
+        \end{center}
+
+        Determiniamo l'inversa di $\varphi_1$. Sia $Q(u^1, \dots, u^n, 0) \in \pi$. La retta $\overline{QN}$ ha equazioni parametriche:
+        \[
+        \overline{QN} :
+        \begin{cases}
+        x^1 = u^1 t \\
+        \vdots \\
+        x^n = u^n t \\
+        x^{n+1} - 1 = (0 - 1)t = -t \implies x^{n+1} = 1 - t
+        \end{cases}
+        \]
+        Imponendo l'appartenenza a $\overline{QN} \cap S^n$, ovvero $(x^1)^2 + \dots + (x^{n+1})^2 = 1$:
+        \begin{align*}
+        t^2 \left( (u^1)^2 + \dots + (u^n)^2 \right) + (1 - t)^2 &= 1 \\
+        t^2 \sum_{i=1}^n (u^i)^2 + 1 + t^2 - 2t &= 1
+        \end{align*}
+        Per $t = 0$ si ottiene il polo $N$. Per $t \neq 0$:
+        \[
+        t \left( 1 + \sum_{i=1}^n (u^i)^2 \right) = 2 \implies t = \frac{2}{1 + \sum_{i=1}^n (u^i)^2}
+        \]
+        Sostituendo $t$, troviamo il punto $P$:
+        \[
+        P \left( \frac{2u^1}{1 + \sum_{i=1}^n (u^i)^2}, \dots, \frac{2u^n}{1 + \sum_{i=1}^n (u^i)^2}, \frac{\sum_{i=1}^n (u^i)^2 - 1}{1 + \sum_{i=1}^n (u^i)^2} \right)
+        \]
+        Pertanto l'inversa $\textcolor{red}{\varphi_1^{-1} : \mathbb{R}^n \to U_1}$ è data da
+        \[
+        \textcolor{red}{\varphi_1^{-1}(u^1, \dots, u^n) = \left( \frac{2u^1}{1 + \norm{u}^2}, \dots, \frac{2u^n}{1 + \norm{u}^2}, \frac{\norm{u}^2 - 1}{1 + \norm{u}^2} \right)}
+        \]
+        Poiché $\varphi_1^{-1}$ è continua, segue che $\varphi_1$ è un omeomorfismo. Pertanto $\textcolor{red}{(U_1, \varphi_1)}$ è una carta locale su $S^n$.
+
+        In maniera analoga si definisce una seconda carta $\textcolor{red}{(U_2, \varphi_2)}$ dal polo sud $S(0, \dots, 0, -1)$:
+        \[
+        \textcolor{red}{U_2 = S^n \setminus \{S\}}, \quad \textcolor{red}{\varphi_2 : U_2 \to \mathbb{R}^n}
+        \]
+        \[
+        \textcolor{red}{\varphi_2(u^1, \dots, u^{n+1}) = \left( \frac{u^1}{1 + u^{n+1}}, \dots, \frac{u^n}{1 + u^{n+1}} \right)}
+        \]
+        con inversa $\varphi_2^{-1} : \mathbb{R}^n \to U_2$ data da
+        \[
+        \varphi_2^{-1}(u^1, \dots, u^n) = \left( \frac{2u^1}{1 + \norm{u}^2}, \dots, \frac{2u^n}{1 + \norm{u}^2}, \frac{1 - \norm{u}^2}{1 + \norm{u}^2} \right)
+        \]
+        Si prova per esercizio che le funzioni di transizione $\varphi_1 \circ \varphi_2^{-1}$ e $\varphi_2 \circ \varphi_1^{-1}$ sono differenziabili. Pertanto $\left\{ (U_1, \varphi_1), (U_2, \varphi_2) \right\}$ è un atlante differenziabile su $S^n$.
         \end{esempio}
+
+        \begin{osservazione}
+        \mbox{}
+
+        Si può verificare che i due atlanti
+        \begin{align*}
+        \mathcal{A}_1 &= \left\{ (U_1, \varphi_1), (U_2, \varphi_2) \right\} \\
+        \mathcal{A}_2 &= \left\{ (U_i^+, \varphi_i^+), (U_i^-, \varphi_i^-) \right\}_{i=1, \dots, n+1}
+        \end{align*}
+        definiscono la stessa struttura differenziabile su $S^n$ (le carte di $\mathcal{A}_1$ sono compatibili con le carte di $\mathcal{A}_2$).
+        \end{osservazione}
+
+        \begin{definizione}[Spazio proiettivo reale]
+        \mbox{}
+
+        Consideriamo
+        \[
+        \textcolor{red}{(\mathbb{R}^{n+1})^*} = \mathbb{R}^{n+1} \setminus \{0\} = \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; \exists\, i = 1, \dots, n+1 \text{ t.c. } x^i \neq 0 \right\}
+        \]
+        Su $(\mathbb{R}^{n+1})^*$ si può definire la seguente relazione di equivalenza:
+        \[
+        \textcolor{red}{(x^1, \dots, x^{n+1}) \sim (y^1, \dots, y^{n+1}) \iff \exists\, \rho \in \mathbb{R}^* \text{ t.c. } y^i = \rho x^i \quad \forall\, i = 1, \dots, n+1}
+        \]
+        Lo \textcolor{red}{spazio proiettivo reale} di dimensione $n$ è
+        \[
+        \textcolor{red}{\mathbb{R}\mathrm{P}^n = (\mathbb{R}^{n+1})^* / {\sim}}
+        \]
+        Denotiamo con $\textcolor{red}{\pi : (\mathbb{R}^{n+1})^* \to \mathbb{R}\mathrm{P}^n}$ la suriezione canonica, tale che per ogni $x = (x^1, \dots, x^{n+1}) \in (\mathbb{R}^{n+1})^*$:
+        \begin{align*}
+        \pi(x) &= [x^1, \dots, x^{n+1}] \quad \text{(classe di equivalenza di $x$)} \\
+        &= \left\{ y = (y^1, \dots, y^{n+1}) \in (\mathbb{R}^{n+1})^* \;\middle|\; y = tx, \; t \in \mathbb{R}^* \right\} \\
+        &= \text{retta di $\mathbb{R}^{n+1}$ passante per $0$ e $x$, privata di $0$}
+        \end{align*}
+        $(\mathbb{R}^{n+1})^*$ è un aperto di $\mathbb{R}^{n+1}$. Su $\mathbb{R}\mathrm{P}^n$ si considera la \textcolor{red}{topologia quoziente}:
+        \[
+        U \subset \mathbb{R}\mathrm{P}^n \text{ è aperto} \iff \pi^{-1}(U) \text{ è aperto in } (\mathbb{R}^{n+1})^*
+        \]
+        Valgono le seguenti proprietà:
+        \begin{itemize}
+            \item $\pi$ è continua;
+            \item $\pi$ è aperta;
+            \item $\mathbb{R}\mathrm{P}^n$ è $T_2$ e a base numerabile.
+        \end{itemize}
+        \end{definizione}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Lo spazio proiettivo reale $\textcolor{red}{\mathbb{R}\mathrm{P}^n}$ è una \textcolor{red}{varietà differenziabile di dimensione $n$} (compatta).
+        \end{proposizione}
+
+        \begin{proof}
+        Verifichiamo innanzitutto che $\mathbb{R}\mathrm{P}^n$ è localmente euclideo. Sia $i = 1, \dots, n+1$. Consideriamo
+        \[
+        \tilde{U}_i = \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; x^i \neq 0 \right\}
+        \]
+        $\tilde{U}_i$ è un aperto di $(\mathbb{R}^{n+1})^*$. Poniamo
+        \[
+        U_i = \pi(\tilde{U}_i) = \left\{ [x^1, \dots, x^{n+1}] \in \mathbb{R}\mathrm{P}^n \;\middle|\; x^i \neq 0 \right\}
+        \]
+        $U_i$ è un aperto di $\mathbb{R}\mathrm{P}^n$ (poiché $\pi$ è aperta) e inoltre
+        \[
+        \bigcup_{i=1}^{n+1} U_i = \mathbb{R}\mathrm{P}^n \quad \text{(gli $U_i$ ricoprono $\mathbb{R}\mathrm{P}^n$)}
+        \]
+        Definiamo l'applicazione $\varphi_i : U_i \to \mathbb{R}^n$ tale che, per ogni $p = [x^1, \dots, x^{n+1}] \in U_i$ (con $x^i \neq 0$):
+        \[
+        \varphi_i(p) = \left( \frac{x^1}{x^i}, \dots, \frac{x^{i-1}}{x^i}, \frac{x^{i+1}}{x^i}, \dots, \frac{x^{n+1}}{x^i} \right)
+        \]
+        \begin{itemize}
+            \item \textbf{$\varphi_i$ è ben definita:} infatti, supponiamo $p = [x^1, \dots, x^{n+1}] = [y^1, \dots, y^{n+1}]$. Allora $\exists\, \rho \in \mathbb{R}^*$ tale che $y^j = \rho x^j$ per ogni $j$, da cui
+            \[
+            \left( \frac{y^1}{y^i}, \dots, \frac{y^{i-1}}{y^i}, \frac{y^{i+1}}{y^i}, \dots, \frac{y^{n+1}}{y^i} \right) = \left( \frac{x^1}{x^i}, \dots, \frac{x^{i-1}}{x^i}, \frac{x^{i+1}}{x^i}, \dots, \frac{x^{n+1}}{x^i} \right)
+            \]
+            
+            \item \textbf{$\varphi_i$ è continua:} infatti, consideriamo la composizione
+            \[
+            \tilde{U}_i \xrightarrow{\pi} U_i \xrightarrow{\varphi_i} \mathbb{R}^n, \quad (x^1, \dots, x^{n+1}) \mapsto [x^1, \dots, x^{n+1}] \mapsto \left( \frac{x^1}{x^i}, \dots, \frac{x^{i-1}}{x^i}, \frac{x^{i+1}}{x^i}, \dots, \frac{x^{n+1}}{x^i} \right)
+            \]
+            Poiché $\varphi_i \circ \pi : \tilde{U}_i \to \mathbb{R}^n$ è continua e $\pi : \tilde{U}_i \to U_i$ è surgettiva e aperta, per le proprietà della topologia quoziente segue che $\varphi_i$ è continua.
+            
+            \item \textbf{$\varphi_i$ è bigettiva:} consideriamo l'applicazione $\psi_i : \mathbb{R}^n \to U_i$ tale che per ogni $(u^1, \dots, u^n) \in \mathbb{R}^n$:
+            \[
+            \psi_i(u^1, \dots, u^n) = [u^1, \dots, u^{i-1}, 1, u^i, \dots, u^n]
+            \]
+            Verifichiamo che $\varphi_i \circ \psi_i = i_{\mathbb{R}^n}$ e $\psi_i \circ \varphi_i = i_{U_i}$ (da cui segue che $\varphi_i$ è bigettiva e $\varphi_i^{-1} = \psi_i$):
+            \begin{itemize}
+                \item Per ogni $(u^1, \dots, u^n) \in \mathbb{R}^n$:
+                \begin{align*}
+                \varphi_i(\psi_i(u^1, \dots, u^n)) &= \varphi_i([u^1, \dots, u^{i-1}, 1, u^i, \dots, u^n]) \\
+                &= \left( \frac{u^1}{1}, \dots, \frac{u^{i-1}}{1}, \frac{u^i}{1}, \dots, \frac{u^n}{1} \right) = (u^1, \dots, u^n)
+                \end{align*}
+                \item Per ogni $[x^1, \dots, x^{n+1}] \in U_i$ ($x^i \neq 0$):
+                \begin{align*}
+                \psi_i(\varphi_i([x^1, \dots, x^{n+1}])) &= \psi_i \left( \frac{x^1}{x^i}, \dots, \frac{x^{i-1}}{x^i}, \frac{x^{i+1}}{x^i}, \dots, \frac{x^{n+1}}{x^i} \right) \\
+                &= \left[ \frac{x^1}{x^i}, \dots, \frac{x^{i-1}}{x^i}, 1, \frac{x^{i+1}}{x^i}, \dots, \frac{x^{n+1}}{x^i} \right] \\
+                &= [x^1, \dots, x^{i-1}, x^i, x^{i+1}, \dots, x^{n+1}]
+                \end{align*}
+            \end{itemize}
+            
+            \item \textbf{$\varphi_i^{-1} (= \psi_i)$ è continua:} infatti $\varphi_i^{-1} = \psi_i : \mathbb{R}^n \to U_i$ è composizione di applicazioni continue:
+            \[
+            \mathbb{R}^n \to \tilde{U}_i \xrightarrow{\pi} U_i, \quad (u^1, \dots, u^n) \mapsto (u^1, \dots, u^{i-1}, 1, u^i, \dots, u^n) \mapsto [u^1, \dots, u^{i-1}, 1, u^i, \dots, u^n]
+            \]
+        \end{itemize}
+        Pertanto $\varphi_i : U_i \to \mathbb{R}^n$ è un omeomorfismo e $\mathcal{A} = \left\{ (U_i, \varphi_i) \right\}_{i=1, \dots, n+1}$ è un atlante.
+
+        Proviamo che le carte di $\mathcal{A}$ sono a due a due compatibili. Siano $i, j = 1, \dots, n+1$ (con $i \neq j$):
+        \[
+        U_i \cap U_j = \left\{ [x^1, \dots, x^{n+1}] \;\middle|\; x^i \neq 0, \; x^j \neq 0 \right\} \neq \emptyset
+        \]
+        Consideriamo la funzione di transizione
+        \[
+        \varphi_i \circ \varphi_j^{-1} : \varphi_j(U_i \cap U_j) \subset \mathbb{R}^n \to \varphi_i(U_i \cap U_j) \subset \mathbb{R}^n
+        \]
+        e verifichiamo che $\varphi_i \circ \varphi_j^{-1}$ è differenziabile. Seguendo la composizione (nel caso $i < j$):
+        \begin{align*}
+        \varphi_j(U_i \cap U_j) \subset \mathbb{R}^n &\xrightarrow{\varphi_j^{-1}} U_i \cap U_j \xrightarrow{\varphi_i} \varphi_i(U_i \cap U_j) \\
+        (u^1, \dots, u^n) &\mapsto \underbrace{[u^1, \dots, u^{j-1}, 1, u^j, \dots, u^n]}_{\substack{\in U_i \cap U_j \iff \text{il coefficiente} \\ \text{di posto $i$-esimo ($i \neq j$) è non nullo}}} \mapsto \left( \frac{u^1}{u^i}, \dots, \frac{u^{i-1}}{u^i}, \frac{u^{i+1}}{u^i}, \dots, \frac{1}{u^i}, \frac{u^j}{u^i}, \dots, \frac{u^n}{u^i} \right)
+        \end{align*}
+        Le funzioni componenti di $\varphi_i \circ \varphi_j^{-1}$ sono differenziabili (poiché $u^i \neq 0$), quindi $\varphi_i \circ \varphi_j^{-1}$ è differenziabile. Analogamente $\varphi_j \circ \varphi_i^{-1} = (\varphi_i \circ \varphi_j^{-1})^{-1}$ è differenziabile, da cui $\varphi_i \circ \varphi_j^{-1}$ è un diffeomorfismo.
+
+        Pertanto $\mathbb{R}\mathrm{P}^n$ è una varietà differenziabile di dimensione $n$ (compatta).
+        \end{proof}
     \section{Funzioni differenziabili su una varietà differenziabile}
     \section{Applicazioni tra varietà differenziabili}
     \section{Proprietà topologiche delle varietà differenziabili}
