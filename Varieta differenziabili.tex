@@ -802,6 +802,10 @@
         \end{proof}
     \section{Altri esempi di varietà differenziabili}
         \textcolor{violet}{Qua inizia la lezione 14}
+
+        \textcolor{violet}{Abbiamo studiato la circonferenza $S^1$ come curva differenziabile cioè varietà differenziabile 
+        di dimensione $1$ e la sfera $S^2$ come superficie differenziabile cioè varietà differenziabile di dimensione $2$
+        vediamo cosa riusciamo a dire per $S^n$}
         \begin{esempio}[Sfera di dimensione $n$: atlante delle proiezioni ortogonali]
         \mbox{}
 
@@ -809,48 +813,50 @@
         \[
         \textcolor{red}{S^n = \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; \sum_{i=1}^{n+1} (x^i)^2 = 1 \right\} \subset \mathbb{R}^{n+1}}
         \]
-        Si consideri su $S^n$ la topologia indotta da $\mathbb{R}^{n+1}$. $S^n$ è uno spazio topologico $T_2$ e a base numerabile.
+        Si consideri su $S^n$ la topologia indotta da $\mathbb{R}^{n+1} \Rightarrow$ $S^n$ è uno spazio topologico $T_2$ e a base numerabile.
 
-        Proviamo che $S^n$ è localmente euclideo di dimensione $n$ ($\implies S^n$ è una varietà topologica di dimensione $n$).
+        Proviamo che $S^n$ è localmente euclideo di dimensione $n$ \textcolor{blu}{($\Rightarrow S^n$ è una varietà topologica di dimensione $n$)}
 
-        Per ogni $i = 1, \dots, n+1$, poniamo
+        Per ogni $i = 1, \dots, n+1$ poniamo
         \begin{align*}
-        \textcolor{red}{V_i^+} &= \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; x^i > 0 \right\} \\
-        \textcolor{red}{V_i^-} &= \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; x^i < 0 \right\}
+        V_i^+ &= \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; x^i > 0 \right\} \\
+        V_i^- &= \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; x^i < 0 \right\}
         \end{align*}
-        $V_i^+$ e $V_i^-$ sono aperti di $\mathbb{R}^{n+1}$, da cui segue che
+        $V_i^+$ e $V_i^-$ sono aperti di $\mathbb{R}^{n+1}$ da cui segue che
+        $U_i^+ = V_i^+ \cap S^n  \text{ e } U_i^- = V_i^- \cap S^n$
+        sono aperti di $S^n$, inoltre:
         \[
-        \textcolor{red}{U_i^+ = V_i^+ \cap S^n} \quad \text{e} \quad \textcolor{red}{U_i^- = V_i^- \cap S^n}
-        \]
-        sono aperti di $S^n$. Inoltre
-        \[
-        \bigcup_{i=1}^{n+1} U_i^+ \cup \bigcup_{i=1}^{n+1} U_i^- = S^n
+        S^n= \bigcup_{i=1}^{n+1} U_i^+ \cup \bigcup_{i=1}^{n+1} U_i^- 
         \]
         quindi $\left\{ U_i^+, U_i^- \right\}_{i=1, \dots, n+1}$ è un ricoprimento aperto di $S^n$.
 
-        Verifichiamo che ciascuno degli aperti $U_i^+, U_i^-$ è omeomorfo a un aperto di $\mathbb{R}^n$. Poniamo
+        Verifichiamo che ciascuno degli aperti $U_i^+, U_i^-$ è omeomorfo a un aperto di $\mathbb{R}^n$. 
+
+        Poniamo
+        $\displaystyle B^n = \left\{ (u^1, \dots, u^n) \in \mathbb{R}^n \;\middle|\; \norm{u} = \sqrt{\sum_{i=1}^n (u^i)^2} < 1 \right\} \subset \mathbb{R}^n \Rightarrow$
+        $B^n$ è un aperto di $\mathbb{R}^n$. 
+        
+        Sia \textcolor{amber}{$f : B^n \to \mathbb{R} \quad u \mapsto \sqrt{1 - \norm{u}^2}$} $>0$ è continua.
+        
+        Consideriamo l'applicazione \textcolor{green}{$\psi_i^+ : B^n \to U_i^+$} definita da
         \[
-        \textcolor{red}{B^n = \left\{ (u^1, \dots, u^n) \in \mathbb{R}^n \;\middle|\; \norm{u} = \sqrt{\sum_{i=1}^n (u^i)^2} < 1 \right\}}
+        \color{green} u = (u^1, \dots, u^n) \in B^n \xmapsto{\psi_i^+} \left( u^1, \dots, u^{i-1}, \textcolor{blu}{\underbrace{\textcolor{green}{f(u)}}_{>0}}, u^i, \dots, u^n \right) \in V_i^+ \cap S^n= U_i^+
         \]
-        $B^n$ è un aperto di $\mathbb{R}^n$. Sia
-        \[
-        \textcolor{red}{f : B^n \to \mathbb{R}, \quad u \mapsto \sqrt{1 - \norm{u}^2}}
-        \]
-        $f$ è una funzione continua. Consideriamo l'applicazione $\textcolor{red}{\psi_i^+ : B^n \to U_i^+}$ definita da
-        \[
-        u = (u^1, \dots, u^n) \in B^n \xmapsto{\psi_i^+} \left( u^1, \dots, u^{i-1}, \underbrace{f(u)}_{>0}, u^i, \dots, u^n \right) \in U_i^+
-        \]
-        Si ha effettivamente $\psi_i^+(u) \in U_i^+$, infatti $f(u) > 0$ e
+        \textcolor{violet}{Capiamo perché possiamo dire che appartiene a $S^n$}
         \[
         \norm{\psi_i^+(u)}^2 = \norm{u}^2 + f(u)^2 = \norm{u}^2 + 1 - \norm{u}^2 = 1 \implies \psi_i^+(u) \in S^n \cap V_i^+ = U_i^+
         \]
-        $\psi_i^+$ è continua e bigettiva. Per verificare che $\psi_i^+$ è bigettiva consideriamo l'applicazione
+        $\Rightarrow \psi_i^+(u) \in U_i^+$
+
+        \textcolor{green}{$\psi_i^+$} è continua \textcolor{violet}{(le funzioni componenti sono continue)} e bigettiva con inversa continua \textcolor{violet}{(ora lo vediamo)} 
+        
+        Per verificare che $\psi_i^+$ è bigettiva consideriamo l'applicazione
         \[
-        \textcolor{red}{\varphi_i^+ : U_i^+ \to B^n, \quad x = (x^1, \dots, x^{n+1}) \mapsto (x^1, \dots, x^{i-1}, x^{i+1}, \dots, x^{n+1})}
+        \varphi_i^+ : U_i^+ \to B^n \quad x = (x^1, \dots, x^{n+1}) \mapsto (x^1, \dots, x^{i-1}, x^{i+1}, \dots, x^{n+1})
         \]
-        Si ha $\varphi_i^+(x) \in B^n$, infatti, poiché $x^i > 0$:
+        Si ha $\varphi_i^+(x) \in B^n$, infatti poiché $x^i > 0$:
         \[
-        \norm{\varphi_i^+(x)}^2 = \norm{x}^2 - (x^i)^2 = 1 - (x^i)^2 < 1
+        \norm{\varphi_i^+(x)}^2 = \norm{x}^2 - (x^i)^2 = 1 - (x^i)^2 < 1 \Rightarrow \varphi_i^+(x) \in B^n
         \]
         Si verifica per esercizio che
         \[
@@ -861,7 +867,7 @@
         \end{aligned}
         \right\} \implies \psi_i^+ \text{ è bigettiva e la sua inversa è } \varphi_i^+
         \]
-        Poiché $\varphi_i^+$ è continua, segue che $\textcolor{red}{\varphi_i^+ : U_i^+ \to B^n}$ è un \textcolor{red}{omeomorfismo}.
+        Poiché $\varphi_i^+$ è continua, segue che $\varphi_i^+ : U_i^+ \to B^n$ è un omeomorfismo.
 
         Analogamente, si può considerare l'applicazione
         \[
@@ -869,39 +875,54 @@
         \]
         $\psi_i^-$ è continua e bigettiva con inversa
         \[
-        \textcolor{red}{\varphi_i^- : U_i^- \to B^n, \quad x = (x^1, \dots, x^{n+1}) \mapsto (x^1, \dots, x^{i-1}, x^{i+1}, \dots, x^{n+1})}
+       \varphi_i^- : U_i^- \to B^n, \quad x = (x^1, \dots, x^{n+1}) \mapsto (x^1, \dots, x^{i-1}, x^{i+1}, \dots, x^{n+1})
         \]
-        Pertanto $\textcolor{red}{\varphi_i^- : U_i^- \to B^n}$ è un \textcolor{red}{omeomorfismo}, e quindi
-        \[
-        \left\{ (U_i^+, \varphi_i^+), (U_i^-, \varphi_i^-) \right\}_{i=1, \dots, n+1}
-        \]
+        Pertanto anche $\varphi_i^- : U_i^- \to B^n$ è un omeomorfismo
+        $\Rightarrow \mathcal{A} =
+        \left\{ (U_i^+, \varphi_i^+), (U_i^-, \varphi_i^-) \right\}_{i=1, \dots, n+1}$
         è un atlante (topologico).
 
-        Verifichiamo che le carte sono a due a due differenziabilmente compatibili:
-        \begin{itemize}
-            \item $U_i^+ \cap U_i^- = \emptyset$.
-            \item Per $i \neq j$, $U_i^{\pm} \cap U_j^{\pm} \neq \emptyset$. Supponendo ad esempio $i < j$, consideriamo la composizione $\varphi_i^{\pm} \circ (\varphi_j^{\pm})^{-1}$:
-            \begin{align*}
-            u = (u^1, \dots, u^n) \in B^n &\xmapsto{(\varphi_j^{\pm})^{-1}} \left( u^1, \dots, u^i, \dots, u^{j-1}, \pm f(u), u^j, \dots, u^n \right) \\
-            &\xmapsto{\varphi_i^{\pm}} \left( u^1, \dots, u^{i-1}, u^{i+1}, \dots, u^{j-1}, \pm f(u), u^j, \dots, u^n \right) \in B^n
-            \end{align*}
-            La composizione è differenziabile. Analogamente lo è la sua inversa $\varphi_j^{\pm} \circ (\varphi_i^{\pm})^{-1}$, pertanto $\varphi_i^{\pm} \circ (\varphi_j^{\pm})^{-1}$ è un diffeomorfismo.
-        \end{itemize}
-        Pertanto $\textcolor{red}{S^n}$ è una \textcolor{red}{varietà differenziabile di dimensione $n$}.
-        \end{esempio}
+        \textcolor{violet}{Verifichiamo che è anche un atlante differenziabile}   
 
+        Verifichiamo che le carte sono a due a due differenziabilmente compatibili:
+
+        Per $i=j$ $U_i^+ \cap U_i^- = \emptyset$ \textcolor{violet}{$\Rightarrow$ differenziabilmente compatibili}.
+        
+        Per $i \neq j$, $U_i^{\pm} \cap U_j^{\pm} \neq \emptyset$
+        \textcolor{orange}{supponendo ad esempio $i < j$} consideriamo la 
+        composizione $\varphi_i^{\pm} \circ (\varphi_j^{\pm})^{-1}$:
+        \begin{align*}
+        u = (u^1, \dots, u^n) &\xmapsto{(\varphi_j^{\pm})^{-1}=\psi^{\pm}_j} \left( u^1, \dots, u^i, \dots, u^{j-1}, \pm f(u), u^j, \dots, u^n \right) \textcolor{violet}{\in U_i^{\pm} \cap U_j^{\pm} } \\
+        & \textcolor{violet}{\in U_i^{\pm} \cap U_j^{\pm} \text{ perchè le  coordinate di posto $j$ e $i$ sono entrambe diverse da $0$}} \\
+        &\xmapsto{\substack{\varphi_i^{\pm} \\ \textcolor{orange}{(i<j)}}} \left( u^1, \dots, u^{i-1}, u^{i+1}, \dots, u^{j-1}, \pm f(u), u^j, \dots, u^n \right) \in \varphi_i^{\pm} (U_i^{\pm} \cap U_j^{\pm} ) \subset B^n
+        \end{align*}
+        La composizione è differenziabile \textcolor{violet}{(perchè tutte le funzioni componenti sono differenziabili)} 
+        analogamente lo è la sua inversa $\varphi_j^{\pm} \circ (\varphi_i^{\pm})^{-1}$, pertanto $\varphi_i^{\pm} \circ (\varphi_j^{\pm})^{-1}$ è un diffeomorfismo.
+
+        $\Rightarrow \textcolor{red}{S^n}$ è una \textcolor{red}{varietà differenziabile di dimensione $n$}.
+
+        \textcolor{violet}{Possiamo dire che è una varietà differenziabile di dimensione $n$ perché per il teorema \ref{th:esistenza_di_atlanti_massimali} dato un qualunque atlante differenziabile 
+        esiste un unico atlante massimale che lo contiene, attenzione che l'atlante $\mathcal{A}$ non è massimale perchè non è vero che in ogni punto i domini delle carte sono
+        un sistema fondamentale di intorni, per esempio sulla circonferenza ci sono solo $4$ carte e domini sono delle semicirconferenze ma se io prendo un arco aperto
+        che è più corto di una semicirconferenza non riuscirò mai a trovare un dominio coordinato interamente contenuto in quel aperto.}
+        \end{esempio}
+        \newpage
+        \textcolor{violet}{Vediamo un secondo atlante differenziabile sulla sfera costituito da $2$ sole carte}
         \begin{esempio}[Atlante delle proiezioni stereografiche sulla sfera]
         \mbox{}
 
         Consideriamo la sfera
         \[
-        \textcolor{red}{S^n = \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; \sum_{i=1}^{n+1} (x^i)^2 = 1 \right\}}
+        \textcolor{red}{S^n = \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; \sum_{i=1}^{n+1} (x^i)^2 = 1 \right\}} \subset \mathbb{R}^n
         \]
-        Sia $N = (0, \dots, 0, 1)$ il polo nord; l'insieme $\textcolor{red}{U_1 = S^n \setminus \{N\}}$ è un aperto di $S^n$. Consideriamo la \textcolor{red}{proiezione stereografica}
+        Sia $N = (0, \dots, 0, 1)$ il polo nord e l'insieme $U_1 = S^n \setminus \{N\}$ è un aperto di $S^n$. 
+        Consideriamo la proiezione stereografica
         \[
-        \textcolor{red}{\varphi_1 : U_1 \to \mathbb{R}^n}
+        \varphi_1 : U_1 \to \mathbb{R}^n
         \]
-        e verifichiamo che è un omeomorfismo. $\varphi_1$ si definisce come segue: sia $P \in U_1$, $P = (u^1, \dots, u^{n+1})$ con $u^{n+1} \neq 1$. La retta $\overline{PN}$ ha parametri direttori
+        e verifichiamo che è un omeomorfismo
+
+        $\varphi_1$ si definisce come segue: sia $P \in U_1$, $P = (u^1, \dots, u^{n+1})$ con $u^{n+1} \neq 1$. La retta $\overline{PN}$ ha parametri direttori
         \[
         (u^1 - 0, \dots, u^n - 0, u^{n+1} - 1)
         \]
