@@ -1084,21 +1084,26 @@
         \[
         \textcolor{red}{(x^1, \dots, x^{n+1}) \sim (y^1, \dots, y^{n+1}) \iff \exists\, \rho \in \mathbb{R}^* \text{ t.c. } y^i = \rho x^i \quad \forall\, i = 1, \dots, n+1}
         \]
-        Lo \textcolor{red}{spazio proiettivo reale} di dimensione $n$ è
+        Lo \textcolor{red}{spazio proiettivo reale} di dimensione $n$ è \textcolor{violet}{(il quoziente)}
         \[
         \textcolor{red}{\mathbb{R}\mathrm{P}^n = (\mathbb{R}^{n+1})^* / {\sim}}
         \]
-        Denotiamo con $\pi : (\mathbb{R}^{n+1})^* \to \mathbb{R}\mathrm{P}^n$ la suriezione canonica, tale che per ogni $x = (x^1, \dots, x^{n+1}) \in (\mathbb{R}^{n+1})^*$:
+        Denotiamo con $\pi : (\mathbb{R}^{n+1})^* \to \mathbb{R}\mathrm{P}^n$ la suriezione canonica tale che 
+        
+        per ogni $x = (x^1, \dots, x^{n+1}) \in (\mathbb{R}^{n+1})^*$:
         \begin{align*}
         \pi(x) &= [x^1, \dots, x^{n+1}] \quad \text{(classe di equivalenza di $x$)} \\
         &= \left\{ y = (y^1, \dots, y^{n+1}) \in (\mathbb{R}^{n+1})^* \;\middle|\; y = tx, \; t \in \mathbb{R}^* \right\} \\
         &= \text{retta di $\mathbb{R}^{n+1}$ passante per $0$ e $x$, privata di $0$}
         \end{align*}
-        $(\mathbb{R}^{n+1})^*$ è un aperto di $\mathbb{R}^{n+1}$. Su $\mathbb{R}\mathrm{P}^n$ si considera la \textcolor{red}{topologia quoziente}:
+        \textcolor{violet}{Su $\mathbb{R}\mathrm{P}^n$ si definisce la topologia quoziente perché su $R^{n+1}$ c'è la topologia euclidea e su $\mathbb{R}\mathrm{P}^n$
+        si può definire quindi la topologia quoziente}
+
+        $(\mathbb{R}^{n+1})^*$ è un aperto di $\mathbb{R}^{n+1}$ su $\mathbb{R}\mathrm{P}^n$ si considera la \textcolor{red}{topologia quoziente}:
         \[
         U \subset \mathbb{R}\mathrm{P}^n \text{ è aperto} \iff \pi^{-1}(U) \text{ è aperto in } (\mathbb{R}^{n+1})^*
         \]
-        Valgono le seguenti proprietà:
+        Valgono le seguenti proprietà \textcolor{violet}{(dimostrate in geometria $4$)}:
         \begin{itemize}
             \item $\pi$ è continua;
             \item $\pi$ è aperta;
@@ -1113,44 +1118,58 @@
         \end{proposizione}
 
         \begin{proof}
-        Verifichiamo innanzitutto che $\mathbb{R}\mathrm{P}^n$ è localmente euclideo. Sia $i = 1, \dots, n+1$. Consideriamo
+        \mbox{}
+        
+        Verifichiamo innanzitutto che $\mathbb{R}\mathrm{P}^n$ è localmente euclideo \textcolor{violet}{(di dimensione $n$ non $n+1$)}. 
+
+        Sia $i = 1, \dots, n+1$ consideriamo $ \widetilde{U}_i = \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; x^i \neq 0 \right\}$
+        è un aperto di $(\mathbb{R}^{n+1})^*$. 
+        
+        Poniamo $U_i = \pi(\widetilde{U}_i) = \left\{ [x^1, \dots, x^{n+1}] \in \mathbb{R}\mathrm{P}^n \;\middle|\; x^i \neq 0 \right\} $
+        è un aperto di $\mathbb{R}\mathrm{P}^n$ \textcolor{blu}{(poiché $\pi$ è aperta)} e inoltre
         \[
-        \tilde{U}_i = \left\{ (x^1, \dots, x^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; x^i \neq 0 \right\}
+        \bigcup_{i=1}^{n+1} U_i = \mathbb{R}\mathrm{P}^n \quad \textcolor{blu}{\text{(gli $U_i$ ricoprono $\mathbb{R}\mathrm{P}^n$)}}
         \]
-        $\tilde{U}_i$ è un aperto di $(\mathbb{R}^{n+1})^*$. Poniamo
+        \textcolor{violet}{Dimostriamo che ciascuno di questi aperti è omeomorfo a tutto $\mathbb{R}^n$, per ciascuno di questi aperti individueremo un omeomorfismo su 
+        $\mathbb{R}^n$}
+
+        Definiamo l'applicazione \textcolor{red}{$\varphi_i : U_i \to \mathbb{R}^n$} tale che, per ogni $p = [x^1, \dots, x^{n+1}] \in U_i$ \textcolor{blu}{($x^i \neq 0$)}:
         \[
-        U_i = \pi(\tilde{U}_i) = \left\{ [x^1, \dots, x^{n+1}] \in \mathbb{R}\mathrm{P}^n \;\middle|\; x^i \neq 0 \right\}
-        \]
-        $U_i$ è un aperto di $\mathbb{R}\mathrm{P}^n$ (poiché $\pi$ è aperta) e inoltre
-        \[
-        \bigcup_{i=1}^{n+1} U_i = \mathbb{R}\mathrm{P}^n \quad \text{(gli $U_i$ ricoprono $\mathbb{R}\mathrm{P}^n$)}
-        \]
-        Definiamo l'applicazione $\varphi_i : U_i \to \mathbb{R}^n$ tale che, per ogni $p = [x^1, \dots, x^{n+1}] \in U_i$ (con $x^i \neq 0$):
-        \[
-        \varphi_i(p) = \left( \frac{x^1}{x^i}, \dots, \frac{x^{i-1}}{x^i}, \frac{x^{i+1}}{x^i}, \dots, \frac{x^{n+1}}{x^i} \right)
+        \color{red} \varphi_i(p) = \left( \frac{x^1}{x^i}, \dots, \frac{x^{i-1}}{x^i}, \frac{x^{i+1}}{x^i}, \dots, \frac{x^{n+1}}{x^i} \right)
         \]
         \begin{itemize}
-            \item \textbf{$\varphi_i$ è ben definita:} infatti, supponiamo $p = [x^1, \dots, x^{n+1}] = [y^1, \dots, y^{n+1}]$. Allora $\exists\, \rho \in \mathbb{R}^*$ tale che $y^j = \rho x^j$ per ogni $j$, da cui
+            \item \textbf{$\varphi_i$ è ben definita:} \textcolor{violet}{(Quando prendo un punto nel proiettivo non è univocamente determinata la $(n+1)$-upla delle sue coordinate)}
+            
+            supponiamo $p = [x^1, \dots, x^{n+1}] = [y^1, \dots, y^{n+1}] \Rightarrow \exists\, \rho \in \mathbb{R}^*$ tale che $y^j = \rho x^j$ per ogni $j$ da cui
             \[
             \left( \frac{y^1}{y^i}, \dots, \frac{y^{i-1}}{y^i}, \frac{y^{i+1}}{y^i}, \dots, \frac{y^{n+1}}{y^i} \right) = \left( \frac{x^1}{x^i}, \dots, \frac{x^{i-1}}{x^i}, \frac{x^{i+1}}{x^i}, \dots, \frac{x^{n+1}}{x^i} \right)
             \]
             
-            \item \textbf{$\varphi_i$ è continua:} infatti, consideriamo la composizione
+            \item \textbf{$\varphi_i$ è continua:} infatti, consideriamo la composizione \textcolor{violet}{($\pi \circ \varphi_i$)}
             \[
-            \tilde{U}_i \xrightarrow{\pi} U_i \xrightarrow{\varphi_i} \mathbb{R}^n, \quad (x^1, \dots, x^{n+1}) \mapsto [x^1, \dots, x^{n+1}] \mapsto \left( \frac{x^1}{x^i}, \dots, \frac{x^{i-1}}{x^i}, \frac{x^{i+1}}{x^i}, \dots, \frac{x^{n+1}}{x^i} \right)
+            \begin{array}{ccccc}
+            \widetilde{U}_i & \xrightarrow{\;\;\pi\;\;} & U_i & \xrightarrow{\;\;\varphi_i\;\;} & \mathbb{R}^n \\[8pt]
+            (x^1, \dots, x^{n+1}) & \xmapsto{\;\;\phantom{\pi}\;\;} & [x^1, \dots, x^{n+1}] & \xmapsto{\;\;\phantom{\varphi_i}\;\;} &
+            \left( \dfrac{x^1}{x^i}, \dots, \dfrac{x^{i-1}}{x^i}, \dfrac{x^{i+1}}{x^i}, \dots, \dfrac{x^{n+1}}{x^i} \right)
+            \end{array}
             \]
-            Poiché $\varphi_i \circ \pi : \tilde{U}_i \to \mathbb{R}^n$ è continua e $\pi : \tilde{U}_i \to U_i$ è surgettiva e aperta, per le proprietà della topologia quoziente segue che $\varphi_i$ è continua.
+            Poiché $\varphi_i \circ \pi : \tilde{U}_i \to \mathbb{R}^n$ è continua e $\pi : \tilde{U}_i \to U_i$ è surgettiva e aperta, per le proprietà della topologia quoziente
+            \textcolor{violet}{(viste in geometria 4)} $\Rightarrow \varphi_i$ è continua.
             
-            \item \textbf{$\varphi_i$ è bigettiva:} consideriamo l'applicazione $\psi_i : \mathbb{R}^n \to U_i$ tale che per ogni $(u^1, \dots, u^n) \in \mathbb{R}^n$:
+            \item \textbf{$\varphi_i$ è bigettiva:} \textcolor{violet}{(esibiremo l'inversa)}
+            
+            consideriamo l'applicazione $\psi_i : \mathbb{R}^n \to U_i$ tale che per ogni $(u^1, \dots, u^n) \in \mathbb{R}^n$:
             \[
             \psi_i(u^1, \dots, u^n) = [u^1, \dots, u^{i-1}, 1, u^i, \dots, u^n]
             \]
-            Verifichiamo che $\varphi_i \circ \psi_i = i_{\mathbb{R}^n}$ e $\psi_i \circ \varphi_i = i_{U_i}$ (da cui segue che $\varphi_i$ è bigettiva e $\varphi_i^{-1} = \psi_i$):
+            Verifichiamo che $\varphi_i \circ \psi_i = i_{\mathbb{R}^n}$ e $\psi_i \circ \varphi_i = i_{U_i}$ 
+            \textcolor{blu}{(da cui segue che $\varphi_i$ è bigettiva e $\varphi_i^{-1} = \psi_i$)}:
             \begin{itemize}
                 \item Per ogni $(u^1, \dots, u^n) \in \mathbb{R}^n$:
                 \begin{align*}
                 \varphi_i(\psi_i(u^1, \dots, u^n)) &= \varphi_i([u^1, \dots, u^{i-1}, 1, u^i, \dots, u^n]) \\
-                &= \left( \frac{u^1}{1}, \dots, \frac{u^{i-1}}{1}, \frac{u^i}{1}, \dots, \frac{u^n}{1} \right) = (u^1, \dots, u^n)
+                &= \left( \frac{u^1}{1}, \dots, \frac{u^{i-1}}{1}, \frac{u^i}{1}, \dots, \frac{u^n}{1} \right) \\ 
+                &= (u^1, \dots, u^n)
                 \end{align*}
                 \item Per ogni $[x^1, \dots, x^{n+1}] \in U_i$ ($x^i \neq 0$):
                 \begin{align*}
@@ -1160,29 +1179,49 @@
                 \end{align*}
             \end{itemize}
             
-            \item \textbf{$\varphi_i^{-1} (= \psi_i)$ è continua:} infatti $\varphi_i^{-1} = \psi_i : \mathbb{R}^n \to U_i$ è composizione di applicazioni continue:
+            \item \textbf{$\varphi_i^{-1} (= \psi_i)$ è continua:} 
+            
+            infatti $\varphi_i^{-1} = \psi_i : \mathbb{R}^n \to U_i$ è composizione di applicazioni continue:
             \[
             \mathbb{R}^n \to \tilde{U}_i \xrightarrow{\pi} U_i, \quad (u^1, \dots, u^n) \mapsto (u^1, \dots, u^{i-1}, 1, u^i, \dots, u^n) \mapsto [u^1, \dots, u^{i-1}, 1, u^i, \dots, u^n]
             \]
         \end{itemize}
-        Pertanto $\varphi_i : U_i \to \mathbb{R}^n$ è un omeomorfismo e $\mathcal{A} = \left\{ (U_i, \varphi_i) \right\}_{i=1, \dots, n+1}$ è un atlante.
+        \textcolor{red}{Pertanto $\varphi_i : U_i \to \mathbb{R}^n$ è un omeomorfismo e $\mathcal{A} = \left\{ (U_i, \varphi_i) \right\}_{i=1, \dots, n+1}$ è un atlante.}
 
-        Proviamo che le carte di $\mathcal{A}$ sono a due a due compatibili. Siano $i, j = 1, \dots, n+1$ (con $i \neq j$):
+        Proviamo che le carte di $\mathcal{A}$ sono a due a due compatibili \textcolor{violet}{(così potremo dire che è un atlante differenziabile)}. 
+        
+        Siano $i, j = 1, \dots, n+1$ \textcolor{blu}{(con $i \neq j$)}:
         \[
-        U_i \cap U_j = \left\{ [x^1, \dots, x^{n+1}] \;\middle|\; x^i \neq 0, \; x^j \neq 0 \right\} \neq \emptyset
+        U_i \cap U_j = \left\{ [x^1, \dots, x^{n+1}] \;\middle|\; x^i \neq 0 \quad x^j \neq 0 \right\} \neq \emptyset
         \]
         Consideriamo la funzione di transizione
         \[
         \varphi_i \circ \varphi_j^{-1} : \varphi_j(U_i \cap U_j) \subset \mathbb{R}^n \to \varphi_i(U_i \cap U_j) \subset \mathbb{R}^n
         \]
-        e verifichiamo che $\varphi_i \circ \varphi_j^{-1}$ è differenziabile. Seguendo la composizione (nel caso $i < j$):
-        \begin{align*}
-        \varphi_j(U_i \cap U_j) \subset \mathbb{R}^n &\xrightarrow{\varphi_j^{-1}} U_i \cap U_j \xrightarrow{\varphi_i} \varphi_i(U_i \cap U_j) \\
-        (u^1, \dots, u^n) &\mapsto \underbrace{[u^1, \dots, u^{j-1}, 1, u^j, \dots, u^n]}_{\substack{\in U_i \cap U_j \iff \text{il coefficiente} \\ \text{di posto $i$-esimo ($i \neq j$) è non nullo}}} \mapsto \left( \frac{u^1}{u^i}, \dots, \frac{u^{i-1}}{u^i}, \frac{u^{i+1}}{u^i}, \dots, \frac{1}{u^i}, \frac{u^j}{u^i}, \dots, \frac{u^n}{u^i} \right)
-        \end{align*}
-        Le funzioni componenti di $\varphi_i \circ \varphi_j^{-1}$ sono differenziabili (poiché $u^i \neq 0$), quindi $\varphi_i \circ \varphi_j^{-1}$ è differenziabile. Analogamente $\varphi_j \circ \varphi_i^{-1} = (\varphi_i \circ \varphi_j^{-1})^{-1}$ è differenziabile, da cui $\varphi_i \circ \varphi_j^{-1}$ è un diffeomorfismo.
+        e verifichiamo che $\varphi_i \circ \varphi_j^{-1}$ è differenziabile e seguendo la composizione \textcolor{blu}{(nel caso $i < j$)}:
+        \[
+        {\setlength{\arraycolsep}{2.25pt}
+        \begin{array}{ccccc}
+        \varphi_j(U_i \cap U_j) \subset \mathbb{R}^n
+            & \xrightarrow{\varphi_j^{-1}\;}
+            & U_i \cap U_j
+            & \xrightarrow{\varphi_i\;}
+            & \varphi_i(U_i \cap U_j) \\[10pt]
+        (u^1, \dots, u^n)
+            & \xmapsto{\phantom{\varphi_j^{-1}}\;}
+            & \textcolor{blu}{\underbrace{\textcolor{verde}{[u^1, \dots, u^{j-1}, 1, u^j, \dots, u^n]}}_{%
+                \substack{\in\, U_i \cap U_j \iff \text{il coefficiente} \\
+                        \text{di posto $i$-esimo} \\ \textcolor{violet}{\text{e quello di posto $j$-esimo}} \\ \text{($i \neq j$) è non nullo}}}}
+            & \xmapsto{\phantom{\varphi_i}\;}
+            & \left( \frac{u^1}{u^i}, \dots, \frac{u^{i-1}}{u^i}, \frac{u^{i+1}}{u^i}, \dots, \frac{1}{u^i}, \frac{u^j}{u^i}, \dots, \frac{u^n}{u^i} \right)
+        \end{array}}
+        \]
+        Le funzioni componenti di $\varphi_i \circ \varphi_j^{-1}$ sono differenziabili \textcolor{blu}{(poiché $u^i \neq 0$)} 
+        $\Rightarrow \varphi_i \circ \varphi_j^{-1}$ è differenziabile.
+        
+        Analogamente $\varphi_j \circ \varphi_i^{-1} = (\varphi_i \circ \varphi_j^{-1})^{-1}$ è differenziabile, da cui $\varphi_i \circ \varphi_j^{-1}$ è un diffeomorfismo.
 
-        Pertanto $\mathbb{R}\mathrm{P}^n$ è una varietà differenziabile di dimensione $n$ (compatta).
+        Pertanto \textcolor{red}{$\mathbb{R}\mathrm{P}^n$ è una varietà differenziabile di dimensione $n$} (compatta).
         \end{proof}
     \section{Funzioni differenziabili su una varietà differenziabile}
     \section{Applicazioni tra varietà differenziabili}
