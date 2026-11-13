@@ -737,6 +737,7 @@
     \section{Varietà prodotto di varietà differenziabili}
 
         \begin{proposizione}
+        \label{prop:Varieta_prodotto}
         \mbox{}
 
         Sia $M_1$ una varietà differenziabile di dimensione $n \ge 1$ e sia $M_2$ una varietà differenziabile di dimensione $m \ge 1$.
@@ -921,7 +922,7 @@
         \textcolor{red}{$\varphi_1 : U_1 \to \mathbb{R}^n$}
         e verifichiamo che è un omeomorfismo
 
-        $\varphi_1$ si definisce come segue: 
+        \textbf{$\varphi_1$ si definisce come segue:} 
         
         sia $P \in U_1$ \textcolor{violet}{($P \neq N$)} $P = (u^1, \dots, u^{n+1})$ con $u^{n+1} \neq 1$.
         
@@ -932,9 +933,9 @@
         Pertanto la retta $\overline{PN}$ ha equazioni parametriche
         \[
         \begin{cases}
-        x^1 = u^1 t \\
+        x^1 -0 = u^1 t \\
         \vdots \\
-        x^n = u^n t \\
+        x^n -0 = u^n t \\
         x^{n+1} - 1 = (u^{n+1} - 1)t
         \end{cases}
         \]
@@ -943,7 +944,14 @@
         \pi = \left\{ (x^1, \dots, x^n, 0) \;\middle|\; x^i \in \mathbb{R} \right\} \equiv \mathbb{R}^n
         \]
         Intersecando $\pi \cap \overline{PN}$ si ottiene:
-        \[
+        \[ \pi \cap \overline{PN} \colon
+        \begin{cases*}
+        x^1 - 0 = t u^1 \\
+        \vdots \\
+        x^n - 0 = t u^n  \\
+        x^{n+1} -1 = t(u^{n+1}-1) \\
+        x^{n+1} =0
+        \end{cases*} \Rightarrow
         \begin{cases}
         x^i = \dfrac{u^i}{1 - u^{n+1}} \quad \text{per } i = 1, \dots, n \\[2ex]
         t = \dfrac{1}{1 - u^{n+1}}
@@ -951,6 +959,9 @@
         \]
         Quindi $\pi \cap \overline{PN} = \{Q\}$ dove $Q\left( \dfrac{u^1}{1 - u^{n+1}}, \dots, \dfrac{u^n}{1 - u^{n+1}}, 0 \right)$.
         
+        \textcolor{violet}{la proiezione stereografica geometricamente prende un punto $P$ diverso da $N$ e prende la retta $\overline{PN}$ e interseco
+        con l'iperpiano $\pi$ e associo il punto $\pi \cap \overline{PN}=Q$}
+
         Poniamo quindi
         \textcolor{red}{\begin{align*} 
         \varphi_1(P)&=Q\\ 
@@ -978,7 +989,7 @@
             % Punto P e sua proiezione \varphi_1(P)
             \coordinate (P) at (0.8, 0.2);
             \coordinate (phiP) at (1.55, -0.95);
-            \draw[red, thick, ->] (-0.3, 1.8) -- (phiP);
+            \draw[red, thick] (-0.3, 1.8) -- (phiP);
             \fill[red] (P) circle (1.5pt) node[above right, xshift=-2pt] {$P$};
             \fill[red] (phiP) circle (1.5pt) node[above right, xshift=-8pt, yshift=4pt] {$\varphi_1(P)$};
             
@@ -991,9 +1002,12 @@
         \end{tikzpicture}
         \end{center}
 
-        Determiniamo l'inversa di $\varphi_1$. Sia $Q(u^1, \dots, u^n, 0) \in \pi$.
+        \textbf{Determiniamo l'inversa di $\varphi_1$.} 
         
-        La retta $\overline{QN}$ ha equazioni parametriche:
+        \textcolor{violet}{Negli appunti della Prof. Dileo c'è il calcolo dell'inversa ma a lezione non è stato fatto nessun calcolo ed è stata
+        data l'espressione dell'inversa direttamente}
+
+        Sia $Q(u^1, \dots, u^n, 0) \in \pi$ la retta $\overline{QN}$ ha equazioni parametriche:
         \[
         \overline{QN} :
         \begin{cases}
@@ -1017,12 +1031,12 @@
         P \left( \frac{2u^1}{1 + \sum_{i=1}^n (u^i)^2}, \dots, \frac{2u^n}{1 + \sum_{i=1}^n (u^i)^2}, \frac{\sum_{i=1}^n (u^i)^2 - 1}{1 + \sum_{i=1}^n (u^i)^2} \right)
         \]
         Pertanto l'inversa $\varphi_1^{-1} : \mathbb{R}^n \to U_1$ è data da
-        \[
-        \varphi_1^{-1}(u^1, \dots, u^n) = \left( \frac{2u^1}{1 + \norm{u}^2}, \dots, \frac{2u^n}{1 + \norm{u}^2}, \frac{\norm{u}^2 - 1}{1 + \norm{u}^2} \right)
-        \]
-        Poiché $\varphi_1^{-1}$ è continua, segue che $\varphi_1$ è un omeomorfismo. 
-        
-        Pertanto $(U_1, \varphi_1)$ è una carta locale su $S^n$.
+        \begin{align*}
+        \varphi_1^{-1} \colon Q \in \pi &\mapsto P = S^n \cap \overline{QN} \\
+        \varphi_1^{-1}(u^1, \dots, u^n) &= \left( \frac{2u^1}{1 + \norm{u}^2}, \dots, \frac{2u^n}{1 + \norm{u}^2}, \frac{\norm{u}^2 - 1}{1 + \norm{u}^2} \right)
+        \end{align*}
+        \textcolor{red}{Poiché $\varphi_1^{-1}$ è continua, segue che $\varphi_1$ è un omeomorfismo $\Rightarrow (U_1, \varphi_1)$ è una carta locale su $S^n$}
+        \textcolor{violet}{questa carta ricopre tutta la sfera meno un punto $N$ e quindi prendiamo sempre la proiezione stereografica ma dal polo sud $S$}
 
         In maniera analoga si definisce una seconda carta $(U_2, \varphi_2)$ dal polo sud $S(0, \dots, 0, -1)$:
         \[
@@ -1035,20 +1049,29 @@
         \[
         \varphi_2^{-1}(u^1, \dots, u^n) = \left( \frac{2u^1}{1 + \norm{u}^2}, \dots, \frac{2u^n}{1 + \norm{u}^2}, \frac{1 - \norm{u}^2}{1 + \norm{u}^2} \right)
         \]
-        Si prova per esercizio che le funzioni di transizione $\varphi_1 \circ \varphi_2^{-1}$ e $\varphi_2 \circ \varphi_1^{-1}$ sono differenziabili. Pertanto $\left\{ (U_1, \varphi_1), (U_2, \varphi_2) \right\}$ è un atlante differenziabile su $S^n$.
+        Si prova per esercizio che le funzioni di transizione $\varphi_1 \circ \varphi_2^{-1}$ e $\varphi_2 \circ \varphi_1^{-1}$ sono differenziabili. 
+        
+        Pertanto $\left\{ (U_1, \varphi_1), (U_2, \varphi_2) \right\}$ è un atlante differenziabile su $S^n$ \textcolor{violet}{costituito da $2$ sole carte}.
         \end{esempio}
 
         \begin{osservazione}
         \mbox{}
 
-        Si può verificare che i due atlanti
+        Si può verificare che i due atlanti \textcolor{violet}{di $S^n$}
         \begin{align*}
         \mathcal{A}_1 &= \left\{ (U_1, \varphi_1), (U_2, \varphi_2) \right\} \\
         \mathcal{A}_2 &= \left\{ (U_i^+, \varphi_i^+), (U_i^-, \varphi_i^-) \right\}_{i=1, \dots, n+1}
         \end{align*}
         definiscono la stessa struttura differenziabile su $S^n$ (le carte di $\mathcal{A}_1$ sono compatibili con le carte di $\mathcal{A}_2$).
         \end{osservazione}
+        \begin{esempio}[Toro]
+        \mbox{}
 
+        C'è un ultimo esempio notevole di varietà differenziabile 
+        \[ T^n = S^1 \times \ldots \times S^1 \]
+        è una varietà differenziabile per la proposizione \ref{prop:Varieta_prodotto} ed è prodotto di $n$ varietà differenziabili di dimensione $1$ 
+        \textcolor{violet}{(compatta)}
+        \end{esempio}
         \newpage
         \begin{definizione}[Spazio proiettivo reale]
         \mbox{}
