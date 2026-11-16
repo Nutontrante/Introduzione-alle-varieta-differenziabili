@@ -1224,7 +1224,303 @@
         Pertanto \textcolor{red}{$\mathbb{R}\mathrm{P}^n$ è una varietà differenziabile di dimensione $n$} (compatta).
         \end{proof}
     \section{Funzioni differenziabili su una varietà differenziabile}
-    \section{Applicazioni tra varietà differenziabili}
+        \begin{osservazione}
+        D'ora in avanti, data una varietà differenziabile $M$ quando si considerano carte locali si intenderanno 
+        carte locali nella struttura differenziabile, ovvero nell'atlante massimale che definisce la struttura.
+
+        Pertanto le carte locali saranno differenziabilmente compatibili
+        \end{osservazione}
+        \begin{definizione}
+        \mbox{}
+
+        Sia $M$ varietà differenziabile $\dim M =n \geq 1$ e sia \textcolor{red}{$f \colon M \to \mathbb{R}$} si dice che
+        $f$ è \textcolor{red}{differenziabile} se \textcolor{red}{$\forall p \in M \quad \exists (U, \varphi)$ carta locale
+        tale che $p \in U$ e $f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile}
+        \end{definizione}
+        \begin{osservazione}
+        \mbox{}
+
+        $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^n$ è omeomorfismo.
+        \[
+        \varphi(U) \xrightarrow{\quad \varphi^{-1} \quad } U \xrightarrow{\quad \textcolor{hotpink}{f} \quad } \mathbb{R}
+        \]
+        (dove con \textcolor{hotpink}{$f$} si sta denotando la restrizione \textcolor{hotpink}{$f_{\restriction{U}}$}).
+        \end{osservazione}
+
+        La definizione di funzione differenziabile dipende dalla struttura differenziabile, non dalla scelta della carta locale. 
+        
+        Vale infatti la seguente proposizione
+
+        \begin{proposizione}
+        \mbox{}
+
+        Sia $M$ varietà differenziabile. Sia $f \colon M \to \mathbb{R}$ funzione differenziabile. Allora
+        \[
+        \textcolor{red}{\forall p \in M \ \forall (U', \varphi') \text{ carta locale tale che } p \in U' \text{ la funzione } f \circ \varphi'^{-1} \colon \varphi'(U') \to \mathbb{R} \text{ è differenziabile.}}
+        \]
+        \end{proposizione}
+
+        \begin{proof}
+        \mbox{}
+        
+        Sia $p \in M$. Sia $(U', \varphi')$ carta locale tale che $p \in U'$. Verifichiamo che
+        \[
+        f \circ \varphi'^{-1} \colon \varphi'(U') \to \mathbb{R}
+        \]
+        è differenziabile.
+
+        Sia $x = \varphi'(q) \in \varphi'(U')$ con $q \in U'$. 
+        
+        Poiché \textcolor{orange}{$f \colon M \to \mathbb{R}$ è differenziabile} $\exists (U, \varphi)$ carta locale tale che $q \in U$ e $f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile.
+        \begin{align*}
+        q \in U \cap U' &\implies U \cap U' \ne \emptyset \\
+        &\implies \varphi \circ \varphi'^{-1} \colon \varphi'(U \cap U') \to \varphi(U \cap U') \text{ è un diffeomorfismo.}
+        \end{align*}
+        Considerando la composizione
+        \[
+        \varphi'(U \cap U') \xrightarrow{\varphi \circ \varphi'^{-1}} \varphi(U \cap U') \subset \varphi(U) \xrightarrow{f \circ \varphi^{-1}} \mathbb{R},
+        \]
+        si ha che $(f \circ \varphi^{-1}) \circ (\varphi \circ \varphi'^{-1}) = f \circ \varphi'^{-1} \colon \varphi'(U \cap U') \to \mathbb{R}$, dunque $f \circ \varphi'^{-1}$ è differenziabile in $\varphi'(U \cap U')$, che è intorno aperto di $x = \varphi'(q)$ in $\varphi'(U')$. 
+        
+        Data l'arbitrarietà di $x$, $f \circ \varphi'^{-1}$ è differenziabile in tutto l'aperto $\varphi'(U')$.
+        \end{proof}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Sia $M$ varietà differenziabile. Sia $f \colon M \to \mathbb{R}$. Allora sono equivalenti:
+        \begin{enumerate}
+            \item $f$ è differenziabile;
+            \item $\forall p \in M \ \exists A$ intorno aperto di $p$ tale che $f|_A \colon A \to \mathbb{R}$ è differenziabile \textcolor{blu}{(si considera su $A$ la struttura di sottovarietà aperta di $M$)}.
+        \end{enumerate}
+        \end{proposizione}
+
+        \begin{proof}
+        \mbox{}
+
+        $\mathbf{1 \Rightarrow 2)}$ 
+        
+        Sia \textcolor{orange}{$f \colon M \to \mathbb{R}$ differenziabile} e sia $p \in M$. Allora $\exists (U, \varphi)$ carta locale di $M$ con $p \in U$ tale che $f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile. $U$ è intorno aperto di $p$ e $f|_U \colon U \to \mathbb{R}$ è differenziabile perché $(U, \varphi)$ è anche carta di $U$ e $f|_U \circ \varphi^{-1} = f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile.
+
+        $\mathbf{2 \Rightarrow 1)}$
+        
+        Sia $p \in M \overset{\textcolor{orange}{\text{ip. } 2}}{\Rightarrow}$ $\exists A$ intorno aperto di $p$ tale che $f|_A \colon A \to \mathbb{R}$ è differenziabile. 
+        
+        Sia $(U, \varphi)$ carta locale di $M$ tale che $p \in U \subset A$ e poiché $(U, \varphi)$ è anche carta locale di $A$, segue che
+        \[
+        f|_A \circ \varphi^{-1} = f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}
+        \]
+        è differenziabile $\Rightarrow f$ è differenziabile.
+        \end{proof}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Sia $M$ varietà differenziabile, $\dim M = n \ge 1$. Sia $(U, \varphi)$ carta locale. Siano $\textcolor{red}{x^1, \dots, x^n \colon U \to \mathbb{R}}$ le funzioni coordinate locali. Allora $\forall i = 1, \dots, n$,
+        \[
+        x^i \colon U \to \mathbb{R} \text{ è differenziabile.}
+        \]
+        \end{proposizione}
+
+        \begin{proof}
+        Si ha $x^i = p_i \circ \varphi \colon U \to \mathbb{R}$. $\forall p \in U \ \exists (U, \varphi)$ carta locale di $U$ tale che $p \in U$ e
+        \[
+        x^i \circ \varphi^{-1} = p_i \circ \varphi \circ \varphi^{-1} = p_i \colon \varphi(U) \to \mathbb{R}
+        \]
+        è differenziabile.
+        \end{proof}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Sia $f \colon M \to \mathbb{R}$ funzione \textcolor{red}{costante} di costante valore $k$. Allora $f$ è differenziabile.
+        \end{proposizione}
+
+        \begin{proof}
+        \mbox{} 
+
+        Sia $p \in M$ e $(U, \varphi)$ carta locale tale che $p \in U$. 
+        
+        Allora $f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è costante di costante valore $k$, e quindi differenziabile.
+        \end{proof}
+    \section{Strutture algebriche sull'insieme delle funzioni differenziabili \texorpdfstring{$\mathcal{F}(M)$}{\mathcal{F}(M)}}
+        Sia $M$ varietà differenziabile, poniamo:
+        \[
+        \textcolor{red}{\mathcal{F}(M) = \{ f \colon M \to \mathbb{R} \mid f \text{ è differenziabile} \}}
+        \]
+        Poniamo $\forall f, g \in \mathcal{F}(M)$ e $\forall \lambda \in \mathbb{R}$:
+        \begin{align*}
+        \textcolor{red}{f + g} &\colon \textcolor{red}{M \to \mathbb{R}} & \forall p \in M \quad (f + g)(p) &= f(p) + g(p), \\
+        \textcolor{red}{\lambda \cdot f} &\colon \textcolor{red}{M \to \mathbb{R}} & \forall p \in M \quad (\lambda \cdot f)(p) &= \lambda \cdot f(p).
+        \end{align*}
+        Si prova che $f + g$ e $\lambda f$ sono funzioni differenziabili. Pertanto restano definite le leggi di composizione
+        \begin{align*}
+        + &\colon \mathcal{F}(M) \times \mathcal{F}(M) \to \mathcal{F}(M), \\
+        \boldsymbol{\cdot} &\colon \mathbb{R} \times \mathcal{F}(M) \to \mathcal{F}(M).
+        \end{align*}
+        $\textcolor{red}{(\mathcal{F}(M), +, \cdot)}$ è uno spazio vettoriale reale. In particolare:
+        \begin{itemize}
+            \item l'elemento neutro per l'addizione è $\textcolor{red}{f_0 \colon M \to \mathbb{R}}$ tale che $\forall p \in M \ f_0(p) = 0$;
+            \item l'opposta di una funzione $f \in \mathcal{F}(M)$ è $\textcolor{red}{-f \colon M \to \mathbb{R}}$ tale che $\forall p \in M \ (-f)(p) = -f(p)$.
+        \end{itemize}
+
+        Su $\mathcal{F}(M)$ si può definire una ulteriore legge di composizione interna
+        \[
+        \cdot \colon \mathcal{F}(M) \times \mathcal{F}(M) \to \mathcal{F}(M)
+        \]
+        tale che $\forall f, g \in \mathcal{F}(M)$, $\textcolor{red}{f \cdot g \colon M \to \mathbb{R}}$ soddisfa $\forall p \in M \ (f \cdot g)(p) = f(p) \cdot g(p)$ \textcolor{violet}{(verificare che $f \cdot g$ è differenziabile)}.
+
+        La legge di composizione interna $\cdot$ è bilineare, ovvero $\forall f, g, h \in \mathcal{F}(M)$ e $\forall \lambda \in \mathbb{R}$:
+        \begin{align*}
+        f \cdot (g + h) &= f \cdot g + f \cdot h, \\
+        (g + h) \cdot f &= g \cdot f + h \cdot f, \\
+        f \cdot (\lambda g) &= \lambda \cdot (f \cdot g) = (\lambda \cdot f) \cdot g.
+        \end{align*}
+        Pertanto $\textcolor{red}{(\mathcal{F}(M), +, \cdot, \cdot)}$ è un'\textcolor{red}{algebra reale}, la quale risulta essere:
+        \begin{itemize}
+            \item \textcolor{red}{associativa}: $(f \cdot g) \cdot h = f \cdot (g \cdot h)$;
+            \item \textcolor{red}{commutativa}: $f \cdot g = g \cdot f$;
+            \item \textcolor{red}{unitaria}: $f_1 \cdot f = f = f \cdot f_1$, dove $f_1 \colon M \to \mathbb{R}$ è tale che $\forall p \in M \ f_1(p) = 1$.
+        \end{itemize}
+
+        Considerando le sole due leggi di composizione interna, $\textcolor{red}{(\mathcal{F}(M), +, \cdot)}$ risulta essere \textcolor{red}{anello commutativo unitario} \textcolor{blu}{($(\mathcal{F}(M), +)$ gruppo abeliano e $\cdot$ è associativa e distributiva $\implies$ anello)}.
+        \section{Applicazioni tra varietà differenziabili}
+        \begin{definizione}
+        \mbox{}
+
+        Siano $M, N$ varietà differenziabili, $\dim M = m$, $\dim N = n$. Sia $\textcolor{red}{F \colon M \to N}$. Si dice che $F$ è \textcolor{red}{differenziabile} se
+        \[
+        \textcolor{red}{\forall p \in M \ \exists (U, \varphi) \text{ carta locale di } M \text{ t.c. } p \in U \ \exists (V, \psi) \text{ carta locale di } N \text{ t.c. } F(U) \subset V}
+        \]
+        tali che l'applicazione
+        \[
+        \textcolor{red}{\psi \circ F \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)}
+        \]
+        è differenziabile.
+        \end{definizione}
+
+        \begin{osservazione}
+        \mbox{}
+
+        $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^m$ è omeomorfismo e $\psi \colon V \to \psi(V) \subset \mathbb{R}^n$ è omeomorfismo:
+        \[
+        \varphi(U) \subset \mathbb{R}^m \xrightarrow{\varphi^{-1}} U \xrightarrow{F} V \xrightarrow{\psi} \psi(V) \subset \mathbb{R}^n.
+        \]
+        La definizione dipende solo dalle strutture differenziabili, non dalle carte. Infatti si dimostra:
+        \end{osservazione}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Se $F \colon M \to N$ è differenziabile, allora
+        \[
+        \textcolor{red}{\forall (U', \varphi') \text{ carta locale di } M \ \forall (V', \psi') \text{ carta locale di } N \text{ t.c. } F(U') \subset V'}
+        \]
+        l'applicazione $\psi' \circ F \circ \varphi'^{-1} \colon \varphi'(U') \to \psi'(V')$ è differenziabile.
+        \end{proposizione}
+
+        \begin{osservazione}
+        \mbox{}
+
+        Sia $f \colon M \to \mathbb{R}$ funzione differenziabile (nel senso della precedente definizione). Considerata su $\mathbb{R}$ la struttura differenziabile standard definita dalla carta $(\mathbb{R}, i_{\mathbb{R}})$, risulta
+
+        \[
+        f \text{ è differenziabile} \iff
+        \begin{aligned}[t]
+        &\forall p \in M \ \exists (U, \varphi) \text{ carta locale t.c. } p \in U \ (\exists (\mathbb{R}, i_{\mathbb{R}}) \text{ carta di } \mathbb{R}) \\
+        &\text{t.c. } \underbrace{i_{\mathbb{R}} \circ f \circ \varphi^{-1}}_{= f \circ \varphi^{-1}} \colon \varphi(U) \to \mathbb{R} \text{ è differenziabile}
+        \end{aligned}
+        \]
+        che coincide con la definizione di applicazione differenziabile $f \colon M \to \mathbb{R}$ data in precedenza.
+        \end{osservazione}
+
     \section{Proprietà topologiche delle varietà differenziabili}
+
+        Enunciamo e dimostriamo alcune proprietà relative ad applicazioni differenziabili:
+
+        \begin{proposizione}
+        \mbox{}
+
+        Ogni applicazione differenziabile $\textcolor{red}{F \colon M \to N}$ è \textcolor{red}{continua}.
+        \end{proposizione}
+
+        \begin{proof}
+        Sia $p \in M$. $\exists (U, \varphi)$ carta locale di $M$ tale che $p \in U$ e $\exists (V, \psi)$ carta locale di $N$ tale che $F(U) \subset V$, tali che \textcolor{orange}{$\psi \circ F \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ è differenziabile}. In particolare $\psi \circ F \circ \varphi^{-1}$ è continua. Considerando la composizione
+        \[
+        \varphi(U) \xrightarrow{\varphi^{-1}} U \xrightarrow{F|_U} V \xrightarrow{\psi} \psi(V),
+        \]
+        segue che $\psi^{-1} \circ (\psi \circ F \circ \varphi^{-1}) \circ \varphi$ è continua, essendo $\psi$ e $\varphi$ omeomorfismi. Dunque $F|_U \colon U \to V$ è continua, da cui $F|_U \colon U \to N$ è continua. Si è dunque provato che $\forall p \in M \ \exists U$ intorno aperto di $p$ tale che $F|_U \colon U \to N$ è continua, e quindi $F$ è continua.
+        \end{proof}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Ogni applicazione costante $\textcolor{red}{c \colon M \to N}$ è differenziabile.
+        \end{proposizione}
+
+        \begin{proof}
+        Sia $c \colon M \to N$ applicazione costante di costante valore $q \in N$. Sia $p \in M$, sia $(U, \varphi)$ carta locale di $M$ con $p \in U$ e sia $(V, \psi)$ carta locale di $N$ con $q \in V$. Allora $c(U) = \{q\} \subset V$ e $\psi \circ c \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ è l'applicazione costante di costante valore $\psi(q)$, che è differenziabile.
+        \end{proof}
+
+        \begin{proposizione}
+        \mbox{}
+
+        L'identità $\textcolor{red}{i_M \colon M \to M}$ è differenziabile.
+        \end{proposizione}
+
+        \begin{proof}
+        Sia $p \in M$ e sia $(U, \varphi)$ carta di $M$ con $p \in U$. Poiché $i_M(U) = U$, si ha
+        \[
+        \varphi \circ i_M \circ \varphi^{-1} = i_{\varphi(U)} \colon \varphi(U) \to \varphi(U),
+        \]
+        che è differenziabile.
+        \end{proof}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Se $A \subset M$ è un aperto di $M$, l'iniezione canonica $\textcolor{red}{j \colon A \to M}$ è differenziabile.
+        \end{proposizione}
+
+        \begin{proof}
+        Sia $p \in A$ e sia $(U, \varphi)$ carta locale di $M$ tale che $p \in U \subset A$. Poiché $(U, \varphi)$ è anche carta locale di $A$ in $p$, si ha
+        \[
+        \varphi \circ j \circ \varphi^{-1} = i_{\varphi(U)} \colon \varphi(U) \to \varphi(U),
+        \]
+        che è differenziabile.
+        \end{proof}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Se $\textcolor{red}{F \colon M \to N}$ e $\textcolor{red}{G \colon N \to Q}$ sono differenziabili, allora $\textcolor{red}{G \circ F \colon M \to Q}$ è differenziabile.
+        \end{proposizione}
+
+        \begin{proof}
+        Supponiamo $\dim M = m$, $\dim N = n$, $\dim Q = q$. Sia $p \in M \implies F(p) \in N$. Essendo \textcolor{orange}{$G$ differenziabile}, $\exists (V, \psi)$ carta locale di $N$ con $F(p) \in V$ e $\exists (W, \theta)$ carta locale di $Q$ con $G(V) \subset W$ tali che
+        \[
+        \theta \circ G \circ \psi^{-1} \colon \psi(V) \subset \mathbb{R}^n \to \theta(W) \subset \mathbb{R}^q
+        \]
+        è differenziabile. Poiché \textcolor{orange}{$F$ è continua} e $V$ è intorno aperto di $F(p)$ in $N$, segue che $F^{-1}(V)$ è intorno aperto di $p$ in $M$, quindi $\exists (U, \varphi)$ carta locale di $M$ tale che $p \in U \subset F^{-1}(V)$, da cui $F(U) \subset F(F^{-1}(V)) \subset V$. Essendo \textcolor{orange}{$F$ differenziabile},
+        \[
+        \psi \circ F \circ \varphi^{-1} \colon \varphi(U) \subset \mathbb{R}^m \to \psi(V) \subset \mathbb{R}^n
+        \]
+        è differenziabile. Con $(U, \varphi)$ carta locale di $M$ con $p \in U$ e $(W, \theta)$ carta locale di $Q$, si ha $(G \circ F)(U) = G(F(U)) \subset G(V) \subset W$ e
+        \[
+        \theta \circ (G \circ F) \circ \varphi^{-1} = (\theta \circ G \circ \psi^{-1}) \circ (\psi \circ F \circ \varphi^{-1}) \colon \varphi(U) \to \theta(W)
+        \]
+        è differenziabile in quanto composta di applicazioni differenziabili.
+        \end{proof}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Se $F \colon M \to N$ è differenziabile, considerato $A \subset M$ aperto, $\textcolor{red}{F|_A \colon A \to N}$ è differenziabile.
+        \end{proposizione}
+
+        \begin{proof}
+        Si ha $F|_A = F \circ j$, essendo $j \colon A \to M$ l'iniezione canonica. Pertanto $F|_A$ è differenziabile, in quanto composta di applicazioni differenziabili.
+        \end{proof}
+    
     \section{Partizione dell'unità}
     \section{Funzioni bump su varietà differenziabili}
