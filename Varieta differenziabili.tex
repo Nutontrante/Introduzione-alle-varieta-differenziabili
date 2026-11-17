@@ -1231,6 +1231,7 @@
         Pertanto le carte locali saranno differenziabilmente compatibili
         \end{osservazione}
         \begin{definizione}
+        \label{def:funzione_differenziabile_definita_su_una_varieta}
         \mbox{}
 
         Sia $M$ varietà differenziabile $\dim M =n \geq 1$ e sia \textcolor{red}{$f \colon M \to \mathbb{R}$} si dice che
@@ -1508,41 +1509,204 @@
         \begin{definizione}
         \mbox{}
 
-        Siano $M, N$ varietà differenziabili, $\dim M = m$, $\dim N = n$. Sia $\textcolor{red}{F \colon M \to N}$. Si dice che $F$ è \textcolor{red}{differenziabile} se
+        Siano $M, N$ varietà differenziabili, $\dim M = m$, $\dim N = n$
+
+        Sia $\textcolor{red}{F \colon M \to N}$ si dice che $F$ è \textcolor{red}{differenziabile} se
         \[
-        \textcolor{red}{\forall p \in M \ \exists (U, \varphi) \text{ carta locale di } M \text{ t.c. } p \in U \ \exists (V, \psi) \text{ carta locale di } N \text{ t.c. } F(U) \subset V}
+        \begin{aligned}
+        \color{red} \forall p \in M \quad & \color{red} \exists (U, \varphi) \text{ carta locale di } M \text{ tale che } p \in U \\
+        \text{ e } & \color{red} \exists (V, \psi) \text{ carta locale di } N \text{ t.c. } F(U) \subset V \textcolor{violet}{(\text{manda l'aperto } U \text{ nell'aperto } V)} \\
+        \text{tali che } & \text{l'applicazione }  \textcolor{red}{\psi \circ F \circ \varphi^{-1} \colon \varphi(U) \subset \mathbb{R}^m \to \psi(V) \subset \mathbb{R}^n} \text{ è differenziabile}
+        \end{aligned}
         \]
-        tali che l'applicazione
-        \[
-        \textcolor{red}{\psi \circ F \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)}
-        \]
-        è differenziabile.
+
+        
         \end{definizione}
 
         \begin{osservazione}
         \mbox{}
+        
+        \textcolor{violet}{Cerchiamo di convincerci che è tutto coerente}
+         
+        \textcolor{violet}{se $(U, \varphi)$ carta locale di $M \Rightarrow$}
+        $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^m$ è omeomorfismo   
+        
+        \textcolor{violet}{se $(V,\psi)$ è carta locale di $N \Rightarrow$} 
+        $\psi \colon V \to \psi(V) \subset \mathbb{R}^n$ è omeomorfismo:
 
-        $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^m$ è omeomorfismo e $\psi \colon V \to \psi(V) \subset \mathbb{R}^n$ è omeomorfismo:
+        \textcolor{violet}{$F \colon U \to V$ qua apprezzo la richiesta $F(U) \subset V$}
         \[
-        \varphi(U) \subset \mathbb{R}^m \xrightarrow{\varphi^{-1}} U \xrightarrow{F} V \xrightarrow{\psi} \psi(V) \subset \mathbb{R}^n.
+        \begin{tikzcd}[column sep=large]
+        \varphi(U) \subset \mathbb{R}^m
+        \arrow[r, "\varphi^{-1}"]
+        \arrow[rrr, bend right=20, red, "\psi \circ F \circ \varphi^{-1}"']
+        & U \arrow[r, "F"]
+        & V \arrow[r, "\psi"]
+        & \psi(V) \subset \mathbb{R}^n
+        \end{tikzcd}
         \]
-        La definizione dipende solo dalle strutture differenziabili, non dalle carte. Infatti si dimostra:
         \end{osservazione}
+        \begin{center}
+        \begin{tikzpicture}[>=stealth, thick, scale=0.9]
 
+        % ---------- Varietà M e N ----------
+        \filldraw[draw=blue, fill=blue, fill opacity=0.05] plot[smooth cycle] coordinates
+        {(-2.6,0.3) (-1.6,1.8) (0.6,2.0) (2.3,1.1) (2.6,-0.6) (1.0,-1.8) (-1.3,-1.5)};
+        \node[blue] at (-2.6,1.9) {$M$};
+
+        \filldraw[draw=green!50!black, fill=green!50!black, fill opacity=0.05] plot[smooth cycle] coordinates
+        {(6.4,0.3) (7.4,1.8) (9.6,2.0) (11.3,1.1) (11.6,-0.6) (10.0,-1.8) (7.7,-1.5)};
+        \node[green!50!black] at (6.4,1.9) {$N$};
+
+        % ---------- Aperto U (insieme) e punto p ----------
+        \filldraw[draw=violet, fill=violet, fill opacity=0.2, thin] (-0.3,0.3) ellipse (1.2cm and 0.8cm);
+        \node[violet!80!black] at (0.9,-0.75) {$U$};
+        \fill[violet!60!black] (-0.3,0.3) circle (1.8pt);
+        \node[violet!60!black, font=\scriptsize] at (-0.3,0.58) {$p$};
+
+        % ---------- Aperto V (insieme), insieme F(U), punto F(p) ----------
+        \filldraw[draw=orange, fill=orange, fill opacity=0.15, thin] (9,0.3) ellipse (1.7cm and 1.1cm);
+        \node[orange!80!black] at (10.7,1.15) {$V$};
+        \filldraw[draw=teal, fill=teal, fill opacity=0.3, thin] (8.8,0.4) ellipse (0.8cm and 0.5cm);
+        \node[teal!70!black, font=\scriptsize] at (8.8,-0.26) {$F(U)$};
+        \fill[teal!60!black] (8.8,0.4) circle (1.8pt);
+        \node[teal!60!black, font=\scriptsize] at (8.8,0.65) {$F(p)$};
+
+        % ---------- F : M -> N ----------
+        \draw[->, teal!80!black] (-0.3,0.3) to[bend left=25] node[above] {$F$} (8.8,0.4);
+
+        % ---------- Spazi euclidei: R^m con φ(U) ----------
+        \filldraw[draw=violet, fill=violet, fill opacity=0.04] (-2.5,-3.4) rectangle (2.5,-6.8);
+        \node[violet] at (-2.9,-3.6) {$\mathbb{R}^m$};
+        \filldraw[draw=violet, fill=violet, fill opacity=0.2, rounded corners=10pt, thin] (-1.9,-3.9) rectangle (1.9,-6.3);
+        \node[violet!80!black, anchor=north] at (0,-4.0) {$\varphi(U)$};
+        \fill[violet!60!black] (0,-5.35) circle (1.8pt);
+        \node[violet!60!black, font=\scriptsize, anchor=west] at (0.15,-5.35) {$\varphi(p)$};
+
+        % ---------- Spazi euclidei: R^n con ψ(V) e ψ(F(U)) ----------
+        \filldraw[draw=orange, fill=orange, fill opacity=0.04] (6.5,-3.4) rectangle (11.5,-6.8);
+        \node[orange] at (11.9,-3.6) {$\mathbb{R}^n$};
+        \filldraw[draw=orange, fill=orange, fill opacity=0.15, rounded corners=10pt, thin] (7.1,-3.9) rectangle (10.9,-6.3);
+        \node[orange!80!black, anchor=north] at (9,-4.0) {$\psi(V)$};
+        \filldraw[draw=teal, fill=teal, fill opacity=0.3, rounded corners=6pt, thin] (7.6,-4.9) rectangle (9.8,-5.9);
+        \node[teal!70!black, font=\scriptsize] at (8.4,-6.1) {$\psi(F(U))$};
+        \fill[teal!60!black] (8.4,-5.4) circle (1.8pt);
+        \node[teal!60!black, font=\scriptsize, anchor=west] at (8.4,-5.4) {$\psi(F(p))$};
+
+        % ---------- Carte φ e ψ ----------
+        \draw[->, violet!80!black] (-1.07,-0.31) to[bend right=20] node[left] {$\varphi$} (-1.5,-3.4);
+        \draw[->, orange!80!black] (10.09,-0.54) to[bend left=20] node[right] {$\psi$} (10.5,-3.4);
+
+        % ---------- Lettura locale di F (unico elemento rosso) ----------
+        \draw[->, red, very thick] (2.5,-5.1) -- node[above] {$\psi \circ F \circ \varphi^{-1}$} (6.5,-5.1);
+
+        \end{tikzpicture}
+        \end{center}
+        \newpage
+        La definizione \textcolor{violet}{di funzione differenziabile tra varietà differenziabili} dipende solo dalle strutture differenziabili, non dalle carte infatti si dimostra la seguente definizione:
         \begin{proposizione}
         \mbox{}
 
-        Se $F \colon M \to N$ è differenziabile, allora
-        \[
-        \textcolor{red}{\forall (U', \varphi') \text{ carta locale di } M \ \forall (V', \psi') \text{ carta locale di } N \text{ t.c. } F(U') \subset V'}
-        \]
-        l'applicazione $\psi' \circ F \circ \varphi'^{-1} \colon \varphi'(U') \to \psi'(V')$ è differenziabile.
+        Se $F \colon M \to N$ è differenziabile allora
+        \textcolor{red}{$\forall (U', \varphi')$  carta locale di $ M \ \forall (V', \psi')$  carta locale di $N$ tale che $F(U') \subset V'$}
+        l'applicazione \textcolor{red}{$\psi' \circ F \circ \varphi'^{\, -1}$} $\colon \varphi'(U') \to \psi'(V')$ è differenziabile.
         \end{proposizione}
+        \begin{center}
+        \begin{tikzpicture}[>=stealth, thick, scale=0.8]
 
-        \begin{osservazione}
+        % ---------- Varietà M e N ----------
+        \filldraw[draw=blue, fill=blue, fill opacity=0.05] plot[smooth cycle] coordinates
+        {(-2.6,0.3) (-1.6,1.8) (0.6,2.0) (2.3,1.1) (2.6,-0.6) (1.0,-1.8) (-1.3,-1.5)};
+        \node[blue] at (-2.6,1.9) {$M$};
+
+        \filldraw[draw=green!50!black, fill=green!50!black, fill opacity=0.05] plot[smooth cycle] coordinates
+        {(6.4,0.3) (7.4,1.8) (9.6,2.0) (11.3,1.1) (11.6,-0.6) (10.0,-1.8) (7.7,-1.5)};
+        \node[green!50!black] at (7.4,2.3) {$N$};
+
+        % ---------- Aperti U', U su M e punto p in U ∩ U' ----------
+        \filldraw[draw=magenta, fill=magenta, fill opacity=0.2, thin] (-0.7,0.3) ellipse (1.2cm and 0.8cm);
+        \node[magenta!80!black] at (-1.6,-0.7) {$U'$};
+        \filldraw[draw=violet, fill=violet, fill opacity=0.2, thin] (0.5,0.2) ellipse (1.2cm and 0.8cm);
+        \node[violet!80!black] at (1.6,-0.7) {$U$};
+        \fill[black!70] (-0.1,0.25) circle (1.8pt);
+        \node[black!70, font=\scriptsize] at (-0.1,0.5) {$p$};
+
+        % ---------- Aperti V, V' su N e punto F(p) in V ∩ V' ----------
+        \filldraw[draw=orange, fill=orange, fill opacity=0.15, thin] (8.4,0.3) ellipse (1.2cm and 0.8cm);
+        \node[orange!80!black] at (7.5,-0.7) {$V$};
+        \filldraw[draw=brown, fill=brown, fill opacity=0.15, thin] (9.6,0.2) ellipse (1.2cm and 0.8cm);
+        \node[brown!80!black] at (10.7,-0.7) {$V'$};
+        \fill[teal!60!black] (9.0,0.25) circle (1.8pt);
+        \node[teal!60!black, font=\scriptsize] at (9.0,0.5) {$F(p)$};
+
+        % ---------- F : M -> N ----------
+        \draw[->, teal!80!black] (-0.1,0.25) to[bend left=25] node[above] {$F$} (9.0,0.25);
+
+        % ---------- R^m: φ(U) (in alto) ----------
+        \filldraw[draw=violet, fill=violet, fill opacity=0.04] (-2.5,-3.6) rectangle (2.5,-6.6);
+        \node[violet, anchor=north east, font=\small] at (2.45,-3.65) {$\mathbb{R}^m$};
+        \filldraw[draw=violet, fill=violet, fill opacity=0.15, rounded corners=10pt, thin] (-1.9,-4.1) rectangle (1.9,-6.3);
+        \node[violet!80!black, anchor=north] at (0,-4.1) {$\varphi(U)$};
+        \filldraw[draw=violet, fill=violet, fill opacity=0.25, rounded corners=6pt, thin] (-1.0,-4.85) rectangle (1.4,-5.95);
+        \node[violet!80!black, font=\scriptsize] at (0,-5.05) {$\varphi(U\cap U')$};
+        \fill[violet!60!black] (0,-5.55) circle (1.8pt);
+        \node[violet!60!black, font=\scriptsize, anchor=west] at (0.12,-5.55) {$\varphi(p)$};
+
+        % ---------- R^m: φ'(U') (in basso) ----------
+        \filldraw[draw=magenta, fill=magenta, fill opacity=0.04] (-2.5,-8.4) rectangle (2.5,-11.4);
+        \node[magenta, anchor=north east, font=\small] at (2.45,-8.45) {$\mathbb{R}^m$};
+        \filldraw[draw=magenta, fill=magenta, fill opacity=0.15, rounded corners=10pt, thin] (-1.9,-8.9) rectangle (1.9,-11.1);
+        \node[magenta!80!black, anchor=north] at (0,-8.9) {$\varphi'(U')$};
+        \filldraw[draw=magenta, fill=magenta, fill opacity=0.25, rounded corners=6pt, thin] (-1.0,-9.65) rectangle (1.4,-10.75);
+        \node[magenta!80!black, font=\scriptsize] at (0,-9.85) {$\varphi'(U\cap U')$};
+        \fill[magenta!60!black] (0,-10.35) circle (1.8pt);
+        \node[magenta!60!black, font=\scriptsize, anchor=west] at (0.12,-10.35) {$\varphi'(p)$};
+
+        % ---------- R^n: ψ(V) (in alto) ----------
+        \filldraw[draw=orange, fill=orange, fill opacity=0.04] (6.5,-3.6) rectangle (11.5,-6.6);
+        \node[orange, anchor=north east, font=\small] at (11.45,-3.65) {$\mathbb{R}^n$};
+        \filldraw[draw=orange, fill=orange, fill opacity=0.15, rounded corners=10pt, thin] (7.1,-4.1) rectangle (10.9,-6.3);
+        \node[orange!80!black, anchor=north] at (9,-4.1) {$\psi(V)$};
+        \filldraw[draw=orange, fill=orange, fill opacity=0.25, rounded corners=6pt, thin] (8.0,-4.85) rectangle (10.6,-5.95);
+        \node[orange!80!black, font=\scriptsize] at (9,-5.05) {$\psi(V\cap V')$};
+        \fill[teal!60!black] (9,-5.55) circle (1.8pt);
+        \node[teal!60!black, font=\scriptsize, anchor=west] at (9.12,-5.55) {$\psi(F(p))$};
+
+        % ---------- R^n: ψ'(V') (in basso) ----------
+        \filldraw[draw=brown, fill=brown, fill opacity=0.04] (6.5,-8.4) rectangle (11.5,-11.4);
+        \node[brown, anchor=north east, font=\small] at (11.45,-8.45) {$\mathbb{R}^n$};
+        \filldraw[draw=brown, fill=brown, fill opacity=0.15, rounded corners=10pt, thin] (7.1,-8.9) rectangle (10.9,-11.1);
+        \node[brown!80!black, anchor=north] at (9,-8.9) {$\psi'(V')$};
+        \filldraw[draw=brown, fill=brown, fill opacity=0.25, rounded corners=6pt, thin] (8.0,-9.65) rectangle (10.7,-10.75);
+        \node[brown!80!black, font=\scriptsize] at (9,-9.85) {$\psi'(V\cap V')$};
+        \fill[teal!60!black] (9,-10.35) circle (1.8pt);
+        \node[teal!60!black, font=\scriptsize, anchor=west] at (9.12,-10.35) {$\psi'(F(p))$};
+
+        % ---------- Carte φ, φ', ψ, ψ' ----------
+        \draw[->, violet!80!black] (0.9,-0.58) to[bend left=10] node[right] {$\varphi$} (0.9,-3.6);
+        \draw[->, magenta!80!black] (-1.7,-0.3) to[out=-140, in=180, looseness=0.66]
+            node[pos=0.45, left] {$\varphi'$} (-2.5,-9.4);
+        \draw[->, orange!80!black] (8.1,-0.55) to[bend right=10] node[left] {$\psi$} (8.1,-3.6);
+        \draw[->, brown!80!black] (10.7,-0.3) to[out=-40, in=0, looseness=0.66]
+            node[pos=0.45, right] {$\psi'$} (11.5,-9.4);
+
+        % ---------- Letture locali di F ----------
+        \draw[->, red, very thick] (2.5,-5.2) -- node[above] {$\psi \circ F \circ \varphi^{-1}$} (6.5,-5.2);
+        \draw[->, red!55!black, very thick] (2.5,-10.0) -- node[above] {$\psi' \circ F \circ \varphi'^{-1}$} (6.5,-10.0);
+
+        % ---------- Cambi di carta (diffeomorfismi) ----------
+        \draw[->, black!60, thick] (0,-6.6) -- node[right, font=\small] {$\varphi' \circ \varphi^{-1}$} (0,-8.4);
+        \draw[->, black!60, thick] (9,-6.6) -- node[right, font=\small] {$\psi' \circ \psi^{-1}$} (9,-8.4);
+
+        \end{tikzpicture}
+        \end{center}
+        \newpage
+        \begin{osservazione}[\textcolor{violet}{Sono coerenti le definizioni per $f \colon M \to \mathbb{R}$?}]
         \mbox{}
 
-        Sia $f \colon M \to \mathbb{R}$ funzione differenziabile (nel senso della precedente definizione). Considerata su $\mathbb{R}$ la struttura differenziabile standard definita dalla carta $(\mathbb{R}, i_{\mathbb{R}})$, risulta
+        Sia $f \colon M \to \mathbb{R}$ funzione differenziabile (nel senso della precedente definizione \textcolor{violet}{\ref{def:funzione_differenziabile_definita_su_una_varieta}}). 
+        
+        Considerata su $\mathbb{R}$ la struttura differenziabile standard definita dalla carta $(\mathbb{R}, i_{\mathbb{R}})$, risulta
 
         \[
         f \text{ è differenziabile} \iff
@@ -1553,9 +1717,7 @@
         \]
         che coincide con la definizione di applicazione differenziabile $f \colon M \to \mathbb{R}$ data in precedenza.
         \end{osservazione}
-
-    \section{Proprietà topologiche delle varietà differenziabili}
-
+        \newpage
         Enunciamo e dimostriamo alcune proprietà relative ad applicazioni differenziabili:
 
         \begin{proposizione}
@@ -1579,7 +1741,13 @@
         \end{proposizione}
 
         \begin{proof}
-        Sia $c \colon M \to N$ applicazione costante di costante valore $q \in N$. Sia $p \in M$, sia $(U, \varphi)$ carta locale di $M$ con $p \in U$ e sia $(V, \psi)$ carta locale di $N$ con $q \in V$. Allora $c(U) = \{q\} \subset V$ e $\psi \circ c \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ è l'applicazione costante di costante valore $\psi(q)$, che è differenziabile.
+        \mbox{}
+
+        Sia $c \colon M \to N$ applicazione costante di costante valore $q \in N$ e sia $p \in M$, sia $(U, \varphi)$ carta locale di $M$ 
+        con $p \in U$ e sia $(V, \psi)$ carta locale di $N$ con $q \in V$. 
+        
+        Allora $c(U) = \{q\} \subset V$ e $\psi \circ c \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ è l'applicazione costante di costante valore $\psi(q)$
+        che \textcolor{violet}{(dall'esempio \ref{es:funzioni_costanti_differenziabili})} è differenziabile.
         \end{proof}
 
         \begin{proposizione}
@@ -1589,6 +1757,8 @@
         \end{proposizione}
 
         \begin{proof}
+        \mbox{}
+
         Sia $p \in M$ e sia $(U, \varphi)$ carta di $M$ con $p \in U$. Poiché $i_M(U) = U$, si ha
         \[
         \varphi \circ i_M \circ \varphi^{-1} = i_{\varphi(U)} \colon \varphi(U) \to \varphi(U),
@@ -1603,13 +1773,15 @@
         \end{proposizione}
 
         \begin{proof}
-        Sia $p \in A$ e sia $(U, \varphi)$ carta locale di $M$ tale che $p \in U \subset A$. Poiché $(U, \varphi)$ è anche carta locale di $A$ in $p$, si ha
+        \mbox{}
+
+        Sia $p \in A$ e sia $(U, \varphi)$ carta locale di $M$ tale che $p \in U \subset A$ e poiché $(U, \varphi)$ è anche carta locale di $A$ in $p$, si ha
         \[
         \varphi \circ j \circ \varphi^{-1} = i_{\varphi(U)} \colon \varphi(U) \to \varphi(U),
         \]
         che è differenziabile.
         \end{proof}
-
+        \newpage
         \begin{proposizione}
         \mbox{}
 
@@ -1617,15 +1789,22 @@
         \end{proposizione}
 
         \begin{proof}
-        Supponiamo $\dim M = m$, $\dim N = n$, $\dim Q = q$. Sia $p \in M \implies F(p) \in N$. Essendo \textcolor{orange}{$G$ differenziabile}, $\exists (V, \psi)$ carta locale di $N$ con $F(p) \in V$ e $\exists (W, \theta)$ carta locale di $Q$ con $G(V) \subset W$ tali che
+        \mbox{}
+
+        Supponiamo $\dim M = m$, $\dim N = n$, $\dim Q = q$. Sia $p \in M \implies F(p) \in N$. 
+        
+        Essendo \textcolor{orange}{$G$ differenziabile}, $\exists (V, \psi)$ carta locale di $N$ con $F(p) \in V$ e $\exists (W, \theta)$ carta locale di $Q$ con $G(V) \subset W$ tali che
         \[
-        \theta \circ G \circ \psi^{-1} \colon \psi(V) \subset \mathbb{R}^n \to \theta(W) \subset \mathbb{R}^q
+        \theta \circ G \circ \psi^{-1} \colon \psi(V) \subset \mathbb{R}^n \to \theta(W) \subset \mathbb{R}^q \text{ è differenziabile}
         \]
-        è differenziabile. Poiché \textcolor{orange}{$F$ è continua} e $V$ è intorno aperto di $F(p)$ in $N$, segue che $F^{-1}(V)$ è intorno aperto di $p$ in $M$, quindi $\exists (U, \varphi)$ carta locale di $M$ tale che $p \in U \subset F^{-1}(V)$, da cui $F(U) \subset F(F^{-1}(V)) \subset V$. Essendo \textcolor{orange}{$F$ differenziabile},
+        Poiché \textcolor{orange}{$F$ è continua} e $V$ è intorno aperto di $F(p)$ in $N$, segue che $F^{-1}(V)$ è intorno aperto di $p$ in $M$
+        quindi $\exists (U, \varphi)$ carta locale di $M$ tale che $p \in U \subset F^{-1}(V)$, da cui $F(U) \subset F(F^{-1}(V)) \subset V$. 
+        
+        Essendo \textcolor{orange}{$F$ differenziabile}
         \[
-        \psi \circ F \circ \varphi^{-1} \colon \varphi(U) \subset \mathbb{R}^m \to \psi(V) \subset \mathbb{R}^n
+        \psi \circ F \circ \varphi^{-1} \colon \varphi(U) \subset \mathbb{R}^m \to \psi(V) \subset \mathbb{R}^n \text{ è differenziabile}
         \]
-        è differenziabile. Con $(U, \varphi)$ carta locale di $M$ con $p \in U$ e $(W, \theta)$ carta locale di $Q$, si ha $(G \circ F)(U) = G(F(U)) \subset G(V) \subset W$ e
+        Con $(U, \varphi)$ carta locale di $M$ con $p \in U$ e $(W, \theta)$ carta locale di $Q$, si ha $(G \circ F)(U) = G(F(U)) \subset G(V) \subset W$ e
         \[
         \theta \circ (G \circ F) \circ \varphi^{-1} = (\theta \circ G \circ \psi^{-1}) \circ (\psi \circ F \circ \varphi^{-1}) \colon \varphi(U) \to \theta(W)
         \]
@@ -1639,8 +1818,12 @@
         \end{proposizione}
 
         \begin{proof}
-        Si ha $F|_A = F \circ j$, essendo $j \colon A \to M$ l'iniezione canonica. Pertanto $F|_A$ è differenziabile, in quanto composta di applicazioni differenziabili.
+        \mbox{}
+
+        Si ha $F|_A = F \circ j$, essendo $j \colon A \to M$ l'iniezione canonica. 
+        
+        Pertanto $F|_A$ è differenziabile, in quanto composta di applicazioni differenziabili.
         \end{proof}
-    
+    \section{Proprietà topologiche delle varietà differenziabili}
     \section{Partizione dell'unità}
     \section{Funzioni bump su varietà differenziabili}
