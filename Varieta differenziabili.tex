@@ -1738,11 +1738,21 @@
         \end{proposizione}
 
         \begin{proof}
-        Sia $p \in M$. $\exists (U, \varphi)$ carta locale di $M$ tale che $p \in U$ e $\exists (V, \psi)$ carta locale di $N$ tale che $F(U) \subset V$, tali che \textcolor{orange}{$\psi \circ F \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ è differenziabile}. In particolare $\psi \circ F \circ \varphi^{-1}$ è continua. Considerando la composizione
+        \mbox{}
+
+        Sia $p \in M$. $\exists (U, \varphi)$ carta locale di $M$ tale che $p \in U$ e $\exists (V, \psi)$ carta locale di $N$ tale che $F(U) \subset V$ tali
+         che \textcolor{orange}{$\psi \circ F \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ è differenziabile} \textcolor{violet}{(tra un aperto di $\mathbb{R}^n$ e un aperto di $\mathbb{R}^m$)}. 
+        
+        In particolare $\psi \circ F \circ \varphi^{-1}$ è continua e considerando la composizione 
         \[
-        \varphi(U) \xrightarrow{\varphi^{-1}} U \xrightarrow{F|_U} V \xrightarrow{\psi} \psi(V),
+       \color{celeste} U \xrightarrow[\textcolor{violet}{\text{omeomorfismo}}]{\varphi} \varphi(U) \xrightarrow[\textcolor{violet}{\text{continua}}]{\, \psi \, \circ \, F \circ \, \varphi^{-1} \,} \psi(V) \xrightarrow[\textcolor{violet}{\text{omeomorfismo}}]{\psi^{-1}} V
         \]
-        segue che $\psi^{-1} \circ (\psi \circ F \circ \varphi^{-1}) \circ \varphi$ è continua, essendo $\psi$ e $\varphi$ omeomorfismi. Dunque $F|_U \colon U \to V$ è continua, da cui $F|_U \colon U \to N$ è continua. Si è dunque provato che $\forall p \in M \ \exists U$ intorno aperto di $p$ tale che $F|_U \colon U \to N$ è continua, e quindi $F$ è continua.
+        segue che $\psi^{-1} \circ (\psi \circ F \circ \varphi^{-1}) \circ \varphi$ è continua, essendo $\psi$ e $\varphi$ omeomorfismi. 
+        
+        Dunque $F|_U \colon U \to V$ è continua $\overset{\textcolor{violet}{\substack{\text{l'ingezione canonica} \\j \colon V \hookrightarrow N \text{ è continua} \\
+        F|_U \colon U \to N = j \circ (F|_U \colon U \to V) }}}{\Longrightarrow} F|_U \colon U \to N$ è continua.
+        
+        Si è dunque provato che $\forall p \in M \ \exists U$ intorno aperto di $p$ tale che $F|_U \colon U \to N$ è continua, e quindi $F$ è continua.
         \end{proof}
 
         \begin{proposizione}
@@ -1754,13 +1764,16 @@
         \begin{proof}
         \mbox{}
 
-        Sia $c \colon M \to N$ applicazione costante di costante valore $q \in N$ e sia $p \in M$, sia $(U, \varphi)$ carta locale di $M$ 
+        Sia $c \colon M \to N$ applicazione costante di costante valore $q \in N$ \textcolor{violet}{$c(M)=\left\{ q \right\}$}
+        
+        Sia $p \in M$, sia $(U, \varphi)$ carta locale di $M$ 
         con $p \in U$ e sia $(V, \psi)$ carta locale di $N$ con $q \in V$. 
         
-        Allora $c(U) = \{q\} \subset V$ e $\psi \circ c \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ è l'applicazione costante di costante valore $\psi(q)$
+        Allora $c(U) = \{q\} \subset V$ e 
+        $\psi \circ c \circ \varphi^{-1} \colon \varphi(U) \to \psi(V)$ è l'applicazione costante di costante valore $\psi(q)$
         che \textcolor{violet}{(dall'esempio \ref{es:funzioni_costanti_differenziabili})} è differenziabile.
         \end{proof}
-
+        %Lezione 15 p2 29min
         \begin{proposizione}
         \mbox{}
 
@@ -1770,13 +1783,13 @@
         \begin{proof}
         \mbox{}
 
-        Sia $p \in M$ e sia $(U, \varphi)$ carta di $M$ con $p \in U$. Poiché $i_M(U) = U$, si ha
+        Sia $p \in M$ e sia $(U, \varphi)$ carta di $M$ con $p \in U$ poiché $i_M(U) = U$, si ha
         \[
         \varphi \circ i_M \circ \varphi^{-1} = i_{\varphi(U)} \colon \varphi(U) \to \varphi(U),
         \]
         che è differenziabile.
         \end{proof}
-
+        \newpage
         \begin{proposizione}
         \mbox{}
 
@@ -1792,7 +1805,7 @@
         \]
         che è differenziabile.
         \end{proof}
-        \newpage
+        
         \begin{proposizione}
         \mbox{}
 
