@@ -1611,6 +1611,9 @@
         \textcolor{red}{$\forall (U', \varphi')$  carta locale di $ M \ \forall (V', \psi')$  carta locale di $N$ tale che $F(U') \subset V'$}
         l'applicazione \textcolor{red}{$\psi' \circ F \circ \varphi'^{\, -1}$} $\colon \varphi'(U') \to \psi'(V')$ è differenziabile.
         \end{proposizione}
+        \begin{proof}
+        non fatta a lezione
+        \end{proof}
         \begin{center}
         \begin{tikzpicture}[>=stealth, thick, scale=0.8]
 
@@ -1706,13 +1709,21 @@
 
         Sia $f \colon M \to \mathbb{R}$ funzione differenziabile (nel senso della precedente definizione \textcolor{violet}{\ref{def:funzione_differenziabile_definita_su_una_varieta}}). 
         
-        Considerata su $\mathbb{R}$ la struttura differenziabile standard definita dalla carta $(\mathbb{R}, i_{\mathbb{R}})$, risulta
+        Considerata su $\mathbb{R}$ la struttura differenziabile standard definita dalla carta $(\mathbb{R}, i_{\mathbb{R}})$ risulta
 
         \[
-        f \text{ è differenziabile} \iff
+        \begin{aligned}
+        f \text{ è differenziabile} &\iff
         \begin{aligned}[t]
-        &\forall p \in M \ \exists (U, \varphi) \text{ carta locale t.c. } p \in U \ (\exists (\mathbb{R}, i_{\mathbb{R}}) \text{ carta di } \mathbb{R}) \\
+        \forall p \in M \quad & \exists (U, \varphi) \text{ carta locale di $M$ t.c. } p \in U \\ 
+        &\exists (\mathbb{R}, i_{\mathbb{R}}) \text{ carta di } \mathbb{R} \text{ t.c. } f(U) \subset \mathbb{R} \\
         &\text{t.c. } \underbrace{i_{\mathbb{R}} \circ f \circ \varphi^{-1}}_{= f \circ \varphi^{-1}} \colon \varphi(U) \to \mathbb{R} \text{ è differenziabile}
+        \end{aligned} \\[1.2em] 
+        &\iff 
+        \begin{aligned}[t] 
+        \forall p \in M \quad & \exists (U, \varphi) \text{ carta locale di } M \text{ t.c. } p \in U \\
+        &\text{tale che } f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R} \text{ è differenziabile}
+        \end{aligned}
         \end{aligned}
         \]
         che coincide con la definizione di applicazione differenziabile $f \colon M \to \mathbb{R}$ data in precedenza.
