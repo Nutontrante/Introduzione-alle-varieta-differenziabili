@@ -1235,16 +1235,18 @@
 
         Sia $M$ varietà differenziabile $\dim M =n \geq 1$ e sia \textcolor{red}{$f \colon M \to \mathbb{R}$} si dice che
         $f$ è \textcolor{red}{differenziabile} se \textcolor{red}{$\forall p \in M \quad \exists (U, \varphi)$ carta locale
-        tale che $p \in U$ e $f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile}
+        tale che $p \in U$} e \textcolor{red}{$f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile} 
+
+        \textcolor{violet}{per $f$ si intende $f|_U$ non lo scriviamo esplicitamente per non rendere pesante la scrittura}
         \end{definizione}
         \begin{osservazione}
         \mbox{}
-
-        $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^n$ è omeomorfismo.
+        
+        \textcolor{violet}{$(U, \varphi)$ è una carta $\Rightarrow$} $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^n$ è omeomorfismo \textcolor{violet}{quindi la sua inversa}.
         \[
         \varphi(U) \xrightarrow{\quad \varphi^{-1} \quad } U \xrightarrow{\quad \textcolor{hotpink}{f} \quad } \mathbb{R}
         \]
-        (dove con \textcolor{hotpink}{$f$} si sta denotando la restrizione \textcolor{hotpink}{$f_{\restriction{U}}$}).
+        (dove con \textcolor{hotpink}{$f$} si sta denotando la restrizione \textcolor{hotpink}{$f|_U$}).
         \end{osservazione}
 
         La definizione di funzione differenziabile dipende dalla struttura differenziabile, non dalla scelta della carta locale. 
@@ -1254,7 +1256,7 @@
         \begin{proposizione}
         \mbox{}
 
-        Sia $M$ varietà differenziabile. Sia $f \colon M \to \mathbb{R}$ funzione differenziabile. Allora
+        Sia $M$ varietà differenziabile e sia $f \colon M \to \mathbb{R}$ funzione differenziabile si ha:
         \[
         \textcolor{red}{\forall p \in M \ \forall (U', \varphi') \text{ carta locale tale che } p \in U' \text{ la funzione } f \circ \varphi'^{-1} \colon \varphi'(U') \to \mathbb{R} \text{ è differenziabile.}}
         \]
@@ -1263,28 +1265,101 @@
         \begin{proof}
         \mbox{}
         
-        Sia $p \in M$. Sia $(U', \varphi')$ carta locale tale che $p \in U'$. Verifichiamo che
-        \[
-        f \circ \varphi'^{-1} \colon \varphi'(U') \to \mathbb{R}
-        \]
-        è differenziabile.
-
-        Sia $x = \varphi'(q) \in \varphi'(U')$ con $q \in U'$. 
+        Sia $p \in M$ e sia $(U', \varphi')$ carta locale tale che $p \in U'$. 
         
-        Poiché \textcolor{orange}{$f \colon M \to \mathbb{R}$ è differenziabile} $\exists (U, \varphi)$ carta locale tale che $q \in U$ e $f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile.
+        Verifichiamo che $f \circ \varphi'^{-1} \colon \varphi'(U') \to \mathbb{R}$ è differenziabile.
+
+        Sia \textcolor{red}{$x = \varphi'(q)$} $\in \varphi'(U')$ con $q \in U'$ \textcolor{violet}{applichiamo a questo punto $q$ la definizione di funzione differenziabile} 
+        
+        Poiché \textcolor{orange}{$f \colon M \to \mathbb{R}$ è differenziabile} $\exists (U, \varphi)$ carta locale tale che $q \in U$ e
+        \textcolor{orange}{$f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$} è differenziabile.
         \begin{align*}
-        q \in U \cap U' &\implies U \cap U' \ne \emptyset \\
-        &\implies \varphi \circ \varphi'^{-1} \colon \varphi'(U \cap U') \to \varphi(U \cap U') \text{ è un diffeomorfismo.}
+        q \in U \cap U' &\Rightarrow U \cap U' \ne \emptyset \\
+        &\overset{\textcolor{violet}{\substack{\text{le carte } (U, \varphi) \text{ e }  (U', \varphi') \\  \text{ sono carte locali che stanno} \\ \text{nello stesso atlante diff. massimale} \\
+        \text{quindi sono diff. compatibili} }}}{\Rightarrow} \textcolor{amber}{\varphi \circ \varphi'^{-1} \colon \varphi'(U \cap U') \to \varphi(U \cap U') \text{ è un diffeomorfismo.}}
         \end{align*}
         Considerando la composizione
         \[
-        \varphi'(U \cap U') \xrightarrow{\varphi \circ \varphi'^{-1}} \varphi(U \cap U') \subset \varphi(U) \xrightarrow{f \circ \varphi^{-1}} \mathbb{R},
+        \color{celeste} \varphi'(U \cap U') \xrightarrow{\textcolor{amber}{\varphi \circ \varphi'^{-1}}} \varphi(U \cap U') \subset \varphi(U) \xrightarrow{\textcolor{orange}{f \circ \varphi^{-1}}} \mathbb{R},
         \]
-        si ha che $(f \circ \varphi^{-1}) \circ (\varphi \circ \varphi'^{-1}) = f \circ \varphi'^{-1} \colon \varphi'(U \cap U') \to \mathbb{R}$, dunque $f \circ \varphi'^{-1}$ è differenziabile in $\varphi'(U \cap U')$, che è intorno aperto di $x = \varphi'(q)$ in $\varphi'(U')$. 
+        si ha che \textcolor{celeste}{$(f \circ \varphi^{-1}) \circ (\varphi \circ \varphi'^{-1}) = f \circ \varphi'^{-1} \colon \varphi'(U \cap U') \to \mathbb{R}$} dunque
+         $f \circ \varphi'^{-1}$ è differenziabile in $\varphi'(U \cap U')$ che è intorno aperto di $x = \varphi'(q)$ in $\varphi'(U')$. 
         
-        Data l'arbitrarietà di $x$, $f \circ \varphi'^{-1}$ è differenziabile in tutto l'aperto $\varphi'(U')$.
+        Data l'arbitrarietà di $x \Rightarrow f \circ \varphi'^{-1}$ è differenziabile in tutto l'aperto $\varphi'(U')$.
         \end{proof}
+        \begin{center}
+        \begin{tikzpicture}[>=stealth, scale=1]
 
+        % ---------- Varietà M ----------
+        \draw[blue, thick] (2.5,5.2) .. controls (1.2,5.4) and (1.0,4.2) .. (1.8,3.9)
+        .. controls (2.6,3.6) and (3.2,3.4) .. (3.6,2.8)
+        .. controls (4.2,2.0) and (5.4,1.8) .. (6.2,2.4)
+        .. controls (7.2,3.2) and (7.2,5.4) .. (5.8,6.0)
+        .. controls (4.6,6.4) and (3.4,5.4) .. (2.5,5.2);
+        \node[blue] at (1.5,6.3) {$M$};
+
+        % ---------- Aperti U' e U ----------
+        \def\Up{(3.3,4.5) ellipse (0.8 and 0.5)}
+        \def\U{(4.0,4.2) ellipse (0.9 and 0.6)}
+
+        \fill[green!50!black, opacity=0.4] \Up;
+        \fill[hotpink, opacity=0.12] \U;
+        \draw[green!50!black] \Up;
+        \draw[hotpink] \U;
+
+        % intersezione vera (area comune ai due ellissi)
+        \begin{scope}
+        \clip \Up;
+        \fill[red, opacity=0.2] \U;
+        \end{scope}
+        \begin{scope}
+        \clip \Up;
+        \draw[red, thick] \U;
+        \end{scope}
+        \begin{scope}
+        \clip \U;
+        \draw[red, thick] \Up;
+        \end{scope}
+
+        \fill[red] (3.7,4.4) circle (1pt) node[right, red, font=\scriptsize] {$q$};
+        \node[green!50!black] at (2.7,5) {$U'$};
+        \node[hotpink] at (4.9,3.6) {$U$};
+
+        % ---------- Carta phi'(U') ----------
+        \draw[green!50!black, thick] (0,0) rectangle (2.6,2.2);
+        \node[green!50!black] at (-0.9,2.5) {$\varphi'(U') \subset \mathbb{R}^n$};
+        \draw[red, thick, rounded corners=6pt] (0.25,0.25) rectangle (2.35,1.65);
+        \node[red, font=\scriptsize] at (1.4,1.9) {$\varphi'(U\cap U')$};
+        \fill[red] (1.3,1.15) circle (1pt);
+        \node[red, font=\scriptsize] at (1.3,0.7) {$x=\varphi'(q)$};
+
+        % ---------- Carta phi(U) ----------
+        \draw[hotpink, thick] (7,0) rectangle (9.6,2.2);
+        \node[hotpink] at (9.0,2.5) {$\varphi(U) \subset \mathbb{R}^n$};
+        \draw[red, thick, rounded corners=6pt] (7.25,0.25) rectangle (9.35,1.65);
+        \node[red, font=\scriptsize] at (8.3,1.9) {$\varphi(U\cap U')$};
+
+        % ---------- Frecce ----------
+        \draw[->, green!50!black] (3.0,4.0) to[bend right=15] node[left] {$\varphi'$} (1.3,2.3);
+        \draw[->, hotpink] (4.6,3.9) to[bend left=15] node[right] {$\varphi$} (8.0,2.3);
+
+        % cambio di carta
+        \draw[->, amber, thick] (2.35,1.15) -- node[above] {$\varphi\circ\varphi'^{-1}$} (7.25,1.15);
+
+        % f
+        \node at (10.5,5.8) {$\mathbb{R}$};
+        \draw[->, blue, thick] (5.6,5.8) to[bend left=10] node[above] {$f$} (10.1,5.8);
+
+        % f o phi^{-1}
+        \draw[->, orange, thick] (8.8,2.8) to[bend right=15] node[right] {$f\circ\varphi^{-1}$} (10.4,5.4);
+
+        % f o phi'^{-1}
+        \draw[->, celeste, thick] (1.2,1.1) to[bend left=25] node[left] {$f\circ\varphi'^{-1}$} (-0.5,6.8)
+        to[bend left=15] (10.0,6.6);
+
+        \end{tikzpicture}
+        \end{center}
+        \newpage
         \begin{proposizione}
         \mbox{}
 
