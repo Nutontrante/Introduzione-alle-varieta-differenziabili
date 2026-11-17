@@ -1287,6 +1287,15 @@
         
         Data l'arbitrarietà di $x \Rightarrow f \circ \varphi'^{-1}$ è differenziabile in tutto l'aperto $\varphi'(U')$.
         \end{proof}
+        \textcolor{violet}{Io sono su \textcolor{blu}{$M$} e considero $p \in M$ e $(U', \varphi')$ carta locale tale che $p \in U'$ e definisco}
+        
+        \textcolor{violet}{ \textcolor{red}{$x= \varphi'(q) \in \varphi(U')$} dove $q \in U'$
+        poi considero $f \colon M \to \mathbb{R}$ differenziabile stante la definizione per ogni punto $p \in M \quad \exists (U,\varphi)$
+        carta locale tale che $p \in U$ e \textcolor{orange}{$f \circ \varphi^{-1}$ è differenziabile} applico questa definizione a $q \in U' \cap U \Rightarrow U \cap U' \neq \emptyset$ le carte 
+        $(U, \varphi)$ e $(U' , \varphi')$ sono dff. compatibili $\Rightarrow$ \textcolor{amber}{$\varphi \circ \varphi'^{-1}$} è un diffeomorfismo
+        $\Rightarrow$ \textcolor{celeste}{$f \circ \varphi'^{-1}$} è diffeomorfismo}
+
+        \textcolor{violet}{Quindi la definizione di funzione differenziale non dipende dalla scelta della carta}
         \begin{center}
         \begin{tikzpicture}[>=stealth, scale=1]
 
@@ -1296,13 +1305,13 @@
         .. controls (4.2,2.0) and (5.4,1.8) .. (6.2,2.4)
         .. controls (7.2,3.2) and (7.2,5.4) .. (5.8,6.0)
         .. controls (4.6,6.4) and (3.4,5.4) .. (2.5,5.2);
-        \node[blue] at (1.5,6.3) {$M$};
+        \node[blue] at (1.5,5.3) {$M$};
 
         % ---------- Aperti U' e U ----------
         \def\Up{(3.3,4.5) ellipse (0.8 and 0.5)}
         \def\U{(4.0,4.2) ellipse (0.9 and 0.6)}
 
-        \fill[green!50!black, opacity=0.4] \Up;
+        \fill[green!50!black, opacity=0.12] \Up;
         \fill[hotpink, opacity=0.12] \U;
         \draw[green!50!black] \Up;
         \draw[hotpink] \U;
@@ -1327,7 +1336,7 @@
 
         % ---------- Carta phi'(U') ----------
         \draw[green!50!black, thick] (0,0) rectangle (2.6,2.2);
-        \node[green!50!black] at (-0.9,2.5) {$\varphi'(U') \subset \mathbb{R}^n$};
+        \node[green!50!black] at (-1.2,1.5) {$\varphi'(U') \subset \mathbb{R}^n$};
         \draw[red, thick, rounded corners=6pt] (0.25,0.25) rectangle (2.35,1.65);
         \node[red, font=\scriptsize] at (1.4,1.9) {$\varphi'(U\cap U')$};
         \fill[red] (1.3,1.15) circle (1pt);
@@ -1354,19 +1363,21 @@
         \draw[->, orange, thick] (8.8,2.8) to[bend right=15] node[right] {$f\circ\varphi^{-1}$} (10.4,5.4);
 
         % f o phi'^{-1}
-        \draw[->, celeste, thick] (1.2,1.1) to[bend left=25] node[left] {$f\circ\varphi'^{-1}$} (-0.5,6.8)
-        to[bend left=15] (10.0,6.6);
+        \draw[->, celeste, thick] (1.2,1.1) to[bend left=50] node[left] {$f\circ\varphi'^{-1}$} (-0.4,5.8)
+        to[bend left=25] (10.0,6.6);
 
         \end{tikzpicture}
         \end{center}
         \newpage
+        \textcolor{violet}{Le funzioni sono differenziabili $\iff$ lo sono localmente}
         \begin{proposizione}
+        \label{prop:funzione_differenziabile_definita_su_una_varieta_a_valori_reali_equivalenza_con_aperti}
         \mbox{}
 
-        Sia $M$ varietà differenziabile. Sia $f \colon M \to \mathbb{R}$. Allora sono equivalenti:
+        Sia $M$ varietà differenziabile e sia $f \colon M \to \mathbb{R}$ allora sono equivalenti:
         \begin{enumerate}
-            \item $f$ è differenziabile;
-            \item $\forall p \in M \ \exists A$ intorno aperto di $p$ tale che $f|_A \colon A \to \mathbb{R}$ è differenziabile \textcolor{blu}{(si considera su $A$ la struttura di sottovarietà aperta di $M$)}.
+            \item $f$ è differenziabile
+            \item $\forall p \in M \ \exists A$ intorno aperto di $p$ tale che $f|_A \colon A \to \mathbb{R}$ è differenziabile \textcolor{blu}{(si considera su $A$ la struttura di sottovarietà aperta di $M$)}
         \end{enumerate}
         \end{proposizione}
 
@@ -1375,75 +1386,106 @@
 
         $\mathbf{1 \Rightarrow 2)}$ 
         
-        Sia \textcolor{orange}{$f \colon M \to \mathbb{R}$ differenziabile} e sia $p \in M$. Allora $\exists (U, \varphi)$ carta locale di $M$ con $p \in U$ tale che $f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile. $U$ è intorno aperto di $p$ e $f|_U \colon U \to \mathbb{R}$ è differenziabile perché $(U, \varphi)$ è anche carta di $U$ e $f|_U \circ \varphi^{-1} = f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile.
+        Sia \textcolor{orange}{$f \colon M \to \mathbb{R}$ differenziabile} e sia $p \in M \Rightarrow \exists (U, \varphi)$ carta locale di $M$ con $p \in U$ tale che $f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile.
+        
+        $U$ è intorno aperto di $p$ e $f|_U \colon U \to \mathbb{R}$ è differenziabile perché 
+        $\forall q \in U \quad \exists (U, \varphi)$ carta locale \textcolor{violet}{(globale)} di $U$ con $q \in U$ tale che 
+        $f|_U \circ \varphi^{-1} = f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è differenziabile.
 
         $\mathbf{2 \Rightarrow 1)}$
         
         Sia $p \in M \overset{\textcolor{orange}{\text{ip. } 2}}{\Rightarrow}$ $\exists A$ intorno aperto di $p$ tale che $f|_A \colon A \to \mathbb{R}$ è differenziabile. 
         
-        Sia $(U, \varphi)$ carta locale di $M$ tale che $p \in U \subset A$ e poiché $(U, \varphi)$ è anche carta locale di $A$, segue che
+        $\overset{\textcolor{violet}{\substack{\text{prop. } \ref{prop:atlante_differenziabile_massimale_domini_delle_carte_ammettono_un_sistema_fondamentale_di_intorni} \text{ nella struttura } \\ \text{diff. i domini delle carte} \\\text{locali formano un sistema } \\ \text{fondamentale di intorni}}}}{\Rightarrow}
+         \exists (U, \varphi)$ carta locale di $M$ tale che $p \in U \subset A$ e poiché $(U, \varphi)$ è anche carta locale di $A$ \textcolor{violet}{(nella struttura differenziabile di $A$)} segue che
         \[
         f|_A \circ \varphi^{-1} = f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}
         \]
         è differenziabile $\Rightarrow f$ è differenziabile.
         \end{proof}
-
-        \begin{proposizione}
+        \textcolor{violet}{La proposizione \ref{prop:funzione_differenziabile_definita_su_una_varieta_a_valori_reali_equivalenza_con_aperti} perchè spesso per dimostrare
+        che una funzione è differenziabile su tutta la varietà dimostreremo che è differenziabile localmente in ogni punto}
+        \newpage
+        \begin{esempio}[Le funzioni coordinate locali sono differenziabili]
+        \label{es:funzioni_coordinate_locali_differenziabili}
         \mbox{}
 
-        Sia $M$ varietà differenziabile, $\dim M = n \ge 1$. Sia $(U, \varphi)$ carta locale. Siano $\textcolor{red}{x^1, \dots, x^n \colon U \to \mathbb{R}}$ le funzioni coordinate locali. Allora $\forall i = 1, \dots, n$,
+        Sia $M$ varietà differenziabile, $\dim M = n \ge 1$ e sia $(U, \varphi)$ carta locale. 
+        
+        Siano $\textcolor{red}{x^1, \dots, x^n \colon U \to \mathbb{R}}$ le funzioni coordinate locali \textcolor{violet}{($x^i=p_i \circ \varphi$)}
         \[
-        x^i \colon U \to \mathbb{R} \text{ è differenziabile.}
+        \color{red} \Rightarrow \forall i=1, \dots, n \quad x^i \colon U \to \mathbb{R} \text{ è differenziabile.}
         \]
-        \end{proposizione}
+        \end{esempio}
 
         \begin{proof}
-        Si ha $x^i = p_i \circ \varphi \colon U \to \mathbb{R}$. $\forall p \in U \ \exists (U, \varphi)$ carta locale di $U$ tale che $p \in U$ e
+        \mbox{}
+
+        $\forall p \in U \ \exists (U, \varphi)$ carta locale di $U$ tale che $p \in U$ e
         \[
         x^i \circ \varphi^{-1} = p_i \circ \varphi \circ \varphi^{-1} = p_i \colon \varphi(U) \to \mathbb{R}
         \]
         è differenziabile.
         \end{proof}
-
-        \begin{proposizione}
+        \begin{esempio}[Le funzioni costanti sono differenziabili]
+        \label{es:funzioni_costanti_differenziabili}
         \mbox{}
 
-        Sia $f \colon M \to \mathbb{R}$ funzione \textcolor{red}{costante} di costante valore $k$. Allora $f$ è differenziabile.
-        \end{proposizione}
+        Sia $f \colon M \to \mathbb{R}$ funzione \textcolor{red}{costante} di costante valore $k \Rightarrow f$ è differenziabile.
+        \end{esempio}
 
         \begin{proof}
         \mbox{} 
 
         Sia $p \in M$ e $(U, \varphi)$ carta locale tale che $p \in U$. 
         
-        Allora $f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è costante di costante valore $k$, e quindi differenziabile.
+        Allora $f \circ \varphi^{-1} \colon \varphi(U) \to \mathbb{R}$ è costante di costante valore $k$ e quindi differenziabile.
         \end{proof}
     \section{Strutture algebriche sull'insieme delle funzioni differenziabili \texorpdfstring{$\mathcal{F}(M)$}{\mathcal{F}(M)}}
+        \textcolor{violet}{Definire funzioni differenziabili su un'intera varietà non è sempre facile, mentre è più semplice definirle localmente, cioè su aperti. 
+        Data una carta $(U, \varphi)$, basta scegliere una funzione differenziabile $f$ sull'aperto $\varphi(U) \subseteq \mathbb{R}^n$: la composizione $f \circ \varphi \colon U \to \mathbb{R}$ è allora una funzione differenziabile su $U$.}
+
+        \textcolor{violet}{Il problema sorge quando si vuole costruire un oggetto globale infatti data una funzione differenziabile definita solo su un aperto della varietà, esiste
+        una funzione differenziabile su tutta la varietà che la estenda? In altre parole, vale un teorema di estensione? 
+        La risposta è sì, con qualche precisazione per dimostrarlo serve però uno strumento particolare: la \textbf{partizione dell'unità}, una famiglia buona di funzioni differenziabili con proprietà speciali
+        che si può costruire su una varietà.}
+
+        \textcolor{violet}{Quando affronteremo la partizione dell'unità apprezzeremo le ipotesi fatte per la definzione di varietà
+        cioè la richiesta che lo spazio topologico sia $T_2$ e a base numerabile che per adesso non abbiamo utilizzato.}
+
+        \textcolor{violet}{Introduciamo ora uno spazio di funzioni che ci tornerà utile}
+
         Sia $M$ varietà differenziabile, poniamo:
         \[
         \textcolor{red}{\mathcal{F}(M) = \{ f \colon M \to \mathbb{R} \mid f \text{ è differenziabile} \}}
         \]
+        \textcolor{violet}{Se prendo un insieme $X$ qualunque e considero tutte le funzioni da $\left\{  f \colon X \to \mathbb{R} \right\}$ questo nuovo insieme ha struttura algebrica di spazio vettoriale reale}
+
         Poniamo $\forall f, g \in \mathcal{F}(M)$ e $\forall \lambda \in \mathbb{R}$:
         \begin{align*}
-        \textcolor{red}{f + g} &\colon \textcolor{red}{M \to \mathbb{R}} & \forall p \in M \quad (f + g)(p) &= f(p) + g(p), \\
-        \textcolor{red}{\lambda \cdot f} &\colon \textcolor{red}{M \to \mathbb{R}} & \forall p \in M \quad (\lambda \cdot f)(p) &= \lambda \cdot f(p).
+        \color{red} f + g & \color{red}  \colon M \to \mathbb{R} & \color{red} \forall p \in M \quad (f + g)(p) & \color{red} = f(p) + g(p) \\
+        \color{red} \lambda \cdot f & \color{red} \colon M \to \mathbb{R} & \color{red} \forall p \in M \quad (\lambda \cdot f)(p) & \color{red} = \lambda \cdot f(p).
         \end{align*}
-        Si prova che $f + g$ e $\lambda f$ sono funzioni differenziabili. Pertanto restano definite le leggi di composizione
+        Si prova che $f + g$ e $\lambda f$ sono funzioni differenziabili pertanto restano definite le leggi di composizione
         \begin{align*}
         + &\colon \mathcal{F}(M) \times \mathcal{F}(M) \to \mathcal{F}(M), \\
         \boldsymbol{\cdot} &\colon \mathbb{R} \times \mathcal{F}(M) \to \mathcal{F}(M).
         \end{align*}
-        $\textcolor{red}{(\mathcal{F}(M), +, \cdot)}$ è uno spazio vettoriale reale. In particolare:
+        $\textcolor{red}{(\mathcal{F}(M), +, \cdot)}$ è \textcolor{red}{uno spazio vettoriale reale}. 
+        
+        In particolare:
         \begin{itemize}
-            \item l'elemento neutro per l'addizione è $\textcolor{red}{f_0 \colon M \to \mathbb{R}}$ tale che $\forall p \in M \ f_0(p) = 0$;
-            \item l'opposta di una funzione $f \in \mathcal{F}(M)$ è $\textcolor{red}{-f \colon M \to \mathbb{R}}$ tale che $\forall p \in M \ (-f)(p) = -f(p)$.
+            \item l'elemento neutro per l'addizione è $\textcolor{blu}{f_0 \colon M \to \mathbb{R}}$ tale che \textcolor{blu}{$\forall p \in M \ f_0(p) = 0$}
+            \item l'opposta di una funzione $f \in \mathcal{F}(M)$ è $\textcolor{blu}{-f \colon M \to \mathbb{R}}$ tale che  \textcolor{blu}{$\forall p \in M \ (-f)(p) = -f(p)$}
         \end{itemize}
 
         Su $\mathcal{F}(M)$ si può definire una ulteriore legge di composizione interna
         \[
-        \cdot \colon \mathcal{F}(M) \times \mathcal{F}(M) \to \mathcal{F}(M)
+        \boldsymbol{\cdot} \colon \mathcal{F}(M) \times \mathcal{F}(M) \to \mathcal{F}(M)
         \]
-        tale che $\forall f, g \in \mathcal{F}(M)$, $\textcolor{red}{f \cdot g \colon M \to \mathbb{R}}$ soddisfa $\forall p \in M \ (f \cdot g)(p) = f(p) \cdot g(p)$ \textcolor{violet}{(verificare che $f \cdot g$ è differenziabile)}.
+        tale che $\forall f, g \in \mathcal{F}(M)$ $\textcolor{red}{f \cdot g \colon M \to \mathbb{R}}$ soddisfa \textcolor{red}{$\forall p \in M \ (f \cdot g)(p) = f(p) \cdot g(p)$} 
+        
+        \textcolor{violet}{(verificare che $f \cdot g$ è differenziabile)}.
 
         La legge di composizione interna $\cdot$ è bilineare, ovvero $\forall f, g, h \in \mathcal{F}(M)$ e $\forall \lambda \in \mathbb{R}$:
         \begin{align*}
@@ -1451,15 +1493,18 @@
         (g + h) \cdot f &= g \cdot f + h \cdot f, \\
         f \cdot (\lambda g) &= \lambda \cdot (f \cdot g) = (\lambda \cdot f) \cdot g.
         \end{align*}
-        Pertanto $\textcolor{red}{(\mathcal{F}(M), +, \cdot, \cdot)}$ è un'\textcolor{red}{algebra reale}, la quale risulta essere:
+        Pertanto $\textcolor{red}{(\mathcal{F}(M), +, \, \cdot \, , \, \cdot \,)}$ è un'\textcolor{red}{algebra reale}, la quale risulta essere:
         \begin{itemize}
-            \item \textcolor{red}{associativa}: $(f \cdot g) \cdot h = f \cdot (g \cdot h)$;
-            \item \textcolor{red}{commutativa}: $f \cdot g = g \cdot f$;
-            \item \textcolor{red}{unitaria}: $f_1 \cdot f = f = f \cdot f_1$, dove $f_1 \colon M \to \mathbb{R}$ è tale che $\forall p \in M \ f_1(p) = 1$.
+            \item \textcolor{blu}{associativa}: $(f \cdot g) \cdot h = f \cdot (g \cdot h)$;
+            \item \textcolor{blu}{commutativa}: $f \cdot g = g \cdot f$;
+            \item \textcolor{blu}{unitaria}: $f_1 \cdot f = f = f \cdot f_1$ dove $f_1 \colon M \to \mathbb{R}$ è tale che $\forall p \in M \ f_1(p) = 1$.
         \end{itemize}
 
-        Considerando le sole due leggi di composizione interna, $\textcolor{red}{(\mathcal{F}(M), +, \cdot)}$ risulta essere \textcolor{red}{anello commutativo unitario} \textcolor{blu}{($(\mathcal{F}(M), +)$ gruppo abeliano e $\cdot$ è associativa e distributiva $\implies$ anello)}.
-        \section{Applicazioni tra varietà differenziabili}
+        Considerando le sole due leggi di composizione interna,
+        $\textcolor{red}{(\mathcal{F}(M), +, \cdot)}$ risulta essere \textcolor{red}{anello commutativo unitario} 
+        
+        \textcolor{blu}{($(\mathcal{F}(M), +)$ gruppo abeliano e $\boldsymbol{\cdot}$ è associativa e distributiva $\Rightarrow$ anello)}
+    \section{Applicazioni tra varietà differenziabili}
         \begin{definizione}
         \mbox{}
 
