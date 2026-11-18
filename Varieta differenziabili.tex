@@ -2045,6 +2045,110 @@
         \]
         \end{esempio}
     \section{Diffeomorfismi tra varietà}
+        \begin{definizione}
+        \mbox{}
+
+        Siano $M, N$ varietà differenziabili. Sia $\textcolor{red}{F \colon M \to N}$ applicazione.
+
+        Si dice che $F$ è un \textcolor{red}{diffeomorfismo} se $\textcolor{red}{F \text{ è differenziabile e bigettiva e } F^{-1} \colon N \to M \text{ è differenziabile}}$.
+        \end{definizione}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Ogni diffeomorfismo $F \colon M \to N$ è omeomorfismo \textcolor{blu}{(perché è stato provato che un'applicazione differenziabile è continua)}.
+        \end{proposizione}
+
+        \begin{proposizione}
+        \mbox{}
+
+        Se $F \colon M \to N$ è un diffeomorfismo, allora $\dim M = \dim N$.
+        \end{proposizione}
+
+        \begin{proof}
+        \mbox{}
+
+        Poniamo $\dim M = m$, $\dim N = n$.
+
+        Sia $p \in M$ e sia $q = F(p)$.
+
+        Sia $(U, \varphi)$ carta di $M$ con $p \in U$.
+
+        Sia $(V, \psi)$ carta di $N$ con $q \in V$.
+
+        $F$ è omeomorfismo $\Rightarrow F(U)$ è aperto in $N$.
+
+        A meno di restringere $V$ si può supporre $F(U) = V$.
+
+        \textcolor{orange}{$F \colon M \to N$ è differenziabile}
+        \[
+        \Rightarrow \psi \circ F \circ \varphi^{-1} \colon \varphi(U) \subset \mathbb{R}^m \longrightarrow \psi(V) \subset \mathbb{R}^n \quad \text{è differenziabile.}
+        \]
+
+        \textcolor{orange}{$F^{-1} \colon N \to M$ è differenziabile} $F^{-1}(V) = U$
+        \[
+        \Rightarrow \varphi \circ F^{-1} \circ \psi^{-1} \colon \psi(V) \subset \mathbb{R}^n \longrightarrow \varphi(U) \subset \mathbb{R}^m \quad \text{è differenziabile.}
+        \]
+        Inoltre $\varphi \circ F^{-1} \circ \psi^{-1} = (\psi \circ F \circ \varphi^{-1})^{-1}$.
+
+        Pertanto $G := \psi \circ F \circ \varphi^{-1} \colon \varphi(U) \subset \mathbb{R}^m \longrightarrow \psi(V) \subset \mathbb{R}^n$ è diffeomorfismo 
+
+        $\Rightarrow \forall x \in \varphi(U)$ $(dG)_x \colon \mathbb{R}^m \to \mathbb{R}^n$ è isomorfismo $\Rightarrow m = n$.
+        \end{proof}
+        \newpage
+        \begin{osservazione}
+        \mbox{}
+
+        \begin{enumerate}
+            \item $i_M \colon M \to M$ è diffeomorfismo.
+            \item Se $F \colon M \to N$ è diffeomorfismo, $F^{-1} \colon N \to M$ è diffeomorfismo.
+            \item Se $F \colon M \to N$ e $G \colon N \to Q$ sono diffeomorfismi, allora $G \circ F \colon M \to Q$ è diffeomorfismo $\bigl((G \circ F)^{-1} = F^{-1} \circ G^{-1}\bigr)$.
+            \item Se $(U, \varphi)$ è carta locale di $M$, allora $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^n$ è diffeomorfismo.
+
+            Infatti:
+            \begin{itemize}
+                \item $\varphi \colon U \to \varphi(U)$ è bigettiva;
+                \item $\varphi \colon U \to \varphi(U)$ è differenziabile perché $\forall p \in U$, $\exists (U, \varphi)$ carta locale di $U$ con $p \in U$ e $\exists (\varphi(U), i_{\varphi(U)})$ carta locale di $\varphi(U)$ tali che
+                \[
+                i_{\varphi(U)} \circ \varphi \circ \varphi^{-1} = i_{\varphi(U)} \colon \varphi(U) \to \varphi(U) \quad \text{è differenziabile;}
+                \]
+                \item analogamente, $\varphi^{-1} \colon \varphi(U) \to U$ è differenziabile perché
+                \[
+                \varphi \circ \varphi^{-1} \circ i_{\varphi(U)} = i_{\varphi(U)} \quad \text{è differenziabile.}
+                \]
+            \end{itemize}
+        \end{enumerate}
+        \end{osservazione}
+
+        \begin{esempio}
+        Su $\mathbb{R}$ si considerino i due atlanti
+        \[
+        \mathcal{A} = \{(\mathbb{R}, i_{\mathbb{R}})\}, \qquad \mathcal{A}' = \{(\mathbb{R}, \psi)\}
+        \]
+        dove $\psi \colon \mathbb{R} \to \mathbb{R}$, $\psi(x) = x^3$.
+
+        È stato visto che $\mathcal{A}$ e $\mathcal{A}'$ definiscono strutture differenziabili diverse perché le due carte $(\mathbb{R}, i_{\mathbb{R}})$ e $(\mathbb{R}, \psi)$ non sono differenziabilmente compatibili.
+
+        Consideriamo ora l'applicazione
+        \[
+        F \colon (\mathbb{R}, \mathcal{A}) \longrightarrow (\mathbb{R}, \mathcal{A}')
+        \]
+        tale che $\forall x \in \mathbb{R}$, $F(x) = \sqrt[3]{x}$.
+
+        Verifichiamo che $F$ è un diffeomorfismo.
+
+        Infatti:
+        \[
+        \psi \circ F \circ i_{\mathbb{R}} \colon \mathbb{R} \longrightarrow \mathbb{R}, \qquad x \longmapsto \psi(F(x)) = x
+        \]
+        è differenziabile $\implies F$ è differenziabile.
+
+        Per l'inversa $F^{-1} \colon (\mathbb{R}, \mathcal{A}') \longrightarrow (\mathbb{R}, \mathcal{A})$:
+        \[
+        i_{\mathbb{R}} \circ F^{-1} \circ \psi^{-1} \colon \mathbb{R} \longrightarrow \mathbb{R}, \qquad x \longmapsto F^{-1}(\psi^{-1}(x)) = x
+        \]
+        è differenziabile $\implies F^{-1}$ è differenziabile.
+        \end{esempio}
     \section{Proprietà topologiche delle varietà differenziabili}
     \section{Partizione dell'unità}
     \section{Funzioni bump su varietà differenziabili}
