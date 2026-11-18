@@ -1732,6 +1732,7 @@
         Enunciamo e dimostriamo alcune proprietà relative ad applicazioni differenziabili:
 
         \begin{proposizione}
+        \label{prop:applicazione_differenziabile_tra_varieta_continua}
         \mbox{}
 
         Ogni applicazione differenziabile $\textcolor{red}{F \colon M \to N}$ è \textcolor{red}{continua}.
@@ -1783,7 +1784,7 @@
         \begin{proof}
         \mbox{}
 
-        Sia $p \in M$ e sia $(U, \varphi)$ carta di $M$ con $p \in U$ poiché $i_M(U) = U$, si ha
+        Sia $p \in M$ e sia $(U, \varphi)$ carta di $M$ con $p \in U$ poiché $i_M(U) = U$ si ha:
         \[
         \varphi \circ i_M \circ \varphi^{-1} = i_{\varphi(U)} \colon \varphi(U) \to \varphi(U),
         \]
@@ -1791,15 +1792,21 @@
         \end{proof}
         \newpage
         \begin{proposizione}
+        \label{prop:ingezione_canonica_tra_aperto_e_varieta_differenziabile}
         \mbox{}
 
-        Se $A \subset M$ è un aperto di $M$, l'iniezione canonica $\textcolor{red}{j \colon A \to M}$ è differenziabile.
+        Se $A \subset M$ è un aperto di $M$ \textcolor{blu}{($A$ sottovarietà aperta di $M$)} l'ingezione canonica $\textcolor{red}{j \colon A \to M}$ 
+        \textcolor{red}{$p \mapsto p$} è differenziabile.
         \end{proposizione}
 
         \begin{proof}
         \mbox{}
 
-        Sia $p \in A$ e sia $(U, \varphi)$ carta locale di $M$ tale che $p \in U \subset A$ e poiché $(U, \varphi)$ è anche carta locale di $A$ in $p$, si ha
+        Sia $p \in A$ e sia $(U, \varphi)$ carta locale di $M$ tale che $p \in U \subset A$ e
+        
+        $(U, \varphi)$ è anche carta locale di $A$ in $p$
+
+        $(U, \varphi)$ è carta locale di $M$ in con $j(U) \subset U$
         \[
         \varphi \circ j \circ \varphi^{-1} = i_{\varphi(U)} \colon \varphi(U) \to \varphi(U),
         \]
@@ -1807,47 +1814,218 @@
         \end{proof}
         
         \begin{proposizione}
+        \label{prop:composizione_di_app_diff_tra_varietà_diff}
         \mbox{}
 
-        Se $\textcolor{red}{F \colon M \to N}$ e $\textcolor{red}{G \colon N \to Q}$ sono differenziabili, allora $\textcolor{red}{G \circ F \colon M \to Q}$ è differenziabile.
+        Se $\textcolor{red}{F \colon M \to N}$ e $\textcolor{red}{G \colon N \to Q}$ sono differenziabili allora $\textcolor{red}{G \circ F \colon M \to Q}$ è differenziabile.
         \end{proposizione}
 
         \begin{proof}
         \mbox{}
 
-        Supponiamo $\dim M = m$, $\dim N = n$, $\dim Q = q$. Sia $p \in M \implies F(p) \in N$. 
+        Supponiamo $\dim M = m \quad \dim N = n \quad \dim Q = q$. 
         
-        Essendo \textcolor{orange}{$G$ differenziabile}, $\exists (V, \psi)$ carta locale di $N$ con $F(p) \in V$ e $\exists (W, \theta)$ carta locale di $Q$ con $G(V) \subset W$ tali che
+        Sia $p \in M \implies F(p) \in N$. 
+        
+        Essendo \textcolor{orange}{$G$ differenziabile} 
+        
+        $\exists (V, \psi)$ carta locale di $N$ con $F(p) \in V$ e 
+        
+        $\exists (W, \theta)$ carta locale di $Q$ con $G(V) \subset W$ tali che
         \[
         \theta \circ G \circ \psi^{-1} \colon \psi(V) \subset \mathbb{R}^n \to \theta(W) \subset \mathbb{R}^q \text{ è differenziabile}
         \]
-        Poiché \textcolor{orange}{$F$ è continua} e $V$ è intorno aperto di $F(p)$ in $N$, segue che $F^{-1}(V)$ è intorno aperto di $p$ in $M$
-        quindi $\exists (U, \varphi)$ carta locale di $M$ tale che $p \in U \subset F^{-1}(V)$, da cui $F(U) \subset F(F^{-1}(V)) \subset V$. 
+        $V$ è intorno aperto di $F(p)$ in $N \overset{\textcolor{violet}{\substack{\text{prop. } \ref{prop:applicazione_differenziabile_tra_varieta_continua} \\ \text{\textcolor{orange}{$F$ è continua}}}}}{\Rightarrow} F^{-1}(V)$ è intorno aperto di $p$ in $M$
+
+        $\overset{\textcolor{violet}{\substack{\text{prop. } \ref{prop:atlante_differenziabile_massimale_domini_delle_carte_ammettono_un_sistema_fondamentale_di_intorni}}}}{\Rightarrow} \exists (U, \varphi)$ carta locale di $M$ tale che $p \in U \subset F^{-1}(V)$ da cui $F(U) \subset F(F^{-1}(V)) \subset V$. 
         
         Essendo \textcolor{orange}{$F$ differenziabile}
         \[
         \psi \circ F \circ \varphi^{-1} \colon \varphi(U) \subset \mathbb{R}^m \to \psi(V) \subset \mathbb{R}^n \text{ è differenziabile}
         \]
-        Con $(U, \varphi)$ carta locale di $M$ con $p \in U$ e $(W, \theta)$ carta locale di $Q$, si ha $(G \circ F)(U) = G(F(U)) \subset G(V) \subset W$ e
+        Con $(U, \varphi)$ carta locale di $M$ con $p \in U$ e 
+        
+        $(W, \theta)$ carta locale di $Q$, si ha $(G \circ F)(U) = G(F(U)) \subset G(V) \subset W$ e
         \[
         \theta \circ (G \circ F) \circ \varphi^{-1} = (\theta \circ G \circ \psi^{-1}) \circ (\psi \circ F \circ \varphi^{-1}) \colon \varphi(U) \to \theta(W)
         \]
         è differenziabile in quanto composta di applicazioni differenziabili.
         \end{proof}
+        \begin{center}
+        \begin{tikzpicture}[>=stealth, thick, scale=0.68]
 
+        % ---------- Varietà M, N, Q ----------
+        \filldraw[draw=blue, fill=blue, fill opacity=0.05] plot[smooth cycle] coordinates
+        {(-2.6,0.3) (-1.6,1.8) (0.6,2.0) (2.3,1.1) (2.6,-0.6) (1.0,-1.8) (-1.3,-1.5)};
+        \node[blue] at (-2.5,1.9) {$M$};
+
+        \filldraw[draw=blue, fill=blue, fill opacity=0.05] plot[smooth cycle] coordinates
+        {(5.4,0.3) (6.4,1.8) (8.6,2.0) (10.3,1.1) (10.6,-0.6) (9.0,-1.8) (6.7,-1.5)};
+        \node[blue] at (5.5,1.9) {$N$};
+
+        \filldraw[draw=blue, fill=blue, fill opacity=0.05] plot[smooth cycle] coordinates
+        {(13.4,0.3) (14.4,1.8) (16.6,2.0) (18.3,1.1) (18.6,-0.6) (17.0,-1.8) (14.7,-1.5)};
+        \node[blue] at (13.5,1.9) {$Q$};
+
+        % ---------- Aperto U e punto p ----------
+        \filldraw[draw=violet, fill=violet, fill opacity=0.2, thin] (0,0.3) ellipse (1.2cm and 0.8cm);
+        \node[violet!80!black] at (1.3,-0.5) {$U$};
+        \fill[violet!60!black] (0,0.3) circle (1.8pt);
+        \node[violet!60!black, font=\scriptsize] at (0,0.6) {$p$};
+
+        % ---------- Aperto V, insieme F(U), punto F(p) ----------
+        \filldraw[draw=orange, fill=orange, fill opacity=0.15, thin] (8,0.2) ellipse (1.7cm and 1.1cm);
+        \node[orange!80!black] at (9.7,-0.5) {$V$};
+        \filldraw[draw=teal, fill=teal, fill opacity=0.3, thin] (8,0.3) ellipse (0.8cm and 0.5cm);
+        \node[teal!70!black, font=\scriptsize] at (8,-0.45) {$F(U)$};
+        \fill[teal!60!black] (8,0.3) circle (1.8pt);
+        \node[teal!60!black, font=\scriptsize] at (8,0.6) {$F(p)$};
+
+        % ---------- Aperto W, insieme G(F(U)), punto G(F(p)) ----------
+        \filldraw[draw=magenta, fill=magenta, fill opacity=0.15, thin] (16,0.2) ellipse (1.7cm and 1.1cm);
+        \node[magenta!80!black] at (17.7,-0.6) {$W$};
+        \filldraw[draw=green!50!black, fill=green!50!black, fill opacity=0.3, thin] (16,0.3) ellipse (0.9cm and 0.58cm);
+        \node[green!50!black, font=\scriptsize] at (16,-0.52) {$G(F(U))$};
+        \fill[green!40!black] (16,0.3) circle (1.8pt);
+        \node[green!40!black, font=\scriptsize] at (16,0.5) {$G(F(p))$};
+
+        % ---------- F e G ----------
+        \draw[->, teal!80!black, very thick] (2.5,1.3) to[bend left=30] node[above] {$F$} (5.5,1.3);
+        \draw[->, green!50!black, very thick] (10.5,1.3) to[bend left=30] node[above] {$G$} (13.5,1.3);
+
+        % ---------- Spazi euclidei con le immagini delle carte ----------
+        % R^m: φ(U)
+        \filldraw[draw=violet, fill=violet, fill opacity=0.12, rounded corners=10pt]
+        (-2.2,-6) rectangle (2.2,-4);
+        \node[violet!80!black, anchor=north] at (0,-4.1) {$\varphi(U)\subset\mathbb{R}^m$};
+        \fill[violet!60!black] (0,-5.2) circle (1.8pt);
+        \node[violet!60!black, font=\scriptsize, anchor=north] at (0,-5.25) {$\varphi(p)$};
+
+        % R^n: ψ(V)
+        \filldraw[draw=orange, fill=orange, fill opacity=0.12, rounded corners=10pt]
+        (5.8,-6) rectangle (10.2,-4);
+        \node[orange!80!black, anchor=north] at (8,-4.1) {$\psi(V)\subset\mathbb{R}^n$};
+        \fill[teal!60!black] (8,-5.2) circle (1.8pt);
+        \node[teal!60!black, font=\scriptsize, anchor=north] at (8,-5.25) {$\psi(F(p))$};
+
+        % R^l: θ(W)
+        \filldraw[draw=magenta, fill=magenta, fill opacity=0.12, rounded corners=10pt]
+        (13.8,-6) rectangle (18.2,-4);
+        \node[magenta!80!black, anchor=north] at (16,-4.1) {$\theta(W)\subset\mathbb{R}^l$};
+        \fill[green!40!black] (16,-5.2) circle (1.8pt);
+        \node[green!40!black, font=\scriptsize, anchor=north] at (16,-5.25) {$\theta(G(F(p)))$};
+
+        % ---------- Carte φ, ψ, θ ----------
+        \draw[->, violet!80!black] (0,-0.55) -- node[left] {$\varphi$} (0,-4);
+        \draw[->, orange!80!black] (8,-0.9) -- node[left] {$\psi$} (8,-4);
+        \draw[->, magenta!80!black] (16,-0.9) -- node[left] {$\theta$} (16,-4);
+
+        % ---------- Letture locali di F e G ----------
+        \draw[->, teal!80!black, very thick] (2.2,-5) -- node[above] {$\psi \circ F \circ \varphi^{-1}$} (5.8,-5);
+        \draw[->, green!50!black, very thick] (10.2,-5) -- node[above] {$\theta \circ G \circ \psi^{-1}$} (13.8,-5);
+
+        % ---------- Lettura locale della composizione ----------
+        \draw[->, red, very thick] (0,-6) to[bend right=22]
+        node[below] {$\theta \circ (G \circ F) \circ \varphi^{-1}$} (16,-6);
+
+        \end{tikzpicture}
+        \end{center}
         \begin{proposizione}
         \mbox{}
 
-        Se $F \colon M \to N$ è differenziabile, considerato $A \subset M$ aperto, $\textcolor{red}{F|_A \colon A \to N}$ è differenziabile.
+        Se $F \colon M \to N$ è differenziabile considerato $A \subset M$ aperto, $\textcolor{red}{F|_A \colon A \to N}$ è differenziabile.
         \end{proposizione}
 
         \begin{proof}
         \mbox{}
 
-        Si ha $F|_A = F \circ j$, essendo $j \colon A \to M$ l'iniezione canonica. 
+        Si ha $F|_A = F \circ j$ essendo $j \colon A \to M$ l'iniezione canonica \textcolor{violet}{per la proposizione \ref{prop:ingezione_canonica_tra_aperto_e_varieta_differenziabile} è differenziabile}
         
-        Pertanto $F|_A$ è differenziabile, in quanto composta di applicazioni differenziabili.
+        Pertanto $F|_A$ è differenziabile in quanto composta di applicazioni differenziabili \textcolor{violet}{per la prop. \ref{prop:composizione_di_app_diff_tra_varietà_diff}}
         \end{proof}
+        \begin{proposizione}
+        \mbox{}
+
+        Considerata un'applicazione $F : M \longrightarrow N$, si supponga che
+        \[
+        \textcolor{red}{\forall p \in M \ \exists A \text{ intorno aperto di } p \text{ t.c. } F|_A : A \longrightarrow N \text{ è differenziabile.}}
+        \]
+        Allora $F$ è differenziabile.
+        \end{proposizione}
+
+        \begin{proof}
+        Sia $\textcolor{orange}{p \in M} \implies \exists A$ intorno aperto di $p$ t.c. $\textcolor{orange}{F|_A : A \longrightarrow N \text{ è differenziabile}}$
+        \begin{align*}
+        &\implies \exists (U, \varphi) \text{ carta locale di } A, \ p \in U \\
+        &\phantom{\implies{}} \exists (V, \psi) \text{ carta locale di } N, \ F(U) \subset V \\
+        &\phantom{\implies{}} \text{t.c. } \psi \circ F|_A \circ \varphi^{-1} : \varphi(U) \longrightarrow \psi(V) \text{ è differenziabile.}
+        \end{align*}
+        $(U, \varphi)$ è anche carta locale di $M$ e $\psi \circ F \circ \varphi^{-1} : \varphi(U) \longrightarrow \psi(V)$ è differenziabile.
+        \end{proof}
+        \newpage
+        \begin{esempio}[Esercizi assegnati]
+        \mbox{}
+
+        \begin{enumerate}
+            \item Sia $M$ varietà di dimensione $0$. Sia $N$ varietà differenziabile di dimensione $n$. Provare che ogni applicazione $F : M \longrightarrow N$ è differenziabile.
+            \item Si consideri su $S^n$ la struttura differenziabile definita dall'atlante $\{(U_i^{\pm}, \varphi_i^{\pm})\}_{i=1,\dots,n}$. Provare che l'ingezione canonica
+            \[
+            j : S^n \longrightarrow \mathbb{R}^{n+1}
+            \]
+            è differenziabile.
+            \item Si consideri su $\mathbb{RP}^n$ la struttura differenziabile definita dall'atlante $\{(U_i, \varphi_i)\}_{i=1,\dots,n+1}$. Provare che la surgezione canonica
+            \[
+            \pi : (\mathbb{R}^{n+1})^* \longrightarrow \mathbb{RP}^n
+            \]
+            è differenziabile.
+        \end{enumerate}
+        \end{esempio}
+        \newpage
+        \begin{proposizione}
+        \mbox{}
+
+        Siano $M_1$ e $M_2$ varietà differenziabili, di dimensioni $m$ e $n$, rispettivamente. Siano
+        \begin{align*}
+        \pi_1 &: M_1 \times M_2 \longrightarrow M_1, \quad (p,q) \longmapsto p \\
+        \pi_2 &: M_1 \times M_2 \longrightarrow M_2, \quad (p,q) \longmapsto q
+        \end{align*}
+        Allora $\pi_1$ e $\pi_2$ sono applicazioni differenziabili.
+        \end{proposizione}
+
+        \begin{proof}
+        Verifichiamo che $\pi_1$ è differenziabile. Sia $(p,q) \in M_1 \times M_2$.
+        \begin{itemize}
+            \item Sia $(U, \varphi)$ carta locale di $M_1$ con $p \in U$.
+            \item Sia $(V, \psi)$ carta locale di $M_2$ con $q \in V$.
+        \end{itemize}
+        Allora $(U \times V, \varphi \times \psi)$ è una carta locale di $M_1 \times M_2$ con $(p,q) \in U \times V$ e $\pi_1(U \times V) = U$. Considero la composizione
+        \[
+        \varphi \circ \pi_1 \circ (\varphi \times \psi)^{-1} : \varphi(U) \times \psi(V) \longrightarrow \varphi(U)
+        \]
+        che agisce come
+        \[
+        \begin{array}{ccccccc}
+        \varphi(U) \times \psi(V) \subset \mathbb{R}^m \times \mathbb{R}^n & \xrightarrow{\varphi^{-1} \times \psi^{-1}} & U \times V & \xrightarrow{\ \pi_1 \ } & U & \xrightarrow{\ \varphi \ } & \varphi(U) \\
+        (x,y) & \longmapsto & (\varphi^{-1}(x), \psi^{-1}(y)) & \longmapsto & \varphi^{-1}(x) & \longmapsto & x
+        \end{array}
+        \]
+        L'applicazione è differenziabile $\implies \pi_1$ è differenziabile.
+        \end{proof}
+
+        In generale, considerate $M_1, \dots, M_k$ varietà differenziabili, le proiezioni
+        \[
+        \pi_i : M_1 \times \dots \times M_k \longrightarrow M_i, \quad (p_1, \dots, p_k) \longmapsto p_i
+        \]
+        sono differenziabili.
+
+        \begin{esempio}[Esercizio assegnato]
+        \mbox{}
+
+        Siano $N, M_1, \dots, M_k$ varietà differenziabili. Sia $F : N \longrightarrow M_1 \times \dots \times M_k$ applicazione. Verificare che
+        \[
+        F \text{ è differenziabile} \iff \forall i = 1, \dots, k \quad \pi_i \circ F : N \longrightarrow M_i \text{ è differenziabile.}
+        \]
+        \end{esempio}
     \section{Proprietà topologiche delle varietà differenziabili}
     \section{Partizione dell'unità}
     \section{Funzioni bump su varietà differenziabili}
