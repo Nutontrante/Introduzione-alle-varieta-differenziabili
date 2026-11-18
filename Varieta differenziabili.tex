@@ -1944,6 +1944,7 @@
         Pertanto $F|_A$ è differenziabile in quanto composta di applicazioni differenziabili \textcolor{violet}{per la prop. \ref{prop:composizione_di_app_diff_tra_varietà_diff}}
         \end{proof}
         \begin{proposizione}
+        \label{prop:funzione_tra_varietà_localmente_diff_implica_diff}
         \mbox{}
 
         Considerata un'applicazione $F : M \longrightarrow N$, si supponga che
@@ -1953,12 +1954,14 @@
         Allora $F$ è differenziabile.
         \end{proposizione}
 
-        \begin{proof}
+        \begin{proof}[Dimostrazione non fatta a lezione ma sta negli appunti]
+        \mbox{}
+
         Sia $\textcolor{orange}{p \in M} \implies \exists A$ intorno aperto di $p$ t.c. $\textcolor{orange}{F|_A : A \longrightarrow N \text{ è differenziabile}}$
         \begin{align*}
-        &\implies \exists (U, \varphi) \text{ carta locale di } A, \ p \in U \\
-        &\phantom{\implies{}} \exists (V, \psi) \text{ carta locale di } N, \ F(U) \subset V \\
-        &\phantom{\implies{}} \text{t.c. } \psi \circ F|_A \circ \varphi^{-1} : \varphi(U) \longrightarrow \psi(V) \text{ è differenziabile.}
+        \Rightarrow & \exists (U, \varphi) \text{ carta locale di } A, \ p \in U \\
+        &\exists (V, \psi) \text{ carta locale di } N, \ F(U) \subset V \\
+        &\text{t.c. } \psi \circ F|_A \circ \varphi^{-1} : \varphi(U) \longrightarrow \psi(V) \text{ è differenziabile.}
         \end{align*}
         $(U, \varphi)$ è anche carta locale di $M$ e $\psi \circ F \circ \varphi^{-1} : \varphi(U) \longrightarrow \psi(V)$ è differenziabile.
         \end{proof}
@@ -1967,13 +1970,19 @@
         \mbox{}
 
         \begin{enumerate}
-            \item Sia $M$ varietà di dimensione $0$. Sia $N$ varietà differenziabile di dimensione $n$. Provare che ogni applicazione $F : M \longrightarrow N$ è differenziabile.
-            \item Si consideri su $S^n$ la struttura differenziabile definita dall'atlante $\{(U_i^{\pm}, \varphi_i^{\pm})\}_{i=1,\dots,n}$. Provare che l'ingezione canonica
+            \item Sia $M$ varietà di dimensione $0$ sia $N$ varietà differenziabile di dimensione $n$.
+            
+            Provare che ogni applicazione $F : M \longrightarrow N$ è differenziabile.
+            \item Si consideri su $S^n$ la struttura differenziabile definita dall'atlante $\{(U_i^{\pm}, \varphi_i^{\pm})\}_{i=1,\dots,n}$ 
+            
+            Provare che l'ingezione canonica
             \[
             j : S^n \longrightarrow \mathbb{R}^{n+1}
             \]
             è differenziabile.
-            \item Si consideri su $\mathbb{RP}^n$ la struttura differenziabile definita dall'atlante $\{(U_i, \varphi_i)\}_{i=1,\dots,n+1}$. Provare che la surgezione canonica
+            \item Si consideri su $\mathbb{RP}^n$ la struttura differenziabile definita dall'atlante $\{(U_i, \varphi_i)\}_{i=1,\dots,n+1}$
+            
+            Provare che la surgezione canonica
             \[
             \pi : (\mathbb{R}^{n+1})^* \longrightarrow \mathbb{RP}^n
             \]
@@ -1981,7 +1990,8 @@
         \end{enumerate}
         \end{esempio}
         \newpage
-        \begin{proposizione}
+        \begin{proposizione}[\textcolor{violet}{Propiezioni differenziabili}]
+        \label{prop:proiezioni-prodotto-differenziabili}
         \mbox{}
 
         Siano $M_1$ e $M_2$ varietà differenziabili, di dimensioni $m$ e $n$, rispettivamente. Siano
@@ -1993,12 +2003,18 @@
         \end{proposizione}
 
         \begin{proof}
-        Verifichiamo che $\pi_1$ è differenziabile. Sia $(p,q) \in M_1 \times M_2$.
+        \mbox{}
+
+        Verifichiamo che $\pi_1$ è differenziabile \textcolor{violet}{(per $\pi_2$ è analogo)}. 
+        
+        Sia $(p,q) \in M_1 \times M_2$.
         \begin{itemize}
             \item Sia $(U, \varphi)$ carta locale di $M_1$ con $p \in U$.
             \item Sia $(V, \psi)$ carta locale di $M_2$ con $q \in V$.
         \end{itemize}
-        Allora $(U \times V, \varphi \times \psi)$ è una carta locale di $M_1 \times M_2$ con $(p,q) \in U \times V$ e $\pi_1(U \times V) = U$. Considero la composizione
+        Allora $(U \times V, \varphi \times \psi)$ è una carta locale di $M_1 \times M_2$ con $(p,q) \in U \times V$ e $\pi_1(U \times V) = U$.
+        
+        Considero la composizione
         \[
         \varphi \circ \pi_1 \circ (\varphi \times \psi)^{-1} : \varphi(U) \times \psi(V) \longrightarrow \varphi(U)
         \]
@@ -2021,11 +2037,14 @@
         \begin{esempio}[Esercizio assegnato]
         \mbox{}
 
-        Siano $N, M_1, \dots, M_k$ varietà differenziabili. Sia $F : N \longrightarrow M_1 \times \dots \times M_k$ applicazione. Verificare che
+        Siano $N, M_1, \dots, M_k$ varietà differenziabili. Sia $F : N \longrightarrow M_1 \times \dots \times M_k$ applicazione. 
+        
+        Verificare che
         \[
         F \text{ è differenziabile} \iff \forall i = 1, \dots, k \quad \pi_i \circ F : N \longrightarrow M_i \text{ è differenziabile.}
         \]
         \end{esempio}
+    \section{Diffeomorfismi tra varietà}
     \section{Proprietà topologiche delle varietà differenziabili}
     \section{Partizione dell'unità}
     \section{Funzioni bump su varietà differenziabili}
