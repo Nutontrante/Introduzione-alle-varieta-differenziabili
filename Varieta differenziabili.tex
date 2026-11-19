@@ -2054,48 +2054,49 @@
         \end{definizione}
 
         \begin{proposizione}
+        \label{prop:diffeomorfismo_tra_varieta_omeomorfo}
         \mbox{}
 
         Ogni diffeomorfismo $F \colon M \to N$ è omeomorfismo 
         
-        \textcolor{blu}{(perché è stato provato che un'applicazione differenziabile è continua)}.
+        \textcolor{blu}{(perché è stato provato che un'applicazione differenziabile è continua \textcolor{violet}{prop. \ref{prop:applicazione_differenziabile_tra_varieta_continua}})}.
         \end{proposizione}
 
         \begin{proposizione}
         \mbox{}
 
-        Se $F \colon M \to N$ è un diffeomorfismo, allora $\dim M = \dim N$.
+        Se $F \colon M \to N$ è un diffeomorfismo $\Rightarrow \dim M = \dim N$.
         \end{proposizione}
 
         \begin{proof}
         \mbox{}
 
-        Poniamo $\dim M = m$, $\dim N = n$.
-
-        Sia $p \in M$ e sia $q = F(p)$.
+        Poniamo $\dim M = m$, $\dim N = n$ e siano $p \in M$ e $q = F(p)$.
 
         Sia $(U, \varphi)$ carta di $M$ con $p \in U$.
 
         Sia $(V, \psi)$ carta di $N$ con $q \in V$.
 
-        $F$ è omeomorfismo $\Rightarrow F(U)$ è aperto in $N$.
+        \textcolor{violet}{$F$ è diffeomorfismo $\overset{\ref{prop:diffeomorfismo_tra_varieta_omeomorfo}}{\Rightarrow}$} $F$ è omeomorfismo $\Rightarrow F(U)$ è aperto in $N$.
 
-        A meno di restringere $V$ si può supporre $F(U) = V$.
+        A meno di restringere $V$ possiamo assumere $F(U) = V$.
 
         \textcolor{orange}{$F \colon M \to N$ è differenziabile}
         \[
-        \Rightarrow \psi \circ F \circ \varphi^{-1} \colon \varphi(U) \subset \mathbb{R}^m \longrightarrow \psi(V) \subset \mathbb{R}^n \quad \text{è differenziabile.}
+        \Rightarrow \textcolor{hotpink}{\psi \circ F \circ \varphi^{-1}} \colon \varphi(U) \subset \mathbb{R}^m \longrightarrow \psi(V) \subset \mathbb{R}^n \quad \text{è differenziabile.}
         \]
 
-        \textcolor{orange}{$F^{-1} \colon N \to M$ è differenziabile} $F^{-1}(V) = U$
+        \textcolor{orange}{$F^{-1} \colon N \to M$ è differenziabile} con $F^{-1}(V) = U$
         \[
-        \Rightarrow \varphi \circ F^{-1} \circ \psi^{-1} \colon \psi(V) \subset \mathbb{R}^n \longrightarrow \varphi(U) \subset \mathbb{R}^m \quad \text{è differenziabile.}
+        \Rightarrow \textcolor{celeste}{\varphi \circ F^{-1} \circ \psi^{-1}} \colon \psi(V) \subset \mathbb{R}^n \longrightarrow \varphi(U) \subset \mathbb{R}^m \quad \text{è differenziabile.}
         \]
-        Inoltre $\varphi \circ F^{-1} \circ \psi^{-1} = (\psi \circ F \circ \varphi^{-1})^{-1}$.
+        \textcolor{blu}{$(V, \psi)$ carta di $N$ con $q=F(p) \in V$ e $(U, \varphi)$ carta di $M$ con tale che $F^{-1}(V) = U$}
 
-        Pertanto $G := \psi \circ F \circ \varphi^{-1} \colon \varphi(U) \subset \mathbb{R}^m \longrightarrow \psi(V) \subset \mathbb{R}^n$ è diffeomorfismo 
+        Inoltre $\textcolor{celeste}{\varphi \circ F^{-1} \circ \psi^{-1}} \overset{\textcolor{violet}{\substack{\text{non è altro} \\ \text{che l'inversa} \\ \text{di quella} \\ \text{precedente}}}}{=} (\textcolor{hotpink}{\psi \circ F \circ \varphi^{-1}})^{-1}$.
 
-        $\Rightarrow \forall x \in \varphi(U)$ $(dG)_x \colon \mathbb{R}^m \to \mathbb{R}^n$ è isomorfismo $\Rightarrow m = n$.
+        Pertanto \textcolor{hotpink}{$G := \psi \circ F \circ \varphi^{-1} \colon \varphi(U) \subset \mathbb{R}^m \longrightarrow \psi(V) \subset \mathbb{R}^n$} è diffeomorfismo 
+
+        $\overset{\textcolor{violet}{\substack{\text{un diffeomorfismo tra} \\ \text{un aperto di } \mathbb{R}^m  \\ \text{e un aperto di } \mathbb{R}^n \\ \text{è possibile solo se } m=n}}}{\Rightarrow} m = n$.
         \end{proof}
         \newpage
         \begin{osservazione}
@@ -2103,9 +2104,11 @@
 
         \begin{enumerate}
             \item $i_M \colon M \to M$ è diffeomorfismo.
-            \item Se $F \colon M \to N$ è diffeomorfismo, $F^{-1} \colon N \to M$ è diffeomorfismo.
-            \item Se $F \colon M \to N$ e $G \colon N \to Q$ sono diffeomorfismi, allora $G \circ F \colon M \to Q$ è diffeomorfismo $\bigl((G \circ F)^{-1} = F^{-1} \circ G^{-1}\bigr)$.
-            \item Se $(U, \varphi)$ è carta locale di $M$, allora $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^n$ è diffeomorfismo.
+            \item Se $F \colon M \to N$ è diffeomorfismo $\Rightarrow F^{-1} \colon N \to M$ è diffeomorfismo
+            \item Se $F \colon M \to N$ e $G \colon N \to Q$ sono diffeomorfismi $\Rightarrow G \circ F \colon M \to Q$ è diffeomorfismo 
+            
+            $\bigl((G \circ F)^{-1} = F^{-1} \circ G^{-1}\bigr)$
+            \item Se $(U, \varphi)$ è carta locale di $M$, allora $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^n$ è diffeomorfismo
 
             Infatti:
             \begin{itemize}
