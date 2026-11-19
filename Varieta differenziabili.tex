@@ -2108,27 +2108,24 @@
             \item Se $F \colon M \to N$ e $G \colon N \to Q$ sono diffeomorfismi $\Rightarrow G \circ F \colon M \to Q$ è diffeomorfismo 
             
             $\bigl((G \circ F)^{-1} = F^{-1} \circ G^{-1}\bigr)$
-            \item Se $(U, \varphi)$ è carta locale di $M$, allora $\varphi \colon U \to \varphi(U) \subset \mathbb{R}^n$ è diffeomorfismo
-
-            Infatti:
-            \begin{itemize}
-                \item $\varphi \colon U \to \varphi(U)$ è bigettiva;
-                \item $\varphi \colon U \to \varphi(U)$ è differenziabile perché $\forall p \in U$, $\exists (U, \varphi)$ carta locale di $U$ con $p \in U$ e $\exists (\varphi(U), i_{\varphi(U)})$ carta locale di $\varphi(U)$ tali che
-                \[
-                i_{\varphi(U)} \circ \varphi \circ \varphi^{-1} = i_{\varphi(U)} \colon \varphi(U) \to \varphi(U) \quad \text{è differenziabile;}
-                \]
-                \item analogamente, $\varphi^{-1} \colon \varphi(U) \to U$ è differenziabile perché
-                \[
-                \varphi \circ \varphi^{-1} \circ i_{\varphi(U)} = i_{\varphi(U)} \quad \text{è differenziabile.}
-                \]
-            \end{itemize}
-        \end{enumerate}
+        \end{enumerate} 
         \end{osservazione}
+        \begin{proposizione}
+        Se $(U, \varphi)$ è carta locale di $M \Rightarrow \varphi \colon U \to \varphi(U) \subset \mathbb{R}^n$ è diffeomorfismo
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+        
+        $(U, \varphi)$ è carta locale \textcolor{blu}{(globale)} di $U$ e $(\varphi(U), i_{\varphi(U)})$ è carta di $\varphi(U)$
+        \[ \textcolor{green}{\underbrace{\textcolor{verde}{i_{\varphi(U)} \circ \varphi \circ \varphi^{-1}}}_{i_{\varphi(U)}}} \colon \varphi(U) \to \varphi(U) \text{ differenziabile} \]
 
+        \end{proof}
+        
+        \newpage
         \begin{esempio}
         Su $\mathbb{R}$ si considerino i due atlanti
         \[
-        \mathcal{A} = \{(\mathbb{R}, i_{\mathbb{R}})\}, \qquad \mathcal{A}' = \{(\mathbb{R}, \psi)\}
+        \mathcal{A} = \{(\mathbb{R}, i_{\mathbb{R}})\} \qquad \mathcal{A}' = \{(\mathbb{R}, \psi)\}
         \]
         dove $\psi \colon \mathbb{R} \to \mathbb{R}$, $\psi(x) = x^3$.
 
