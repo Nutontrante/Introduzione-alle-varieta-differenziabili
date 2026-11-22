@@ -1,50 +1,80 @@
 \chapter{Vettori tangenti a varietà}
     \section{Vettori tangenti a spazio tangente}
-        Sia $M$ varietà differenziabile di dimensione $n$ e
-        sia $p \in M$ consideriamo l'insieme
+        \textcolor{violet}{Qui inizia la lezione 16 Dileo parte 1}
+
+        \textcolor{violet}{Una volta introdotto il concetto di applicazione differenziabile tra varietà e diffeomorfismi tra varietà come fatto nel capitolo $3$
+        queste applicazioni differenziabili dobbiamo arrivare a differenziarle quindi dobbiamo costruire tutto un percorso che ci permetterà 
+        di introdurre il differenziale di queste applicazioni.}
+
+        \textcolor{violet}{Cominciamo con definire quello che dovrà essere l'insieme di definizione di questo differenziale che è lo spazio tangente ad una varietà.}
+
+        Sia $M$ varietà differenziabile di dimensione $n$ e sia $p \in M$ consideriamo l'insieme
         \begin{align*}
-        \mathcal{F}(p) &= \left\{ f : A \to \mathbb{R} \;\middle|\; A \text{ è intorno aperto di } M \text{ in } p \text{ e } f \text{ è differenziabile} \right\} \\
-        &= \bigcup_{\substack{A \text{ intorno} \\ \text{aperto di } p}} \mathcal{F}(A).
+        \textcolor{red}{\mathcal{F}(p)} &= \left\{ f : A \to \mathbb{R} \;\middle|\; A \text{ è intorno aperto di } M \text{ in } p \text{ e } f \text{ è differenziabile} \right\} \\
+        &\textcolor{red}{= \bigcup_{\substack{A \text{ intorno} \\ \text{aperto di } p}} \mathcal{F}(A)}
         \end{align*}
 
         Su $\mathcal{F}(p)$ si possono definire tre leggi di composizione:
         \begin{enumerate}
         \item $+ : \mathcal{F}(p) \times \mathcal{F}(p) \to \mathcal{F}(p)$
-        \item $\cdot : \mathcal{F}(p) \times \mathcal{F}(p) \to \mathcal{F}(p)$
-        \item $\cdot : \mathbb{R} \times \mathcal{F}(p) \to \mathcal{F}(p)$
+        \item $\boldsymbol{\cdot} : \mathcal{F}(p) \times \mathcal{F}(p) \to \mathcal{F}(p)$
+        \item $\boldsymbol{\cdot} : \mathbb{R} \times \mathcal{F}(p) \to \mathcal{F}(p)$
         \end{enumerate}
         tali che $\forall \lambda \in \mathbb{R}$, $\forall f, g \in \mathcal{F}(p)$, con $f : A \to \mathbb{R}$ e $g : B \to \mathbb{R}$ funzioni differenziabili su $A$ e $B$ intorni aperti di $p$:
+        
+        \textcolor{violet}{intersecando i $2$ intorni otteniamo un intorno di $p$ dove l'operazione è ben definita}
+        
+        Considero $A \cap B$ intorno aperto di $p$ \textcolor{violet}{e ci definisco l'applicazione somma e l'applicazione prodotto}
+
         \begin{align*}
-        f + g &: A \cap B \to \mathbb{R}, & q \in A \cap B &\longmapsto f(q) + g(q) \\
-        f \cdot g &: A \cap B \to \mathbb{R}, & q \in A \cap B &\longmapsto f(q) \cdot g(q) \\
-        \lambda \cdot f &: A \to \mathbb{R}, & q \in A &\longmapsto \lambda \cdot f(q)
+        f + g &: A \cap B \to \mathbb{R} & q \in A \cap B &\longmapsto f(q) + g(q) \\
+        f \cdot g &: A \cap B \to \mathbb{R} & q \in A \cap B &\longmapsto f(q) \cdot g(q) \\
+        \lambda \cdot f &: A \to \mathbb{R} & q \in A &\longmapsto \lambda \cdot f(q)
         \end{align*}
 
+        \textcolor{violet}{Si dimostra che sia $f+g$ e $f \cdot g$ come applicazioni sono differenziabili}
+
+        Quindi $f+g \in \mathcal{F}(A \cap B)$ e $f \cdot g \in \mathcal{F}(A \cap B)$
+        $\Rightarrow f+g \in \mathcal{F}(p)$ e $f \cdot g \in \mathcal{F}(p)$
+
         Le due leggi di composizione interna $+$ e $\cdot$ sono associative e commutative.
+
         L'addizione ammette elemento neutro dato da
         \[
-        f_0 : M \to \mathbb{R}, \qquad q \longmapsto f_0(q) = 0.
+        f_0 : M \to \mathbb{R} \qquad q \longmapsto f_0(q) = 0.
         \]
-        $\forall f \in \mathcal{F}(p)$, con $f : A \to \mathbb{R}$ differenziabile su $A$ intorno aperto di $p$, risulta $f_0 + f = f = f + f_0$.
+        $\forall f \in \mathcal{F}(p)$ con $f : A \to \mathbb{R}$ differenziabile su $A$ intorno aperto di $p$ risulta
+        \[ f_0 + f = f = f + f_0 \]
+        \[ f + f_0 \colon A \cap M = A \to \mathbb{R} \]
 
-        Non tutti gli elementi di $\mathcal{F}(p)$ ammettono opposto. Infatti, se $f : A \to \mathbb{R}$ con $A$ intorno aperto di $p$, considerata $-f : A \to \mathbb{R}$, $q \longmapsto -f(q)$, risulta $f + (-f) = f_0$ solo se $A = M$.
+        Non tutti gli elementi di $\mathcal{F}(p)$ ammettono opposto \textcolor{violet}{$\Rightarrow$ non è un gruppo}
 
+        \textcolor{verde}{Infatti se $f : A \to \mathbb{R}$ con $A$ intorno aperto di $p$ considerata 
+        $-f : A \to \mathbb{R}$ $q \longmapsto -f(q)$ risulta che $f + (-f) = f_0$ solo se $A = M$.}
+
+        \textcolor{violet}{$( \mathcal{F}(p), + , \boldsymbol{\cdot} )$ non è uno spazio vettoriale reale al contrario di $\mathcal{F}(M)$}
+        \newpage
         \begin{definizione}
         \mbox{}
 
-        Sia $M$ varietà differenziabile di dimensione $n$. Sia $\textcolor{red}{p \in M}$. Si definisce \textcolor{red}{vettore tangente} in $p$ a $M$ ogni applicazione $\textcolor{red}{v : \mathcal{F}(p) \to \mathbb{R}}$ tale che
+        Sia $M$ varietà differenziabile di dimensione $n$ e sia $\textcolor{red}{p \in M}$. 
+        
+        Si definisce \textcolor{red}{vettore tangente} in \textcolor{red}{$p$ a $M$} ogni applicazione $\textcolor{red}{v : \mathcal{F}(p) \to \mathbb{R}}$ tale che
         \begin{enumerate}
         \item $\forall f, g \in \mathcal{F}(p) \quad \textcolor{red}{v(f + g) = v(f) + v(g)}$
-        \item $\forall \lambda \in \mathbb{R} \; \forall f \in \mathcal{F}(p) \quad \textcolor{red}{v(\lambda f) = \lambda v(f)}$
+        \item $\forall \lambda \in \mathbb{R} \; \forall f \in \mathcal{F}(p) \quad \textcolor{red}{v(\lambda f) = \lambda v(f)}$ 
         \item $\forall f, g \in \mathcal{F}(p) \quad \textcolor{red}{v(f \cdot g) = f(p)v(g) + v(f) \cdot g(p)}$
         \end{enumerate}
+        \textcolor{blu}{la } 3. \textcolor{blu}{è detta regola di Leibniz}
 
         L'insieme dei vettori tangenti in $p$ a $M$ si denota con $\textcolor{red}{T_p M}$ e prende il nome di \textcolor{red}{spazio tangente} in $p$ a $M$:
         \[
         \textcolor{red}{T_p M = \{ v : \mathcal{F}(p) \to \mathbb{R} \mid v \text{ è vettore tangente in } p \text{ a } M \}}.
         \]
+        \textcolor{violet}{Questa non è l'unica definizione di spazio tangente ad una varietà si può definire in modi 
+        diversi ma tra loro equivalenti questa definizione dovrebbe essere la più diffusa ma ad alcuni non piace che $\mathcal{F}(p)$ 
+        non sia uno spazio vettoriale e quindi costruiscono delle strutture aggiuntive per fare in modo che i vettori agiscano su uno spazio vettoriale reale.}
         \end{definizione}
-
         \begin{proposizione}
         \mbox{}
 
@@ -52,78 +82,100 @@
         \end{proposizione}
 
         \begin{proof}
+        \mbox{}
+
         L'insieme $V = \{ v : \mathcal{F}(p) \to \mathbb{R} \}$ è uno spazio vettoriale reale, munito delle leggi di composizione
         \[
-        + : V \times V \to V, \qquad \cdot : \mathbb{R} \times V \to V
+        + : V \times V \to V \qquad \cdot : \mathbb{R} \times V \to V
         \]
         tali che $\forall u, v \in V$, $\forall \lambda \in \mathbb{R}$:
         \begin{align*}
-        u + v &: \mathcal{F}(p) \to \mathbb{R}, & f &\longmapsto u(f) + v(f) \\
-        \lambda \cdot v &: \mathcal{F}(p) \to \mathbb{R}, & f &\longmapsto \lambda \cdot v(f)
+        u + v &: \mathcal{F}(p) \to \mathbb{R} & f &\longmapsto u(f) + v(f) \\
+        \lambda \cdot v &: \mathcal{F}(p) \to \mathbb{R} & f &\longmapsto \lambda \cdot v(f)
         \end{align*}
-        Si verifica che $T_p M$ è sottospazio vettoriale di $V$, ovvero:
+        Si verifica che $T_p M$ è sottospazio vettoriale di $V$ ovvero:
         \[
         \left.
         \begin{aligned}
         &\forall u, v \in T_p M \quad u + v \in T_p M \\
         &\forall \lambda \in \mathbb{R} \; \forall v \in T_p M \quad \lambda v \in T_p M
         \end{aligned}
-        \right\} \text{ esercizio.}
+        \right\} \text{ verificare per esercizio}
         \]
+        \textcolor{violet}{Bisogna verificare che soddisfano \textcolor{black}{1. 2. \textcolor{violet}{e} 3.}}
         \end{proof}
-
-        \begin{proposizione}
+        \newpage
+        \begin{proposizione}[\textcolor{violet}{Proprietà vettori tangenti}]
+        \label{prop:proprieta_vettori_tangenti}
         \mbox{}
 
-        Sia $M$ varietà differenziabile di dimensione $n$. Siano $p \in M$, $\textcolor{red}{u, v \in T_p M}$.
+        Sia $M$ varietà differenziabile di dimensione $n$ e siano $p \in M$, $\textcolor{red}{u, v \in T_p M}$.
         \begin{enumerate}
-        \item Se $U$ è intorno aperto di $p$ e $c : U \to \mathbb{R}$ è funzione costante, allora $v(c) = 0$.
-        \item Se $f, g \in \mathcal{F}(p)$ coincidono in un intorno aperto di $p$, allora $v(f) = v(g)$.
-        \item Se $\forall f \in \mathcal{F}(M) \; u(f) = v(f)$, allora $u = v$.
+        \item Se $U$ è intorno aperto di $p$ e $c : U \to \mathbb{R}$ è funzione costante $\Rightarrow v(c) = 0$.
+        \item Se $f, g \in \mathcal{F}(p)$ coincidono in un intorno aperto di $p \Rightarrow v(f) = v(g)$.
+        \item Se $\forall f \in \mathcal{F}(M) \quad u(f) = v(f) \Rightarrow u = v$.
         \item $v = 0 \iff \forall f \in \mathcal{F}(M) \; v(f) = 0$ \textcolor{blu}{(segue immediatamente dalla 3)}.
         \end{enumerate}
         \end{proposizione}
 
         \begin{proof}
+        \mbox{}
+
         \begin{enumerate}
-        \item Sia $c : U \to \mathbb{R}$ tale che $\forall q \in U \; c(q) = c \in \mathbb{R}$, e sia $c_1 : U \to \mathbb{R}$ tale che $\forall q \in U \; c_1(q) = 1$. Allora:
+        \item Sia $c : U \to \mathbb{R}$ tale che \textcolor{orange}{$\forall p \in U \quad c(p) = c \in \mathbb{R}$} e 
+        
+        sia $c_1 : U \to \mathbb{R}$ tale che $\forall p \in U \quad c_1(p) = 1$ valuto:
         \begin{align*}
-        v(c \cdot c_1) &= c(p) \cdot v(c_1) + v(c) \cdot c_1(p) \\
-        \implies c \cdot v(c_1) &= c \cdot v(c_1) + v(c) \implies v(c) = 0.
+        v(c \cdot c_1) &= c(p) \cdot v(c_1) + v(c) \cdot \textcolor{violet}{\underbrace{\textcolor{verde}{c_1(p)}}_{=1}} = c v(v_1) +v(c) \\
+        v(c \cdot c_1) &= c v(c_1)\\
+        \Rightarrow c \cdot v(c_1) &= c \cdot v(c_1) + v(c) \Rightarrow v(c) = 0
         \end{align*}
 
-        \item Siano $f, g \in \mathcal{F}(p)$, con $f : A \to \mathbb{R}$ e $g : B \to \mathbb{R}$, $A, B$ intorni aperti di $p$. Sia $U$ intorno aperto di $p$ tale che $U \subset A \cap B$ e $f|_U = g|_U$. Considerata $c_1 : U \to \mathbb{R}$, $q \longmapsto 1$, si ha:
+        \item Siano $f, g \in \mathcal{F}(p)$, con $f : A \to \mathbb{R}$ e $g : B \to \mathbb{R}$, $A, B$ intorni aperti di 
+        $p$ e sia $U$ intorno aperto di $p$ tale che $U \subset A \cap B$ e \textcolor{orange}{$f|_U = g|_U$}
+        
+        Considerata \textcolor{red}{$c_1 : U \to \mathbb{R} \quad q \longmapsto 1$} si ha:
         \[
         \left.
         \begin{aligned}
-        c_1 \cdot f &: \overbrace{U}^{= U \cap A} \to \mathbb{R}, & c_1 \cdot f &= f|_U \\
-        c_1 \cdot g &: \overbrace{U}^{= U \cap B} \to \mathbb{R}, & c_1 \cdot g &= g|_U
+        c_1 \cdot f &: \overbrace{U}^{= U \cap A} \to \mathbb{R} \, & c_1 \cdot f &= f|_U \\
+        c_1 \cdot g &: \overbrace{U}^{= U \cap B} \to \mathbb{R} \, & c_1 \cdot g &= g|_U
         \end{aligned}
-        \right\} \implies c_1 \cdot f = c_1 \cdot g.
+        \right\} \Rightarrow \textcolor{celeste}{c_1 \cdot f = c_1 \cdot g}
         \]
         Calcolando $v$:
-        \begin{align*}
-        v(c_1 \cdot f) &= c_1(p) \cdot v(f) + \underbrace{v(c_1)}_{= 0} \cdot f(p) = v(f) \\
-        v(c_1 \cdot g) &= c_1(p) \cdot v(g) + v(c_1) \cdot g(p) = v(g)
-        \end{align*}
-        Pertanto $v(f) = v(g)$.
+        \[ \begin{aligned}
+        v(\textcolor{celeste}{c_1 \cdot f}) &\overset{\textcolor{violet}{\text{Leibniz}}}{=} \underbrace{c_1(p)}_{=1} \cdot v(f) + \underbrace{v(c_1)}_{= 0} \cdot f(p) = v(f) \\
+        v(\textcolor{celeste}{c_1 \cdot g}) &\overset{\textcolor{violet}{\text{Leibniz}}}{=} \underbrace{c_1(p)}_{=1}  \cdot v(g) + \underbrace{v(c_1)}_{= 0} \cdot g(p) = v(g)
+        \end{aligned} \Rightarrow v(f) = v(g) \]
 
-        \item Siano $u, v \in T_p M$ tali che $\textcolor{orange}{\forall f \in \mathcal{F}(M) \; u(f) = v(f)}$. Proviamo che $\forall f \in \mathcal{F}(p) \; u(f) = v(f)$.
+        \item Siano $u, v \in T_p M$ tali che $\textcolor{orange}{\forall f \in \mathcal{F}(M) \quad u(f) = v(f)}$ 
+        
+        \textcolor{violet}{dobbiamo ricordarci che $\mathcal{F}(M) \subset \mathcal{F}(p)$}
+        
+        Proviamo che $\forall f \in \mathcal{F}(p) \quad u(f) = v(f)$.
 
-        Sia $f \in \mathcal{F}(p)$. Pertanto $f : A \to \mathbb{R}$ differenziabile, $A$ intorno aperto di $p$. Esiste $W$ intorno aperto di $p$, $W \subset A$, ed esiste $\tilde{f} : M \to \mathbb{R}$ differenziabile tale che $\tilde{f}|_W = f|_W$ e $\supp(\tilde{f}) \subset A$.
+        Sia $f \in \mathcal{F}(p)$ pertanto $f : A \to \mathbb{R}$ differenziabile, $A$ intorno aperto di $p$
+
+        $\overset{\text{Lez di Lotta}}{\Rightarrow}$ Esiste $W$ intorno aperto di $p$ $W \subset A$ ed esiste
+        $\tilde{f} : M \to \mathbb{R}$ differenziabile tale che $\tilde{f}|_W = f|_W$ e $\supp(\tilde{f}) \subset A$
 
         Poiché $\tilde{f}, f \in \mathcal{F}(p)$ coincidono su un intorno aperto di $p$, per il punto 2 si ha:
         \[
         u(\tilde{f}) = u(f) \quad \text{e} \quad v(\tilde{f}) = v(f).
         \]
         Per ipotesi $\textcolor{orange}{u(\tilde{f}) = v(\tilde{f})}$. Pertanto $u(f) = v(f)$.
+
+        \textcolor{violet}{da rivedere la 3}
         \end{enumerate}
         \end{proof}
 
 
     \section{Vettori tangenti coordinati}
+        \textcolor{violet}{Qua inizia la lezione 16 della Dileo parte $2$ e mi sono fermato con Dileo}
 
-        Sia $M$ varietà differenziabile di dimensione $n$. Sia $p \in M$. Sia $(U, \varphi)$ carta locale tale che $p \in U$, con $\varphi : U \to \varphi(U) \subset \mathbb{R}^n$ diffeomorfismo.
+        Sia $M$ varietà differenziabile di dimensione $n$ e siano $p \in M$ e $(U, \varphi)$ carta locale tale che $p \in U$, con $\varphi : U \to \varphi(U) \subset \mathbb{R}^n$ diffeomorfismo.
+        
         Siano $x^1, \dots, x^n : U \to \mathbb{R}$ le funzioni coordinate locali della carta $(U, \varphi)$: $x^i = p_i \circ \varphi : U \to \mathbb{R}$.
 
         \begin{definizione}

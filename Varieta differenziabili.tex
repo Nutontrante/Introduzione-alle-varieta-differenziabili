@@ -2116,43 +2116,50 @@
         \begin{proof}
         \mbox{}
         
-        $(U, \varphi)$ è carta locale \textcolor{blu}{(globale)} di $U$ e $(\varphi(U), i_{\varphi(U)})$ è carta di $\varphi(U)$
+        $(U, \varphi)$ è carta locale \textcolor{blu}{(globale)} di $U$ \textcolor{violet}{(come sottovarietà di $M$)} e $(\varphi(U), i_{\varphi(U)})$ è carta di $\varphi(U)$
         \[ \textcolor{green}{\underbrace{\textcolor{verde}{i_{\varphi(U)} \circ \varphi \circ \varphi^{-1}}}_{i_{\varphi(U)}}} \colon \varphi(U) \to \varphi(U) \text{ differenziabile} \]
+        \textcolor{violet}{$\Rightarrow \varphi$ è differenziabile}
 
+        $\varphi^{-1} \colon \varphi(U) \to U$
+        \[ \textcolor{green}{\underbrace{\textcolor{verde}{\varphi \circ \varphi^{-1} \circ i_{\varphi(U)}^{-1}}}_{i_{\varphi(U)}}} \colon \varphi(U) \to \varphi(U) \text{ differenziabile} \]
+        \textcolor{violet}{$\Rightarrow \varphi^{-1}$ è differenziabile}
         \end{proof}
         
         \newpage
-        \begin{esempio}
+        \begin{esempio}[\textcolor{violet}{2 atlanti con strutture diverse ma diffeomorfi}]
+        \mbox{}
+
         Su $\mathbb{R}$ si considerino i due atlanti
         \[
         \mathcal{A} = \{(\mathbb{R}, i_{\mathbb{R}})\} \qquad \mathcal{A}' = \{(\mathbb{R}, \psi)\}
         \]
-        dove $\psi \colon \mathbb{R} \to \mathbb{R}$, $\psi(x) = x^3$.
+        dove $\psi \colon \mathbb{R} \to \mathbb{R}$ tale che $\psi(x) = x^3$.
 
-        È stato visto che $\mathcal{A}$ e $\mathcal{A}'$ definiscono strutture differenziabili diverse perché le due carte $(\mathbb{R}, i_{\mathbb{R}})$ e $(\mathbb{R}, \psi)$ non sono differenziabilmente compatibili.
+        È stato visto che $\mathcal{A}$ e $\mathcal{A}'$ definiscono strutture differenziabili diverse perché le due 
+        carte $(\mathbb{R}, i_{\mathbb{R}})$ e $(\mathbb{R}, \psi)$ non sono differenziabilmente compatibili.
 
         Consideriamo ora l'applicazione
         \[
-        F \colon (\mathbb{R}, \mathcal{A}) \longrightarrow (\mathbb{R}, \mathcal{A}')
+        F \colon (\mathbb{R}, \mathcal{A}) \longrightarrow (\mathbb{R}, \mathcal{A}')  \text{  tale che  } \forall x \in \mathbb{R} \quad F(x) = \sqrt[3]{x}
         \]
-        tale che $\forall x \in \mathbb{R}$, $F(x) = \sqrt[3]{x}$.
-
         Verifichiamo che $F$ è un diffeomorfismo.
 
         Infatti:
         \[
-        \psi \circ F \circ i_{\mathbb{R}} \colon \mathbb{R} \longrightarrow \mathbb{R}, \qquad x \longmapsto \psi(F(x)) = x
+        \textcolor{green}{\underbrace{\textcolor{celeste}{\psi \circ F \circ i_{\mathbb{R}}}}_{i_{\mathbb{R}}}} \colon \mathbb{R} \longrightarrow \mathbb{R} \qquad x \longmapsto \psi(F(x)) = x
         \]
         è differenziabile $\implies F$ è differenziabile.
 
         Per l'inversa $F^{-1} \colon (\mathbb{R}, \mathcal{A}') \longrightarrow (\mathbb{R}, \mathcal{A})$:
         \[
-        i_{\mathbb{R}} \circ F^{-1} \circ \psi^{-1} \colon \mathbb{R} \longrightarrow \mathbb{R}, \qquad x \longmapsto F^{-1}(\psi^{-1}(x)) = x
+        \textcolor{green}{\underbrace{\textcolor{celeste}{i_{\mathbb{R}} \circ F^{-1} \circ \psi^{-1}}}_{i_{\mathbb{R}}}}  \colon \mathbb{R} \longrightarrow \mathbb{R} \qquad x \longmapsto F^{-1}(\psi^{-1}(x)) = x
         \]
         è differenziabile $\implies F^{-1}$ è differenziabile.
+
+        \textcolor{violet}{Quindi è vero che questi $2$ atlanti definiscono $2$ strutture differenziabili diverse ma sono diffeomorfi}
         \end{esempio}
-        \textcolor{violet}{Qui finiscono le lezioni della Prof Dileo di questo capitolo e incomincia con gli spazi tangenti ma in questo capitolo
-        ci sono altre lezioni del Prof Lotta}
+        \textcolor{violet}{Qui finiscono le lezioni della Prof Dileo di questo capitolo (lezione 16 p.1) e incomincia con gli spazi tangenti ma in questo capitolo
+        ci sono altre lezioni del Prof Lotta (lezione 2)}
     \section{Proprietà topologiche delle varietà differenziabili}
     \section{Partizione dell'unità}
     \section{Funzioni bump su varietà differenziabili}
