@@ -250,6 +250,7 @@
         \end{osservazione}
         \newpage
         \begin{proposizione}
+        \label{prop:varieta_topologica_domini_sistema_fondamentale_di_intorni}
         Sia $M$ varietà topologica e sia $p \in M$ \textcolor{red}{i domini delle carte locali} costituiscono un \textcolor{red}{sistema fondamentale di intorni} di $p$, ovvero
         \[
         \forall A \text{ intorno aperto di } p \quad \exists (U, \varphi) \text{ carta locale t.c. } p \in U \subset A.
@@ -2260,8 +2261,29 @@
         
         Di qui l'asserto perché $\overline{D_r(p)}$ contiene l'intorno aperto $D_r(p)$ di $p$. 
         
+        \textcolor{violet}{Dire che $\{\overline{D_r(p)}\}$ è un sistema fondamentale di intorni compatti di $p$ significa:}
+
+        \textcolor{violet}{1) ogni $\overline{D_r(p)}$ è un intorno compatto di $p$ (la prima affermazione)}
+        
+        \textcolor{violet}{2) per ogni intorno aperto $A$ di $p$ esiste uno sferoide $D_r(p)$ con $\overline{D_r(p)} \subset A$.}
+
         L'ultima affermazione è basata sul fatto che le carte locali di $M$ costituiscono un sistema
-        fondamentale di intorni ed è sostanzialmente già nota \textcolor{violet}{proposizione \ref{prop:atlante_differenziabile_massimale_domini_delle_carte_ammettono_un_sistema_fondamentale_di_intorni}}.
+        fondamentale di intorni ed è sostanzialmente già nota \textcolor{violet}{proposizione \ref{prop:varieta_topologica_domini_sistema_fondamentale_di_intorni}}.
+
+        \textcolor{violet}{Infatti, sia $A$ intorno aperto di $p \overset{\textcolor{violet}{\substack{\text{prop.} \\  \ref{prop:varieta_topologica_domini_sistema_fondamentale_di_intorni}}}}{\Rightarrow}
+        \exists (U,\varphi) \text{ carta}, \; p \in U \subset A
+        \;\overset{\substack{\varphi(U) \text{ aperto} \\ \text{di } \mathbb{R}^n \\ \varphi(p)\in\varphi(U)}}{\Rightarrow}\;
+        \exists r>0 \text{ tale che }$} 
+        
+        \textcolor{violet}{$\overline{B_r(\varphi(p))} \subset \varphi(U)
+        \;\overset{\text{def. \ref{def:sferoide}}}{\Rightarrow}\;
+        D_r(p) \text{ sferoide}$}
+        \textcolor{violet}{e per quanto visto sopra}
+        \[
+        \textcolor{violet}{
+        \overline{D_r(p)} = \overline{D_r(p)}^U = \varphi^{-1}\big(\overline{B_r(\varphi(p))}\big) \subset U \subset A .
+        }
+        \]
         \end{proof}
         \begin{osservazione}
         \mbox{}
