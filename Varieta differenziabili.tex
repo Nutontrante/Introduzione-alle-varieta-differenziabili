@@ -2160,6 +2160,257 @@
         \end{esempio}
         \textcolor{violet}{Qui finiscono le lezioni della Prof Dileo di questo capitolo (lezione 16 p.1) e incomincia con gli spazi tangenti ma in questo capitolo
         ci sono altre lezioni del Prof Lotta (lezione 2)}
-    \section{Proprietà topologiche delle varietà differenziabili}
-    \section{Partizione dell'unità}
+    \section{Paracompattezza delle varietà topologiche}
+        \textcolor{violet}{Questa parte degli appunti del Prof. Lotta ha un unico grande obiettivo: dimostrare che ogni varietà topologica è uno spazio paracompatto}
+
+        \textcolor{violet}{La paracompattezza è un requisito topologico tecnico ma indispensabile per il seguito del corso 
+        (in particolare per la lezione successiva sulle partizioni dell'unità), perché permette di "incollare" oggetti locali (definiti sulle singole carte) in 
+        oggetti globali su tutta la varietà senza sommare infinite cose nello stesso punto.}
+        In questo paragrafo discutiamo un'importante proprietà delle varietà topologiche.
+
+        Prima di procedere riprendiamo una questione concernente la chiusura di un insieme in uno spazio topologico. 
+        \begin{richiamo}[Chiusura di un insieme in un aperto di uno spazio di Hausdorff]
+        \label{ric:chiusura_in_aperto_hausdorff}
+        \mbox{}
+
+        Sia $A \subset X$ un aperto di uno spazio di Hausdorff $X$ e sia $E \subset A$.
+
+        \textbf{Caso generale.} la chiusura di $E$ in $A$ e quella in $X$ sono legate da
+        \[
+        \overline{E}^A = \overline{E} \cap A .
+        \]
+        In generale quindi $\overline{E}^A \subset \overline{E}$, ma possono essere diverse: la chiusura in $X$ può avere punti che stanno fuori da $A$ 
+        come esempio rapido in  $X = \mathbb{R}$, prendi $A = (0, 1)$ ed $E = (0, \tfrac{1}{2})$, inn $\mathbb{R}$, la chiusura è $\overline{E} = [0, \tfrac{1}{2}]$
+        invece in $A$ il punto $0$ non esiste, quindi $\overline{E}^A = (0, \tfrac{1}{2}]$
+
+        \textbf{Caso compatto.} Se $\overline{E}^A$ è compatta, allora
+        \[
+        \overline{E}^A = \overline{E}.
+        \]
+
+        \textbf{Perché?} Si procede così:
+        \[
+        \overline{E}^A \text{ compatta in } A
+        \;\overset{\text{compatto nel sottospazio}}{\Longrightarrow}\;
+        \overline{E}^A \text{ compatta in } X
+        \;\overset{X \text{ è } T_2}{\Longrightarrow}\;
+        \overline{E}^A \text{ chiuso in } X.
+        \]
+        Ora $\overline{E}^A$ è un chiuso di $X$ che contiene $E$, e $\overline{E}$ è il più piccolo chiuso di $X$ con questa proprietà:
+        \[
+        \overline{E}^A \text{ chiuso di } X,\; E \subset \overline{E}^A
+        \;\overset{\text{minimalità di } \overline{E}}{\Longrightarrow}\;
+        \overline{E} \subset \overline{E}^A .
+        \]
+        Insieme all'inclusione sempre vera $\overline{E}^A \subset \overline{E}$ si ottiene
+        \[
+        \overline{E} \subset \overline{E}^A \subset \overline{E}
+        \;\overset{\text{doppia inclusione}}{\Longrightarrow}\;
+        \overline{E}^A = \overline{E}.
+        \]
+
+        \textbf{Da ricordare (richiami topologici).}
+        \begin{itemize}
+        \item La compattezza è una proprietà intrinseca: un sottoinsieme è compatto nel sottospazio se e solo se lo è nello spazio ambiente $X$.
+        \item In uno spazio $T_2$ i compatti sono chiusi.
+        \item $\overline{E}$ è il più piccolo chiuso di $X$ contenente $E$.
+        \end{itemize}
+        \end{richiamo}
+
+        \textcolor{violet}{Su una varietà topologica $M$ non c'è una distanza definita a priori, quindi non puoi parlare di "palle aperte" 
+        la soluzione è quella di prendere unca carta locale  $(U, \varphi)$ una sfera aperta $B_r(\varphi(p))$ in $\mathbb{R}^n$ la cui 
+        chiusura stia tutta dentro $\varphi(U)$, e la riporti indietro sulla varietà tramite $\varphi^{-1}$.}
+        \begin{definizione}
+        \label{def:sferoide}
+        \mbox{}
+
+        Sia $M$ una varietà topologica di dimensione $n \geq 1$ e sia $p \in M$ chiameremo \textcolor{red}{sferoide di centro $p$ e raggio $r > 0$} ogni 
+        intorno aperto di $p$ del tipo
+        \begin{equation}
+        \label{eq:sferoide}
+        \textcolor{red}{D_r(p) := \varphi^{-1}(B_r(\varphi(p)))}
+        \end{equation}
+        dove $(U, \varphi)$ è una carta locale il cui dominio $U$ contiene $p$ e $B_r(\varphi(p))$ è una sfera aperta in $\mathbb{R}^n$ di centro $\varphi(p)$ e raggio $r > 0$ tale che:
+        \[
+        \color{red} \overline{B_r(\varphi(p))} \subset \varphi(U).
+        \]
+        \end{definizione}
+
+        Si osservi che $D_r(p)$ è aperto in $M$ perché è aperto in $U$.
+
+        \begin{proposizione}
+        \label{prop:chiusura_sferoide_intorno_compatto}
+        \mbox{}
+
+        Per ogni sferoide $D_r(p)$ si ha che la sua chiusura \textcolor{red}{$\overline{D_r(p)}$} in $M$ è un \textcolor{red}{intorno compatto di $p$}. 
+        
+        Gli insiemi \textcolor{red}{$\left\{\overline{D_r (p)}\right\}_{\textcolor{violet}{p \in M}}$} costituiscono un 
+        \textcolor{red}{sistema fondamentale di intorni compatti} di $p$.
+        \end{proposizione}
+
+        \begin{proof}
+        \mbox{}
+
+        Fissata una carta locale per cui vale la \eqref{eq:sferoide} osserviamo che essendo $\varphi^{-1} \colon \varphi(U) \to U$ un omeomorfismo 
+        risulta che \textcolor{violet}{(manda compatti in compatti)}
+        \[
+        \varphi^{-1}(\overline{B_r(\varphi(p))}) = \overline{D_r(p)}^U
+        \]
+        $\overline{D_r(p)}^U$ è un compatto $\overset{\textcolor{violet}{\substack{\text{richiamo} \\ \ref{ric:chiusura_in_aperto_hausdorff}}}}{\Rightarrow} \overline{D_r(p)}^U =\overline{D_r(p)}$  
+        
+        Di qui l'asserto perché $\overline{D_r(p)}$ contiene l'intorno aperto $D_r(p)$ di $p$. 
+        
+        L'ultima affermazione è basata sul fatto che le carte locali di $M$ costituiscono un sistema
+        fondamentale di intorni ed è sostanzialmente già nota \textcolor{violet}{proposizione \ref{prop:atlante_differenziabile_massimale_domini_delle_carte_ammettono_un_sistema_fondamentale_di_intorni}}.
+        \end{proof}
+        \begin{osservazione}
+        \mbox{}
+
+        Sottolineiamo che la nozione di sferoide non è correlata ad alcuna distanza su $M$ ogni sferoide è definito da una carta locale
+        $(U, \varphi)$ sebbene nella notazione $D_r(p)$ la carta scelta passante per il punto $p$ non compare esplicitamente $\Rightarrow$ 
+        un'altra scelta determina un intorno diverso di $p$. 
+        
+        Nel seguito conveniamo che se $D_r(p)$ è uno sferoide e $0 < s < r$ allora $D_s(p)$ denota lo sferoide di centro $p$ e raggio $s$ relativo \textbf{alla stessa carta}. 
+        
+        Notiamo esplicitamente che risulta:
+        \[
+        \overline{D_s(p)} \subset D_r(p).
+        \]
+        \end{osservazione}
+
+        \newpage
+        Definiamo ora la nozione di spazio topologico \textbf{paracompatto}: si tratta di un'importante generalizzazione del concetto di spazio compatto. Tale generalizzazione si basa sul concetto seguente:
+
+        \begin{definizione}
+        \label{def:famiglia_localmente_finita}
+        \mbox{}
+
+        Una famiglia di sottoinsiemi $\textcolor{red}{\{E_i\}_{i \in I}}$ di uno spazio topologico $X$ si dice \textcolor{red}{localmente finita} se ogni punto $p \in M$ possiede un intorno aperto che interseca al più un numero finito di insiemi della famiglia. In termini più formali per ogni $p \in M$ esistono un aperto $U$ con $p \in U$ ed esiste $F \subset I$ finito tale che:
+        \[
+        \textcolor{red}{U \cap E_i = \emptyset \qquad \forall i \in I \setminus F}.
+        \]
+        \end{definizione}
+
+        Una proprietà rilevante delle famiglie localmente finite è la seguente:
+
+        \begin{proposizione}
+        \label{prop:proprieta_famiglie_localmente_finite}
+        \mbox{}
+
+        Sia $X$ uno spazio topologico
+        \begin{enumerate}
+            \item Se $\{E_i\}_{i \in I}$ è una famiglia localmente finita di sottoinsiemi di $X$ anche la famiglia delle chiusure $\{\overline{E_i}\}_{i \in I}$ è localmente finita
+            \item L'unione di una famiglia localmente finita di chiusi è sempre un chiuso
+            \item Se $\{E_i\}_{i \in I}$ è una famiglia localmente finita di sottoinsiemi si ha:
+            \begin{equation}
+            \label{eq:chiusura_unione_localmente_finita}
+            \overline{\bigcup_{i \in I} E_i} = \bigcup_{i \in I} \overline{E_i}.
+            \end{equation}
+        \end{enumerate}
+        \end{proposizione}
+
+        \begin{proof}
+        1) Consideriamo un punto $x$ e fissiamo un intorno aperto $U$ di $x$ che incontra al più un numero finito degli insiemi della famiglia diciamo $E_{i_1}, \dots, E_{i_k}$. Mostriamo che lo stesso intorno incontra al più gli insiemi $\overline{E_{i_1}}, \dots, \overline{E_{i_k}}$ della famiglia $\{\overline{E_i}\}$. Infatti supponiamo $U \cap \overline{E_j} \neq \emptyset$; allora per una caratterizzazione della chiusura di $E_j$ l'aperto $U$ deve anche intersecare $E_j$ cioè $U \cap E_j \neq \emptyset$. Pertanto $E_j$ dev'essere uno degli $E_{i_1}, \dots, E_{i_k}$ e di qui segue quanto asserito.
+
+        2) Consideriamo una famiglia localmente finita di chiusi $\{C_i\}$. Sia $x \notin \bigcup_{i \in I} C_i$ e fissiamo un intorno aperto $U$ di $x$ che incontra al più un numero finito di insiemi della famiglia diciamo $C_{i_1}, \dots, C_{i_k}$. Se $U$ non incontra alcun elemento della famiglia allora $U \subset X \setminus \bigcup_{i \in I} C_i$. Altrimenti $A := U \setminus (C_{i_1} \cup \dots \cup C_{i_k})$ è un intorno aperto di $x$ e si ha che $A \cap C_i = \emptyset$ per ogni $i$. Quindi $A \subset X \setminus \bigcup_{i \in I} C_i$. Con ciò resta provato che $X \setminus \bigcup_{i \in I} C_i$ è aperto.
+
+        3) Proviamo la \eqref{eq:chiusura_unione_localmente_finita}. Poiché la famiglia delle chiusure $\mathcal{C} = \{\overline{E_i}\}$ è localmente finita sappiamo che l'unione $\bigcup_{i \in I} \overline{E_i}$ è un chiuso. Per concludere notiamo che se $C \subset X$ è un chiuso che contiene tutti gli $E_i$ allora è vero anche che $C$ contiene tutti gli insiemi $\overline{E_i}$; pertanto vale l'inclusione $\bigcup_{i \in I} \overline{E_i} \subset C$ e resta provato che $\bigcup_{i \in I} \overline{E_i}$ è il più piccolo chiuso contenente $\bigcup_{i \in I} E_i$ da cui la \eqref{eq:chiusura_unione_localmente_finita}.
+        \end{proof}
+
+        \begin{definizione}
+        \label{def:raffinamento}
+        \mbox{}
+
+        Dato un ricoprimento aperto $\textcolor{red}{\mathcal{A} = \{U_\alpha\}_{\alpha \in I}}$ di uno spazio topologico si chiama \textcolor{red}{raffinamento} di $\mathcal{A}$ ogni ricoprimento aperto $\textcolor{red}{\mathfrak{B} = \{V_i\}_{i \in J}}$ tale che ogni aperto di $\mathfrak{B}$ è contenuto in almeno un aperto di $\mathcal{A}$. In altri termini per ogni $i \in J$ esiste $\alpha \in I$ tale che
+        \[
+        \textcolor{red}{V_i \subset U_\alpha}.
+        \]
+        \end{definizione}
+
+        Giova osservare che un raffinamento di un ricoprimento generalmente non è un sottoricoprimento di quest'ultimo.
+
+        \begin{definizione}
+        \label{def:spazio_paracompatto}
+        \mbox{}
+
+        Uno spazio topologico $\textcolor{red}{X}$ è detto \textcolor{red}{paracompatto} se \textcolor{red}{ogni suo ricoprimento aperto $\mathcal{A}$ ammette un raffinamento localmente finito}.
+        \end{definizione}
+
+        Vogliamo provare che:
+
+        \begin{teorema}
+        \label{th:varieta_topologica_paracompatta}
+        \mbox{}
+
+        Ogni varietà topologica è uno spazio paracompatto. Inoltre ogni ricoprimento aperto $\mathcal{A}$ di una varietà topologica $M$ ammette un raffinamento localmente finito numerabile $\mathfrak{B} = \{D_{r_i}(p_i)\}_{i \in \mathbb{N}}$ costituito da sferoidi tale che $\{D_{r_i/2}(p_i)\}_{i \in \mathbb{N}}$ è ancora un ricoprimento di $M$.
+        \end{teorema}
+
+        La dimostrazione utilizzerà uno strumento noto come \emph{esaustione in compatti} la cui esistenza è stabilita nella proposizione seguente:
+
+        \begin{proposizione}
+        \label{prop:esaustione_in_compatti}
+        \mbox{}
+
+        Ogni varietà topologica $M$ ammette una esaustione in compatti ovvero una famiglia numerabile $\{K_n\}_{n \in \mathbb{N}}$ di compatti tali che:
+        \[
+        M = \bigcup_{n \in \mathbb{N}} K_n \qquad K_n \subset \operatorname{Int}(K_{n+1}) \quad \forall n \in \mathbb{N}.
+        \]
+        \end{proposizione}
+
+        \begin{proof}
+        Fissiamo una \textcolor{orange}{base numerabile $\mathfrak{B}$ di $X$}. La sottofamiglia $\mathfrak{B}'$ di $\mathfrak{B}$ costituita dagli $U \in \mathfrak{B}$ la cui chiusura è compatta è ancora un ricoprimento aperto di $X$; infatti dato un punto $p$ e un suo intorno compatto $K$ esiste $U \in \mathfrak{B}$ tale che
+        \[
+        p \in U \subset K
+        \]
+        da cui essendo $K$ chiuso:
+        \[
+        p \in \overline{U} \subset K
+        \]
+        dove $\overline{U}$ è compatto (essendo chiuso nel compatto $K$). Ovviamente anche $\mathfrak{B}'$ è numerabile per cui possiamo riorganizzare $\mathfrak{B}'$ come famiglia indicizzata mediante $\mathbb{N}$; scriviamo quindi $\mathfrak{B}' = \{U_i\}_{i \in \mathbb{N}}$. Ciò premesso costruiamo una successione di compatti $K_n$ che soddisfa le condizioni richieste con una procedura ricorsiva come segue: poniamo innanzitutto $K_0 := \overline{U_0}$. Supposto di aver costruito $K_0, \dots, K_n$ consideriamo il più piccolo intero $i(n)$ tale che $i(n) > n$ e:
+        \[
+        K_n \subset U_1 \cup U_2 \cup \dots \cup U_{i(n)}.
+        \]
+        Esso esiste perché \textcolor{orange}{$K_n$ è compatto} e $\mathfrak{B}'$ è un ricoprimento aperto di $X$. Definiamo quindi
+        \[
+        K_{n+1} := \overline{U_1} \cup \overline{U_2} \cup \dots \cup \overline{U_{i(n)}}.
+        \]
+        Si tratta di un compatto (unione di un numero finito di compatti) e per costruzione $K_n$ è contenuto nel suo interno. Notiamo infine che abbiamo che $X = \bigcup_{n \in \mathbb{N}} K_n$ in quanto ogni punto $p$ di $X$ appartiene a qualche $U_n$ e quindi appartiene anche a $U_1 \cup U_2 \cup \dots \cup U_{i(n)} \subset K_{n+1}$ essendo $i(n) > n$.
+        \end{proof}
+
+        Possiamo ora procedere con la dimostrazione del \textcolor{hotpink}{Teorema \ref{th:varieta_topologica_paracompatta}}.
+
+        \begin{proof}
+        Consideriamo un ricoprimento aperto $\mathcal{A} = \{U_\alpha\}$ di $M$. Fissiamo un'\textcolor{orange}{esaustione in compatti $\{K_n\}$ di $M$} e poniamo $K_i = \emptyset$ per $i < 0$. Osserviamo che per costruzione ogni insieme
+        \[
+        K_n - \operatorname{Int}(K_{n-1})
+        \]
+        con $n \geq 0$ è un compatto. Infatti esso è chiuso perché intersezione dei chiusi $K_n$ e del complementare di $\operatorname{Int}(K_{n-1})$ e quindi è compatto perché chiuso nel compatto $K_n$. Per ogni punto $p$ di tale compatto scegliamo un aperto $U_{\alpha(p)}$ del ricoprimento passante per $p$. Allora $U_{\alpha(p)} \setminus K_{n-2}$ è un intorno aperto di $p$; possiamo quindi fissare uno sferoide $D_{r(p)}(p)$ tale che
+        \begin{equation}
+        \label{eq:sferoide_contenuto_aperto}
+        \overline{D_{r(p)}(p)} \subset U_{\alpha(p)} \setminus K_{n-2}.
+        \end{equation}
+        Denotiamo per maggiore leggibilità semplicemente con $D_p$ lo sferoide $D_{r(p)}(p)$ e con $D'_p$ lo sferoide $D_{r(p)/2}(p)$. Quindi abbiamo:
+        \begin{equation}
+        \label{eq:catena_inclusioni_sferoidi}
+        D'_p \subset \overline{D_p} \subset U_{\alpha(p)} \setminus K_{n-2}.
+        \end{equation}
+        Consegue che esistono $p_1^n, \dots, p_{s_n}^n$ punti dello stesso compatto tali che
+        \begin{equation}
+        \label{eq:ricoprimento_finito_anello}
+        K_n - \operatorname{Int}(K_{n-1}) \subset D'_{p_1^n} \cup \dots \cup D'_{p_{s_n}^n}.
+        \end{equation}
+        Cominciamo con l'osservare che la famiglia numerabile $\{D'_{p_j^n}\}$ con $1 \leq j \leq s_n$ così costruita è un ricoprimento di $M$. Infatti per ogni punto $p \in M$ detto $n \geq 0$ il più piccolo intero tale che $p \in K_n$ si ha che $p \in K_n \setminus K_{n-1}$ e quindi stante la \eqref{eq:ricoprimento_finito_anello} $p$ appartiene a qualche $D'_{p_j^n}$. Si noti poi che a maggior ragione anche $\mathfrak{B} = \{D_{p_j^n}\}$ è un ricoprimento aperto di $M$. Infine mostriamo che la stessa famiglia $\mathfrak{B}$ è un raffinamento localmente finito di $\mathcal{A}$. Il fatto che è un raffinamento è conseguenza immediata del fatto che ogni sferoide $D_{p_j^n}$ è contenuto nell'aperto $U_{\alpha(p_j^n)}$ del ricoprimento iniziale. Per mostrare che si tratta di una famiglia localmente finita osserviamo che per costruzione tenendo conto di \eqref{eq:catena_inclusioni_sferoidi} abbiamo per ogni $n \geq 0$:
+        \[
+        D_{p_j^n} \cap K_{n-2} = \emptyset.
+        \]
+        Questo implica che
+        \[
+        D_{p_j^n} \cap K_m = \emptyset
+        \]
+        se $m \leq n - 2$ ovvero per $n \geq m + 2$. Ciò significa che ogni $K_m$ incontra al più un numero finito degli insiemi $D_{p_j^n}$: al più quelli per cui $n < m + 2$. Ma ogni punto appartiene all'interno di qualche $K_m$ e di qui la tesi.
+        \end{proof}
+
+    \section{Funzioni differenziabili a supporto compatto}
+    \section{Partizioni dell'unità}
+    \section{Estensioni di funzioni differenziabili}
     \section{Funzioni bump su varietà differenziabili}
