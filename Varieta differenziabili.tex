@@ -2292,7 +2292,7 @@
         $(U, \varphi)$ sebbene nella notazione $D_r(p)$ la carta scelta passante per il punto $p$ non compare esplicitamente $\Rightarrow$ 
         un'altra scelta determina un intorno diverso di $p$. 
         
-        Nel seguito conveniamo che se $D_r(p)$ è uno sferoide e $0 < s < r$ allora $D_s(p)$ denota lo sferoide di centro $p$ e raggio $s$ relativo \textbf{alla stessa carta}. 
+        Nel seguito \textbf{conveniamo} che se $D_r(p)$ è uno sferoide e $0 < s < r$ allora $D_s(p)$ denota lo sferoide di centro $p$ e raggio $s$ relativo \textbf{alla stessa carta}. 
         
         Notiamo esplicitamente che risulta:
         \[
@@ -2307,7 +2307,10 @@
         \label{def:famiglia_localmente_finita}
         \mbox{}
 
-        Una famiglia di sottoinsiemi $\textcolor{red}{\{E_i\}_{i \in I}}$ di uno spazio topologico $X$ si dice \textcolor{red}{localmente finita} se ogni punto $p \in M$ possiede un intorno aperto che interseca al più un numero finito di insiemi della famiglia. In termini più formali per ogni $p \in M$ esistono un aperto $U$ con $p \in U$ ed esiste $F \subset I$ finito tale che:
+        Una famiglia di sottoinsiemi $\textcolor{red}{\{E_i\}_{i \in I}}$ di uno spazio topologico $X$ si
+        dice \textcolor{red}{localmente finita} se ogni punto $p \in M$ possiede un intorno aperto che interseca al più un numero finito di insiemi della famiglia. 
+         
+        In termini più formali \textcolor{red}{$\forall p \in M$ esistono un aperto $U$ con $p \in U$ ed esiste $F \subset I$ finito} tale che:
         \[
         \textcolor{red}{U \cap E_i = \emptyset \qquad \forall i \in I \setminus F}.
         \]
@@ -2332,11 +2335,18 @@
         \end{proposizione}
 
         \begin{proof}
-        1) Consideriamo un punto $x$ e fissiamo un intorno aperto $U$ di $x$ che incontra al più un numero finito degli insiemi della famiglia diciamo $E_{i_1}, \dots, E_{i_k}$. Mostriamo che lo stesso intorno incontra al più gli insiemi $\overline{E_{i_1}}, \dots, \overline{E_{i_k}}$ della famiglia $\{\overline{E_i}\}$. Infatti supponiamo $U \cap \overline{E_j} \neq \emptyset$; allora per una caratterizzazione della chiusura di $E_j$ l'aperto $U$ deve anche intersecare $E_j$ cioè $U \cap E_j \neq \emptyset$. Pertanto $E_j$ dev'essere uno degli $E_{i_1}, \dots, E_{i_k}$ e di qui segue quanto asserito.
-
-        2) Consideriamo una famiglia localmente finita di chiusi $\{C_i\}$. Sia $x \notin \bigcup_{i \in I} C_i$ e fissiamo un intorno aperto $U$ di $x$ che incontra al più un numero finito di insiemi della famiglia diciamo $C_{i_1}, \dots, C_{i_k}$. Se $U$ non incontra alcun elemento della famiglia allora $U \subset X \setminus \bigcup_{i \in I} C_i$. Altrimenti $A := U \setminus (C_{i_1} \cup \dots \cup C_{i_k})$ è un intorno aperto di $x$ e si ha che $A \cap C_i = \emptyset$ per ogni $i$. Quindi $A \subset X \setminus \bigcup_{i \in I} C_i$. Con ciò resta provato che $X \setminus \bigcup_{i \in I} C_i$ è aperto.
-
-        3) Proviamo la \eqref{eq:chiusura_unione_localmente_finita}. Poiché la famiglia delle chiusure $\mathcal{C} = \{\overline{E_i}\}$ è localmente finita sappiamo che l'unione $\bigcup_{i \in I} \overline{E_i}$ è un chiuso. Per concludere notiamo che se $C \subset X$ è un chiuso che contiene tutti gli $E_i$ allora è vero anche che $C$ contiene tutti gli insiemi $\overline{E_i}$; pertanto vale l'inclusione $\bigcup_{i \in I} \overline{E_i} \subset C$ e resta provato che $\bigcup_{i \in I} \overline{E_i}$ è il più piccolo chiuso contenente $\bigcup_{i \in I} E_i$ da cui la \eqref{eq:chiusura_unione_localmente_finita}.
+        \mbox{}
+        \begin{enumerate}
+            \item Sia $W$ intorno aperto di $p$ che incontra al più gli elementi $E_{i1}, \dots, E_{ik}$ della famiglia 
+            
+            \textcolor{blu}{($F=\left\{i1, \dots, ik\right\}$)} dico che $W$ incontra al più 
+            
+            Pertanto $E_j$ dev'essere uno degli $E_{i_1}, \dots, E_{i_k}$ e di qui segue quanto asserito.
+            \item Consideriamo una famiglia localmente finita di chiusi $\{C_i\}$. 
+            Sia $x \notin \bigcup_{i \in I} C_i$ e fissiamo un intorno aperto $U$ di $x$ che incontra al più un numero 
+            finito di insiemi della famiglia diciamo $C_{i_1}, \dots, C_{i_k}$. Se $U$ non incontra alcun elemento della famiglia allora $U \subset X \setminus \bigcup_{i \in I} C_i$. Altrimenti $A := U \setminus (C_{i_1} \cup \dots \cup C_{i_k})$ è un intorno aperto di $x$ e si ha che $A \cap C_i = \emptyset$ per ogni $i$. Quindi $A \subset X \setminus \bigcup_{i \in I} C_i$. Con ciò resta provato che $X \setminus \bigcup_{i \in I} C_i$ è aperto.
+            \item Proviamo la \eqref{eq:chiusura_unione_localmente_finita}. Poiché la famiglia delle chiusure $\mathcal{C} = \{\overline{E_i}\}$ è localmente finita sappiamo che l'unione $\bigcup_{i \in I} \overline{E_i}$ è un chiuso. Per concludere notiamo che se $C \subset X$ è un chiuso che contiene tutti gli $E_i$ allora è vero anche che $C$ contiene tutti gli insiemi $\overline{E_i}$; pertanto vale l'inclusione $\bigcup_{i \in I} \overline{E_i} \subset C$ e resta provato che $\bigcup_{i \in I} \overline{E_i}$ è il più piccolo chiuso contenente $\bigcup_{i \in I} E_i$ da cui la \eqref{eq:chiusura_unione_localmente_finita}.
+        \end{enumerate}
         \end{proof}
 
         \begin{definizione}
