@@ -2307,14 +2307,22 @@
         \label{def:famiglia_localmente_finita}
         \mbox{}
 
-        Una famiglia di sottoinsiemi $\textcolor{red}{\{E_i\}_{i \in I}}$ di uno spazio topologico $X$ si
+        Una famiglia di sottoinsiemi $\textcolor{red}{\{E_i\}_{i \in I}}$ di uno spazio topologico si
         dice \textcolor{red}{localmente finita} se ogni punto $p \in M$ possiede un intorno aperto che interseca al più un numero finito di insiemi della famiglia. 
          
         In termini più formali \textcolor{red}{$\forall p \in M$ esistono un aperto $U$ con $p \in U$ ed esiste $F \subset I$ finito} tale che:
         \[
-        \textcolor{red}{U \cap E_i = \emptyset \qquad \forall i \in I \setminus F}.
+        \textcolor{red}{U \cap E_i = \emptyset \qquad \forall i \in I \setminus F}
         \]
         \end{definizione}
+        \textcolor{violet}{
+        \textbf{Esempio.} In $\mathbb{R}$ la famiglia $\{E_n\}_{n \in \mathbb{Z}}$ con $E_n = [n, n+1]$ è localmente finita: qui 
+        $I = \mathbb{Z}$ e, dato $p \in \mathbb{R}$, l'intorno $U = (p-\tfrac12, p+\tfrac12)$ interseca $E_n$ solo se 
+        $p-\tfrac32 \leq n \leq p+\tfrac12$, quindi $F = \mathbb{Z} \cap [p-\tfrac32, p+\tfrac12]$ è finito (contiene al più $3$ interi).}
+
+        \textcolor{violet}{\textbf{Controesempio.} La famiglia $\{E_n\}_{n \in \mathbb{N}}$ con $E_n = \{\tfrac{1}{n}\}$ non è localmente finita: qui
+        $I = \mathbb{N}$ e per $p = 0$, ogni intorno $(-\varepsilon, \varepsilon)$ contiene $\tfrac{1}{n}$ per ogni
+        $n > \tfrac{1}{\varepsilon}$ quindi interseca infiniti $E_n$ e non esiste alcun $F$ finito che funzioni.}
 
         Una proprietà rilevante delle famiglie localmente finite è la seguente:
 
@@ -2337,11 +2345,34 @@
         \begin{proof}
         \mbox{}
         \begin{enumerate}
+            \item \textcolor{violet}{Questa dimostrazione l'ho cambiata non mi piaceva}   
+            
+            Fissiamo $p \in X \Rightarrow \exists W$ intorno aperto di $p$ e un insieme finito
+            $F \subset I$ tali che
+            \[
+            W \cap E_i = \emptyset \qquad \forall i \in I \setminus F.
+            \]
+            Mostriamo che lo stesso $W$ e lo stesso $F$ vanno bene per la famiglia delle chiusure
+            cioè che
+            \[
+            W \cap \overline{E_i} = \emptyset \qquad \forall i \in I \setminus F.
+            \]
+            \[
+            \color{violet} x \in \overline{E} \iff \text{ogni intorno aperto } U \text{ di } x \text{ verifica } U \cap E \neq \emptyset.
+            \]
+            Sia ora $i \in I \setminus F$ e supponiamo per assurdo che esista $x \in W \cap \overline{E_i}$
+            $\Rightarrow W$ è un aperto che contiene $x \in \overline{E_i} \Rightarrow W \cap E_i \neq \emptyset$, il che contraddice la scelta di $W$ e $F$.
+
+            Dunque $W \cap \overline{E_i} = \emptyset$ per ogni $i \in I \setminus F$
+            e la famiglia $\{\overline{E_i}\}_{i \in I}$ è localmente finita.
+
             \item Sia $W$ intorno aperto di $p$ che incontra al più gli elementi $E_{i1}, \dots, E_{ik}$ della famiglia 
             
-            \textcolor{blu}{($F=\left\{i1, \dots, ik\right\}$)} dico che $W$ incontra al più 
+            \textcolor{blu}{($F=\left\{i1, \dots, ik\right\}$)} dico che $W$ incontra al più $\left\{ \overline{E_{i1}}, \dots , \overline{E_{ik}} \right\}$
+            della famiglia $\left\{\overline{E_i}\right\}_{i \in I}$
             
-            Pertanto $E_j$ dev'essere uno degli $E_{i_1}, \dots, E_{i_k}$ e di qui segue quanto asserito.
+            Infatti se \textcolor{violet}{per assurdo} $W \cap \overline{E_j} \neq \emptyset$ per la caratterizzazione di $\overline{E_j}$
+            deve $W \cap E_j \neq \emptyset$ essendo $W$ un aperto $\Rightarrow j \in F = \left\{i1, \dots, ik\right\}$
             \item Consideriamo una famiglia localmente finita di chiusi $\{C_i\}$. 
             Sia $x \notin \bigcup_{i \in I} C_i$ e fissiamo un intorno aperto $U$ di $x$ che incontra al più un numero 
             finito di insiemi della famiglia diciamo $C_{i_1}, \dots, C_{i_k}$. Se $U$ non incontra alcun elemento della famiglia allora $U \subset X \setminus \bigcup_{i \in I} C_i$. Altrimenti $A := U \setminus (C_{i_1} \cup \dots \cup C_{i_k})$ è un intorno aperto di $x$ e si ha che $A \cap C_i = \emptyset$ per ogni $i$. Quindi $A \subset X \setminus \bigcup_{i \in I} C_i$. Con ciò resta provato che $X \setminus \bigcup_{i \in I} C_i$ è aperto.
