@@ -2324,6 +2324,11 @@
         $I = \mathbb{N}$ e per $p = 0$, ogni intorno $(-\varepsilon, \varepsilon)$ contiene $\tfrac{1}{n}$ per ogni
         $n > \tfrac{1}{\varepsilon}$ quindi interseca infiniti $E_n$ e non esiste alcun $F$ finito che funzioni.}
 
+        \begin{richiamo}[caratterizzazione degli aperti]
+        \label{rich:car_aperti}
+        $(X, \tau)$ spazio topologico $\emptyset \neq A \subset X$ sono equivalenti:
+        \[ A \in \tau \iff \forall x_0 \in A \quad A \text{ è intorno di } x_0 \]
+        \end{richiamo}
         Una proprietà rilevante delle famiglie localmente finite è la seguente:
 
         \begin{proposizione}
@@ -2361,30 +2366,52 @@
             \color{violet} x \in \overline{E} \iff \text{ogni intorno aperto } U \text{ di } x \text{ verifica } U \cap E \neq \emptyset.
             \]
             Sia ora $i \in I \setminus F$ e supponiamo per assurdo che esista $x \in W \cap \overline{E_i}$
-            $\Rightarrow W$ è un aperto che contiene $x \in \overline{E_i} \Rightarrow W \cap E_i \neq \emptyset$, il che contraddice la scelta di $W$ e $F$.
+            $\Rightarrow W$ è un aperto che contiene $x \in \overline{E_i} \Rightarrow W \cap E_i \neq \emptyset$ il che contraddice la scelta di $W$ e $F$.
 
             Dunque $W \cap \overline{E_i} = \emptyset$ per ogni $i \in I \setminus F$
             e la famiglia $\{\overline{E_i}\}_{i \in I}$ è localmente finita.
+            \item Consideriamo una famiglia localmente finita di chiusi $\{C_i\}_{i \in I}$. 
+            
+            \textcolor{violet}{Osserviamo che l'ipotesi di locale finitezza è essenziale: in generale l'unione di
+            infiniti chiusi non è chiusa, ad esempio in $\mathbb{R}$ l'insieme
+            $\displaystyle \bigcup_{n \geq 1} \{\tfrac{1}{n}\}$ non è chiuso (il punto $0$ appartiene alla sua chiusura ma non
+            all'insieme), pur essendo ogni $\{\tfrac{1}{n}\}$ chiuso.}
 
-            \item Sia $W$ intorno aperto di $p$ che incontra al più gli elementi $E_{i1}, \dots, E_{ik}$ della famiglia 
-            
-            \textcolor{blu}{($F=\left\{i1, \dots, ik\right\}$)} dico che $W$ incontra al più $\left\{ \overline{E_{i1}}, \dots , \overline{E_{ik}} \right\}$
-            della famiglia $\left\{\overline{E_i}\right\}_{i \in I}$
-            
-            Infatti se \textcolor{violet}{per assurdo} $W \cap \overline{E_j} \neq \emptyset$ per la caratterizzazione di $\overline{E_j}$
-            deve $W \cap E_j \neq \emptyset$ essendo $W$ un aperto $\Rightarrow j \in F = \left\{i1, \dots, ik\right\}$
-            \item Consideriamo una famiglia localmente finita di chiusi $\{C_i\}$. 
+            \textcolor{violet}{Mostriamo che il complementare $X \setminus \bigcup_{i \in I} C_i$ è aperto, cioè che ogni suo punto
+            possiede un intorno aperto contenuto in esso richiamo \ref{rich:car_aperti}.}
+
             Sia $x \notin \bigcup_{i \in I} C_i$ e fissiamo un intorno aperto $U$ di $x$ che incontra al più un numero 
-            finito di insiemi della famiglia diciamo $C_{i_1}, \dots, C_{i_k}$. Se $U$ non incontra alcun elemento della famiglia allora $U \subset X \setminus \bigcup_{i \in I} C_i$. Altrimenti $A := U \setminus (C_{i_1} \cup \dots \cup C_{i_k})$ è un intorno aperto di $x$ e si ha che $A \cap C_i = \emptyset$ per ogni $i$. Quindi $A \subset X \setminus \bigcup_{i \in I} C_i$. Con ciò resta provato che $X \setminus \bigcup_{i \in I} C_i$ è aperto.
-            \item Proviamo la \eqref{eq:chiusura_unione_localmente_finita}. Poiché la famiglia delle chiusure $\mathcal{C} = \{\overline{E_i}\}$ è localmente finita sappiamo che l'unione $\bigcup_{i \in I} \overline{E_i}$ è un chiuso. Per concludere notiamo che se $C \subset X$ è un chiuso che contiene tutti gli $E_i$ allora è vero anche che $C$ contiene tutti gli insiemi $\overline{E_i}$; pertanto vale l'inclusione $\bigcup_{i \in I} \overline{E_i} \subset C$ e resta provato che $\bigcup_{i \in I} \overline{E_i}$ è il più piccolo chiuso contenente $\bigcup_{i \in I} E_i$ da cui la \eqref{eq:chiusura_unione_localmente_finita}.
+            finito di insiemi della famiglia diciamo $C_{i_1}, \dots, C_{i_k}$.
+            
+            Se $U$ non incontra alcun elemento della famiglia $\Rightarrow U \subset X \setminus \bigcup_{i \in I} C_i$. 
+            
+            Altrimenti \textcolor{red}{$A := U \setminus \textcolor{violet}{\underbrace{\textcolor{red}{(C_{i_1} \cup \dots \cup C_{i_k})}}_{\substack{\text{unione finita} \\ \text{di chiusi è} \\ \text{un chiuso}}}}$} è un intorno aperto di $x$ 
+            \textcolor{violet}{$(x \notin \bigcup_{i \in I} C_i)$} e si ha che
+            \textcolor{violet}{(tolti i $C_{i_j}$ gli altri non incontrano $U$)} $A \cap C_i = \emptyset \quad \forall i$
+            $\Rightarrow A \subset X \setminus \bigcup_{i \in I} C_i$.
+            
+            In entrambi i casi $\overset{\text{\textcolor{violet}{rich. \ref{rich:car_aperti}}}}{\Rightarrow} X \setminus \bigcup_{i \in I} C_i$ è aperto.
+            \item Poiché per la \textcolor{black}{1.} la famiglia delle chiusure $\mathcal{C} = \{\overline{E_i}\}_{i \in I}$ è localmente finita
+            per la \textcolor{black}{2.} sappiamo che l'unione $\displaystyle \bigcup_{i \in I} \overline{E_i}$ è un chiuso. 
+            
+            \textcolor{violet}{La chiusura $\overline{A}$ di un insieme $A$ ha una proprietà caratteristica: è il più piccolo chiuso che contiene $A$, significa due cose:}
+
+            \textcolor{violet}{(a) $\overline{A}$ è chiuso e contiene $A$ (b) se $C$ è un chiuso che contiene $A \Rightarrow \overline{A} \subset C$}
+
+            Per concludere notiamo che se $C \subset X$ è un chiuso che contiene tutti gli $E_i$ allora è vero anche che $C$ contiene tutti gli insiemi $\overline{E_i}$
+            \textcolor{violet}{(perché $E_i \subset \overline{E_i} \subset C$)} pertanto
+            vale l'inclusione $\displaystyle \bigcup_{i \in I} \overline{E_i} \subset C$ e resta provato che $\displaystyle \bigcup_{i \in I} \overline{E_i}$
+            è il più piccolo 
+            chiuso contenente $\displaystyle \bigcup_{i \in I} E_i$ da cui la \eqref{eq:chiusura_unione_localmente_finita}.
         \end{enumerate}
         \end{proof}
-
+        \newpage
         \begin{definizione}
         \label{def:raffinamento}
         \mbox{}
 
-        Dato un ricoprimento aperto $\textcolor{red}{\mathcal{A} = \{U_\alpha\}_{\alpha \in I}}$ di uno spazio topologico si chiama \textcolor{red}{raffinamento} di $\mathcal{A}$ ogni ricoprimento aperto $\textcolor{red}{\mathfrak{B} = \{V_i\}_{i \in J}}$ tale che ogni aperto di $\mathfrak{B}$ è contenuto in almeno un aperto di $\mathcal{A}$. In altri termini per ogni $i \in J$ esiste $\alpha \in I$ tale che
+        Dato un ricoprimento aperto $mathcal{A} = \{U_\alpha\}_{\alpha \in I}$ di uno spazio topologico si chiama 
+        \textcolor{red}{raffinamento di $\mathcal{A}$} ogni ricoprimento aperto $\textcolor{red}{\mathfrak{B} = \{V_i\}_{i \in J}}$ tale che ogni aperto di $\mathfrak{B}$ è contenuto in almeno un aperto di $\mathcal{A}$. In altri termini per ogni $i \in J$ esiste $\alpha \in I$ tale che
         \[
         \textcolor{red}{V_i \subset U_\alpha}.
         \]
