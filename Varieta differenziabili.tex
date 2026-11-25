@@ -2162,12 +2162,13 @@
         \textcolor{violet}{Qui finiscono le lezioni della Prof Dileo di questo capitolo (lezione 16 p.1) e incomincia con gli spazi tangenti ma in questo capitolo
         ci sono altre lezioni del Prof Lotta (lezione 2)}
     \section{Paracompattezza delle varietà topologiche}
+        In questo paragrafo discutiamo un'importante proprietà delle varietà topologiche.
+        
         \textcolor{violet}{Questa parte degli appunti del Prof. Lotta ha un unico grande obiettivo: dimostrare che ogni varietà topologica è uno spazio paracompatto}
 
         \textcolor{violet}{La paracompattezza è un requisito topologico tecnico ma indispensabile per il seguito del corso 
         (in particolare per la lezione successiva sulle partizioni dell'unità), perché permette di "incollare" oggetti locali (definiti sulle singole carte) in 
         oggetti globali su tutta la varietà senza sommare infinite cose nello stesso punto.}
-        In questo paragrafo discutiamo un'importante proprietà delle varietà topologiche.
 
         Prima di procedere riprendiamo una questione concernente la chiusura di un insieme in uno spazio topologico. 
         \begin{richiamo}[Chiusura di un insieme in un aperto di uno spazio di Hausdorff]
@@ -2493,8 +2494,12 @@
         \textcolor{violet}{(ho già $K_n$ compatto voglio $K_{n+1}$ compatto che lo contenga nel suo interno)}
         \[ K_{n+1} := \overline{U_0} \cup \dots \cup \overline{U_{\alpha_n}} \] 
         dove $\alpha_n$ è il più piccolo intero tale che $\alpha_n >n$ e $K_n \subset U_0 \cup \dots \cup U_{\alpha_n}$
-        \textcolor{blu}{(ciò ha senso perché $K_n$ è compatto e $K_{n+1}$ è compatto essendo unione finita di compatti)} abbiamo:
-        \[ K_n \subset U_0 \cup \dots \cup U_{\alpha_n} \subset K_{n+1} \Rightarrow K_n \subset \Int (K_{n+1}) \]
+        \textcolor{blu}{(ciò ha senso perché $\forall n \, K_n$ è compatto \textcolor{violet}{$\Rightarrow$ ammette un sottoricoprimento finito da
+        $\{U_m\}_{1 \leq m \leq \alpha_n}$} e $K_{n+1}$ è compatto essendo unione finita di compatti)} 
+        
+        Abbiamo:
+        \[ K_n \subset U_0 \cup \dots \cup U_{\alpha_n} \subset K_{n+1}
+        \overset{\textcolor{violet}{\substack{\text{L'interno di un insieme è il più grande} \\ \text{aperto contenuto nell'insieme stesso} }}}{\Rightarrow} K_n \subset \Int (K_{n+1}) \]
         Osservo che $\displaystyle M = \bigcup_{n \in \mathbb{N}} K_n$ perché se $p \in M \overset{\textcolor{violet}{\eqref{eq:dimostrazione_esaustione_in_compatti}}}{\Rightarrow} p \in U_n \Rightarrow p \in K_{n+1}$ essendo $\alpha_n >n$
         \end{proof}
         \newpage
