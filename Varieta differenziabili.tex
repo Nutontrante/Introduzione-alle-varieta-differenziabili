@@ -2445,18 +2445,17 @@
 
         \textcolor{violet}{paracompatto: ogni ricoprimento aperto ha un raffinamento localmente finito (si possono cambiare gli aperti, rimpicciolendoli)}
 
-        Vogliamo provare che:
+        Vogliamo provare che ogni varietà topologica è uno spazio paracompatto.
 
-        \begin{teorema}
-        \label{th:varieta_topologica_paracompatta}
-        \mbox{}
 
-        Ogni varietà topologica è uno spazio paracompatto. Inoltre ogni ricoprimento aperto $\mathcal{A}$ di una varietà topologica $M$ ammette un raffinamento localmente finito numerabile $\mathfrak{B} = \{D_{r_i}(p_i)\}_{i \in \mathbb{N}}$ costituito da sferoidi tale che $\{D_{r_i/2}(p_i)\}_{i \in \mathbb{N}}$ è ancora un ricoprimento di $M$.
-        \end{teorema}
 
-        La dimostrazione utilizzerà uno strumento noto come \emph{esaustione in compatti} la cui esistenza è stabilita nella proposizione seguente:
-
-        \begin{proposizione}
+        La dimostrazione utilizzerà uno strumento noto come \textbf{esaustione in compatti} la cui esistenza è stabilita nella prossima proposizione
+        \newpage
+        \begin{definizione}
+        Si chiama \textcolor{red}{esaustione in compatti} di uno spazio topologico $X$ ogni famiglia $\left\{K_n\right\}_{n \in \mathbb{N}}$ di compatti
+        tale che $\displaystyle X= \bigcup_{n \in \mathbb{N}} K_n$ e $K_n \subset \Int\left(K_{n+1}\right)$ \textcolor{blu}{$=\mathring{K}_{n+1}$}
+        \end{definizione}
+        \begin{proposizione}[Esaustione in compatti]
         \label{prop:esaustione_in_compatti}
         \mbox{}
 
@@ -2467,28 +2466,38 @@
         \end{proposizione}
 
         \begin{proof}
-        Fissiamo una \textcolor{orange}{base numerabile $\mathfrak{B}$ di $X$}. La sottofamiglia $\mathfrak{B}'$ di $\mathfrak{B}$ costituita dagli $U \in \mathfrak{B}$ la cui chiusura è compatta è ancora un ricoprimento aperto di $X$; infatti dato un punto $p$ e un suo intorno compatto $K$ esiste $U \in \mathfrak{B}$ tale che
-        \[
-        p \in U \subset K
-        \]
-        da cui essendo $K$ chiuso:
-        \[
-        p \in \overline{U} \subset K
-        \]
-        dove $\overline{U}$ è compatto (essendo chiuso nel compatto $K$). Ovviamente anche $\mathfrak{B}'$ è numerabile per cui possiamo riorganizzare $\mathfrak{B}'$ come famiglia indicizzata mediante $\mathbb{N}$; scriviamo quindi $\mathfrak{B}' = \{U_i\}_{i \in \mathbb{N}}$. Ciò premesso costruiamo una successione di compatti $K_n$ che soddisfa le condizioni richieste con una procedura ricorsiva come segue: poniamo innanzitutto $K_0 := \overline{U_0}$. Supposto di aver costruito $K_0, \dots, K_n$ consideriamo il più piccolo intero $i(n)$ tale che $i(n) > n$ e:
-        \[
-        K_n \subset U_1 \cup U_2 \cup \dots \cup U_{i(n)}.
-        \]
-        Esso esiste perché \textcolor{orange}{$K_n$ è compatto} e $\mathfrak{B}'$ è un ricoprimento aperto di $X$. Definiamo quindi
-        \[
-        K_{n+1} := \overline{U_1} \cup \overline{U_2} \cup \dots \cup \overline{U_{i(n)}}.
-        \]
-        Si tratta di un compatto (unione di un numero finito di compatti) e per costruzione $K_n$ è contenuto nel suo interno. Notiamo infine che abbiamo che $X = \bigcup_{n \in \mathbb{N}} K_n$ in quanto ogni punto $p$ di $X$ appartiene a qualche $U_n$ e quindi appartiene anche a $U_1 \cup U_2 \cup \dots \cup U_{i(n)} \subset K_{n+1}$ essendo $i(n) > n$.
-        \end{proof}
+        \mbox{}
 
-        Possiamo ora procedere con la dimostrazione del \textcolor{hotpink}{Teorema \ref{th:varieta_topologica_paracompatta}}.
+        Fissiamo una \textcolor{orange}{base numerabile $\mathfrak{B}$ di $M$} \textcolor{violet}{(possiamo farlo perchè ogni varietà topologica è a base numerabile)}
+        
+        \textcolor{red}{$\mathfrak{B}'= \left\{U \in \mathfrak{B} \mid \overline{U} \text{ è compatto} \right\}$} \textcolor{violet}{$\subset \mathfrak{B}$} dico che anche $\mathfrak{B}'$ è un ricoprimento aperto di $M$
+        
+        Sia $p \in M$ e $K$ un intorno compatto di $p \Rightarrow \exists U \in \mathfrak{B}$ tale che $p \in U \subset \Int (K) \subset K \Rightarrow \overline{U} \subset K$ 
+        
+        quindi $\overline{U}$ è compatto essendo chiuso nel compatto $K$
+
+        Scriviamo $\mathfrak{B}' = \left\{U_n\right\}_{n \in \mathbb{N}}$ \textcolor{blu}{($\mathfrak{B}' \subset \mathfrak{B}$ numerabile)}
+        
+        Costruiamo una successione di compatti $\left\{K_n\right\}$ induttivamente come segue 
+        \[ K_0 := \overline{U_0} \] 
+        Supposto di aver costruito $K_0, \dots, K_n$ poniamo 
+        \[ K_{n+1} := \overline{U_0} \cup \dots \cup \overline{U_{\alpha_n}} \] 
+        dove $\alpha_n$ è il più piccolo intero tale che $\alpha_n >n$ e $K_n \subset U_0 \cup \dots \cup U_{\alpha_n}$
+        \textcolor{blu}{(ciò ha senso perché $K_n$ è compatto e $K_{n+1}$ è compatto essendo unione finita di compatti)} abbiamo:
+        \[ K_n \subset U_0 \cup \dots \cup U_{\alpha_n} \subset K_{n+1} \Rightarrow K_n \subset \Int (K_{n+1}) \]
+        Osservo che $\displaystyle M = \bigcup_{n \in \mathbb{N}} K_n$ perché se $p \in M \Rightarrow p \in U_n \Rightarrow p \in K_{n+1}$ essendo $\alpha_n >n$
+        \end{proof}
+        \newpage
+        \begin{teorema}
+        \label{th:varieta_topologica_paracompatta}
+        \mbox{}
+
+        Ogni varietà topologica è uno spazio paracompatto. Inoltre ogni ricoprimento aperto $\mathcal{A}$ di una varietà topologica $M$ ammette un raffinamento localmente finito numerabile $\mathfrak{B} = \{D_{r_i}(p_i)\}_{i \in \mathbb{N}}$ costituito da sferoidi tale che $\{D_{r_i/2}(p_i)\}_{i \in \mathbb{N}}$ è ancora un ricoprimento di $M$.
+        \end{teorema}
 
         \begin{proof}
+        \mbox{}
+
         Consideriamo un ricoprimento aperto $\mathcal{A} = \{U_\alpha\}$ di $M$. Fissiamo un'\textcolor{orange}{esaustione in compatti $\{K_n\}$ di $M$} e poniamo $K_i = \emptyset$ per $i < 0$. Osserviamo che per costruzione ogni insieme
         \[
         K_n - \operatorname{Int}(K_{n-1})
