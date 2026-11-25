@@ -2472,20 +2472,30 @@
         
         \textcolor{red}{$\mathfrak{B}'= \left\{U \in \mathfrak{B} \mid \overline{U} \text{ è compatto} \right\}$} \textcolor{violet}{$\subset \mathfrak{B}$} dico che anche $\mathfrak{B}'$ è un ricoprimento aperto di $M$
         
-        Sia $p \in M$ e $K$ un intorno compatto di $p \Rightarrow \exists U \in \mathfrak{B}$ tale che $p \in U \subset \Int (K) \subset K \Rightarrow \overline{U} \subset K$ 
+        Sia $p \in M$ e $K$ un intorno compatto di $p$
+        \textcolor{violet}{($K$ esiste perchè $M$ è localmente euclidea e la palla chiusa in una carta è compatta)} 
+        $\overset{\textcolor{violet}{\substack{\text{$\Int(K)$ è un aperto} \\ \text{che contiene $p$} \\ 
+        \text{essendo $\mathfrak{B}$ una base} \\  \text{$\exists U \in\mathfrak{B}$ con} \\ 
+        \text{$p\in U\subset \mathrm{Int}(K)$} } }}{\Rightarrow} \exists U \in \mathfrak{B}$ tale che $p \in U \subset \Int (K) \subset K \Rightarrow \overline{U} \subset K$ 
         
-        quindi $\overline{U}$ è compatto essendo chiuso nel compatto $K$
+        quindi $\overline{U}$ è compatto \textcolor{violet}{(cioè $U\in\mathfrak{B}'$)} essendo chiuso nel compatto $K$ \textcolor{violet}{($K$ è chiuso perché $M$ è $T_2$)}
+
+        \begin{equation}
+        \label{eq:dimostrazione_esaustione_in_compatti}
+        \color{violet} \forall p \in M \quad \exists U \in \mathfrak{B}' \text{ t.c } p \in U \Rightarrow M=\bigcup_{U \in \mathfrak{B}'} U
+        \end{equation}
 
         Scriviamo $\mathfrak{B}' = \left\{U_n\right\}_{n \in \mathbb{N}}$ \textcolor{blu}{($\mathfrak{B}' \subset \mathfrak{B}$ numerabile)}
         
         Costruiamo una successione di compatti $\left\{K_n\right\}$ induttivamente come segue 
         \[ K_0 := \overline{U_0} \] 
-        Supposto di aver costruito $K_0, \dots, K_n$ poniamo 
+        Supposto di aver costruito $K_0, \dots, K_n$ poniamo  
+        \textcolor{violet}{(ho già $K_n$ compatto voglio $K_{n+1}$ compatto che lo contenga nel suo interno)}
         \[ K_{n+1} := \overline{U_0} \cup \dots \cup \overline{U_{\alpha_n}} \] 
         dove $\alpha_n$ è il più piccolo intero tale che $\alpha_n >n$ e $K_n \subset U_0 \cup \dots \cup U_{\alpha_n}$
         \textcolor{blu}{(ciò ha senso perché $K_n$ è compatto e $K_{n+1}$ è compatto essendo unione finita di compatti)} abbiamo:
         \[ K_n \subset U_0 \cup \dots \cup U_{\alpha_n} \subset K_{n+1} \Rightarrow K_n \subset \Int (K_{n+1}) \]
-        Osservo che $\displaystyle M = \bigcup_{n \in \mathbb{N}} K_n$ perché se $p \in M \Rightarrow p \in U_n \Rightarrow p \in K_{n+1}$ essendo $\alpha_n >n$
+        Osservo che $\displaystyle M = \bigcup_{n \in \mathbb{N}} K_n$ perché se $p \in M \overset{\textcolor{violet}{\eqref{eq:dimostrazione_esaustione_in_compatti}}}{\Rightarrow} p \in U_n \Rightarrow p \in K_{n+1}$ essendo $\alpha_n >n$
         \end{proof}
         \newpage
         \begin{teorema}
