@@ -2398,7 +2398,7 @@
 
             \textcolor{violet}{(a) $\overline{A}$ è chiuso e contiene $A$ (b) se $C$ è un chiuso che contiene $A \Rightarrow \overline{A} \subset C$}
 
-            Per concludere notiamo che se $C \subset X$ è un chiuso che contiene tutti gli $E_i$ allora è vero anche che $C$ contiene tutti gli insiemi $\overline{E_i}$
+            Per concludere notiamo che se $C \subset X$ è un chiuso tale che $\displaystyle \bigcup_{i \in I} E_i \subset C \Rightarrow \overline{E_i} \subset C \quad \forall i \in I$
             \textcolor{violet}{(perché $E_i \subset \overline{E_i} \subset C$)} pertanto
             vale l'inclusione $\displaystyle \bigcup_{i \in I} \overline{E_i} \subset C$ e resta provato che $\displaystyle \bigcup_{i \in I} \overline{E_i}$
             è il più piccolo 
@@ -2410,21 +2410,40 @@
         \label{def:raffinamento}
         \mbox{}
 
-        Dato un ricoprimento aperto $mathcal{A} = \{U_\alpha\}_{\alpha \in I}$ di uno spazio topologico si chiama 
-        \textcolor{red}{raffinamento di $\mathcal{A}$} ogni ricoprimento aperto $\textcolor{red}{\mathfrak{B} = \{V_i\}_{i \in J}}$ tale che ogni aperto di $\mathfrak{B}$ è contenuto in almeno un aperto di $\mathcal{A}$. In altri termini per ogni $i \in J$ esiste $\alpha \in I$ tale che
+        Dato un ricoprimento aperto $\mathcal{A} = \{U_\alpha\}_{\alpha \in I}$ \textcolor{violet}{($X=\bigcup_\alpha U_\alpha$ con $U_\alpha$ aperto)} di uno spazio topologico $X$ si chiama 
+        \textcolor{red}{raffinamento di $\mathcal{A}$} ogni ricoprimento aperto $\textcolor{red}{\mathcal{B} = \{V_i\}_{i \in J}}$ tale che ogni aperto di $\mathcal{B}$
+        è contenuto in almeno un aperto di $\mathcal{A}$, cioé:
         \[
-        \textcolor{red}{V_i \subset U_\alpha}.
+        \color{red} \forall i \in J \quad \exists \alpha \in I \text{ tale che } V_i \subset U_\alpha
         \]
         \end{definizione}
+        \textcolor{violet}{\textbf{Idea} $\mathcal{B}$ raffina $\mathcal{A}$ se ogni pezzo di $\mathcal{B}$
+        sta dentro qualche pezzo di $\mathcal{A}$: $\mathcal{B}$ copre ancora tutto $X$, ma con
+        pezzi più piccoli (o uguali).}
 
         Giova osservare che un raffinamento di un ricoprimento generalmente non è un sottoricoprimento di quest'ultimo.
 
+        \textcolor{violet}{\textbf{Esempio.} Su $X=\mathbb{R}$ siano
+        $\mathcal{A}=\{(-n,n)\}_{n\ge1}$ e $\mathcal{B}=\{(k,k+2)\}_{k\in\mathbb{Z}}$.
+        \begin{itemize}
+        \item $\mathcal{B}$ raffina $\mathcal{A}$: è un ricoprimento aperto di $\mathbb{R}$ e
+        ogni $(k,k+2)$ è contenuto in $(-n,n)$ per $n$ abbastanza grande
+        (basta $n>|k|+2$).
+        \item $\mathcal{A}$ non raffina $\mathcal{B}$: $(-2,2)$ non è contenuto in
+        nessun $(k,k+2)$, perché ha lunghezza $4>2$.
+        \end{itemize}
+        Inoltre $\mathcal{B}$ non è un sottoricoprimento di $\mathcal{A}$ perché i suoi aperti
+        non appartengono ad $\mathcal{A}$.}
         \begin{definizione}
         \label{def:spazio_paracompatto}
         \mbox{}
 
-        Uno spazio topologico $\textcolor{red}{X}$ è detto \textcolor{red}{paracompatto} se \textcolor{red}{ogni suo ricoprimento aperto $\mathcal{A}$ ammette un raffinamento localmente finito}.
+        Uno spazio topologico $\textcolor{red}{X}$ è detto \textcolor{red}{paracompatto} 
+        se \textcolor{red}{ogni suo ricoprimento aperto $\mathcal{A}$ ammette un raffinamento localmente finito}.
         \end{definizione}
+        \textcolor{violet}{compatto: ogni ricoprimento aperto ha un sottoricoprimento finito (si scelgono alcuni degli $U_\alpha$)}
+
+        \textcolor{violet}{paracompatto: ogni ricoprimento aperto ha un raffinamento localmente finito (si possono cambiare gli aperti, rimpicciolendoli)}
 
         Vogliamo provare che:
 
