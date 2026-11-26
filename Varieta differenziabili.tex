@@ -2550,22 +2550,21 @@
         Quindi abbiamo:
         \begin{equation}
         \label{eq:catena_inclusioni_sferoidi}
-        D'_p \subset \overline{D_p} \subset U_{\alpha(p)} \setminus K_{n-2}.
+        D'_p \subset \overline{D_p} \subset U_{\alpha_p} \setminus K_{n-2}
         \end{equation}
-        Consegue che esistono $p_1^n, \dots, p_{s_n}^n$ punti dello stesso compatto tali che
+        Siccome $K_n \setminus \Int(K_{n-1})$ è compatto esistono un unumero finito di punti $p_1^n, \dots, p_{s_n}^n \in K_n \setminus \Int(K_{n-1})$ tali che
         \begin{equation}
         \label{eq:ricoprimento_finito_anello}
-        K_n - \operatorname{Int}(K_{n-1}) \subset D'_{p_1^n} \cup \dots \cup D'_{p_{s_n}^n}.
+        K_n \setminus \Int(K_{n-1}) \subset D'_{p_1^n} \cup \dots \cup D'_{p_{s_n}^n}
         \end{equation}
-        Cominciamo con l'osservare che la famiglia numerabile $\{D'_{p_j^n}\}$ con $1 \leq j \leq s_n$ così costruita è un ricoprimento di $M$. Infatti per ogni punto $p \in M$ detto $n \geq 0$ il più piccolo intero tale che $p \in K_n$ si ha che $p \in K_n \setminus K_{n-1}$ e quindi stante la \eqref{eq:ricoprimento_finito_anello} $p$ appartiene a qualche $D'_{p_j^n}$. Si noti poi che a maggior ragione anche $\mathfrak{B} = \{D_{p_j^n}\}$ è un ricoprimento aperto di $M$. Infine mostriamo che la stessa famiglia $\mathfrak{B}$ è un raffinamento localmente finito di $\mathcal{A}$. Il fatto che è un raffinamento è conseguenza immediata del fatto che ogni sferoide $D_{p_j^n}$ è contenuto nell'aperto $U_{\alpha(p_j^n)}$ del ricoprimento iniziale. Per mostrare che si tratta di una famiglia localmente finita osserviamo che per costruzione tenendo conto di \eqref{eq:catena_inclusioni_sferoidi} abbiamo per ogni $n \geq 0$:
-        \[
-        D_{p_j^n} \cap K_{n-2} = \emptyset.
-        \]
-        Questo implica che
-        \[
-        D_{p_j^n} \cap K_m = \emptyset
-        \]
-        se $m \leq n - 2$ ovvero per $n \geq m + 2$. Ciò significa che ogni $K_m$ incontra al più un numero finito degli insiemi $D_{p_j^n}$: al più quelli per cui $n < m + 2$. Ma ogni punto appartiene all'interno di qualche $K_m$ e di qui la tesi.
+        Considero la famiglia numerabile di sferoidi $\mathcal{C}=\left\{D_{p_j^n}\right\} _{\substack{n \in \mathbb{N} \\ 1 \leq j \leq s_n}}$ 
+        e  $\mathcal{B}=\left\{D'_{p_j^n}\right\} _{\substack{n \in \mathbb{N} \\ 1 \leq j \leq s_n}}$
+        
+        %Infatti per ogni punto $p \in M$ detto $n \geq 0$ il più piccolo intero tale che $p \in K_n$ si ha che $p \in K_n \setminus K_{n-1}$ e quindi stante la \eqref{eq:ricoprimento_finito_anello} $p$ appartiene a qualche $D'_{p_j^n}$. Si noti poi che a maggior ragione anche $\mathfrak{B} = \{D_{p_j^n}\}$ è un ricoprimento aperto di $M$. Infine mostriamo che la stessa famiglia $\mathfrak{B}$ è un raffinamento localmente finito di $\mathcal{A}$. Il fatto che è un raffinamento è conseguenza immediata del fatto che ogni sferoide $D_{p_j^n}$ è contenuto nell'aperto $U_{\alpha(p_j^n)}$ del ricoprimento iniziale. Per mostrare che si tratta di una famiglia localmente finita osserviamo che per costruzione tenendo conto di \eqref{eq:catena_inclusioni_sferoidi} abbiamo per ogni $n \geq 0$:
+        %\[ D_{p_j^n} \cap K_{n-2} = \emptyset \]
+        %Questo implica che
+        %\[ D_{p_j^n} \cap K_m = \emptyset\]
+        %se $m \leq n - 2$ ovvero per $n \geq m + 2$. Ciò significa che ogni $K_m$ incontra al più un numero finito degli insiemi $D_{p_j^n}$: al più quelli per cui $n < m + 2$. Ma ogni punto appartiene all'interno di qualche $K_m$ e di qui la tesi.
         \end{proof}
 
     \section{Funzioni differenziabili a supporto compatto}
