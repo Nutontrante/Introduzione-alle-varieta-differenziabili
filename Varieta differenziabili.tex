@@ -2290,8 +2290,8 @@
         }
         \]
         \end{proof}
-        \textcolor{violet}{Abbiamo ridimostrato che le varietà
-         sono localmente compatte come detto in \eqref{eq:M_varieta_topologica_intorni_compatti_sistema_fondamentale_di_intorni}}
+        \textcolor{violet}{Abbiamo ridimostrato che le varietà sono localmente 
+        compatte come detto in \eqref{eq:M_varieta_topologica_intorni_compatti_sistema_fondamentale_di_intorni}}
 
         \begin{osservazione}
         \mbox{}
@@ -2309,7 +2309,8 @@
         \end{osservazione}
 
         \newpage
-        Definiamo ora la nozione di spazio topologico \textbf{paracompatto}: si tratta di un'importante generalizzazione del concetto di spazio compatto. Tale generalizzazione si basa sul concetto seguente:
+        Definiamo ora la nozione di spazio topologico \textbf{paracompatto}: si tratta di un'importante generalizzazione del concetto di
+         spazio compatto, tale generalizzazione si basa sul concetto seguente:
 
         \begin{definizione}
         \label{def:famiglia_localmente_finita}
@@ -2360,15 +2361,15 @@
         \begin{enumerate}
             \item \textcolor{violet}{Questa dimostrazione l'ho cambiata non mi piaceva}   
             
-            Fissiamo $p \in X \Rightarrow \exists W$ intorno aperto di $p$ e un insieme finito
-            $F \subset I$ tali che
+            Fissiamo $p \in X \Rightarrow$ \textcolor{orange}{$\exists W$ intorno aperto di $p$ e un insieme finito
+            $F \subset I$ tali che}
             \[
-            W \cap E_i = \emptyset \qquad \forall i \in I \setminus F.
+            \color{orange} W \cap E_i = \emptyset \qquad \forall i \in I \setminus F
             \]
             Mostriamo che lo stesso $W$ e lo stesso $F$ vanno bene per la famiglia delle chiusure
             cioè che
             \[
-            W \cap \overline{E_i} = \emptyset \qquad \forall i \in I \setminus F.
+            W \cap \overline{E_i} = \emptyset \qquad \forall i \in I \setminus F
             \]
             \[
             \color{violet} x \in \overline{E} \iff \text{ogni intorno aperto } U \text{ di } x \text{ verifica } U \cap E \neq \emptyset.
@@ -2388,17 +2389,18 @@
             \textcolor{violet}{Mostriamo che il complementare $X \setminus \bigcup_{i \in I} C_i$ è aperto, cioè che ogni suo punto
             possiede un intorno aperto contenuto in esso richiamo \ref{rich:car_aperti}.}
 
-            Sia $x \notin \bigcup_{i \in I} C_i$ e fissiamo un intorno aperto $U$ di $x$ che incontra al più un numero 
+            Sia $\displaystyle x \notin \bigcup_{i \in I} C_i$ e fissiamo un intorno aperto $U$ di $x$ che incontra al più un numero 
             finito di insiemi della famiglia diciamo $C_{i_1}, \dots, C_{i_k}$.
             
-            Se $U$ non incontra alcun elemento della famiglia $\Rightarrow U \subset X \setminus \bigcup_{i \in I} C_i$. 
+            Se $U$ non incontra alcun elemento della famiglia \textcolor{violet}{$(U \cap E_i=\emptyset \quad \forall i)$} 
+            $\displaystyle \Rightarrow U \subset X \setminus \bigcup_{i \in I} C_i$ 
             
             Altrimenti \textcolor{red}{$A := U \setminus \textcolor{violet}{\underbrace{\textcolor{red}{(C_{i_1} \cup \dots \cup C_{i_k})}}_{\substack{\text{unione finita} \\ \text{di chiusi è} \\ \text{un chiuso}}}}$} è un intorno aperto di $x$ 
             \textcolor{violet}{$(x \notin \bigcup_{i \in I} C_i)$} e si ha che
             \textcolor{violet}{(tolti i $C_{i_j}$ gli altri non incontrano $U$)} $A \cap C_i = \emptyset \quad \forall i$
-            $\Rightarrow A \subset X \setminus \bigcup_{i \in I} C_i$.
+            $\displaystyle \Rightarrow A \subset X \setminus \bigcup_{i \in I} C_i$.
             
-            In entrambi i casi $\overset{\text{\textcolor{violet}{rich. \ref{rich:car_aperti}}}}{\Rightarrow} X \setminus \bigcup_{i \in I} C_i$ è aperto.
+            In entrambi i casi $\displaystyle \overset{\text{\textcolor{violet}{rich. \ref{rich:car_aperti}}}}{\Rightarrow} X \setminus \bigcup_{i \in I} C_i$ è aperto.
             \item Poiché per la \textcolor{black}{1.} la famiglia delle chiusure $\mathcal{C} = \{\overline{E_i}\}_{i \in I}$ è localmente finita
             per la \textcolor{black}{2.} sappiamo che l'unione $\displaystyle \bigcup_{i \in I} \overline{E_i}$ è un chiuso. 
             
@@ -2459,15 +2461,17 @@
 
         La dimostrazione utilizzerà uno strumento noto come \textbf{esaustione in compatti} la cui esistenza è stabilita nella prossima proposizione
         \newpage
+        \textcolor{violet}{In $\mathbb{R}^n$ con le sfere possiamo sempre trovare $r,s>0$ tali che $\overline{B_r}(0) \subset B_s(0)=\Int(\overline{B_s}(0))$
+        questo modello lo vogliamo applicare a qualsiasi varietà topologica}
         \begin{definizione}
         Si chiama \textcolor{red}{esaustione in compatti} di uno spazio topologico $X$ ogni famiglia $\left\{K_n\right\}_{n \in \mathbb{N}}$ di compatti
-        tale che $\displaystyle X= \bigcup_{n \in \mathbb{N}} K_n$ e $K_n \subset \Int\left(K_{n+1}\right)$ \textcolor{blu}{$=\mathring{K}_{n+1}$}
+        tale che \textcolor{red}{$\displaystyle X= \bigcup_{n \in \mathbb{N}} K_n$} e \textcolor{red}{$K_n \subset \Int\left(K_{n+1}\right)$} \textcolor{blu}{$=\mathring{K}_{n+1}$}
         \end{definizione}
         \begin{proposizione}[Esaustione in compatti]
         \label{prop:esaustione_in_compatti}
         \mbox{}
 
-        Ogni varietà topologica $M$ ammette una esaustione in compatti ovvero una famiglia numerabile $\{K_n\}_{n \in \mathbb{N}}$ di compatti tali che:
+        Ogni varietà topologica $M$ ammette un'esaustione in compatti ovvero una famiglia numerabile $\{K_n\}_{n \in \mathbb{N}}$ di compatti tali che:
         \[
         M = \bigcup_{n \in \mathbb{N}} K_n \qquad K_n \subset \operatorname{Int}(K_{n+1}) \quad \forall n \in \mathbb{N}.
         \]
@@ -2514,13 +2518,19 @@
         \label{th:varieta_topologica_paracompatta}
         \mbox{}
 
-        Ogni varietà topologica è uno spazio paracompatto. Inoltre ogni ricoprimento aperto $\mathcal{A}$ di una varietà topologica $M$ ammette un raffinamento localmente finito numerabile $\mathfrak{B} = \{D_{r_i}(p_i)\}_{i \in \mathbb{N}}$ costituito da sferoidi tale che $\{D_{r_i/2}(p_i)\}_{i \in \mathbb{N}}$ è ancora un ricoprimento di $M$.
+        Ogni varietà topologica è uno spazio paracompatto. 
+        
+        Più precisamente ogni ricoprimento aperto $\mathcal{A}$ di una varietà topologica $M$ ammette un raffinamento localmente finito numerabile $\mathfrak{B} = \{D_{r_i}(p_i)\}_{i \in \mathbb{N}}$ costituito da sferoidi tale che $\{D_{r_i/2}(p_i)\}_{i \in \mathbb{N}}$ è ancora un ricoprimento di $M$.
         \end{teorema}
 
         \begin{proof}
         \mbox{}
 
-        Consideriamo un ricoprimento aperto $\mathcal{A} = \{U_\alpha\}$ di $M$. Fissiamo un'\textcolor{orange}{esaustione in compatti $\{K_n\}$ di $M$} e poniamo $K_i = \emptyset$ per $i < 0$. Osserviamo che per costruzione ogni insieme
+        Consideriamo un ricoprimento aperto $\mathcal{A} = \{U_\alpha\}$ di $M$. 
+        
+        Fissiamo un'\textcolor{orange}{esaustione in compatti $\{K_n\}$ di $M$} e poniamo $K_i = \emptyset$ per $i < 0$. 
+        
+        Osserviamo che per costruzione ogni insieme
         \[
         K_n - \operatorname{Int}(K_{n-1})
         \]
