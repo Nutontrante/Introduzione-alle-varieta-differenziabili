@@ -272,12 +272,14 @@
         \begin{enumerate}
             \item Gli intorni connessi di $p$ costituiscono un sistema fondamentale di intorni \textcolor{blu}{(ovvero $M$ è spazio topologico localmente connesso)} 
             \begin{equation}
+            \label{eq:M_varieta_topologica_localmente_connessa}
             \forall A \text{ intorno aperto di } p \quad \exists V \text{ intorno connesso di } p \text{ tale che } V \subset A
             \end{equation}
             \item Gli intorni compatti di $p$ formano un sistema fondamentale di intorni \textcolor{blu}{(in particolare $M$ è spazio topologico localmente compatto
             \textcolor{violet}{ma in realtà è più forte, infatti uno spazio topologico si dice localmente compatto se ogni punto possiede un intorno compatto invece qui si chiede 
             che gli intorni compatti formino un sistema fondamentale di intorni})} 
             \begin{equation}
+            \label{eq:M_varieta_topologica_intorni_compatti_sistema_fondamentale_di_intorni}
                  \forall A \text{ intorno aperto di } p \quad \exists K \text{ intorno compatto di } p \text{ tale che } K \subset A
             \end{equation}
         \end{enumerate}
@@ -2176,6 +2178,8 @@
         \mbox{}
 
         Sia $A \subset X$ un aperto di uno spazio di Hausdorff $X$ e sia $E \subset A$.
+        
+        $\overline{E}$ è il più piccolo chiuso contenente $E$ e $x \in \overline{E} \iff \forall I \in \mathcal{U}(x) \quad I \cap E \neq \emptyset$
 
         \textbf{Caso generale.} la chiusura di $E$ in $A$ e quella in $X$ sono legate da
         \[
@@ -2220,7 +2224,7 @@
         \end{richiamo}
 
         \textcolor{violet}{Su una varietà topologica $M$ non c'è una distanza definita a priori, quindi non puoi parlare di "palle aperte" 
-        la soluzione è quella di prendere unca carta locale  $(U, \varphi)$ una sfera aperta $B_r(\varphi(p))$ in $\mathbb{R}^n$ la cui 
+        la soluzione è quella di prendere unica carta locale  $(U, \varphi)$ una sfera aperta $B_r(\varphi(p))$ in $\mathbb{R}^n$ la cui 
         chiusura stia tutta dentro $\varphi(U)$, e la riporti indietro sulla varietà tramite $\varphi^{-1}$.}
         \begin{definizione}
         \label{def:sferoide}
@@ -2271,8 +2275,8 @@
         L'ultima affermazione è basata sul fatto che le carte locali di $M$ costituiscono un sistema
         fondamentale di intorni ed è sostanzialmente già nota \textcolor{violet}{proposizione \ref{prop:varieta_topologica_domini_sistema_fondamentale_di_intorni}}.
 
-        \textcolor{violet}{Infatti, sia $A$ intorno aperto di $p \overset{\textcolor{violet}{\substack{\text{prop.} \\  \ref{prop:varieta_topologica_domini_sistema_fondamentale_di_intorni}}}}{\Rightarrow}
-        \exists (U,\varphi) \text{ carta}, \; p \in U \subset A
+        \textcolor{violet}{Infatti sia $A$ intorno aperto di $p \overset{\textcolor{violet}{\substack{\text{prop.} \\  \ref{prop:varieta_topologica_domini_sistema_fondamentale_di_intorni}}}}{\Rightarrow}
+        \exists (U,\varphi) \text{ carta} \quad p \in U \subset A
         \;\overset{\substack{\varphi(U) \text{ aperto} \\ \text{di } \mathbb{R}^n \\ \varphi(p)\in\varphi(U)}}{\Rightarrow}\;
         \exists r>0 \text{ tale che }$} 
         
@@ -2286,6 +2290,9 @@
         }
         \]
         \end{proof}
+        \textcolor{violet}{Abbiamo ridimostrato che le varietà
+         sono localmente compatte come detto in \eqref{eq:M_varieta_topologica_intorni_compatti_sistema_fondamentale_di_intorni}}
+
         \begin{osservazione}
         \mbox{}
 
