@@ -2526,20 +2526,28 @@
         \begin{proof}
         \mbox{}
 
-        Consideriamo un ricoprimento aperto $\mathcal{A} = \{U_\alpha\}$ di $M$. 
+        Consideriamo un ricoprimento aperto $\mathcal{A} = \{U_\alpha\}$ di $M$ voglio un raffinamento.
         
-        Fissiamo un'\textcolor{orange}{esaustione in compatti $\{K_n\}$ di $M$} e poniamo $K_i = \emptyset$ per $i < 0$. 
+        Considero \textcolor{violet}{per la prop. \ref{prop:esaustione_in_compatti}} un'\textcolor{orange}{esaustione in compatti $\{K_n\}$ di $M$}
+        \[ M= \bigcup_{n \in \mathbb{N}} K_n \quad K_n \subset \Int(K_{n+1}) \]
+        e poniamo \textcolor{red}{$K_n = \emptyset$ per $n \in \mathbb{Z} \quad n < 0$}. 
         
-        Osserviamo che per costruzione ogni insieme
-        \[
-        K_n - \operatorname{Int}(K_{n-1})
-        \]
-        con $n \geq 0$ è un compatto. Infatti esso è chiuso perché intersezione dei chiusi $K_n$ e del complementare di $\operatorname{Int}(K_{n-1})$ e quindi è compatto perché chiuso nel compatto $K_n$. Per ogni punto $p$ di tale compatto scegliamo un aperto $U_{\alpha(p)}$ del ricoprimento passante per $p$. Allora $U_{\alpha(p)} \setminus K_{n-2}$ è un intorno aperto di $p$; possiamo quindi fissare uno sferoide $D_{r(p)}(p)$ tale che
+        Osservo che $\forall n \in \mathbb{N} \quad K_n \setminus \Int(K_{n-1})$ è compatto
+        \[ K_n \setminus \Int(K_{n-1})= \textcolor{violet}{\underbrace{\textcolor{verde}{K_n \cap \Int(K_{n+1})^C}}_{\substack{\text{è chiuso perchè intersezione} \\ \text{di chiusi e quindi è} \\ \text{compatto perché chiuso} \\ \text{nel compatto }  K_n}}} \]
+        
+        Sia $p \in K_n \setminus \Int(K_{n-1})$ e fisso $\alpha_p \in \mathbb{N}$ con $p \in U_{\alpha_p} \Rightarrow U_{\alpha_p} \setminus K_{n-2}$
+        è un intorno aperto di 
+        
+        $p \overset{\textcolor{violet}{\text{prop.} \ref{prop:chiusura_sferoide_intorno_compatto}}}{\Rightarrow} \exists D_r(p)$ con $\overline{D_r(p)} \subset U_{\alpha_p} \setminus K_{n-2}$ 
         \begin{equation}
         \label{eq:sferoide_contenuto_aperto}
-        \overline{D_{r(p)}(p)} \subset U_{\alpha(p)} \setminus K_{n-2}.
+        \overline{D_r(p)} \subset U_{\alpha_p} \setminus K_{n-2}
         \end{equation}
-        Denotiamo per maggiore leggibilità semplicemente con $D_p$ lo sferoide $D_{r(p)}(p)$ e con $D'_p$ lo sferoide $D_{r(p)/2}(p)$. Quindi abbiamo:
+        Per facilitare la notazione
+        \textcolor{celeste}{$D_p$} lo sferoide \textcolor{celeste}{$D_{r}(p)$} e con 
+        \textcolor{amber}{$D'_p$} lo sferoide \textcolor{amber}{$D_{r/2}(p)$}
+
+        Quindi abbiamo:
         \begin{equation}
         \label{eq:catena_inclusioni_sferoidi}
         D'_p \subset \overline{D_p} \subset U_{\alpha(p)} \setminus K_{n-2}.
