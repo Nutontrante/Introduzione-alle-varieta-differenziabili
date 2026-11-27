@@ -2520,7 +2520,9 @@
 
         Ogni varietà topologica è uno spazio paracompatto. 
         
-        Più precisamente ogni ricoprimento aperto $\mathcal{A}$ di una varietà topologica $M$ ammette un raffinamento localmente finito numerabile $\mathfrak{B} = \{D_{r_i}(p_i)\}_{i \in \mathbb{N}}$ costituito da sferoidi tale che $\{D_{r_i/2}(p_i)\}_{i \in \mathbb{N}}$ è ancora un ricoprimento di $M$.
+        Più precisamente ogni ricoprimento aperto $\mathcal{A}$ di una varietà topologica $M$ ammette un raffinamento localmente finito numerabile
+        $\mathfrak{B} = \{D_{r_i}(p_i)\}_{i \in \mathbb{N}}$ costituito da sferoidi tale che $\{D_{\tfrac{r_i}{2}}(p_i)\}_{i \in \mathbb{N}}$ è ancora un 
+        ricoprimento di $M$.
         \end{teorema}
 
         \begin{proof}
@@ -2529,19 +2531,19 @@
         Consideriamo un ricoprimento aperto $\mathcal{A} = \{U_\alpha\}$ di $M$ voglio un raffinamento.
         
         Considero \textcolor{violet}{per la prop. \ref{prop:esaustione_in_compatti}} un'\textcolor{orange}{esaustione in compatti $\{K_n\}$ di $M$}
-        \[ M= \bigcup_{n \in \mathbb{N}} K_n \quad K_n \subset \Int(K_{n+1}) \]
-        e poniamo \textcolor{red}{$K_n = \emptyset$ per $n \in \mathbb{Z} \quad n < 0$}. 
+        \[ M= \bigcup_{n \in \mathbb{N}} K_n \qquad K_n \subset \Int(K_{n+1}) \]
+        e poniamo \textcolor{red}{$K_n = \emptyset$ per $n \in \mathbb{Z} \quad n < 0$}
         
         Osservo che $\forall n \in \mathbb{N} \quad K_n \setminus \Int(K_{n-1})$ è compatto
-        \[ K_n \setminus \Int(K_{n-1})= \textcolor{violet}{\underbrace{\textcolor{verde}{K_n \cap \Int(K_{n+1})^C}}_{\substack{\text{è chiuso perchè intersezione} \\ \text{di chiusi e quindi è} \\ \text{compatto perché chiuso} \\ \text{nel compatto }  K_n}}} \]
+        \[ K_n \setminus \Int(K_{n-1})= \textcolor{violet}{\underbrace{\textcolor{verde}{K_n \cap \Int(K_{n-1})^C}}_{\substack{\text{è chiuso perchè intersezione} \\ \text{di chiusi e quindi è} \\ \text{compatto perché chiuso} \\ \text{nel compatto }  K_n}}} \]
         
-        Sia $p \in K_n \setminus \Int(K_{n-1})$ e fisso $\alpha_p \in \mathbb{N}$ con $p \in U_{\alpha_p} \Rightarrow U_{\alpha_p} \setminus K_{n-2}$
+        Sia $p \in K_n \setminus \Int(K_{n-1})$ e fisso $\alpha_p \in \mathbb{N}$ con $p \in U_{\alpha_p} 
+        \overset{\textcolor{violet}{K_{n-2} \subset \Int(K_{n-1}) }}{\Rightarrow} U_{\alpha_p} \setminus K_{n-2}$
         è un intorno aperto di 
-        
         $p \overset{\textcolor{violet}{\text{prop.} \ref{prop:chiusura_sferoide_intorno_compatto}}}{\Rightarrow} \exists D_r(p)$ con $\overline{D_r(p)} \subset U_{\alpha_p} \setminus K_{n-2}$ 
         \begin{equation}
         \label{eq:varieta_topologica_paracompatta_dim_1}
-        \overline{D_r(p)} \subset U_{\alpha_p} \setminus K_{n-2}
+        \textcolor{amber}{D_{r/2}(p)} \subset \overline{\textcolor{celeste}{D_r(p)}} \subset U_{\alpha_p} \setminus K_{n-2}
         \end{equation}
         Per facilitare la notazione
         \textcolor{celeste}{$D_p$} lo sferoide \textcolor{celeste}{$D_{r}(p)$} e con 
@@ -2550,9 +2552,49 @@
         Quindi abbiamo:
         \begin{equation}
         \label{eq:varieta_topologica_paracompatta_dim_2}
-        D'_p \subset \overline{D_p} \subset U_{\alpha_p} \setminus K_{n-2}
+        \textcolor{amber}{D'_p} \subset \overline{\textcolor{celeste}{D_p}} \subset U_{\alpha_p} \setminus K_{n-2}
         \end{equation}
-        Siccome $K_n \setminus \Int(K_{n-1})$ è compatto esistono un unumero finito di punti $p_1^n, \dots, p_{s_n}^n \in K_n \setminus \Int(K_{n-1})$ tali che
+        \textcolor{violet}{Gli sferoidi $D_p$ della corona $K_n\setminus\Int(K_{n-1})$ possono sconfinare
+        nelle corone vicine, ma non toccano $K_{n-2}$: è questo che dà la locale finitezza.}
+        \begin{center}
+        \begin{tikzpicture}[scale=0.8, violet, every node/.style={text=violet}]
+        % K_{n-2}, K_{n-1}, K_n
+        \draw[fill=violet!25] (0,0) circle (1);
+        \draw (0,0) circle (2);
+        \draw (0,0) circle (3);
+        \node at (0,0) {$K_{n-2}$};
+        \node at (-1.5,0) {$K_{n-1}$};
+        \node at (-2.5,0) {$K_n$};
+
+        % corona K_n \ Int(K_{n-1})
+        \draw[pattern=north east lines, pattern color=violet!40, even odd rule]
+            (0,0) circle (3) (0,0) circle (2);
+
+        % D_p (celeste) e D'_p (amber), disegnati PRIMA di p
+        \draw[celeste, thick] (2.5,0) circle (0.8);
+        \draw[amber, thick, dashed, fill=amber!25] (2.5,0) circle (0.4);
+
+        % p disegnato per ultimo, quindi sopra a tutto
+        \fill[violet] (2.5,0) circle (1.5pt);
+        \node[below right=-1pt] at (2.5,0) {\scriptsize $p$};
+
+        % etichette
+        \node[celeste] at (3.7,0.9) {$D_p$};
+        \node[amber]   at (3.7,0.3) {$D'_p$};
+
+        % D_p non tocca K_{n-2}
+        \draw[<->] (1,0) -- (1.7,0);
+        \node[below] at (1.35,0) {\scriptsize $\neq \emptyset$};
+        \end{tikzpicture}
+        \end{center}
+
+        Siccome $K_n \setminus \Int(K_{n-1})$ è compatto esistono un numero finito di punti 
+        \textcolor{violet}{(che ci fanno da indici)} $p_1^n, \dots, p_{s_n}^n \in K_n \setminus \Int(K_{n-1})$ tali che
+
+        \textcolor{violet}{Siccome $K_n \setminus \Int(K_{n-1})$ è compatto e
+        $\{D'_p\}_{p \in K_n \setminus \Int(K_{n-1})}$ ne è un ricoprimento aperto
+        \textcolor{black}{(ogni $p$ sta nel proprio $D'_p$)} $\Rightarrow \exists$ un sottoricoprimento finito:
+        cioè esistono $p_1^n, \dots, p_{s_n}^n \in K_n \setminus \Int(K_{n-1})$ tali che}
         \begin{equation}
         \label{eq:varieta_topologica_paracompatta_dim_3}
         K_n \setminus \Int(K_{n-1}) \subset D'_{p_1^n} \cup \dots \cup D'_{p_{s_n}^n}
@@ -2562,7 +2604,7 @@
         
         $\mathcal{B}$ è un ricoprimento aperto di $M$ sia $p \in M$ e sia $n \geq$ il più piccolo intero tale che $p \in K_n$ allora:
         \[ p \in K_n \setminus K_{n-1} \Rightarrow p \in K_n \setminus \Int(K_{n-1}) \overset{\eqref{eq:varieta_topologica_paracompatta_dim_3}}{\Rightarrow} p \text{ appartiene a qualche } D'_{p^j_n} \]
-        $\mathcal{B}$ è un ricoprimento ed è un raffinamento di $\mathcal{A}$ perché $D_p \subset U_{\alpha_p}$
+        $\mathcal{B}$ è un ricoprimento ed è un raffinamento di $\mathcal{A}$ perché $D_p \subset U_{\alpha_p}$ \textcolor{violet}{(è localmente finito?)}
 
         Per \eqref{eq:varieta_topologica_paracompatta_dim_2} abbiamo per ogni $n \geq 0$:
         \[ D_{p_j^n} \cap K_{n-2} = \emptyset \Rightarrow D_{p_j^n} \cap K_{m} = \emptyset \text{ se } m \leq n-2 \, \textcolor{blu}{(n \geq m+2)} \]
