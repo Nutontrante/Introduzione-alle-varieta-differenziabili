@@ -2628,7 +2628,9 @@
         \begin{esempio}
         $X= \mathbb{R} \quad A=]0, \infty[ \quad f=\ln \colon A \to \mathbb{R}$ 
 
-        $\supp(f)=A$ che non è chiuso in $\mathbb{R}$
+        \textcolor{violet}{$\{x \in A \mid \ln x \neq 0\} = A \setminus \{1\}$ è denso in $A$ quindi}
+        \[ \supp(f) = \textcolor{violet}{\overline{A \setminus \{1\}}^A =} A \]
+        che non è chiuso in $\mathbb{R}$ 
         \end{esempio}
         \begin{osservazione}
         \mbox{}
@@ -2644,20 +2646,29 @@
         \[ \supp(f) = \overline{\left\{x \in A \mid f(x) \neq 0\right\}}^A \overset{\textcolor{violet}{ \text{rich. }\ref{ric:chiusura_in_aperto_hausdorff}}}{=} \overline{\left\{x \in A \mid f(x) \neq 0\right\}} \]  
         \end{osservazione}
         \begin{osservazione}
+        \mbox{}
+
         Siano $M$ una varietà differenziabile $A \subset M$ un aperto e data una funzione differenziabile
         $f \colon A \to \mathbb{R}$ chiameremo \textcolor{red}{estensione banale di $f$} la funzione \textcolor{red}{$F \colon M \to \mathbb{R}$} 
         definita ponendo
         \[ \color{red} F(x) = \begin{cases*} f(x) & se $x \in A$ \\ 0 & se $x \notin A$ \end{cases*} \]
         Generalmente tale estensione non è differenziabile \textcolor{black}{(anzi non è continua)}
 
-        Osserviamo però che se esiste un chiuso $C \subset M$ tale che
-        $\supp(f) \subset C \subset M \Rightarrow F$ è differenziabile e $\supp(F) \subset C$
+        \textcolor{violet}{ Esempio $M = \mathbb{R} \quad A = \, ]0,\infty[ \quad f = \ln \Rightarrow$}
+        \textcolor{violet}{ $F(x) = \begin{cases} \ln x & \text{se } x > 0 \\ 0 & \text{se } x \leq 0 \end{cases}$}
+        \textcolor{violet}{non è continua in $0$ perché $\displaystyle \lim_{x \to 0^+} \ln x = -\infty$ quindi non è liscia.}
+        \textcolor{violet}{Il problema è che $\supp(f) = A$ non è chiuso in $\mathbb{R}$: $f$ "arriva fino al bordo" di $A$ e lì non si raccorda con $0$}
+
+        Osserviamo però che se esiste un chiuso $C$ di $M$ tale che
+        $\supp(f) \subset C \subset A \Rightarrow F$ è differenziabile e $\supp(F) \subset C$
         \begin{proof}
         Sia $x_0 \in M$ 
 
         Se $x_0 \in A \Rightarrow F|_A =f$ che è differenziabile
 
-        Se $x_0 \notin A \Rightarrow B := M \setminus C$ è un intorno aperto di $x_0$ e risulta $F|_B=0$ \textcolor{violet}{(è differenziabile?)}
+        Se $x_0 \notin A \textcolor{violet}{\Rightarrow x_0 \notin C \ (\text{perché } C \subset A)}
+        \Rightarrow B := M \setminus C$ è un intorno aperto di $x_0$ e risulta $F|_B=0$
+        \textcolor{violet}{(è una funzione differenziabile)}
 
         \[ \supp(F) = \overline{\left\{x \in M \mid F(x) \neq 0 \right\}} \]
         \[ \left\{x \in M \mid F(x) \neq 0 \right\} = \left\{x \in A \mid f(x) \neq 0  \right\} \subset \supp(f) \subset C \Rightarrow \supp(F) \subset C  \]
@@ -2669,10 +2680,13 @@
         \begin{proposizione}
         \mbox{}
 
-        Siano $n \geq 1$ un intero $a \in \mathbb{R}^n$ e $r >0$ allora esiste una funzione di classe $C^\infty \quad F \colon \mathbb{R}^n \to \mathbb{R}$
+        Sia $M$ varietà differenziabile $p \in M$ e $D_r(p)$ sferoide di centro $p$
+        allora esiste una funzione 
+        
+        differenziabile $F \colon M \to \mathbb{R}$ \textcolor{violet}{($F \in \mathcal{F}(M)$)}
         tale che 
         \begin{equation}
-        F>0 \text{ su } B_r(a) \quad \supp(F)=\overline{B_r(a)}
+        F>0 \text{ su } D_r(p) \quad \supp(F) \subset \overline{D_r(p)}
         \end{equation}
         \end{proposizione}
         \begin{proof}
