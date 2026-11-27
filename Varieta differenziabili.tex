@@ -736,7 +736,6 @@
         \]
         \textcolor{violet}{In quanto sottovarietà di una varietà di dimensione $n^2$}
         \end{esempio}
-
     \section{Varietà prodotto di varietà differenziabili}
 
         \begin{proposizione}
@@ -1460,9 +1459,10 @@
         \textcolor{violet}{Introduciamo ora uno spazio di funzioni che ci tornerà utile}
 
         Sia $M$ varietà differenziabile, poniamo:
-        \[
+        \begin{equation}
+        \label{eq:spazio_di_funzioni_differenziabili_definite_su_varieta}
         \textcolor{red}{\mathcal{F}(M) = \{ f \colon M \to \mathbb{R} \mid f \text{ è differenziabile} \}}
-        \]
+        \end{equation}
         \textcolor{violet}{Se prendo un insieme $X$ qualunque e considero tutte le funzioni da $\left\{  f \colon X \to \mathbb{R} \right\}$ questo nuovo insieme ha struttura algebrica di spazio vettoriale reale}
 
         Poniamo $\forall f, g \in \mathcal{F}(M)$ e $\forall \lambda \in \mathbb{R}$:
@@ -2645,6 +2645,7 @@
         $f \colon A \to \mathbb{R}$ con $A \subset X$ aperto se $X$ è $T_2$ e $\supp(f)$ è compatto allora 
         \[ \supp(f) = \overline{\left\{x \in A \mid f(x) \neq 0\right\}}^A \overset{\textcolor{violet}{ \text{rich. }\ref{ric:chiusura_in_aperto_hausdorff}}}{=} \overline{\left\{x \in A \mid f(x) \neq 0\right\}} \]  
         \end{osservazione}
+        \newpage
         \begin{osservazione}
         \mbox{}
 
@@ -2676,24 +2677,317 @@
         In particolare ciò si può fare se $\supp(f)$ è chiuso in $M$ ad esempio è compatto e si ha 
         \[ \supp(F) = \supp(f) \quad \text{prendo } C= \supp(f) \]
         \end{osservazione}
+        \newpage
         La proposizione seguente mostra come costruire dei modelli di funzioni differenziabili su $\mathbb{R}^n$ il cui supporto è una sfera chiusa.
+        \begin{proposizione}
+        \label{prop:costruzione_di_funzioni_diff_su_Rn_il_cui_supporto_sfera_chiusa}
+        \mbox{}
+
+        Sia $n \geq 1$, $a \in \mathbb{R}^n$ e $r>0$ allora esiste $F \colon \mathbb{R}^n \to \mathbb{R}$ differenziabile di classe $C^\infty$
+        tale che $f|_{B_r(a)}>0$ e $\supp(F) = \overline{B_r(a)}$
+        \end{proposizione}
+        \begin{proof}
+        \mbox{}
+
+        Sia $h \colon \mathbb{R} \to \mathbb{R} \quad h(t)= \begin{cases}
+            e^{-\frac{1}{t}} & \text{ se } t>0 \\
+            0 & \text{ se } t \leq 0 
+        \end{cases}$
+
+        Definisco \textcolor{red}{$F(x)=\textcolor{blu}{\overbrace{\textcolor{red}{h}}^{\text{è } C^\infty}}( \, \, \textcolor{blu}{\underbrace{\textcolor{red}{r^2-\norm{x-a}^2}}_{\text{costante}}} \, \, )$} è $C^\infty$
+
+        $F(x)=0 \iff r^2 - \norm{x-a}^2 \leq 0 \iff \norm{x-a}^2 \geq r^2$
+
+        $F(x) \neq 0 \iff \norm{x-a}^2 < r^2 \iff x \in B_r(a)$
+
+        $\supp(F) = \overline{\, \left\{x \in \mathbb{R}^n \mid F(x) \neq 0 \right\} \,} = B_r(a)$
+        \end{proof}
         \begin{proposizione}
         \mbox{}
 
         Sia $M$ varietà differenziabile $p \in M$ e $D_r(p)$ sferoide di centro $p$
-        allora esiste una funzione 
-        
-        differenziabile $F \colon M \to \mathbb{R}$ \textcolor{violet}{($F \in \mathcal{F}(M)$)}
-        tale che 
+        allora $\exists F \in \mathcal{F}(M)$ \textcolor{violet}{\eqref{eq:spazio_di_funzioni_differenziabili_definite_su_varieta}} tale che 
         \begin{equation}
+        \label{eq:funzioni_diff_positive_su_uno_sferoide_con_supporto_contenuto_nella_chiusura}
         F>0 \text{ su } D_r(p) \quad \supp(F) \subset \overline{D_r(p)}
         \end{equation}
         \end{proposizione}
         \begin{proof}
         \mbox{}
 
-        Dimostrato nella lezione $3$
+        Per definizione $\exists (U, \varphi)$ carta locale tale che $p \in U$ e $\overline{B_r(\varphi(p))} \subset \varphi(U)$ e $D_r(p)=\varphi^{-1}(B_r(\varphi(p)))$
+
+        Considero \textcolor{violet}{per la prop \ref{prop:costruzione_di_funzioni_diff_su_Rn_il_cui_supporto_sfera_chiusa}} 
+        \textcolor{red}{$F \colon \mathbb{R}^n \to \mathbb{R}$} di classe $C^\infty$ tale che \textcolor{red}{$F|_{B_r(\varphi(p))}>0$} e 
+        \textcolor{red}{$\supp(F) = \overline{B_r(\varphi(p))}$} 
+
+        \textcolor{blu}{$F|_{\varphi(U)} \colon \varphi(U) \to \mathbb{R}$ ha le stesse proprietà di $F$}
+
+        Considero \textcolor{red}{$f = F \circ \varphi$} \textcolor{blu}{(diffeomorfismo)} è $C^\infty$
+        inoltre $\supp(f)=supp(F \circ \varphi)=\varphi^{-1}(\supp(F)) = \overline{D_r(p)}$ \textcolor{blu}{(è ovvio che $f|_{D_r(p)}>0$
+        poiché $F|_{B_r(\varphi(p))}>0$)}
+
+        In particolare $\supp(f)$ è un compatto in $M$ per cui l'estensione banale 
+        $f \colon M \to \mathbb{R}$ di $f \colon U \to \mathbb{R}$ è $C^\infty$ con lo stesso supporto pertanto ha le proprietà richieste.
         \end{proof}
+        \begin{osservazione}
+        Ogni funzione $f \in \mathcal{F}(M)$ \textcolor{violet}{(continua)} che soddisfi la
+        \eqref{eq:funzioni_diff_positive_su_uno_sferoide_con_supporto_contenuto_nella_chiusura} è non negativa ovvero
+        $f \geq 0$ su $M$
+        \end{osservazione}
     \section{Partizioni dell'unità}
-    \section{Estensioni di funzioni differenziabili}
+        In questa sezione ci occupiamo di stabilire l'esistenza di particolari famiglie di funzioni differenziabili su una qualsiasi varietà di classe $C^{\infty}$ il cui utilizzo più importante è quello di permettere l'estensione a tutta la varietà di oggetti differenziabili definiti localmente.
+
+        Data una famiglia $\textcolor{red}{\{f_i \colon M \to \mathbb{R}\}_{i \in I}}$ di funzioni differenziabili tali che la famiglia dei supporti $\{\supp(f_i)\}$ è localmente finita si definisce la \textcolor{red}{somma}
+        \[
+        \textcolor{red}{\sum_{i \in I} f_i}
+        \]
+        ponendo
+        \[
+        \textcolor{red}{\left(\sum_{i \in I} f_i\right)(x) := \sum_{i \in S_x} f_i(x)} \qquad \text{dove } S_x := \{i \in I \colon f_i(x) \neq 0\}
+        \]
+        Si osserva che questa definizione è ben posta in quanto per ogni $x \in M$ l'insieme di indici $S_x$ è finito e quindi la somma al secondo membro è la somma di un numero finito di numeri. Ciò perché dato un intorno aperto $W$ di $x$ che incontra al più un numero finito di supporti delle $f_i$ si ha
+        \[
+        W \cap \supp(f_i) = \emptyset
+        \]
+        per ogni $i \in I \setminus F$ dove $F \subset I$ è un opportuno insieme finito. Pertanto
+        \[
+        f_i(x) = 0 \quad \forall i \in I \setminus F
+        \]
+        e quindi
+        \[
+        S_x \subset F
+        \]
+        Inoltre $\sum_{i \in I} f_i$ è una funzione differenziabile perché considerato lo stesso intorno $W$ di cui sopra si ha
+        \[
+        \left(\sum_{i \in I} f_i\right)\Big|_W = \sum_{i \in F} f_{i|_W}
+        \]
+        in quanto $S_x \subset F$ per ogni $x \in W$.
+        \newpage
+        \begin{proposizione}
+        \label{prop:supporto_somma_localmente_finita}
+        \mbox{}
+
+        Sia $\textcolor{red}{\{f_i\}_{i \in I}}$ una famiglia di funzioni differenziabili non negative. 
+        
+        Se la famiglia dei supporti $\{\supp(f_i)\}_{i \in I}$ è localmente finita risulta:
+        \[
+        \textcolor{red}{\supp\left(\sum_{i \in I} f_i\right) = \bigcup_{i \in I} \supp(f_i)}
+        \]
+        \end{proposizione}
+
+        \begin{proof}
+        Posto $f = \sum_{i \in I} f_i$ abbiamo per ogni $x \in M$
+        \[
+        f(x) = 0 \iff \sum_{i \in S_x} f_i(x) = 0 \iff \forall i \in S_x \ f_i(x) = 0 \iff \forall i \in I \ f_i(x) = 0
+        \]
+        dove la seconda equivalenza è giustificata dal fatto che \textcolor{orange}{$f_i(x) \geq 0$ per ogni $i$}. Pertanto
+        \[
+        \{x \in M \colon f(x) \neq 0\} = \bigcup_{i \in I} \{x \in M \colon f_i(x) \neq 0\}
+        \]
+        e siccome la famiglia costituita dagli insiemi $\{x \in M \colon f_i(x) \neq 0\}$ è \textcolor{orange}{localmente finita} applicando la Prop. 1.4 si conclude che
+        \[
+        \supp(f) = \overline{\bigcup_{i \in I} \{x \in M \colon f_i(x) \neq 0\}} = \bigcup_{i \in I} \overline{\{x \in M \colon f_i(x) \neq 0\}} = \bigcup_{i \in I} \supp(f_i)
+        \]
+        \end{proof}
+
+        \begin{osservazione}
+        \label{oss:inclusione_supporto_somma_generale}
+        \mbox{}
+
+        Osserviamo che nel caso generale sussiste comunque l'inclusione
+        \[
+        \supp\left(\sum_{i \in I} f_i\right) \subset \bigcup_{i \in I} \supp(f_i)
+        \]
+        La dimostrazione è simile a quella precedente.
+        \end{osservazione}
+        \newpage
+        Nel seguito considerata una famiglia di funzioni $\{f_i\}_{i \in I}$ come sopra si scriverà semplicemente
+        \[
+        \left(\sum_{i \in I} f_i\right)(x) = \sum_{i \in I} f_i(x)
+        \]
+        sottintendendo che la somma al secondo membro va fatta considerando solo gli addendi $f_i(x)$ non nulli.
+        
+        \begin{definizione}[Partizione dell'unità]
+        \label{def:partizione_unita}
+        \mbox{}
+
+        Sia $M$ una varietà differenziabile. Si chiama \textcolor{red}{partizione dell'unità} su $M$ ogni famiglia di funzioni differenziabili $\textcolor{red}{\{f_i \colon M \to \mathbb{R}\}_{i \in I}}$ soddisfacente i seguenti requisiti
+        \begin{enumerate}
+            \item Per ogni $i$ si ha $\textcolor{red}{f_i \geq 0}$
+            \item La famiglia dei supporti $\textcolor{red}{\{\supp(f_i)\}_{i \in I}}$ è \textcolor{red}{localmente finita}
+            \item $\textcolor{red}{\sum_{i \in I} f_i = 1}$
+        \end{enumerate}
+        \end{definizione}
+
+        Proveremo nel seguito l'esistenza di partizioni dell'unità per qualsiasi varietà. Più precisamente mostreremo che ad ogni ricoprimento aperto è possibile associare una partizione dell'unità secondo la seguente
+
+        \begin{definizione}[Partizione dell'unità subordinata a un ricoprimento]
+        \label{def:partizione_unita_subordinata}
+        \mbox{}
+
+        Sia $\mathcal{A} = \{U_\alpha\}_{\alpha \in I}$ un ricoprimento aperto di una varietà. Una partizione dell'unità $\textcolor{red}{\{f_\alpha\}_{\alpha \in I}}$ indicizzata su $I$ si dice \textcolor{red}{subordinata a $\mathcal{A}$} se per ogni $\alpha \in I$ si ha
+        \[
+        \textcolor{red}{\supp(f_\alpha) \subset U_\alpha}
+        \]
+        \end{definizione}
+        \newpage
+        Il Lemma seguente permette di particolarizzare il tipo di ricoprimento su cui fare la prova
+
+        \begin{lemma}
+        \label{lem:partizione_unita_raffinamento}
+        \mbox{}
+
+        Siano $\textcolor{red}{\mathcal{A} = \{U_\alpha\}_{\alpha \in I}}$ un ricoprimento aperto della varietà $M$ e $\textcolor{red}{\mathcal{B} = \{V_i\}_{i \in J}}$ un suo raffinamento. Se esiste una partizione dell'unità subordinata a $\mathcal{B}$ allora esiste anche una partizione dell'unità subordinata ad $\mathcal{A}$.
+        \end{lemma}
+
+        \begin{proof}
+        Fissiamo una partizione dell'unità \textcolor{orange}{$\{f_i\}_{i \in J}$ subordinata a $\mathcal{B}$}. Per ogni $i \in J$ abbiamo $\supp(f_i) \subset V_i$ per cui esiste un indice $\alpha \in I$ tale che
+        \[
+        \supp(f_i) \subset V_i \subset U_\alpha
+        \]
+        Fissiamo uno di tali indici $\alpha$ denotato con $\psi(i)$. In questo modo resta definita un'applicazione
+        \[
+        \psi \colon J \longrightarrow I
+        \]
+        con la proprietà che
+        \[
+        \supp(f_i) \subset U_{\psi(i)}
+        \]
+        Ciò premesso per ogni $\alpha \in I$ definiamo la funzione
+        \[
+        g_\alpha := \sum_{i \in \psi^{-1}(\alpha)} f_i
+        \]
+        dove nel caso in cui $\psi^{-1}(\alpha) = \emptyset$ intendiamo $g_\alpha = 0$. Affermiamo che $\{g_\alpha\}_{\alpha \in I}$ è una partizione dell'unità subordinata ad $\mathcal{A}$. Cominciamo con l'osservare che per costruzione e in forza della \textcolor{hotpink}{Prop. \ref{prop:supporto_somma_localmente_finita}}
+        \[
+        \supp(g_\alpha) = \bigcup_{i \in \psi^{-1}(\alpha)} \supp(f_i) \subset U_\alpha
+        \]
+        Da ciò segue anche che la famiglia $\{\supp(g_\alpha)\}$ al pari di $\{\supp(f_i)\}$ è localmente finita; infatti fissato un punto $p \in M$ consideriamo un suo intorno aperto $W$ tale che
+        \[
+        W \cap \supp(f_i) = \emptyset \quad \forall i \in J \setminus F
+        \]
+        dove $F \subset J$ è un insieme finito. Consideriamo quindi il sottoinsieme finito $\psi(F)$ di $I$; è chiaro che se $\alpha \in I$ e $\alpha \notin \psi(F)$ allora per ogni $i \in \psi^{-1}(\alpha)$ deve aversi $i \notin F$. Quindi per ogni $\alpha \in I \setminus \psi(F)$ abbiamo
+        \[
+        W \cap \supp(g_\alpha) = \bigcup_{i \in \psi^{-1}(\alpha)} \left(W \cap \supp(f_i)\right) = \emptyset
+        \]
+        Infine risulta
+        \[
+        \sum_{\alpha \in I} g_\alpha = \sum_{\alpha \in I} \sum_{i \in \psi^{-1}(\alpha)} f_i = \sum_{i \in J} f_i = 1
+        \]
+        in quanto l'unione degli insiemi di indici $\psi^{-1}(\alpha)$ al variare di $\alpha$ in $I$ coincide con $J$.
+        \end{proof}
+
+        Proveremo ora il seguente importante risultato
+
+        \begin{teorema}[Esistenza di partizioni dell'unità]
+        \label{th:esistenza_partizioni_unita}
+        \mbox{}
+
+        Ogni ricoprimento aperto $\textcolor{red}{\mathcal{A} = \{U_\alpha\}_{\alpha \in I}}$ di una varietà differenziabile ammette una \textcolor{red}{partizione dell'unità $\{f_\alpha\}_{\alpha \in I}$ subordinata ad esso}.
+        \end{teorema}
+
+        \begin{proof}
+        Fissiamo un ricoprimento aperto $\{U_\alpha\}_{\alpha \in I}$ e consideriamo un suo raffinamento $\mathcal{B} = \{D_{r_i}(p_i)\}_{i \in \mathbb{N}}$ numerabile localmente finito costituito da sferoidi per cui anche $\{D_{r_i/2}(p_i)\}_{i \in \mathbb{N}}$ è un ricoprimento di $M$. Stante il \textcolor{orange}{Lemma \ref{lem:partizione_unita_raffinamento}} basta costruire una partizione dell'unità $\{g_i\}_{i \in \mathbb{N}}$ subordinata a $\mathcal{B}$. Per ogni $i \in \mathbb{N}$ scegliamo una funzione $h_i \in \mathfrak{F}(M)$ tale che
+        \[
+        h_i > 0 \text{ su } D_{r_i/2}(p_i) \qquad \supp(h_i) = \overline{D_{r_i/2}(p_i)}
+        \]
+        Poiché la famiglia $\overline{D_{r_i/2}(p_i)}$ è \textcolor{orange}{localmente finita} è ben definita la funzione differenziabile $h := \sum_i h_i$; siccome $\{D_{r_i/2}(p_i)\}$ è un ricoprimento aperto di $M$ è immediato che $h > 0$ su $M$. Poniamo allora per ogni $i \in \mathbb{N}$
+        \[
+        g_i := \frac{h_i}{h}
+        \]
+        È chiaro che
+        \[
+        \supp(g_i) = \supp(h_i) = \overline{D_{r_i/2}(p_i)} \subset D_{r_i}(p_i)
+        \]
+        inoltre per ogni $x \in M$ abbiamo
+        \[
+        \sum_{i \in \mathbb{N}} g_i(x) = \frac{\sum_i h_i(x)}{h(x)} = 1
+        \]
+        \end{proof}
+
+        Come primo esempio di utilizzo delle partizioni dell'unità mostriamo
+
+        \begin{corollario}[Esistenza di funzioni bump]
+        \label{cor:esistenza_funzioni_bump}
+        \mbox{}
+
+        Siano $\textcolor{red}{A}$ un aperto di una varietà differenziabile $M$ e $\textcolor{red}{C}$ un chiuso contenuto in $A$. Allora esiste una funzione differenziabile $\textcolor{red}{f \colon M \to [0, 1]}$ tale che
+        \[
+        \textcolor{red}{f|_C = 1 \qquad \supp(f) \subset A}
+        \]
+        Una tale funzione si dice \textcolor{red}{funzione bump con supporto in $A$}.
+        \end{corollario}
+
+        \begin{proof}
+        Fissata una partizione dell'unità \textcolor{orange}{$\{f, g\}$ subordinata al ricoprimento $\{A, M \setminus C\}$} dove $\supp(f) \subset A$ e $\supp(g) \subset M \setminus C$ la funzione $f$ soddisfa le condizioni richieste avendosi
+        \[
+        1 = f(x) + g(x) = f(x) + 0 = f(x)
+        \]
+        per ogni $x \in C$.
+        \end{proof}
+
+    \section{Estensione di funzioni differenziabili}
+
+        In questo paragrafo mostriamo una tecnica standard di utilizzo delle partizioni dell'unità per costruire funzioni differenziabili su tutta la varietà a partire da dati di natura locale. Questa tecnica sarà applicata al problema dell'estensione di funzioni differenziabili dapprima definite su un chiuso in accordo con la definizione seguente
+
+        \begin{definizione}[Funzione differenziabile su un chiuso]
+        \label{def:funzione_differenziabile_su_chiuso}
+        \mbox{}
+
+        Sia $\textcolor{red}{C \subset M}$ un chiuso di una varietà differenziabile. Una funzione $\textcolor{red}{f \colon C \to \mathbb{R}}$ si dice \textcolor{red}{differenziabile} se per ogni punto $p \in C$ esiste una funzione $f_p \colon V_p \to \mathbb{R}$ differenziabile definita su un intorno aperto $V_p$ di $p$ tale che
+        \[
+        \textcolor{red}{f_p|_{V_p \cap C} = f|_{V_p \cap C}}
+        \]
+        \end{definizione}
+
+        Osserviamo che la restrizione $F|_C \colon C \to \mathbb{R}$ di una funzione differenziabile $F \in \mathfrak{F}(M)$ è una funzione differenziabile secondo questa definizione. Proveremo ora che ogni funzione differenziabile sul chiuso $C$ si ottiene in questo modo più precisamente
+
+        \begin{teorema}[Estensione di funzioni differenziabili su un chiuso]
+        \label{th:estensione_funzioni_differenziabili_chiuso}
+        \mbox{}
+
+        Sia $\textcolor{red}{f \colon C \to \mathbb{R}}$ una funzione differenziabile definita su un chiuso $C$ di una varietà $M$. Per ogni aperto $A$ contenente $C$ esiste una funzione differenziabile $\textcolor{red}{F \colon M \to \mathbb{R}}$ tale che
+        \[
+        \textcolor{red}{F|_C = f \qquad \supp(F) \subset A}
+        \]
+        \end{teorema}
+
+        \begin{proof}
+        Per ogni $p \in C$ fissiamo una funzione differenziabile $f_p \colon V_p \to \mathbb{R}$ per cui vale la Def. \ref{def:funzione_differenziabile_su_chiuso}. Possiamo supporre che l'intorno aperto $V_p$ di $p$ su cui è definita $f_p$ sia contenuto in $A$ a meno di sostituirlo con $A \cap V_p$. Consideriamo quindi il seguente ricoprimento aperto di $M$
+        \[
+        \mathcal{A} = \{V_p\}_{p \in C} \cup \{M \setminus C\}
+        \]
+        Sia \textcolor{orange}{$\{g_p\}_{p \in C} \cup \{g_o\}$ una partizione dell'unità subordinata ad esso} dove $\supp(g_p) \subset V_p$ e $\supp(g_o) \subset M \setminus C$. Per ogni $p \in C$ la funzione differenziabile $g_p|_{V_p} \cdot f_p \colon V_p \to \mathbb{R}$ che denotiamo più semplicemente come $g_p \cdot f_p \colon V_p \to \mathbb{R}$ ha supporto contenuto nel supporto di $g_p$ che è un chiuso di $M$ contenuto in $V_p$ e quindi la sua estensione banale a $M$ (ottenuta ponendo $(g_p \cdot f_p)(x) = 0$ per $x \notin V_p$) che denotiamo ancora con $g_p \cdot f_p \colon M \to \mathbb{R}$ è differenziabile. Per tale funzione abbiamo $\supp(g_p \cdot f_p) \subset \supp(g_p)$. In particolare la famiglia dei supporti di queste funzioni al variare di $p$ in $C$ è una famiglia localmente finita; consideriamo quindi la funzione
+        \[
+        F = \sum_{p \in C} g_p \cdot f_p
+        \]
+        Essa soddisfa le condizioni richieste. Infatti notiamo che per ogni $x \in C$ si ha
+        \[
+        F(x) = \sum_{p \in C} g_p(x) f_p(x) = \sum_{p \in C} g_p(x) \cdot f(x)
+        \]
+        in quanto vanno considerati solo gli addendi per cui $(g_p \cdot f_p)(x) \neq 0$ e quindi quelli per cui $x \in V_p$ per i quali risulta $f_p(x) = f(x)$ stante la Def. \ref{def:funzione_differenziabile_su_chiuso}. Quindi
+        \[
+        F(x) = \left(\sum_{p \in C} g_p(x)\right) \cdot f(x) = (1 - g_o(x)) f(x) = f(x)
+        \]
+        essendo $g_o(x) = 0$ per ogni $x \in C$. Infine
+        \[
+        \supp(F) \subset \bigcup_{p \in C} \supp(g_p \cdot f_p) \subset \bigcup_{p \in C} \supp(g_p) \subset \bigcup_{p \in C} V_p \subset A
+        \]
+        \end{proof}
+
+        Concludiamo considerando il problema dell'estensione a tutta la varietà di una funzione differenziabile $f \colon A \to \mathbb{R}$ definita su un aperto in generale non è possibile costruire una funzione $F \in \mathfrak{F}(M)$ per cui $F|_A = f$; si pensi ad esempio al caso di $f = \ln \colon (0, +\infty) \to \mathbb{R}$ che non può estendersi ad una funzione continua $F \colon \mathbb{R} \to \mathbb{R}$. Vale comunque il seguente risultato rilevante
+
+        \begin{corollario}
+        \label{cor:estensione_locale_funzione_aperto}
+        \mbox{}
+
+        Sia $\textcolor{red}{f \colon A \to \mathbb{R}}$ una funzione differenziabile definita su un aperto $A$ della varietà differenziabile $M$. Allora per ogni punto $p \in A$ esistono un intorno aperto $\textcolor{red}{W}$ di $p$ contenuto in $A$ e una funzione differenziabile $\textcolor{red}{F \colon M \to \mathbb{R}}$ tali che
+        \[
+        \textcolor{red}{F|_W = f|_W \qquad \supp(F) \subset A}
+        \]
+        \end{corollario}
+
+        \begin{proof}
+        Considerato un intorno compatto $K$ di $p$ contenuto in $A$ e posto $W = \operatorname{Int}(K)$ per costruire $F$ è sufficiente applicare il \textcolor{orange}{Teorema \ref{th:estensione_funzioni_differenziabili_chiuso}} alla restrizione $f \colon K \to \mathbb{R}$ di $f$ a $K$.
+        \end{proof}
     \section{Funzioni bump su varietà differenziabili}
